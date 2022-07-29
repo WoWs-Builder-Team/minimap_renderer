@@ -28,11 +28,6 @@ class LayerSmoke(LayerBase):
         draw = ImageDraw.Draw(base, mode="RGBA")
 
         for smoke in smokes:
-            # xs = np.array(smoke.points).mean(axis=0)
-            # _x, _y = xs
-            # _x = round(self._get_scaled(_x))
-            # _y = round(self._get_scaled(-_y))
-            # draw.ellipse([(_x - 10, _y - 10), (_x + 10, _y + 10)], "white")
             for point in smoke.points:
                 x, y = point
                 x = round(self._get_scaled(x))
