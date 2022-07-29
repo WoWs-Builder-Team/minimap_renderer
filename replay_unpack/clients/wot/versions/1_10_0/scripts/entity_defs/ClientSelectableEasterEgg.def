@@ -1,0 +1,29 @@
+<ClientSelectableEasterEgg.def>
+  <Parent>	ClientSelectableObject	</Parent>
+  <Properties>
+    <imageName>
+      <Type>	STRING	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+    </imageName>
+    <multiLanguageSupport>
+      <Type>	BOOL	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+    </multiLanguageSupport>
+    <outlineModelName>
+      <Type>	STRING	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+      <Editor>
+        <Title>	Outline Model	</Title>
+        <ResourceType>	MODEL	</ResourceType>
+      </Editor>
+    </outlineModelName>
+    <animationSequence>
+      <Type>	STRING	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+    </animationSequence>
+  </Properties>
+</ClientSelectableEasterEgg.def>

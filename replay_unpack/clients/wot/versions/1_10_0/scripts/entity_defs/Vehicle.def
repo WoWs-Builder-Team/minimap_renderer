@@ -1,0 +1,526 @@
+<Vehicle.def>
+  <LoDLevels>
+    <level>	20	  <hyst>	4	</hyst>
+      <label>	NEAR	</label>
+    </level>
+    <level>	70	  <hyst>	10	</hyst>
+      <label>	MEDIUM	</label>
+    </level>
+    <level>	180	  <hyst>	20	</hyst>
+      <label>	FAR	</label>
+    </level>
+  </LoDLevels>
+  <Implements>
+    <Interface>	VehicleAIProxy	</Interface>
+    <Interface>	TeamBase_Vehicle	</Interface>
+    <Interface>	SectorBase_Vehicle	</Interface>
+    <Interface>	RepairBase_Vehicle	</Interface>
+    <Interface>	VehicleObserver	</Interface>
+    <Interface>	BattleFeedback	</Interface>
+    <Interface>	Harm	</Interface>
+    <Interface>	Sector_Vehicle	</Interface>
+    <Interface>	ProtectionZone_Vehicle	</Interface>
+    <Interface>	StepRepairPoint_Vehicle	</Interface>
+    <Interface>	DestructibleEntity_Vehicle	</Interface>
+    <Interface>	DefenderBonusController_Vehicle	</Interface>
+    <Interface>	RecoveryMechanic_Vehicle	</Interface>
+    <Interface>	RespawnController_Vehicle	</Interface>
+    <Interface>	SmokeController_Vehicle	</Interface>
+    <Interface>	Wheels	</Interface>
+  </Implements>
+  <Volatile>
+    <position></position>
+    <yaw></yaw>
+    <roll></roll>
+    <pitch></pitch>
+  </Volatile>
+  <IsManualAoI>	true	</IsManualAoI>
+  <Properties>
+    <isStrafing>
+      <Type>	BOOL	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </isStrafing>
+    <physicsMode>
+      <Type>	UINT8	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </physicsMode>
+    <siegeState>
+      <Type>	UINT8	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </siegeState>
+    <gunAnglesPacked>
+      <Type>	UINT16	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <IsReliable>	false	</IsReliable>
+      <SendLatestOnly>	true	</SendLatestOnly>
+    </gunAnglesPacked>
+    <publicInfo>
+      <Type>	PUBLIC_VEHICLE_INFO	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </publicInfo>
+    <health>
+      <Type>	INT16	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </health>
+    <isCrewActive>
+      <Type>	BOOL	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </isCrewActive>
+    <engineMode>
+      <Type>	TUPLE	  <of>	UINT8	</of>
+        <size>	2	</size>
+      </Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </engineMode>
+    <damageStickers>
+      <Type>	ARRAY	  <of>	UINT64	</of>
+      </Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </damageStickers>
+    <publicStateModifiers>
+      <Type>	ARRAY	  <of>	EXTRA_ID	</of>
+      </Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </publicStateModifiers>
+    <compDescr>
+      <Type>	STRING	</Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+    </compDescr>
+    <stunInfo>
+      <Type>	STUN_INFO	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </stunInfo>
+    <status>
+      <Type>	INT8	</Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+    </status>
+    <invisibility>
+      <Type>	FLOAT32	</Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+    </invisibility>
+    <radioDistance>
+      <Type>	FLOAT32	</Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+    </radioDistance>
+    <circularVisionRadius>
+      <Type>	FLOAT32	</Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+    </circularVisionRadius>
+    <detectedVehicles>
+      <Type>	ARRAY	  <of>	OBJECT_ID	</of>
+      </Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+    </detectedVehicles>
+    <isObservedByEnemy>
+      <Type>	BOOL	</Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+    </isObservedByEnemy>
+    <rammingBonus>
+      <Type>	FLOAT32	</Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+    </rammingBonus>
+    <ammo>
+      <Type>	ARRAY	  <of>	INT32	</of>
+      </Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </ammo>
+    <enhancements>
+      <Type>	PYTHON	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </enhancements>
+    <vehPerks>
+      <Type>	PYTHON	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </vehPerks>
+    <isClientConnected>
+      <Type>	INT8	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </isClientConnected>
+    <avatar>
+      <Type>	MAILBOX	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </avatar>
+    <arenaBase>
+      <Type>	MAILBOX	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </arenaBase>
+    <botKind>
+      <Type>	UINT8	</Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+    </botKind>
+    <eventBotKind>
+      <Type>	UINT8	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </eventBotKind>
+    <respawnOffset>
+      <Type>	VECTOR3	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </respawnOffset>
+    <xRayFactor>
+      <Type>	FLOAT	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </xRayFactor>
+    <masterVehID>
+      <Type>	UINT32	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </masterVehID>
+    <needsCount>
+      <Type>	BOOL	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </needsCount>
+    <crewCompactDescrs>
+      <Type>	TUPLE	  <of>	STRING	</of>
+      </Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </crewCompactDescrs>
+    <arenaTypeID>
+      <Type>	INT32	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </arenaTypeID>
+    <arenaBonusType>
+      <Type>	UINT8	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </arenaBonusType>
+    <tkillRating>
+      <Type>	FLOAT	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </tkillRating>
+    <cp>
+      <Type>	PYTHON	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </cp>
+    <arenaUniqueID>
+      <Type>	UINT64	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </arenaUniqueID>
+    <accountDBID>
+      <Type>	DB_ID	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </accountDBID>
+    <historyLoggingFlags>
+      <Type>	UINT32	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </historyLoggingFlags>
+    <heatmapLoggingFlags>
+      <Type>	UINT32	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </heatmapLoggingFlags>
+    <state>
+      <Type>	UINT8	</Type>
+      <Flags>	BASE	</Flags>
+    </state>
+    <arena>
+      <Type>	MAILBOX	</Type>
+      <Flags>	BASE	</Flags>
+    </arena>
+    <inspiringEffect>
+      <Type>	BUFF_EFFECT	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </inspiringEffect>
+    <healingEffect>
+      <Type>	BUFF_EFFECT	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </healingEffect>
+    <dotEffect>
+      <Type>	DOT_EFFECT	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </dotEffect>
+    <inspired>
+      <Type>	INSPIRED_EFFECT	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </inspired>
+    <healing>
+      <Type>	BUFF_EFFECT_INACTIVATION	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </healing>
+    <healOverTime>
+      <Type>	HOT_EFFECT	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </healOverTime>
+    <debuff>
+      <Type>	BOOL	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </debuff>
+    <isSpeedCapturing>
+      <Type>	BOOL	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </isSpeedCapturing>
+    <isBlockingCapture>
+      <Type>	BOOL	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </isBlockingCapture>
+  </Properties>
+  <TempProperties>
+    <events></events>
+    <p></p>
+    <_Vehicle__p></_Vehicle__p>
+    <arenaCell></arenaCell>
+    <_components></_components>
+    <_battleFeedback></_battleFeedback>
+    <_directVisibility></_directVisibility>
+    <_harm></_harm>
+    <_inspireController></_inspireController>
+    <_healPointController></_healPointController>
+    <_entityExtraUserData></_entityExtraUserData>
+    <_extras></_extras>
+    <attrs></attrs>
+    <typeDescriptor></typeDescriptor>
+    <bbox></bbox>
+    <mover></mover>
+    <directVisibility></directVisibility>
+    <arenaCell></arenaCell>
+    <_ProximityManager__data></_ProximityManager__data>
+    <_TimerManager__unpersistedTimers></_TimerManager__unpersistedTimers>
+    <gameObject></gameObject>
+  </TempProperties>
+  <ClientMethods>
+    <onHealthChanged>
+      <Arg>	INT16	</Arg>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+    </onHealthChanged>
+    <showShooting>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+    </showShooting>
+    <showDamageFromShot>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	ARRAY	  <of>	UINT64	</of>
+      </Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+    </showDamageFromShot>
+    <showDamageFromExplosion>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+    </showDamageFromExplosion>
+    <showAmmoBayEffect>
+      <Arg>	UINT8	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </showAmmoBayEffect>
+    <onPushed>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </onPushed>
+    <onStaticCollision>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	INT8	</Arg>
+      <Arg>	UINT16	</Arg>
+      <DetailDistance>	100	</DetailDistance>
+    </onStaticCollision>
+    <showRammingEffect>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <DetailDistance>	100	</DetailDistance>
+    </showRammingEffect>
+  </ClientMethods>
+  <CellMethods>
+    <updatePrebattleID>
+      <Arg>	OBJECT_ID	</Arg>
+    </updatePrebattleID>
+    <moveWith>
+      <Exposed></Exposed>
+      <Arg>	UINT8	</Arg>
+    </moveWith>
+    <trackWorldPointWithGun>
+      <Exposed></Exposed>
+      <Arg>	VECTOR3	</Arg>
+    </trackWorldPointWithGun>
+    <trackRelativePointWithGun>
+      <Exposed></Exposed>
+      <Arg>	VECTOR3	</Arg>
+    </trackRelativePointWithGun>
+    <stopTrackingWithGun>
+      <Exposed></Exposed>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </stopTrackingWithGun>
+    <trackVehicleWithGun>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	BOOL	</Arg>
+    </trackVehicleWithGun>
+    <changeSetting>
+      <Exposed></Exposed>
+      <Arg>	UINT8	</Arg>
+      <Arg>	INT32	</Arg>
+    </changeSetting>
+    <sendVisibilityDevelopmentInfo>
+      <Exposed></Exposed>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	VECTOR3	</Arg>
+    </sendVisibilityDevelopmentInfo>
+    <shoot>
+      <Arg>	FLOAT32	</Arg>
+    </shoot>
+    <teleportTo>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </teleportTo>
+    <replenishAmmo></replenishAmmo>
+    <setDevelopmentFeature>
+      <Arg>	STRING	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	STRING	</Arg>
+    </setDevelopmentFeature>
+    <receiveFakeShot>
+      <Arg>	INT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	UINT8	</Arg>
+    </receiveFakeShot>
+    <setAvatar>
+      <Arg>	MAILBOX	</Arg>
+    </setAvatar>
+    <registerObserver>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	BOOL	</Arg>
+    </registerObserver>
+    <sendFinalStats>
+      <Arg>	PYTHON	</Arg>
+    </sendFinalStats>
+    <onClientConnected>
+      <Arg>	BOOL	</Arg>
+    </onClientConnected>
+    <onBattleRunning>
+      <Arg>	BOOL	</Arg>
+      <Arg>	BOOL	</Arg>
+    </onBattleRunning>
+    <sendStateToOwnClient>
+      <Exposed></Exposed>
+    </sendStateToOwnClient>
+    <onEnemyVehicleShot>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	ARRAY	  <of>	SHOT_ID	</of>
+      </Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </onEnemyVehicleShot>
+    <scheduleExtraCheck>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </scheduleExtraCheck>
+    <onObservedByEnemy></onObservedByEnemy>
+    <onDetectedByEnemy>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Arg>	UINT8	</Arg>
+    </onDetectedByEnemy>
+    <onConcealedFromEnemy>
+      <Arg>	OBJECT_ID	</Arg>
+    </onConcealedFromEnemy>
+    <onStopObservationByEnemy></onStopObservationByEnemy>
+    <updateVehicleAmmo>
+      <Arg>	INT32	</Arg>
+      <Arg>	UINT16	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT16	</Arg>
+    </updateVehicleAmmo>
+    <onFlagAction>
+      <Arg>	UINT8	</Arg>
+      <Arg>	PYTHON	</Arg>
+      <Arg>	UINT8	</Arg>
+    </onFlagAction>
+    <receiveAssistsFromArena>
+      <Arg>	ARRAY	  <of>	UINT8	</of>
+      </Arg>
+      <Arg>	ARRAY	  <of>	OBJECT_ID	</of>
+      </Arg>
+    </receiveAssistsFromArena>
+    <receiveFirstDetectionFromArena>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT16	</Arg>
+    </receiveFirstDetectionFromArena>
+    <sendPositionsToClient>
+      <Arg>	BOOL	</Arg>
+    </sendPositionsToClient>
+    <requestDamagedDevicesFromFor>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	MAILBOX	</Arg>
+    </requestDamagedDevicesFromFor>
+    <sendDamagedDevicesTo>
+      <Arg>	MAILBOX	</Arg>
+    </sendDamagedDevicesTo>
+    <setHonorTitle>
+      <Arg>	STRING	</Arg>
+    </setHonorTitle>
+    <receiveTaggedDestructibleKill>
+      <Arg>	UINT8	</Arg>
+    </receiveTaggedDestructibleKill>
+    <setOnFireByExplosion>
+      <Arg>	ATTACKER_INFO	</Arg>
+      <Arg>	SHOT_ID	</Arg>
+    </setOnFireByExplosion>
+    <onReceiveSpatialData>
+      <Arg>	ARRAY	  <of>	VEHICLE_SPATIAL_INFO	</of>
+      </Arg>
+    </onReceiveSpatialData>
+    <onResourceAbsorbed>
+      <Arg>	UINT16	</Arg>
+    </onResourceAbsorbed>
+    <setInsideResourcePoint>
+      <Arg>	BOOL	</Arg>
+    </setInsideResourcePoint>
+    <grantWinPoints>
+      <Arg>	UINT16	</Arg>
+    </grantWinPoints>
+    <activateGasAttack>
+      <Arg>	FLOAT32	</Arg>
+    </activateGasAttack>
+    <pauseMechanics>
+      <Arg>	UINT64	</Arg>
+    </pauseMechanics>
+    <startOrUpdateExtraFromOutside>
+      <Arg>	STRING	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </startOrUpdateExtraFromOutside>
+    <damageByEquipment>
+      <Arg>	INT32	</Arg>
+      <Arg>	BOOL	</Arg>
+    </damageByEquipment>
+    <updateOwnClientRTT>
+      <Arg>	FLOAT32	</Arg>
+    </updateOwnClientRTT>
+    <receiveVisibilityUpdate>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Arg>	BOOL	</Arg>
+    </receiveVisibilityUpdate>
+    <requestVisibilityLists>
+      <Arg>	MAILBOX	</Arg>
+    </requestVisibilityLists>
+    <updateActiveDeathZones>
+      <Arg>	PYTHON	</Arg>
+    </updateActiveDeathZones>
+  </CellMethods>
+  <BaseMethods>
+    <createCellNearHere>
+      <Arg>	MAILBOX	</Arg>
+    </createCellNearHere>
+    <onCreateCellSuccess></onCreateCellSuccess>
+    <receiveFinalStats>
+      <Arg>	STRING	</Arg>
+    </receiveFinalStats>
+    <setAvatar>
+      <Arg>	MAILBOX	</Arg>
+    </setAvatar>
+    <sendFinalStats>
+      <Arg>	PYTHON	</Arg>
+    </sendFinalStats>
+    <smartDestroy></smartDestroy>
+    <logAimMetrics>
+      <Arg>	PYTHON	</Arg>
+    </logAimMetrics>
+  </BaseMethods>
+</Vehicle.def>

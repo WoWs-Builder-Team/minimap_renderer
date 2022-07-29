@@ -1,0 +1,9 @@
+<AccountAuthTokenProviderClient.def>
+  <ClientMethods>
+    <onTokenReceived>
+      <Arg>	UINT16	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	STRING	</Arg>
+    </onTokenReceived>
+  </ClientMethods>
+</AccountAuthTokenProviderClient.def>

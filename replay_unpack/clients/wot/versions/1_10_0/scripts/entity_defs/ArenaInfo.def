@@ -1,0 +1,21 @@
+<ArenaInfo.def>
+  <AppealRadius>	3000	</AppealRadius>
+  <Implements>
+    <Interface>	BattleXPArenaInfo	</Interface>
+    <Interface>	LootArenaInfo	</Interface>
+  </Implements>
+  <Volatile></Volatile>
+  <Properties>
+    <bonusByQuestID>
+      <Type>	STRING	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <AllowUnsafeData>	true	</AllowUnsafeData>
+      <VariableLengthHeaderSize>	2	</VariableLengthHeaderSize>
+    </bonusByQuestID>
+  </Properties>
+  <TempProperties></TempProperties>
+  <ClientMethods></ClientMethods>
+  <CellMethods></CellMethods>
+  <BaseMethods></BaseMethods>
+  <shouldBackup>	false	</shouldBackup>
+</ArenaInfo.def>

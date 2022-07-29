@@ -1,0 +1,38 @@
+<RepairBase.def>
+  <Implements>
+    <Interface>	ControlPoint	</Interface>
+  </Implements>
+  <Properties>
+    <baseID>
+      <Type>	UINT8	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+      <Default>	1	</Default>
+      <Editable>	true	</Editable>
+    </baseID>
+    <team>
+      <Type>	UINT8	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	0	</Default>
+    </team>
+    <repairTime>
+      <Type>	FLOAT32	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+      <Default>	5.0	</Default>
+      <Editable>	true	</Editable>
+    </repairTime>
+    <repairCooldown>
+      <Type>	FLOAT32	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+      <Default>	120.0	</Default>
+      <Editable>	true	</Editable>
+    </repairCooldown>
+  </Properties>
+  <CellMethods>
+    <reset></reset>
+  </CellMethods>
+  <TempProperties>
+    <_RepairBase__p></_RepairBase__p>
+    <_vehiclesDamage></_vehiclesDamage>
+  </TempProperties>
+</RepairBase.def>

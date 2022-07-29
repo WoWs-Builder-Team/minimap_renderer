@@ -1,0 +1,505 @@
+<Account.def>
+  <Implements>
+    <Interface>	Chat	</Interface>
+    <Interface>	PlayerMessenger_chat2	</Interface>
+    <Interface>	AccountEditor	</Interface>
+    <Interface>	TransactionUser	</Interface>
+    <Interface>	InterclusterSender	</Interface>
+    <Interface>	ClientCommandsPort	</Interface>
+    <Interface>	AccountAdmin	</Interface>
+    <Interface>	AccountClan	</Interface>
+    <Interface>	AccountAuthTokenProvider	</Interface>
+    <Interface>	AccountAuthTokenProviderClient	</Interface>
+    <Interface>	BattleResultProcessor	</Interface>
+    <Interface>	Invitations	</Interface>
+    <Interface>	InvitationsClient	</Interface>
+    <Interface>	Invoicing	</Interface>
+    <Interface>	AccountPrebattle	</Interface>
+    <Interface>	AccountSpaProcessor	</Interface>
+    <Interface>	AccountIGRProcessing	</Interface>
+    <Interface>	SessionTracker	</Interface>
+    <Interface>	AccountGlobalMapConnector	</Interface>
+    <Interface>	AccountSysMessenger	</Interface>
+    <Interface>	AccountUnit	</Interface>
+    <Interface>	AccountUnitClient	</Interface>
+    <Interface>	AccountUnitRemote	</Interface>
+    <Interface>	AccountUnitAssembler	</Interface>
+    <Interface>	AccountUnitBrowser	</Interface>
+    <Interface>	AccountDebugger	</Interface>
+    <Interface>	QuestProcessor	</Interface>
+    <Interface>	AvatarCreator	</Interface>
+  </Implements>
+  <Properties>
+    <requiredVersion_18000>
+      <Type>	STRING	</Type>
+      <Flags>	BASE_AND_CLIENT	</Flags>
+      <Default>	ru_1.8.0_3	</Default>
+    </requiredVersion_18000>
+    <name>
+      <Type>	STRING	</Type>
+      <Flags>	BASE_AND_CLIENT	</Flags>
+      <Persistent>	true	</Persistent>
+      <DatabaseLength>	96	</DatabaseLength>
+    </name>
+    <normalizedName>
+      <Type>	STRING	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+      <DatabaseLength>	96	</DatabaseLength>
+      <Identifier>	true	</Identifier>
+    </normalizedName>
+    <globalRating>
+      <Type>	UINT32	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+      <Default>	0	</Default>
+    </globalRating>
+    <ver>
+      <Type>	INT16	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+    </ver>
+    <accountType>
+      <Type>	UINT32	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+    </accountType>
+    <attrs>
+      <Type>	UINT64	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+    </attrs>
+    <premiumExpiryTime>
+      <Type>	UINT32	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+    </premiumExpiryTime>
+    <autoBanTime>
+      <Type>	UINT32	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+    </autoBanTime>
+    <clanDBID>
+      <Type>	DB_ID	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+      <Indexed>	true	</Indexed>
+    </clanDBID>
+    <lastUserMessageID>
+      <Type>	DB_ID	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+      <Default>	-1	</Default>
+    </lastUserMessageID>
+    <lastSystemMessageID>
+      <Type>	DB_ID	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+      <Default>	-1	</Default>
+    </lastSystemMessageID>
+    <lastInternalSystemMessageID>
+      <Type>	DB_ID	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+      <Default>	-1	</Default>
+    </lastInternalSystemMessageID>
+    <vivoxCredentials>
+      <Type>	STRING	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+      <DatabaseLength>	36	</DatabaseLength>
+    </vivoxCredentials>
+    <jabberCredentials>
+      <Type>	STRING	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+      <DatabaseLength>	36	</DatabaseLength>
+    </jabberCredentials>
+    <vhID>
+      <Type>	UINT64	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+    </vhID>
+    <incarnationID>
+      <Type>	UINT64	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+    </incarnationID>
+    <peripheryID>
+      <Type>	INT32	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+      <Indexed>	true	</Indexed>
+    </peripheryID>
+    <saveTime>
+      <Type>	INT32	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+    </saveTime>
+    <lastPlayerActivityTime>
+      <Type>	INT32	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+    </lastPlayerActivityTime>
+    <vehDossiersCutVer>
+      <Type>	UINT8	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+    </vehDossiersCutVer>
+    <vehDossiersVer>
+      <Type>	UINT8	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+    </vehDossiersVer>
+    <nextOffloadToPeripheryTime>
+      <Type>	INT32	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+    </nextOffloadToPeripheryTime>
+    <walletID>
+      <Type>	UINT64	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+    </walletID>
+    <extWalletID>
+      <Type>	UINT64	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+    </extWalletID>
+    <pdata>
+      <Type>	STRING	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+      <DatabaseLength>	1024000	</DatabaseLength>
+      <Backupable>	false	</Backupable>
+    </pdata>
+    <bp>
+      <Type>	PYTHON	</Type>
+      <Flags>	BASE	</Flags>
+    </bp>
+    <initialServerSettings>
+      <Type>	PYTHON	</Type>
+      <Flags>	BASE_AND_CLIENT	</Flags>
+      <Backupable>	false	</Backupable>
+      <AllowUnsafeData>	true	</AllowUnsafeData>
+    </initialServerSettings>
+  </Properties>
+  <ClientMethods>
+    <onKickedFromServer>
+      <Arg>	STRING	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Arg>	UINT32	</Arg>
+    </onKickedFromServer>
+    <onEnqueued>
+      <Arg>	UINT8	</Arg>
+    </onEnqueued>
+    <onEnqueueFailure>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	STRING	</Arg>
+    </onEnqueueFailure>
+    <onDequeued>
+      <Arg>	UINT8	</Arg>
+    </onDequeued>
+    <onTutorialEnqueued>
+      <Arg>	UINT64	</Arg>
+      <Arg>	UINT32	</Arg>
+      <Arg>	INT32	</Arg>
+    </onTutorialEnqueued>
+    <onKickedFromQueue>
+      <Arg>	UINT8	</Arg>
+    </onKickedFromQueue>
+    <onUnitAssemblerSuccess>
+      <Arg>	UINT64	</Arg>
+      <Arg>	INT32	</Arg>
+    </onUnitAssemblerSuccess>
+    <onArenaCreated></onArenaCreated>
+    <onIGRTypeChanged>
+      <Arg>	STRING	</Arg>
+    </onIGRTypeChanged>
+    <onArenaJoinFailure>
+      <Arg>	UINT8	</Arg>
+      <Arg>	STRING	</Arg>
+    </onArenaJoinFailure>
+    <onPrebattleJoined>
+      <Arg>	OBJECT_ID	</Arg>
+    </onPrebattleJoined>
+    <onPrebattleJoinFailure>
+      <Arg>	UINT8	</Arg>
+    </onPrebattleJoinFailure>
+    <onPrebattleLeft></onPrebattleLeft>
+    <onKickedFromArena>
+      <Arg>	UINT8	</Arg>
+    </onKickedFromArena>
+    <onKickedFromPrebattle>
+      <Arg>	UINT8	</Arg>
+    </onKickedFromPrebattle>
+    <onCenterIsLongDisconnected>
+      <Arg>	BOOL	</Arg>
+    </onCenterIsLongDisconnected>
+    <showGUI>
+      <Arg>	STRING	</Arg>
+      <VariableLengthHeaderSize>	2	</VariableLengthHeaderSize>
+    </showGUI>
+    <receiveActiveArenas>
+      <Arg>	ARRAY	  <of>	PUBLIC_ARENA_INFO	</of>
+      </Arg>
+    </receiveActiveArenas>
+    <receiveServerStats>
+      <Arg>	SERVER_STATISTICS	</Arg>
+    </receiveServerStats>
+    <receiveQueueInfo>
+      <AllowUnsafeData>	true	</AllowUnsafeData>
+      <Arg>	QUEUE_INFO	</Arg>
+    </receiveQueueInfo>
+    <updatePrebattle>
+      <Arg>	UINT8	</Arg>
+      <Arg>	STRING	</Arg>
+      <VariableLengthHeaderSize>	1	  <WarnLevel>	none	</WarnLevel>
+      </VariableLengthHeaderSize>
+    </updatePrebattle>
+    <update>
+      <Arg>	STRING	</Arg>
+      <VariableLengthHeaderSize>	1	  <WarnLevel>	none	</WarnLevel>
+      </VariableLengthHeaderSize>
+    </update>
+    <resyncDossiers></resyncDossiers>
+    <reloadShop></reloadShop>
+    <onUnitUpdate>
+      <Arg>	UINT64	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	STRING	</Arg>
+      <VariableLengthHeaderSize>	1	  <WarnLevel>	none	</WarnLevel>
+      </VariableLengthHeaderSize>
+    </onUnitUpdate>
+    <onUnitCallOk>
+      <Arg>	INT32	</Arg>
+    </onUnitCallOk>
+    <onUnitNotify>
+      <Arg>	UINT64	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	STRING	</Arg>
+      <VariableLengthHeaderSize>	1	  <WarnLevel>	none	</WarnLevel>
+      </VariableLengthHeaderSize>
+      <Arg>	PYTHON	</Arg>
+      <AllowUnsafeData>	true	</AllowUnsafeData>
+    </onUnitNotify>
+    <onUnitError>
+      <Arg>	INT32	</Arg>
+      <Arg>	UINT64	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	STRING	</Arg>
+      <VariableLengthHeaderSize>	1	  <WarnLevel>	none	</WarnLevel>
+      </VariableLengthHeaderSize>
+    </onUnitError>
+    <onUnitBrowserError>
+      <Arg>	INT32	</Arg>
+      <Arg>	STRING	</Arg>
+    </onUnitBrowserError>
+    <onUnitBrowserResultsSet>
+      <Arg>	STRING	</Arg>
+      <VariableLengthHeaderSize>	1	  <WarnLevel>	none	</WarnLevel>
+      </VariableLengthHeaderSize>
+    </onUnitBrowserResultsSet>
+    <onUnitBrowserResultsUpdate>
+      <Arg>	STRING	</Arg>
+      <VariableLengthHeaderSize>	1	  <WarnLevel>	none	</WarnLevel>
+      </VariableLengthHeaderSize>
+    </onUnitBrowserResultsUpdate>
+    <onGlobalMapUpdate>
+      <Arg>	STRING	</Arg>
+      <Arg>	STRING	</Arg>
+    </onGlobalMapUpdate>
+    <onGlobalMapReply>
+      <Arg>	UINT64	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	STRING	</Arg>
+    </onGlobalMapReply>
+    <onSendPrebattleInvites>
+      <Arg>	DB_ID	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	DB_ID	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	UINT64	</Arg>
+      <Arg>	UINT8	</Arg>
+    </onSendPrebattleInvites>
+    <onClanInfoReceived>
+      <Arg>	DB_ID	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	STRING	</Arg>
+      <VariableLengthHeaderSize>	1	  <WarnLevel>	none	</WarnLevel>
+      </VariableLengthHeaderSize>
+    </onClanInfoReceived>
+    <receiveNotification>
+      <Arg>	STRING	</Arg>
+      <VariableLengthHeaderSize>	1	  <WarnLevel>	none	</WarnLevel>
+      </VariableLengthHeaderSize>
+    </receiveNotification>
+    <onEntityCheckOutEnqueued>
+      <Arg>	UINT64	</Arg>
+    </onEntityCheckOutEnqueued>
+    <onBootcampAccountMigrationComplete></onBootcampAccountMigrationComplete>
+    <chooseBootcampStart></chooseBootcampStart>
+  </ClientMethods>
+  <BaseMethods>
+    <onEnqueued>
+      <Arg>	UINT8	</Arg>
+    </onEnqueued>
+    <onDequeued>
+      <Arg>	UINT8	</Arg>
+    </onDequeued>
+    <onTutorialEnqueued>
+      <Arg>	STRING	</Arg>
+      <Arg>	UINT64	</Arg>
+    </onTutorialEnqueued>
+    <onArenaCreated>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	UINT64	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </onArenaCreated>
+    <onTutorialCreated>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	UINT64	</Arg>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	INT32	</Arg>
+    </onTutorialCreated>
+    <onBootcampCreated>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	UINT64	</Arg>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	INT32	</Arg>
+    </onBootcampCreated>
+    <onKickedFromQueue>
+      <Arg>	UINT8	</Arg>
+    </onKickedFromQueue>
+    <onKickedFromArena>
+      <Arg>	UINT64	</Arg>
+      <Arg>	UINT8	</Arg>
+    </onKickedFromArena>
+    <logClientSystem>
+      <Exposed></Exposed>
+      <Arg>	CLIENT_SYSTEM	</Arg>
+    </logClientSystem>
+    <logClientSessionStats>
+      <Exposed></Exposed>
+      <Arg>	CLIENT_SESSION_STATS	</Arg>
+    </logClientSessionStats>
+    <logStreamCorruption>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Exposed></Exposed>
+    </logStreamCorruption>
+    <logClientPB20UXStats>
+      <Exposed></Exposed>
+      <Arg>	CLIENT_PB_20_UX_STATS	</Arg>
+    </logClientPB20UXStats>
+    <releaseClientForLogin>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	PYTHON	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </releaseClientForLogin>
+    <keepAliveFor>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT16	</Arg>
+    </keepAliveFor>
+    <stopKeepingAlive>
+      <Arg>	UINT8	</Arg>
+    </stopKeepingAlive>
+    <kickSelf>
+      <Arg>	STRING	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Arg>	UINT32	</Arg>
+    </kickSelf>
+    <destroyIfNoKeepers></destroyIfNoKeepers>
+    <destroySelfForPeriphery>
+      <Arg>	INT32	</Arg>
+      <Arg>	MAILBOX	</Arg>
+    </destroySelfForPeriphery>
+    <fetchPrebattleAutoInvites></fetchPrebattleAutoInvites>
+    <sendPropertiesTo>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	ARRAY	  <of>	STRING	</of>
+      </Arg>
+    </sendPropertiesTo>
+    <processWalletResponse>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </processWalletResponse>
+    <processWGMoneyResponse>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </processWGMoneyResponse>
+    <processReceiptServiceNotification>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </processReceiptServiceNotification>
+    <extraWriteToDB>
+      <Arg>	UINT8	</Arg>
+    </extraWriteToDB>
+    <receiveClanMemberInfo>
+      <Arg>	DB_ID	</Arg>
+      <Arg>	DB_ID	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	DB_ID	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	STRING	</Arg>
+    </receiveClanMemberInfo>
+    <receiveClanMembersListDiff>
+      <Arg>	DB_ID	</Arg>
+      <Arg>	STRING	</Arg>
+    </receiveClanMembersListDiff>
+    <debugRunMethod>
+      <Arg>	STRING	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </debugRunMethod>
+    <updateVehDossiersCut></updateVehDossiersCut>
+    <updateVehicleDossiers></updateVehicleDossiers>
+    <receiveExternalNotification>
+      <Arg>	PYTHON	</Arg>
+    </receiveExternalNotification>
+    <sendExternalNotificationReply>
+      <Arg>	INT64	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	UINT8	</Arg>
+    </sendExternalNotificationReply>
+    <setAction>
+      <Arg>	UINT8	</Arg>
+      <Arg>	PYTHON	</Arg>
+      <ReturnValues></ReturnValues>
+    </setAction>
+    <onClientDeath></onClientDeath>
+    <onEntityCheckedOut>
+      <Arg>	MAILBOX	</Arg>
+    </onEntityCheckedOut>
+    <giveClientTo>
+      <Arg>	MAILBOX	</Arg>
+    </giveClientTo>
+    <cancelEntityCheckOut>
+      <Exposed></Exposed>
+    </cancelEntityCheckOut>
+    <onBootcampAccountDestroyed></onBootcampAccountDestroyed>
+    <onGameSessionFinish></onGameSessionFinish>
+  </BaseMethods>
+</Account.def>

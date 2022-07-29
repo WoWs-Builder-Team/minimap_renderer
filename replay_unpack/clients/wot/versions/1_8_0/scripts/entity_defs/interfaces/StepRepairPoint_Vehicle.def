@@ -1,0 +1,12 @@
+<StepRepairPoint_Vehicle.def>
+  <TempProperties>
+    <_stepRepair></_stepRepair>
+  </TempProperties>
+  <CellMethods>
+    <stepRepair_onAction>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </stepRepair_onAction>
+  </CellMethods>
+</StepRepairPoint_Vehicle.def>

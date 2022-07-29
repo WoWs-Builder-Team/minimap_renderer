@@ -1,0 +1,20 @@
+<AvatarCreator.def>
+  <Properties></Properties>
+  <BaseMethods>
+    <avatarCreator_createAvatar>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	PYTHON	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	ARRAY	  <of>	INT32	</of>
+      </Arg>
+      <Arg>	STRING	</Arg>
+    </avatarCreator_createAvatar>
+  </BaseMethods>
+  <ClientMethods></ClientMethods>
+</AvatarCreator.def>

@@ -1,0 +1,68 @@
+<Harm.def>
+  <CellMethods>
+    <harm_receiveShot>
+      <Arg>	ATTACKER_INFO	</Arg>
+      <Arg>	SHOT_ID	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	TUPLE	  <of>	FLOAT32	</of>
+        <size>	2	</size>
+      </Arg>
+      <Arg>	TUPLE	  <of>	TUPLE	  <of>	FLOAT32	</of>
+          <size>	4	</size>
+        </of>
+      </Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	TUPLE	  <of>	FLOAT32	</of>
+      </Arg>
+    </harm_receiveShot>
+    <harm_receiveExplosion>
+      <Arg>	ATTACKER_INFO	</Arg>
+      <Arg>	SHOT_ID	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	UINT8	</Arg>
+    </harm_receiveExplosion>
+    <harm_receivePressure>
+      <Arg>	BOOL	</Arg>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </harm_receivePressure>
+    <harm_receiveRamming>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	BOOL	</Arg>
+    </harm_receiveRamming>
+    <harm_receiveMiss>
+      <Arg>	SHOT_ID	</Arg>
+      <Arg>	UINT16	</Arg>
+    </harm_receiveMiss>
+    <harm_receiveCeilingHit>
+      <Arg>	SHOT_ID	</Arg>
+      <Arg>	VECTOR3	</Arg>
+    </harm_receiveCeilingHit>
+    <harm_receiveAttackResults>
+      <Arg>	ATTACK_RESULTS	</Arg>
+    </harm_receiveAttackResults>
+    <harm_onCombatEquipmentShootingStarted>
+      <Arg>	UINT8	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	ARRAY	  <of>	SHOT_ID	</of>
+      </Arg>
+    </harm_onCombatEquipmentShootingStarted>
+  </CellMethods>
+</Harm.def>

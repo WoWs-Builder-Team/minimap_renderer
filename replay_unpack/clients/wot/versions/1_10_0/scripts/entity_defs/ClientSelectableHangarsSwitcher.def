@@ -1,0 +1,10 @@
+<ClientSelectableHangarsSwitcher.def>
+  <Parent>	ClientSelectableObject	</Parent>
+  <Properties>
+    <destHangar>
+      <Type>	STRING	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+    </destHangar>
+  </Properties>
+</ClientSelectableHangarsSwitcher.def>

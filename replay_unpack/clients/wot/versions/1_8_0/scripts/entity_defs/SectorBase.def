@@ -1,0 +1,122 @@
+<SectorBase.def>
+  <Implements>
+    <Interface>	EntityTrap	</Interface>
+  </Implements>
+  <IsManualAoI>	true	</IsManualAoI>
+  <Properties>
+    <pointsPerSecond>
+      <Type>	FLOAT32	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+      <Default>	1.0	</Default>
+      <Editable>	true	</Editable>
+    </pointsPerSecond>
+    <maxPointsPerSecond>
+      <Type>	FLOAT32	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+      <Default>	3.0	</Default>
+      <Editable>	true	</Editable>
+    </maxPointsPerSecond>
+    <ownerStopsCapturing>
+      <Type>	BOOL	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+      <Editable>	true	</Editable>
+    </ownerStopsCapturing>
+    <defaultPointsPerSecond>
+      <Type>	FLOAT32	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+      <Default>	1.0	</Default>
+      <Editable>	false	</Editable>
+    </defaultPointsPerSecond>
+    <defaultMaxPointsPerSecond>
+      <Type>	FLOAT32	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+      <Default>	3.0	</Default>
+      <Editable>	false	</Editable>
+    </defaultMaxPointsPerSecond>
+    <isActive>
+      <Type>	BOOL	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </isActive>
+    <team>
+      <Type>	UINT8	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+    </team>
+    <baseID>
+      <Type>	UINT8	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Default>	1	</Default>
+      <Editable>	true	</Editable>
+    </baseID>
+    <sectorID>
+      <Type>	UINT8	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </sectorID>
+    <maxPoints>
+      <Type>	FLOAT32	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Default>	200.0	</Default>
+      <Editable>	true	</Editable>
+    </maxPoints>
+    <initMaxPoints>
+      <Type>	FLOAT32	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+      <Default>	200.0	</Default>
+    </initMaxPoints>
+    <pointsPercentage>
+      <Type>	UINT8	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Default>	0	</Default>
+      <Editable>	true	</Editable>
+    </pointsPercentage>
+    <capturingStopped>
+      <Type>	BOOL	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+    </capturingStopped>
+    <onDamageCooldownTime>
+      <Type>	FLOAT32	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Default>	5.0	</Default>
+      <Editable>	true	</Editable>
+    </onDamageCooldownTime>
+    <radius>
+      <Type>	FLOAT32	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Default>	50.0	</Default>
+      <Editable>	true	</Editable>
+    </radius>
+    <isCaptured>
+      <Type>	BOOL	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </isCaptured>
+    <invadersCount>
+      <Type>	UINT8	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </invadersCount>
+    <expectedCaptureTime>
+      <Type>	FLOAT32	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Default>	-1.0	</Default>
+    </expectedCaptureTime>
+  </Properties>
+  <CellMethods>
+    <setMaxPointsFactor>
+      <Arg>	FLOAT32	</Arg>
+    </setMaxPointsFactor>
+    <reset></reset>
+  </CellMethods>
+  <TempProperties>
+    <_SectorBase__attackers></_SectorBase__attackers>
+    <_SectorBase__lastUpdateTime></_SectorBase__lastUpdateTime>
+    <_SectorBase__checkInvadersTimerID></_SectorBase__checkInvadersTimerID>
+    <_SectorBase__attackerIDsInside></_SectorBase__attackerIDsInside>
+    <_SectorBase__defenderIDsInside></_SectorBase__defenderIDsInside>
+    <_SectorBase__contributionCollector></_SectorBase__contributionCollector>
+    <_SectorBase__rewardsCollector></_SectorBase__rewardsCollector>
+    <_SectorBase__logger></_SectorBase__logger>
+    <_SectorBase__beingCaptured></_SectorBase__beingCaptured>
+    <_SectorBase__delayEndTime></_SectorBase__delayEndTime>
+    <_TimerManager__unpersistedTimers></_TimerManager__unpersistedTimers>
+  </TempProperties>
+</SectorBase.def>

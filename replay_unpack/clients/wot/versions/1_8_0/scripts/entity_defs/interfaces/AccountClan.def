@@ -1,0 +1,28 @@
+<AccountClan.def>
+  <BaseMethods>
+    <accountClan_createClan>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	DB_ID	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	UINT32	</Arg>
+    </accountClan_createClan>
+    <accountClan_enterLeaveClan>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	DB_ID	</Arg>
+      <Arg>	DB_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	UINT32	</Arg>
+    </accountClan_enterLeaveClan>
+    <accountClan_processUrgentOps>
+      <Arg>	STRING	</Arg>
+    </accountClan_processUrgentOps>
+  </BaseMethods>
+</AccountClan.def>

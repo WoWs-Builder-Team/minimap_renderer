@@ -1,0 +1,9 @@
+<AccountIGRProcessing.def>
+  <BaseMethods>
+    <accountIGR_processIGRData>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </accountIGR_processIGRData>
+  </BaseMethods>
+</AccountIGRProcessing.def>

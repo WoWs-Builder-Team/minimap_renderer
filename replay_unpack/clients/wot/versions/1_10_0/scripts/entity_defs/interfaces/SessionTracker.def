@@ -1,0 +1,10 @@
+<SessionTracker.def>
+  <BaseMethods>
+    <sessionTracker_processSessionTrackerData>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	STRING	</Arg>
+    </sessionTracker_processSessionTrackerData>
+  </BaseMethods>
+</SessionTracker.def>

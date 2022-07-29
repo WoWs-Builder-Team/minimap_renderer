@@ -1,0 +1,103 @@
+<Sector.def>
+  <IsManualAoI>	true	</IsManualAoI>
+  <Properties>
+    <arena>
+      <Type>	MAILBOX	</Type>
+      <Flags>	BASE	</Flags>
+    </arena>
+    <arenaBase>
+      <Type>	MAILBOX	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </arenaBase>
+    <arenaTypeID>
+      <Type>	INT32	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </arenaTypeID>
+    <groupID>
+      <Type>	UINT8	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </groupID>
+    <sectorID>
+      <Type>	UINT8	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Default>	1	</Default>
+    </sectorID>
+    <playerGroup>
+      <Type>	UINT8	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </playerGroup>
+    <IDInPlayerGroup>
+      <Type>	UINT8	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </IDInPlayerGroup>
+    <lengthX>
+      <Type>	FLOAT32	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Default>	0.0	</Default>
+    </lengthX>
+    <lengthZ>
+      <Type>	FLOAT32	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Default>	0.0	</Default>
+    </lengthZ>
+    <team>
+      <Type>	UINT8	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </team>
+    <state>
+      <Type>	UINT8	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </state>
+    <initialState>
+      <Type>	UINT8	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </initialState>
+    <transitionTime>
+      <Type>	FLOAT32	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Default>	1.0	</Default>
+    </transitionTime>
+    <endOfTransitionPeriod>
+      <Type>	FLOAT32	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Default>	-1.0	</Default>
+    </endOfTransitionPeriod>
+    <mainDirection>
+      <Type>	UINT8	</Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+      <Default>	0	</Default>
+    </mainDirection>
+    <isActive>
+      <Type>	BOOL	</Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+    </isActive>
+    <cp>
+      <Type>	PYTHON	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </cp>
+  </Properties>
+  <CellMethods>
+    <start></start>
+    <reset></reset>
+    <open></open>
+    <transition></transition>
+    <stop></stop>
+    <harm_receiveAttackResults>
+      <Arg>	ATTACK_RESULTS	</Arg>
+    </harm_receiveAttackResults>
+  </CellMethods>
+  <BaseMethods>
+    <smartDestroy></smartDestroy>
+  </BaseMethods>
+  <ClientMethods>
+    <showBomb>
+      <Arg>	VECTOR3	</Arg>
+    </showBomb>
+  </ClientMethods>
+  <TempProperties>
+    <_components></_components>
+    <_areaBombing></_areaBombing>
+    <_entities></_entities>
+    <_protectionZone></_protectionZone>
+  </TempProperties>
+</Sector.def>

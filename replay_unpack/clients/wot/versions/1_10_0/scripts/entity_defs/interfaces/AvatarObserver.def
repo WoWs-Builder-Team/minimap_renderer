@@ -1,0 +1,35 @@
+<AvatarObserver.def>
+  <Properties>
+    <remoteCamera>
+      <Type>	REMOTE_CAMERA_DATA	</Type>
+      <Flags>	OWN_CLIENT	</Flags>
+    </remoteCamera>
+    <isObserverFPV>
+      <Type>	BOOL	</Type>
+      <Flags>	OWN_CLIENT	</Flags>
+    </isObserverFPV>
+    <observerFPVControlMode>
+      <Type>	UINT8	</Type>
+      <Flags>	OWN_CLIENT	</Flags>
+    </observerFPVControlMode>
+    <numOfObservers>
+      <Type>	UINT8	</Type>
+      <Flags>	OWN_CLIENT	</Flags>
+    </numOfObservers>
+  </Properties>
+  <CellMethods>
+    <switchObserverFPV>
+      <Exposed>	OWN_CLIENT	</Exposed>
+      <Arg>	BOOL	</Arg>
+    </switchObserverFPV>
+    <switchObserverFPVControlMode>
+      <Arg>	UINT8	</Arg>
+    </switchObserverFPVControlMode>
+    <setRemoteCamera>
+      <Arg>	REMOTE_CAMERA_DATA	</Arg>
+    </setRemoteCamera>
+    <setNumOfObservers>
+      <Arg>	UINT8	</Arg>
+    </setNumOfObservers>
+  </CellMethods>
+</AvatarObserver.def>

@@ -1,0 +1,19 @@
+<AccountDebugger.def>
+  <BaseMethods>
+    <accountDebugger_runDebugTask>
+      <Arg>	STRING	</Arg>
+    </accountDebugger_runDebugTask>
+    <accountDebugger_registerDebugTaskResult>
+      <Exposed></Exposed>
+      <Arg>	INT64	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT64	</Arg>
+    </accountDebugger_registerDebugTaskResult>
+    <accountDebugger_sendDebugTaskResultChunk>
+      <Exposed></Exposed>
+      <Arg>	INT64	</Arg>
+      <Arg>	INT64	</Arg>
+      <Arg>	STRING	</Arg>
+    </accountDebugger_sendDebugTaskResultChunk>
+  </BaseMethods>
+</AccountDebugger.def>

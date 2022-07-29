@@ -1,0 +1,10 @@
+<ClientSelectableCameraVehicle.def>
+  <Parent>	ClientSelectableCameraObject	</Parent>
+  <Properties>
+    <modelName>
+      <Type>	STRING	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	false	</Editable>
+    </modelName>
+  </Properties>
+</ClientSelectableCameraVehicle.def>

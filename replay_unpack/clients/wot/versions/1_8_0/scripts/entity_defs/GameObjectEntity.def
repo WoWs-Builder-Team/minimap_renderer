@@ -1,0 +1,26 @@
+<GameObjectEntity.def>
+  <AppealRadius>	3000	</AppealRadius>
+  <Volatile></Volatile>
+  <TempProperties>
+    <gameObject></gameObject>
+  </TempProperties>
+  <Properties>
+    <prefab>
+      <Type>	STRING	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+    </prefab>
+    <createdFromSpace>
+      <Type>	BOOL	</Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+    </createdFromSpace>
+    <hotReloaded>
+      <Type>	BOOL	</Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+    </hotReloaded>
+  </Properties>
+  <BaseMethods>
+    <smartDestroy></smartDestroy>
+  </BaseMethods>
+  <shouldBackup>	false	</shouldBackup>
+</GameObjectEntity.def>

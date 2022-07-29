@@ -1,0 +1,133 @@
+<FlockExotic.def>
+  <Volatile>
+    <position></position>
+    <yaw></yaw>
+  </Volatile>
+  <Properties>
+    <animSpeedMax>
+      <Type>	FLOAT	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	1.0	</Default>
+    </animSpeedMax>
+    <animSpeedMin>
+      <Type>	FLOAT	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	1.0	</Default>
+    </animSpeedMin>
+    <modelCount>
+      <Type>	UINT8	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	5	</Default>
+    </modelCount>
+    <modelName>
+      <Type>	STRING	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+    </modelName>
+    <modelName2>
+      <Type>	STRING	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+    </modelName2>
+    <speed>
+      <Type>	FLOAT	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	0.2	</Default>
+    </speed>
+    <initSpeedRandom>
+      <Type>	VECTOR2	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	0.3 0.4	</Default>
+    </initSpeedRandom>
+    <speedRandom>
+      <Type>	VECTOR2	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	0.8 1.0	</Default>
+    </speedRandom>
+    <accelerationTime>
+      <Type>	FLOAT	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	5	</Default>
+    </accelerationTime>
+    <triggerRadius>
+      <Type>	FLOAT	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	20	</Default>
+    </triggerRadius>
+    <explosionRadius>
+      <Type>	VECTOR2	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	10 20	</Default>
+    </explosionRadius>
+    <spawnRadius>
+      <Type>	FLOAT	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	5	</Default>
+    </spawnRadius>
+    <spawnHeight>
+      <Type>	FLOAT	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	5	</Default>
+    </spawnHeight>
+    <flightRadius>
+      <Type>	FLOAT	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	50	</Default>
+    </flightRadius>
+    <flightHeight>
+      <Type>	FLOAT	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	15	</Default>
+    </flightHeight>
+    <flightAngleMin>
+      <Type>	FLOAT	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	0	</Default>
+    </flightAngleMin>
+    <flightAngleMax>
+      <Type>	FLOAT	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	360	</Default>
+    </flightAngleMax>
+    <flightOffsetFromOrigin>
+      <Type>	FLOAT	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	0	</Default>
+    </flightOffsetFromOrigin>
+    <lifeTime>
+      <Type>	FLOAT	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	7	</Default>
+    </lifeTime>
+    <respawnTime>
+      <Type>	FLOAT	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	5	</Default>
+    </respawnTime>
+    <flightSound>
+      <Type>	STRING	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	ambient_nature_trigger_soaring_birds	</Default>
+    </flightSound>
+  </Properties>
+  <ClientMethods></ClientMethods>
+</FlockExotic.def>

@@ -1,0 +1,10 @@
+<DefenderBonusController_Vehicle.def>
+  <TempProperties>
+    <_defenderBonus></_defenderBonus>
+  </TempProperties>
+  <CellMethods>
+    <defenderBonus_onOwnSectorCaptured></defenderBonus_onOwnSectorCaptured>
+    <defenderBonus_onOwnDestructibleDestroyed></defenderBonus_onOwnDestructibleDestroyed>
+    <defenderBonus_onPlayerGroupChanged></defenderBonus_onPlayerGroupChanged>
+  </CellMethods>
+</DefenderBonusController_Vehicle.def>

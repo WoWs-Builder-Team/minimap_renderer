@@ -1,0 +1,10 @@
+<VehicleHealthBroadcastListenerComponent_Avatar.def>
+  <ClientMethods>
+    <onVehicleHealthChanged>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+    </onVehicleHealthChanged>
+  </ClientMethods>
+</VehicleHealthBroadcastListenerComponent_Avatar.def>

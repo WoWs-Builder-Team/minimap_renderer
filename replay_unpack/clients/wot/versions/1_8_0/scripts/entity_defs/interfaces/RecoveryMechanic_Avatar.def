@@ -1,0 +1,22 @@
+<RecoveryMechanic_Avatar.def>
+  <BaseMethods>
+    <recoveryMechanic_notifyCannotStartRecovering></recoveryMechanic_notifyCannotStartRecovering>
+    <recoveryMechanic_notifyCancelled></recoveryMechanic_notifyCancelled>
+    <recoveryMechanic_updateState>
+      <Arg>	BOOL	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </recoveryMechanic_updateState>
+  </BaseMethods>
+  <ClientMethods>
+    <notifyCannotStartRecovering></notifyCannotStartRecovering>
+    <notifyCancelled></notifyCancelled>
+    <updateState>
+      <Arg>	BOOL	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </updateState>
+  </ClientMethods>
+</RecoveryMechanic_Avatar.def>

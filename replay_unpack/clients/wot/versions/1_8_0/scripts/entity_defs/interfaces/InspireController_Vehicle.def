@@ -1,0 +1,22 @@
+<InspireController_Vehicle.def>
+  <TempProperties>
+    <_inspireController></_inspireController>
+  </TempProperties>
+  <CellMethods>
+    <inspireController_startInspire>
+      <Arg>	UINT16	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </inspireController_startInspire>
+    <inspireController_onInspireEntered>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </inspireController_onInspireEntered>
+    <inspireController_onInspireLeft>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </inspireController_onInspireLeft>
+  </CellMethods>
+</InspireController_Vehicle.def>

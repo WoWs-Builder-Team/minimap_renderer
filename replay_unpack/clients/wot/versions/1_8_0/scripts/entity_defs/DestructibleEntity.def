@@ -1,0 +1,120 @@
+<DestructibleEntity.def>
+  <Implements>
+    <Interface>	Destructible	</Interface>
+  </Implements>
+  <Persistent>	false	</Persistent>
+  <IsManualAoI>	true	</IsManualAoI>
+  <Properties>
+    <arena>
+      <Type>	MAILBOX	</Type>
+      <Flags>	BASE	</Flags>
+    </arena>
+    <arenaBase>
+      <Type>	MAILBOX	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </arenaBase>
+    <isActive>
+      <Type>	BOOL	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </isActive>
+    <team>
+      <Type>	UINT8	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+    </team>
+    <destructibleEntityID>
+      <Type>	UINT8	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+    </destructibleEntityID>
+    <health>
+      <Type>	FLOAT32	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </health>
+    <maxHealth>
+      <Type>	FLOAT32	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </maxHealth>
+    <isDestructibleDestroyed>
+      <Type>	BOOL	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </isDestructibleDestroyed>
+    <typeID>
+      <Type>	UINT8	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	1	</Default>
+    </typeID>
+    <initActive>
+      <Type>	BOOL	</Type>
+      <Flags>	BASE	</Flags>
+      <Editable>	true	</Editable>
+    </initActive>
+    <linkedMapActivities>
+      <Type>	STRING	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+    </linkedMapActivities>
+    <damageStickers>
+      <Type>	ARRAY	  <of>	UINT64	</of>
+      </Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </damageStickers>
+    <explosionDamageFactor>
+      <Type>	FLOAT32	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	0.5	</Default>
+    </explosionDamageFactor>
+    <cp>
+      <Type>	PYTHON	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </cp>
+  </Properties>
+  <ClientMethods>
+    <onHealthChanged>
+      <Arg>	INT16	</Arg>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	INT32	</Arg>
+    </onHealthChanged>
+    <showDamageFromShot>
+      <Arg>	ARRAY	  <of>	UINT64	</of>
+      </Arg>
+      <Arg>	UINT8	</Arg>
+    </showDamageFromShot>
+    <showDamageFromExplosion>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+    </showDamageFromExplosion>
+  </ClientMethods>
+  <CellMethods>
+    <start></start>
+    <stop></stop>
+    <reset></reset>
+    <onEnemyVehicleShot>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	ARRAY	  <of>	SHOT_ID	</of>
+      </Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </onEnemyVehicleShot>
+    <scheduleExtraCheck>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </scheduleExtraCheck>
+  </CellMethods>
+  <BaseMethods>
+    <smartDestroy></smartDestroy>
+  </BaseMethods>
+  <TempProperties>
+    <_DestructibleEntity__p></_DestructibleEntity__p>
+    <_DestructibleEntity__bspModels></_DestructibleEntity__bspModels>
+    <_DestructibleEntity__clientUpdater></_DestructibleEntity__clientUpdater>
+    <_DestructibleEntity__componentsInfo></_DestructibleEntity__componentsInfo>
+    <_DestructibleEntity__wgDestructibles></_DestructibleEntity__wgDestructibles>
+  </TempProperties>
+</DestructibleEntity.def>

@@ -1,0 +1,48 @@
+<AccountAvatar.def>
+  <BaseMethods>
+    <accountAvatar_onAvatarCreated>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	STRING	</Arg>
+    </accountAvatar_onAvatarCreated>
+    <accountAvatar_onAvatarCreationFailure></accountAvatar_onAvatarCreationFailure>
+    <accountAvatar_onAvatarLeftArena>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	BOOL	</Arg>
+    </accountAvatar_onAvatarLeftArena>
+    <accountAvatar_unlockUnusedVehicles>
+      <Arg>	ARRAY	  <of>	INT32	</of>
+      </Arg>
+      <Arg>	UINT64	</Arg>
+    </accountAvatar_unlockUnusedVehicles>
+    <accountAvatar_sendAccountStats>
+      <Exposed></Exposed>
+      <Arg>	UINT32	</Arg>
+      <Arg>	ARRAY	  <of>	STRING	</of>
+      </Arg>
+    </accountAvatar_sendAccountStats>
+    <accountAvatar_removeBattleResultFromCache>
+      <Arg>	UINT64	</Arg>
+    </accountAvatar_removeBattleResultFromCache>
+    <accountAvatar_setClientReady></accountAvatar_setClientReady>
+    <accountAvatar_leaveArena></accountAvatar_leaveArena>
+    <accountAvatar_clearAvatarInfo></accountAvatar_clearAvatarInfo>
+    <accountAvatar_updateUserRelationsOnArena>
+      <Arg>	UINT64	</Arg>
+      <Arg>	UINT64	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Arg>	INT64	</Arg>
+    </accountAvatar_updateUserRelationsOnArena>
+    <accountAvatar_delIntUserSettings>
+      <Arg>	ARRAY	  <of>	INT32	</of>
+      </Arg>
+    </accountAvatar_delIntUserSettings>
+    <accountAvatar_addIntUserSettings>
+      <Arg>	PYTHON	</Arg>
+    </accountAvatar_addIntUserSettings>
+    <accountAvatar_setAvatarClient>
+      <Arg>	PYTHON	</Arg>
+    </accountAvatar_setAvatarClient>
+  </BaseMethods>
+</AccountAvatar.def>

@@ -1,0 +1,158 @@
+<AvatarClientProxy.def>
+  <BaseMethods>
+    <avatarClientProxy_updateOwnVehiclePosition>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </avatarClientProxy_updateOwnVehiclePosition>
+    <avatarClientProxy_updateGunMarker>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </avatarClientProxy_updateGunMarker>
+    <avatarClientProxy_updateTargetVehicleID>
+      <Arg>	OBJECT_ID	</Arg>
+    </avatarClientProxy_updateTargetVehicleID>
+    <avatarClientProxy_updateVehicleHealth>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT8	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Arg>	BOOL	</Arg>
+    </avatarClientProxy_updateVehicleHealth>
+    <avatarClientProxy_updateVehicleGunReloadTime>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </avatarClientProxy_updateVehicleGunReloadTime>
+    <avatarClientProxy_updateVehicleClipReloadTime>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	BOOL	</Arg>
+    </avatarClientProxy_updateVehicleClipReloadTime>
+    <avatarClientProxy_updateVehicleAmmo>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	UINT16	</Arg>
+      <Arg>	UINT16	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT16	</Arg>
+    </avatarClientProxy_updateVehicleAmmo>
+    <avatarClientProxy_updateDualGunState>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	ARRAY	  <of>	UINT8	</of>
+      </Arg>
+      <Arg>	ARRAY	  <of>	COOLDOWN_INFO	</of>
+      </Arg>
+    </avatarClientProxy_updateDualGunState>
+    <avatarClientProxy_updateVehicleOptionalDeviceStatus>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	BOOL	</Arg>
+    </avatarClientProxy_updateVehicleOptionalDeviceStatus>
+    <avatarClientProxy_updateVehicleMiscStatus>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	ARRAY	  <of>	FLOAT32	</of>
+      </Arg>
+    </avatarClientProxy_updateVehicleMiscStatus>
+    <avatarClientProxy_updateVehicleSetting>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	INT32	</Arg>
+    </avatarClientProxy_updateVehicleSetting>
+    <avatarClientProxy_updateTargetingInfo>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </avatarClientProxy_updateTargetingInfo>
+    <avatarClientProxy_showOwnVehicleHitDirection>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT16	</Arg>
+      <Arg>	UINT32	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+    </avatarClientProxy_showOwnVehicleHitDirection>
+    <avatarClientProxy_showShotResults>
+      <Arg>	ARRAY	  <of>	UINT64	</of>
+      </Arg>
+    </avatarClientProxy_showShotResults>
+    <avatarClientProxy_updatePlaneTrajectory>
+      <Arg>	UINT16	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	FLOAT64	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR2	</Arg>
+      <Arg>	FLOAT64	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR2	</Arg>
+      <Arg>	BOOL	</Arg>
+    </avatarClientProxy_updatePlaneTrajectory>
+    <avatarClientProxy_showHittingArea>
+      <Arg>	UINT16	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	FLOAT64	</Arg>
+    </avatarClientProxy_showHittingArea>
+    <avatarClientProxy_showCarpetBombing>
+      <Arg>	UINT16	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	FLOAT64	</Arg>
+    </avatarClientProxy_showCarpetBombing>
+    <avatarClientProxy_syncVehicleAttrs>
+      <Arg>	VEHICLE_SYNC_ATTRS	</Arg>
+    </avatarClientProxy_syncVehicleAttrs>
+    <avatarClientProxy_showDevelopmentInfo>
+      <Arg>	UINT8	</Arg>
+      <Arg>	STRING	</Arg>
+    </avatarClientProxy_showDevelopmentInfo>
+    <avatarClientProxy_onBattleEvents>
+      <Arg>	ARRAY	  <of>	BATTLE_EVENT	</of>
+      </Arg>
+    </avatarClientProxy_onBattleEvents>
+    <avatarClientProxy_battleEventsSummary>
+      <Arg>	BATTLE_EVENTS_SUMMARY	</Arg>
+    </avatarClientProxy_battleEventsSummary>
+    <avatarClientProxy_welcomeToSector>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </avatarClientProxy_welcomeToSector>
+    <avatarClientProxy_onSectorShooting>
+      <Arg>	UINT8	</Arg>
+    </avatarClientProxy_onSectorShooting>
+    <avatarClientProxy_onXPUpdated>
+      <Arg>	INT16	</Arg>
+    </avatarClientProxy_onXPUpdated>
+    <avatarClientProxy_onSmoke>
+      <Arg>	ARRAY	  <of>	SMOKE_INFO	</of>
+      </Arg>
+    </avatarClientProxy_onSmoke>
+    <avatarClientProxy_onCombatEquipmentShotLaunched>
+      <Arg>	UINT16	</Arg>
+      <Arg>	VECTOR3	</Arg>
+    </avatarClientProxy_onCombatEquipmentShotLaunched>
+    <avatarClientProxy_updateQuestProgress>
+      <Arg>	STRING	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </avatarClientProxy_updateQuestProgress>
+  </BaseMethods>
+</AvatarClientProxy.def>

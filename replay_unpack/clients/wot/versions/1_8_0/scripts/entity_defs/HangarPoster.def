@@ -1,0 +1,17 @@
+<HangarPoster.def>
+  <Parent>	ClientSelectableObject	</Parent>
+  <Properties>
+    <minAlpha>
+      <Type>	FLOAT32	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	0.1	</Default>
+    </minAlpha>
+    <maxAlphaDistance>
+      <Type>	FLOAT32	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	10.0	</Default>
+    </maxAlphaDistance>
+  </Properties>
+</HangarPoster.def>

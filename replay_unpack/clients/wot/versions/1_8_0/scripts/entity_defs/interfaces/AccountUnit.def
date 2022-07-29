@@ -1,0 +1,65 @@
+<AccountUnit.def>
+  <BaseMethods>
+    <accountUnit_processUnitMgrRepublish></accountUnit_processUnitMgrRepublish>
+    <accountUnit_sendSquadInvitations>
+      <Arg>	INT64	</Arg>
+      <Arg>	ARRAY	  <of>	DB_ID	</of>
+      </Arg>
+      <Arg>	STRING	</Arg>
+    </accountUnit_sendSquadInvitations>
+    <accountUnit_sendUnitUpdate>
+      <Arg>	UINT64	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	STRING	</Arg>
+    </accountUnit_sendUnitUpdate>
+    <accountUnit_onUnitChangedLeader>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	BOOL	</Arg>
+    </accountUnit_onUnitChangedLeader>
+    <accountUnit_onUnitArenaCreated>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	UINT64	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	PYTHON	</Arg>
+      <Arg>	PYTHON	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </accountUnit_onUnitArenaCreated>
+    <accountUnit_onSquadPlayerAdded>
+      <Arg>	BOOL	</Arg>
+    </accountUnit_onSquadPlayerAdded>
+    <accountUnit_setQueueingTime>
+      <Arg>	INT64	</Arg>
+    </accountUnit_setQueueingTime>
+    <accountUnit_onUnitJoin>
+      <Arg>	INT64	</Arg>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </accountUnit_onUnitJoin>
+    <accountUnit_onUnitLeave>
+      <Arg>	INT64	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	UINT64	</Arg>
+    </accountUnit_onUnitLeave>
+    <accountUnit_onUnitCall>
+      <Arg>	INT64	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	UINT64	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </accountUnit_onUnitCall>
+    <accountUnit_onUnitNotify>
+      <Arg>	UINT64	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </accountUnit_onUnitNotify>
+    <accountUnit_sendExternalNotify>
+      <Arg>	INT32	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </accountUnit_sendExternalNotify>
+  </BaseMethods>
+</AccountUnit.def>

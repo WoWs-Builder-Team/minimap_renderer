@@ -1,0 +1,15 @@
+<RecoveryMechanic_Vehicle.def>
+  <TempProperties>
+    <_recoveryMechanic></_recoveryMechanic>
+  </TempProperties>
+  <CellMethods>
+    <recoveryMechanic_onActivate></recoveryMechanic_onActivate>
+    <recoveryMechanic_onDeactivate></recoveryMechanic_onDeactivate>
+    <recoveryMechanic_startRecovering>
+      <Exposed></Exposed>
+    </recoveryMechanic_startRecovering>
+    <recoveryMechanic_stopRecovering>
+      <Exposed></Exposed>
+    </recoveryMechanic_stopRecovering>
+  </CellMethods>
+</RecoveryMechanic_Vehicle.def>

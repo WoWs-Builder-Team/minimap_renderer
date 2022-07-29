@@ -1,0 +1,22 @@
+<VehicleObserver.def>
+  <Properties>
+    <observerFPVControlMode>
+      <Type>	UINT8	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </observerFPVControlMode>
+    <remoteCamera>
+      <Type>	REMOTE_CAMERA_DATA	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </remoteCamera>
+  </Properties>
+  <CellMethods>
+    <switchObserverFPVControlMode>
+      <Exposed></Exposed>
+      <Arg>	UINT8	</Arg>
+    </switchObserverFPVControlMode>
+    <setRemoteCamera>
+      <Exposed></Exposed>
+      <Arg>	REMOTE_CAMERA_DATA	</Arg>
+    </setRemoteCamera>
+  </CellMethods>
+</VehicleObserver.def>

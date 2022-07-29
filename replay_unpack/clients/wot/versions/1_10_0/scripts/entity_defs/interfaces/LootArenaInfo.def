@@ -1,0 +1,17 @@
+<LootArenaInfo.def>
+  <Properties>
+    <lootPositions>
+      <Type>	ARRAY	  <of>	FIXED_DICT	  <Properties>
+            <id>
+              <Type>	OBJECT_ID	</Type>
+            </id>
+            <position>
+              <Type>	VECTOR3	</Type>
+            </position>
+          </Properties>
+        </of>
+      </Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </lootPositions>
+  </Properties>
+</LootArenaInfo.def>

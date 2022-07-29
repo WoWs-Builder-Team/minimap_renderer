@@ -1,0 +1,49 @@
+<BootcampAccount.def>
+  <Parent>	Account	</Parent>
+  <Properties>
+    <markForDelete>
+      <Type>	BOOL	</Type>
+      <Flags>	BASE	</Flags>
+      <Persistent>	true	</Persistent>
+    </markForDelete>
+  </Properties>
+  <BaseMethods>
+    <completeBootcampLesson>
+      <Arg>	UINT8	</Arg>
+      <Exposed></Exposed>
+    </completeBootcampLesson>
+    <saveBootcampCheckpoint>
+      <Arg>	STRING	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Exposed></Exposed>
+    </saveBootcampCheckpoint>
+    <changeBootcampLessonBonus>
+      <Arg>	UINT8	</Arg>
+      <Exposed></Exposed>
+    </changeBootcampLessonBonus>
+    <requestBootcampQuit>
+      <Arg>	UINT32	</Arg>
+      <Exposed></Exposed>
+    </requestBootcampQuit>
+    <onBootcampEnqueued>
+      <Arg>	INT32	</Arg>
+      <Arg>	UINT64	</Arg>
+    </onBootcampEnqueued>
+    <setParent>
+      <Arg>	MAILBOX	</Arg>
+    </setParent>
+    <resetBootcamp></resetBootcamp>
+    <setToken>
+      <Arg>	INT64	</Arg>
+      <Arg>	INT32	</Arg>
+    </setToken>
+  </BaseMethods>
+  <ClientMethods>
+    <finishBootcamp></finishBootcamp>
+    <onBootcampEnqueued>
+      <Arg>	UINT64	</Arg>
+      <Arg>	UINT32	</Arg>
+      <Arg>	INT32	</Arg>
+    </onBootcampEnqueued>
+  </ClientMethods>
+</BootcampAccount.def>

@@ -1,0 +1,8 @@
+<DestructibleEntity_Avatar.def>
+  <BaseMethods>
+    <destructibleEntity_onDestroyed>
+      <Arg>	UINT8	</Arg>
+      <Arg>	OBJECT_ID	</Arg>
+    </destructibleEntity_onDestroyed>
+  </BaseMethods>
+</DestructibleEntity_Avatar.def>

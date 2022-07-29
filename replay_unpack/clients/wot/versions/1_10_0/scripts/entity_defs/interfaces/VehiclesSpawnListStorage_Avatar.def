@@ -1,0 +1,13 @@
+<VehiclesSpawnListStorage_Avatar.def>
+  <BaseMethods>
+    <vehiclesSpawnListStorage_updateSpawnList>
+      <Arg>	STRING	</Arg>
+    </vehiclesSpawnListStorage_updateSpawnList>
+  </BaseMethods>
+  <ClientMethods>
+    <updateSpawnList>
+      <Arg>	STRING	</Arg>
+      <VariableLengthHeaderSize>	2	</VariableLengthHeaderSize>
+    </updateSpawnList>
+  </ClientMethods>
+</VehiclesSpawnListStorage_Avatar.def>

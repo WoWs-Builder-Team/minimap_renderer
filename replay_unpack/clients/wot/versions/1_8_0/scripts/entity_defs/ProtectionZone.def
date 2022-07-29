@@ -1,0 +1,121 @@
+<ProtectionZone.def>
+  <IsManualAoI>	true	</IsManualAoI>
+  <Properties>
+    <arena>
+      <Type>	MAILBOX	</Type>
+      <Flags>	BASE	</Flags>
+    </arena>
+    <arenaBase>
+      <Type>	MAILBOX	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </arenaBase>
+    <zoneID>
+      <Type>	UINT8	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Default>	1	</Default>
+      <Editable>	true	</Editable>
+    </zoneID>
+    <lengthX>
+      <Type>	FLOAT32	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Default>	300.0	</Default>
+      <Editable>	true	</Editable>
+    </lengthX>
+    <lengthZ>
+      <Type>	FLOAT32	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Default>	500.0	</Default>
+      <Editable>	true	</Editable>
+    </lengthZ>
+    <team>
+      <Type>	UINT8	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Default>	0	</Default>
+      <Editable>	true	</Editable>
+    </team>
+    <maxStayTime>
+      <Type>	FLOAT32	</Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+      <Default>	4.0	</Default>
+      <Editable>	true	</Editable>
+    </maxStayTime>
+    <numberOfTurrets>
+      <Type>	UINT8	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+      <Default>	2	</Default>
+      <Editable>	true	</Editable>
+    </numberOfTurrets>
+    <minTurretShootInterval>
+      <Type>	FLOAT32	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+      <Default>	2.0	</Default>
+      <Editable>	true	</Editable>
+    </minTurretShootInterval>
+    <minShootingTime>
+      <Type>	FLOAT32	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+      <Default>	9.0	</Default>
+      <Editable>	true	</Editable>
+    </minShootingTime>
+    <shotDuration>
+      <Type>	FLOAT32	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+      <Default>	0.8	</Default>
+      <Editable>	true	</Editable>
+    </shotDuration>
+    <shotRadius>
+      <Type>	FLOAT32	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+      <Default>	2.5	</Default>
+      <Editable>	true	</Editable>
+    </shotRadius>
+    <shotShellNation>
+      <Type>	STRING	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+      <Default>	germany	</Default>
+      <Editable>	true	</Editable>
+    </shotShellNation>
+    <shotShellName>
+      <Type>	STRING	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+      <Default>	protection_zone_artillery_shell	</Default>
+      <Editable>	true	</Editable>
+    </shotShellName>
+    <shotPiercingPower>
+      <Type>	FLOAT32	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+      <Default>	5.	</Default>
+      <Editable>	true	</Editable>
+    </shotPiercingPower>
+    <mainDirection>
+      <Type>	UINT8	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+      <Default>	0	</Default>
+      <Editable>	true	</Editable>
+    </mainDirection>
+    <isActive>
+      <Type>	BOOL	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </isActive>
+    <cp>
+      <Type>	PYTHON	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </cp>
+  </Properties>
+  <CellMethods>
+    <start></start>
+    <reset></reset>
+    <stop></stop>
+    <harm_receiveAttackResults>
+      <Arg>	ATTACK_RESULTS	</Arg>
+    </harm_receiveAttackResults>
+  </CellMethods>
+  <BaseMethods>
+    <smartDestroy></smartDestroy>
+  </BaseMethods>
+  <TempProperties>
+    <_components></_components>
+    <_protectionZone></_protectionZone>
+    <_entities></_entities>
+  </TempProperties>
+</ProtectionZone.def>

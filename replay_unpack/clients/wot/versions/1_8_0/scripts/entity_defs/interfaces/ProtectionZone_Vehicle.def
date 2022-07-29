@@ -1,0 +1,16 @@
+<ProtectionZone_Vehicle.def>
+  <TempProperties>
+    <_protectionZone></_protectionZone>
+  </TempProperties>
+  <CellMethods>
+    <protectionZone_onEnterProtectionZone>
+      <Arg>	UINT8	</Arg>
+    </protectionZone_onEnterProtectionZone>
+    <protectionZone_onLeaveProtectionZone>
+      <Arg>	UINT8	</Arg>
+    </protectionZone_onLeaveProtectionZone>
+    <protectionZone_onProtectionZoneShooting>
+      <Arg>	UINT8	</Arg>
+    </protectionZone_onProtectionZoneShooting>
+  </CellMethods>
+</ProtectionZone_Vehicle.def>

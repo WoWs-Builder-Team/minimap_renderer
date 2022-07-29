@@ -1,0 +1,52 @@
+<AvatarEpic.def>
+  <ClientMethods>
+    <welcomeToSector>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </welcomeToSector>
+    <onStepRepairPointAction>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	UINT16	</Arg>
+    </onStepRepairPointAction>
+    <onSectorBaseAction>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </onSectorBaseAction>
+    <enteringProtectionZone>
+      <Arg>	UINT8	</Arg>
+    </enteringProtectionZone>
+    <leavingProtectionZone>
+      <Arg>	UINT8	</Arg>
+    </leavingProtectionZone>
+    <protectionZoneShooting>
+      <Arg>	UINT8	</Arg>
+    </protectionZoneShooting>
+    <onSectorShooting>
+      <Arg>	UINT8	</Arg>
+    </onSectorShooting>
+    <onXPUpdated>
+      <Arg>	INT16	</Arg>
+    </onXPUpdated>
+    <showDestructibleShotResults>
+      <Arg>	UINT8	</Arg>
+      <Arg>	INT32	</Arg>
+    </showDestructibleShotResults>
+    <onDestructibleDestroyed>
+      <Arg>	UINT8	</Arg>
+      <Arg>	OBJECT_ID	</Arg>
+    </onDestructibleDestroyed>
+  </ClientMethods>
+  <BaseMethods>
+    <enableFrontLineDevInfo>
+      <Arg>	BOOL	</Arg>
+      <Exposed></Exposed>
+    </enableFrontLineDevInfo>
+  </BaseMethods>
+</AvatarEpic.def>

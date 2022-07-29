@@ -1,0 +1,16 @@
+<TeamBase_Vehicle.def>
+  <TempProperties>
+    <_teamBase></_teamBase>
+  </TempProperties>
+  <CellMethods>
+    <teamBase_receivePoints>
+      <Arg>	UINT8	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </teamBase_receivePoints>
+    <teamBase_onCaptured>
+      <Arg>	UINT8	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	BOOL	</Arg>
+    </teamBase_onCaptured>
+  </CellMethods>
+</TeamBase_Vehicle.def>

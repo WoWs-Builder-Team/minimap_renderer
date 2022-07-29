@@ -1,0 +1,8 @@
+<VehicleAIProxy.def>
+  <Implements></Implements>
+  <TempProperties>
+    <_vehicleAIProxy></_vehicleAIProxy>
+  </TempProperties>
+  <BaseMethods></BaseMethods>
+  <CellMethods></CellMethods>
+</VehicleAIProxy.def>

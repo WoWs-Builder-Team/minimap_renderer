@@ -1,0 +1,52 @@
+<AccountUnitClient.def>
+  <BaseMethods>
+    <accountUnitClient_create>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Exposed></Exposed>
+    </accountUnitClient_create>
+    <accountUnitClient_join>
+      <Arg>	INT32	</Arg>
+      <Arg>	UINT64	</Arg>
+      <Arg>	INT32	</Arg>
+      <Exposed></Exposed>
+    </accountUnitClient_join>
+    <accountUnitClient_doCmd>
+      <Arg>	INT32	</Arg>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	UINT64	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	STRING	</Arg>
+      <Exposed></Exposed>
+    </accountUnitClient_doCmd>
+    <accountUnitClient_sendInvites>
+      <Arg>	INT32	</Arg>
+      <Arg>	UINT64	</Arg>
+      <Arg>	ARRAY	  <of>	DB_ID	</of>
+      </Arg>
+      <Arg>	STRING	</Arg>
+      <Exposed></Exposed>
+    </accountUnitClient_sendInvites>
+    <accountUnitClient_setRosterSlots>
+      <Arg>	INT32	</Arg>
+      <Arg>	UINT64	</Arg>
+      <Arg>	ARRAY	  <of>	INT32	</of>
+      </Arg>
+      <Arg>	ARRAY	  <of>	STRING	</of>
+      </Arg>
+      <Exposed></Exposed>
+    </accountUnitClient_setRosterSlots>
+    <accountUnitClient_createEx>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </accountUnitClient_createEx>
+    <accountUnitClient_joinEx>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </accountUnitClient_joinEx>
+  </BaseMethods>
+</AccountUnitClient.def>

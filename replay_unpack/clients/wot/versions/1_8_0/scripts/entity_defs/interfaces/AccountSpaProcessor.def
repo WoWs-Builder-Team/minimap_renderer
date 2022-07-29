@@ -1,0 +1,10 @@
+<AccountSpaProcessor.def>
+  <BaseMethods>
+    <accountSPA_processSpaAttributes>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </accountSPA_processSpaAttributes>
+  </BaseMethods>
+</AccountSpaProcessor.def>

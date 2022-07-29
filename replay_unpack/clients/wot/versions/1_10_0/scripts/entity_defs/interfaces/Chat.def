@@ -1,0 +1,99 @@
+<Chat.def>
+  <BaseMethods>
+    <joinChatChannel>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	STRING	</Arg>
+    </joinChatChannel>
+    <leaveChatChannel>
+      <Arg>	OBJECT_ID	</Arg>
+    </leaveChatChannel>
+    <onChatAction>
+      <Arg>	CHAT_ACTION_DATA	</Arg>
+    </onChatAction>
+    <onUserChatChannelCreated>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </onUserChatChannelCreated>
+    <chatCommandFromClient>
+      <Exposed></Exposed>
+      <Arg>	INT64	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	INT64	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	STRING	</Arg>
+    </chatCommandFromClient>
+    <chatCommand>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	INT64	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	INT64	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	STRING	</Arg>
+    </chatCommand>
+    <inviteCommand>
+      <Exposed></Exposed>
+      <Arg>	INT64	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	INT8	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	INT64	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	STRING	</Arg>
+    </inviteCommand>
+    <ackCommand>
+      <Exposed></Exposed>
+      <Arg>	INT64	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	FLOAT64	</Arg>
+      <Arg>	INT64	</Arg>
+      <Arg>	INT64	</Arg>
+    </ackCommand>
+    <keepAlive>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	INT16	</Arg>
+    </keepAlive>
+    <keepAlive>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	INT16	</Arg>
+    </keepAlive>
+    <onStreamComplete>
+      <Exposed></Exposed>
+      <Arg>	INT16	</Arg>
+      <Arg>	BOOL	</Arg>
+    </onStreamComplete>
+    <setState>
+      <Arg>	UINT8	</Arg>
+    </setState>
+    <setCollectOnlyMode>
+      <Arg>	BOOL	</Arg>
+    </setCollectOnlyMode>
+    <setBattleChannels>
+      <Arg>	PYTHON	</Arg>
+    </setBattleChannels>
+    <changeMemberStatus>
+      <Arg>	PYTHON	</Arg>
+      <Arg>	OBJECT_ID	</Arg>
+    </changeMemberStatus>
+    <setWorkingState>
+      <Arg>	UINT8	</Arg>
+    </setWorkingState>
+    <streamStringToClient>
+      <Arg>	STRING	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	INT16	</Arg>
+    </streamStringToClient>
+  </BaseMethods>
+  <ClientMethods>
+    <onChatAction>
+      <AllowUnsafeData>	true	</AllowUnsafeData>
+      <Arg>	CHAT_ACTION_DATA	</Arg>
+      <VariableLengthHeaderSize>	1	  <WarnLevel>	none	</WarnLevel>
+      </VariableLengthHeaderSize>
+    </onChatAction>
+  </ClientMethods>
+</Chat.def>

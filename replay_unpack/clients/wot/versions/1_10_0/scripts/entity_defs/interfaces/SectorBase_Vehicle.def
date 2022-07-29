@@ -1,0 +1,28 @@
+<SectorBase_Vehicle.def>
+  <TempProperties>
+    <_sectorBase></_sectorBase>
+  </TempProperties>
+  <CellMethods>
+    <sectorBase_receivePoints>
+      <Arg>	UINT8	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </sectorBase_receivePoints>
+    <sectorBase_onCaptured>
+      <Arg>	UINT8	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	BOOL	</Arg>
+    </sectorBase_onCaptured>
+    <sectorBase_onAction>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </sectorBase_onAction>
+    <sectorBase_onCapturePointsBlocked>
+      <Arg>	UINT8	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </sectorBase_onCapturePointsBlocked>
+    <sectorBase_onCapturePointsBlockedComplete>
+      <Arg>	UINT8	</Arg>
+    </sectorBase_onCapturePointsBlockedComplete>
+  </CellMethods>
+</SectorBase_Vehicle.def>

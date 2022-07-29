@@ -1,0 +1,18 @@
+<BattleResultProcessor.def>
+  <BaseMethods>
+    <battleResultProcessor_onBattleResultsReceived>
+      <Arg>	INT32	</Arg>
+      <Arg>	STRING	</Arg>
+    </battleResultProcessor_onBattleResultsReceived>
+    <battleResultProcessor_onPlayerLeftArena>
+      <Arg>	INT32	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	UINT64	</Arg>
+      <Arg>	PYTHON	</Arg>
+      <Arg>	PYTHON	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT64	</Arg>
+    </battleResultProcessor_onPlayerLeftArena>
+  </BaseMethods>
+  <ClientMethods></ClientMethods>
+</BattleResultProcessor.def>

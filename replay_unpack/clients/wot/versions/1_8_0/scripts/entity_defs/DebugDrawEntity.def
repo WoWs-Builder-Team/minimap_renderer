@@ -1,0 +1,144 @@
+<DebugDrawEntity.def>
+  <AppealRadius>	2000	</AppealRadius>
+  <Properties>
+    <drawObjects>
+      <Type>	ARRAY	  <of>	FIXED_DICT	  <Properties>
+            <name>
+              <Type>	STRING	</Type>
+            </name>
+            <version>
+              <Type>	UINT32	</Type>
+              <Default>	0	</Default>
+            </version>
+            <destroyTime>
+              <Type>	FLOAT	</Type>
+              <Default>	-1.0	</Default>
+            </destroyTime>
+            <lines>
+              <Type>	ARRAY	  <of>	FIXED_DICT	  <Properties>
+                    <points>
+                      <Type>	ARRAY	  <of>	VECTOR3	</of>
+                      </Type>
+                    </points>
+                    <width>
+                      <Type>	FLOAT	</Type>
+                    </width>
+                  </Properties>
+                </of>
+              </Type>
+            </lines>
+            <cubes>
+              <Type>	ARRAY	  <of>	FIXED_DICT	  <Properties>
+                    <position>
+                      <Type>	VECTOR3	</Type>
+                    </position>
+                    <size>
+                      <Type>	VECTOR3	</Type>
+                    </size>
+                  </Properties>
+                </of>
+              </Type>
+            </cubes>
+            <spheres>
+              <Type>	ARRAY	  <of>	FIXED_DICT	  <Properties>
+                    <position>
+                      <Type>	VECTOR3	</Type>
+                    </position>
+                    <radius>
+                      <Type>	VECTOR3	</Type>
+                    </radius>
+                  </Properties>
+                </of>
+              </Type>
+            </spheres>
+            <texts>
+              <Type>	ARRAY	  <of>	FIXED_DICT	  <Properties>
+                    <position>
+                      <Type>	VECTOR3	</Type>
+                    </position>
+                    <text>
+                      <Type>	STRING	</Type>
+                    </text>
+                    <color>
+                      <Type>	VECTOR4	</Type>
+                    </color>
+                    <textSize>
+                      <Type>	FLOAT	</Type>
+                      <Default>	1.0	</Default>
+                    </textSize>
+                  </Properties>
+                </of>
+              </Type>
+            </texts>
+          </Properties>
+        </of>
+      </Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </drawObjects>
+  </Properties>
+  <ClientMethods></ClientMethods>
+  <CellMethods>
+    <remove>
+      <Arg>	STRING	</Arg>
+    </remove>
+    <clear>
+      <Arg>	STRING	</Arg>
+    </clear>
+    <drawLine>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	FLOAT	</Arg>
+      <Arg>	STRING	</Arg>
+    </drawLine>
+    <drawLines>
+      <Arg>	ARRAY	  <of>	VECTOR3	</of>
+      </Arg>
+      <Arg>	FLOAT	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </drawLines>
+    <drawPath>
+      <Arg>	ARRAY	  <of>	VECTOR3	</of>
+      </Arg>
+      <Arg>	FLOAT	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </drawPath>
+    <drawCube>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	FLOAT	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </drawCube>
+    <drawCubes>
+      <Arg>	ARRAY	  <of>	VECTOR3	</of>
+      </Arg>
+      <Arg>	FLOAT	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </drawCubes>
+    <drawSphere>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	FLOAT	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </drawSphere>
+    <drawSpheres>
+      <Arg>	ARRAY	  <of>	VECTOR3	</of>
+      </Arg>
+      <Arg>	FLOAT	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </drawSpheres>
+    <write3DText>
+      <Arg>	STRING	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </write3DText>
+    <setLifeTime>
+      <Arg>	STRING	</Arg>
+      <Arg>	FLOAT	</Arg>
+    </setLifeTime>
+    <destroyEntity></destroyEntity>
+  </CellMethods>
+  <NetworkCompression>
+    <internal>	ZIP	  <level>	9	</level>
+    </internal>
+    <external>	ZIP	  <level>	9	</level>
+    </external>
+  </NetworkCompression>
+</DebugDrawEntity.def>

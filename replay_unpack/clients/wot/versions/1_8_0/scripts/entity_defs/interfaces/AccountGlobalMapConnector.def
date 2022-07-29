@@ -1,0 +1,26 @@
+<AccountGlobalMapConnector.def>
+  <BaseMethods>
+    <accountGlobalMapConnector_callGlobalMapMethod>
+      <Arg>	UINT64	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT64	</Arg>
+      <Arg>	STRING	</Arg>
+      <Exposed></Exposed>
+    </accountGlobalMapConnector_callGlobalMapMethod>
+    <accountGlobalMapConnector_onGlobalMapUpdate>
+      <Arg>	STRING	</Arg>
+      <Arg>	STRING	</Arg>
+    </accountGlobalMapConnector_onGlobalMapUpdate>
+    <accountGlobalMapConnector_onGlobalMapReply>
+      <Arg>	UINT64	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	STRING	</Arg>
+    </accountGlobalMapConnector_onGlobalMapReply>
+    <accountGlobalMapConnector_onSpecBattleRoundEnd>
+      <Arg>	STRING	</Arg>
+    </accountGlobalMapConnector_onSpecBattleRoundEnd>
+    <accountGlobalMapConnector_onSpecBattleEnd>
+      <Arg>	STRING	</Arg>
+    </accountGlobalMapConnector_onSpecBattleEnd>
+  </BaseMethods>
+</AccountGlobalMapConnector.def>

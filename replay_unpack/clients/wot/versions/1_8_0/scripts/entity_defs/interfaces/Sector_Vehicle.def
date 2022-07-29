@@ -1,0 +1,25 @@
+<Sector_Vehicle.def>
+  <TempProperties>
+    <_sector></_sector>
+  </TempProperties>
+  <CellMethods>
+    <sector_onEnterSector>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	UINT8	</Arg>
+    </sector_onEnterSector>
+    <sector_onLeaveSector>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+    </sector_onLeaveSector>
+    <sector_onEnemySectorCaptured></sector_onEnemySectorCaptured>
+    <sector_onSectorShooting>
+      <Arg>	UINT8	</Arg>
+    </sector_onSectorShooting>
+  </CellMethods>
+</Sector_Vehicle.def>

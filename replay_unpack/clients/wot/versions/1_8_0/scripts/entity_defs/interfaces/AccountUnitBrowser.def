@@ -1,0 +1,32 @@
+<AccountUnitBrowser.def>
+  <BaseMethods>
+    <accountUnitBrowser_subscribe>
+      <Arg>	INT16	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Exposed></Exposed>
+    </accountUnitBrowser_subscribe>
+    <accountUnitBrowser_unsubscribe>
+      <Exposed></Exposed>
+    </accountUnitBrowser_unsubscribe>
+    <accountUnitBrowser_recenter>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Exposed></Exposed>
+    </accountUnitBrowser_recenter>
+    <accountUnitBrowser_doCmd>
+      <Arg>	INT32	</Arg>
+      <Exposed></Exposed>
+    </accountUnitBrowser_doCmd>
+    <accountUnitBrowser_onError>
+      <Arg>	INT32	</Arg>
+      <Arg>	STRING	</Arg>
+    </accountUnitBrowser_onError>
+    <accountUnitBrowser_onResultsSet>
+      <Arg>	STRING	</Arg>
+    </accountUnitBrowser_onResultsSet>
+    <accountUnitBrowser_onResultsUpdate>
+      <Arg>	STRING	</Arg>
+    </accountUnitBrowser_onResultsUpdate>
+  </BaseMethods>
+</AccountUnitBrowser.def>

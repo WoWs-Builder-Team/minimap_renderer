@@ -1,0 +1,13 @@
+<ProtectionZoneController_Avatar.def>
+  <BaseMethods>
+    <protectionZone_enteringProtectionZone>
+      <Arg>	UINT8	</Arg>
+    </protectionZone_enteringProtectionZone>
+    <protectionZone_leavingProtectionZone>
+      <Arg>	UINT8	</Arg>
+    </protectionZone_leavingProtectionZone>
+    <protectionZone_protectionZoneShooting>
+      <Arg>	UINT8	</Arg>
+    </protectionZone_protectionZoneShooting>
+  </BaseMethods>
+</ProtectionZoneController_Avatar.def>

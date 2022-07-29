@@ -1,0 +1,45 @@
+<Wheels.def>
+  <LoDLevels>
+    <level>	20	  <label>	NEAR	</label>
+    </level>
+    <level>	100	  <label>	MEDIUM	</label>
+    </level>
+    <level>	250	  <label>	FAR	</label>
+    </level>
+  </LoDLevels>
+  <volatile>
+    <Properties>
+      <steeringAngles></steeringAngles>
+      <wheelsScroll></wheelsScroll>
+      <burnoutLevel></burnoutLevel>
+    </Properties>
+  </volatile>
+  <Properties>
+    <steeringAngles>
+      <Type>	TUPLE	  <of>	UINT8	</of>
+      </Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <IsReliable>	false	</IsReliable>
+      <SendLatestOnly>	true	</SendLatestOnly>
+    </steeringAngles>
+    <wheelsScroll>
+      <Type>	TUPLE	  <of>	UINT8	</of>
+      </Type>
+      <DetailLevel>	FAR	</DetailLevel>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <IsReliable>	false	</IsReliable>
+      <SendLatestOnly>	true	</SendLatestOnly>
+    </wheelsScroll>
+    <wheelsState>
+      <Type>	UINT64	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <SendLatestOnly>	true	</SendLatestOnly>
+    </wheelsState>
+    <burnoutLevel>
+      <Type>	UINT8	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <IsReliable>	false	</IsReliable>
+      <SendLatestOnly>	true	</SendLatestOnly>
+    </burnoutLevel>
+  </Properties>
+</Wheels.def>

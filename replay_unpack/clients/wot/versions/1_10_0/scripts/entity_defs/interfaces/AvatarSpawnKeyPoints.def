@@ -1,0 +1,32 @@
+<AvatarSpawnKeyPoints.def>
+  <ClientMethods>
+    <receiveAvailableSpawnKeyPoints>
+      <Arg>	ARRAY	  <of>	FIXED_DICT	  <Properties>
+            <guid>
+              <Type>	STRING	</Type>
+            </guid>
+            <position>
+              <Type>	VECTOR2	</Type>
+            </position>
+          </Properties>
+        </of>
+      </Arg>
+    </receiveAvailableSpawnKeyPoints>
+    <receiveTeamSpawnKeyPoints>
+      <Arg>	ARRAY	  <of>	FIXED_DICT	  <Properties>
+            <vehID>
+              <Type>	INT32	</Type>
+            </vehID>
+            <guid>
+              <Type>	STRING	</Type>
+            </guid>
+          </Properties>
+        </of>
+      </Arg>
+    </receiveTeamSpawnKeyPoints>
+    <closeChooseSpawnKeyPointsWindow></closeChooseSpawnKeyPointsWindow>
+    <receiveSpawnKeyPointsCloseTime>
+      <Arg>	FLOAT32	</Arg>
+    </receiveSpawnKeyPointsCloseTime>
+  </ClientMethods>
+</AvatarSpawnKeyPoints.def>

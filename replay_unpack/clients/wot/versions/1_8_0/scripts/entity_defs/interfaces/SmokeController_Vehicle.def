@@ -1,0 +1,14 @@
+<SmokeController_Vehicle.def>
+  <TempProperties>
+    <_smokeController></_smokeController>
+  </TempProperties>
+  <CellMethods>
+    <smokeController_onEnterSmoke>
+      <Arg>	UINT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </smokeController_onEnterSmoke>
+    <smokeController_onLeaveSmoke>
+      <Arg>	UINT32	</Arg>
+    </smokeController_onLeaveSmoke>
+  </CellMethods>
+</SmokeController_Vehicle.def>

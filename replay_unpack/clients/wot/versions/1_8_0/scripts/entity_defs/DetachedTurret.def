@@ -1,0 +1,105 @@
+<DetachedTurret.def>
+  <LoDLevels>
+    <level>	100	  <hyst>	4	</hyst>
+      <label>	NEAR	</label>
+    </level>
+    <level>	200	  <hyst>	10	</hyst>
+      <label>	MEDIUM	</label>
+    </level>
+    <level>	300	  <hyst>	20	</hyst>
+      <label>	FAR	</label>
+    </level>
+  </LoDLevels>
+  <Volatile>
+    <position></position>
+    <yaw></yaw>
+    <roll></roll>
+    <pitch></pitch>
+  </Volatile>
+  <Properties>
+    <cp>
+      <Type>	PYTHON	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </cp>
+    <arenaTypeID>
+      <Type>	INT32	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </arenaTypeID>
+    <velocity>
+      <Type>	VECTOR3	</Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+    </velocity>
+    <angularVelocity>
+      <Type>	VECTOR3	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </angularVelocity>
+    <vehicleCompDescr>
+      <Type>	STRING	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </vehicleCompDescr>
+    <isUnderWater>
+      <Type>	BOOL	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </isUnderWater>
+    <isCollidingWithWorld>
+      <Type>	BOOL	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </isCollidingWithWorld>
+    <vehicleID>
+      <Type>	INT32	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </vehicleID>
+    <attackerInfo>
+      <Type>	ATTACKER_INFO	</Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+    </attackerInfo>
+    <vehicleInfo>
+      <Type>	ATTACKER_INFO	</Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+    </vehicleInfo>
+    <isAtackerProxy>
+      <Type>	BOOL	</Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+    </isAtackerProxy>
+    <arena>
+      <Type>	MAILBOX	</Type>
+      <Flags>	BASE	</Flags>
+    </arena>
+  </Properties>
+  <ClientMethods>
+    <onStaticCollision>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <DetailDistance>	100	</DetailDistance>
+    </onStaticCollision>
+    <showDamageFromShot>
+      <Arg>	ARRAY	  <of>	UINT64	</of>
+      </Arg>
+      <Arg>	UINT8	</Arg>
+    </showDamageFromShot>
+  </ClientMethods>
+  <CellMethods>
+    <receiveShot>
+      <Arg>	ATTACKER_INFO	</Arg>
+      <Arg>	SHOT_ID	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR3	</Arg>
+    </receiveShot>
+    <receiveExplosion>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	UINT8	</Arg>
+    </receiveExplosion>
+    <applyForceToCOM>
+      <Arg>	VECTOR3	</Arg>
+    </applyForceToCOM>
+    <onDamageVehicle></onDamageVehicle>
+  </CellMethods>
+  <BaseMethods>
+    <smartDestroy></smartDestroy>
+  </BaseMethods>
+</DetachedTurret.def>

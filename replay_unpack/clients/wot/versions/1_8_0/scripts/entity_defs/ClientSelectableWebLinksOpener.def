@@ -1,0 +1,10 @@
+<ClientSelectableWebLinksOpener.def>
+  <Parent>	ClientSelectableObject	</Parent>
+  <Properties>
+    <url>
+      <Type>	STRING	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Editable>	true	</Editable>
+    </url>
+  </Properties>
+</ClientSelectableWebLinksOpener.def>

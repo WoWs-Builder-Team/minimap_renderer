@@ -1,0 +1,37 @@
+<BomberController.def>
+  <TempProperties>
+    <_bomberController></_bomberController>
+  </TempProperties>
+  <CellMethods>
+    <bomberController_addBomber>
+      <Arg>	ATTACKER_INFO	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR2	</Arg>
+      <Arg>	TUPLE	  <of>	VECTOR2	</of>
+        <size>	2	</size>
+      </Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	TUPLE	  <of>	FLOAT32	</of>
+        <size>	2	</size>
+      </Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	ARRAY	  <of>	FLOAT32	</of>
+      </Arg>
+      <Arg>	ARRAY	  <of>	FLOAT32	</of>
+      </Arg>
+      <Arg>	ARRAY	  <of>	BOOL	</of>
+      </Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	UINT16	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	TUPLE	  <of>	FLOAT32	</of>
+        <size>	2	</size>
+      </Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT64	</Arg>
+    </bomberController_addBomber>
+  </CellMethods>
+</BomberController.def>

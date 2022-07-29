@@ -1,0 +1,81 @@
+<RespawnController_Avatar.def>
+  <BaseMethods>
+    <respawnController_requestRespawnGroupChange>
+      <Arg>	UINT8	</Arg>
+      <Exposed></Exposed>
+    </respawnController_requestRespawnGroupChange>
+    <respawnController_chooseVehicleForRespawn>
+      <Exposed></Exposed>
+      <Arg>	UINT16	</Arg>
+    </respawnController_chooseVehicleForRespawn>
+    <respawnController_performRespawn>
+      <Exposed></Exposed>
+    </respawnController_performRespawn>
+    <respawnController_redrawVehicleOnRespawn>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	STRING	</Arg>
+    </respawnController_redrawVehicleOnRespawn>
+    <respawnController_explodeVehicleBeforeRespawn>
+      <Arg>	OBJECT_ID	</Arg>
+    </respawnController_explodeVehicleBeforeRespawn>
+    <respawnController_updateRespawnVehicles>
+      <Arg>	ARRAY	  <of>	RESPAWN_AVAILABLE_VEHICLE	</of>
+      </Arg>
+    </respawnController_updateRespawnVehicles>
+    <respawnController_updateRespawnCooldowns>
+      <Arg>	ARRAY	  <of>	RESPAWN_COOLDOWN_ITEM	</of>
+      </Arg>
+    </respawnController_updateRespawnCooldowns>
+    <respawnController_updateRespawnInfo>
+      <Arg>	RESPAWN_INFO	</Arg>
+    </respawnController_updateRespawnInfo>
+    <respawnController_updateVehicleLimits>
+      <Arg>	ARRAY	  <of>	RESPAWN_LIMITED_VEHICLES	</of>
+      </Arg>
+    </respawnController_updateVehicleLimits>
+    <respawnController_onTeamLivesRestored>
+      <Arg>	ARRAY	  <of>	UINT8	</of>
+      </Arg>
+    </respawnController_onTeamLivesRestored>
+    <respawnController_updatePlayerLives>
+      <Arg>	UINT8	</Arg>
+    </respawnController_updatePlayerLives>
+    <respawnController_chooseRespawnZone>
+      <Arg>	VECTOR3	</Arg>
+      <Exposed></Exposed>
+    </respawnController_chooseRespawnZone>
+  </BaseMethods>
+  <ClientMethods>
+    <redrawVehicleOnRespawn>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	STRING	</Arg>
+    </redrawVehicleOnRespawn>
+    <explodeVehicleBeforeRespawn>
+      <Arg>	OBJECT_ID	</Arg>
+    </explodeVehicleBeforeRespawn>
+    <updateRespawnVehicles>
+      <Arg>	ARRAY	  <of>	RESPAWN_AVAILABLE_VEHICLE	</of>
+      </Arg>
+    </updateRespawnVehicles>
+    <updateRespawnCooldowns>
+      <Arg>	ARRAY	  <of>	RESPAWN_COOLDOWN_ITEM	</of>
+      </Arg>
+    </updateRespawnCooldowns>
+    <updateRespawnInfo>
+      <Arg>	RESPAWN_INFO	</Arg>
+    </updateRespawnInfo>
+    <updateVehicleLimits>
+      <Arg>	ARRAY	  <of>	RESPAWN_LIMITED_VEHICLES	</of>
+      </Arg>
+    </updateVehicleLimits>
+    <updatePlayerLives>
+      <Arg>	UINT8	</Arg>
+    </updatePlayerLives>
+    <onTeamLivesRestored>
+      <Arg>	ARRAY	  <of>	UINT8	</of>
+      </Arg>
+    </onTeamLivesRestored>
+  </ClientMethods>
+</RespawnController_Avatar.def>

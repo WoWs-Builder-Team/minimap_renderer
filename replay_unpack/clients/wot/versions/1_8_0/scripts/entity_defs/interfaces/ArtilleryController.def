@@ -1,0 +1,55 @@
+<ArtilleryController.def>
+  <CellMethods>
+    <artilleryController_addArtilleryPreparation>
+      <Arg>	ATTACKER_INFO	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	TUPLE	  <of>	FLOAT32	</of>
+        <size>	2	</size>
+      </Arg>
+      <Arg>	TUPLE	  <of>	FLOAT32	</of>
+        <size>	2	</size>
+      </Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	TUPLE	  <of>	FLOAT32	</of>
+        <size>	2	</size>
+      </Arg>
+      <Arg>	TUPLE	  <of>	FLOAT32	</of>
+        <size>	2	</size>
+      </Arg>
+      <Arg>	TUPLE	  <of>	UINT16	</of>
+        <size>	2	</size>
+      </Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	TUPLE	  <of>	FLOAT32	</of>
+        <size>	2	</size>
+      </Arg>
+      <Arg>	FLOAT64	</Arg>
+    </artilleryController_addArtilleryPreparation>
+    <artilleryController_addArtillery>
+      <Arg>	ATTACKER_INFO	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	TUPLE	  <of>	FLOAT32	</of>
+        <size>	2	</size>
+      </Arg>
+      <Arg>	TUPLE	  <of>	FLOAT32	</of>
+        <size>	2	</size>
+      </Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	UINT16	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	TUPLE	  <of>	FLOAT32	</of>
+        <size>	2	</size>
+      </Arg>
+      <Arg>	FLOAT64	</Arg>
+    </artilleryController_addArtillery>
+  </CellMethods>
+</ArtilleryController.def>

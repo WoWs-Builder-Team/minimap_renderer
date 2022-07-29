@@ -1,0 +1,7 @@
+<VehicleRemovalController_Avatar.def>
+  <ClientMethods>
+    <removeVehicle>
+      <Arg>	OBJECT_ID	</Arg>
+    </removeVehicle>
+  </ClientMethods>
+</VehicleRemovalController_Avatar.def>

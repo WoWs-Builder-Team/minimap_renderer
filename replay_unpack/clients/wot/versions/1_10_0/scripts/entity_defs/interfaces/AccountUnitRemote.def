@@ -1,0 +1,61 @@
+<AccountUnitRemote.def>
+  <xmlns:xsi>	http://www.w3.org/2001/XMLSchema-instance	</xmlns:xsi>
+  <xsi:noNamespaceSchemaLocation>	../../../../tools/schema/entity_def.xsd	</xsi:noNamespaceSchemaLocation>
+  <BaseMethods>
+    <accountUnitRemote_create>
+      <Arg>	UINT8	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+    </accountUnitRemote_create>
+    <accountUnitRemote_createEx>
+      <Arg>	UINT8	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </accountUnitRemote_createEx>
+    <accountUnitRemote_join>
+      <Arg>	UINT8	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	UINT64	</Arg>
+      <Arg>	INT32	</Arg>
+    </accountUnitRemote_join>
+    <accountUnitRemote_joinEx>
+      <Arg>	UINT8	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </accountUnitRemote_joinEx>
+    <accountUnitRemote_doCmd>
+      <Arg>	UINT8	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT64	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	STRING	</Arg>
+    </accountUnitRemote_doCmd>
+    <accountUnitRemote_sendInvites>
+      <Arg>	UINT8	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	UINT64	</Arg>
+      <Arg>	ARRAY	  <of>	DB_ID	</of>
+      </Arg>
+      <Arg>	STRING	</Arg>
+    </accountUnitRemote_sendInvites>
+    <accountUnitRemote_setRosterSlots>
+      <Arg>	UINT8	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	UINT64	</Arg>
+      <Arg>	ARRAY	  <of>	INT32	</of>
+      </Arg>
+      <Arg>	ARRAY	  <of>	STRING	</of>
+      </Arg>
+    </accountUnitRemote_setRosterSlots>
+    <accountUnitRemote_validateVehicleList>
+      <Arg>	UINT8	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </accountUnitRemote_validateVehicleList>
+  </BaseMethods>
+</AccountUnitRemote.def>

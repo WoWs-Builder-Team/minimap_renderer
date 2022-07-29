@@ -1,0 +1,10 @@
+<InvitationsClient.def>
+  <ClientMethods>
+    <processInvitations>
+      <Arg>	PYTHON	</Arg>
+      <AllowUnsafeData>	true	</AllowUnsafeData>
+      <VariableLengthHeaderSize>	1	  <WarnLevel>	none	</WarnLevel>
+      </VariableLengthHeaderSize>
+    </processInvitations>
+  </ClientMethods>
+</InvitationsClient.def>

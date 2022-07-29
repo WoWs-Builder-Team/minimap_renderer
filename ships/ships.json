@@ -1,0 +1,3822 @@
+{
+ "3555669712": [
+  "ARP KONG\u014c",
+  "Battleship",
+  5
+ ],
+ "4181112272": [
+  "L-20",
+  "Submarine",
+  8
+ ],
+ "4180620752": [
+  "SOV. SOYUZ",
+  "Battleship",
+  9
+ ],
+ "4277024464": [
+  "F\u016aJIN",
+  "Destroyer",
+  5
+ ],
+ "4186912016": [
+  "HERACLES ",
+  "Battleship",
+  9
+ ],
+ "3554555600": [
+  "SHINONOME",
+  "Destroyer",
+  6
+ ],
+ "4292851696": [
+  "BOGUE (OLD)",
+  "AirCarrier",
+  5
+ ],
+ "4185864144": [
+  "ORION",
+  "Battleship",
+  4
+ ],
+ "3760142032": [
+  "SHIKISHIMA",
+  "Battleship",
+  10
+ ],
+ "3374266064": [
+  "IGNIS PURGATIO",
+  "Battleship",
+  8
+ ],
+ "3764303664": [
+  "GRAF SPEE",
+  "Cruiser",
+  6
+ ],
+ "4182652656": [
+  "L. TARIGO",
+  "Destroyer",
+  7
+ ],
+ "4184815440": [
+  "BRETAGNE",
+  "Battleship",
+  5
+ ],
+ "4185798448": [
+  "V-170",
+  "Destroyer",
+  4
+ ],
+ "3751196368": [
+  "I-56",
+  "Submarine",
+  8
+ ],
+ "4077303056": [
+  "SEEL\u00d6WE",
+  "Submarine",
+  10
+ ],
+ "4183734064": [
+  "N\u00dcRNBERG",
+  "Cruiser",
+  6
+ ],
+ "4290688272": [
+  "GALAXY",
+  "Cruiser",
+  7
+ ],
+ "3752769232": [
+  "MAYA",
+  "Cruiser",
+  7
+ ],
+ "4179506928": [
+  "A. REGOLO",
+  "Destroyer",
+  10
+ ],
+ "3972445456": [
+  "GERFALCON",
+  "Submarine",
+  7
+ ],
+ "4289639696": [
+  "ZAYA",
+  "Cruiser",
+  7
+ ],
+ "4270077200": [
+  "LORINA",
+  "Auxiliary",
+  2
+ ],
+ "3248437200": [
+  "ST. LAWRENCE",
+  "Battleship",
+  10
+ ],
+ "3764271056": [
+  "GALLANT",
+  "Destroyer",
+  6
+ ],
+ "3768857872": [
+  "LIBERTY",
+  "Auxiliary",
+  6
+ ],
+ "4179539728": [
+  "GOUDEN LEEUW",
+  "Cruiser",
+  10
+ ],
+ "4186847024": [
+  "G-101",
+  "Destroyer",
+  3
+ ],
+ "4184749872": [
+  "T-22",
+  "Destroyer",
+  5
+ ],
+ "3667867440": [
+  "TIRPITZ B",
+  "Battleship",
+  8
+ ],
+ "3751786480": [
+  "ENTERPRISE",
+  "AirCarrier",
+  8
+ ],
+ "4269683984": [
+  "MUTANTOVSK",
+  "Destroyer",
+  10
+ ],
+ "4179506384": [
+  "YUEYANG",
+  "Destroyer",
+  10
+ ],
+ "4078843600": [
+  "HATSUHARU",
+  "Destroyer",
+  6
+ ],
+ "3762206160": [
+  "KUTUZOV",
+  "Cruiser",
+  8
+ ],
+ "4185798384": [
+  "TURBINE",
+  "Destroyer",
+  4
+ ],
+ "4179539760": [
+  "HINDENBURG",
+  "Cruiser",
+  10
+ ],
+ "3555636944": [
+  "ARP MY\u014cK\u014c",
+  "Cruiser",
+  7
+ ],
+ "4182717904": [
+  "SINOP",
+  "Battleship",
+  7
+ ],
+ "4276041712": [
+  "IOWA",
+  "Battleship",
+  9
+ ],
+ "3332323024": [
+  "[YAMATO]",
+  "Battleship",
+  10
+ ],
+ "3346282480": [
+  "CIMARRON TEST",
+  "Auxiliary",
+  5
+ ],
+ "4274960368": [
+  "BUFFALO",
+  "Cruiser",
+  10
+ ],
+ "4282300112": [
+  "IBUKI",
+  "Cruiser",
+  9
+ ],
+ "4259591440": [
+  "MINELAYER",
+  "Auxiliary",
+  2
+ ],
+ "4188977104": [
+  "BLACK SWAN",
+  "Cruiser",
+  1
+ ],
+ "3764303312": [
+  "MOLOTOV",
+  "Cruiser",
+  6
+ ],
+ "4188976336": [
+  "CHENGAN",
+  "Cruiser",
+  1
+ ],
+ "3761125104": [
+  "PAOLO EMILIO",
+  "Destroyer",
+  9
+ ],
+ "4186846672": [
+  "DERZKI",
+  "Destroyer",
+  3
+ ],
+ "4284364496": [
+  "KAGER\u014c (OLD)",
+  "Destroyer",
+  9
+ ],
+ "4247008528": [
+  "LIBERTY CIVIL",
+  "Auxiliary",
+  5
+ ],
+ "3553540080": [
+  "FLINT",
+  "Cruiser",
+  7
+ ],
+ "4074649296": [
+  "HARUGUMO",
+  "Destroyer",
+  10
+ ],
+ "4181702640": [
+  "LEXINGTON",
+  "AirCarrier",
+  8
+ ],
+ "3763221968": [
+  "LENINGRAD",
+  "Destroyer",
+  7
+ ],
+ "4184749904": [
+  "JAGUAR",
+  "Destroyer",
+  5
+ ],
+ "3741234640": [
+  "OCHAKOV",
+  "Cruiser",
+  8
+ ],
+ "4180555568": [
+  "Z-46",
+  "Destroyer",
+  9
+ ],
+ "3552491216": [
+  "ARP TAKAO",
+  "Cruiser",
+  8
+ ],
+ "3668883440": [
+  "BOISE",
+  "Cruiser",
+  7
+ ],
+ "4182718192": [
+  "F.\u00a0CARACCIOLO",
+  "Battleship",
+  7
+ ],
+ "4182685456": [
+  "EENDRACHT",
+  "Cruiser",
+  7
+ ],
+ "4290721040": [
+  "MAGNU-S",
+  "Battleship",
+  8
+ ],
+ "3667802064": [
+  "COSSACK B",
+  "Destroyer",
+  8
+ ],
+ "4179539920": [
+  "MINOTAUR",
+  "Cruiser",
+  10
+ ],
+ "3762271440": [
+  "SANZANG",
+  "AirCarrier",
+  8
+ ],
+ "4076779504": [
+  "CLEVELAND",
+  "Cruiser",
+  8
+ ],
+ "4069438928": [
+  "KOTOVSKY",
+  "Cruiser",
+  5
+ ],
+ "3762206704": [
+  "WICHITA",
+  "Cruiser",
+  8
+ ],
+ "4182652368": [
+  "UDALOI",
+  "Destroyer",
+  9
+ ],
+ "4186912720": [
+  "BELLEROPHON",
+  "Battleship",
+  3
+ ],
+ "4266931472": [
+  "CANTERBURY",
+  "Auxiliary",
+  2
+ ],
+ "4291737040": [
+  "MURMANSK",
+  "Cruiser",
+  5
+ ],
+ "4180588336": [
+  "ROON",
+  "Cruiser",
+  9
+ ],
+ "3340679120": [
+  "CYCLOPS",
+  "Cruiser",
+  10
+ ],
+ "4079891920": [
+  "PODVOISKY",
+  "Destroyer",
+  5
+ ],
+ "4082055120": [
+  "INDEFATIGABLE",
+  "Battleship",
+  3
+ ],
+ "3542005456": [
+  "ARP MAYA",
+  "Cruiser",
+  8
+ ],
+ "4183799760": [
+  "FURIOUS",
+  "AirCarrier",
+  6
+ ],
+ "3550394352": [
+  "SALEM",
+  "Cruiser",
+  10
+ ],
+ "3765352400": [
+  "EXETER",
+  "Cruiser",
+  5
+ ],
+ "3764336432": [
+  "P. E. FRIEDRICH",
+  "Battleship",
+  6
+ ],
+ "4287510224": [
+  "FUBUKI (OLD)",
+  "Destroyer",
+  8
+ ],
+ "3762271696": [
+  "CHKALOV",
+  "AirCarrier",
+  8
+ ],
+ "4179507152": [
+  "DARING",
+  "Destroyer",
+  10
+ ],
+ "4187895088": [
+  "T\u00c1TRA",
+  "Destroyer",
+  2
+ ],
+ "4255397136": [
+  "DAIHATSU",
+  "Auxiliary",
+  2
+ ],
+ "4264441840": [
+  "SIMS",
+  "Destroyer",
+  7
+ ],
+ "3764270928": [
+  "AIGLE",
+  "Destroyer",
+  6
+ ],
+ "4288559088": [
+  "MAHAN",
+  "Destroyer",
+  7
+ ],
+ "4183700688": [
+  "FUSHUN",
+  "Destroyer",
+  6
+ ],
+ "4288952304": [
+  "ST. CLAIR",
+  "Auxiliary",
+  5
+ ],
+ "3750704848": [
+  "HIZEN",
+  "Battleship",
+  9
+ ],
+ "4181669872": [
+  "KANSAS",
+  "Battleship",
+  8
+ ],
+ "4281251536": [
+  "KUMA",
+  "Cruiser",
+  4
+ ],
+ "3763287856": [
+  "SCHARNHORST",
+  "Battleship",
+  7
+ ],
+ "3763287888": [
+  "STRASBOURG",
+  "Battleship",
+  7
+ ],
+ "3660461904": [
+  "CYCLONE",
+  "Destroyer",
+  5
+ ],
+ "3760076080": [
+  "FRIESLAND",
+  "Destroyer",
+  9
+ ],
+ "3762206544": [
+  "BAYARD",
+  "Cruiser",
+  8
+ ],
+ "3751753168": [
+  "LENIN",
+  "Battleship",
+  8
+ ],
+ "3740153648": [
+  "ZF-6",
+  "Destroyer",
+  9
+ ],
+ "4179572720": [
+  "VERMONT",
+  "Battleship",
+  10
+ ],
+ "3731830736": [
+  "COLLINGWOOD",
+  "Battleship",
+  7
+ ],
+ "4184782576": [
+  "MONTECUCCOLI",
+  "Cruiser",
+  5
+ ],
+ "3764271088": [
+  "MONAGHAN",
+  "Destroyer",
+  6
+ ],
+ "4179572560": [
+  "R\u00c9PUBLIQUE",
+  "Battleship",
+  10
+ ],
+ "4291769616": [
+  "ZIKASA",
+  "Battleship",
+  2
+ ],
+ "3765319664": [
+  "HILL",
+  "Destroyer",
+  5
+ ],
+ "3445503440": [
+  "DD R-10",
+  "Destroyer",
+  10
+ ],
+ "4252251408": [
+  "ESCORT 8",
+  "Auxiliary",
+  2
+ ],
+ "4290688720": [
+  "Y\u016aBARI",
+  "Cruiser",
+  4
+ ],
+ "4182652880": [
+  "JERVIS",
+  "Destroyer",
+  7
+ ],
+ "3761681872": [
+  "S-189",
+  "Submarine",
+  8
+ ],
+ "3741235152": [
+  "BELFAST '43",
+  "Cruiser",
+  8
+ ],
+ "4288624336": [
+  "FUS\u014c",
+  "Battleship",
+  6
+ ],
+ "4076746448": [
+  "KAGER\u014c",
+  "Destroyer",
+  8
+ ],
+ "4079957808": [
+  "DERFFLINGER",
+  "Battleship",
+  5
+ ],
+ "4183733712": [
+  "BUDYONNY",
+  "Cruiser",
+  6
+ ],
+ "4284364048": [
+  "CELESTIAL",
+  "Destroyer",
+  7
+ ],
+ "3764369232": [
+  "B\u00c9ARN",
+  "AirCarrier",
+  6
+ ],
+ "4186879728": [
+  "TARANTO",
+  "Cruiser",
+  3
+ ],
+ "4277122768": [
+  "HAKURY\u016a (OLD)",
+  "AirCarrier",
+  10
+ ],
+ "4178458320": [
+  "YAMAGIRI",
+  "Destroyer",
+  11
+ ],
+ "4181604304": [
+  "LIGHTNING",
+  "Destroyer",
+  8
+ ],
+ "3730749424": [
+  "ROCHESTER",
+  "Cruiser",
+  8
+ ],
+ "3751786448": [
+  "ARK ROYAL",
+  "AirCarrier",
+  6
+ ],
+ "3763320816": [
+  "SAIPAN (OLD)",
+  "AirCarrier",
+  7
+ ],
+ "3746477520": [
+  "AL AVRORA",
+  "Cruiser",
+  3
+ ],
+ "3761682128": [
+  "I-58",
+  "Submarine",
+  8
+ ],
+ "4280203248": [
+  "NEW ORLEANS (OLD)",
+  "Cruiser",
+  8
+ ],
+ "3655218480": [
+  "SM\u00c5LAND",
+  "Destroyer",
+  10
+ ],
+ "4082054960": [
+  "VON DER TANN",
+  "Battleship",
+  3
+ ],
+ "4180587728": [
+  "SEJONG",
+  "Cruiser",
+  9
+ ],
+ "3765384528": [
+  "RIO DE\u00a0JANEIRO",
+  "Battleship",
+  5
+ ],
+ "3768497968": [
+  "EMDEN",
+  "Cruiser",
+  2
+ ],
+ "4182160656": [
+  "ZIPPER SUB",
+  "Submarine",
+  7
+ ],
+ "4187928304": [
+  "NINO BIXIO",
+  "Cruiser",
+  2
+ ],
+ "3764303216": [
+  "PERTH",
+  "Cruiser",
+  6
+ ],
+ "4185896400": [
+  "KOMSOMOLETS",
+  "AirCarrier",
+  4
+ ],
+ "4182685520": [
+  "ALG\u00c9RIE",
+  "Cruiser",
+  7
+ ],
+ "4278106096": [
+  "WORCESTER",
+  "Cruiser",
+  10
+ ],
+ "3756963280": [
+  "VARYAG",
+  "Cruiser",
+  3
+ ],
+ "4185797936": [
+  "KLAS HORN",
+  "Destroyer",
+  4
+ ],
+ "4259231440": [
+  "ZA\u014c",
+  "Cruiser",
+  10
+ ],
+ "4187895632": [
+  "EN. GABOLDE",
+  "Destroyer",
+  2
+ ],
+ "4181112816": [
+  "SALMON",
+  "Submarine",
+  8
+ ],
+ "4183799792": [
+  "RANGER",
+  "AirCarrier",
+  6
+ ],
+ "4185896752": [
+  "RHEIN",
+  "AirCarrier",
+  4
+ ],
+ "4289640432": [
+  "OMAHA",
+  "Cruiser",
+  5
+ ],
+ "3743365072": [
+  "REPULSE",
+  "Battleship",
+  6
+ ],
+ "3559143120": [
+  "ARP I-401",
+  "Auxiliary",
+  11
+ ],
+ "4281284592": [
+  "ARKANSAS B",
+  "Battleship",
+  4
+ ],
+ "4188976912": [
+  "VAN KINSBERGEN",
+  "Cruiser",
+  1
+ ],
+ "3763255024": [
+  "ABRUZZI",
+  "Cruiser",
+  7
+ ],
+ "3767416176": [
+  "VAMPIRE",
+  "Destroyer",
+  3
+ ],
+ "4184782640": [
+  "K\u00d6NIGSBERG",
+  "Cruiser",
+  5
+ ],
+ "3971888592": [
+  "KIEV",
+  "Destroyer",
+  8
+ ],
+ "4271781136": [
+  "ANGLER",
+  "Destroyer",
+  10
+ ],
+ "4289607664": [
+  "FARRAGUT",
+  "Destroyer",
+  6
+ ],
+ "3765351888": [
+  "KRASNY KRYM",
+  "Cruiser",
+  5
+ ],
+ "4284397008": [
+  "DIANA L",
+  "Cruiser",
+  2
+ ],
+ "3763221872": [
+  "HAIDA",
+  "Destroyer",
+  7
+ ],
+ "4075697872": [
+  "Y\u016aGUMO",
+  "Destroyer",
+  9
+ ],
+ "4288657104": [
+  "ZUIH\u014c (OLD)",
+  "AirCarrier",
+  5
+ ],
+ "3761190640": [
+  "MARCO POLO",
+  "Battleship",
+  9
+ ],
+ "4293801424": [
+  "GREMYASHCHY",
+  "Destroyer",
+  5
+ ],
+ "4183701200": [
+  "FUBUKI",
+  "Destroyer",
+  6
+ ],
+ "3763222256": [
+  "FR25",
+  "Destroyer",
+  7
+ ],
+ "4186847056": [
+  "FUSILIER",
+  "Destroyer",
+  3
+ ],
+ "4182652720": [
+  "MAASS",
+  "Destroyer",
+  7
+ ],
+ "3759585072": [
+  "U-4501",
+  "Submarine",
+  10
+ ],
+ "4285412624": [
+  "RAZORWORM",
+  "Destroyer",
+  7
+ ],
+ "4293867216": [
+  "KAWACHI",
+  "Battleship",
+  3
+ ],
+ "3754866128": [
+  "MIKOYAN",
+  "Cruiser",
+  5
+ ],
+ "3667801296": [
+  "LOYANG B",
+  "Destroyer",
+  8
+ ],
+ "4290655504": [
+  "FLYFIRE",
+  "Destroyer",
+  7
+ ],
+ "3764336464": [
+  "DUNKERQUE",
+  "Battleship",
+  6
+ ],
+ "3762173776": [
+  "LE\u00a0TERRIBLE",
+  "Destroyer",
+  8
+ ],
+ "4074715088": [
+  "ST.\u00a0VINCENT",
+  "Battleship",
+  10
+ ],
+ "3551442640": [
+  "ARP HAGURO",
+  "Cruiser",
+  7
+ ],
+ "3760109552": [
+  "ALASKA",
+  "Cruiser",
+  9
+ ],
+ "3762271984": [
+  "AQUILA",
+  "AirCarrier",
+  8
+ ],
+ "3753785136": [
+  "K. SCH\u00d6NBERG",
+  "Destroyer",
+  6
+ ],
+ "3751753552": [
+  "JEAN BART",
+  "Battleship",
+  9
+ ],
+ "4279154384": [
+  "TENRY\u016a",
+  "Cruiser",
+  3
+ ],
+ "4179015120": [
+  "K-1",
+  "Submarine",
+  10
+ ],
+ "4279121168": [
+  "ATOMIC RAGE",
+  "Destroyer",
+  8
+ ],
+ "4273878288": [
+  "SEASCYTHE",
+  "Destroyer",
+  10
+ ],
+ "4185831376": [
+  "DANAE",
+  "Cruiser",
+  4
+ ],
+ "4179539696": [
+  "VENEZIA",
+  "Cruiser",
+  10
+ ],
+ "3762239216": [
+  "ROMA",
+  "Battleship",
+  8
+ ],
+ "4077828048": [
+  "SURREY",
+  "Cruiser",
+  7
+ ],
+ "3760076144": [
+  "VAMPIRE II",
+  "Destroyer",
+  10
+ ],
+ "4081006384": [
+  "MOLTKE",
+  "Battleship",
+  4
+ ],
+ "4292818736": [
+  "TIRPITZ",
+  "Battleship",
+  8
+ ],
+ "4286527472": [
+  "COLORADO",
+  "Battleship",
+  7
+ ],
+ "4281251088": [
+  "FOSSIL",
+  "Cruiser",
+  10
+ ],
+ "4075763664": [
+  "DUNCAN",
+  "Battleship",
+  9
+ ],
+ "4185798480": [
+  "BOURRASQUE",
+  "Destroyer",
+  4
+ ],
+ "4293866768": [
+  "JACKAL",
+  "Battleship",
+  3
+ ],
+ "4186846480": [
+  "HECTOR",
+  "Destroyer",
+  10
+ ],
+ "3515102480": [
+  "INTANIA QUEEN",
+  "Auxiliary",
+  11
+ ],
+ "3760076752": [
+  "DRUID",
+  "Destroyer",
+  10
+ ],
+ "4279219920": [
+  "TAIH\u014c (OLD)",
+  "AirCarrier",
+  9
+ ],
+ "4255037136": [
+  "ATAGO",
+  "Cruiser",
+  8
+ ],
+ "3542005744": [
+  "AL MONTPELIER",
+  "Cruiser",
+  8
+ ],
+ "3554588464": [
+  "HSF GRAF SPEE",
+  "Cruiser",
+  6
+ ],
+ "4179539152": [
+  "JINAN",
+  "Cruiser",
+  10
+ ],
+ "4184782032": [
+  "CHUNGKING",
+  "Cruiser",
+  5
+ ],
+ "3764270416": [
+  "JURU\u00c1",
+  "Destroyer",
+  6
+ ],
+ "3761125136": [
+  "GRONINGEN",
+  "Destroyer",
+  9
+ ],
+ "4267587280": [
+  "KAMIKAZE R",
+  "Destroyer",
+  5
+ ],
+ "3760109264": [
+  "AZUMA",
+  "Cruiser",
+  9
+ ],
+ "4268635856": [
+  "KAMIKAZE",
+  "Destroyer",
+  5
+ ],
+ "4179506640": [
+  "KHABAROVSK",
+  "Destroyer",
+  10
+ ],
+ "3730814960": [
+  "HORNET",
+  "AirCarrier",
+  8
+ ],
+ "4179572688": [
+  "CONQUEROR",
+  "Battleship",
+  10
+ ],
+ "4283381008": [
+  "CROCOSAUR",
+  "Battleship",
+  10
+ ],
+ "3679369200": [
+  "ATLANTA B",
+  "Cruiser",
+  7
+ ],
+ "4182718416": [
+  "KING GEORGE V",
+  "Battleship",
+  7
+ ],
+ "3762238928": [
+  "POLTAVA",
+  "Battleship",
+  7
+ ],
+ "3720263664": [
+  "SAN DIEGO",
+  "Cruiser",
+  8
+ ],
+ "4178491184": [
+  "CLAUSEWITZ",
+  "Cruiser",
+  11
+ ],
+ "4186879952": [
+  "CALEDON",
+  "Cruiser",
+  3
+ ],
+ "3331241680": [
+  "TONE 3",
+  "Cruiser",
+  8
+ ],
+ "4181702096": [
+  "POBEDA",
+  "AirCarrier",
+  8
+ ],
+ "3762173232": [
+  "ORKAN",
+  "Destroyer",
+  8
+ ],
+ "3763255248": [
+  "BELFAST",
+  "Cruiser",
+  7
+ ],
+ "3667900208": [
+  "GRAF ZEPPELIN B",
+  "AirCarrier",
+  8
+ ],
+ "3751753712": [
+  "MASSACHUSETTS",
+  "Battleship",
+  8
+ ],
+ "4180554960": [
+  "CHUNG MU",
+  "Destroyer",
+  9
+ ],
+ "4183766832": [
+  "BAYERN",
+  "Battleship",
+  6
+ ],
+ "4076779344": [
+  "CHERBOURG",
+  "Cruiser",
+  8
+ ],
+ "3764303696": [
+  "DE GRASSE",
+  "Cruiser",
+  6
+ ],
+ "4076812080": [
+  "ZIETEN",
+  "Battleship",
+  8
+ ],
+ "4183701456": [
+  "ICARUS",
+  "Destroyer",
+  6
+ ],
+ "3666818864": [
+  "POMMERN B",
+  "Battleship",
+  9
+ ],
+ "4293145872": [
+  "TRANSYLVANIA",
+  "Auxiliary",
+  5
+ ],
+ "3552458448": [
+  "HSF HAREKAZE",
+  "Destroyer",
+  8
+ ],
+ "4179015472": [
+  "U-2501",
+  "Submarine",
+  10
+ ],
+ "3765385200": [
+  "OKLAHOMA",
+  "Battleship",
+  5
+ ],
+ "4269684432": [
+  "WAKATAKE",
+  "Destroyer",
+  3
+ ],
+ "3760109008": [
+  "STALINGRAD",
+  "Cruiser",
+  10
+ ],
+ "3762272048": [
+  "GRAF ZEPPELIN (OLD)",
+  "AirCarrier",
+  8
+ ],
+ "3552523984": [
+  "ARP HIEI",
+  "Battleship",
+  5
+ ],
+ "4184749808": [
+  "MAESTRALE",
+  "Destroyer",
+  5
+ ],
+ "4180621104": [
+  "F. DER GROSSE",
+  "Battleship",
+  9
+ ],
+ "4282365648": [
+  "SH\u014cKAKU (OLD)",
+  "AirCarrier",
+  8
+ ],
+ "4076812240": [
+  "HAWKE",
+  "Battleship",
+  8
+ ],
+ "3667900112": [
+  "KAGA B",
+  "AirCarrier",
+  8
+ ],
+ "3542005552": [
+  "CROSS OF DORN",
+  "Cruiser",
+  8
+ ],
+ "3767416784": [
+  "CAMPBELTOWN",
+  "Destroyer",
+  3
+ ],
+ "3763255280": [
+  "INDIANAPOLIS",
+  "Cruiser",
+  7
+ ],
+ "4288558800": [
+  "HATSUHARU (OLD)",
+  "Destroyer",
+  7
+ ],
+ "3763255120": [
+  "TOULON",
+  "Cruiser",
+  7
+ ],
+ "4276368656": [
+  "CABOTEUR",
+  "Auxiliary",
+  2
+ ],
+ "4078352176": [
+  "U-69",
+  "Submarine",
+  6
+ ],
+ "4270732560": [
+  "STEEL LANCET",
+  "Destroyer",
+  9
+ ],
+ "4293834192": [
+  "AURORA",
+  "Cruiser",
+  3
+ ],
+ "4248745968": [
+  "MARBLEHEAD",
+  "Cruiser",
+  5
+ ],
+ "4281218320": [
+  "MESSER",
+  "Destroyer",
+  8
+ ],
+ "3763222224": [
+  "Y\u016aDACHI",
+  "Destroyer",
+  7
+ ],
+ "4078876624": [
+  "DEVONSHIRE",
+  "Cruiser",
+  6
+ ],
+ "3749623504": [
+  "YOSHINO",
+  "Cruiser",
+  10
+ ],
+ "4077794768": [
+  "MINSK",
+  "Destroyer",
+  7
+ ],
+ "4074649392": [
+  "ELBING",
+  "Destroyer",
+  10
+ ],
+ "4292850960": [
+  "AIR FORCE",
+  "AirCarrier",
+  4
+ ],
+ "3751720752": [
+  "MAINZ",
+  "Cruiser",
+  8
+ ],
+ "4277057520": [
+  "BALTIMORE (OLD)",
+  "Cruiser",
+  9
+ ],
+ "4186879760": [
+  "JAVA",
+  "Cruiser",
+  3
+ ],
+ "3667900400": [
+  "SAIPAN B",
+  "AirCarrier",
+  8
+ ],
+ "3762239472": [
+  "ALABAMA",
+  "Battleship",
+  8
+ ],
+ "3762272208": [
+  "INDOMITABLE",
+  "AirCarrier",
+  8
+ ],
+ "3551475152": [
+  "AL SOV. ROSSIYA",
+  "Battleship",
+  9
+ ],
+ "3763287408": [
+  "YUKON",
+  "Battleship",
+  7
+ ],
+ "3655251952": [
+  "PUERTO RICO",
+  "Cruiser",
+  10
+ ],
+ "4181637072": [
+  "EDINBURGH",
+  "Cruiser",
+  8
+ ],
+ "4293146608": [
+  "CIMARRON",
+  "Auxiliary",
+  5
+ ],
+ "3762239440": [
+  "VANGUARD",
+  "Battleship",
+  8
+ ],
+ "4258542864": [
+  "JOHN CATTLING",
+  "Auxiliary",
+  2
+ ],
+ "3760109392": [
+  "COLBERT",
+  "Cruiser",
+  10
+ ],
+ "3553572560": [
+  "ARP HARUNA",
+  "Battleship",
+  5
+ ],
+ "3340645840": [
+  "[GROZOVOI]",
+  "Destroyer",
+  10
+ ],
+ "3762206512": [
+  "PRINZ EUGEN",
+  "Cruiser",
+  8
+ ],
+ "3552524016": [
+  "AL LITTORIO",
+  "Battleship",
+  8
+ ],
+ "3741300720": [
+  "SAIPAN",
+  "AirCarrier",
+  8
+ ],
+ "4276008656": [
+  "TONE",
+  "Cruiser",
+  8
+ ],
+ "3768497488": [
+  "ALTE ABREU",
+  "Cruiser",
+  2
+ ],
+ "4185896656": [
+  "H\u014cSH\u014c",
+  "AirCarrier",
+  4
+ ],
+ "4253299984": [
+  "LST 325",
+  "Auxiliary",
+  2
+ ],
+ "3761190896": [
+  "MISSOURI",
+  "Battleship",
+  9
+ ],
+ "4185863632": [
+  "GANGUT",
+  "Battleship",
+  4
+ ],
+ "4081006544": [
+  "QUEEN MARY",
+  "Battleship",
+  4
+ ],
+ "4293834736": [
+  "ERIE",
+  "Cruiser",
+  1
+ ],
+ "4283315472": [
+  "COMET TRACE",
+  "Destroyer",
+  7
+ ],
+ "4183799600": [
+  "WESER",
+  "AirCarrier",
+  6
+ ],
+ "3767448848": [
+  "SHIP",
+  "Cruiser",
+  1
+ ],
+ "3761125360": [
+  "BENHAM",
+  "Destroyer",
+  9
+ ],
+ "3553572848": [
+  "CALIFORNIA",
+  "Battleship",
+  7
+ ],
+ "4181669616": [
+  "V.\u00a0VENETO",
+  "Battleship",
+  8
+ ],
+ "4178523952": [
+  "HANNOVER",
+  "Battleship",
+  11
+ ],
+ "4181112624": [
+  "U-190",
+  "Submarine",
+  8
+ ],
+ "4183799248": [
+  "SEROV",
+  "AirCarrier",
+  6
+ ],
+ "4291736848": [
+  "SVYATOZAR",
+  "Cruiser",
+  8
+ ],
+ "3655284688": [
+  "INCOMPARABLE",
+  "Battleship",
+  10
+ ],
+ "3750639408": [
+  "Z-44",
+  "Destroyer",
+  9
+ ],
+ "4180555600": [
+  "MOGADOR",
+  "Destroyer",
+  9
+ ],
+ "3762239312": [
+  "GASCOGNE",
+  "Battleship",
+  8
+ ],
+ "4184782800": [
+  "EMERALD",
+  "Cruiser",
+  5
+ ],
+ "4292818896": [
+  "WARSPITE",
+  "Battleship",
+  6
+ ],
+ "3750705136": [
+  "KEARSARGE",
+  "Battleship",
+  9
+ ],
+ "3865982416": [
+  "TASHKENT",
+  "Destroyer",
+  9
+ ],
+ "4178491216": [
+  "COND\u00c9",
+  "Cruiser",
+  11
+ ],
+ "4184815056": [
+  "PYOTR VELIKIY",
+  "Battleship",
+  5
+ ],
+ "4185830864": [
+  "SVIETLANA",
+  "Cruiser",
+  4
+ ],
+ "4078876656": [
+  "DALLAS",
+  "Cruiser",
+  6
+ ],
+ "4179507024": [
+  "KL\u00c9BER",
+  "Destroyer",
+  10
+ ],
+ "4074714928": [
+  "SCHLIEFFEN",
+  "Battleship",
+  10
+ ],
+ "4293801680": [
+  "TACHIBANA",
+  "Destroyer",
+  2
+ ],
+ "4179572464": [
+  "C.\u00a0COLOMBO",
+  "Battleship",
+  10
+ ],
+ "4182685488": [
+  "YORCK",
+  "Cruiser",
+  7
+ ],
+ "4185831184": [
+  "DE RUYTER",
+  "Cruiser",
+  4
+ ],
+ "4074157872": [
+  "U-2501",
+  "Submarine",
+  10
+ ],
+ "4077795120": [
+  "Z-31",
+  "Destroyer",
+  7
+ ],
+ "3760109296": [
+  "NAPOLI",
+  "Cruiser",
+  10
+ ],
+ "3337500656": [
+  "[GEARING]",
+  "Destroyer",
+  10
+ ],
+ "3760175088": [
+  "F.\u00a0D.\u00a0ROOSEVELT",
+  "AirCarrier",
+  10
+ ],
+ "4180555504": [
+  "ADRIATICO",
+  "Destroyer",
+  9
+ ],
+ "3659445712": [
+  "MAKAROV",
+  "Cruiser",
+  6
+ ],
+ "3741267408": [
+  "BORODINO",
+  "Battleship",
+  8
+ ],
+ "4290689008": [
+  "ST.\u00a0LOUIS",
+  "Cruiser",
+  3
+ ],
+ "4187895536": [
+  "CURTATONE",
+  "Destroyer",
+  2
+ ],
+ "4291704528": [
+  "ISOKAZE",
+  "Destroyer",
+  4
+ ],
+ "4275975440": [
+  "MIZU-JET",
+  "Destroyer",
+  9
+ ],
+ "4185831248": [
+  "DUGUAY-TROUIN",
+  "Cruiser",
+  4
+ ],
+ "3741267760": [
+  "ANHALT",
+  "Battleship",
+  8
+ ],
+ "3752802288": [
+  "FLORIDA",
+  "Battleship",
+  7
+ ],
+ "4183734032": [
+  "KIJKDUIN",
+  "Cruiser",
+  6
+ ],
+ "3764336624": [
+  "ARIZONA",
+  "Battleship",
+  6
+ ],
+ "3551410160": [
+  "BLACK",
+  "Destroyer",
+  9
+ ],
+ "4181702608": [
+  "IMPLACABLE",
+  "AirCarrier",
+  8
+ ],
+ "4183799504": [
+  "RY\u016aJ\u014c",
+  "AirCarrier",
+  6
+ ],
+ "4266538992": [
+  "WICKES",
+  "Destroyer",
+  3
+ ],
+ "4078352368": [
+  "CACHALOT",
+  "Submarine",
+  6
+ ],
+ "4183734224": [
+  "LEANDER",
+  "Cruiser",
+  6
+ ],
+ "3765385168": [
+  "AGINCOURT",
+  "Battleship",
+  5
+ ],
+ "3867587856": [
+  "BARRACUDA",
+  "Submarine",
+  7
+ ],
+ "4182685680": [
+  "NEW ORLEANS",
+  "Cruiser",
+  7
+ ],
+ "3658397424": [
+  "GORIZIA",
+  "Cruiser",
+  7
+ ],
+ "4287575760": [
+  "KONG\u014c",
+  "Battleship",
+  5
+ ],
+ "4184749520": [
+  "GNEVNY (OLD)",
+  "Destroyer",
+  5
+ ],
+ "4187928528": [
+  "WEYMOUTH",
+  "Cruiser",
+  2
+ ],
+ "4181636880": [
+  "HAARLEM",
+  "Cruiser",
+  8
+ ],
+ "3762730256": [
+  "KILLER WHALE",
+  "Submarine",
+  10
+ ],
+ "4274926864": [
+  "STEALTHEDO",
+  "Destroyer",
+  10
+ ],
+ "4076746192": [
+  "OGNEVOI",
+  "Destroyer",
+  8
+ ],
+ "3247355344": [
+  "TEST SHIP",
+  "Cruiser",
+  10
+ ],
+ "4187928016": [
+  "NOVIK",
+  "Cruiser",
+  2
+ ],
+ "3560912592": [
+  "ARP YAMATO",
+  "Battleship",
+  10
+ ],
+ "4074747856": [
+  "AUDACIOUS",
+  "AirCarrier",
+  10
+ ],
+ "4284396816": [
+  "CENTURY HAWK",
+  "Cruiser",
+  7
+ ],
+ "4267980048": [
+  "MEDWAY QUEEN",
+  "Auxiliary",
+  2
+ ],
+ "3550393808": [
+  "SEVASTOPOL",
+  "Cruiser",
+  10
+ ],
+ "4282333168": [
+  "N. CAROLINA",
+  "Battleship",
+  8
+ ],
+ "4291704080": [
+  "URASHIMA",
+  "Destroyer",
+  8
+ ],
+ "3763288048": [
+  "W. VIRGINIA 1941",
+  "Battleship",
+  6
+ ],
+ "4077860656": [
+  "P.\u00a0HEINRICH",
+  "Battleship",
+  7
+ ],
+ "3752802256": [
+  "NELSON",
+  "Battleship",
+  7
+ ],
+ "3667801808": [
+  "ASASHIO B",
+  "Destroyer",
+  8
+ ],
+ "4181636848": [
+  "AMALFI",
+  "Cruiser",
+  8
+ ],
+ "4077828080": [
+  "HELENA",
+  "Cruiser",
+  7
+ ],
+ "4285478160": [
+  "SCORPIOID",
+  "Battleship",
+  10
+ ],
+ "4280170480": [
+  "NICHOLAS",
+  "Destroyer",
+  5
+ ],
+ "3750672080": [
+  "AL AZUMA",
+  "Cruiser",
+  9
+ ],
+ "3760142160": [
+  "BOURGOGNE",
+  "Battleship",
+  10
+ ],
+ "3450812144": [
+  "GIUNIO BRUTO",
+  "Battleship",
+  6
+ ],
+ "4180588304": [
+  "JOHAN DE WITT",
+  "Cruiser",
+  9
+ ],
+ "4272830448": [
+  "FLETCHER",
+  "Destroyer",
+  9
+ ],
+ "4181636560": [
+  "CHAPAYEV",
+  "Cruiser",
+  8
+ ],
+ "4179605296": [
+  "M.\u00a0RICHTHOFEN",
+  "AirCarrier",
+  10
+ ],
+ "3762206480": [
+  "DE 7 PROVINCI\u00cbN",
+  "Cruiser",
+  8
+ ],
+ "3764369200": [
+  "E. LOEWENHARDT",
+  "AirCarrier",
+  6
+ ],
+ "3743332304": [
+  "DIDO",
+  "Cruiser",
+  6
+ ],
+ "4178556912": [
+  "UNITED STATES",
+  "AirCarrier",
+  11
+ ],
+ "4281219056": [
+  "GEARING",
+  "Destroyer",
+  10
+ ],
+ "4290721776": [
+  "WYOMING",
+  "Battleship",
+  4
+ ],
+ "4179015664": [
+  "BALAO",
+  "Submarine",
+  10
+ ],
+ "4248057104": [
+  "CIMARRON CIVIL",
+  "Auxiliary",
+  5
+ ],
+ "4183700944": [
+  "OGNEVOI (OLD)",
+  "Destroyer",
+  6
+ ],
+ "4081039312": [
+  "HERMES",
+  "AirCarrier",
+  4
+ ],
+ "4184815344": [
+  "CAVOUR",
+  "Battleship",
+  5
+ ],
+ "3445503984": [
+  "GEARING P",
+  "Destroyer",
+  10
+ ],
+ "4274927600": [
+  "CLEMSON",
+  "Destroyer",
+  4
+ ],
+ "4293867504": [
+  "S. CAROLINA",
+  "Battleship",
+  3
+ ],
+ "3764303600": [
+  "DUCA D'AOSTA",
+  "Cruiser",
+  6
+ ],
+ "4180588496": [
+  "NEPTUNE",
+  "Cruiser",
+  9
+ ],
+ "4179539408": [
+  "MOSKVA",
+  "Cruiser",
+  10
+ ],
+ "4181603536": [
+  "HSIENYANG",
+  "Destroyer",
+  8
+ ],
+ "4293866960": [
+  "NIKOLAI I",
+  "Battleship",
+  4
+ ],
+ "4184749776": [
+  "MUTSUKI",
+  "Destroyer",
+  5
+ ],
+ "4291802384": [
+  "NOBILIUM",
+  "AirCarrier",
+  8
+ ],
+ "4292785968": [
+  "DRESDEN",
+  "Cruiser",
+  2
+ ],
+ "3764270896": [
+  "T-61",
+  "Destroyer",
+  6
+ ],
+ "4187895600": [
+  "V-25",
+  "Destroyer",
+  2
+ ],
+ "3751720944": [
+  "ANCHORAGE",
+  "Cruiser",
+  8
+ ],
+ "3751687888": [
+  "ASASHIO",
+  "Destroyer",
+  8
+ ],
+ "4292753104": [
+  "UMIKAZE",
+  "Destroyer",
+  2
+ ],
+ "3763255088": [
+  "M\u00dcNCHEN",
+  "Cruiser",
+  7
+ ],
+ "4257494288": [
+  "LANDING SHIP 1",
+  "Auxiliary",
+  2
+ ],
+ "4284430032": [
+  "NAGATO",
+  "Battleship",
+  7
+ ],
+ "4292753392": [
+  "SAMPSON",
+  "Destroyer",
+  2
+ ],
+ "3660462032": [
+  "ANTHONY",
+  "Destroyer",
+  5
+ ],
+ "4183734096": [
+  "LA GALISSONNI\u00c8RE",
+  "Cruiser",
+  6
+ ],
+ "4258182864": [
+  "CHIKUMA",
+  "Cruiser",
+  2
+ ],
+ "4178491344": [
+  "EDGAR",
+  "Cruiser",
+  11
+ ],
+ "4183733456": [
+  "RAHMAT",
+  "Cruiser",
+  6
+ ],
+ "4074649040": [
+  "GROZOVOI",
+  "Destroyer",
+  10
+ ],
+ "3667867632": [
+  "MASSACHUSETTS B",
+  "Battleship",
+  8
+ ],
+ "4180588272": [
+  "BRINDISI",
+  "Cruiser",
+  9
+ ],
+ "4187928400": [
+  "JURIEN",
+  "Cruiser",
+  2
+ ],
+ "3766433072": [
+  "VIRIBUS UNITIS",
+  "Battleship",
+  5
+ ],
+ "3751720144": [
+  "WUKONG",
+  "Cruiser",
+  8
+ ],
+ "3333371888": [
+  "[MONTANA]",
+  "Battleship",
+  10
+ ],
+ "4180588368": [
+  "SAINT-LOUIS",
+  "Cruiser",
+  9
+ ],
+ "4293801232": [
+  "BLADE",
+  "Destroyer",
+  3
+ ],
+ "3761190864": [
+  "MARLBOROUGH",
+  "Battleship",
+  9
+ ],
+ "4180555216": [
+  "KIEV (OLD)",
+  "Destroyer",
+  7
+ ],
+ "4182652752": [
+  "VAUQUELIN",
+  "Destroyer",
+  7
+ ],
+ "4178458064": [
+  "ZORKIY",
+  "Destroyer",
+  11
+ ],
+ "4284429584": [
+  "MAVERICK",
+  "Battleship",
+  9
+ ],
+ "4293834000": [
+  "IGOR",
+  "Cruiser",
+  3
+ ],
+ "4181669328": [
+  "VLADIVOSTOK",
+  "Battleship",
+  8
+ ],
+ "4180621136": [
+  "ALSACE",
+  "Battleship",
+  9
+ ],
+ "4286494416": [
+  "MY\u014cK\u014c",
+  "Cruiser",
+  7
+ ],
+ "4074682352": [
+  "WORCESTER",
+  "Cruiser",
+  10
+ ],
+ "4076779472": [
+  "ALBEMARLE",
+  "Cruiser",
+  8
+ ],
+ "3760141776": [
+  "SLAVA",
+  "Battleship",
+  10
+ ],
+ "3744380368": [
+  "KIROV",
+  "Cruiser",
+  5
+ ],
+ "4283348240": [
+  "OCTODROID",
+  "Cruiser",
+  10
+ ],
+ "4185798096": [
+  "IZYASLAV",
+  "Destroyer",
+  4
+ ],
+ "4179506992": [
+  "Z-52",
+  "Destroyer",
+  10
+ ],
+ "4181636912": [
+  "HIPPER",
+  "Cruiser",
+  8
+ ],
+ "4187895760": [
+  "MEDEA",
+  "Destroyer",
+  2
+ ],
+ "3655251408": [
+  "SMOLENSK",
+  "Cruiser",
+  10
+ ],
+ "3752736720": [
+  "COSSACK",
+  "Destroyer",
+  8
+ ],
+ "4292786160": [
+  "CHESTER",
+  "Cruiser",
+  2
+ ],
+ "3668850672": [
+  "SIMS B",
+  "Destroyer",
+  7
+ ],
+ "4187928336": [
+  "GELDERLAND",
+  "Cruiser",
+  2
+ ],
+ "4184750032": [
+  "ACASTA",
+  "Destroyer",
+  5
+ ],
+ "4074681808": [
+  "A.\u00a0NEVSKY",
+  "Cruiser",
+  10
+ ],
+ "3765352176": [
+  "GENOVA",
+  "Cruiser",
+  5
+ ],
+ "3751786192": [
+  "KAGA",
+  "AirCarrier",
+  8
+ ],
+ "4183766480": [
+  "IZMAIL",
+  "Battleship",
+  6
+ ],
+ "3445536592": [
+  "BRENNUS",
+  "Cruiser",
+  10
+ ],
+ "4179572176": [
+  "KREMLIN",
+  "Battleship",
+  10
+ ],
+ "4293834544": [
+  "HERMELIN",
+  "Cruiser",
+  1
+ ],
+ "4074158064": [
+  "BALAO",
+  "Submarine",
+  10
+ ],
+ "4259264496": [
+  "NEW MEXICO",
+  "Battleship",
+  6
+ ],
+ "3751196656": [
+  "GATO",
+  "Submarine",
+  10
+ ],
+ "4076255024": [
+  "U-190",
+  "Submarine",
+  8
+ ],
+ "4182718256": [
+  "GNEISENAU",
+  "Battleship",
+  7
+ ],
+ "3340678608": [
+  "[MOSKVA]",
+  "Cruiser",
+  10
+ ],
+ "3751786288": [
+  "GRAF ZEPPELIN",
+  "AirCarrier",
+  8
+ ],
+ "4285445840": [
+  "MOGAMI",
+  "Cruiser",
+  8
+ ],
+ "4285445392": [
+  "OCTOPUS",
+  "Cruiser",
+  7
+ ],
+ "4181636944": [
+  "CHARLES MARTEL",
+  "Cruiser",
+  8
+ ],
+ "4267620048": [
+  "IWAKI A",
+  "Cruiser",
+  4
+ ],
+ "3340678960": [
+  "[HINDENBURG]",
+  "Cruiser",
+  10
+ ],
+ "4290753808": [
+  "THE GREAT GORGON",
+  "AirCarrier",
+  8
+ ],
+ "3760076208": [
+  "\u00c1LVARO DE\u00a0BAZ\u00c1N",
+  "Destroyer",
+  10
+ ],
+ "4185797840": [
+  "SHENYANG",
+  "Destroyer",
+  4
+ ],
+ "4292785616": [
+  "DIANA",
+  "Cruiser",
+  2
+ ],
+ "4280169744": [
+  "CARNAL",
+  "Destroyer",
+  8
+ ],
+ "3530504176": [
+  "GEORGIA",
+  "Battleship",
+  9
+ ],
+ "4287542992": [
+  "AOBA",
+  "Cruiser",
+  6
+ ],
+ "4178523856": [
+  "SATSUMA",
+  "Battleship",
+  11
+ ],
+ "4289607376": [
+  "MUTSUKI (OLD)",
+  "Destroyer",
+  6
+ ],
+ "3749623248": [
+  "STALINGRAD #2",
+  "Cruiser",
+  10
+ ],
+ "3655284528": [
+  "MECKLENBURG",
+  "Battleship",
+  10
+ ],
+ "4291737584": [
+  "ALBANY",
+  "Cruiser",
+  2
+ ],
+ "4268635408": [
+  "FANGBLADE",
+  "Destroyer",
+  10
+ ],
+ "4185863984": [
+  "KAISER",
+  "Battleship",
+  4
+ ],
+ "4079925200": [
+  "HAWKINS",
+  "Cruiser",
+  5
+ ],
+ "4183766992": [
+  "QUEEN ELIZABETH",
+  "Battleship",
+  6
+ ],
+ "3315513040": [
+  "[ZA\u014c]",
+  "Cruiser",
+  10
+ ],
+ "3864933840": [
+  "DELNY",
+  "Destroyer",
+  10
+ ],
+ "4186847184": [
+  "VALKYRIE",
+  "Destroyer",
+  3
+ ],
+ "3765352144": [
+  "YAHAGI",
+  "Cruiser",
+  5
+ ],
+ "4181637104": [
+  "BALTIMORE",
+  "Cruiser",
+  8
+ ],
+ "3551409616": [
+  "NEUSTRASHIMY",
+  "Destroyer",
+  9
+ ],
+ "4075763504": [
+  "P.\u00a0RUPPRECHT",
+  "Battleship",
+  9
+ ],
+ "4286461200": [
+  "STEEL RAT",
+  "Destroyer",
+  7
+ ],
+ "4181669680": [
+  "BISMARCK",
+  "Battleship",
+  8
+ ],
+ "4187894992": [
+  "LONGJIANG",
+  "Destroyer",
+  2
+ ],
+ "4182718288": [
+  "LYON",
+  "Battleship",
+  7
+ ],
+ "3761190096": [
+  "BAJIE",
+  "Battleship",
+  9
+ ],
+ "4280202960": [
+  "KITAKAMI",
+  "Cruiser",
+  10
+ ],
+ "4292785424": [
+  "SCARAB",
+  "Cruiser",
+  7
+ ],
+ "4188976976": [
+  "BOUGAINVILLE",
+  "Cruiser",
+  1
+ ],
+ "4178457904": [
+  "DALARNA",
+  "Destroyer",
+  11
+ ],
+ "3762239280": [
+  "ODIN",
+  "Battleship",
+  8
+ ],
+ "3767449040": [
+  "OLEG",
+  "Cruiser",
+  3
+ ],
+ "3676223184": [
+  "YOSHINO B",
+  "Cruiser",
+  10
+ ],
+ "4286461936": [
+  "BENSON",
+  "Destroyer",
+  8
+ ],
+ "4183766768": [
+  "ANDREA DORIA",
+  "Battleship",
+  6
+ ],
+ "4287542544": [
+  "AURORA",
+  "Cruiser",
+  7
+ ],
+ "4074682320": [
+  "GOLIATH",
+  "Cruiser",
+  10
+ ],
+ "4287543280": [
+  "CLEVELAND (OLD)",
+  "Cruiser",
+  6
+ ],
+ "3363780304": [
+  "RAGNAROK",
+  "Battleship",
+  8
+ ],
+ "4178491376": [
+  "ANNAPOLIS",
+  "Cruiser",
+  11
+ ],
+ "3750704336": [
+  "WUJING",
+  "Battleship",
+  9
+ ],
+ "4181604176": [
+  "LE FANTASQUE",
+  "Destroyer",
+  8
+ ],
+ "4287575312": [
+  "ALLDESTROYER",
+  "Battleship",
+  7
+ ],
+ "4182685648": [
+  "FIJI",
+  "Cruiser",
+  7
+ ],
+ "3447600976": [
+  "L'EFFRONT\u00c9",
+  "Destroyer",
+  8
+ ],
+ "4183734256": [
+  "PENSACOLA",
+  "Cruiser",
+  6
+ ],
+ "4183209776": [
+  "U-69",
+  "Submarine",
+  6
+ ],
+ "3332290256": [
+  "TONE 2",
+  "Cruiser",
+  8
+ ],
+ "4185798608": [
+  "WAKEFUL",
+  "Destroyer",
+  4
+ ],
+ "4278105360": [
+  "THORNRIDGE",
+  "Cruiser",
+  10
+ ],
+ "4288657392": [
+  "INDEPENDENCE (OLD)",
+  "AirCarrier",
+  6
+ ],
+ "3761157968": [
+  "CARNOT",
+  "Cruiser",
+  9
+ ],
+ "3340711888": [
+  "[CONQUEROR]",
+  "Battleship",
+  10
+ ],
+ "3741267792": [
+  "CHAMPAGNE",
+  "Battleship",
+  8
+ ],
+ "4074682192": [
+  "MARSEILLE",
+  "Cruiser",
+  10
+ ],
+ "4184749264": [
+  "JIANWEI",
+  "Destroyer",
+  5
+ ],
+ "3765319120": [
+  "OKHOTNIK",
+  "Destroyer",
+  5
+ ],
+ "4290655952": [
+  "MINEKAZE",
+  "Destroyer",
+  5
+ ],
+ "4285511376": [
+  "RY\u016aJ\u014c (OLD)",
+  "AirCarrier",
+  6
+ ],
+ "4286527184": [
+  "ISHIZUCHI",
+  "Battleship",
+  4
+ ],
+ "3760109520": [
+  "PLYMOUTH",
+  "Cruiser",
+  10
+ ],
+ "4186846960": [
+  "N. SAURO",
+  "Destroyer",
+  3
+ ],
+ "4180621296": [
+  "MINNESOTA",
+  "Battleship",
+  9
+ ],
+ "3751720400": [
+  "LAZO",
+  "Cruiser",
+  7
+ ],
+ "3445536464": [
+  "ZA\u014c P",
+  "Cruiser",
+  10
+ ],
+ "3763287760": [
+  "ASHITAKA",
+  "Battleship",
+  7
+ ],
+ "4288591120": [
+  "NORMA",
+  "Cruiser",
+  7
+ ],
+ "3753818064": [
+  "LONDON",
+  "Cruiser",
+  6
+ ],
+ "4181604144": [
+  "Z-23",
+  "Destroyer",
+  8
+ ],
+ "3340645680": [
+  "LAPPLAND",
+  "Destroyer",
+  10
+ ],
+ "4280170192": [
+  "TACHIBANA L",
+  "Destroyer",
+  2
+ ],
+ "3767482320": [
+  "DREADNOUGHT",
+  "Battleship",
+  3
+ ],
+ "3751687376": [
+  "FENYANG",
+  "Destroyer",
+  8
+ ],
+ "4181604080": [
+  "V. CUNIBERTI",
+  "Destroyer",
+  8
+ ],
+ "4076255216": [
+  "SALMON",
+  "Submarine",
+  8
+ ],
+ "3730782192": [
+  "CONSTELLATION",
+  "Battleship",
+  8
+ ],
+ "4282300400": [
+  "PENSACOLA (OLD)",
+  "Cruiser",
+  7
+ ],
+ "4180587984": [
+  "DM. DONSKOI",
+  "Cruiser",
+  9
+ ],
+ "4184815408": [
+  "K\u00d6NIG",
+  "Battleship",
+  5
+ ],
+ "4291770064": [
+  "MY\u014cGI",
+  "Battleship",
+  4
+ ],
+ "4188976432": [
+  "GRYF",
+  "Cruiser",
+  1
+ ],
+ "3545183952": [
+  "HSF HIEI",
+  "Battleship",
+  5
+ ],
+ "4277090288": [
+  "MONTANA",
+  "Battleship",
+  10
+ ],
+ "4182684880": [
+  "CHUMPHON",
+  "Cruiser",
+  7
+ ],
+ "4076845040": [
+  "YORKTOWN",
+  "AirCarrier",
+  8
+ ],
+ "4178556880": [
+  "EAGLE",
+  "AirCarrier",
+  11
+ ],
+ "4182652112": [
+  "GADJAH MADA",
+  "Destroyer",
+  7
+ ],
+ "4075730896": [
+  "DRAKE",
+  "Cruiser",
+  9
+ ],
+ "3753850320": [
+  "NOVOROSSIYSK",
+  "Battleship",
+  6
+ ],
+ "3969824208": [
+  "PETROPAVLOVSK",
+  "Cruiser",
+  10
+ ],
+ "4287509776": [
+  "SCHNELLBOOT",
+  "Destroyer",
+  1
+ ],
+ "4247697392": [
+  "MARBLEHEAD L",
+  "Cruiser",
+  5
+ ],
+ "3760142288": [
+  "THUNDERER",
+  "Battleship",
+  10
+ ],
+ "3761157936": [
+  "SIEGFRIED",
+  "Cruiser",
+  9
+ ],
+ "4078909232": [
+  "MACKENSEN",
+  "Battleship",
+  6
+ ],
+ "3338548944": [
+  "[SHIMAKAZE]",
+  "Destroyer",
+  10
+ ],
+ "4178523984": [
+  "PATRIE",
+  "Battleship",
+  11
+ ],
+ "4179539792": [
+  "HENRI IV",
+  "Cruiser",
+  10
+ ],
+ "4179605488": [
+  "MIDWAY",
+  "AirCarrier",
+  10
+ ],
+ "4279220208": [
+  "MIDWAY (OLD)",
+  "AirCarrier",
+  10
+ ],
+ "4283381456": [
+  "MIKASA",
+  "Battleship",
+  2
+ ],
+ "4188976400": [
+  "VALKYRIE",
+  "Cruiser",
+  9
+ ],
+ "3667834576": [
+  "ATAGO B",
+  "Cruiser",
+  8
+ ],
+ "3762238800": [
+  "ATL\u00c2NTICO",
+  "Battleship",
+  8
+ ],
+ "3543054032": [
+  "S. DRAGON",
+  "Cruiser",
+  7
+ ],
+ "3753817456": [
+  "MYSORE",
+  "Cruiser",
+  6
+ ],
+ "3751720912": [
+  "TIGER '59",
+  "Cruiser",
+  8
+ ],
+ "3340711728": [
+  "[G. KURF\u00dcRST]",
+  "Battleship",
+  10
+ ],
+ "3741235184": [
+  "CONGRESS",
+  "Cruiser",
+  8
+ ],
+ "4077795024": [
+  "SHIRATSUYU",
+  "Destroyer",
+  7
+ ],
+ "4179572528": [
+  "G.\u00a0KURF\u00dcRST",
+  "Battleship",
+  10
+ ],
+ "3541972688": [
+  "AL YUKIKAZE",
+  "Destroyer",
+  8
+ ],
+ "4181702352": [
+  "SH\u014cKAKU",
+  "AirCarrier",
+  8
+ ],
+ "4078843344": [
+  "GNEVNY",
+  "Destroyer",
+  6
+ ],
+ "4183701296": [
+  "GAEDE",
+  "Destroyer",
+  6
+ ],
+ "4289672464": [
+  "VARG",
+  "Battleship",
+  7
+ ],
+ "4281284304": [
+  "AMAGI",
+  "Battleship",
+  8
+ ],
+ "3655317296": [
+  "M.\u00a0IMMELMANN",
+  "AirCarrier",
+  10
+ ],
+ "4078909392": [
+  "RENOWN",
+  "Battleship",
+  6
+ ],
+ "3340744656": [
+  "[AUDACIOUS]",
+  "AirCarrier",
+  10
+ ],
+ "4183701232": [
+  "AVIERE",
+  "Destroyer",
+  6
+ ],
+ "3334420176": [
+  "ISE 3",
+  "Battleship",
+  6
+ ],
+ "3335501808": [
+  "[MIDWAY]",
+  "AirCarrier",
+  10
+ ],
+ "4183701328": [
+  "GU\u00c9PARD",
+  "Destroyer",
+  6
+ ],
+ "4179605200": [
+  "HAKURY\u016a",
+  "AirCarrier",
+  10
+ ],
+ "3669964624": [
+  "DUNKERQUE\u00a0B",
+  "Battleship",
+  6
+ ],
+ "3445569520": [
+  "MONTANA P",
+  "Battleship",
+  10
+ ],
+ "4188976880": [
+  "ERITREA",
+  "Cruiser",
+  1
+ ],
+ "3768465392": [
+  "SMITH",
+  "Destroyer",
+  2
+ ],
+ "3761157584": [
+  "KRONSHTADT",
+  "Cruiser",
+  9
+ ],
+ "4181603632": [
+  "\u00d6LAND",
+  "Destroyer",
+  8
+ ],
+ "3751753520": [
+  "BRANDENBURG",
+  "Battleship",
+  8
+ ],
+ "3769513264": [
+  "B\u0141YSKAWICA",
+  "Destroyer",
+  7
+ ],
+ "3730781648": [
+  "V. I. LENIN",
+  "Battleship",
+  8
+ ],
+ "4079957968": [
+  "TIGER",
+  "Battleship",
+  5
+ ],
+ "4186879824": [
+  "FRIANT",
+  "Cruiser",
+  3
+ ],
+ "4185896944": [
+  "LANGLEY",
+  "AirCarrier",
+  4
+ ],
+ "4182685136": [
+  "SHCHORS",
+  "Cruiser",
+  7
+ ],
+ "4282267344": [
+  "SHIMAKAZE",
+  "Destroyer",
+  10
+ ],
+ "4293899536": [
+  "LUFTWAFFE",
+  "AirCarrier",
+  4
+ ],
+ "4273911792": [
+  "DES MOINES",
+  "Cruiser",
+  10
+ ],
+ "4292851408": [
+  "H\u014cSH\u014c (OLD)",
+  "AirCarrier",
+  4
+ ],
+ "3764270288": [
+  "ANSHAN",
+  "Destroyer",
+  6
+ ],
+ "3457103568": [
+  "ARP KIRISHIMA",
+  "Battleship",
+  5
+ ],
+ "4291049456": [
+  "LIBERTY",
+  "Auxiliary",
+  5
+ ],
+ "3550360880": [
+  "RAGNAR",
+  "Destroyer",
+  10
+ ],
+ "3752769328": [
+  "WEIMAR",
+  "Cruiser",
+  7
+ ],
+ "3730748880": [
+  "P. BAGRATION",
+  "Cruiser",
+  8
+ ],
+ "4179604944": [
+  "NAKHIMOV",
+  "AirCarrier",
+  10
+ ],
+ "4276041424": [
+  "YAMATO",
+  "Battleship",
+  10
+ ],
+ "4187895056": [
+  "WHIRLWIND",
+  "Destroyer",
+  10
+ ],
+ "3760076784": [
+  "SOMERS",
+  "Destroyer",
+  10
+ ],
+ "3439605008": [
+  "BOGUE",
+  "Auxiliary",
+  5
+ ],
+ "3553539792": [
+  "ARP ASHIGARA",
+  "Cruiser",
+  7
+ ],
+ "4256085712": [
+  "HASHIDATE",
+  "Cruiser",
+  1
+ ],
+ "4179506480": [
+  "HALLAND",
+  "Destroyer",
+  10
+ ],
+ "4269717488": [
+  "PHOENIX",
+  "Cruiser",
+  4
+ ],
+ "4289705232": [
+  "HELLCARRIER",
+  "AirCarrier",
+  7
+ ],
+ "3763254608": [
+  "NUEVE DE JULIO",
+  "Cruiser",
+  7
+ ],
+ "3762173136": [
+  "LOYANG",
+  "Destroyer",
+  8
+ ],
+ "3742316496": [
+  "DUKE OF YORK",
+  "Battleship",
+  7
+ ],
+ "3720263120": [
+  "BAGRATION",
+  "Cruiser",
+  8
+ ],
+ "4181702448": [
+  "A.\u00a0PARSEVAL",
+  "AirCarrier",
+  8
+ ],
+ "3762173936": [
+  "KIDD",
+  "Destroyer",
+  8
+ ],
+ "4186912592": [
+  "TURENNE",
+  "Battleship",
+  3
+ ],
+ "4187895248": [
+  "STOROZHEVOI",
+  "Destroyer",
+  2
+ ],
+ "4189009168": [
+  "AVENGER",
+  "Battleship",
+  10
+ ],
+ "4290754544": [
+  "LANGLEY (OLD)",
+  "AirCarrier",
+  4
+ ],
+ "3762272240": [
+  "ENTERPRISE (OLD)",
+  "AirCarrier",
+  8
+ ],
+ "3969857328": [
+  "PREUSSEN",
+  "Battleship",
+  10
+ ],
+ "3762173744": [
+  "Z-39",
+  "Destroyer",
+  7
+ ],
+ "3767449296": [
+  "KATORI",
+  "Cruiser",
+  3
+ ],
+ "3541972176": [
+  "SHIP SMASHA",
+  "Destroyer",
+  8
+ ],
+ "3750704880": [
+  "GIUSEPPE VERDI",
+  "Battleship",
+  9
+ ],
+ "4281317360": [
+  "ESSEX (OLD)",
+  "AirCarrier",
+  9
+ ],
+ "4183209968": [
+  "CACHALOT",
+  "Submarine",
+  6
+ ],
+ "4181669840": [
+  "MONARCH",
+  "Battleship",
+  8
+ ],
+ "4183766864": [
+  "NORMANDIE",
+  "Battleship",
+  6
+ ],
+ "4277024016": [
+  "LANCET",
+  "Destroyer",
+  9
+ ],
+ "4180588528": [
+  "BUFFALO",
+  "Cruiser",
+  9
+ ],
+ "4183734000": [
+  "TRENTO",
+  "Cruiser",
+  6
+ ],
+ "4076746544": [
+  "G. J. MAERKER",
+  "Destroyer",
+  8
+ ],
+ "4284463088": [
+  "RANGER (OLD)",
+  "AirCarrier",
+  7
+ ],
+ "4075730928": [
+  "SEATTLE",
+  "Cruiser",
+  9
+ ],
+ "3522082512": [
+  "ARP NACHI",
+  "Cruiser",
+  7
+ ],
+ "3751687984": [
+  "Z-35",
+  "Destroyer",
+  8
+ ],
+ "3762205904": [
+  "IRIAN",
+  "Cruiser",
+  8
+ ],
+ "4180555056": [
+  "\u00d6STERG\u00d6TLAND",
+  "Destroyer",
+  9
+ ],
+ "3655251664": [
+  "KITAKAMI",
+  "Cruiser",
+  10
+ ],
+ "4289640144": [
+  "FURUTAKA",
+  "Cruiser",
+  5
+ ],
+ "3760076496": [
+  "HAYATE",
+  "Destroyer",
+  10
+ ],
+ "4184782288": [
+  "KIROV (OLD)",
+  "Cruiser",
+  5
+ ],
+ "4186912208": [
+  "KNYAZ SUVOROV",
+  "Battleship",
+  3
+ ],
+ "3765384656": [
+  "OKT.\u00a0REVOLUTSIYA",
+  "Battleship",
+  5
+ ],
+ "3767449584": [
+  "CHARLESTON",
+  "Cruiser",
+  3
+ ],
+ "4181603792": [
+  "TASHKENT (OLD)",
+  "Destroyer",
+  8
+ ],
+ "3741202128": [
+  "HSF HAREKAZE II",
+  "Destroyer",
+  8
+ ],
+ "4186879792": [
+  "KOLBERG",
+  "Cruiser",
+  3
+ ],
+ "3730782032": [
+  "FLANDRE",
+  "Battleship",
+  8
+ ],
+ "3340711920": [
+  "CONNECTICUT",
+  "Battleship",
+  10
+ ],
+ "4077860816": [
+  "ROOKE",
+  "Battleship",
+  7
+ ],
+ "4269028624": [
+  "ARONIA",
+  "Auxiliary",
+  2
+ ],
+ "4289606928": [
+  "BLUE ASTER",
+  "Destroyer",
+  7
+ ],
+ "3765384944": [
+  "GIULIO CESARE",
+  "Battleship",
+  5
+ ],
+ "3655251920": [
+  "GIBRALTAR",
+  "Cruiser",
+  10
+ ],
+ "3752736112": [
+  "HURON",
+  "Destroyer",
+  7
+ ],
+ "3767482160": [
+  "K. ALBERT",
+  "Battleship",
+  3
+ ],
+ "4185831216": [
+  "KARLSRUHE",
+  "Cruiser",
+  4
+ ],
+ "4292752656": [
+  "GHOUL",
+  "Destroyer",
+  7
+ ],
+ "3743364816": [
+  "ISE",
+  "Battleship",
+  6
+ ],
+ "4185863920": [
+  "D.\u00a0ALIGHIERI",
+  "Battleship",
+  4
+ ],
+ "4075697968": [
+  "F.\u00a0SCHULTZ",
+  "Destroyer",
+  9
+ ],
+ "4283414224": [
+  "HIRY\u016a (OLD)",
+  "AirCarrier",
+  7
+ ],
+ "4185864016": [
+  "COURBET",
+  "Battleship",
+  4
+ ],
+ "4186912560": [
+  "NASSAU",
+  "Battleship",
+  3
+ ],
+ "4272829712": [
+  "RUMBLE",
+  "Destroyer",
+  10
+ ],
+ "3763288016": [
+  "HOOD",
+  "Battleship",
+  7
+ ],
+ "4186846416": [
+  "PHRA RUANG",
+  "Destroyer",
+  3
+ ],
+ "4182652624": [
+  "AKATSUKI",
+  "Destroyer",
+  7
+ ],
+ "3760174896": [
+  "W. VOSS",
+  "AirCarrier",
+  10
+ ],
+ "3554621136": [
+  "ARP KIRISHIMA",
+  "Battleship",
+  5
+ ],
+ "4184749360": [
+  "VISBY",
+  "Destroyer",
+  5
+ ],
+ "4282365936": [
+  "LEXINGTON (OLD)",
+  "AirCarrier",
+  8
+ ],
+ "4288624624": [
+  "NEW YORK",
+  "Battleship",
+  5
+ ],
+ "4277417232": [
+  "GOLIATH",
+  "Auxiliary",
+  2
+ ],
+ "3532568272": [
+  "E. DRAGON",
+  "Cruiser",
+  7
+ ],
+ "4075730384": [
+  "RIGA",
+  "Cruiser",
+  9
+ ],
+ "3246831056": [
+  "TEST SUB 1",
+  "Submarine",
+  10
+ ],
+ "4184782608": [
+  "CELEBES",
+  "Cruiser",
+  5
+ ],
+ "4282299664": [
+  "RUST NIGHTFALL",
+  "Cruiser",
+  9
+ ],
+ "3761190608": [
+  "MUSASHI",
+  "Battleship",
+  9
+ ],
+ "3741267952": [
+  "ALABAMA VL",
+  "Battleship",
+  8
+ ],
+ "3764303056": [
+  "HUANGHE",
+  "Cruiser",
+  6
+ ],
+ "3558094544": [
+  "ARP I-401",
+  "Auxiliary",
+  11
+ ],
+ "3448747280": [
+  "RANGER",
+  "AirCarrier",
+  7
+ ],
+ "4286526736": [
+  "LEVIATHAN",
+  "Battleship",
+  7
+ ],
+ "3752802000": [
+  "HY\u016aGA",
+  "Battleship",
+  7
+ ],
+ "4188976592": [
+  "ORLAN",
+  "Cruiser",
+  1
+ ],
+ "4186879440": [
+  "BOGATYR",
+  "Cruiser",
+  3
+ ],
+ "4185831152": [
+  "GIUSSANO",
+  "Cruiser",
+  4
+ ],
+ "4076778960": [
+  "TALLINN",
+  "Cruiser",
+  8
+ ],
+ "4065212112": [
+  "KITAKAZE",
+  "Destroyer",
+  9
+ ],
+ "4180621040": [
+  "LEPANTO",
+  "Battleship",
+  9
+ ],
+ "4187927824": [
+  "GALE",
+  "Cruiser",
+  9
+ ],
+ "4181604048": [
+  "AKIZUKI",
+  "Destroyer",
+  8
+ ],
+ "3666818896": [
+  "JEAN BART B",
+  "Battleship",
+  9
+ ],
+ "3764270832": [
+  "LEONE",
+  "Destroyer",
+  6
+ ],
+ "3247388464": [
+  "HANNOVER (OLD)",
+  "Battleship",
+  11
+ ],
+ "3760142320": [
+  "OHIO",
+  "Battleship",
+  10
+ ],
+ "3761157328": [
+  "DALIAN",
+  "Cruiser",
+  9
+ ],
+ "4292818192": [
+  "RASPUTIN",
+  "Battleship",
+  7
+ ],
+ "3668916016": [
+  "SCHARNHORST B",
+  "Battleship",
+  7
+ ],
+ "4183209424": [
+  "S-1",
+  "Submarine",
+  6
+ ],
+ "3655219184": [
+  "F. SHERMAN",
+  "Destroyer",
+  10
+ ],
+ "3766368080": [
+  "SIROCO",
+  "Destroyer",
+  5
+ ],
+ "3333404368": [
+  "[HAKURY\u016a]",
+  "AirCarrier",
+  10
+ ],
+ "4180555728": [
+  "JUTLAND",
+  "Destroyer",
+  9
+ ],
+ "3750672368": [
+  "TULSA",
+  "Cruiser",
+  9
+ ],
+ "4180621264": [
+  "LION",
+  "Battleship",
+  9
+ ],
+ "3762206672": [
+  "CHESHIRE",
+  "Cruiser",
+  8
+ ],
+ "3764303280": [
+  "CANARIAS",
+  "Cruiser",
+  6
+ ],
+ "4249105680": [
+  "MEDWAY QUEEN",
+  "Auxiliary",
+  2
+ ],
+ "4279186704": [
+  "LOBSTER-EYED",
+  "Battleship",
+  10
+ ],
+ "3555670000": [
+  "TEXAS",
+  "Battleship",
+  5
+ ],
+ "3764336336": [
+  "MUTSU",
+  "Battleship",
+  6
+ ],
+ "3247388368": [
+  "SATSUMA (OLD)",
+  "Battleship",
+  11
+ ],
+ "4182652208": [
+  "SK\u00c5NE",
+  "Destroyer",
+  7
+ ],
+ "4272895696": [
+  "IZUMO",
+  "Battleship",
+  9
+ ],
+ "4278072592": [
+  "SEA DEVIL",
+  "Destroyer",
+  9
+ ],
+ "3666786288": [
+  "ALASKA B",
+  "Cruiser",
+  9
+ ],
+ "3750672176": [
+  "\u00c4GIR",
+  "Cruiser",
+  9
+ ],
+ "4076745936": [
+  "SILIWANGI",
+  "Destroyer",
+  8
+ ],
+ "4184815568": [
+  "IRON DUKE",
+  "Battleship",
+  5
+ ],
+ "4282266896": [
+  "ROVER",
+  "Destroyer",
+  7
+ ],
+ "4186846512": [
+  "ROMULUS",
+  "Destroyer",
+  3
+ ],
+ "3740219088": [
+  "IWAMI",
+  "Battleship",
+  9
+ ],
+ "4288591856": [
+  "ATLANTA",
+  "Cruiser",
+  7
+ ],
+ "4184782672": [
+  "\u00c9MILE BERTIN",
+  "Cruiser",
+  5
+ ],
+ "3344905936": [
+  "ISE 2",
+  "Battleship",
+  6
+ ],
+ "3763320528": [
+  "KAGA (OLD)",
+  "AirCarrier",
+  7
+ ],
+ "4182685424": [
+  "ZARA",
+  "Cruiser",
+  7
+ ],
+ "3552524272": [
+  "ALABAMA ST",
+  "Battleship",
+  8
+ ],
+ "4074649424": [
+  "MARCEAU",
+  "Destroyer",
+  10
+ ],
+ "4288623888": [
+  "PARIS",
+  "Battleship",
+  7
+ ],
+ "4181636304": [
+  "HARBIN",
+  "Cruiser",
+  8
+ ],
+ "3762239184": [
+  "KII",
+  "Battleship",
+  8
+ ],
+ "4183700784": [
+  "V\u00c4STER\u00c5S",
+  "Destroyer",
+  6
+ ],
+ "3445536752": [
+  "AUSTIN",
+  "Cruiser",
+  10
+ ],
+ "3761190704": [
+  "POMMERN",
+  "Battleship",
+  9
+ ],
+ "3730749392": [
+  "HAMPSHIRE",
+  "Cruiser",
+  8
+ ],
+ "4181669712": [
+  "RICHELIEU",
+  "Battleship",
+  8
+ ],
+ "4075730768": [
+  "BREST",
+  "Cruiser",
+  9
+ ]
+}

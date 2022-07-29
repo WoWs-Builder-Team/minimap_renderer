@@ -1,0 +1,31 @@
+<PlayerMessenger_chat2.def>
+  <BaseMethods>
+    <messenger_onActionByServer_chat2>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	GENERIC_MESSENGER_ARGS_chat2	</Arg>
+    </messenger_onActionByServer_chat2>
+    <messenger_onActionByClient_chat2>
+      <Exposed></Exposed>
+      <Arg>	INT16	</Arg>
+      <Arg>	UINT16	</Arg>
+      <Arg>	GENERIC_MESSENGER_ARGS_chat2	</Arg>
+    </messenger_onActionByClient_chat2>
+    <messenger_onActionForClient_chat2>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	GENERIC_MESSENGER_ARGS_chat2	</Arg>
+    </messenger_onActionForClient_chat2>
+  </BaseMethods>
+  <ClientMethods>
+    <messenger_onActionByServer_chat2>
+      <Arg>	INT16	</Arg>
+      <Arg>	UINT16	</Arg>
+      <Arg>	GENERIC_MESSENGER_ARGS_chat2	</Arg>
+      <VariableLengthHeaderSize>	1	  <WarnLevel>	none	</WarnLevel>
+      </VariableLengthHeaderSize>
+    </messenger_onActionByServer_chat2>
+  </ClientMethods>
+</PlayerMessenger_chat2.def>

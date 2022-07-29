@@ -1,0 +1,14 @@
+<BattleFeedback.def>
+  <CellMethods>
+    <battleFeedback_onBattleEvent>
+      <Arg>	UINT8	</Arg>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT32	</Arg>
+      <Arg>	BOOL	</Arg>
+    </battleFeedback_onBattleEvent>
+    <battleFeedback_onDeath>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+    </battleFeedback_onDeath>
+  </CellMethods>
+</BattleFeedback.def>

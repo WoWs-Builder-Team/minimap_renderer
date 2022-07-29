@@ -1,0 +1,809 @@
+<Avatar.def>
+  <Implements>
+    <Interface>	Chat	</Interface>
+    <Interface>	PlayerMessenger_chat2	</Interface>
+    <Interface>	ClientCommandsPort	</Interface>
+    <Interface>	InvitationsClient	</Interface>
+    <Interface>	AccountAuthTokenProviderClient	</Interface>
+    <Interface>	AvatarClientProxy	</Interface>
+    <Interface>	AvatarObserver	</Interface>
+    <Interface>	TeamHealthBar_Avatar	</Interface>
+    <Interface>	ProtectionZoneController_Avatar	</Interface>
+    <Interface>	RecoveryMechanic_Avatar	</Interface>
+    <Interface>	DestructibleEntity_Avatar	</Interface>
+    <Interface>	RespawnController_Avatar	</Interface>
+    <Interface>	VehiclesSpawnListStorage_Avatar	</Interface>
+    <Interface>	VehicleRemovalController_Avatar	</Interface>
+    <Interface>	VehicleHealthBroadcastListenerComponent_Avatar	</Interface>
+    <Interface>	AvatarLoot	</Interface>
+    <Interface>	AvatarSpawnKeyPoints	</Interface>
+    <Interface>	AvatarEpic	</Interface>
+  </Implements>
+  <Volatile>
+    <position></position>
+  </Volatile>
+  <Properties>
+    <state>
+      <Type>	UINT16	</Type>
+      <Flags>	BASE	</Flags>
+    </state>
+    <name>
+      <Type>	STRING	</Type>
+      <Flags>	BASE_AND_CLIENT	</Flags>
+    </name>
+    <sessionID>
+      <Type>	STRING	</Type>
+      <Flags>	BASE_AND_CLIENT	</Flags>
+      <Persistent>	false	</Persistent>
+      <Backupable>	false	</Backupable>
+    </sessionID>
+    <account>
+      <Type>	MAILBOX	</Type>
+      <Flags>	BASE	</Flags>
+    </account>
+    <playerVehicle>
+      <Type>	MAILBOX	</Type>
+      <Flags>	BASE	</Flags>
+    </playerVehicle>
+    <arena>
+      <Type>	MAILBOX	</Type>
+      <Flags>	BASE	</Flags>
+    </arena>
+    <arenaVehiclesIDs>
+      <Type>	PYTHON	</Type>
+      <Flags>	BASE	</Flags>
+    </arenaVehiclesIDs>
+    <accountStartedAt>
+      <Type>	PYTHON	</Type>
+      <Flags>	BASE	</Flags>
+      <Backupable>	false	</Backupable>
+    </accountStartedAt>
+    <accountSessionID>
+      <Type>	STRING	</Type>
+      <Flags>	BASE	</Flags>
+      <Backupable>	false	</Backupable>
+    </accountSessionID>
+    <arenaUniqueID>
+      <Type>	UINT64	</Type>
+      <Flags>	BASE_AND_CLIENT	</Flags>
+    </arenaUniqueID>
+    <syncData>
+      <Type>	PYTHON	</Type>
+      <Flags>	BASE	</Flags>
+    </syncData>
+    <arenaTypeID>
+      <Type>	INT32	</Type>
+      <Flags>	BASE_AND_CLIENT	</Flags>
+    </arenaTypeID>
+    <accountDBID>
+      <Type>	INT64	</Type>
+      <Flags>	BASE	</Flags>
+    </accountDBID>
+    <arenaBonusType>
+      <Type>	UINT8	</Type>
+      <Flags>	BASE_AND_CLIENT	</Flags>
+    </arenaBonusType>
+    <arenaGuiType>
+      <Type>	UINT8	</Type>
+      <Flags>	BASE_AND_CLIENT	</Flags>
+    </arenaGuiType>
+    <arenaExtraData>
+      <Type>	PYTHON	</Type>
+      <Flags>	BASE_AND_CLIENT	</Flags>
+      <AllowUnsafeData>	true	</AllowUnsafeData>
+    </arenaExtraData>
+    <weatherPresetID>
+      <Type>	UINT8	</Type>
+      <Flags>	BASE_AND_CLIENT	</Flags>
+    </weatherPresetID>
+    <denunciationsLeft>
+      <Type>	INT16	</Type>
+      <Flags>	BASE_AND_CLIENT	</Flags>
+    </denunciationsLeft>
+    <clientCtx>
+      <Type>	STRING	</Type>
+      <Flags>	BASE_AND_CLIENT	</Flags>
+    </clientCtx>
+    <tkillIsSuspected>
+      <Type>	BOOL	</Type>
+      <Flags>	BASE_AND_CLIENT	</Flags>
+    </tkillIsSuspected>
+    <arenaBase>
+      <Type>	MAILBOX	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </arenaBase>
+    <team>
+      <Type>	UINT8	</Type>
+      <Flags>	OWN_CLIENT	</Flags>
+    </team>
+    <playerVehicleBase>
+      <Type>	MAILBOX	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </playerVehicleBase>
+    <playerVehicleID>
+      <Type>	OBJECT_ID	</Type>
+      <Flags>	OWN_CLIENT	</Flags>
+    </playerVehicleID>
+    <playerVehicleTypeCompDescr>
+      <Type>	UINT16	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </playerVehicleTypeCompDescr>
+    <isObserverBothTeams>
+      <Type>	BOOL	</Type>
+      <Flags>	OWN_CLIENT	</Flags>
+    </isObserverBothTeams>
+    <isGunLocked>
+      <Type>	BOOL	</Type>
+      <Flags>	OWN_CLIENT	</Flags>
+    </isGunLocked>
+    <ownVehicleGear>
+      <Type>	UINT8	</Type>
+      <Flags>	OWN_CLIENT	</Flags>
+      <SendLatestOnly>	true	</SendLatestOnly>
+    </ownVehicleGear>
+    <ownVehicleAuxPhysicsData>
+      <Type>	UINT64	</Type>
+      <Flags>	OWN_CLIENT	</Flags>
+      <SendLatestOnly>	true	</SendLatestOnly>
+    </ownVehicleAuxPhysicsData>
+    <ammo>
+      <Type>	ARRAY	  <of>	INT32	</of>
+      </Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </ammo>
+    <ammoViews>
+      <Type>	AVATAR_AMMO_VIEWS	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </ammoViews>
+    <cp>
+      <Type>	PYTHON	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </cp>
+    <historyLoggingFlags>
+      <Type>	UINT32	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </historyLoggingFlags>
+    <heatmapLoggingFlags>
+      <Type>	UINT32	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </heatmapLoggingFlags>
+    <accountDBIDOnCell>
+      <Type>	DB_ID	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </accountDBIDOnCell>
+    <arenaUniqueIDOnCell>
+      <Type>	UINT64	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </arenaUniqueIDOnCell>
+    <arenaTypeIDOnCell>
+      <Type>	INT32	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </arenaTypeIDOnCell>
+    <arenaBonusTypeOnCell>
+      <Type>	UINT8	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </arenaBonusTypeOnCell>
+    <orderingRoster>
+      <Type>	ARRAY	  <of>	AVATAR_VEHICLE_ROSTER	</of>
+      </Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </orderingRoster>
+    <viewpoints>
+      <Type>	ARRAY	  <of>	VECTOR3	</of>
+      </Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </viewpoints>
+    <isHistoricallyAccurate>
+      <Type>	BOOL	</Type>
+      <Flags>	OWN_CLIENT	</Flags>
+    </isHistoricallyAccurate>
+    <inBattleQuestNames>
+      <Type>	ARRAY	  <of>	STRING	</of>
+      </Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </inBattleQuestNames>
+    <inBattleQuestProgresses>
+      <Type>	PYTHON	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </inBattleQuestProgresses>
+    <playLimits>
+      <Type>	PLAY_LIMITS	</Type>
+      <Flags>	BASE_AND_CLIENT	</Flags>
+    </playLimits>
+  </Properties>
+  <TempProperties>
+    <_Avatar__p></_Avatar__p>
+    <_Avatar__visibilityHandler></_Avatar__visibilityHandler>
+    <_entityExtraUserData></_entityExtraUserData>
+    <_extras></_extras>
+    <_avatarClientProxy></_avatarClientProxy>
+    <questProgresses></questProgresses>
+    <arenaCell></arenaCell>
+    <_components></_components>
+    <_TimerManager__unpersistedTimers></_TimerManager__unpersistedTimers>
+  </TempProperties>
+  <ClientMethods>
+    <update>
+      <Arg>	STRING	</Arg>
+      <VariableLengthHeaderSize>	1	  <WarnLevel>	none	</WarnLevel>
+      </VariableLengthHeaderSize>
+    </update>
+    <onKickedFromServer>
+      <Arg>	STRING	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Arg>	UINT32	</Arg>
+    </onKickedFromServer>
+    <onIGRTypeChanged>
+      <Arg>	STRING	</Arg>
+    </onIGRTypeChanged>
+    <onAutoAimVehicleLost>
+      <Arg>	UINT8	</Arg>
+    </onAutoAimVehicleLost>
+    <receiveAccountStats>
+      <Arg>	UINT32	</Arg>
+      <Arg>	STRING	</Arg>
+    </receiveAccountStats>
+    <updateVehicleHealth>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT8	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Arg>	BOOL	</Arg>
+    </updateVehicleHealth>
+    <updateVehicleGunReloadTime>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </updateVehicleGunReloadTime>
+    <updateVehicleClipReloadTime>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	BOOL	</Arg>
+    </updateVehicleClipReloadTime>
+    <updateVehicleAmmo>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	UINT16	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT16	</Arg>
+    </updateVehicleAmmo>
+    <updateDualGunState>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	ARRAY	  <of>	UINT8	</of>
+      </Arg>
+      <Arg>	ARRAY	  <of>	COOLDOWN_INFO	</of>
+      </Arg>
+    </updateDualGunState>
+    <onSwitchViewpoint>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	VECTOR3	</Arg>
+    </onSwitchViewpoint>
+    <onBootcampEvent>
+      <Arg>	ARRAY	  <of>	UINT64	</of>
+      </Arg>
+    </onBootcampEvent>
+    <updateVehicleOptionalDeviceStatus>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	BOOL	</Arg>
+    </updateVehicleOptionalDeviceStatus>
+    <updateVehicleMiscStatus>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	ARRAY	  <of>	FLOAT32	</of>
+      </Arg>
+    </updateVehicleMiscStatus>
+    <updateVehicleSetting>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	INT32	</Arg>
+    </updateVehicleSetting>
+    <updateTargetingInfo>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </updateTargetingInfo>
+    <updateGunMarker>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </updateGunMarker>
+    <updateTargetVehicleID>
+      <Arg>	OBJECT_ID	</Arg>
+    </updateTargetVehicleID>
+    <updateOwnVehiclePosition>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </updateOwnVehiclePosition>
+    <showOwnVehicleHitDirection>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT16	</Arg>
+      <Arg>	UINT32	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+    </showOwnVehicleHitDirection>
+    <showVehicleDamageInfo>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	EXTRA_ID	</Arg>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+    </showVehicleDamageInfo>
+    <showOtherVehicleDamagedDevices>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	ARRAY	  <of>	EXTRA_ID	</of>
+      </Arg>
+      <Arg>	ARRAY	  <of>	EXTRA_ID	</of>
+      </Arg>
+    </showOtherVehicleDamagedDevices>
+    <showShotResults>
+      <Arg>	ARRAY	  <of>	UINT64	</of>
+      </Arg>
+    </showShotResults>
+    <updatePlaneTrajectory>
+      <Arg>	UINT16	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	FLOAT64	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR2	</Arg>
+      <Arg>	FLOAT64	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR2	</Arg>
+      <Arg>	BOOL	</Arg>
+    </updatePlaneTrajectory>
+    <showHittingArea>
+      <Arg>	UINT16	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	FLOAT64	</Arg>
+    </showHittingArea>
+    <showCarpetBombing>
+      <Arg>	UINT16	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	FLOAT64	</Arg>
+    </showCarpetBombing>
+    <showDevelopmentInfo>
+      <Arg>	UINT8	</Arg>
+      <Arg>	STRING	</Arg>
+    </showDevelopmentInfo>
+    <showTracer>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	SHOT_ID	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	UINT8	</Arg>
+    </showTracer>
+    <stopTracer>
+      <Arg>	SHOT_ID	</Arg>
+      <Arg>	VECTOR3	</Arg>
+    </stopTracer>
+    <explodeProjectile>
+      <Arg>	SHOT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	ARRAY	  <of>	UINT32	</of>
+      </Arg>
+    </explodeProjectile>
+    <onRoundFinished>
+      <Arg>	INT8	</Arg>
+      <Arg>	UINT8	</Arg>
+    </onRoundFinished>
+    <onKickedFromArena>
+      <Arg>	UINT8	</Arg>
+    </onKickedFromArena>
+    <onBattleEvents>
+      <Arg>	ARRAY	  <of>	BATTLE_EVENT	</of>
+      </Arg>
+    </onBattleEvents>
+    <battleEventsSummary>
+      <Arg>	BATTLE_EVENTS_SUMMARY	</Arg>
+    </battleEventsSummary>
+    <updateArena>
+      <Arg>	UINT8	</Arg>
+      <Arg>	STRING	</Arg>
+      <VariableLengthHeaderSize>	1	  <WarnLevel>	none	</WarnLevel>
+      </VariableLengthHeaderSize>
+    </updateArena>
+    <updatePositions>
+      <Arg>	ARRAY	  <of>	UINT8	</of>
+      </Arg>
+      <Arg>	ARRAY	  <of>	INT16	</of>
+      </Arg>
+      <VariableLengthHeaderSize>	1	  <WarnLevel>	none	</WarnLevel>
+      </VariableLengthHeaderSize>
+    </updatePositions>
+    <receivePhysicsDebugInfo>
+      <Arg>	STRING	</Arg>
+    </receivePhysicsDebugInfo>
+    <updateCarriedFlagPositions>
+      <Arg>	ARRAY	  <of>	UINT8	</of>
+      </Arg>
+      <Arg>	ARRAY	  <of>	INT16	</of>
+      </Arg>
+    </updateCarriedFlagPositions>
+    <receiveNotification>
+      <Arg>	STRING	</Arg>
+      <VariableLengthHeaderSize>	1	  <WarnLevel>	none	</WarnLevel>
+      </VariableLengthHeaderSize>
+    </receiveNotification>
+    <onRepairPointAction>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </onRepairPointAction>
+    <updateAvatarPrivateStats>
+      <Arg>	STRING	</Arg>
+    </updateAvatarPrivateStats>
+    <updateResourceAmount>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT32	</Arg>
+    </updateResourceAmount>
+    <updateGasAttackState>
+      <Arg>	UINT8	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </updateGasAttackState>
+    <syncVehicleAttrs>
+      <Arg>	VEHICLE_SYNC_ATTRS	</Arg>
+    </syncVehicleAttrs>
+    <onFrictionWithVehicle>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	UINT8	</Arg>
+    </onFrictionWithVehicle>
+    <onCollisionWithVehicle>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </onCollisionWithVehicle>
+    <onSmoke>
+      <Arg>	ARRAY	  <of>	SMOKE_INFO	</of>
+      </Arg>
+    </onSmoke>
+    <onCombatEquipmentShotLaunched>
+      <Arg>	UINT16	</Arg>
+      <Arg>	VECTOR3	</Arg>
+    </onCombatEquipmentShotLaunched>
+    <updateQuestProgress>
+      <Arg>	STRING	</Arg>
+      <Arg>	PYTHON	</Arg>
+      <AllowUnsafeData>	true	</AllowUnsafeData>
+    </updateQuestProgress>
+  </ClientMethods>
+  <CellMethods>
+    <autoAim>
+      <Exposed>	OWN_CLIENT	</Exposed>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	BOOL	</Arg>
+    </autoAim>
+    <moveTo>
+      <Exposed>	OWN_CLIENT	</Exposed>
+      <Arg>	VECTOR3	</Arg>
+    </moveTo>
+    <bindToVehicle>
+      <Exposed>	OWN_CLIENT	</Exposed>
+      <Arg>	OBJECT_ID	</Arg>
+    </bindToVehicle>
+    <monitorVehicleDamagedDevices>
+      <Exposed>	OWN_CLIENT	</Exposed>
+      <Arg>	OBJECT_ID	</Arg>
+    </monitorVehicleDamagedDevices>
+    <onOwnVehicleStatusChanged>
+      <Arg>	INT8	</Arg>
+      <Arg>	INT8	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Arg>	BOOL	</Arg>
+    </onOwnVehicleStatusChanged>
+    <allowUnbindingFromVehicle></allowUnbindingFromVehicle>
+    <forbidUnbindingFromVehicle>
+      <Arg>	INT8	</Arg>
+    </forbidUnbindingFromVehicle>
+    <fullyDiscloseEntities>
+      <Arg>	ARRAY	  <of>	OBJECT_ID	</of>
+      </Arg>
+    </fullyDiscloseEntities>
+    <receiveVisibilityUpdate>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Arg>	BOOL	</Arg>
+    </receiveVisibilityUpdate>
+    <receiveVisibilityLists>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	PYTHON	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </receiveVisibilityLists>
+    <receivePositionsFromArena>
+      <Arg>	BOOL	</Arg>
+      <Arg>	ARRAY	  <of>	OBJECT_ID	</of>
+      </Arg>
+      <Arg>	ARRAY	  <of>	UINT8	</of>
+      </Arg>
+      <Arg>	ARRAY	  <of>	FLOAT32	</of>
+      </Arg>
+      <Arg>	ARRAY	  <of>	OBJECT_ID	</of>
+      </Arg>
+      <Arg>	ARRAY	  <of>	BOOL	</of>
+      </Arg>
+    </receivePositionsFromArena>
+    <receiveVehiclePositionFromArena>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	UINT8	</Arg>
+    </receiveVehiclePositionFromArena>
+    <receiveVehicleDamagedDevices>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	ARRAY	  <of>	EXTRA_ID	</of>
+      </Arg>
+      <Arg>	ARRAY	  <of>	EXTRA_ID	</of>
+      </Arg>
+    </receiveVehicleDamagedDevices>
+    <lockGunOnClient>
+      <Arg>	BOOL	</Arg>
+    </lockGunOnClient>
+    <showShotResults>
+      <Arg>	ARRAY	  <of>	UINT64	</of>
+      </Arg>
+    </showShotResults>
+    <explodeProjectile>
+      <Arg>	SHOT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	ARRAY	  <of>	UINT32	</of>
+      </Arg>
+    </explodeProjectile>
+    <refreshVehicle>
+      <Arg>	UINT16	</Arg>
+    </refreshVehicle>
+    <activateEquipment>
+      <Exposed>	OWN_CLIENT	</Exposed>
+      <Arg>	UINT16	</Arg>
+    </activateEquipment>
+    <setEquipmentApplicationPoint>
+      <Exposed>	OWN_CLIENT	</Exposed>
+      <Arg>	UINT16	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR2	</Arg>
+    </setEquipmentApplicationPoint>
+    <sendFinalStats></sendFinalStats>
+    <switchViewPointOrBindToVehicle>
+      <Exposed>	OWN_CLIENT	</Exposed>
+      <Arg>	BOOL	</Arg>
+      <Arg>	OBJECT_ID	</Arg>
+    </switchViewPointOrBindToVehicle>
+    <grantRagePoints>
+      <Arg>	UINT8	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </grantRagePoints>
+    <harm_receiveAttackResults>
+      <Arg>	ATTACK_RESULTS	</Arg>
+    </harm_receiveAttackResults>
+    <activateGasAttack>
+      <Arg>	FLOAT32	</Arg>
+    </activateGasAttack>
+    <pauseMechanics>
+      <Arg>	UINT64	</Arg>
+    </pauseMechanics>
+    <updateOwnVehicleAuxPhysicsDataAndGear>
+      <Arg>	UINT64	</Arg>
+      <Arg>	UINT8	</Arg>
+    </updateOwnVehicleAuxPhysicsDataAndGear>
+    <sendAmmoStatusToClient></sendAmmoStatusToClient>
+    <setDualGunCharger>
+      <Exposed>	OWN_CLIENT	</Exposed>
+      <Arg>	BOOL	</Arg>
+    </setDualGunCharger>
+    <reportClientStats>
+      <Arg>	CLIENT_STATUS_STATISTICS	</Arg>
+    </reportClientStats>
+    <chooseSpawnKeyPoint>
+      <Exposed>	OWN_CLIENT	</Exposed>
+      <Arg>	STRING	</Arg>
+    </chooseSpawnKeyPoint>
+    <placeVehicle>
+      <Exposed>	OWN_CLIENT	</Exposed>
+    </placeVehicle>
+  </CellMethods>
+  <BaseMethods>
+    <onCreateCellSuccess></onCreateCellSuccess>
+    <kickSelf>
+      <Arg>	STRING	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </kickSelf>
+    <setClientReady>
+      <Exposed></Exposed>
+    </setClientReady>
+    <leaveArena>
+      <Exposed></Exposed>
+      <Arg>	CLIENT_SESSION_STATS	</Arg>
+    </leaveArena>
+    <unlockUnusedVehicles>
+      <Arg>	ARRAY	  <of>	INT32	</of>
+      </Arg>
+    </unlockUnusedVehicles>
+    <confirmBattleResultsReceiving>
+      <Exposed></Exposed>
+    </confirmBattleResultsReceiving>
+    <makeDenunciation>
+      <Exposed></Exposed>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT8	</Arg>
+    </makeDenunciation>
+    <banUnbanUser>
+      <Exposed></Exposed>
+      <Arg>	DB_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT32	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	INT8	</Arg>
+    </banUnbanUser>
+    <requestToken>
+      <Arg>	UINT16	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Exposed></Exposed>
+    </requestToken>
+    <banForTKill></banForTKill>
+    <sendAccountStats>
+      <Exposed></Exposed>
+      <Arg>	UINT32	</Arg>
+      <Arg>	ARRAY	  <of>	STRING	</of>
+      </Arg>
+    </sendAccountStats>
+    <setClientCtx>
+      <Exposed></Exposed>
+      <Arg>	STRING	</Arg>
+    </setClientCtx>
+    <updateArena>
+      <Arg>	UINT8	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	ARRAY	  <of>	DISCLOSE_EVENT	</of>
+      </Arg>
+    </updateArena>
+    <updateArenaVehicleListAddedUpdated>
+      <Arg>	UINT8	</Arg>
+      <Arg>	ARRAY	  <of>	CLIENT_VEHICLE_PUBLIC_INFO	</of>
+      </Arg>
+      <Arg>	ARRAY	  <of>	DISCLOSE_EVENT	</of>
+      </Arg>
+    </updateArenaVehicleListAddedUpdated>
+    <updatePositions>
+      <Arg>	ARRAY	  <of>	OBJECT_ID	</of>
+      </Arg>
+      <Arg>	ARRAY	  <of>	FLOAT32	</of>
+      </Arg>
+    </updatePositions>
+    <showVehicleDamageInfo>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	EXTRA_ID	</Arg>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+    </showVehicleDamageInfo>
+    <vehicle_moveWith>
+      <Exposed></Exposed>
+      <Arg>	UINT8	</Arg>
+    </vehicle_moveWith>
+    <vehicle_shoot>
+      <Exposed></Exposed>
+    </vehicle_shoot>
+    <vehicle_trackWorldPointWithGun>
+      <Exposed></Exposed>
+      <Arg>	VECTOR3	</Arg>
+    </vehicle_trackWorldPointWithGun>
+    <vehicle_trackRelativePointWithGun>
+      <Exposed></Exposed>
+      <Arg>	VECTOR3	</Arg>
+    </vehicle_trackRelativePointWithGun>
+    <vehicle_stopTrackingWithGun>
+      <Exposed></Exposed>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </vehicle_stopTrackingWithGun>
+    <vehicle_changeSetting>
+      <Exposed></Exposed>
+      <Arg>	UINT8	</Arg>
+      <Arg>	INT32	</Arg>
+    </vehicle_changeSetting>
+    <vehicle_teleport>
+      <Exposed></Exposed>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	FLOAT32	</Arg>
+    </vehicle_teleport>
+    <vehicle_replenishAmmo>
+      <Exposed></Exposed>
+    </vehicle_replenishAmmo>
+    <createCellNearHere>
+      <Arg>	MAILBOX	</Arg>
+    </createCellNearHere>
+    <onRemovedFromArena>
+      <Arg>	UINT64	</Arg>
+    </onRemovedFromArena>
+    <onKickedFromArena>
+      <Arg>	UINT64	</Arg>
+      <Arg>	UINT16	</Arg>
+    </onKickedFromArena>
+    <onRoundStarted></onRoundStarted>
+    <onRoundFinished>
+      <Arg>	INT8	</Arg>
+      <Arg>	UINT8	</Arg>
+    </onRoundFinished>
+    <leaveDisconnected></leaveDisconnected>
+    <setDevelopmentFeature>
+      <Exposed></Exposed>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	STRING	</Arg>
+    </setDevelopmentFeature>
+    <addBotToArena>
+      <Exposed></Exposed>
+      <Arg>	STRING	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	UINT8	</Arg>
+    </addBotToArena>
+    <receiveFakeShot>
+      <Exposed></Exposed>
+      <Arg>	INT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	VECTOR3	</Arg>
+      <Arg>	UINT8	</Arg>
+    </receiveFakeShot>
+    <logStreamCorruption>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Exposed></Exposed>
+    </logStreamCorruption>
+    <sendFinalStats></sendFinalStats>
+    <releaseClientForLogin>
+      <Arg>	BOOL	</Arg>
+    </releaseClientForLogin>
+    <onBattleResultsAvailable>
+      <Arg>	STRING	</Arg>
+    </onBattleResultsAvailable>
+    <smartDestroy></smartDestroy>
+    <stopByFailure>
+      <Arg>	UINT8	</Arg>
+    </stopByFailure>
+    <reportClientStats>
+      <Exposed></Exposed>
+      <Arg>	CLIENT_STATUS_STATISTICS	</Arg>
+    </reportClientStats>
+    <setAvatarClient></setAvatarClient>
+    <leaveArenaByAccount>
+      <Arg>	BOOL	</Arg>
+    </leaveArenaByAccount>
+  </BaseMethods>
+</Avatar.def>

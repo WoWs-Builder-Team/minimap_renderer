@@ -1,0 +1,90 @@
+<AccountPrebattle.def>
+  <BaseMethods>
+    <accountPrebattle_onPrebattleJoined>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT32	</Arg>
+    </accountPrebattle_onPrebattleJoined>
+    <accountPrebattle_onPrebattleJoinFailure>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+    </accountPrebattle_onPrebattleJoinFailure>
+    <accountPrebattle_onPrebattleLeft>
+      <Arg>	OBJECT_ID	</Arg>
+    </accountPrebattle_onPrebattleLeft>
+    <accountPrebattle_onKickedFromPrebattle>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+    </accountPrebattle_onKickedFromPrebattle>
+    <accountPrebattle_onPrebattleResponse>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	INT32	</Arg>
+    </accountPrebattle_onPrebattleResponse>
+    <accountPrebattle_onPrebattleVehicleChanged>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	INT8	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+    </accountPrebattle_onPrebattleVehicleChanged>
+    <accountPrebattle_createTraining>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Arg>	STRING	</Arg>
+      <Exposed></Exposed>
+    </accountPrebattle_createTraining>
+    <accountPrebattle_createDevPrebattle>
+      <Arg>	INT8	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	STRING	</Arg>
+      <Exposed></Exposed>
+    </accountPrebattle_createDevPrebattle>
+    <accountPrebattle_createEpicTrainingPrebattle>
+      <Arg>	INT32	</Arg>
+      <Arg>	BOOL	</Arg>
+      <Arg>	STRING	</Arg>
+      <Exposed></Exposed>
+    </accountPrebattle_createEpicTrainingPrebattle>
+    <accountPrebattle_createEpicDevPrebattle>
+      <Arg>	INT32	</Arg>
+      <Arg>	STRING	</Arg>
+      <Exposed></Exposed>
+    </accountPrebattle_createEpicDevPrebattle>
+    <accountPrebattle_sendPrebattleInvites>
+      <Arg>	ARRAY	  <of>	INT64	</of>
+      </Arg>
+      <Arg>	STRING	</Arg>
+      <Exposed></Exposed>
+    </accountPrebattle_sendPrebattleInvites>
+    <accountPrebattle_receivePrebattleRoster>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </accountPrebattle_receivePrebattleRoster>
+    <accountPrebattle_updatePrebattle>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	STRING	</Arg>
+    </accountPrebattle_updatePrebattle>
+    <accountPrebattle_addPrebattleInvite>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	PREBATTLE_INVITE	</Arg>
+    </accountPrebattle_addPrebattleInvite>
+    <accountPrebattle_onSendPrebattleInvites>
+      <Arg>	DB_ID	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	DB_ID	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	UINT64	</Arg>
+      <Arg>	UINT8	</Arg>
+    </accountPrebattle_onSendPrebattleInvites>
+    <accountPrebattle_updateGroup>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	UINT8	</Arg>
+    </accountPrebattle_updateGroup>
+  </BaseMethods>
+</AccountPrebattle.def>

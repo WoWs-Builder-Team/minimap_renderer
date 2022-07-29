@@ -1,0 +1,8 @@
+<QuestProcessor.def>
+  <BaseMethods>
+    <questProcessor_handleEvent>
+      <Arg>	INT32	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </questProcessor_handleEvent>
+  </BaseMethods>
+</QuestProcessor.def>

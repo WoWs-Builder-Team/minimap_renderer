@@ -1,0 +1,110 @@
+<AreaDestructibles.def>
+  <Implements>
+    <Interface>	ArtilleryController	</Interface>
+    <Interface>	BomberController	</Interface>
+    <Interface>	ProjectileController	</Interface>
+  </Implements>
+  <Properties>
+    <chunkID>
+      <Type>	UINT16	</Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+    </chunkID>
+    <arenaTypeID>
+      <Type>	INT32	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </arenaTypeID>
+    <arenaBonusType>
+      <Type>	UINT8	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </arenaBonusType>
+    <destroyedModules>
+      <Type>	ARRAY	  <of>	TUPLE	  <of>	UINT8	</of>
+          <size>	3	</size>
+        </of>
+      </Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </destroyedModules>
+    <destroyedFragiles>
+      <Type>	ARRAY	  <of>	TUPLE	  <of>	UINT8	</of>
+          <size>	3	</size>
+        </of>
+      </Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </destroyedFragiles>
+    <fallenColumns>
+      <Type>	ARRAY	  <of>	TUPLE	  <of>	UINT8	</of>
+          <size>	3	</size>
+        </of>
+      </Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </fallenColumns>
+    <fallenTrees>
+      <Type>	ARRAY	  <of>	TUPLE	  <of>	UINT8	</of>
+          <size>	5	</size>
+        </of>
+      </Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+    </fallenTrees>
+    <destructibles>
+      <Type>	PYTHON	</Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+    </destructibles>
+    <waters>
+      <Type>	ARRAY	  <of>	TUPLE	  <of>	FLOAT32	</of>
+          <size>	5	</size>
+        </of>
+      </Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+    </waters>
+    <resetCount>
+      <Type>	UINT32	</Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+    </resetCount>
+    <arenaBase>
+      <Type>	MAILBOX	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </arenaBase>
+    <arenaGeometryID>
+      <Type>	INT16	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </arenaGeometryID>
+    <cp>
+      <Type>	PYTHON	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+    </cp>
+    <arena>
+      <Type>	MAILBOX	</Type>
+      <Flags>	BASE	</Flags>
+    </arena>
+  </Properties>
+  <TempProperties>
+    <_components></_components>
+    <_AreaDestructibles__wgDestructibles></_AreaDestructibles__wgDestructibles>
+    <_AreaDestructibles__pendingJobs></_AreaDestructibles__pendingJobs>
+    <_TimerManager__unpersistedTimers></_TimerManager__unpersistedTimers>
+    <_ProximityManager__data></_ProximityManager__data>
+  </TempProperties>
+  <ClientMethods></ClientMethods>
+  <CellMethods>
+    <reset></reset>
+    <damageDestructible>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	INT8	</Arg>
+      <Arg>	DESTRUCTIBLE_ATTACK_INFO	</Arg>
+    </damageDestructible>
+    <receiveTaggedDestructibleKill>
+      <Arg>	UINT8	</Arg>
+    </receiveTaggedDestructibleKill>
+  </CellMethods>
+  <BaseMethods>
+    <createCellNearHere>
+      <Arg>	MAILBOX	</Arg>
+    </createCellNearHere>
+    <smartDestroy></smartDestroy>
+  </BaseMethods>
+  <shouldBackup>	false	</shouldBackup>
+</AreaDestructibles.def>

@@ -1,0 +1,95 @@
+<ClientCommandsPort.def>
+  <BaseMethods>
+    <doCmdStr>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	STRING	</Arg>
+      <Exposed></Exposed>
+    </doCmdStr>
+    <doCmdInt2>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT64	</Arg>
+      <Arg>	INT64	</Arg>
+      <Exposed></Exposed>
+    </doCmdInt2>
+    <doCmdInt3>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT64	</Arg>
+      <Arg>	INT64	</Arg>
+      <Arg>	INT64	</Arg>
+      <Exposed></Exposed>
+    </doCmdInt3>
+    <doCmdInt4>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT64	</Arg>
+      <Arg>	INT64	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Exposed></Exposed>
+    </doCmdInt4>
+    <doCmdInt2Str>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT64	</Arg>
+      <Arg>	INT64	</Arg>
+      <Arg>	STRING	</Arg>
+      <Exposed></Exposed>
+    </doCmdInt2Str>
+    <doCmdIntArr>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	ARRAY	  <of>	INT32	</of>
+      </Arg>
+      <Exposed></Exposed>
+    </doCmdIntArr>
+    <doCmdIntStr>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT64	</Arg>
+      <Arg>	STRING	</Arg>
+      <Exposed></Exposed>
+    </doCmdIntStr>
+    <doCmdIntStrArr>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT64	</Arg>
+      <Arg>	ARRAY	  <of>	STRING	</of>
+      </Arg>
+      <Exposed></Exposed>
+    </doCmdIntStrArr>
+    <doCmdIntArrStrArr>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	ARRAY	  <of>	INT64	</of>
+      </Arg>
+      <Arg>	ARRAY	  <of>	STRING	</of>
+      </Arg>
+      <Exposed></Exposed>
+    </doCmdIntArrStrArr>
+    <doCmdStrArr>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	ARRAY	  <of>	STRING	</of>
+      </Arg>
+      <Exposed></Exposed>
+    </doCmdStrArr>
+  </BaseMethods>
+  <ClientMethods>
+    <onCmdResponse>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	STRING	</Arg>
+    </onCmdResponse>
+    <onCmdResponseExt>
+      <Arg>	INT16	</Arg>
+      <Arg>	INT16	</Arg>
+      <Arg>	STRING	</Arg>
+      <Arg>	STRING	</Arg>
+      <VariableLengthHeaderSize>	1	  <WarnLevel>	none	</WarnLevel>
+      </VariableLengthHeaderSize>
+    </onCmdResponseExt>
+  </ClientMethods>
+</ClientCommandsPort.def>

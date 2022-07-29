@@ -1,0 +1,9 @@
+<ArenaInfo.def>
+  <Implements></Implements>
+  <Volatile></Volatile>
+  <Properties></Properties>
+  <TempProperties></TempProperties>
+  <ClientMethods></ClientMethods>
+  <CellMethods></CellMethods>
+  <BaseMethods></BaseMethods>
+</ArenaInfo.def>

@@ -1,0 +1,8 @@
+<Invitations.def>
+  <BaseMethods>
+    <invitations_syncInvitationState>
+      <Arg>	INT8	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </invitations_syncInvitationState>
+  </BaseMethods>
+</Invitations.def>

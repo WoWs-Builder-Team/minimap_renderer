@@ -1,0 +1,30 @@
+<entities.xml>
+  <ClientServerEntities>
+    <Account></Account>
+    <Avatar></Avatar>
+    <ArenaInfo></ArenaInfo>
+    <ClientSelectableObject></ClientSelectableObject>
+    <HangarVehicle></HangarVehicle>
+    <Vehicle></Vehicle>
+    <AreaDestructibles></AreaDestructibles>
+    <OfflineEntity></OfflineEntity>
+    <Flock></Flock>
+    <FlockExotic></FlockExotic>
+    <Login></Login>
+    <DetachedTurret></DetachedTurret>
+    <BootcampAccount></BootcampAccount>
+    <DebugDrawEntity></DebugDrawEntity>
+    <ClientSelectableCameraObject></ClientSelectableCameraObject>
+    <ClientSelectableCameraVehicle></ClientSelectableCameraVehicle>
+    <HeroTank></HeroTank>
+    <ClientSelectableEasterEgg></ClientSelectableEasterEgg>
+    <SectorBase></SectorBase>
+    <Sector></Sector>
+    <DestructibleEntity></DestructibleEntity>
+    <StepRepairPoint></StepRepairPoint>
+    <ProtectionZone></ProtectionZone>
+    <HangarPoster></HangarPoster>
+    <ClientSelectableWebLinksOpener></ClientSelectableWebLinksOpener>
+    <GameObjectEntity></GameObjectEntity>
+  </ClientServerEntities>
+</entities.xml>

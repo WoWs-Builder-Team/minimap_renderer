@@ -1,0 +1,1407 @@
+<alias.xml>
+  <BOOL>	UINT8	</BOOL>
+  <OBJECT_ID>	INT32	</OBJECT_ID>
+  <SHOT_ID>	INT32	</SHOT_ID>
+  <DB_ID>	INT64	</DB_ID>
+  <EXTRA_ID>	UINT8	</EXTRA_ID>
+  <SERVER_STATISTICS>	FIXED_DICT	  <Properties>
+      <clusterCCU>
+        <Type>	UINT32	</Type>
+      </clusterCCU>
+      <regionCCU>
+        <Type>	UINT32	</Type>
+      </regionCCU>
+    </Properties>
+  </SERVER_STATISTICS>
+  <CLIENT_SYSTEM>	FIXED_DICT	  <AllowNone>	true	</AllowNone>
+    <Properties>	&gt;	  <isLaptop>
+        <Type>	UINT8	</Type>
+      </isLaptop>
+      <cpuVendor>
+        <Type>	UINT8	</Type>
+      </cpuVendor>
+      <cpuCores>
+        <Type>	UINT8	</Type>
+      </cpuCores>
+      <cpuFreq>
+        <Type>	INT16	</Type>
+      </cpuFreq>
+      <gpuVendor>
+        <Type>	UINT8	</Type>
+      </gpuVendor>
+      <gpuMemory>
+        <Type>	INT16	</Type>
+      </gpuMemory>
+      <mainMemory>
+        <Type>	INT32	</Type>
+      </mainMemory>
+      <os>
+        <Type>	INT32	</Type>
+      </os>
+      <graphicsEngine>
+        <Type>	UINT8	</Type>
+      </graphicsEngine>
+      <cpuScore>
+        <Type>	INT32	</Type>
+      </cpuScore>
+      <gpuScore>
+        <Type>	INT16	</Type>
+      </gpuScore>
+      <osBit>
+        <Type>	UINT8	</Type>
+      </osBit>
+      <hasMods>
+        <Type>	UINT8	</Type>
+      </hasMods>
+      <reason32bit>
+        <Type>	UINT8	</Type>
+      </reason32bit>
+      <cpuFamily>
+        <Type>	UINT32	</Type>
+      </cpuFamily>
+      <gpuFamily>
+        <Type>	UINT32	</Type>
+      </gpuFamily>
+      <crashed>
+        <Type>	UINT64	</Type>
+      </crashed>
+      <contentType>
+        <Type>	UINT8	</Type>
+      </contentType>
+      <gpuDriverVersion>
+        <Type>	INT64	</Type>
+      </gpuDriverVersion>
+      <graphicsAPIID>
+        <Type>	UINT32	</Type>
+      </graphicsAPIID>
+      <multiGPU>
+        <Type>	UINT8	</Type>
+      </multiGPU>
+      <cpuName>
+        <Type>	STRING	</Type>
+      </cpuName>
+      <hangarFirstLoadingTime>
+        <Type>	FLOAT	</Type>
+      </hangarFirstLoadingTime>
+      <clientBit>
+        <Type>	UINT8	</Type>
+      </clientBit>
+    </Properties>
+  </CLIENT_SYSTEM>
+  <CLIENT_SESSION_STATS>	FIXED_DICT	  <AllowNone>	true	</AllowNone>
+    <Properties>
+      <fpsMin>
+        <Type>	INT16	</Type>
+      </fpsMin>
+      <fpsMax>
+        <Type>	INT16	</Type>
+      </fpsMax>
+      <fpsAvg>
+        <Type>	INT16	</Type>
+      </fpsAvg>
+      <fps_0_5>
+        <Type>	INT16	</Type>
+      </fps_0_5>
+      <fps_6_10>
+        <Type>	INT16	</Type>
+      </fps_6_10>
+      <fps_11_15>
+        <Type>	INT16	</Type>
+      </fps_11_15>
+      <fps_16_20>
+        <Type>	INT16	</Type>
+      </fps_16_20>
+      <fps_21_25>
+        <Type>	INT16	</Type>
+      </fps_21_25>
+      <fps_26_30>
+        <Type>	INT16	</Type>
+      </fps_26_30>
+      <fps_31_35>
+        <Type>	INT16	</Type>
+      </fps_31_35>
+      <fps_36_40>
+        <Type>	INT16	</Type>
+      </fps_36_40>
+      <fps_gt_40>
+        <Type>	INT16	</Type>
+      </fps_gt_40>
+      <fps_41_45>
+        <Type>	INT16	</Type>
+      </fps_41_45>
+      <fps_46_50>
+        <Type>	INT16	</Type>
+      </fps_46_50>
+      <fps_51_55>
+        <Type>	INT16	</Type>
+      </fps_51_55>
+      <fps_56_60>
+        <Type>	INT16	</Type>
+      </fps_56_60>
+      <fps_61_70>
+        <Type>	INT16	</Type>
+      </fps_61_70>
+      <fps_71_80>
+        <Type>	INT16	</Type>
+      </fps_71_80>
+      <fps_81_90>
+        <Type>	INT16	</Type>
+      </fps_81_90>
+      <fps_91_100>
+        <Type>	INT16	</Type>
+      </fps_91_100>
+      <fps_101_120>
+        <Type>	INT16	</Type>
+      </fps_101_120>
+      <fps_121_140>
+        <Type>	INT16	</Type>
+      </fps_121_140>
+      <fps_141_160>
+        <Type>	INT16	</Type>
+      </fps_141_160>
+      <fps_161_180>
+        <Type>	INT16	</Type>
+      </fps_161_180>
+      <fps_gt_180>
+        <Type>	INT16	</Type>
+      </fps_gt_180>
+      <fpsDeviation>
+        <Type>	INT16	</Type>
+      </fpsDeviation>
+      <ping>
+        <Type>	INT16	</Type>
+      </ping>
+      <lag>
+        <Type>	UINT8	</Type>
+      </lag>
+      <graphicsPreset>
+        <Type>	UINT8	</Type>
+      </graphicsPreset>
+      <screenResWidth>
+        <Type>	INT16	</Type>
+      </screenResWidth>
+      <screenResHeight>
+        <Type>	INT16	</Type>
+      </screenResHeight>
+      <windowMode>
+        <Type>	UINT8	</Type>
+      </windowMode>
+      <drrScale>
+        <Type>	UINT8	</Type>
+      </drrScale>
+      <memoryCritical>
+        <Type>	UINT8	</Type>
+      </memoryCritical>
+      <gameSessionDuration>
+        <Type>	INT16	</Type>
+      </gameSessionDuration>
+      <cameraPos>
+        <Type>	VECTOR3	</Type>
+      </cameraPos>
+      <cameraDir>
+        <Type>	VECTOR3	</Type>
+      </cameraDir>
+      <availVMem>
+        <Type>	INT32	</Type>
+      </availVMem>
+      <invalidStats>
+        <Type>	UINT32	</Type>
+      </invalidStats>
+      <activeTime>
+        <Type>	UINT32	</Type>
+      </activeTime>
+      <loadingTime>
+        <Type>	UINT32	</Type>
+      </loadingTime>
+      <dynamicDRR>
+        <Type>	UINT8	</Type>
+      </dynamicDRR>
+      <soundQuality>
+        <Type>	UINT8	</Type>
+      </soundQuality>
+      <graphicsSettings>
+        <Type>	UINT64	</Type>
+      </graphicsSettings>
+      <hangarLoadingTime>
+        <Type>	FLOAT	</Type>
+      </hangarLoadingTime>
+      <lastArenaUniqueID>
+        <Type>	UINT64	</Type>
+      </lastArenaUniqueID>
+      <lastArenaTypeID>
+        <Type>	UINT32	</Type>
+      </lastArenaTypeID>
+      <lastArenaTeam>
+        <Type>	UINT16	</Type>
+      </lastArenaTeam>
+    </Properties>
+  </CLIENT_SESSION_STATS>
+  <CLIENT_PB_20_UX_STATS>	FIXED_DICT	  <Properties>
+      <linkedsetQuestsCompleted>
+        <Type>	UINT8	</Type>
+      </linkedsetQuestsCompleted>
+      <linkedsetQuestsInProgress>
+        <Type>	UINT8	</Type>
+      </linkedsetQuestsInProgress>
+      <premiumQuestsCompleted>
+        <Type>	UINT8	</Type>
+      </premiumQuestsCompleted>
+      <premiumQuestsInProgress>
+        <Type>	UINT8	</Type>
+      </premiumQuestsInProgress>
+      <otherQuestsCompleted>
+        <Type>	UINT8	</Type>
+      </otherQuestsCompleted>
+      <otherQuestsInProgress>
+        <Type>	UINT8	</Type>
+      </otherQuestsInProgress>
+      <personalMissionsCompletedMain>
+        <Type>	UINT8	</Type>
+      </personalMissionsCompletedMain>
+      <personalMissionsCompletedFull>
+        <Type>	UINT8	</Type>
+      </personalMissionsCompletedFull>
+      <personalMissionsInProgress>
+        <Type>	UINT8	</Type>
+      </personalMissionsInProgress>
+      <vehicleProgressReady2UnlockVehicles>
+        <Type>	UINT8	</Type>
+      </vehicleProgressReady2UnlockVehicles>
+      <vehicleProgressReady2UnlockModules>
+        <Type>	UINT8	</Type>
+      </vehicleProgressReady2UnlockModules>
+      <vehicleProgressReady2BuyVehicles>
+        <Type>	UINT8	</Type>
+      </vehicleProgressReady2BuyVehicles>
+      <vehicleProgressReady2BuyModules>
+        <Type>	UINT8	</Type>
+      </vehicleProgressReady2BuyModules>
+      <vehicleProgressTankmen>
+        <Type>	UINT8	</Type>
+      </vehicleProgressTankmen>
+      <vehTypeCompDescr>
+        <Type>	UINT16	</Type>
+      </vehTypeCompDescr>
+      <premiumType>
+        <Type>	UINT8	</Type>
+      </premiumType>
+      <timestamp>
+        <Type>	UINT32	</Type>
+      </timestamp>
+      <arenaTypeID>
+        <Type>	UINT32	</Type>
+      </arenaTypeID>
+    </Properties>
+  </CLIENT_PB_20_UX_STATS>
+  <QUEUE_INFO>	PYTHON	</QUEUE_INFO>
+  <RANDOMS_QUEUE_INFO>	FIXED_DICT	  <AllowNone>	true	</AllowNone>
+    <Properties>
+      <classes>
+        <Type>	ARRAY	  <of>	UINT32	</of>
+        </Type>
+      </classes>
+    </Properties>
+  </RANDOMS_QUEUE_INFO>
+  <FALLOUT_QUEUE_INFO>	FIXED_DICT	  <AllowNone>	true	</AllowNone>
+    <Properties>
+      <classes>
+        <Type>	ARRAY	  <of>	UINT32	</of>
+        </Type>
+      </classes>
+      <players>
+        <Type>	UINT32	</Type>
+      </players>
+    </Properties>
+  </FALLOUT_QUEUE_INFO>
+  <EPIC_QUEUE_INFO>	FIXED_DICT	  <AllowNone>	true	</AllowNone>
+    <Properties>
+      <classes>
+        <Type>	ARRAY	  <of>	UINT32	</of>
+        </Type>
+      </classes>
+      <players>
+        <Type>	UINT32	</Type>
+      </players>
+    </Properties>
+  </EPIC_QUEUE_INFO>
+  <EVENT_QUEUE_INFO>	FIXED_DICT	  <AllowNone>	true	</AllowNone>
+    <Properties>
+      <classes>
+        <Type>	ARRAY	  <of>	UINT32	</of>
+        </Type>
+      </classes>
+      <players>
+        <Type>	UINT32	</Type>
+      </players>
+    </Properties>
+  </EVENT_QUEUE_INFO>
+  <RANKED_BATTLES_QUEUE_INFO>	FIXED_DICT	  <AllowNone>	true	</AllowNone>
+    <Properties>
+      <classes>
+        <Type>	ARRAY	  <of>	UINT32	</of>
+        </Type>
+      </classes>
+      <players>
+        <Type>	UINT32	</Type>
+      </players>
+    </Properties>
+  </RANKED_BATTLES_QUEUE_INFO>
+  <PUBLIC_ARENA_INFO>	FIXED_DICT	  <Properties>
+      <id>
+        <Type>	OBJECT_ID	</Type>
+      </id>
+      <typeID>
+        <Type>	INT32	</Type>
+      </typeID>
+      <roundLength>
+        <Type>	INT32	</Type>
+      </roundLength>
+      <roundStart>
+        <Type>	FLOAT32	</Type>
+      </roundStart>
+    </Properties>
+  </PUBLIC_ARENA_INFO>
+  <PUBLIC_VEHICLE_INFO>	FIXED_DICT	  <Properties>
+      <name>
+        <Type>	STRING	</Type>
+      </name>
+      <compDescr>
+        <Type>	STRING	</Type>
+      </compDescr>
+      <outfit>
+        <Type>	STRING	</Type>
+      </outfit>
+      <index>
+        <Type>	UINT8	</Type>
+      </index>
+      <team>
+        <Type>	UINT8	</Type>
+      </team>
+      <prebattleID>
+        <Type>	OBJECT_ID	</Type>
+      </prebattleID>
+      <marksOnGun>
+        <Type>	UINT8	</Type>
+      </marksOnGun>
+      <crewGroup>
+        <Type>	UINT16	</Type>
+      </crewGroup>
+      <commanderSkinID>
+        <Type>	UINT16	</Type>
+      </commanderSkinID>
+      <maxHealth>
+        <Type>	UINT16	</Type>
+      </maxHealth>
+    </Properties>
+  </PUBLIC_VEHICLE_INFO>
+  <ATTACK_RESULTS>	FIXED_DICT	  <Properties>
+      <targetID>
+        <Type>	OBJECT_ID	</Type>
+      </targetID>
+      <targetVehicleIndex>
+        <Type>	UINT8	</Type>
+      </targetVehicleIndex>
+      <targetTeam>
+        <Type>	UINT8	</Type>
+      </targetTeam>
+      <targetTypeCompDescr>
+        <Type>	UINT16	</Type>
+      </targetTypeCompDescr>
+      <targetIsTeamKiller>
+        <Type>	BOOL	</Type>
+      </targetIsTeamKiller>
+      <targetIsOnTheIgnoredBase>
+        <Type>	BOOL	</Type>
+      </targetIsOnTheIgnoredBase>
+      <targetIsOnTheCapturableBase>
+        <Type>	BOOL	</Type>
+      </targetIsOnTheCapturableBase>
+      <targetIsNotSpotted>
+        <Type>	BOOL	</Type>
+      </targetIsNotSpotted>
+      <targetMaxHealth>
+        <Type>	UINT16	</Type>
+      </targetMaxHealth>
+      <targetHealthBeforeDamage>
+        <Type>	INT16	</Type>
+      </targetHealthBeforeDamage>
+      <enemiesNearTarget>
+        <Type>	UINT8	</Type>
+      </enemiesNearTarget>
+      <isRecoil>
+        <Type>	BOOL	</Type>
+      </isRecoil>
+      <reason>
+        <Type>	UINT8	</Type>
+      </reason>
+      <shellCompDescr>
+        <Type>	INT32	</Type>
+      </shellCompDescr>
+      <hitIndirection>
+        <Type>	UINT8	</Type>
+      </hitIndirection>
+      <shotID>
+        <Type>	SHOT_ID	</Type>
+      </shotID>
+      <numVehiclesAffected>
+        <Type>	INT16	</Type>
+      </numVehiclesAffected>
+      <hitFlags>
+        <Type>	INT32	</Type>
+      </hitFlags>
+      <crits>
+        <Type>	INT32	</Type>
+      </crits>
+      <stunDuration>
+        <Type>	FLOAT32	</Type>
+      </stunDuration>
+      <allCrits>
+        <Type>	INT32	</Type>
+      </allCrits>
+      <anyDeviceWasDamaged>
+        <Type>	BOOL	</Type>
+      </anyDeviceWasDamaged>
+      <damage>
+        <Type>	INT32	</Type>
+      </damage>
+      <repairCost>
+        <Type>	UINT32	</Type>
+      </repairCost>
+      <critBonusFactor>
+        <Type>	FLOAT32	</Type>
+      </critBonusFactor>
+      <droppedCapturePoints>
+        <Type>	FLOAT32	</Type>
+      </droppedCapturePoints>
+      <trackAssistants>
+        <Type>	ARRAY	  <of>	OBJECT_ID	</of>
+        </Type>
+      </trackAssistants>
+      <stunAssistants>
+        <Type>	ARRAY	  <of>	OBJECT_ID	</of>
+        </Type>
+      </stunAssistants>
+      <smokeAssistants>
+        <Type>	ARRAY	  <of>	OBJECT_ID	</of>
+        </Type>
+      </smokeAssistants>
+      <distance>
+        <Type>	FLOAT32	</Type>
+      </distance>
+      <targetInitialSpeed>
+        <Type>	FLOAT32	</Type>
+      </targetInitialSpeed>
+      <attackerInitialSpeed>
+        <Type>	FLOAT32	</Type>
+      </attackerInitialSpeed>
+      <attackerHullDamage>
+        <Type>	UINT16	</Type>
+      </attackerHullDamage>
+      <attackerKilledHimself>
+        <Type>	BOOL	</Type>
+      </attackerKilledHimself>
+      <attackerHealthBeforeDamage>
+        <Type>	INT16	</Type>
+      </attackerHealthBeforeDamage>
+      <circularVisionRadius>
+        <Type>	FLOAT32	</Type>
+      </circularVisionRadius>
+      <attackerWasInvisible>
+        <Type>	BOOL	</Type>
+      </attackerWasInvisible>
+      <equipmentID>
+        <Type>	UINT16	</Type>
+      </equipmentID>
+      <isIronShieldDamage>
+        <Type>	BOOL	</Type>
+      </isIronShieldDamage>
+      <attackerType>
+        <Type>	UINT8	</Type>
+      </attackerType>
+    </Properties>
+  </ATTACK_RESULTS>
+  <PREBATTLE_INVITE>	FIXED_DICT	  <Properties>
+      <createTime>
+        <Type>	UINT32	</Type>
+      </createTime>
+      <type>
+        <Type>	UINT16	</Type>
+      </type>
+      <comment>
+        <Type>	STRING	</Type>
+      </comment>
+      <creator>
+        <Type>	STRING	</Type>
+      </creator>
+      <creatorBadges>
+        <Type>	PYTHON	</Type>
+      </creatorBadges>
+      <creatorDBID>
+        <Type>	DB_ID	</Type>
+      </creatorDBID>
+      <creatorClanAbbrev>
+        <Type>	STRING	</Type>
+      </creatorClanAbbrev>
+      <extraData>
+        <Type>	PYTHON	</Type>
+      </extraData>
+    </Properties>
+  </PREBATTLE_INVITE>
+  <PREBATTLE_RESULTS>	FIXED_DICT	  <AllowNone>	true	</AllowNone>
+    <Properties>
+      <winner>
+        <Type>	UINT8	</Type>
+      </winner>
+      <finishReason>
+        <Type>	UINT8	</Type>
+      </finishReason>
+      <kickReason>
+        <Type>	UINT8	</Type>
+      </kickReason>
+      <extendedResults>
+        <Type>	PYTHON	</Type>
+      </extendedResults>
+    </Properties>
+  </PREBATTLE_RESULTS>
+  <PUBLIC_CHAT_CHANNEL_INFO>	FIXED_DICT	  <Properties>
+      <id>
+        <Type>	OBJECT_ID	</Type>
+      </id>
+      <channelName>
+        <Type>	STRING	</Type>
+      </channelName>
+      <isReadOnly>
+        <Type>	BOOL	</Type>
+      </isReadOnly>
+      <isSecured>
+        <Type>	BOOL	</Type>
+      </isSecured>
+      <flags>
+        <Type>	UINT8	</Type>
+      </flags>
+    </Properties>
+  </PUBLIC_CHAT_CHANNEL_INFO>
+  <PUBLIC_USERS_ROSTER_MEMBER_INFO>	FIXED_DICT	  <Properties>
+      <id>
+        <Type>	DB_ID	</Type>
+      </id>
+      <nickName>
+        <Type>	STRING	</Type>
+      </nickName>
+      <accessFlags>
+        <Type>	UINT8	</Type>
+      </accessFlags>
+    </Properties>
+  </PUBLIC_USERS_ROSTER_MEMBER_INFO>
+  <CHAT_ACTION_DATA>	FIXED_DICT	  <Properties>
+      <requestID>
+        <Type>	INT64	</Type>
+      </requestID>
+      <action>
+        <Type>	UINT8	</Type>
+      </action>
+      <actionResponse>
+        <Type>	UINT8	</Type>
+      </actionResponse>
+      <time>
+        <Type>	FLOAT64	</Type>
+      </time>
+      <sentTime>
+        <Type>	FLOAT64	</Type>
+      </sentTime>
+      <channel>
+        <Type>	OBJECT_ID	</Type>
+      </channel>
+      <originator>
+        <Type>	DB_ID	</Type>
+      </originator>
+      <originatorNickName>
+        <Type>	STRING	</Type>
+      </originatorNickName>
+      <group>
+        <Type>	UINT8	</Type>
+      </group>
+      <data>
+        <Type>	PYTHON	</Type>
+      </data>
+      <flags>
+        <Type>	UINT8	</Type>
+      </flags>
+    </Properties>
+  </CHAT_ACTION_DATA>
+  <GENERIC_MESSENGER_ARGS_chat2>	FIXED_DICT	  <Properties>
+      <int32Arg1>
+        <Type>	INT32	</Type>
+      </int32Arg1>
+      <int64Arg1>
+        <Type>	INT64	</Type>
+      </int64Arg1>
+      <floatArg1>
+        <Type>	FLOAT64	</Type>
+      </floatArg1>
+      <strArg1>
+        <Type>	STRING	</Type>
+      </strArg1>
+      <strArg2>
+        <Type>	STRING	</Type>
+      </strArg2>
+    </Properties>
+  </GENERIC_MESSENGER_ARGS_chat2>
+  <DISCLOSE_EVENT>	FIXED_DICT	  <Properties>
+      <vehicleID>
+        <Type>	OBJECT_ID	</Type>
+      </vehicleID>
+      <playerName>
+        <Type>	BOOL	</Type>
+      </playerName>
+      <vehicleType>
+        <Type>	BOOL	</Type>
+      </vehicleType>
+    </Properties>
+  </DISCLOSE_EVENT>
+  <ARENA_VEH_INFO>	FIXED_DICT	  <Properties>
+      <vehInvID>
+        <Type>	INT32	</Type>
+      </vehInvID>
+      <vehCompDescr>
+        <Type>	STRING	</Type>
+      </vehCompDescr>
+      <vehOutfit>
+        <Type>	STRING	</Type>
+      </vehOutfit>
+      <vehAmmo>
+        <Type>	ARRAY	  <of>	INT32	</of>
+        </Type>
+      </vehAmmo>
+      <vehCrew>
+        <Type>	TUPLE	  <of>	STRING	</of>
+        </Type>
+      </vehCrew>
+      <vehCrewInvIDs>
+        <Type>	TUPLE	  <of>	INT32	</of>
+        </Type>
+      </vehCrewInvIDs>
+      <vehCrewSkins>
+        <Type>	PYTHON	</Type>
+      </vehCrewSkins>
+      <marksOnGun>
+        <Type>	UINT8	</Type>
+      </marksOnGun>
+      <isRent>
+        <Type>	BOOL	</Type>
+      </isRent>
+      <activeRent>
+        <Type>	UINT8	</Type>
+      </activeRent>
+      <settings>
+        <Type>	UINT16	</Type>
+      </settings>
+      <enhancements>
+        <Type>	PYTHON	</Type>
+      </enhancements>
+      <vehPerks>
+        <Type>	PYTHON	</Type>
+      </vehPerks>
+    </Properties>
+  </ARENA_VEH_INFO>
+  <USER_EXTRA_SETTINGS>	FIXED_DICT	  <Properties>
+      <hideNonHistoric>
+        <Type>	BOOL	</Type>
+      </hideNonHistoric>
+    </Properties>
+  </USER_EXTRA_SETTINGS>
+  <ARENA_ADDPLAYER_INFO>	FIXED_DICT	  <Properties>
+      <name>
+        <Type>	STRING	</Type>
+      </name>
+      <attrs>
+        <Type>	UINT64	</Type>
+      </attrs>
+      <databaseID>
+        <Type>	DB_ID	</Type>
+      </databaseID>
+      <centerID>
+        <Type>	INT32	</Type>
+      </centerID>
+      <clanAbbrev>
+        <Type>	STRING	</Type>
+      </clanAbbrev>
+      <clanDBID>
+        <Type>	DB_ID	</Type>
+      </clanDBID>
+      <prebattle>
+        <Type>	MAILBOX	</Type>
+      </prebattle>
+      <isPrebattleCreator>
+        <Type>	BOOL	</Type>
+      </isPrebattleCreator>
+      <forbidInBattleInvitations>
+        <Type>	BOOL	</Type>
+      </forbidInBattleInvitations>
+      <team>
+        <Type>	UINT8	</Type>
+      </team>
+      <tkillRating>
+        <Type>	FLOAT	</Type>
+      </tkillRating>
+      <cybersportRating>
+        <Type>	TUPLE	  <of>	FLOAT	</of>
+        </Type>
+      </cybersportRating>
+      <globalRating>
+        <Type>	FLOAT	</Type>
+      </globalRating>
+      <igrType>
+        <Type>	INT8	</Type>
+      </igrType>
+      <potapovQuestIDs>
+        <Type>	ARRAY	  <of>	UINT16	</of>
+        </Type>
+      </potapovQuestIDs>
+      <potapovQuestInfo>
+        <Type>	PYTHON	</Type>
+      </potapovQuestInfo>
+      <vehiclesInfo>
+        <Type>	ARRAY	  <of>	ARENA_VEH_INFO	</of>
+        </Type>
+      </vehiclesInfo>
+      <avatarAmmo>
+        <Type>	ARRAY	  <of>	INT32	</of>
+        </Type>
+      </avatarAmmo>
+      <needCheckPenalties>
+        <Type>	BOOL	</Type>
+      </needCheckPenalties>
+      <fairplayState>
+        <Type>	PYTHON	</Type>
+      </fairplayState>
+      <battlesNum>
+        <Type>	UINT32	</Type>
+      </battlesNum>
+      <ranked>
+        <Type>	TUPLE	  <of>	INT8	</of>
+        </Type>
+      </ranked>
+      <group>
+        <Type>	UINT8	</Type>
+      </group>
+      <recruiterId>
+        <Type>	DB_ID	</Type>
+      </recruiterId>
+      <premMask>
+        <Type>	INT8	</Type>
+      </premMask>
+      <needsAnonymization>
+        <Type>	BOOL	</Type>
+      </needsAnonymization>
+      <wtr>
+        <Type>	INT16	</Type>
+      </wtr>
+      <badges>
+        <Type>	PYTHON	</Type>
+      </badges>
+      <overriddenBadge>
+        <Type>	UINT8	</Type>
+      </overriddenBadge>
+      <userExtraSettings>
+        <Type>	USER_EXTRA_SETTINGS	</Type>
+      </userExtraSettings>
+    </Properties>
+  </ARENA_ADDPLAYER_INFO>
+  <AVATAR_VEHICLE_ROSTER>	FIXED_DICT	  <Properties>
+      <vehicleID>
+        <Type>	OBJECT_ID	</Type>
+      </vehicleID>
+      <prebattleID>
+        <Type>	OBJECT_ID	</Type>
+      </prebattleID>
+      <team>
+        <Type>	INT8	</Type>
+      </team>
+      <observer>
+        <Type>	BOOL	</Type>
+      </observer>
+    </Properties>
+  </AVATAR_VEHICLE_ROSTER>
+  <ATTACKER_INFO>	FIXED_DICT	  <Properties>
+      <baseMB>
+        <Type>	MAILBOX	</Type>
+      </baseMB>
+      <receiveAttackResultsMB>
+        <Type>	MAILBOX	</Type>
+      </receiveAttackResultsMB>
+      <team>
+        <Type>	UINT8	</Type>
+      </team>
+      <position>
+        <Type>	VECTOR3	</Type>
+      </position>
+      <circularVisionRadius>
+        <Type>	FLOAT32	</Type>
+      </circularVisionRadius>
+      <health>
+        <Type>	INT16	</Type>
+      </health>
+      <noOwner>
+        <Type>	BOOL	</Type>
+      </noOwner>
+      <attackerInitialSpeed>
+        <Type>	FLOAT32	</Type>
+      </attackerInitialSpeed>
+      <attackerWasInvisible>
+        <Type>	BOOL	</Type>
+      </attackerWasInvisible>
+      <attackerTypeCompactDescr>
+        <Type>	UINT16	</Type>
+      </attackerTypeCompactDescr>
+      <attackerVehicleIndex>
+        <Type>	UINT8	</Type>
+      </attackerVehicleIndex>
+      <attackerGunBurstCount>
+        <Type>	UINT8	</Type>
+      </attackerGunBurstCount>
+      <equipmentID>
+        <Type>	UINT16	</Type>
+      </equipmentID>
+      <attackerType>
+        <Type>	UINT8	</Type>
+      </attackerType>
+      <attackerSiegeState>
+        <Type>	INT8	</Type>
+      </attackerSiegeState>
+      <attackerMasterVehID>
+        <Type>	UINT16	</Type>
+      </attackerMasterVehID>
+      <needsCount>
+        <Type>	BOOL	</Type>
+      </needsCount>
+    </Properties>
+  </ATTACKER_INFO>
+  <DESTRUCTIBLE_ATTACK_INFO>	FIXED_DICT	  <AllowNone>	true	</AllowNone>
+    <Properties>
+      <hitPoint>
+        <Type>	VECTOR3	</Type>
+      </hitPoint>
+      <shotID>
+        <Type>	INT32	</Type>
+      </shotID>
+      <attacker>
+        <Type>	ATTACKER_INFO	</Type>
+      </attacker>
+    </Properties>
+  </DESTRUCTIBLE_ATTACK_INFO>
+  <CLIENT_STATUS_STATISTICS>	FIXED_DICT	  <AllowNone>	true	</AllowNone>
+    <Properties>
+      <ping>
+        <Type>	INT16	</Type>
+      </ping>
+      <lag>
+        <Type>	UINT8	</Type>
+      </lag>
+    </Properties>
+  </CLIENT_STATUS_STATISTICS>
+  <VEHICLE_SPATIAL_INFO>	FIXED_DICT	  <Properties>
+      <vehicleID>
+        <Type>	OBJECT_ID	</Type>
+      </vehicleID>
+      <team>
+        <Type>	UINT8	</Type>
+      </team>
+      <position>
+        <Type>	VECTOR3	</Type>
+      </position>
+      <isAlive>
+        <Type>	BOOL	</Type>
+      </isAlive>
+      <vehClass>
+        <Type>	STRING	</Type>
+      </vehClass>
+      <prebattleID>
+        <Type>	OBJECT_ID	</Type>
+      </prebattleID>
+    </Properties>
+  </VEHICLE_SPATIAL_INFO>
+  <VEHICLE_SYNC_ATTRS>	FIXED_DICT	  <Properties>
+      <circularVisionRadius>
+        <Type>	UINT16	</Type>
+      </circularVisionRadius>
+      <gunPiercing>
+        <Type>	FLOAT	</Type>
+      </gunPiercing>
+    </Properties>
+  </VEHICLE_SYNC_ATTRS>
+  <SpaceToD>	FIXED_DICT	  <TypeName>	SpaceToD	</TypeName>
+    <Properties>
+      <initialTimeOfDay>
+        <Type>	FLOAT	</Type>
+      </initialTimeOfDay>
+      <gameSecondsPerSecond>
+        <Type>	FLOAT	</Type>
+      </gameSecondsPerSecond>
+    </Properties>
+  </SpaceToD>
+  <BATTLE_EVENT>	FIXED_DICT	  <Properties>
+      <eventType>
+        <Type>	UINT8	</Type>
+      </eventType>
+      <targetID>
+        <Type>	OBJECT_ID	</Type>
+      </targetID>
+      <details>
+        <Type>	UINT64	</Type>
+      </details>
+      <count>
+        <Type>	UINT16	</Type>
+      </count>
+    </Properties>
+  </BATTLE_EVENT>
+  <BATTLE_EVENTS_SUMMARY>	FIXED_DICT	  <Properties>	&gt;	  <damage>
+        <Type>	UINT32	</Type>
+      </damage>
+      <trackAssist>
+        <Type>	UINT32	</Type>
+      </trackAssist>
+      <radioAssist>
+        <Type>	UINT32	</Type>
+      </radioAssist>
+      <stunAssist>
+        <Type>	UINT32	</Type>
+      </stunAssist>
+      <smokeAssist>
+        <Type>	UINT32	</Type>
+      </smokeAssist>
+      <inspireAssist>
+        <Type>	UINT32	</Type>
+      </inspireAssist>
+      <tankings>
+        <Type>	UINT32	</Type>
+      </tankings>
+      <lastKillerID>
+        <Type>	OBJECT_ID	</Type>
+      </lastKillerID>
+      <lastDeathReasonID>
+        <Type>	UINT8	</Type>
+      </lastDeathReasonID>
+    </Properties>
+  </BATTLE_EVENTS_SUMMARY>
+  <REMOTE_CAMERA_DATA>	FIXED_DICT	  <Properties>
+      <time>
+        <Type>	FLOAT64	</Type>
+      </time>
+      <shotPoint>
+        <Type>	VECTOR3	</Type>
+      </shotPoint>
+      <zoom>
+        <Type>	UINT8	</Type>
+      </zoom>
+    </Properties>
+  </REMOTE_CAMERA_DATA>
+  <STUN_INFO>	FLOAT64	</STUN_INFO>
+  <BOUNDS2>	TUPLE	  <of>	VECTOR2	</of>
+    <size>	2	</size>
+  </BOUNDS2>
+  <FRONT_LINE_DATA>	FIXED_DICT	  <Properties>
+      <columnWidth>
+        <Type>	FLOAT	</Type>
+      </columnWidth>
+      <frontDropPerColumn>
+        <Type>	FLOAT	</Type>
+      </frontDropPerColumn>
+      <outlierFraction>
+        <Type>	FLOAT	</Type>
+      </outlierFraction>
+      <outlierVerticalDistance>
+        <Type>	FLOAT	</Type>
+      </outlierVerticalDistance>
+      <intrusionVerticalTolerance>
+        <Type>	FLOAT	</Type>
+      </intrusionVerticalTolerance>
+      <intrusionCheckExtendBounds>
+        <Type>	FLOAT	</Type>
+      </intrusionCheckExtendBounds>
+      <defenderTeam>
+        <Type>	UINT8	</Type>
+      </defenderTeam>
+      <frontEdgeExtendColumns>
+        <Type>	UINT8	</Type>
+      </frontEdgeExtendColumns>
+      <frontLineIds>
+        <Type>	ARRAY	  <of>	UINT8	</of>
+        </Type>
+      </frontLineIds>
+      <frontLineBounds>
+        <Type>	ARRAY	  <of>	BOUNDS2	</of>
+        </Type>
+      </frontLineBounds>
+      <frontLineMainDirVecs>
+        <Type>	ARRAY	  <of>	VECTOR2	</of>
+        </Type>
+      </frontLineMainDirVecs>
+    </Properties>
+  </FRONT_LINE_DATA>
+  <LIST_OF_COMP_DESCRS>	ARRAY	  <of>	INT32	</of>
+  </LIST_OF_COMP_DESCRS>
+  <AVATAR_AMMO_VIEWS>	FIXED_DICT	  <Properties>
+      <vehTypeCompDescrs>
+        <Type>	LIST_OF_COMP_DESCRS	</Type>
+      </vehTypeCompDescrs>
+      <compDescrs>
+        <Type>	ARRAY	  <of>	LIST_OF_COMP_DESCRS	</of>
+        </Type>
+      </compDescrs>
+    </Properties>
+  </AVATAR_AMMO_VIEWS>
+  <RESPAWN_AVAILABLE_VEHICLE>	FIXED_DICT	  <Properties>
+      <compDescr>
+        <Type>	STRING	</Type>
+      </compDescr>
+      <crewCompactDescrs>
+        <Type>	ARRAY	  <of>	STRING	</of>
+        </Type>
+      </crewCompactDescrs>
+      <marksOnGun>
+        <Type>	UINT8	</Type>
+      </marksOnGun>
+      <vehAmmo>
+        <Type>	ARRAY	  <of>	INT32	</of>
+        </Type>
+      </vehAmmo>
+      <settings>
+        <Type>	UINT16	</Type>
+      </settings>
+    </Properties>
+  </RESPAWN_AVAILABLE_VEHICLE>
+  <RESPAWN_COOLDOWN_ITEM>	FIXED_DICT	  <Properties>
+      <vehTypeCompDescr>
+        <Type>	UINT16	</Type>
+      </vehTypeCompDescr>
+      <endOfCooldownPiT>
+        <Type>	FLOAT32	</Type>
+      </endOfCooldownPiT>
+    </Properties>
+  </RESPAWN_COOLDOWN_ITEM>
+  <RESPAWN_ZONE>	FIXED_DICT	  <Properties>
+      <position>
+        <Type>	VECTOR3	</Type>
+      </position>
+      <isEnemyNear>
+        <Type>	BOOL	</Type>
+      </isEnemyNear>
+    </Properties>
+  </RESPAWN_ZONE>
+  <LIST_OF_RESPAWN_ZONE>	ARRAY	  <of>	RESPAWN_ZONE	</of>
+  </LIST_OF_RESPAWN_ZONE>
+  <RESPAWN_INFO>	FIXED_DICT	  <Properties>
+      <compDescr>
+        <Type>	STRING	</Type>
+      </compDescr>
+      <respawnType>
+        <Type>	UINT8	</Type>
+      </respawnType>
+      <autoRespawnPiT>
+        <Type>	FLOAT32	</Type>
+      </autoRespawnPiT>
+      <manualRespawnPiT>
+        <Type>	FLOAT32	</Type>
+      </manualRespawnPiT>
+      <respawnZones>
+        <Type>	LIST_OF_RESPAWN_ZONE	</Type>
+      </respawnZones>
+      <chosenRespawnZone>
+        <Type>	VECTOR3	</Type>
+      </chosenRespawnZone>
+    </Properties>
+  </RESPAWN_INFO>
+  <RESPAWN_LIMITED_VEHICLES>	FIXED_DICT	  <Properties>
+      <group>
+        <Type>	UINT8	</Type>
+      </group>
+      <vehTypeCompDescrs>
+        <Type>	ARRAY	  <of>	UINT16	</of>
+        </Type>
+      </vehTypeCompDescrs>
+    </Properties>
+  </RESPAWN_LIMITED_VEHICLES>
+  <RESPAWN_INFO_VEHICLE>	FIXED_DICT	  <Properties>
+      <compDescr>
+        <Type>	STRING	</Type>
+      </compDescr>
+      <crewCompactDescrs>
+        <Type>	ARRAY	  <of>	STRING	</of>
+        </Type>
+      </crewCompactDescrs>
+      <commanderSkinID>
+        <Type>	UINT16	</Type>
+      </commanderSkinID>
+      <marksOnGun>
+        <Type>	UINT8	</Type>
+      </marksOnGun>
+      <index>
+        <Type>	UINT16	</Type>
+      </index>
+      <position>
+        <Type>	VECTOR3	</Type>
+      </position>
+      <yaw>
+        <Type>	FLOAT32	</Type>
+      </yaw>
+      <prevGroup>
+        <Type>	UINT8	</Type>
+      </prevGroup>
+      <group>
+        <Type>	UINT8	</Type>
+      </group>
+      <policyID>
+        <Type>	UINT8	</Type>
+      </policyID>
+      <onRespawnSettings>
+        <Type>	PYTHON	</Type>
+      </onRespawnSettings>
+      <ammo>
+        <Type>	ARRAY	  <of>	INT32	</of>
+        </Type>
+      </ammo>
+      <outfit>
+        <Type>	STRING	</Type>
+      </outfit>
+      <vehPerks>
+        <Type>	PYTHON	</Type>
+      </vehPerks>
+    </Properties>
+  </RESPAWN_INFO_VEHICLE>
+  <BUFF_EFFECT>	FIXED_DICT	  <AllowNone>	true	</AllowNone>
+    <Properties>
+      <radius>
+        <Type>	FLOAT32	</Type>
+      </radius>
+      <startTime>
+        <Type>	FLOAT64	</Type>
+      </startTime>
+      <endTime>
+        <Type>	FLOAT64	</Type>
+      </endTime>
+      <inactivationDelay>
+        <Type>	FLOAT32	</Type>
+      </inactivationDelay>
+    </Properties>
+  </BUFF_EFFECT>
+  <DOT_EFFECT>	FIXED_DICT	  <AllowNone>	true	</AllowNone>
+    <Properties>
+      <endTime>
+        <Type>	FLOAT64	</Type>
+      </endTime>
+      <period>
+        <Type>	FLOAT32	</Type>
+      </period>
+      <groupId>
+        <Type>	UINT8	</Type>
+      </groupId>
+      <attackReasonID>
+        <Type>	UINT8	</Type>
+      </attackReasonID>
+    </Properties>
+  </DOT_EFFECT>
+  <BUFF_EFFECT_INACTIVATION>	FIXED_DICT	  <AllowNone>	true	</AllowNone>
+    <Properties>
+      <senderKey>
+        <Type>	STRING	</Type>
+      </senderKey>
+      <startTime>
+        <Type>	FLOAT64	</Type>
+      </startTime>
+      <endTime>
+        <Type>	FLOAT64	</Type>
+      </endTime>
+      <inactivationStartTime>
+        <Type>	FLOAT64	</Type>
+      </inactivationStartTime>
+      <inactivationEndTime>
+        <Type>	FLOAT64	</Type>
+      </inactivationEndTime>
+    </Properties>
+  </BUFF_EFFECT_INACTIVATION>
+  <HOT_EFFECT>	FIXED_DICT	  <AllowNone>	true	</AllowNone>
+    <Properties>
+      <senderKey>
+        <Type>	STRING	</Type>
+      </senderKey>
+      <startTime>
+        <Type>	FLOAT64	</Type>
+      </startTime>
+      <endTime>
+        <Type>	FLOAT64	</Type>
+      </endTime>
+      <inactivationStartTime>
+        <Type>	FLOAT64	</Type>
+      </inactivationStartTime>
+      <inactivationEndTime>
+        <Type>	FLOAT64	</Type>
+      </inactivationEndTime>
+      <isInfluenceZone>
+        <Type>	BOOL	</Type>
+      </isInfluenceZone>
+    </Properties>
+  </HOT_EFFECT>
+  <INSPIRED_EFFECT>	FIXED_DICT	  <AllowNone>	true	</AllowNone>
+    <Properties>
+      <primary>
+        <Type>	BOOL	</Type>
+      </primary>
+      <startTime>
+        <Type>	FLOAT64	</Type>
+      </startTime>
+      <endTime>
+        <Type>	FLOAT64	</Type>
+      </endTime>
+      <inactivationStartTime>
+        <Type>	FLOAT64	</Type>
+      </inactivationStartTime>
+      <inactivationEndTime>
+        <Type>	FLOAT64	</Type>
+      </inactivationEndTime>
+      <equipmentID>
+        <Type>	UINT16	</Type>
+      </equipmentID>
+    </Properties>
+  </INSPIRED_EFFECT>
+  <SMOKE_INFO>	FIXED_DICT	  <Properties>
+      <smokeID>
+        <Type>	UINT16	</Type>
+      </smokeID>
+      <equipmentID>
+        <Type>	UINT16	</Type>
+      </equipmentID>
+      <endTime>
+        <Type>	FLOAT64	</Type>
+      </endTime>
+    </Properties>
+  </SMOKE_INFO>
+  <VEHICLE_DETECTOR_INFO>	FIXED_DICT	  <Properties>
+      <detectorID>
+        <Type>	UINT16	</Type>
+      </detectorID>
+      <point>
+        <Type>	VECTOR3	</Type>
+      </point>
+      <radius>
+        <Type>	FLOAT32	</Type>
+      </radius>
+      <aliveOnly>
+        <Type>	BOOL	</Type>
+      </aliveOnly>
+    </Properties>
+  </VEHICLE_DETECTOR_INFO>
+  <COOLDOWN_INFO>	FIXED_DICT	  <Properties>
+      <id>
+        <Type>	UINT8	</Type>
+      </id>
+      <leftTime>
+        <Type>	INT16	</Type>
+      </leftTime>
+      <baseTime>
+        <Type>	INT16	</Type>
+      </baseTime>
+    </Properties>
+  </COOLDOWN_INFO>
+  <CLIENT_VEHICLE_PUBLIC_INFO>	FIXED_DICT	  <AllowNone>	true	</AllowNone>
+    <Properties>
+      <vehID>
+        <Type>	OBJECT_ID	</Type>
+      </vehID>
+      <name>
+        <Type>	STRING	</Type>
+      </name>
+      <realName>
+        <Type>	STRING	</Type>
+      </realName>
+      <compDescr>
+        <Type>	STRING	</Type>
+      </compDescr>
+      <team>
+        <Type>	INT8	</Type>
+      </team>
+      <isAlive>
+        <Type>	INT8	</Type>
+      </isAlive>
+      <isAvatarReady>
+        <Type>	INT8	</Type>
+      </isAvatarReady>
+      <isTeamKiller>
+        <Type>	INT8	</Type>
+      </isTeamKiller>
+      <accountDBID>
+        <Type>	DB_ID	</Type>
+      </accountDBID>
+      <clanAbbrev>
+        <Type>	STRING	</Type>
+      </clanAbbrev>
+      <clanDBID>
+        <Type>	DB_ID	</Type>
+      </clanDBID>
+      <prebattleID>
+        <Type>	OBJECT_ID	</Type>
+      </prebattleID>
+      <isPrebattleCreator>
+        <Type>	INT8	</Type>
+      </isPrebattleCreator>
+      <forbidInBattleInvitations>
+        <Type>	INT8	</Type>
+      </forbidInBattleInvitations>
+      <events>
+        <Type>	PYTHON	</Type>
+      </events>
+      <igrType>
+        <Type>	INT8	</Type>
+      </igrType>
+      <potapovQuestIDs>
+        <Type>	ARRAY	  <of>	UINT16	</of>
+        </Type>
+      </potapovQuestIDs>
+      <potapovQuestInfo>
+        <Type>	PYTHON	</Type>
+      </potapovQuestInfo>
+      <ranked>
+        <Type>	PYTHON	</Type>
+      </ranked>
+      <outfit>
+        <Type>	STRING	</Type>
+      </outfit>
+      <sessionID>
+        <Type>	STRING	</Type>
+      </sessionID>
+      <wtr>
+        <Type>	INT16	</Type>
+      </wtr>
+      <badges>
+        <Type>	PYTHON	</Type>
+      </badges>
+      <overriddenBadge>
+        <Type>	UINT8	</Type>
+      </overriddenBadge>
+      <maxHealth>
+        <Type>	UINT16	</Type>
+      </maxHealth>
+    </Properties>
+  </CLIENT_VEHICLE_PUBLIC_INFO>
+  <PLAY_LIMITS>	FIXED_DICT	  <Properties>
+      <curfew>
+        <Type>	INT32	</Type>
+      </curfew>
+      <weeklyPlayLimit>
+        <Type>	INT32	</Type>
+      </weeklyPlayLimit>
+      <dailyPlayLimit>
+        <Type>	INT32	</Type>
+      </dailyPlayLimit>
+    </Properties>
+  </PLAY_LIMITS>
+  <TIME_WITH_REASON>	FIXED_DICT	  <Properties>
+      <time>
+        <Type>	INT32	</Type>
+      </time>
+      <reason>
+        <Type>	UINT8	</Type>
+      </reason>
+    </Properties>
+  </TIME_WITH_REASON>
+</alias.xml>

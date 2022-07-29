@@ -1,0 +1,15 @@
+<RespawnController_Vehicle.def>
+  <TempProperties>
+    <_respawnController></_respawnController>
+  </TempProperties>
+  <CellMethods>
+    <respawnController_respawnScheduled></respawnController_respawnScheduled>
+    <respawnController_stopRespawn></respawnController_stopRespawn>
+    <respawnController_suspendRespawn></respawnController_suspendRespawn>
+    <respawnController_respawn>
+      <Arg>	RESPAWN_INFO_VEHICLE	</Arg>
+      <Arg>	ARRAY	  <of>	MAILBOX	</of>
+      </Arg>
+    </respawnController_respawn>
+  </CellMethods>
+</RespawnController_Vehicle.def>

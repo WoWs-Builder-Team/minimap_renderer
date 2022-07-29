@@ -1,0 +1,63 @@
+<StepRepairPoint.def>
+  <Parent>	RepairBase	</Parent>
+  <IsManualAoI>	true	</IsManualAoI>
+  <Properties>
+    <initTeam>
+      <Type>	UINT8	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+      <Editable>	true	</Editable>
+      <Default>	0	</Default>
+    </initTeam>
+    <team>
+      <Type>	UINT8	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Default>	0	</Default>
+    </team>
+    <pointsPerStep>
+      <Type>	INT16	</Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+      <Default>	100	</Default>
+      <Editable>	true	</Editable>
+    </pointsPerStep>
+    <repairTime>
+      <Type>	FLOAT32	</Type>
+      <Flags>	CELL_PRIVATE	</Flags>
+      <Default>	1.0	</Default>
+      <Editable>	true	</Editable>
+    </repairTime>
+    <secondsCooldownPerStep>
+      <Type>	FLOAT32	</Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+      <Default>	10.0	</Default>
+      <Editable>	true	</Editable>
+    </secondsCooldownPerStep>
+    <baseSecondsCooldownAfterRepair>
+      <Type>	FLOAT32	</Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+      <Default>	120.0	</Default>
+      <Editable>	true	</Editable>
+    </baseSecondsCooldownAfterRepair>
+    <percentageShellsPerStep>
+      <Type>	UINT8	</Type>
+      <Flags>	CELL_PUBLIC	</Flags>
+      <Default>	10	</Default>
+      <Editable>	true	</Editable>
+    </percentageShellsPerStep>
+    <radius>
+      <Type>	FLOAT32	</Type>
+      <Flags>	ALL_CLIENTS	</Flags>
+      <Default>	25.0	</Default>
+      <Editable>	true	</Editable>
+    </radius>
+  </Properties>
+  <CellMethods>
+    <changeOwnerTeam>
+      <Arg>	UINT8	</Arg>
+    </changeOwnerTeam>
+    <setCooldownAfterRepair>
+      <Arg>	OBJECT_ID	</Arg>
+      <Arg>	FLOAT32	</Arg>
+      <Arg>	BOOL	</Arg>
+    </setCooldownAfterRepair>
+  </CellMethods>
+</StepRepairPoint.def>

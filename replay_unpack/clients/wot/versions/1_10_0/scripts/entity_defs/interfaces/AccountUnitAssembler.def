@@ -1,0 +1,30 @@
+<AccountUnitAssembler.def>
+  <BaseMethods>
+    <accountUnitAssembler_acceptAutoSearch>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT64	</Arg>
+      <Exposed></Exposed>
+    </accountUnitAssembler_acceptAutoSearch>
+    <accountUnitAssembler_createEx>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </accountUnitAssembler_createEx>
+    <accountUnitAssembler_joinEx>
+      <Arg>	INT32	</Arg>
+      <Arg>	INT32	</Arg>
+      <Arg>	PYTHON	</Arg>
+    </accountUnitAssembler_joinEx>
+    <accountUnitAssembler_onNeedToJoinToUnitMgr>
+      <Arg>	MAILBOX	</Arg>
+      <Arg>	INT8	</Arg>
+      <Arg>	UINT16	</Arg>
+      <Arg>	INT32	</Arg>
+    </accountUnitAssembler_onNeedToJoinToUnitMgr>
+    <accountUnitAssembler_onAddAutoAssembledAccount>
+      <Arg>	UINT32	</Arg>
+      <Arg>	PYTHON	</Arg>
+      <Arg>	BOOL	</Arg>
+    </accountUnitAssembler_onAddAutoAssembledAccount>
+  </BaseMethods>
+</AccountUnitAssembler.def>
