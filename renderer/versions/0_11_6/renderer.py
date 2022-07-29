@@ -6,10 +6,8 @@ from renderer.base import RendererBase
 from renderer.data import ReplayData
 from renderer.utils import load_image, draw_grid
 from renderer.layers import LayerShip, LayerSmoke, LayerShot, LayerTorpedo
-from PIL import Image
-from itertools import zip_longest
+from PIL import Image, ImageDraw
 from imageio_ffmpeg import write_frames
-from concurrent.futures import ThreadPoolExecutor
 
 
 class Renderer(RendererBase):
@@ -19,35 +17,23 @@ class Renderer(RendererBase):
         Args:
             replay_data (ReplayData): Replay data.
         """
-        self._replay_data: ReplayData = replay_data
-        self._res: str = f"{__package__}.resources"
+        self.replay_data: ReplayData = replay_data
+        self.res: str = f"{__package__}.resources"
         # MAP INFO
-        self._minimap_image: Optional[Image.Image] = None
-        self._minimap_size: int = 0
-        self._space_size: int = 0
-        self._scaling: float = 0.0
+        self.minimap_image: Optional[Image.Image] = None
+        self.minimap_size: int = 0
+        self.space_size: int = 0
+        self.scaling: float = 0.0
 
     def start(self):
         """Starts the rendering process"""
         self._load_map()
-        assert self._minimap_image
+        assert self.minimap_image
 
-        layer_ship = LayerShip(
-            self._replay_data.events,
-            self._scaling,
-            self._replay_data.player_info,
-        )
-        layer_smoke = LayerSmoke(self._replay_data.events, self._scaling)
-        layer_shot = LayerShot(
-            self._replay_data.events,
-            self._scaling,
-            self._replay_data.player_info,
-        )
-        layer_torpedo = LayerTorpedo(
-            self._replay_data.events,
-            self._scaling,
-            self._replay_data.player_info,
-        )
+        layer_ship = LayerShip(self)
+        layer_shot = LayerShot(self)
+        layer_torpedo = LayerTorpedo(self)
+        layer_smoke = LayerSmoke(self)
 
         video_writer = write_frames(
             path="hm.mp4",
@@ -59,52 +45,32 @@ class Renderer(RendererBase):
         )
         video_writer.send(None)
 
-        for game_time, event in self._replay_data.events.items():
-            minimap_img = self._minimap_image.copy()
+        for game_time in self.replay_data.events.keys():
+            minimap_img = self.minimap_image.copy()
+            # draw = ImageDraw.Draw(minimap_img, "RGBA")
 
-            executors = []
-
-            with ThreadPoolExecutor(max_workers=3) as tpe:
-                executors.append(
-                    tpe.submit(layer_torpedo.generator, game_time)
-                )
-                executors.append(tpe.submit(layer_shot.generator, game_time))
-                executors.append(tpe.submit(layer_smoke.generator, game_time))
-                executors.append(tpe.submit(layer_ship.generator, game_time))
-
-            for executor in executors:
-                if result := executor.result():
-                    minimap_img = Image.alpha_composite(minimap_img, result)
-
-            # if image_torpedoes := layer_torpedo.generator(game_time):
-            #     minimap_img = Image.alpha_composite(
-            #         minimap_img, image_torpedoes
-            #     )
-
-            # if gen_shot := layer_shot.generator(game_time):
-            #     minimap_img = Image.alpha_composite(minimap_img, gen_shot)
-
-            # if gen_smoke := layer_smoke.generator(game_time):
-            #     minimap_img = Image.alpha_composite(minimap_img, gen_smoke)
-
-            # if gen_ship := layer_ship.generator(game_time):
-            #     minimap_img = Image.alpha_composite(minimap_img, gen_ship)
+            layer_ship.generator(game_time, minimap_img)
+            layer_smoke.generator(game_time, minimap_img)
+            # if result := layer_smoke.generator(game_time):
+            #     minimap_img = Image.alpha_composite(minimap_img, result)
+            layer_shot.generator(game_time, minimap_img)
+            layer_torpedo.generator(game_time, minimap_img)
 
             video_writer.send(minimap_img.tobytes())
         video_writer.close()
 
     def _load_map(self):
         """Loads and prepares the map."""
-        with open_text(f"{self._res}.spaces", "manifest.json") as reader:
+        with open_text(f"{self.res}.spaces", "manifest.json") as reader:
             manifest = json.load(reader)
-            self._minimap_size, self._space_size, self._scaling = manifest[
-                self._replay_data.game_map
+            self.minimap_size, self.space_size, self.scaling = manifest[
+                self.replay_data.game_map
             ]
 
-        map_res = f"{self._res}.spaces.{self._replay_data.game_map}"
+        map_res = f"{self.res}.spaces.{self.replay_data.game_map}"
         map_land = load_image(map_res, "minimap.png")
         map_water = load_image(map_res, "minimap_water.png")
         map_water = Image.alpha_composite(map_water, draw_grid())
-        self._minimap_image = Image.alpha_composite(map_water, map_land)
+        self.minimap_image = Image.alpha_composite(map_water, map_land)
         # draw = ImageDraw.Draw(self._minimap_image)
         # draw.ellipse(xy=[(2, 760 / 2), (2, 760 / 2 + 2)], fill="white")

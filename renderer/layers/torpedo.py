@@ -2,7 +2,7 @@ import numpy as np
 import json
 
 from typing import Optional
-from ..base import LayerBase
+from ..base import LayerBase, RendererBase
 from ..data import PlayerInfo, Events
 from PIL import Image, ImageDraw
 from ..const import COLORS_NORMAL
@@ -13,17 +13,14 @@ from importlib.resources import open_text
 class LayerTorpedo(LayerBase):
     def __init__(
         self,
-        events: dict[int, Events],
-        scaling: float,
-        player_info: dict[int, PlayerInfo],
+        renderer: RendererBase,
     ):
-        self._events = events
-        self._scaling = scaling
-        self._player_info = player_info
+        self._renderer = renderer
         self._torpedoes: dict[int, list] = {}
         self._projectiles: dict = {}
-        self._info_b = {
-            v.ship_id: v.relation for v in self._player_info.values()
+        self._relations = {
+            v.ship_id: v.relation
+            for v in self._renderer.replay_data.player_info.values()
         }
         self._load_projectile_data()
         self._hits: set[int] = set()
@@ -32,20 +29,20 @@ class LayerTorpedo(LayerBase):
         with open_text("renderer.resources", "projectile.json") as text_reader:
             self._projectiles = json.load(text_reader)
 
-    def generator(self, game_time: int) -> Optional[Image.Image]:
-        self._hits.update(self._events[game_time].evt_hits)
+    def generator(self, game_time: int, image: Image.Image):
+        events = self._renderer.replay_data.events
+        self._hits.update(events[game_time].evt_hits)
 
-        if not self._events[game_time].evt_torpedo and not self._torpedoes:
-            return None
+        if not events[game_time].evt_torpedo and not self._torpedoes:
+            return
 
-        base = Image.new("RGBA", (760, 760))
-        draw = ImageDraw.Draw(base)
+        draw = ImageDraw.Draw(image)
 
         for hit in self._hits.copy():
             if self._torpedoes.pop(hit, None):
                 self._hits.remove(hit)
 
-        for torpedo in self._events[game_time].evt_torpedo:
+        for torpedo in events[game_time].evt_torpedo:
             x1, y1 = torpedo.origin
             a, b = torpedo.direction
 
@@ -81,15 +78,13 @@ class LayerTorpedo(LayerBase):
 
                 draw.ellipse(
                     [(_cx - 2, _cy - 2), (_cx + 2, _cy + 2)],
-                    fill=COLORS_NORMAL[self._info_b[_cid]],
+                    fill=COLORS_NORMAL[self._relations[_cid]],
                 )
             except IndexError:
                 pass
 
-        return base.copy()
-
     def _get_scaled(self, n):
-        return n * self._scaling + 760 / 2
+        return n * self._renderer.scaling + 760 / 2
 
     @staticmethod
     def getEquidistantPoints(

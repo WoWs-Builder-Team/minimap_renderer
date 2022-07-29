@@ -1,5 +1,5 @@
 from typing import Optional
-from ..base import LayerBase
+from ..base import LayerBase, RendererBase
 from ..data import PlayerInfo, Events
 from ..utils import (
     generate_ship_data,
@@ -14,12 +14,7 @@ from math import hypot
 
 
 class LayerShip(LayerBase):
-    def __init__(
-        self,
-        events: dict[int, Events],
-        scaling: float,
-        player_info: dict[int, PlayerInfo],
-    ):
+    def __init__(self, renderer: RendererBase):
         """A class that handles ship's position, icon.
 
         Args:
@@ -27,12 +22,12 @@ class LayerShip(LayerBase):
             scaling (float): Scaling.
             player_info (dict[int, PlayerInfo]): Player's information.
         """
-        self._events = events
-        self._scaling = scaling
-        self._player_info = player_info
-        self._ship_info = generate_ship_data(self._player_info)
+        self._renderer = renderer
+        self._ship_info = generate_ship_data(
+            self._renderer.replay_data.player_info
+        )
 
-    def generator(self, game_time: int) -> Optional[Image.Image]:
+    def generator(self, game_time: int, image: Image.Image):
         """Yields an arguments for Image.paste.
 
         Args:
@@ -41,13 +36,15 @@ class LayerShip(LayerBase):
         Yields:
             Generator[ dict, None, None ] : A generator.
         """
-        base = Image.new("RGBA", (760, 760))
-        draw = ImageDraw.Draw(base)
 
-        for vehicle_id, vehicle in self._events[game_time].evt_vehicle.items():
+        player_info = self._renderer.replay_data.player_info
+        events = self._renderer.replay_data.events
+        scaling = self._renderer.scaling
+
+        for vehicle_id, vehicle in events[game_time].evt_vehicle.items():
             name, species, level, holder = self._ship_info[vehicle.avatar_id]
 
-            player = self._player_info[vehicle.avatar_id]
+            player = player_info[vehicle.avatar_id]
             icon = self._ship_icon(
                 vehicle.is_alive,
                 vehicle.is_visible,
@@ -56,8 +53,8 @@ class LayerShip(LayerBase):
                 vehicle.not_in_range,
             )
             icon = icon.rotate(-vehicle.yaw, Image.BICUBIC, True)
-            x = round(vehicle.x * self._scaling + 760 / 2)
-            y = round(-vehicle.y * self._scaling + 760 / 2)
+            x = round(vehicle.x * scaling + 760 / 2)
+            y = round(-vehicle.y * scaling + 760 / 2)
             color = (
                 COLORS_NORMAL[0]
                 if vehicle.relation == -1
@@ -106,14 +103,12 @@ class LayerShip(LayerBase):
                             rotated_holder = holder.rotate(90, Image.BICUBIC)
 
                     icon = paste_centered(rotated_holder, icon)
-                    base.paste(**paste_args_centered(icon, x, y, True))
-                    base.paste(**paste_args_centered(icon, x, y, True))
+                    image.paste(**paste_args_centered(icon, x, y, True))
+                    image.paste(**paste_args_centered(icon, x, y, True))
                 else:
-                    base.paste(**paste_args_centered(icon, x, y, True))
+                    image.paste(**paste_args_centered(icon, x, y, True))
             else:
-                base.paste(**paste_args_centered(icon, x, y, True))
-
-        return base
+                image.paste(**paste_args_centered(icon, x, y, True))
 
     def _ship_icon(
         self,
