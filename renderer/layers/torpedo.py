@@ -1,10 +1,8 @@
 import numpy as np
 import json
 
-from typing import Optional
 from ..base import LayerBase, RendererBase
-from ..data import PlayerInfo, Events
-from PIL import Image, ImageDraw
+from PIL import ImageDraw
 from ..const import COLORS_NORMAL
 from math import cos, sin, radians, hypot, atan2
 from importlib.resources import open_text
@@ -29,14 +27,12 @@ class LayerTorpedo(LayerBase):
         with open_text("renderer.resources", "projectile.json") as text_reader:
             self._projectiles = json.load(text_reader)
 
-    def generator(self, game_time: int, image: Image.Image):
+    def draw(self, game_time: int, draw: ImageDraw.ImageDraw):
         events = self._renderer.replay_data.events
         self._hits.update(events[game_time].evt_hits)
 
         if not events[game_time].evt_torpedo and not self._torpedoes:
             return
-
-        draw = ImageDraw.Draw(image)
 
         for hit in self._hits.copy():
             if self._torpedoes.pop(hit, None):
