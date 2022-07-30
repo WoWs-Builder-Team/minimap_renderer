@@ -1,6 +1,5 @@
 import json
 
-from typing import Union
 from importlib.resources import open_binary, open_text
 from PIL import Image, ImageDraw, ImageFont
 from .data import PlayerInfo
@@ -53,7 +52,7 @@ def generate_ship_data(
     """
     dict_player_holder: dict[int, tuple[str, str, int, Image.Image]] = {}
     text_offset = 16
-    hw, hh = (100, 80)
+    hw, hh = (90, 80)
     res_path = "renderer.resources"
 
     with open_text(res_path, "ships.json") as text_reader:
@@ -96,6 +95,7 @@ def paste_args_centered(
     Returns:
         dict: Named arguments for Image.paste.
     """
+
     o = 0  # offset for the legends
     result = {
         "im": image,
@@ -103,10 +103,9 @@ def paste_args_centered(
             (x - round(image.width / 2)) + o,
             (y - round(image.height / 2)) + o,
         ),
-        "mask": image,
     }
-    if not masked:
-        result.pop("mask")
+    if masked:
+        result.update({"mask": image})
     return result
 
 
