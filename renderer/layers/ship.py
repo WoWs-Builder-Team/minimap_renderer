@@ -27,7 +27,7 @@ class LayerShip(LayerBase):
             self._renderer.replay_data.player_info
         )
 
-    def generator(self, game_time: int, image: Image.Image):
+    def draw(self, game_time: int, image: Image.Image):
         """Yields an arguments for Image.paste.
 
         Args:
@@ -61,9 +61,20 @@ class LayerShip(LayerBase):
                 else COLORS_NORMAL[vehicle.relation]
             )
 
+            # print(
+            #     vehicle.relation, vehicle.is_visible, vehicle.visibility_flag
+            # )
+
             if vehicle.is_alive:
                 if vehicle.is_visible:
                     holder = holder.copy()
+
+                    if vehicle.visibility_flag > 0 and vehicle.relation in [
+                        -1,
+                        0,
+                    ]:
+                        draw = ImageDraw.Draw(holder)
+                        draw.ellipse([(20, 20), (25, 25)], fill="orange")
 
                     if not vehicle.not_in_range:
                         draw_health_bar(
@@ -103,7 +114,6 @@ class LayerShip(LayerBase):
                             rotated_holder = holder.rotate(90, Image.BICUBIC)
 
                     icon = paste_centered(rotated_holder, icon)
-                    image.paste(**paste_args_centered(icon, x, y, True))
                     image.paste(**paste_args_centered(icon, x, y, True))
                 else:
                     image.paste(**paste_args_centered(icon, x, y, True))
