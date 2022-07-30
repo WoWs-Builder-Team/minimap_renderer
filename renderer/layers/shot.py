@@ -1,9 +1,7 @@
 import numpy as np
 
 from ..base import LayerBase, RendererBase
-from ..data import PlayerInfo, Events
-from typing import Optional
-from PIL import Image, ImageDraw
+from PIL import ImageDraw
 from ..const import COLORS_NORMAL
 
 
@@ -21,13 +19,11 @@ class LayerShot(LayerBase):
         self._empties = 0
         self._hits: set[int] = set()
 
-    def generator(self, game_time: int, image: Image.Image):
+    def draw(self, game_time: int, draw: ImageDraw.ImageDraw):
         events = self._renderer.replay_data.events
 
         if not events[game_time].evt_shot and not self._projectiles:
             return
-
-        draw = ImageDraw.Draw(image)
 
         # self._hits.update(self._events[game_time].evt_hits)
 
@@ -42,7 +38,9 @@ class LayerShot(LayerBase):
                 shot.t_time,
             )
             p = self._projectiles.setdefault(shot.shot_id, [])
-            prev_x, prev_y = 0, 0
+            prev_x, prev_y = map(
+                self._get_scaled, (shot.origin[0], -shot.origin[1])
+            )
 
             for (x, y) in result:
                 x = int(self._get_scaled(x))
