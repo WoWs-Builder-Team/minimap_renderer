@@ -140,7 +140,21 @@ class BattleController(IBattleController):
             "Avatar", "receiveShotKills", self._set_hits
         )
 
+        # Entity.subscribe_property_change(
+        #     "Vehicle", "torpedoLocalPos", self.test
+        # )
+
+        Entity.subscribe_property_change(
+            "Vehicle", "visibilityFlags", self._set_visibility_flag
+        )
+
     ###########################################################################
+    def _set_visibility_flag(self, entity: Entity, flag: int):
+        # str_t = time.strftime("%M:%S", time.gmtime(self._time_left))
+        self._dict_vehicle[entity.id] = self._dict_vehicle[entity.id]._replace(
+            visibility_flag=flag
+        )
+
     def _set_hits(self, entity: Entity, data):
         for item in data:
             for kill in item["kills"]:
@@ -280,6 +294,7 @@ class BattleController(IBattleController):
                 relation=relation,
                 is_visible=False,
                 not_in_range=True,
+                visibility_flag=0,
             )
             self._dict_vehicle[player["shipId"]] = vi
             self._vehicle_to_avatar[player["shipId"]] = player[id_to_use]
