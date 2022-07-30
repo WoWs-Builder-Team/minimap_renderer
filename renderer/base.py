@@ -41,7 +41,7 @@ class LayerBase(ABC):
         pass
 
     @abstractmethod
-    def generator(
+    def draw(
         self, game_time: int
     ) -> Union[Generator[Any, None, None], Image.Image]:
         """
