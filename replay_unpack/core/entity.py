@@ -103,9 +103,10 @@ class Entity:
         method = self._methods[exposed_index]
         logging.debug("calling %s method %s", self._spec.get_name(), method)
         method_hash = self._spec.get_name() + "_" + method.get_name()
+        # print(method_hash)
         subscriptions = Entity._methods_subscriptions.get(method_hash, [])
         # if method.get_name() not in ["onCheckGamePing", "onCheckCellPing"]:
-        #     print(method)
+        #     print(method_hash)
         if not subscriptions:
             return
 
