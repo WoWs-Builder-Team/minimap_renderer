@@ -41,20 +41,19 @@ class Renderer(RendererBase):
             quality=9,
             pix_fmt_in="rgba",
             macro_block_size=19,
-            size=(760, 760),
+            size=self.minimap_image.size,
         )
         video_writer.send(None)
 
         for game_time in self.replay_data.events.keys():
             minimap_img = self.minimap_image.copy()
-            # draw = ImageDraw.Draw(minimap_img, "RGBA")
+            draw = ImageDraw.Draw(minimap_img)
+            draw = ImageDraw.Draw(minimap_img)
 
-            layer_ship.generator(game_time, minimap_img)
-            layer_smoke.generator(game_time, minimap_img)
-            # if result := layer_smoke.generator(game_time):
-            #     minimap_img = Image.alpha_composite(minimap_img, result)
-            layer_shot.generator(game_time, minimap_img)
-            layer_torpedo.generator(game_time, minimap_img)
+            layer_ship.draw(game_time, minimap_img)
+            layer_smoke.draw(game_time, minimap_img)
+            layer_shot.draw(game_time, draw)
+            layer_torpedo.draw(game_time, draw)
 
             video_writer.send(minimap_img.tobytes())
         video_writer.close()
