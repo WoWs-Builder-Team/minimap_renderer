@@ -1,9 +1,5 @@
 from ..base import LayerBase, RendererBase
-from typing import Optional
-from ..data import Events
 from PIL import Image, ImageDraw
-
-import numpy as np
 
 
 class LayerSmoke(LayerBase):
@@ -16,7 +12,7 @@ class LayerSmoke(LayerBase):
         """
         self._renderer = renderer
 
-    def generator(self, game_time: int, image: Image.Image):
+    def draw(self, game_time: int, image: Image.Image):
         events = self._renderer.replay_data.events
         smokes = events[game_time].evt_smoke.values()
 
