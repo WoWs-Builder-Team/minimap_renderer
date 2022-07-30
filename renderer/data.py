@@ -34,6 +34,7 @@ class Vehicle(NamedTuple):
     relation: int
     is_visible: bool
     not_in_range: bool
+    visibility_flag: int
 
 
 class Smoke(NamedTuple):
