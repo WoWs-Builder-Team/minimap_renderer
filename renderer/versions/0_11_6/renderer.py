@@ -8,6 +8,7 @@ from renderer.utils import load_image, draw_grid
 from renderer.layers import LayerShip, LayerSmoke, LayerShot, LayerTorpedo
 from PIL import Image, ImageDraw
 from imageio_ffmpeg import write_frames
+from renderer.resman import ResourceManager
 
 
 class Renderer(RendererBase):
@@ -24,6 +25,7 @@ class Renderer(RendererBase):
         self.minimap_size: int = 0
         self.space_size: int = 0
         self.scaling: float = 0.0
+        self.resman = ResourceManager()
 
     def start(self):
         """Starts the rendering process"""
@@ -36,8 +38,8 @@ class Renderer(RendererBase):
         layer_smoke = LayerSmoke(self)
 
         video_writer = write_frames(
-            path="hm.mp4",
-            fps=30,
+            path="minimap.mp4",
+            fps=20,
             quality=9,
             pix_fmt_in="rgba",
             macro_block_size=19,
@@ -48,13 +50,10 @@ class Renderer(RendererBase):
         for game_time in self.replay_data.events.keys():
             minimap_img = self.minimap_image.copy()
             draw = ImageDraw.Draw(minimap_img)
-            draw = ImageDraw.Draw(minimap_img)
-
-            layer_ship.draw(game_time, minimap_img)
-            layer_smoke.draw(game_time, minimap_img)
             layer_shot.draw(game_time, draw)
             layer_torpedo.draw(game_time, draw)
-
+            layer_ship.draw(game_time, minimap_img)
+            layer_smoke.draw(game_time, minimap_img)
             video_writer.send(minimap_img.tobytes())
         video_writer.close()
 
