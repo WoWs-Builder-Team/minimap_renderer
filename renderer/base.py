@@ -2,6 +2,7 @@ from typing import Any, Generator, Union, Optional
 from abc import ABC, abstractmethod
 from .data import ReplayData
 from PIL import Image
+from .resman import ResourceManager
 
 
 class RendererBase(ABC):
@@ -13,6 +14,7 @@ class RendererBase(ABC):
     minimap_size: int
     space_size: int
     scaling: float
+    resman: ResourceManager
 
     @abstractmethod
     def __init__(self, replay_data: ReplayData):
