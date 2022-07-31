@@ -19,6 +19,7 @@ from renderer.data import (
     Smoke,
     Shot,
     Torpedo,
+    Consumable,
 )
 from replay_unpack.utils import unpack_values
 
@@ -55,8 +56,9 @@ class BattleController(IBattleController):
         Entity.subscribe_method_call(
             "Avatar", "receiveVehicleDeath", self.receiveVehicleDeath
         )
-        # Entity.subscribe_method_call('Vehicle', 'setConsumables',
-        #                              self.onSetConsumable)
+        # Entity.subscribe_method_call(
+        #     "Vehicle", "setConsumables", self.onSetConsumable
+        # )
         Entity.subscribe_method_call("Avatar", "onRibbon", self.onRibbon)
         Entity.subscribe_method_call(
             "Avatar", "onAchievementEarned", self.onAchievementEarned
@@ -94,6 +96,7 @@ class BattleController(IBattleController):
         self._acc_shots: list[Shot] = []
         self._acc_torpedoes: list[Torpedo] = []
         self._acc_hits: list[int] = []
+        self._acc_consumables: dict[int, list[Consumable]] = {}
 
         #######################################################################
 
@@ -140,15 +143,45 @@ class BattleController(IBattleController):
             "Avatar", "receiveShotKills", self._set_hits
         )
 
-        # Entity.subscribe_property_change(
-        #     "Vehicle", "torpedoLocalPos", self.test
-        # )
-
         Entity.subscribe_property_change(
             "Vehicle", "visibilityFlags", self._set_visibility_flag
         )
 
+        Entity.subscribe_method_call(
+            "Vehicle",
+            "consumableUsed",
+            self._on_consumable_used,
+        )
+
     ###########################################################################
+    def _update(self, entity, time_left):
+        self._time_left = time_left
+
+        if self._battle_stage != 0:
+            return
+
+        battle_time = self._durations[-1] - self._time_left
+        evt = Events(
+            evt_vehicle=copy.copy(self._dict_vehicle),
+            evt_smoke=copy.copy(self._dict_smoke),
+            evt_shot=copy.copy(self._acc_shots),
+            evt_torpedo=copy.copy(self._acc_torpedoes),
+            evt_hits=copy.copy(self._acc_hits),
+            evt_consumable=copy.copy(self._acc_consumables),
+        )
+
+        self._dict_events[battle_time] = evt
+        self._acc_shots.clear()
+        self._acc_torpedoes.clear()
+        self._acc_hits.clear()
+        self._acc_consumables.clear()
+
+    def _on_consumable_used(self, entity: Entity, cid, dur):
+        consumables = self._acc_consumables.setdefault(entity.id, [])
+        consumables.append(
+            Consumable(ship_id=entity.id, consumable_id=cid, duration=dur)
+        )
+
     def _set_visibility_flag(self, entity: Entity, flag: int):
         # str_t = time.strftime("%M:%S", time.gmtime(self._time_left))
         self._dict_vehicle[entity.id] = self._dict_vehicle[entity.id]._replace(
@@ -191,6 +224,21 @@ class BattleController(IBattleController):
             bio.seek(4 * d, 1)
             (e,) = struct.unpack("L", bio.read(4))  # modernization slot len
             modern = struct.unpack("L" * e, bio.read(e * 4))
+
+            (f,) = struct.unpack("L", bio.read(4))
+            signals = struct.unpack("L" * f, bio.read(4 * f))
+            (supply_state,) = struct.unpack("L", bio.read(4))
+
+            (h,) = struct.unpack("L", bio.read(4))
+            if h:
+                camo = struct.unpack("L" * h, bio.read(4 * h))
+                camo_scheme = struct.unpack("L", bio.read(4))
+
+            (i,) = struct.unpack("L", bio.read(4))
+            abilities = struct.unpack("L" * i, bio.read(4 * i))
+
+            # print(abilities)
+
             # inter = any(set(modern).intersection([4220702640, 4219654064]))
             # print(entity.id, modern, inter)
             self._dict_info[
@@ -215,26 +263,6 @@ class BattleController(IBattleController):
                         t_time,
                     )
                 )
-
-    def _update(self, entity, time_left):
-        self._time_left = time_left
-
-        if self._battle_stage != 0:
-            return
-
-        battle_time = self._durations[-1] - self._time_left
-        evt = Events(
-            evt_vehicle=copy.copy(self._dict_vehicle),
-            evt_smoke=copy.copy(self._dict_smoke),
-            evt_shot=copy.copy(self._acc_shots),
-            evt_torpedo=copy.copy(self._acc_torpedoes),
-            evt_hits=copy.copy(self._acc_hits),
-        )
-
-        self._dict_events[battle_time] = evt
-        self._acc_shots.clear()
-        self._acc_torpedoes.clear()
-        self._acc_hits.clear()
 
     def _create_player_vehicle_data(self):
         owner: dict = {}
@@ -356,7 +384,7 @@ class BattleController(IBattleController):
     ###########################################################################
 
     def onSetConsumable(self, vehicle, blob):
-        print(pickle.loads(blob))
+        print(pickle.loads(blob, encoding="latin1"))
 
     @property
     def entities(self):
