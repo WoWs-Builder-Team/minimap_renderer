@@ -65,6 +65,14 @@ class Torpedo(NamedTuple):
     shot_id: int
 
 
+class Consumable(NamedTuple):
+    """Consumable data."""
+
+    ship_id: int
+    consumable_id: int
+    duration: float
+
+
 class Events(NamedTuple):
     """Match events."""
 
@@ -73,6 +81,7 @@ class Events(NamedTuple):
     evt_shot: list[Shot]
     evt_torpedo: list[Torpedo]
     evt_hits: list[int]
+    evt_consumable: dict[int, list[Consumable]]
 
 
 class ReplayData(NamedTuple):
