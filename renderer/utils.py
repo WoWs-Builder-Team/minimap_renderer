@@ -52,7 +52,7 @@ def generate_ship_data(
     """
     dict_player_holder: dict[int, tuple[str, str, int, Image.Image]] = {}
     text_offset = 16
-    hw, hh = (90, 80)
+    hw, hh = (100, 80)
     res_path = "renderer.resources"
 
     with open_text(res_path, "ships.json") as text_reader:
