@@ -2,18 +2,17 @@ import json
 
 from typing import Optional
 from importlib.resources import open_text
+from importlib import import_module
 
-from .base import RendererBase
-from .data import ReplayData
-from .utils import draw_grid, LOGGER
-from .layers import LayerShip, LayerSmoke, LayerShot, LayerTorpedo
-from .exceptions import MapLoadError, MapManifestLoadError
+from renderer.data import ReplayData
+from renderer.utils import draw_grid, LOGGER
+from renderer.resman import ResourceManager
+from renderer.exceptions import MapLoadError, MapManifestLoadError
 from PIL import Image, ImageDraw
 from imageio_ffmpeg import write_frames
-from renderer.resman import ResourceManager
 
 
-class Renderer(RendererBase):
+class Renderer:
     def __init__(self, replay_data: ReplayData):
         """Orchestrates the rendering process.
 
@@ -35,10 +34,12 @@ class Renderer(RendererBase):
 
         assert self.minimap_image
 
-        layer_ship = LayerShip(self)
-        layer_shot = LayerShot(self)
-        layer_torpedo = LayerTorpedo(self)
-        layer_smoke = LayerSmoke(self)
+        (
+            layer_ship,
+            layer_shot,
+            layer_torpedo,
+            layer_smoke,
+        ) = self._check_versioned_layers()
 
         video_writer = write_frames(
             path="minimap.mp4",
@@ -128,3 +129,24 @@ class Renderer(RendererBase):
             raise MapManifestLoadError from e
         else:
             return map_res
+
+    def _check_versioned_layers(self):
+        versioned_layers_pkg = (
+            f"{__package__}.versions.{self.replay_data.game_version}"
+        )
+
+        layers = ["LayerShip", "LayerShot", "LayerTorpedo", "LayerSmoke"]
+        init_layers = []
+
+        LOGGER.info("Looking for versioned layers")
+
+        for layer in layers:
+            try:
+                mod = import_module(".layers", versioned_layers_pkg)
+                m_layer = getattr(mod, layer)
+                LOGGER.info(f"Versioned {layer} found. Using that instead.")
+            except (ModuleNotFoundError, AttributeError):
+                mod = import_module(".layers", __package__)
+                m_layer = getattr(mod, f"{layer}Base")
+            init_layers.append(m_layer(self))
+        return init_layers
