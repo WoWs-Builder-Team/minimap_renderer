@@ -1,9 +1,16 @@
 import json
+import logging
 
 from importlib.resources import open_binary, open_text
 from PIL import Image, ImageDraw, ImageFont
 from .data import PlayerInfo
 from .const import COLORS_NORMAL
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(name)s | %(levelname)s | %(message)s",
+)
+LOGGER = logging.getLogger("renderer")
 
 
 def load_image(package: str, filename: str) -> Image.Image:
