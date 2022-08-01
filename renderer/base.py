@@ -1,7 +1,7 @@
 from typing import Any, Generator, Union, Optional
 from abc import ABC, abstractmethod
 from .data import ReplayData
-from PIL import Image
+from PIL import Image, ImageDraw
 from .resman import ResourceManager
 
 
@@ -44,10 +44,13 @@ class LayerBase(ABC):
 
     @abstractmethod
     def draw(
-        self, game_time: int
-    ) -> Union[Generator[Any, None, None], Image.Image]:
-        """
-        Yields whatever the fuck it wants to yield.
-        :return: A generator.
+        self, game_time: int, arg: Union[Image.Image, ImageDraw.ImageDraw]
+    ):
+        """Template
+
+        Args:
+            game_time (int): Used to sync events.
+            arg (Union[Image.Image, ImageDraw.ImageDraw]): Depends on how the
+            layer elements will be draw.
         """
         pass
