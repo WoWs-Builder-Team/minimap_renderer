@@ -5,36 +5,6 @@ from PIL import Image, ImageDraw
 from .resman import ResourceManager
 
 
-class RendererBase(ABC):
-    """A template for Renderer classes"""
-
-    replay_data: ReplayData
-    res: str
-    minimap_image: Optional[Image.Image]
-    minimap_size: int
-    space_size: int
-    scaling: float
-    resman: ResourceManager
-
-    @abstractmethod
-    def __init__(self, replay_data: ReplayData):
-        pass
-
-    @abstractmethod
-    def start(self):
-        """
-        Starts the renderer.
-        """
-        pass
-
-    @abstractmethod
-    def _load_map(self):
-        """
-        Loads the map.
-        """
-        pass
-
-
 class LayerBase(ABC):
     """A template for Layer classes"""
 
@@ -46,7 +16,7 @@ class LayerBase(ABC):
     def draw(
         self, game_time: int, arg: Union[Image.Image, ImageDraw.ImageDraw]
     ):
-        """Template
+        """_summary_
 
         Args:
             game_time (int): Used to sync events.
