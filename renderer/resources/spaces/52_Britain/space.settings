@@ -1,0 +1,21 @@
+<space.settings>
+	<chunkSize>	100.0000	</chunkSize>
+	<bounds>
+		<minX>	-9	</minX>
+		<maxX>	8	</maxX>
+		<minY>	-9	</minY>
+		<maxY>	8	</maxY>
+	</bounds>
+	<terrain>
+		<version>	200	</version>
+		<heightMapSize>	128	</heightMapSize>
+		<normalMapSize>	128	</normalMapSize>
+	</terrain>
+	<navmeshGenerator>	navgen	</navmeshGenerator>
+	<UnprocessedData>
+		<shadows>	false	</shadows>
+		<heightMap>	true	</heightMap>
+		<miniMap>	true	</miniMap>
+		<saved>	false	</saved>
+	</UnprocessedData>
+</space.settings>
