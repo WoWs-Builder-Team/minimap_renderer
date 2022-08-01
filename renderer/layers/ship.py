@@ -1,20 +1,19 @@
-from typing import Optional
-from ..base import LayerBase, RendererBase
-from ..data import PlayerInfo, Events
-from ..utils import (
+from renderer.render import Renderer
+from renderer.base import LayerBase
+from renderer.const import RELATION_NORMAL_STR, COLORS_NORMAL
+from renderer.utils import (
     generate_ship_data,
-    load_image,
     paste_centered,
     paste_args_centered,
     draw_health_bar,
 )
-from ..const import RELATION_NORMAL_STR, COLORS_NORMAL
-from PIL import Image, ImageDraw, ImageFont
+
+from PIL import Image, ImageDraw
 from math import hypot
 
 
-class LayerShip(LayerBase):
-    def __init__(self, renderer: RendererBase):
+class LayerShipBase(LayerBase):
+    def __init__(self, renderer: Renderer):
         """A class that handles ship's position, icon.
 
         Args:

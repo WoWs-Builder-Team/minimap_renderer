@@ -1,14 +1,16 @@
 import numpy as np
 
-from ..base import LayerBase, RendererBase
+from renderer.base import LayerBase
+from renderer.const import COLORS_NORMAL
+from renderer.render import Renderer
+
 from PIL import ImageDraw
-from ..const import COLORS_NORMAL
 
 
-class LayerShot(LayerBase):
+class LayerShotBase(LayerBase):
     def __init__(
         self,
-        renderer: RendererBase,
+        renderer: Renderer,
     ):
         self._renderer = renderer
         self._projectiles: dict[int, list] = {}

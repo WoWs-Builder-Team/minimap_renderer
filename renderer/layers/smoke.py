@@ -1,9 +1,10 @@
-from ..base import LayerBase, RendererBase
 from PIL import Image, ImageDraw
+from renderer.base import LayerBase
+from renderer.render import Renderer
 
 
-class LayerSmoke(LayerBase):
-    def __init__(self, renderer: RendererBase):
+class LayerSmokeBase(LayerBase):
+    def __init__(self, renderer: Renderer):
         """A class for handling smoke screens.
 
         Args:

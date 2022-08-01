@@ -1,17 +1,18 @@
 import numpy as np
 import json
 
-from ..base import LayerBase, RendererBase
+from renderer.base import LayerBase
+from renderer.const import COLORS_NORMAL
+from renderer.render import Renderer
 from PIL import ImageDraw
-from ..const import COLORS_NORMAL
 from math import cos, sin, radians, hypot, atan2
 from importlib.resources import open_text
 
 
-class LayerTorpedo(LayerBase):
+class LayerTorpedoBase(LayerBase):
     def __init__(
         self,
-        renderer: RendererBase,
+        renderer: Renderer,
     ):
         self._renderer = renderer
         self._torpedoes: dict[int, list] = {}
