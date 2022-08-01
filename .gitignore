@@ -167,3 +167,4 @@ replays/
 /*.dat
 /*.json
 /*.png
+!requirements.txt
