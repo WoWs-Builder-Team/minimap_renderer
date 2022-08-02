@@ -6,7 +6,6 @@ import math
 import struct
 
 from io import BytesIO
-from random import getrandbits
 from replay_unpack.core import IBattleController
 from replay_unpack.core.entity import Entity
 from .constants import DamageStatsType, Category, TaskType, Status
@@ -20,8 +19,11 @@ from renderer.data import (
     Shot,
     Torpedo,
     Consumable,
+    Plane,
+    Ward,
+    ControlPoint,
 )
-from replay_unpack.utils import unpack_values
+from replay_unpack.utils import unpack_values, unpack_plane_id
 
 
 try:
@@ -79,13 +81,16 @@ class BattleController(IBattleController):
         )
 
         #######################################################################
-
+        self._owner: dict = {}
         self._durations: list[int] = []
         self._time_left: int = 0
         self._battle_stage: int = -1
         self._dict_info: dict[int, PlayerInfo] = {}
         self._dict_vehicle: dict[int, Vehicle] = {}
         self._dict_smoke: dict[int, Smoke] = {}
+        self._dict_plane: dict[int, Plane] = {}
+        self._dict_ward: dict[int, Ward] = {}
+        self._dict_control: dict[int, ControlPoint] = {}
         self._vehicle_to_avatar: dict[int, int] = {}
         self._dict_events: dict[int, Events] = {}
         self._version: str = ""
@@ -119,9 +124,6 @@ class BattleController(IBattleController):
         Entity.subscribe_property_change(
             "Vehicle", "isInvisible", self._set_is_invisible
         )
-        Entity.subscribe_nested_property_change(
-            "SmokeScreen", "points", self._set_smoke_points
-        )
         Entity.subscribe_method_call(
             "Avatar",
             "receiveArtilleryShots",
@@ -152,8 +154,110 @@ class BattleController(IBattleController):
             "consumableUsed",
             self._on_consumable_used,
         )
+        Entity.subscribe_method_call(
+            "Avatar",
+            "receive_addMinimapSquadron",
+            self._add_plane,
+        )
+        Entity.subscribe_method_call(
+            "Avatar",
+            "receive_addMinimapSquadron",
+            self._add_plane,
+        )
+        Entity.subscribe_method_call(
+            "Avatar", "receive_updateMinimapSquadron", self._update_plane
+        )
+        Entity.subscribe_method_call(
+            "Avatar", "receive_removeMinimapSquadron", self._remove_plane
+        )
+
+        Entity.subscribe_method_call(
+            "Avatar", "receive_wardAdded", self._add_ward
+        )
+
+        Entity.subscribe_method_call(
+            "Avatar", "receive_wardRemoved", self._remove_ward
+        )
+        Entity.subscribe_nested_property_change(
+            "BattleLogic", "state.controlPoints", self._set_control_points
+        )
+        Entity.subscribe_nested_property_change(
+            "SmokeScreen", "points", self._set_smoke_points
+        )
+        Entity.subscribe_property_change(
+            "BattleLogic", "state", self._set_state
+        )
+        # Entity.subscribe_nested_property_change(
+        #     "BattleLogic",
+        #     "state.missions.teamsScore",
+        #     lambda *a, **b: print(a, b),
+        # )
 
     ###########################################################################
+
+    def _set_state(self, entity, state):
+        for cp in state["controlPoints"]:
+            if cp["teamId"] == self._owner["teamId"] and cp["teamId"] != -1:
+                relation = 0
+            elif cp["teamId"] != self._owner["teamId"] and cp["teamId"] != -1:
+                relation = 1
+            else:
+                relation = -1
+
+            cid = hash(tuple(cp["position"])) & 1000000000
+            self._dict_control[cid] = ControlPoint(
+                position=tuple(map(round, cp["position"])),
+                radius=cp["radius"],
+                team_id=cp["teamId"],
+                invader_team=cp["invaderTeam"],
+                control_point_type=cp["controlPointType"],
+                progress=cp["progress"],
+                both_inside=bool(cp["bothInside"]),
+                has_invaders=bool(cp["hasInvaders"]),
+                capture_time=cp["captureTime"],
+                capture_speed=cp["captureSpeed"],
+                relation=relation,
+            )
+
+    def _set_control_points(self, ent, cp):
+        if cp["teamId"] == self._owner["teamId"] and cp["teamId"] != -1:
+            relation = 0
+        elif cp["teamId"] != self._owner["teamId"] and cp["teamId"] != -1:
+            relation = 1
+        else:
+            relation = -1
+
+        cid = hash(tuple(cp["position"])) & 1000000000
+        self._dict_control[cid] = self._dict_control[cid]._replace(
+            position=tuple(map(round, cp["position"])),
+            radius=cp["radius"],
+            team_id=cp["teamId"],
+            invader_team=cp["invaderTeam"],
+            control_point_type=cp["controlPointType"],
+            progress=cp["progress"],
+            both_inside=bool(cp["bothInside"]),
+            has_invaders=bool(cp["hasInvaders"]),
+            capture_time=cp["captureTime"],
+            capture_speed=cp["captureSpeed"],
+            relation=relation,
+        )
+
+    def _add_ward(
+        self, entity, plane_id, position, radius, duration, team_id, vehicle_id
+    ):
+        self._dict_ward[plane_id] = Ward(
+            plane_id=plane_id,
+            position=tuple(map(round, position[::2])),
+            radius=radius,
+            relation=self._dict_info[
+                self._vehicle_to_avatar[vehicle_id]
+            ].relation,
+            vehicle_id=vehicle_id,
+        )
+
+    def _remove_ward(self, entity, plane_id):
+        self._dict_ward.pop(plane_id)
+
     def _update(self, entity, time_left):
         self._time_left = time_left
 
@@ -168,6 +272,9 @@ class BattleController(IBattleController):
             evt_torpedo=copy.copy(self._acc_torpedoes),
             evt_hits=copy.copy(self._acc_hits),
             evt_consumable=copy.copy(self._acc_consumables),
+            evt_plane=copy.copy(self._dict_plane),
+            evt_ward=copy.copy(self._dict_ward),
+            evt_control=copy.copy(self._dict_control),
         )
 
         self._dict_events[battle_time] = evt
@@ -176,6 +283,33 @@ class BattleController(IBattleController):
         self._acc_hits.clear()
         self._acc_consumables.clear()
 
+    def _add_plane(
+        self, entity: Entity, plane_id: int, team_id, params_id, pos, unk
+    ):
+        owner_id, index, purpose, departures = unpack_plane_id(plane_id)
+        # print(owner_id, index, purpose, departures, pos, params_id)
+        self._dict_plane[plane_id] = Plane(
+            plane_id=plane_id,
+            owner_id=owner_id,
+            params_id=params_id,
+            index=index,
+            purpose=purpose,
+            departures=departures,
+            relation=self._dict_info[
+                self._vehicle_to_avatar[owner_id]
+            ].relation,
+            position=tuple(map(round, pos)),
+        )
+
+    def _update_plane(self, entity: Entity, plane_id: int, pos):
+
+        self._dict_plane[plane_id] = self._dict_plane[plane_id]._replace(
+            position=tuple(map(round, pos))
+        )
+
+    def _remove_plane(self, entity: Entity, plane_id: int):
+        self._dict_plane.pop(plane_id)
+
     def _on_consumable_used(self, entity: Entity, cid, dur):
         consumables = self._acc_consumables.setdefault(entity.id, [])
         consumables.append(
@@ -183,7 +317,6 @@ class BattleController(IBattleController):
         )
 
     def _set_visibility_flag(self, entity: Entity, flag: int):
-        # str_t = time.strftime("%M:%S", time.gmtime(self._time_left))
         self._dict_vehicle[entity.id] = self._dict_vehicle[entity.id]._replace(
             visibility_flag=flag
         )
@@ -275,6 +408,7 @@ class BattleController(IBattleController):
 
             if id_to_use == self._player_id:
                 owner = p
+                self._owner = p
 
         for player in self._players.get_info().values():
             is_ally = owner["teamId"] == player["teamId"]
