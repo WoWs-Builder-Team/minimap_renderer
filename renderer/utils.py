@@ -1,8 +1,9 @@
 import json
 import logging
+import numpy as np
 
 from importlib.resources import open_binary, open_text
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageColor
 from .data import PlayerInfo
 from .const import COLORS_NORMAL
 
@@ -11,20 +12,6 @@ logging.basicConfig(
     format="%(asctime)s | %(name)s | %(levelname)s | %(message)s",
 )
 LOGGER = logging.getLogger("renderer")
-
-
-def load_image(package: str, filename: str) -> Image.Image:
-    """Loads the image from module resources.
-
-    Args:
-        package (str): Package name.
-        filename (str): Image file name to be loaded.
-
-    Returns:
-        Image.Image: The loaded image.
-    """
-    with open_binary(package, filename) as reader:
-        return Image.open(reader).copy()
 
 
 def draw_grid() -> Image.Image:
@@ -138,6 +125,17 @@ def paste_centered(
 def draw_health_bar(
     image: Image.Image, width=50, height=5, y_pos=65, color="red", hp_per=1.0
 ):
+    """Draws a health bar to the image given.
+
+    Args:
+        image (Image.Image): The image where the health bar will be draw on.
+        width (int, optional): Width of the health bar. Defaults to 50.
+        height (int, optional): Height of the health bar. Defaults to 5.
+        y_pos (int, optional): Y position of the health bar. Defaults to 65.
+        color (str, optional): The color of the health bar. Defaults to "red".
+        hp_per (float, optional): Hit points for the health bar.
+        Defaults to 1.0.
+    """
     draw = ImageDraw.Draw(image)
     assert width <= image.width
     assert y_pos < image.height - height
@@ -149,3 +147,53 @@ def draw_health_bar(
     xy2 = (x1, y1, (image.width / 2 + width / 2), y2)
     draw.rectangle(xy=xy1, fill=color)
     draw.rectangle(xy=xy2, outline=color, width=1)
+
+
+def replace_color(img: Image.Image, from_color: str, to_color: str):
+    """
+    Replaces the color from the image. The image should not be anti-aliased.
+    :param img:
+    :param from_color:
+    :param to_color:
+    :return:
+    """
+
+    f_color = ImageColor.getrgb(from_color)
+    t_color = ImageColor.getrgb(to_color)
+
+    data = np.array(img)
+    red, green, blue = data[:, :, 0], data[:, :, 1], data[:, :, 2]
+    mask = (red == f_color[0]) & (blue == f_color[1]) & (green == f_color[2])
+    data[:, :, :3][mask] = t_color
+    return Image.fromarray(data)
+
+
+def flip_y(n: tuple):
+    """Yes. Move along.
+
+    Args:
+        n (tuple): Yes.
+
+    Returns:
+        _type_: Yes.
+    """
+    return n[0], -n[1]
+
+
+def getEquidistantPoints(
+    p1: tuple[float, float], p2: tuple[float, float], parts: int
+):
+    """Generates equidistant points.
+
+    Args:
+        p1 (tuple[float, float]): Point 1
+        p2 (tuple[float, float]): Point 2
+        parts (int): Number of points between point 1 & 2.
+
+    Returns:
+        _type_: An iterator the iterates the points between 1 & 2.
+    """
+    return zip(
+        np.round(np.linspace(p1[0], p2[0], parts + 1)),
+        np.round(np.linspace(p1[1], p2[1], parts + 1)),
+    )
