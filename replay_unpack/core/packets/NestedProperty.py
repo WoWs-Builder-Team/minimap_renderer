@@ -1,5 +1,6 @@
 # coding=utf-8
 import logging
+from operator import index
 import struct
 from io import BytesIO
 
@@ -25,7 +26,7 @@ class NestedProperty(PrettyPrintObjectMixin):
     def read_and_apply(self, entity):
         bit_reader = BitReader(self.payload)
         obj = entity
-        field = None
+        prop_path = []
 
         while bit_reader.get(1) and obj:
             l = (
@@ -36,28 +37,26 @@ class NestedProperty(PrettyPrintObjectMixin):
             max_bits = BitReader.bits_required(l)
             property_id = bit_reader.get(max_bits)
             if hasattr(obj, "get_field_name_for_index"):
-                field = obj.get_field_name_for_index(property_id)
-                obj = obj[field]
+                name = obj.get_field_name_for_index(property_id)
+                obj = obj[name]
             elif isinstance(obj, Entity):
-                field = obj.client_properties[property_id].get_name()
-                # FIXME: what about cell and base properties?
-                obj = obj.properties["client"][field]
+                name = obj.client_properties[property_id].get_name()
+                obj = obj.properties["client"][name]
             else:
                 raise NotImplementedError
-            logging.debug("next path item: %s(%s)", field, property_id)
-
-        logging.debug("object: %s %s", obj, type(obj))
+            prop_path.append(name)
 
         if isinstance(obj, PyFixedDict):
             assert self.is_slice is False
             max_bits = BitReader.bits_required(len(obj))
             index1 = bit_reader.get(max_bits)
-
             field = obj.get_field_name_for_index(index1)
             logging.debug("old obj[%s] = %s", field, obj[field])
             obj[field] = obj.get_field_type_for_index(
                 index1
             ).create_from_stream(BytesIO(bit_reader.get_rest()))
+            prop_path.append(field)
+            entity.set_client_nested_property(prop_path, obj)
             logging.debug("new obj[%s] = %s", field, obj[field])
 
         elif isinstance(obj, PyFixedList):
@@ -70,7 +69,10 @@ class NestedProperty(PrettyPrintObjectMixin):
             logging.debug("List index: %s", index1)
             if self.is_slice:
                 index2 = bit_reader.get(max_bits)
+                prop_path.append(f"{index1}:{index2}")
                 logging.debug("Slice index: %s", index2)
+            else:
+                prop_path.append(index1)
 
             rest = bit_reader.get_rest()
             if not rest:
@@ -104,6 +106,6 @@ class NestedProperty(PrettyPrintObjectMixin):
                 logging.debug("setting %s with %s", index1, new_elements[0])
                 obj[index1] = new_elements[0]
             logging.debug("new list object: %s", obj)
-            entity.set_client_nested_property(field, obj)
+            entity.set_client_nested_property(prop_path, obj)
         else:
             raise NotImplementedError(type(obj))

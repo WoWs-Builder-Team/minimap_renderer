@@ -151,26 +151,21 @@ class Entity:
 
     @classmethod
     def subscribe_nested_property_change(
-        cls, entity_name: str, field: str, func: Callable
+        cls, entity_name: str, prop_path: str, func: Callable
     ):
-        prop_hash = entity_name + "_" + field
-        if field not in cls._nested_properties_subscription:
+
+        prop_hash = entity_name + "_" + prop_path
+        if prop_path not in cls._nested_properties_subscription:
             cls._nested_properties_subscription[prop_hash] = []
         cls._nested_properties_subscription[prop_hash].append(func)
 
-    def set_client_nested_property(self, field, obj):
-        prop_hash = f"{self.get_name()}_{field}"
-        subscriptions = Entity._nested_properties_subscription.get(
-            prop_hash, []
-        )
+    def set_client_nested_property(self, prop_path: list, obj):
+        prop_hash = f"{self.get_name()}_{'.'.join(map(str, prop_path))}"
 
-        if not subscriptions:
-            return
-        for func in subscriptions:
-            try:
-                func(self, obj)
-            except TypeError as e:
-                pass
+        for phash, funcs in Entity._nested_properties_subscription.items():
+            if phash in prop_hash:
+                for func in funcs:
+                    func(self, obj)
 
     def set_client_property_internal(self, internal_index, payload: BytesIO):
         logging.debug(
