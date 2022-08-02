@@ -4,21 +4,32 @@ from renderer.render import Renderer
 
 
 class LayerSmokeBase(LayerBase):
+    """The class that handles/draws smokes to the minimap.
+
+    Args:
+        LayerBase (_type_): _description_
+    """
+
     def __init__(self, renderer: Renderer):
-        """A class for handling smoke screens.
+        """Initializes this class.
 
         Args:
-            events (dict[int, Events]): Match events.
-            scaling (float): Scaling.
+            renderer (Renderer): _description_
         """
         self._renderer = renderer
 
     def draw(self, game_time: int, image: Image.Image):
+        """Draws the smokes to the minimap.
+
+        Args:
+            game_time (int): Game time.
+            image (Image.Image): Image to paste the smokes to.
+        """
         events = self._renderer.replay_data.events
         smokes = events[game_time].evt_smoke.values()
 
         if not smokes:
-            return None
+            return
 
         assert self._renderer.minimap_image
         base = Image.new("RGBA", self._renderer.minimap_image.size)
@@ -26,14 +37,9 @@ class LayerSmokeBase(LayerBase):
 
         for smoke in smokes:
             for point in smoke.points:
-                x, y = point
-                x = round(self._get_scaled(x))
-                y = round(self._get_scaled(-y))
+                x, y = self._renderer.get_scaled(point)
                 r = round(smoke.radius * self._renderer.scaling)
                 draw.ellipse(
-                    [(x - r, y - r), (x + r, y + r)], fill=(255, 255, 255, 64)
+                    [(x - r, y - r), (x + r, y + r)], fill="#ffffff40"
                 )
         image.paste(base, mask=base)
-
-    def _get_scaled(self, n):
-        return n * self._renderer.scaling + 760 / 2

@@ -10,16 +10,21 @@ from renderer.utils import (
 
 from PIL import Image, ImageDraw
 from math import hypot
+import uuid
 
 
 class LayerShipBase(LayerBase):
+    """A class that handles/draws ships to the minimap.
+
+    Args:
+        LayerBase (_type_): _description_
+    """
+
     def __init__(self, renderer: Renderer):
-        """A class that handles ship's position, icon.
+        """Initializes this class.
 
         Args:
-            events (dict[int, Events]): Match events.
-            scaling (float): Scaling.
-            player_info (dict[int, PlayerInfo]): Player's information.
+            renderer (Renderer): The renderer.
         """
         self._renderer = renderer
         self._ship_info = generate_ship_data(
@@ -27,19 +32,17 @@ class LayerShipBase(LayerBase):
         )
         self._active_consumables: dict[int, dict[int, float]] = {}
         self._abilities = renderer.resman.load_json(
-            "renderer.resources", "abilities.json"
+            self._renderer.res, "abilities.json"
         )
+        self._test_map = {}
 
     def draw(self, game_time: int, image: Image.Image):
-        """Yields an arguments for Image.paste.
+        """Draws the ship icons to the minimap image.
 
         Args:
-            game_time (int): The game's match's time.
-
-        Yields:
-            Generator[ dict, None, None ] : A generator.
+            game_time (int): The game time.
+            image (Image.Image): The minimap image.
         """
-
         player_info = self._renderer.replay_data.player_info
         events = self._renderer.replay_data.events
         scaling = self._renderer.scaling
@@ -74,8 +77,7 @@ class LayerShipBase(LayerBase):
                 vehicle.not_in_range,
             )
             icon = icon.rotate(-vehicle.yaw, Image.BICUBIC, True)
-            x = round(vehicle.x * scaling + 760 / 2)
-            y = round(-vehicle.y * scaling + 760 / 2)
+            x, y = self._renderer.get_scaled((vehicle.x, vehicle.y))
             color = (
                 COLORS_NORMAL[0]
                 if vehicle.relation == -1
@@ -156,15 +158,24 @@ class LayerShipBase(LayerBase):
     def _ship_consumable(
         self, image: Image.Image, vehicle_id: int, params_id: int
     ):
+        """Draws the currently in used consumable(s) to the ship's icon holder.
+
+        Args:
+            image (Image.Image): The icon holder.
+            vehicle_id (int): The vehicle id.
+            params_id (int): The vehicle's game params id.
+        """
         if ac := self._active_consumables.get(vehicle_id, {}):
             c_icons_holder = Image.new("RGBA", (20 * len(ac), 20))
             x_pos = 0
 
             for aid, duration in ac.items():
-                cname = self._abilities[str(params_id)][str(aid)]
+                cname = self._abilities[params_id][aid]
                 filename = f"consumable_{cname}.png"
                 c_image = self._renderer.resman.load_image(
-                    "renderer.resources.consumables", filename, size=(20, 20)
+                    f"{self._renderer.res}.consumables",
+                    filename,
+                    size=(20, 20),
                 )
                 c_icons_holder.paste(c_image, (x_pos, 0), c_image)
                 x_pos += 20
@@ -174,8 +185,6 @@ class LayerShipBase(LayerBase):
                 (int(image.width / 2 - c_icons_holder.width / 2), 0),
                 c_icons_holder,
             )
-            # image.paste(c_image, (x_pos, 10), c_image)
-            # x_pos -= 10
 
     def _ship_icon(
         self,
@@ -184,7 +193,7 @@ class LayerShipBase(LayerBase):
         species: str,
         relation: int,
         not_in_range: bool,
-    ):
+    ) -> Image.Image:
         """Returns an image associated with ship's state.
 
         Args:
@@ -195,8 +204,9 @@ class LayerShipBase(LayerBase):
             not_in_range (bool): If the ship is in player's render range.
 
         Returns:
-            _type_: An icon associated with the ship's state.
+            Image.Image: An icon associated with the ship's state.
         """
+
         icon_type = RELATION_NORMAL_STR[relation]
 
         if relation == -1:
@@ -216,9 +226,6 @@ class LayerShipBase(LayerBase):
             else:
                 icon_type = "dead"
 
-        # return load_image(
-        #     f"renderer.resources.ship_icons.{icon_type}", f"{species}.png"
-        # )
         return self._renderer.resman.load_image(
-            f"renderer.resources.ship_icons.{icon_type}", f"{species}.png"
+            f"{self._renderer.res}.ship_icons.{icon_type}", f"{species}.png"
         )

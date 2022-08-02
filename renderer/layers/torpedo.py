@@ -1,34 +1,46 @@
 import numpy as np
-import json
 
 from renderer.base import LayerBase
 from renderer.const import COLORS_NORMAL
 from renderer.render import Renderer
+from renderer.utils import flip_y, getEquidistantPoints
 from PIL import ImageDraw
 from math import cos, sin, radians, hypot, atan2
-from importlib.resources import open_text
 
 
 class LayerTorpedoBase(LayerBase):
+    """Class that handles/draws torpedoes to the minimap.
+
+    Args:
+        LayerBase (_type_): _description_
+    """
     def __init__(
         self,
         renderer: Renderer,
     ):
+        """Initializes this class.
+
+        Args:
+            renderer (Renderer): _description_
+        """
         self._renderer = renderer
         self._torpedoes: dict[int, list] = {}
-        self._projectiles: dict = {}
+        self._projectiles: dict = self._renderer.resman.load_json(
+            self._renderer.res, "projectile.json"
+        )
         self._relations = {
             v.ship_id: v.relation
             for v in self._renderer.replay_data.player_info.values()
         }
-        self._load_projectile_data()
         self._hits: set[int] = set()
 
-    def _load_projectile_data(self):
-        with open_text("renderer.resources", "projectile.json") as text_reader:
-            self._projectiles = json.load(text_reader)
-
     def draw(self, game_time: int, draw: ImageDraw.ImageDraw):
+        """This draws the torpedoes to the minimap.
+
+        Args:
+            game_time (int): The game time.
+            draw (ImageDraw.ImageDraw): Draw.
+        """
         events = self._renderer.replay_data.events
         self._hits.update(events[game_time].evt_hits)
 
@@ -40,11 +52,10 @@ class LayerTorpedoBase(LayerBase):
                 self._hits.remove(hit)
 
         for torpedo in events[game_time].evt_torpedo:
-            x1, y1 = torpedo.origin
+            x1, y1 = flip_y(torpedo.origin)
             a, b = torpedo.direction
 
-            x1, y1 = x1, -y1
-            t_range = self._projectiles[str(torpedo.params_id)][1]
+            t_range = self._projectiles[torpedo.params_id][1]
             line_length = t_range * 30
             angle = atan2(a, b)
             angle = angle - radians(90)
@@ -56,9 +67,9 @@ class LayerTorpedoBase(LayerBase):
                 x1 + line_length * cos(angle),
                 y1 + line_length * sin(angle),
             )
-
-            x1, y1, x2, y2 = map(self._get_scaled, [x1, y1, x2, y2])
-            points = self.getEquidistantPoints((x1, y1), (x2, y2), t_target)
+            x1, y1 = self._renderer.get_scaled((x1, y1), False)
+            x2, y2 = self._renderer.get_scaled((x2, y2), False)
+            points = getEquidistantPoints((x1, y1), (x2, y2), t_target)
 
             p = self._torpedoes.setdefault(torpedo.shot_id, [])
             for (px, py) in points:
@@ -79,15 +90,3 @@ class LayerTorpedoBase(LayerBase):
                 )
             except IndexError:
                 pass
-
-    def _get_scaled(self, n):
-        return n * self._renderer.scaling + 760 / 2
-
-    @staticmethod
-    def getEquidistantPoints(
-        p1: tuple[float, float], p2: tuple[float, float], parts: int
-    ):
-        return zip(
-            np.round(np.linspace(p1[0], p2[0], parts + 1)),
-            np.round(np.linspace(p1[1], p2[1], parts + 1)),
-        )

@@ -3,15 +3,27 @@ import numpy as np
 from renderer.base import LayerBase
 from renderer.const import COLORS_NORMAL
 from renderer.render import Renderer
+from renderer.utils import flip_y, getEquidistantPoints
 
 from PIL import ImageDraw
 
 
 class LayerShotBase(LayerBase):
+    """The class that handles/draws artillery shots.
+
+    Args:
+        LayerBase (_type_): _description_
+    """
+
     def __init__(
         self,
         renderer: Renderer,
     ):
+        """Initilizes this class.
+
+        Args:
+            renderer (Renderer): The renderer.
+        """
         self._renderer = renderer
         self._projectiles: dict[int, list] = {}
         self._relations = {
@@ -22,6 +34,12 @@ class LayerShotBase(LayerBase):
         self._hits: set[int] = set()
 
     def draw(self, game_time: int, draw: ImageDraw.ImageDraw):
+        """Draws the shots directly to the image via ImageDraw.
+
+        Args:
+            game_time (int): The game time.
+            draw (ImageDraw.ImageDraw): Draw.
+        """
         events = self._renderer.replay_data.events
 
         if not events[game_time].evt_shot and not self._projectiles:
@@ -34,19 +52,16 @@ class LayerShotBase(LayerBase):
         #         self._hits.remove(hit)
 
         for shot in events[game_time].evt_shot:
-            result = self.getEquidistantPoints(
-                (shot.origin[0], -shot.origin[1]),
-                (shot.destination[0], -shot.destination[1]),
+            result = getEquidistantPoints(
+                flip_y(shot.origin),
+                flip_y(shot.destination),
                 shot.t_time,
             )
             p = self._projectiles.setdefault(shot.shot_id, [])
-            prev_x, prev_y = map(
-                self._get_scaled, (shot.origin[0], -shot.origin[1])
-            )
+            prev_x, prev_y = self._renderer.get_scaled(shot.origin)
 
             for (x, y) in result:
-                x = int(self._get_scaled(x))
-                y = int(self._get_scaled(y))
+                x, y = self._renderer.get_scaled((x, y), False)
                 p.append(
                     (
                         shot.owner_id,
@@ -71,15 +86,3 @@ class LayerShotBase(LayerBase):
                     pass
             else:
                 self._projectiles.pop(sid)
-
-    def _get_scaled(self, n):
-        return n * self._renderer.scaling + 760 / 2
-
-    @staticmethod
-    def getEquidistantPoints(
-        p1: tuple[float, float], p2: tuple[float, float], parts: int
-    ):
-        return zip(
-            np.round(np.linspace(p1[0], p2[0], parts + 1)),
-            np.round(np.linspace(p1[1], p2[1], parts + 1)),
-        )
