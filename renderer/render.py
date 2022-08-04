@@ -10,6 +10,7 @@ from renderer.resman import ResourceManager
 from renderer.exceptions import MapLoadError, MapManifestLoadError
 from PIL import Image, ImageDraw
 from imageio_ffmpeg import write_frames
+from tqdm import tqdm
 
 Number = Union[int, float]
 
@@ -46,23 +47,27 @@ class Renderer:
             layer_plane,
             layer_ward,
             layer_capture,
+            layer_health,
+            layer_score,
         ) = self._check_versioned_layers()
 
         video_writer = write_frames(
             path="minimap.mp4",
             fps=20,
-            quality=9,
+            quality=6,
             pix_fmt_in="rgba",
-            macro_block_size=20,
+            macro_block_size=17,
             size=self.minimap_bg.size,
         )
         video_writer.send(None)
 
-        for game_time in self.replay_data.events.keys():
+        for game_time in tqdm(self.replay_data.events.keys()):
             minimap_img = self.minimap_image.copy()
             minimap_bg = self.minimap_bg.copy()
 
             draw = ImageDraw.Draw(minimap_img)
+            draw_bg = ImageDraw.Draw(minimap_bg)
+
             layer_capture.draw(game_time, minimap_img)
             layer_ward.draw(game_time, minimap_img)
             layer_shot.draw(game_time, draw)
@@ -71,7 +76,10 @@ class Renderer:
             layer_smoke.draw(game_time, minimap_img)
             layer_plane.draw(game_time, minimap_img)
 
-            minimap_bg.paste(minimap_img, (40, 40))
+            layer_health.draw(game_time, minimap_bg)
+            layer_score.draw(game_time, minimap_bg)
+
+            minimap_bg.paste(minimap_img, (40, 90))  # 40, 40 w/o logs
             video_writer.send(minimap_bg.tobytes())
         video_writer.close()
 
@@ -93,9 +101,15 @@ class Renderer:
             )
             map_land = self.resman.load_image(map_res, "minimap.png")
             map_water = self.resman.load_image(map_res, "minimap_water.png")
-
-            self.minimap_bg = map_water.copy().resize(map_legends.size)
-            self.minimap_bg.paste(map_legends, mask=map_legends)
+            self.minimap_bg = map_water.copy().resize((1360, 850))  # 800, 800
+            self.minimap_bg.paste(
+                map_legends,
+                (
+                    0,
+                    50,
+                ),
+                mask=map_legends,
+            )  # no pos.
 
             map_water = Image.alpha_composite(map_water, draw_grid())
             self.minimap_image = Image.alpha_composite(map_water, map_land)
@@ -193,6 +207,8 @@ class Renderer:
             "LayerPlane",
             "LayerWard",
             "LayerCapture",
+            "LayerHealth",
+            "LayerScore"
         ]
         init_layers = []
 
