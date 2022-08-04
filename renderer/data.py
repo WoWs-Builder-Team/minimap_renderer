@@ -108,6 +108,12 @@ class ControlPoint(NamedTuple):
     capture_time: int
     capture_speed: float
     relation: int
+    is_visible: bool
+
+
+class Score(NamedTuple):
+    relation: int
+    score: int
 
 
 class Events(NamedTuple):
@@ -122,6 +128,7 @@ class Events(NamedTuple):
     evt_hits: list[int]
     evt_consumable: dict[int, list[Consumable]]
     evt_control: dict[int, ControlPoint]
+    evt_score: dict[int, Score]
 
 
 class ReplayData(NamedTuple):
@@ -129,5 +136,7 @@ class ReplayData(NamedTuple):
 
     game_version: str
     game_map: str
+    game_battle_type: int
+    game_win_score: int
     player_info: dict[int, PlayerInfo]
     events: dict[int, Events]
