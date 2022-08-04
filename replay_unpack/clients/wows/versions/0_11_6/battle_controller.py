@@ -409,22 +409,22 @@ class BattleController(IBattleController):
     def _modernization(self, entity: Entity, config: bytes):
         with BytesIO(config) as bio:
             bio.seek(3 * 4, 1)
-            (d,) = struct.unpack("L", bio.read(4))  # len
+            (d,) = struct.unpack("<L", bio.read(4))  # len
             bio.seek(4 * d, 1)
-            (e,) = struct.unpack("L", bio.read(4))  # modernization slot len
-            modern = struct.unpack("L" * e, bio.read(e * 4))
+            (e,) = struct.unpack("<L", bio.read(4))  # modernization slot len
+            modern = struct.unpack("<" + "L" * e, bio.read(e * 4))
 
-            (f,) = struct.unpack("L", bio.read(4))
-            signals = struct.unpack("L" * f, bio.read(4 * f))
-            (supply_state,) = struct.unpack("L", bio.read(4))
+            (f,) = struct.unpack("<L", bio.read(4))
+            signals = struct.unpack("<" + "L" * f, bio.read(4 * f))
+            (supply_state,) = struct.unpack("<L", bio.read(4))
 
-            (h,) = struct.unpack("L", bio.read(4))
+            (h,) = struct.unpack("<L", bio.read(4))
             if h:
-                camo = struct.unpack("L" * h, bio.read(4 * h))
-                camo_scheme = struct.unpack("L", bio.read(4))
+                camo = struct.unpack("<" + "L" * h, bio.read(4 * h))
+                camo_scheme = struct.unpack("<L", bio.read(4))
 
-            (i,) = struct.unpack("L", bio.read(4))
-            abilities = struct.unpack("L" * i, bio.read(4 * i))
+            (i,) = struct.unpack("<L", bio.read(4))
+            abilities = struct.unpack("<" + "L" * i, bio.read(4 * i))
 
             # print(abilities)
 
