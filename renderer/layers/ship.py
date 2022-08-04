@@ -10,7 +10,6 @@ from renderer.utils import (
 
 from PIL import Image, ImageDraw
 from math import hypot
-import uuid
 
 
 class LayerShipBase(LayerBase):
@@ -34,7 +33,9 @@ class LayerShipBase(LayerBase):
         self._abilities = renderer.resman.load_json(
             self._renderer.res, "abilities.json"
         )
-        self._test_map = {}
+        self._ships = renderer.resman.load_json(
+            self._renderer.res, "ships.json"
+        )
 
     def draw(self, game_time: int, image: Image.Image):
         """Draws the ship icons to the minimap image.
@@ -45,7 +46,6 @@ class LayerShipBase(LayerBase):
         """
         player_info = self._renderer.replay_data.player_info
         events = self._renderer.replay_data.events
-        scaling = self._renderer.scaling
         players_consumables = events[game_time].evt_consumable
 
         if players_consumables := events[game_time].evt_consumable:
@@ -62,7 +62,9 @@ class LayerShipBase(LayerBase):
             events[game_time].evt_vehicle.values(),
             key=lambda s: (s.is_alive, s.is_visible),
         ):
-            name, species, level, holder = self._ship_info[vehicle.avatar_id]
+            holder = self._ship_info[vehicle.avatar_id]
+            player = self._renderer.replay_data.player_info[vehicle.avatar_id]
+            index, name, species, level = self._ships[player.ship_params_id]
 
             # if consumables_used := consumables.get(vehicle_id, None):
             #     print(consumables_used)
@@ -88,16 +90,16 @@ class LayerShipBase(LayerBase):
                 if vehicle.is_visible:
                     holder = holder.copy()
 
-                    self._ship_consumable(
-                        holder, vehicle.vehicle_id, player.ship_params_id
-                    )
-
                     if vehicle.visibility_flag > 0 and vehicle.relation in [
                         -1,
                         0,
                     ]:
+                        vx = 15
+                        vy = 65
                         draw = ImageDraw.Draw(holder)
-                        draw.ellipse([(27, 38), (30, 42)], fill="orange")
+                        draw.rectangle(
+                            ((vx, vy), (vx + 5, vy + 5)), fill="orange"
+                        )
 
                     if not vehicle.not_in_range:
                         draw_health_bar(
@@ -113,35 +115,47 @@ class LayerShipBase(LayerBase):
                         (x, 0),
                     ]
 
-                    rotated_holder = holder
-
                     d1, d2, d3, d4 = map(
                         lambda ps: round(hypot(x - ps[0], y - ps[1])),
                         side_points,
                     )
 
+                    angle = 0
+                    c_y_pos = 20
+
                     if d1 <= 40 and d2 <= 40:
-                        rotated_holder = holder.rotate(-135, Image.BICUBIC)
+                        angle = -135
                     elif d2 <= 40 and d3 <= 40:
-                        rotated_holder = holder.rotate(135, Image.BICUBIC)
+                        angle = 135
                     elif d3 <= 40 and d4 <= 40:
-                        rotated_holder = holder.rotate(45, Image.BICUBIC)
+                        angle = 45
                     elif d4 <= 40 and d1 <= 40:
-                        rotated_holder = holder.rotate(-45, Image.BICUBIC)
+                        angle = -45
                     else:
                         if d1 <= 40:
-                            rotated_holder = holder.rotate(-90, Image.BICUBIC)
+                            angle = -90
                         elif d2 <= 40:
-                            rotated_holder = holder.rotate(-180, Image.BICUBIC)
+                            angle = -180
                         elif d3 <= 40:
-                            rotated_holder = holder.rotate(90, Image.BICUBIC)
+                            angle = 90
 
-                    icon = paste_centered(rotated_holder, icon)
-                    image.paste(**paste_args_centered(icon, x, y, True))
-                else:
-                    image.paste(**paste_args_centered(icon, x, y, True))
-            else:
-                image.paste(**paste_args_centered(icon, x, y, True))
+                    if angle or d4 <= 40:
+                        c_y_pos = 83
+
+                    self._ship_consumable(
+                        holder,
+                        vehicle.vehicle_id,
+                        player.ship_params_id,
+                        c_y_pos,
+                    )
+
+                    if holder:
+                        holder = holder.rotate(
+                            angle, Image.BICUBIC, expand=True
+                        )
+
+                    image.paste(**paste_args_centered(holder, x, y, True))
+            image.paste(**paste_args_centered(icon, x, y, True))
 
         # Decrement consumable timer and pop if 0
 
@@ -156,7 +170,7 @@ class LayerShipBase(LayerBase):
                         self._active_consumables.pop(apcs)
 
     def _ship_consumable(
-        self, image: Image.Image, vehicle_id: int, params_id: int
+        self, image: Image.Image, vehicle_id: int, params_id: int, y=20
     ):
         """Draws the currently in used consumable(s) to the ship's icon holder.
 
@@ -182,7 +196,7 @@ class LayerShipBase(LayerBase):
 
             image.paste(
                 c_icons_holder,
-                (int(image.width / 2 - c_icons_holder.width / 2), 0),
+                (int(image.width / 2 - c_icons_holder.width / 2), y),
                 c_icons_holder,
             )
 
