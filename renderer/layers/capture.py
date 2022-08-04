@@ -1,7 +1,7 @@
 from PIL import Image, ImageDraw
 from renderer.base import LayerBase
 from renderer.render import Renderer
-from renderer.const import COLORS_NORMAL
+from renderer.const import COLORS_NORMAL, RELATION_NORMAL_STR
 from renderer.utils import replace_color
 
 
@@ -34,13 +34,22 @@ class LayerCaptureBase(LayerBase):
         events = self._renderer.replay_data.events
         cps = events[game_time].evt_control.values()
 
-        for cp in cps:
+        for count, cp in enumerate(cps):
             if not cp.is_visible:
                 continue
             x, y = self._renderer.get_scaled(cp.position)
             radius = self._renderer.get_scaled_r(cp.radius)
             w = h = round(radius * 2)
             cp_area = self._get_capture_area(cp.relation, (w, h))
+
+            if cp.control_point_type == 5:
+                icon_name = "flag.png"
+            else:
+                icon_name = f"lettered_{count}.png"
+
+            icon = self._renderer.resman.load_image(
+                f"{self._renderer.res}.cap_icons.{RELATION_NORMAL_STR[cp.relation]}", icon_name
+            )
 
             if cp.has_invaders and cp.invader_team != -1:
                 if cp.invader_team == self._owner.team_id:
@@ -68,6 +77,11 @@ class LayerCaptureBase(LayerBase):
             py = round(cp_area.height / 2 - progress.height / 2)
 
             cp_area.paste(progress, (px, py), progress)
+
+            ix = round(cp_area.width / 2 - icon.width / 2)
+            iy = round(cp_area.height / 2 - icon.height / 2)
+
+            cp_area.paste(icon, (ix, iy), icon)
 
             cx = round(x - cp_area.width / 2)
             cy = round(y - cp_area.height / 2)
