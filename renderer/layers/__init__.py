@@ -5,3 +5,5 @@ from .torpedo import LayerTorpedoBase
 from .plane import LayerPlaneBase
 from .ward import LayerWardBase
 from .capture import LayerCaptureBase
+from .health import LayerHealthBase
+from .score import LayerScoreBase
