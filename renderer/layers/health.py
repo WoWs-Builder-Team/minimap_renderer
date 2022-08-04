@@ -19,8 +19,9 @@ class LayerHealthBase(LayerBase):
             filename="warhelios_bold.ttf", size=16
         )
         self._green = ImageColor.getrgb("#4ce8aaff")
-        self._yellow = ImageColor.getrgb("#fff700ff")
+        self._yellow = ImageColor.getrgb("#ffc400ff")
         self._red = ImageColor.getrgb("#fe4d2aff")
+        self._color_regen_max = ImageColor.getrgb("#ffffffc3")
         self.prepare()
 
     def prepare(self):
@@ -42,6 +43,8 @@ class LayerHealthBase(LayerBase):
             bar_res, f"{index}{suffix}.png", size=(235, 62), nearest=True
         )
 
+        per_limit = ship.regen_crew_hp_limit / self._player.max_health
+
         if per > 0.8:
             bar_color = self._green
         elif 0.8 >= per > 0.3:
@@ -50,6 +53,20 @@ class LayerHealthBase(LayerBase):
             bar_color = self._red
 
         if ship.is_alive:
+
+            regen_limit_arr = np.array(bg)
+            regen_limit_arr[
+                regen_limit_arr[:, :, 3] > 0
+            ] = self._color_regen_max
+            regen_limit_img = Image.fromarray(regen_limit_arr)
+            mask_r_limit = Image.new(bg.mode, bg.size)
+            mask_r_limit_draw = ImageDraw.Draw(mask_r_limit)
+            mask_r_limit_draw.rectangle(
+                ((0, 0), (round(bg.width * per_limit), bg.width)),
+                fill=self._color_regen_max,
+            )
+            bg.paste(regen_limit_img, mask=mask_r_limit)
+
             fg_arr = np.array(bg)
             fg_arr[fg_arr[:, :, 3] > 0] = bar_color
             bar = Image.fromarray(fg_arr)
