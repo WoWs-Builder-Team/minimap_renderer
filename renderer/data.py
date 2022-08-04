@@ -119,6 +119,12 @@ class Score(NamedTuple):
     score: int
 
 
+class Frag(NamedTuple):
+    killed_id: int
+    fragger_id: int
+    death_type: int
+
+
 class Events(NamedTuple):
     """Match events."""
 
@@ -132,6 +138,7 @@ class Events(NamedTuple):
     evt_consumable: dict[int, list[Consumable]]
     evt_control: dict[int, ControlPoint]
     evt_score: dict[int, Score]
+    evt_frag: list[Frag]
 
 
 class ReplayData(NamedTuple):
