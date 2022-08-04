@@ -204,8 +204,38 @@ class BattleController(IBattleController):
             "state.missions.teamsScore",
             self._set_score,
         )
+        Entity.subscribe_property_change(
+            "Vehicle",
+            "regeneratedHealth",
+            self._set_regenerated_health
+        )
+        Entity.subscribe_property_change(
+            "Vehicle",
+            "regenCrewHpLimit",
+            self._set_regen_crew_hp_limit
+        )
+        Entity.subscribe_property_change(
+            "Vehicle",
+            "regenerationHealth",
+            self._set_regeneration_health
+        )
 
     ###########################################################################
+
+    def _set_regenerated_health(self, entity, health):
+        self._dict_vehicle[entity.id] = self._dict_vehicle[entity.id]._replace(
+            regenerated_health=health
+        )
+
+    def _set_regen_crew_hp_limit(self, entity, health):
+        self._dict_vehicle[entity.id] = self._dict_vehicle[entity.id]._replace(
+            regen_crew_hp_limit=health
+        )
+
+    def _set_regeneration_health(self, entity, health):
+        self._dict_vehicle[entity.id] = self._dict_vehicle[entity.id]._replace(
+            regeneration_health=health
+        )
 
     def _set_score(self, entity, score):
         if score["teamId"] == self._owner["teamId"]:
