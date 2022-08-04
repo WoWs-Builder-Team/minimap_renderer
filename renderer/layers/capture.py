@@ -35,6 +35,8 @@ class LayerCaptureBase(LayerBase):
         cps = events[game_time].evt_control.values()
 
         for cp in cps:
+            if not cp.is_visible:
+                continue
             x, y = self._renderer.get_scaled(cp.position)
             radius = self._renderer.get_scaled_r(cp.radius)
             w = h = round(radius * 2)
@@ -85,7 +87,7 @@ class LayerCaptureBase(LayerBase):
         package = self._renderer.res
         relation_to_str = {-1: "neutral", 0: "ally", 1: "enemy"}
         filename = f"cap_{relation_to_str[relation]}.png"
-        return self._renderer.resman.load_image(package, filename, size)
+        return self._renderer.resman.load_image(package, filename, size=size)
 
     def _get_progress(self, from_color: str, to_color: str, percent: float):
         """Gets the diamond progress `bar` from the resources and properly
