@@ -22,7 +22,10 @@ class LayerHealthBase(LayerBase):
         self._green = ImageColor.getrgb("#4ce8aaff")
         self._yellow = ImageColor.getrgb("#ffc400ff")
         self._red = ImageColor.getrgb("#fe4d2aff")
-        self._color_regen_max = ImageColor.getrgb("#ffffffc3")
+        self._color_gray = ImageColor.getrgb("#ffffffc3")
+        self._abilities = renderer.resman.load_json(
+            self._renderer.res, "abilities.json"
+        )
         self.prepare()
 
     def prepare(self):
@@ -36,6 +39,7 @@ class LayerHealthBase(LayerBase):
         assert self._player
         ships = self._renderer.replay_data.events[game_time].evt_vehicle
         ship = ships[self._player.ship_id]
+        ability = self._abilities[self._player.ship_params_id]
         per = ship.health / self._player.max_health
         index, name, species, level = self._ships[self._player.ship_params_id]
 
@@ -43,22 +47,14 @@ class LayerHealthBase(LayerBase):
         suffix_fg = "_h"
         suffix_bg = "_h_bg" if ship.is_alive else "_h_bgdead"
 
-        bg = self._renderer.resman.load_image(
+        bg_bar = self._renderer.resman.load_image(
             bar_res, f"{index}{suffix_bg}.png", nearest=False
         )
 
-        fg = self._renderer.resman.load_image(
-            bar_res, f"{index}{suffix_bg}.png", size=bg.size, nearest=False
+        fg_bar = self._renderer.resman.load_image(
+            bar_res, f"{index}{suffix_fg}.png", nearest=False
         )
-
-        maxHeal = floor(20) * 0.02 * self._player.max_health
-        canHeal = (
-            ship.regeneration_health
-            if ship.regeneration_health < maxHeal
-            else maxHeal
-        )
-
-        per_limit = (canHeal + ship.health) / self._player.max_health
+        fg_bar = fg_bar.resize(bg_bar.size, Image.LANCZOS)
 
         if per > 0.8:
             bar_color = self._green
@@ -68,30 +64,46 @@ class LayerHealthBase(LayerBase):
             bar_color = self._red
 
         if ship.is_alive:
-
-            regen_limit_arr = np.array(fg)
-            regen_limit_arr[
-                regen_limit_arr[:, :, 3] > 75
-            ] = self._color_regen_max
-            regen_limit_img = Image.fromarray(regen_limit_arr)
-            mask_r_limit = Image.new(bg.mode, bg.size)
-            mask_r_limit_draw = ImageDraw.Draw(mask_r_limit)
-            mask_r_limit_draw.rectangle(
-                ((0, 0), (round(bg.width * per_limit), bg.width)),
-                fill=self._color_regen_max,
+            alpha = 75
+            hp_bar_arr = np.array(fg_bar)
+            hp_bar_arr[hp_bar_arr[:, :, 3] > alpha] = bar_color
+            hp_bar_img = Image.fromarray(hp_bar_arr)
+            mask_hp_img = Image.new(fg_bar.mode, fg_bar.size)
+            mask_hp_img_w = mask_hp_img.width * per
+            mask_hp_draw = ImageDraw.Draw(mask_hp_img)
+            mask_hp_draw.rectangle(
+                ((0, 0), (mask_hp_img_w, mask_hp_img.width)), fill="black"
             )
-            bg.paste(regen_limit_img, mask=mask_r_limit)
 
-            fg_arr = np.array(fg)
-            fg_arr[fg_arr[:, :, 3] > 75] = bar_color
-            bar = Image.fromarray(fg_arr)
-            mask = Image.new(bg.mode, bg.size)
-            mask_w = mask.width * per
-            mask_draw = ImageDraw.Draw(mask)
-            mask_draw.rectangle(((0, 0), (mask_w, mask.width)), fill="black")
+            if 9 in ability:
+                wt = ability["workTime"]
+                rhs = ability["regenerationHPSpeed"]
+                maxHeal = floor(wt) * rhs * self._player.max_health
+                canHeal = (
+                    ship.regeneration_health
+                    if ship.regeneration_health < maxHeal
+                    else maxHeal
+                )
 
-            bg.paste(bar, mask=mask)
-        px = 940 - round(bg.width / 2)
+                per_limit = (canHeal + ship.health) / self._player.max_health
+
+                regen_bar_arr = np.array(fg_bar)
+                regen_bar_arr[
+                    regen_bar_arr[:, :, 3] > alpha
+                ] = self._color_gray
+                regen_bar_img = Image.fromarray(regen_bar_arr)
+                mask_regen_img = Image.new(fg_bar.mode, fg_bar.size)
+                mask_regen_img_w = mask_regen_img.width * per_limit
+                mask_regen_draw = ImageDraw.Draw(mask_regen_img)
+                mask_regen_draw.rectangle(
+                    ((0, 0), (mask_regen_img_w, mask_regen_img.width)),
+                    fill="black",
+                )
+
+                bg_bar.paste(regen_bar_img, mask=mask_regen_img)
+            bg_bar.paste(hp_bar_img, mask=mask_hp_img)
+
+        px = 940 - round(bg_bar.width / 2)
 
         hp_current = "{:,}".format(round(ship.health)).replace(",", " ")
         hp_max = "{:,}".format(round(self._player.max_health)).replace(
@@ -103,9 +115,9 @@ class LayerHealthBase(LayerBase):
         hp_w, hp_h = self._font.getsize(hp_max_text)
         n_w, n_h = self._font.getsize(name)
 
-        bg = bg.resize((235, 62), resample=Image.LANCZOS)
+        bg_bar = bg_bar.resize((235, 62), resample=Image.LANCZOS)
 
-        th = Image.new("RGBA", (bg.width, max(hp_h, n_h, hp_c_h)))
+        th = Image.new("RGBA", (bg_bar.width, max(hp_h, n_h, hp_c_h)))
         th_draw = ImageDraw.Draw(th)
 
         th_draw.text((0, 0), name, fill="white", font=self._font)
@@ -118,9 +130,9 @@ class LayerHealthBase(LayerBase):
         th_draw.text(
             (th.width - hp_w, 0),
             hp_max_text,
-            fill=self._green,
+            fill="#cdcdcd",
             font=self._font,
         )
 
         image.paste(th, (px, 90), th)
-        image.paste(bg, (px, 30), bg)
+        image.paste(bg_bar, (px, 30), bg_bar)
