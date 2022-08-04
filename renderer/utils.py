@@ -34,7 +34,7 @@ def draw_grid() -> Image.Image:
 
 def generate_ship_data(
     player_info: dict[int, PlayerInfo]
-) -> dict[int, tuple[str, str, int, Image.Image]]:
+) -> dict[int, Image.Image]:
     """Gets ship information and creates and image with the ship name on it.
 
     Args:
@@ -44,9 +44,9 @@ def generate_ship_data(
         dict[int, tuple[str, str, int, Image.Image]]: Ship's information with
         an image with the ships name on it.
     """
-    dict_player_holder: dict[int, tuple[str, str, int, Image.Image]] = {}
+    dict_player_holder: dict[int, Image.Image] = {}
     text_offset = 16
-    hw, hh = (100, 80)
+    hw, hh = (100, 100)
     res_path = "renderer.resources"
 
     with open_text(res_path, "ships.json") as text_reader:
@@ -57,7 +57,9 @@ def generate_ship_data(
 
     for player in player_info.values():
         font_color = COLORS_NORMAL[player.relation]
-        ship_name, ship_species, ship_level = ships[str(player.ship_params_id)]
+        index, ship_name, ship_species, ship_level = ships[
+            str(player.ship_params_id)
+        ]
         holder: Image.Image = Image.new("RGBA", (hw, hh))
         holder_draw: ImageDraw.ImageDraw = ImageDraw.Draw(holder)
         text_w, text_h = holder_draw.textsize(text=ship_name, font=font)
@@ -66,12 +68,7 @@ def generate_ship_data(
         holder_draw.text(
             xy=(text_x, text_y), text=ship_name, fill=font_color, font=font
         )
-        dict_player_holder[player.avatar_id] = (
-            ship_name,
-            ship_species,
-            ship_level,
-            holder,
-        )
+        dict_player_holder[player.avatar_id] = holder
     return dict_player_holder
 
 
