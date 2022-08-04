@@ -1,16 +1,22 @@
 {
  "3555669712": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium"
  },
  "4181112272": {
   "0": "PCY009_CrashCrewPremium",
   "35": "PCY045_Hydrophone",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4180620752": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "10": "PCY012_FighterPremium"
  },
@@ -32,16 +38,22 @@
  },
  "4185864144": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3760142032": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
  },
  "3374266064": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -51,6 +63,8 @@
   "11": "PCY016_SonarSearchPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "10": "PCY012_FighterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4182652656": {
@@ -60,6 +74,8 @@
  },
  "4184815440": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4185798448": {
@@ -85,6 +101,8 @@
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
   "10": "PCY012_FighterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "5": "PCY022_ArtilleryBoosterPremium"
  },
@@ -101,6 +119,8 @@
  },
  "3248437200": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "3": "PCY015_SpeedBoosterPremium",
   "2": "PCY011_AirDefenseDispPremium"
@@ -118,6 +138,8 @@
   "0": "PCY009_CrashCrewPremium",
   "11": "PCY016_SonarSearchPremium",
   "2": "PCY011_AirDefenseDispPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4186847024": {
@@ -133,6 +155,8 @@
  },
  "3667867440": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -176,6 +200,8 @@
   "2": "PCY011_AirDefenseDispPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3555636944": {
@@ -186,17 +212,23 @@
  },
  "4182717904": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "10": "PCY012_FighterPremium"
  },
  "4276041712": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.0066,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
  },
  "3332323024": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -211,6 +243,8 @@
   "10": "PCY012_FighterPremium",
   "1": "PCY013_SpotterPremium",
   "13": "PCY020_RLSSearchPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4282300112": {
@@ -219,6 +253,8 @@
   "11": "PCY016_SonarSearchPremium",
   "10": "PCY012_FighterPremium",
   "1": "PCY013_SpotterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4259591440": {
@@ -297,16 +333,22 @@
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
   "10": "PCY012_FighterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3668883440": {
   "0": "PCY009_CrashCrewPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 20.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4182718192": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4182685456": {
@@ -328,6 +370,8 @@
  },
  "4179539920": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 20.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium",
   "7": "PCY014_SmokeGeneratorPremium",
@@ -361,11 +405,15 @@
   "0": "PCY009_CrashCrewPremium",
   "7": "PCY014_SmokeGeneratorPremium",
   "3": "PCY015_SpeedBoosterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "2": "PCY011_AirDefenseDispPremium"
  },
  "4186912720": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4266931472": {
@@ -382,10 +430,14 @@
   "2": "PCY011_AirDefenseDispPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3340679120": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 20.0,
   "9": "PCY010_RegenCrewPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium"
@@ -397,6 +449,8 @@
  },
  "4082055120": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3542005456": {
@@ -404,6 +458,8 @@
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
   "10": "PCY012_FighterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4183799760": {
@@ -415,16 +471,22 @@
   "2": "PCY011_AirDefenseDispPremium",
   "13": "PCY020_RLSSearchPremium",
   "11": "PCY016_SonarSearchPremium",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 20.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3765352400": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium",
   "10": "PCY012_FighterPremium"
  },
  "3764336432": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4287510224": {
@@ -440,6 +502,8 @@
   "0": "PCY009_CrashCrewPremium",
   "7": "PCY014_SmokeGeneratorPremium",
   "11": "PCY016_SonarSearchPremium",
+  "regenerationHPSpeed": 0.01,
+  "workTime": 10.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4187895088": {
@@ -476,12 +540,16 @@
  },
  "3750704848": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
  },
  "4181669872": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "10": "PCY012_FighterPremium",
@@ -494,12 +562,16 @@
  },
  "3763287856": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
  },
  "3763287888": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "5": "PCY022_ArtilleryBoosterPremium",
   "10": "PCY012_FighterPremium",
@@ -525,6 +597,8 @@
  },
  "3751753168": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "10": "PCY012_FighterPremium"
  },
@@ -537,6 +611,8 @@
  },
  "4179572720": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "10": "PCY012_FighterPremium",
@@ -544,6 +620,8 @@
  },
  "3731830736": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.006,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium",
   "5": "PCY022_ArtilleryBoosterPremium"
@@ -563,11 +641,15 @@
  },
  "4179572560": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "3": "PCY015_SpeedBoosterPremium"
  },
  "4291769616": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3765319664": {
@@ -578,6 +660,8 @@
  "3445503440": {
   "0": "PCY009_CrashCrewPremium",
   "7": "PCY014_SmokeGeneratorPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "3": "PCY015_SpeedBoosterPremium"
  },
@@ -606,6 +690,8 @@
  },
  "4288624336": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium"
  },
@@ -617,6 +703,8 @@
  },
  "4079957808": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4183733712": {
@@ -675,11 +763,15 @@
  "3655218480": {
   "0": "PCY009_CrashCrewPremium",
   "3": "PCY015_SpeedBoosterPremium",
+  "regenerationHPSpeed": 0.01,
+  "workTime": 14.0,
   "9": "PCY010_RegenCrewPremium",
   "13": "PCY020_RLSSearchPremium"
  },
  "4082054960": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4180587728": {
@@ -687,10 +779,14 @@
   "7": "PCY014_SmokeGeneratorPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "12": "PCY018_TorpedoReloaderPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3765384528": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3768497968": {
@@ -726,6 +822,8 @@
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
   "13": "PCY020_RLSSearchPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3756963280": {
@@ -741,6 +839,8 @@
   "11": "PCY016_SonarSearchPremium",
   "10": "PCY012_FighterPremium",
   "1": "PCY013_SpotterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4187895632": {
@@ -767,6 +867,8 @@
  },
  "3743365072": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "3": "PCY015_SpeedBoosterPremium"
@@ -776,6 +878,8 @@
  },
  "4281284592": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4188976912": {
@@ -786,6 +890,8 @@
   "11": "PCY016_SonarSearchPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "1": "PCY013_SpotterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3767416176": {
@@ -801,6 +907,8 @@
  "3971888592": {
   "0": "PCY009_CrashCrewPremium",
   "7": "PCY014_SmokeGeneratorPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "3": "PCY015_SpeedBoosterPremium"
  },
@@ -840,6 +948,8 @@
  },
  "3761190640": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -881,6 +991,8 @@
  },
  "4293867216": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3754866128": {
@@ -897,6 +1009,8 @@
  },
  "3764336464": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "10": "PCY012_FighterPremium",
   "1": "PCY013_SpotterPremium"
@@ -908,6 +1022,8 @@
  },
  "4074715088": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 20.0,
   "9": "PCY010_RegenCrewPremium",
   "3": "PCY015_SpeedBoosterPremium",
   "2": "PCY011_AirDefenseDispPremium"
@@ -925,6 +1041,8 @@
   "13": "PCY020_RLSSearchPremium",
   "10": "PCY012_FighterPremium",
   "1": "PCY013_SpotterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3762271984": {
@@ -933,11 +1051,15 @@
  },
  "3753785136": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.01,
+  "workTime": 10.0,
   "9": "PCY010_RegenCrewPremium",
   "3": "PCY015_SpeedBoosterPremium"
  },
  "3751753552": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "5": "PCY022_ArtilleryBoosterPremium",
   "3": "PCY015_SpeedBoosterPremium"
@@ -948,20 +1070,28 @@
  "4179015120": {
   "0": "PCY009_CrashCrewPremium",
   "35": "PCY045_Hydrophone",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4279121168": {
   "0": "PXY021_CrashCrew",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 15.0,
   "9": "PXY022_RegenCrew",
   "5": "PXY023_ArtilleryBooster"
  },
  "4273878288": {
   "0": "PXY021_CrashCrew",
+  "regenerationHPSpeed": 0.04,
+  "workTime": 15.0,
   "9": "PXY022_RegenCrew",
   "5": "PXY023_ArtilleryBooster"
  },
  "4185831376": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium"
  },
@@ -970,16 +1100,22 @@
   "7": "PCY014_SmokeGeneratorPremium",
   "10": "PCY012_FighterPremium",
   "1": "PCY013_SpotterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3762239216": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
  },
  "4077828048": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
@@ -993,16 +1129,22 @@
  },
  "4081006384": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4292818736": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
  },
  "4286527472": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.0066,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -1015,6 +1157,8 @@
  },
  "4075763664": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 20.0,
   "9": "PCY010_RegenCrewPremium",
   "3": "PCY015_SpeedBoosterPremium",
   "2": "PCY011_AirDefenseDispPremium"
@@ -1025,6 +1169,8 @@
  },
  "4293866768": {
   "0": "PXY113_CrashCrewPremium",
+  "regenerationHPSpeed": 0.03,
+  "workTime": 10.0,
   "9": "PXY114_RegenCrewPremium"
  },
  "4186846480": {
@@ -1037,6 +1183,8 @@
   "0": "PCY009_CrashCrewPremium",
   "7": "PCY014_SmokeGeneratorPremium",
   "11": "PCY016_SonarSearchPremium",
+  "regenerationHPSpeed": 0.01,
+  "workTime": 10.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4279219920": {
@@ -1047,6 +1195,8 @@
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
   "10": "PCY012_FighterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3542005744": {
@@ -1061,6 +1211,8 @@
   "11": "PCY016_SonarSearchPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "10": "PCY012_FighterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4179539152": {
@@ -1068,6 +1220,8 @@
   "7": "PCY014_SmokeGeneratorPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "12": "PCY018_TorpedoReloaderPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4184782032": {
@@ -1095,6 +1249,8 @@
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
   "1": "PCY013_SpotterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4268635856": {
@@ -1105,6 +1261,8 @@
  "4179506640": {
   "0": "PCY009_CrashCrewPremium",
   "7": "PCY014_SmokeGeneratorPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "3": "PCY015_SpeedBoosterPremium"
  },
@@ -1114,6 +1272,8 @@
  },
  "4179572688": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 20.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4283381008": {
@@ -1129,17 +1289,23 @@
  },
  "4182718416": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.006,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
  },
  "3762238928": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "10": "PCY012_FighterPremium"
  },
  "3720263664": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium",
   "2": "PCY011_AirDefenseDispPremium",
@@ -1151,16 +1317,22 @@
   "2": "PCY011_AirDefenseDispPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4186879952": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3331241680": {
   "0": "PCY009_CrashCrewPremium",
   "11": "PCY016_SonarSearchPremium",
   "2": "PCY011_AirDefenseDispPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4181702096": {
@@ -1170,6 +1342,8 @@
  "3762173232": {
   "0": "PCY009_CrashCrewPremium",
   "3": "PCY015_SpeedBoosterPremium",
+  "regenerationHPSpeed": 0.01,
+  "workTime": 10.0,
   "9": "PCY010_RegenCrewPremium",
   "13": "PCY020_RLSSearchPremium"
  },
@@ -1185,6 +1359,8 @@
  },
  "3751753712": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -1198,6 +1374,8 @@
  },
  "4183766832": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium"
  },
@@ -1207,6 +1385,8 @@
   "2": "PCY011_AirDefenseDispPremium",
   "3": "PCY015_SpeedBoosterPremium",
   "10": "PCY012_FighterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "5": "PCY022_ArtilleryBoosterPremium"
  },
@@ -1219,6 +1399,8 @@
  },
  "4076812080": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium"
  },
@@ -1229,6 +1411,8 @@
  },
  "3666818864": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium"
  },
@@ -1248,6 +1432,8 @@
  },
  "3765385200": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.0066,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium"
  },
@@ -1260,6 +1446,8 @@
   "0": "PCY009_CrashCrewPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "13": "PCY020_RLSSearchPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3762272048": {
@@ -1267,6 +1455,8 @@
  },
  "3552523984": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium"
  },
@@ -1277,6 +1467,8 @@
  },
  "4180621104": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium",
@@ -1287,6 +1479,8 @@
  },
  "4076812240": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.006,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "3": "PCY015_SpeedBoosterPremium",
   "2": "PCY011_AirDefenseDispPremium"
@@ -1325,6 +1519,8 @@
   "2": "PCY011_AirDefenseDispPremium",
   "3": "PCY015_SpeedBoosterPremium",
   "10": "PCY012_FighterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4276368656": {
@@ -1337,6 +1533,8 @@
  },
  "4270732560": {
   "0": "PXY316_CrashCrew_PVP",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 15.0,
   "9": "PXY332_RegenCrew_H2019",
   "12": "PXY320_TorpedoReloader_PVP",
   "3": "PXY015_SpeedBoosterH18"
@@ -1351,6 +1549,8 @@
  },
  "4281218320": {
   "0": "PXY021_CrashCrew",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 15.0,
   "9": "PXY022_RegenCrew",
   "11": "PXY025_SonarSearch",
   "7": "PXY024_SmokeGenerator"
@@ -1363,6 +1563,8 @@
  },
  "4078876624": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium"
@@ -1373,6 +1575,8 @@
   "11": "PCY016_SonarSearchPremium",
   "10": "PCY012_FighterPremium",
   "1": "PCY013_SpotterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4077794768": {
@@ -1401,6 +1605,8 @@
   "10": "PCY012_FighterPremium",
   "1": "PCY013_SpotterPremium",
   "13": "PCY020_RLSSearchPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4186879760": {
@@ -1412,6 +1618,8 @@
  },
  "3762239472": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -1422,11 +1630,15 @@
  },
  "3551475152": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "10": "PCY012_FighterPremium"
  },
  "3763287408": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 20.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -1438,10 +1650,14 @@
   "13": "PCY020_RLSSearchPremium",
   "10": "PCY012_FighterPremium",
   "1": "PCY013_SpotterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4181637072": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 20.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium",
   "7": "PCY014_SmokeGeneratorPremium",
@@ -1454,6 +1670,8 @@
  },
  "3762239440": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.006,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4258542864": {
@@ -1464,10 +1682,14 @@
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
   "3": "PCY015_SpeedBoosterPremium",
+  "regenerationHPSpeed": 0.0066,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3553572560": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium"
  },
@@ -1475,6 +1697,8 @@
   "0": "PCY009_CrashCrewPremium",
   "7": "PCY014_SmokeGeneratorPremium",
   "3": "PCY015_SpeedBoosterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "2": "PCY011_AirDefenseDispPremium"
  },
@@ -1483,10 +1707,14 @@
   "11": "PCY016_SonarSearchPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "10": "PCY012_FighterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3552524016": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -1499,6 +1727,8 @@
   "0": "PCY009_CrashCrewPremium",
   "11": "PCY016_SonarSearchPremium",
   "2": "PCY011_AirDefenseDispPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3768497488": {
@@ -1513,15 +1743,21 @@
  },
  "3761190896": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "13": "PCY020_RLSSearchPremium"
  },
  "4185863632": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4081006544": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4293834736": {
@@ -1542,12 +1778,16 @@
  },
  "3553572848": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
  },
  "4181669616": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "7": "PCY014_SmokeGeneratorPremium",
   "1": "PCY013_SpotterPremium",
@@ -1555,6 +1795,8 @@
  },
  "4178523952": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium",
@@ -1576,6 +1818,8 @@
  },
  "3655284688": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 20.0,
   "9": "PCY010_RegenCrewPremium",
   "3": "PCY015_SpeedBoosterPremium",
   "11": "PCY016_SonarSearchPremium",
@@ -1594,6 +1838,8 @@
  },
  "3762239312": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium",
@@ -1601,6 +1847,8 @@
  },
  "4184782800": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium",
   "7": "PCY014_SmokeGeneratorPremium",
@@ -1609,16 +1857,22 @@
  },
  "4292818896": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.006,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium"
  },
  "3750705136": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3865982416": {
   "0": "PCY009_CrashCrewPremium",
   "7": "PCY014_SmokeGeneratorPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "3": "PCY015_SpeedBoosterPremium"
  },
@@ -1627,11 +1881,15 @@
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
   "3": "PCY015_SpeedBoosterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "5": "PCY022_ArtilleryBoosterPremium"
  },
  "4184815056": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4185830864": {
@@ -1651,6 +1909,8 @@
  },
  "4074714928": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium"
  },
@@ -1661,6 +1921,8 @@
  },
  "4179572464": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "7": "PCY014_SmokeGeneratorPremium",
   "1": "PCY013_SpotterPremium",
@@ -1691,6 +1953,8 @@
   "0": "PCY009_CrashCrewPremium",
   "7": "PCY014_SmokeGeneratorPremium",
   "10": "PCY012_FighterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3337500656": {
@@ -1715,6 +1979,8 @@
  },
  "3741267408": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "13": "PCY020_RLSSearchPremium"
  },
@@ -1733,6 +1999,8 @@
  },
  "4275975440": {
   "0": "PXY021_CrashCrew",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 15.0,
   "9": "PXY022_RegenCrew",
   "5": "PXY023_ArtilleryBooster"
  },
@@ -1743,12 +2011,16 @@
  },
  "3741267760": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
  },
  "3752802288": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "1": "PCY013_SpotterPremium",
@@ -1762,6 +2034,8 @@
  },
  "3764336624": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium"
  },
@@ -1792,6 +2066,8 @@
  },
  "4183734224": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium",
   "7": "PCY014_SmokeGeneratorPremium",
@@ -1800,6 +2076,8 @@
  },
  "3765385168": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3867587856": {
@@ -1819,6 +2097,8 @@
  },
  "4287575760": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium"
  },
@@ -1829,12 +2109,16 @@
  },
  "4187928528": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 10.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4181636880": {
   "0": "PCY009_CrashCrewPremium",
   "11": "PCY016_SonarSearchPremium",
   "2": "PCY011_AirDefenseDispPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3762730256": {
@@ -1842,6 +2126,8 @@
  },
  "4274926864": {
   "0": "PXY021_CrashCrew",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 15.0,
   "9": "PXY022_RegenCrew",
   "11": "PXY025_SonarSearch",
   "7": "PXY024_SmokeGenerator"
@@ -1850,6 +2136,8 @@
   "0": "PCY009_CrashCrewPremium",
   "7": "PCY014_SmokeGeneratorPremium",
   "3": "PCY015_SpeedBoosterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "2": "PCY011_AirDefenseDispPremium"
  },
@@ -1861,6 +2149,8 @@
  },
  "3560912592": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -1876,11 +2166,15 @@
   "0": "PCY009_CrashCrewPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 90.0,
   "9": "PCY010_RegenCrewPremium",
   "3": "PCY015_SpeedBoosterPremium"
  },
  "4282333168": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.0066,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -1893,16 +2187,22 @@
  },
  "3763288048": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium"
  },
  "4077860656": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium"
  },
  "3752802256": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 20.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3667801808": {
@@ -1939,22 +2239,30 @@
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
   "1": "PCY013_SpotterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3760142160": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "5": "PCY022_ArtilleryBoosterPremium",
   "3": "PCY015_SpeedBoosterPremium"
  },
  "3450812144": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4180588304": {
   "0": "PCY009_CrashCrewPremium",
   "11": "PCY016_SonarSearchPremium",
   "2": "PCY011_AirDefenseDispPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4272830448": {
@@ -1976,6 +2284,8 @@
  "3762206480": {
   "0": "PCY009_CrashCrewPremium",
   "3": "PCY015_SpeedBoosterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3764369200": {
@@ -1999,6 +2309,8 @@
  },
  "4290721776": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.0066,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium"
  },
@@ -2021,6 +2333,8 @@
  },
  "4184815344": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3445503984": {
@@ -2036,6 +2350,8 @@
  },
  "4293867504": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.0066,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3764303600": {
@@ -2046,6 +2362,8 @@
  },
  "4180588496": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 20.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium",
   "7": "PCY014_SmokeGeneratorPremium",
@@ -2056,6 +2374,8 @@
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
   "13": "PCY020_RLSSearchPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4181603536": {
@@ -2067,6 +2387,8 @@
  },
  "4293866960": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4184749776": {
@@ -2122,6 +2444,8 @@
  },
  "4284430032": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -2148,6 +2472,8 @@
  },
  "4178491344": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 20.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium",
   "7": "PCY014_SmokeGeneratorPremium",
@@ -2162,11 +2488,15 @@
   "0": "PCY009_CrashCrewPremium",
   "7": "PCY014_SmokeGeneratorPremium",
   "3": "PCY015_SpeedBoosterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "2": "PCY011_AirDefenseDispPremium"
  },
  "3667867632": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -2176,6 +2506,8 @@
   "7": "PCY014_SmokeGeneratorPremium",
   "10": "PCY012_FighterPremium",
   "1": "PCY013_SpotterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4187928400": {
@@ -2183,6 +2515,8 @@
  },
  "3766433072": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3751720144": {
@@ -2193,6 +2527,8 @@
  },
  "3333371888": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.0066,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -2204,16 +2540,22 @@
   "10": "PCY012_FighterPremium",
   "1": "PCY013_SpotterPremium",
   "3": "PCY015_SpeedBoosterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "5": "PCY022_ArtilleryBoosterPremium"
  },
  "4293801232": {
   "0": "PXY113_CrashCrewPremium",
   "7": "PXY112_SmokeGeneratorPremium",
+  "regenerationHPSpeed": 0.03,
+  "workTime": 10.0,
   "9": "PXY114_RegenCrewPremium"
  },
  "3761190864": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4180555216": {
@@ -2229,25 +2571,35 @@
  "4178458064": {
   "0": "PCY009_CrashCrewPremium",
   "7": "PCY014_SmokeGeneratorPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "3": "PCY015_SpeedBoosterPremium"
  },
  "4284429584": {
   "0": "PXY316_CrashCrew_PVP",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 15.0,
   "9": "PXY332_RegenCrew_H2019",
   "15": "PXY322_Resist_H2019"
  },
  "4293834000": {
   "0": "PXY113_CrashCrewPremium",
+  "regenerationHPSpeed": 0.03,
+  "workTime": 10.0,
   "9": "PXY114_RegenCrewPremium"
  },
  "4181669328": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "10": "PCY012_FighterPremium"
  },
  "4180621136": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "10": "PCY012_FighterPremium",
   "3": "PCY015_SpeedBoosterPremium"
@@ -2264,11 +2616,15 @@
   "13": "PCY020_RLSSearchPremium",
   "10": "PCY012_FighterPremium",
   "1": "PCY013_SpotterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium"
  },
  "4076779472": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 20.0,
   "9": "PCY010_RegenCrewPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
@@ -2276,6 +2632,8 @@
  },
  "3760141776": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3744380368": {
@@ -2316,6 +2674,8 @@
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
   "7": "PCY014_SmokeGeneratorPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3752736720": {
@@ -2345,6 +2705,8 @@
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
   "13": "PCY020_RLSSearchPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3765352176": {
@@ -2358,6 +2720,8 @@
  },
  "4183766480": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3445536592": {
@@ -2365,11 +2729,15 @@
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
   "3": "PCY015_SpeedBoosterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "5": "PCY022_ArtilleryBoosterPremium"
  },
  "4179572176": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4293834544": {
@@ -2382,6 +2750,8 @@
  },
  "4259264496": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.0066,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium"
  },
@@ -2397,6 +2767,8 @@
  },
  "4182718256": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -2406,6 +2778,8 @@
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
   "13": "PCY020_RLSSearchPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3751786288": {
@@ -2441,6 +2815,8 @@
   "2": "PCY011_AirDefenseDispPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4290753808": {
@@ -2461,12 +2837,16 @@
  },
  "4280169744": {
   "0": "PXY021_CrashCrew",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 15.0,
   "9": "PXY022_RegenCrew",
   "3": "PXY027_SpeedBooster",
   "12": "PXY026_TorpedoReloader"
  },
  "3530504176": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium",
@@ -2480,6 +2860,8 @@
  },
  "4178523856": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -2492,10 +2874,14 @@
  "3749623248": {
   "0": "PCY009_CrashCrewPremium",
   "13": "PCY020_RLSSearchPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3655284528": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium",
@@ -2511,16 +2897,22 @@
  },
  "4185863984": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4079925200": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium"
  },
  "4183766992": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium"
  },
@@ -2530,11 +2922,15 @@
   "11": "PCY016_SonarSearchPremium",
   "10": "PCY012_FighterPremium",
   "1": "PCY013_SpotterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3864933840": {
   "0": "PCY009_CrashCrewPremium",
   "7": "PCY014_SmokeGeneratorPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "3": "PCY015_SpeedBoosterPremium"
  },
@@ -2559,11 +2955,15 @@
   "0": "PCY009_CrashCrewPremium",
   "7": "PCY014_SmokeGeneratorPremium",
   "2": "PCY011_AirDefenseDispPremium",
+  "regenerationHPSpeed": 0.015,
+  "workTime": 20.0,
   "9": "PCY010_RegenCrewPremium",
   "3": "PCY015_SpeedBoosterPremium"
  },
  "4075763504": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium"
  },
@@ -2574,6 +2974,8 @@
  },
  "4181669680": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium",
@@ -2586,10 +2988,14 @@
  },
  "4182718288": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3761190096": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -2598,6 +3004,8 @@
   "0": "PCY009_CrashCrewPremium",
   "7": "PCY014_SmokeGeneratorPremium",
   "3": "PCY015_SpeedBoosterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4292785424": {
@@ -2609,11 +3017,15 @@
  "4178457904": {
   "0": "PCY009_CrashCrewPremium",
   "3": "PCY015_SpeedBoosterPremium",
+  "regenerationHPSpeed": 0.01,
+  "workTime": 14.0,
   "9": "PCY010_RegenCrewPremium",
   "2": "PCY011_AirDefenseDispPremium"
  },
  "3762239280": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium",
@@ -2628,6 +3040,8 @@
   "11": "PCY016_SonarSearchPremium",
   "10": "PCY012_FighterPremium",
   "1": "PCY013_SpotterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4286461936": {
@@ -2638,6 +3052,8 @@
  },
  "4183766768": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4287542544": {
@@ -2646,6 +3062,8 @@
  },
  "4074682320": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 20.0,
   "9": "PCY010_RegenCrewPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium"
@@ -2658,6 +3076,8 @@
  },
  "3363780304": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -2667,10 +3087,14 @@
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
   "13": "PCY020_RLSSearchPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3750704336": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "10": "PCY012_FighterPremium",
   "3": "PCY015_SpeedBoosterPremium"
@@ -2682,6 +3106,8 @@
  },
  "4182685648": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium",
   "7": "PCY014_SmokeGeneratorPremium",
@@ -2708,6 +3134,8 @@
   "0": "PCY009_CrashCrewPremium",
   "11": "PCY016_SonarSearchPremium",
   "2": "PCY011_AirDefenseDispPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4185798608": {
@@ -2716,6 +3144,8 @@
  },
  "4278105360": {
   "0": "PXY401_CrashCrew_H2020",
+  "regenerationHPSpeed": 0.0,
+  "workTime": 15.0,
   "9": "PXY402_Regen_H2020",
   "32": "PXY411_CircleWave_H2020"
  },
@@ -2729,14 +3159,20 @@
   "3": "PCY015_SpeedBoosterPremium",
   "10": "PCY012_FighterPremium",
   "1": "PCY013_SpotterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3340711888": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 20.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3741267792": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium",
@@ -2748,6 +3184,8 @@
   "2": "PCY011_AirDefenseDispPremium",
   "3": "PCY015_SpeedBoosterPremium",
   "10": "PCY012_FighterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "5": "PCY022_ArtilleryBoosterPremium"
  },
@@ -2771,10 +3209,14 @@
  },
  "4286527184": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3760109520": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium",
   "7": "PCY014_SmokeGeneratorPremium",
@@ -2787,6 +3229,8 @@
  },
  "4180621296": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "10": "PCY012_FighterPremium",
@@ -2804,10 +3248,14 @@
   "11": "PCY016_SonarSearchPremium",
   "10": "PCY012_FighterPremium",
   "1": "PCY013_SpotterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3763287760": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4288591120": {
@@ -2815,6 +3263,8 @@
  },
  "3753818064": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.01,
+  "workTime": 10.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium",
   "7": "PCY014_SmokeGeneratorPremium"
@@ -2828,6 +3278,8 @@
  "3340645680": {
   "0": "PCY009_CrashCrewPremium",
   "3": "PCY015_SpeedBoosterPremium",
+  "regenerationHPSpeed": 0.01,
+  "workTime": 14.0,
   "9": "PCY010_RegenCrewPremium",
   "2": "PCY011_AirDefenseDispPremium"
  },
@@ -2838,6 +3290,8 @@
  },
  "3767482320": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3751687376": {
@@ -2859,6 +3313,8 @@
  },
  "3730782192": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "13": "PCY020_RLSSearchPremium",
   "10": "PCY012_FighterPremium",
@@ -2875,15 +3331,21 @@
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
   "13": "PCY020_RLSSearchPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4184815408": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium"
  },
  "4291770064": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium"
  },
@@ -2892,11 +3354,15 @@
  },
  "3545183952": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium"
  },
  "4277090288": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.0066,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -2922,6 +3388,8 @@
  },
  "4075730896": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 20.0,
   "9": "PCY010_RegenCrewPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
@@ -2929,6 +3397,8 @@
  },
  "3753850320": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3969824208": {
@@ -2936,6 +3406,8 @@
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
   "13": "PCY020_RLSSearchPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4287509776": {
@@ -2949,6 +3421,8 @@
  },
  "3760142288": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.006,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "2": "PCY011_AirDefenseDispPremium"
  },
@@ -2958,10 +3432,14 @@
   "2": "PCY011_AirDefenseDispPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4078909232": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium"
  },
@@ -2972,6 +3450,8 @@
  },
  "4178523984": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "3": "PCY015_SpeedBoosterPremium"
  },
@@ -2980,6 +3460,8 @@
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
   "3": "PCY015_SpeedBoosterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "5": "PCY022_ArtilleryBoosterPremium"
  },
@@ -2992,6 +3474,8 @@
  },
  "4283381456": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4188976400": {
@@ -3002,10 +3486,14 @@
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
   "10": "PCY012_FighterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3762238800": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3543054032": {
@@ -3016,12 +3504,16 @@
  },
  "3753817456": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium",
   "7": "PCY014_SmokeGeneratorPremium"
  },
  "3751720912": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 20.0,
   "9": "PCY010_RegenCrewPremium",
   "7": "PCY014_SmokeGeneratorPremium",
   "13": "PCY020_RLSSearchPremium",
@@ -3029,6 +3521,8 @@
  },
  "3340711728": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium",
@@ -3041,6 +3535,8 @@
   "13": "PCY020_RLSSearchPremium",
   "10": "PCY012_FighterPremium",
   "1": "PCY013_SpotterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4077795024": {
@@ -3051,6 +3547,8 @@
  },
  "4179572528": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium",
@@ -3081,6 +3579,8 @@
  },
  "4281284304": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -3091,6 +3591,8 @@
  },
  "4078909392": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "3": "PCY015_SpeedBoosterPremium",
   "2": "PCY011_AirDefenseDispPremium"
@@ -3106,6 +3608,8 @@
  },
  "3334420176": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3335501808": {
@@ -3123,12 +3627,16 @@
  },
  "3669964624": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "10": "PCY012_FighterPremium",
   "1": "PCY013_SpotterPremium"
  },
  "3445569520": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -3146,16 +3654,22 @@
   "1": "PCY013_SpotterPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "13": "PCY020_RLSSearchPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4181603632": {
   "0": "PCY009_CrashCrewPremium",
   "3": "PCY015_SpeedBoosterPremium",
+  "regenerationHPSpeed": 0.01,
+  "workTime": 14.0,
   "9": "PCY010_RegenCrewPremium",
   "2": "PCY011_AirDefenseDispPremium"
  },
  "3751753520": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -3167,11 +3681,15 @@
  },
  "3730781648": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "10": "PCY012_FighterPremium"
  },
  "4079957968": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "3": "PCY015_SpeedBoosterPremium"
  },
@@ -3203,6 +3721,8 @@
   "13": "PCY020_RLSSearchPremium",
   "10": "PCY012_FighterPremium",
   "1": "PCY013_SpotterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4292851408": {
@@ -3221,6 +3741,8 @@
  },
  "3550360880": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.01,
+  "workTime": 14.0,
   "9": "PCY010_RegenCrewPremium",
   "13": "PCY020_RLSSearchPremium",
   "3": "PCY015_SpeedBoosterPremium"
@@ -3237,6 +3759,8 @@
   "0": "PCY009_CrashCrewPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4179604944": {
@@ -3245,6 +3769,8 @@
  },
  "4276041424": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -3272,6 +3798,8 @@
  "4179506480": {
   "0": "PCY009_CrashCrewPremium",
   "3": "PCY015_SpeedBoosterPremium",
+  "regenerationHPSpeed": 0.01,
+  "workTime": 14.0,
   "9": "PCY010_RegenCrewPremium",
   "2": "PCY011_AirDefenseDispPremium"
  },
@@ -3283,6 +3811,8 @@
   "0": "PCY009_CrashCrewPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 20.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3762173136": {
@@ -3294,6 +3824,8 @@
  },
  "3742316496": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.006,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium"
  },
@@ -3301,6 +3833,8 @@
   "0": "PCY009_CrashCrewPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4181702448": {
@@ -3310,12 +3844,16 @@
  "3762173936": {
   "0": "PCY009_CrashCrewPremium",
   "7": "PCY014_SmokeGeneratorPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "3": "PCY015_SpeedBoosterPremium",
   "2": "PCY011_AirDefenseDispPremium"
  },
  "4186912592": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4187895248": {
@@ -3334,6 +3872,8 @@
  },
  "3969857328": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium",
@@ -3358,6 +3898,8 @@
  },
  "3750704880": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "7": "PCY014_SmokeGeneratorPremium",
   "1": "PCY013_SpotterPremium",
@@ -3373,16 +3915,22 @@
  },
  "4181669840": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.006,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
  },
  "4183766864": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4277024016": {
   "0": "PXY021_CrashCrew",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 15.0,
   "9": "PXY022_RegenCrew",
   "3": "PXY027_SpeedBooster",
   "12": "PXY026_TorpedoReloader"
@@ -3394,6 +3942,8 @@
   "13": "PCY020_RLSSearchPremium",
   "10": "PCY012_FighterPremium",
   "1": "PCY013_SpotterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4183734000": {
@@ -3415,6 +3965,8 @@
   "13": "PCY020_RLSSearchPremium",
   "10": "PCY012_FighterPremium",
   "1": "PCY013_SpotterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium"
  },
@@ -3437,6 +3989,8 @@
  "4180555056": {
   "0": "PCY009_CrashCrewPremium",
   "3": "PCY015_SpeedBoosterPremium",
+  "regenerationHPSpeed": 0.01,
+  "workTime": 14.0,
   "9": "PCY010_RegenCrewPremium",
   "2": "PCY011_AirDefenseDispPremium"
  },
@@ -3444,6 +3998,8 @@
   "0": "PCY009_CrashCrewPremium",
   "7": "PCY014_SmokeGeneratorPremium",
   "3": "PCY015_SpeedBoosterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4289640144": {
@@ -3464,10 +4020,14 @@
  },
  "4186912208": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3765384656": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3767449584": {
@@ -3489,10 +4049,14 @@
  },
  "3730782032": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3340711920": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "10": "PCY012_FighterPremium",
@@ -3500,6 +4064,8 @@
  },
  "4077860816": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "3": "PCY015_SpeedBoosterPremium",
   "2": "PCY011_AirDefenseDispPremium"
@@ -3512,10 +4078,14 @@
  },
  "3765384944": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3655251920": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium",
   "7": "PCY014_SmokeGeneratorPremium"
@@ -3524,10 +4094,14 @@
   "0": "PCY009_CrashCrewPremium",
   "3": "PCY015_SpeedBoosterPremium",
   "11": "PCY016_SonarSearchPremium",
+  "regenerationHPSpeed": 0.01,
+  "workTime": 10.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3767482160": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4185831216": {
@@ -3539,10 +4113,14 @@
  },
  "3743364816": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4185863920": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4075697968": {
@@ -3555,20 +4133,28 @@
  },
  "4185864016": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4186912560": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4272829712": {
   "0": "PXY021_CrashCrew",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 15.0,
   "9": "PXY022_RegenCrew",
   "3": "PXY027_SpeedBooster",
   "12": "PXY026_TorpedoReloader"
  },
  "3763288016": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "2": "PCY011_AirDefenseDispPremium"
  },
@@ -3588,12 +4174,16 @@
  },
  "3554621136": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium"
  },
  "4184749360": {
   "0": "PCY009_CrashCrewPremium",
   "3": "PCY015_SpeedBoosterPremium",
+  "regenerationHPSpeed": 0.01,
+  "workTime": 10.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4282365936": {
@@ -3601,6 +4191,8 @@
  },
  "4288624624": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.0066,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium"
  },
@@ -3620,6 +4212,8 @@
   "13": "PCY020_RLSSearchPremium",
   "10": "PCY012_FighterPremium",
   "1": "PCY013_SpotterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3246831056": {
@@ -3633,18 +4227,24 @@
  },
  "4282299664": {
   "0": "PXY316_CrashCrew_PVP",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 15.0,
   "9": "PXY332_RegenCrew_H2019",
   "5": "PXY331_ArtilleryBooster_H2019",
   "11": "PXY317_SonarSearch_PVP"
  },
  "3761190608": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
  },
  "3741267952": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -3668,6 +4268,8 @@
  },
  "3752802000": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "5": "PCY022_ArtilleryBoosterPremium",
   "10": "PCY012_FighterPremium"
@@ -3696,6 +4298,8 @@
  },
  "4180621040": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "7": "PCY014_SmokeGeneratorPremium",
   "1": "PCY013_SpotterPremium",
@@ -3712,6 +4316,8 @@
  },
  "3666818896": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "5": "PCY022_ArtilleryBoosterPremium",
   "3": "PCY015_SpeedBoosterPremium"
@@ -3723,6 +4329,8 @@
  },
  "3247388464": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium",
@@ -3730,12 +4338,16 @@
  },
  "3760142320": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
  },
  "3761157328": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "7": "PCY014_SmokeGeneratorPremium"
  },
@@ -3746,6 +4358,8 @@
  },
  "3668916016": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -3753,6 +4367,8 @@
  "4183209424": {
   "0": "PCY009_CrashCrewPremium",
   "35": "PCY045_Hydrophone",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3655219184": {
@@ -3774,6 +4390,8 @@
   "0": "PCY009_CrashCrewPremium",
   "7": "PCY014_SmokeGeneratorPremium",
   "11": "PCY016_SonarSearchPremium",
+  "regenerationHPSpeed": 0.01,
+  "workTime": 10.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3750672368": {
@@ -3781,16 +4399,22 @@
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium",
   "13": "PCY020_RLSSearchPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4180621264": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 20.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
  },
  "3762206672": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 20.0,
   "9": "PCY010_RegenCrewPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "11": "PCY016_SonarSearchPremium"
@@ -3810,16 +4434,22 @@
  },
  "3555670000": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium"
  },
  "3764336336": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium"
  },
  "3247388368": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -3827,16 +4457,22 @@
  "4182652208": {
   "0": "PCY009_CrashCrewPremium",
   "3": "PCY015_SpeedBoosterPremium",
+  "regenerationHPSpeed": 0.01,
+  "workTime": 10.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4272895696": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
  },
  "4278072592": {
   "0": "PXY021_CrashCrew",
+  "regenerationHPSpeed": 0.02,
+  "workTime": 15.0,
   "9": "PXY022_RegenCrew",
   "11": "PXY025_SonarSearch",
   "7": "PXY024_SmokeGenerator"
@@ -3848,11 +4484,15 @@
   "13": "PCY020_RLSSearchPremium",
   "10": "PCY012_FighterPremium",
   "1": "PCY013_SpotterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3750672176": {
   "0": "PCY009_CrashCrewPremium",
   "11": "PCY016_SonarSearchPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4076745936": {
@@ -3862,6 +4502,8 @@
  },
  "4184815568": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium"
  },
@@ -3874,6 +4516,8 @@
  },
  "3740219088": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "4288591856": {
@@ -3889,6 +4533,8 @@
  },
  "3344905936": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3763320528": {
@@ -3902,6 +4548,8 @@
  },
  "3552524272": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -3919,6 +4567,8 @@
  },
  "3762239184": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "1": "PCY013_SpotterPremium",
   "10": "PCY012_FighterPremium"
@@ -3926,17 +4576,23 @@
  "4183700784": {
   "0": "PCY009_CrashCrewPremium",
   "3": "PCY015_SpeedBoosterPremium",
+  "regenerationHPSpeed": 0.01,
+  "workTime": 10.0,
   "9": "PCY010_RegenCrewPremium"
  },
  "3445536752": {
   "0": "PCY009_CrashCrewPremium",
   "2": "PCY011_AirDefenseDispPremium",
   "5": "PCY022_ArtilleryBoosterPremium",
+  "regenerationHPSpeed": 0.0066,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium"
  },
  "3761190704": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "11": "PCY016_SonarSearchPremium"
  },
@@ -3949,6 +4605,8 @@
  },
  "4181669712": {
   "0": "PCY009_CrashCrewPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "3": "PCY015_SpeedBoosterPremium",
   "1": "PCY013_SpotterPremium",
@@ -3960,6 +4618,8 @@
   "2": "PCY011_AirDefenseDispPremium",
   "3": "PCY015_SpeedBoosterPremium",
   "10": "PCY012_FighterPremium",
+  "regenerationHPSpeed": 0.005,
+  "workTime": 28.0,
   "9": "PCY010_RegenCrewPremium",
   "5": "PCY022_ArtilleryBoosterPremium"
  }

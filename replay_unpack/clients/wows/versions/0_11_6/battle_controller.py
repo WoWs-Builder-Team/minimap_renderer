@@ -205,19 +205,13 @@ class BattleController(IBattleController):
             self._set_score,
         )
         Entity.subscribe_property_change(
-            "Vehicle",
-            "regeneratedHealth",
-            self._set_regenerated_health
+            "Vehicle", "regeneratedHealth", self._set_regenerated_health
         )
         Entity.subscribe_property_change(
-            "Vehicle",
-            "regenCrewHpLimit",
-            self._set_regen_crew_hp_limit
+            "Vehicle", "regenCrewHpLimit", self._set_regen_crew_hp_limit
         )
         Entity.subscribe_property_change(
-            "Vehicle",
-            "regenerationHealth",
-            self._set_regeneration_health
+            "Vehicle", "regenerationHealth", self._set_regeneration_health
         )
 
     ###########################################################################
