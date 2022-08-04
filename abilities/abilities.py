@@ -40,7 +40,7 @@ if __name__ == "__main__":
         for k, v in vars(ab).items():
             if isinstance(v, GPData):
                 sub = abilities.setdefault(ab.name, {})
-                sub[k] = v.consumableType  # type: ignore
+                sub[k] = v  # type: ignore
 
     ability_type_to_id = {
         "crashCrew": 0,
@@ -85,8 +85,12 @@ if __name__ == "__main__":
                 for abs in abilityslot.abils:
                     name, sub_name = abs
                     sa = abilities[name][sub_name]
-                    at[ability_type_to_id[sa]] = name
 
+                    if sa.consumableType == "regenCrew":
+                        at["regenerationHPSpeed"] = sa.regenerationHPSpeed
+                        at["workTime"] = sa.workTime
+
+                    at[ability_type_to_id[sa.consumableType]] = name
 
     with open(
         os.path.join(os.path.dirname(__file__), "abilities.json"), "w"
