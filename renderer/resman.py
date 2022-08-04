@@ -30,6 +30,7 @@ class ResourceManager:
         filename: str,
         nearest=False,
         size: Optional[tuple[int, int]] = None,
+        rot: Optional[int] = None,
     ) -> Image.Image:
         """Loads the image from the package or from the memory.
 
@@ -42,12 +43,21 @@ class ResourceManager:
         Returns:
             Image.Image: The loaded image.
         """
+        for_key = [package, filename]
+
         if size:
-            key_name = (
-                f"{package}.{filename}.{'.'.join(map(str, size))}.{nearest}"
-            )
-        else:
-            key_name = f"{package}.{filename}.{nearest}"
+            for_key.append(".".join(map(str, size)))
+            # key_name = (
+            #     f"{package}.{filename}.{'.'.join(map(str, size))}.{nearest}"
+            # )
+        # else:
+        #     for
+        #     key_name = f"{package}.{filename}.{nearest}"
+        if rot:
+            for_key.append(str(rot))
+
+        for_key.append(str(nearest))
+        key_name = ".".join(for_key)
 
         if key_name in self._resources:
             return self._resources[key_name].copy()
@@ -58,6 +68,10 @@ class ResourceManager:
                 if size:
                     image = image.resize(
                         size, Image.LANCZOS if not nearest else Image.NEAREST
+                    )
+                if rot:
+                    image = image.rotate(
+                        rot, resample=Image.BICUBIC, expand=True
                     )
 
                 self._resources[key_name] = image.copy()
