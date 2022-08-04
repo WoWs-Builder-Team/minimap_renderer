@@ -35,6 +35,9 @@ class Vehicle(NamedTuple):
     is_visible: bool
     not_in_range: bool
     visibility_flag: int
+    regenerated_health: float = 0.0
+    regen_crew_hp_limit: float = 0.0
+    regeneration_health: float = 0.0
 
 
 class Smoke(NamedTuple):
