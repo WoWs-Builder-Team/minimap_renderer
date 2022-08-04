@@ -74,15 +74,18 @@ class LayerShotBase(LayerBase):
                 prev_x, prev_y = x, y
 
         for sid in list(self._projectiles):
-            if projectile := self._projectiles[sid]:
-                try:
-                    cid, cx, cy, px, py = projectile.pop(0)
-                    draw.line(
-                        [(cx, cy), (px, py)],
-                        fill=COLORS_NORMAL[self._relations[cid]],
-                        width=2,
-                    )
-                except IndexError:
-                    pass
-            else:
-                self._projectiles.pop(sid)
+            try:
+                if projectile := self._projectiles[sid]:
+                    try:
+                        cid, cx, cy, px, py = projectile.pop(0)
+                        draw.line(
+                            [(cx, cy), (px, py)],
+                            fill=COLORS_NORMAL[self._relations[cid]],
+                            width=2,
+                        )
+                    except IndexError:
+                        pass
+                else:
+                    self._projectiles.pop(sid)
+            except KeyError:
+                pass
