@@ -22,6 +22,7 @@ from renderer.data import (
     Plane,
     Ward,
     ControlPoint,
+    Score,
 )
 from replay_unpack.utils import unpack_values, unpack_plane_id
 
@@ -90,11 +91,13 @@ class BattleController(IBattleController):
         self._dict_smoke: dict[int, Smoke] = {}
         self._dict_plane: dict[int, Plane] = {}
         self._dict_ward: dict[int, Ward] = {}
+        self._dict_score: dict[int, Score] = {}
         self._dict_control: dict[int, ControlPoint] = {}
-        self._vehicle_to_avatar: dict[int, int] = {}
+        self._vehicle_to_id: dict[int, int] = {}
         self._dict_events: dict[int, Events] = {}
         self._version: str = ""
-        self._remove_entities = set()
+        self._battle_type: int = 0
+        self._win_score: int = 1000
 
         # ACCUMULATORS #
 
@@ -192,10 +195,40 @@ class BattleController(IBattleController):
         #     "state.missions.teamsScore",
         #     lambda *a, **b: print(a, b),
         # )
+        Entity.subscribe_property_change(
+            "BattleLogic", "battleType", self._set_battle_type
+        )
+
+        Entity.subscribe_nested_property_change(
+            "BattleLogic",
+            "state.missions.teamsScore",
+            self._set_score,
+        )
 
     ###########################################################################
 
+    def _set_score(self, entity, score):
+        if score["teamId"] == self._owner["teamId"]:
+            relation = 0
+        else:
+            relation = 1
+        self._dict_score[relation] = self._dict_score[relation]._replace(
+            score=score["score"]
+        )
+
+    def _set_battle_type(self, entity, battle_type):
+        self._battle_type = battle_type
+
     def _set_state(self, entity, state):
+        self._win_score = state["missions"]["teamWinScore"]
+
+        for team_score in state["missions"]["teamsScore"]:
+            if team_score["teamId"] == self._owner["teamId"]:
+                relation = 0
+            else:
+                relation = 1
+            self._dict_score[relation] = Score(relation, team_score["score"])
+
         for cp in state["controlPoints"]:
             if cp["teamId"] == self._owner["teamId"] and cp["teamId"] != -1:
                 relation = 0
@@ -217,6 +250,7 @@ class BattleController(IBattleController):
                 capture_time=cp["captureTime"],
                 capture_speed=cp["captureSpeed"],
                 relation=relation,
+                is_visible=cp["isVisible"],
             )
 
     def _set_control_points(self, ent, cp):
@@ -240,6 +274,7 @@ class BattleController(IBattleController):
             capture_time=cp["captureTime"],
             capture_speed=cp["captureSpeed"],
             relation=relation,
+            is_visible=bool(cp["isVisible"]),
         )
 
     def _add_ward(
@@ -249,9 +284,7 @@ class BattleController(IBattleController):
             plane_id=plane_id,
             position=tuple(map(round, position[::2])),
             radius=radius,
-            relation=self._dict_info[
-                self._vehicle_to_avatar[vehicle_id]
-            ].relation,
+            relation=self._dict_info[self._vehicle_to_id[vehicle_id]].relation,
             vehicle_id=vehicle_id,
         )
 
@@ -275,6 +308,7 @@ class BattleController(IBattleController):
             evt_plane=copy.copy(self._dict_plane),
             evt_ward=copy.copy(self._dict_ward),
             evt_control=copy.copy(self._dict_control),
+            evt_score=copy.copy(self._dict_score),
         )
 
         self._dict_events[battle_time] = evt
@@ -295,9 +329,7 @@ class BattleController(IBattleController):
             index=index,
             purpose=purpose,
             departures=departures,
-            relation=self._dict_info[
-                self._vehicle_to_avatar[owner_id]
-            ].relation,
+            relation=self._dict_info[self._vehicle_to_id[owner_id]].relation,
             position=tuple(map(round, pos)),
         )
 
@@ -346,8 +378,8 @@ class BattleController(IBattleController):
                 )
 
     def _crew_skills(self, entity: Entity, params):
-        self._dict_info[self._vehicle_to_avatar[entity.id]] = self._dict_info[
-            self._vehicle_to_avatar[entity.id]
+        self._dict_info[self._vehicle_to_id[entity.id]] = self._dict_info[
+            self._vehicle_to_id[entity.id]
         ]._replace(skills=params["learnedSkills"])
 
     def _modernization(self, entity: Entity, config: bytes):
@@ -374,11 +406,14 @@ class BattleController(IBattleController):
 
             # inter = any(set(modern).intersection([4220702640, 4219654064]))
             # print(entity.id, modern, inter)
-            self._dict_info[
-                self._vehicle_to_avatar[entity.id]
-            ] = self._dict_info[self._vehicle_to_avatar[entity.id]]._replace(
-                modernization=modern
-            )
+            try:
+                self._dict_info[
+                    self._vehicle_to_id[entity.id]
+                ] = self._dict_info[self._vehicle_to_id[entity.id]]._replace(
+                    modernization=modern
+                )
+            except KeyError:
+                pass
 
     def _r_shots(self, entity: Entity, shots: list):
         for shot in shots:
@@ -396,70 +431,6 @@ class BattleController(IBattleController):
                         t_time,
                     )
                 )
-
-    def _create_player_vehicle_data(self):
-        owner: dict = {}
-
-        for p in self._players.get_info().values():
-            try:
-                id_to_use = p["avatarId"]
-            except KeyError:
-                id_to_use = p["id"]
-
-            if id_to_use == self._player_id:
-                owner = p
-                self._owner = p
-
-        for player in self._players.get_info().values():
-            is_ally = owner["teamId"] == player["teamId"]
-            id_to_use = "avatarId"
-
-            try:
-                is_owner = owner["avatarId"] == player["avatarId"]
-            except KeyError:
-                is_owner = owner["avatarId"] == player["id"]
-                id_to_use = "id"
-
-            if is_ally and not is_owner:
-                relation = 0
-            elif not is_ally and not is_owner:
-                relation = 1
-            else:
-                relation = -1
-
-            pi = PlayerInfo(
-                avatar_id=player[id_to_use],
-                account_db_id=player["accountDBID"],
-                clan_color=player["clanColor"],
-                clan_id=player["clanID"],
-                clan_tag=player["clanTag"],
-                max_health=player["maxHealth"],
-                name=player["name"],
-                realm=player["realm"],
-                ship_id=player["shipId"],
-                team_id=player["teamId"],
-                is_bot=bool(player["isBot"]),
-                ship_params_id=player["shipParamsId"],
-                relation=relation,
-                modernization=(),
-                skills=[],
-            )
-            self._dict_info[player[id_to_use]] = pi
-            vi = Vehicle(
-                avatar_id=player[id_to_use],
-                vehicle_id=player["shipId"],
-                health=player["maxHealth"],
-                is_alive=True,
-                x=-2500,
-                y=-2500,
-                yaw=-180,
-                relation=relation,
-                is_visible=False,
-                not_in_range=True,
-                visibility_flag=0,
-            )
-            self._dict_vehicle[player["shipId"]] = vi
-            self._vehicle_to_avatar[player["shipId"]] = player[id_to_use]
 
     def _set_durations(self, entity, duration):
         self._durations.append(duration)
@@ -493,7 +464,6 @@ class BattleController(IBattleController):
         for e in ships_minimap_diff:
             try:
                 vehicle_id = e["vehicleID"]
-                # vehicle = self._dict_player_vehicle[vehicle_id]
                 x, y, yaw = unpack_values(e["packedData"], pack_pattern)
                 x, y, yaw = map(round, (x, y, math.degrees(yaw)))
 
@@ -514,6 +484,70 @@ class BattleController(IBattleController):
         self._dict_smoke[entity.id] = self._dict_smoke[entity.id]._replace(
             points=copy.copy(points)
         )
+
+    def _create_player_vehicle_data(self, update=False):
+        if not self._owner:
+            for player in self._players.get_info().values():
+                try:
+                    if player["avatarId"] == self._player_id:
+                        self._owner = player
+                except KeyError:
+                    pass
+
+        for player in self._players.get_info().values():
+            if not self._owner:
+                continue
+            is_ally = self._owner["teamId"] == player["teamId"]
+
+            try:
+                is_owner = self._owner["avatarId"] == player["avatarId"]
+            except KeyError:
+                is_owner = self._owner["avatarId"] == player["id"]
+
+            if is_ally and not is_owner:
+                relation = 0
+            elif not is_ally and not is_owner:
+                relation = 1
+            else:
+                relation = -1
+
+            pi = PlayerInfo(
+                avatar_id=player["id"],
+                account_db_id=player["accountDBID"],
+                clan_color=player["clanColor"],
+                clan_id=player["clanID"],
+                clan_tag=player["clanTag"],
+                max_health=player["maxHealth"],
+                name=player["name"],
+                realm=player["realm"],
+                ship_id=player["shipId"],
+                team_id=player["teamId"],
+                is_bot=bool(player["isBot"]),
+                ship_params_id=player["shipParamsId"],
+                relation=relation,
+                modernization=(),
+                skills=[],
+            )
+            self._vehicle_to_id[player["shipId"]] = player["id"]
+            self._dict_info[player["id"]] = pi
+
+            if update:
+                continue
+
+            vi = Vehicle(
+                avatar_id=player["id"],
+                vehicle_id=player["shipId"],
+                health=player["maxHealth"],
+                is_alive=True,
+                x=-2500,
+                y=-2500,
+                yaw=-180,
+                relation=relation,
+                is_visible=False,
+                not_in_range=True,
+                visibility_flag=0,
+            )
+            self._dict_vehicle[player["shipId"]] = vi
 
     ###########################################################################
 
@@ -551,7 +585,6 @@ class BattleController(IBattleController):
 
     def leave_entity(self, entity_id):
         if entity_id in self._dict_smoke:
-            self._remove_entities.add(entity_id)
             self._dict_smoke.pop(entity_id)
 
     def on_player_enter_world(self, entity_id: int):
@@ -568,14 +601,11 @@ class BattleController(IBattleController):
         rd = ReplayData(
             game_version=self._version[:-2].replace(",", "_"),
             game_map=self._map,
+            game_battle_type=self._battle_type,
+            game_win_score=self._win_score,
             player_info=self._dict_info,
             events=self._dict_events,
         )
-
-        # for k, i in self._dict_events.items():
-        #     print(f">>>{k}")
-        #     for k in i.evt_torpedo:
-        #         print(f"    {k}")
 
         return dict(
             achievements=self._achievements,
@@ -631,18 +661,19 @@ class BattleController(IBattleController):
         self._battle_result = dict(winner_team_id=teamId, victory_type=state)
 
     def onNewPlayerSpawnedInBattle(
-        self, avatar, playersStates, botsStates, observersState
+        self, entity, playersData, botsData, observersData
     ):
         self._players.create_or_update_players(
-            pickle.loads(playersStates, encoding="latin1"), PlayerType.PLAYER
+            pickle.loads(playersData, encoding="latin1"), PlayerType.PLAYER
         )
         self._players.create_or_update_players(
-            pickle.loads(botsStates, encoding="latin1"), PlayerType.BOT
+            pickle.loads(botsData, encoding="latin1"), PlayerType.BOT
         )
         self._players.create_or_update_players(
-            pickle.loads(observersState, encoding="latin1"),
+            pickle.loads(observersData, encoding="latin1"),
             PlayerType.OBSERVER,
         )
+        self._create_player_vehicle_data()
 
     def onArenaStateReceived(
         self,
@@ -666,7 +697,6 @@ class BattleController(IBattleController):
             pickle.loads(observersState, encoding="latin1"),
             PlayerType.OBSERVER,
         )
-
         self._create_player_vehicle_data()
 
     def onPlayerInfoUpdate(self, avatar, playersData, botsData, observersData):
@@ -679,6 +709,7 @@ class BattleController(IBattleController):
         self._players.create_or_update_players(
             pickle.loads(observersData, encoding="latin1"), PlayerType.OBSERVER
         )
+        self._create_player_vehicle_data(True)
 
     def receiveDamageStat(self, avatar, blob):
         normalized = {}
