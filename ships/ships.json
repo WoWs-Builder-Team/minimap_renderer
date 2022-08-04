@@ -1,3820 +1,4584 @@
 {
  "3555669712": [
+  "PJSB705",
   "ARP KONG\u014c",
   "Battleship",
   5
  ],
  "4181112272": [
+  "PRSS108",
   "L-20",
   "Submarine",
   8
  ],
  "4180620752": [
+  "PRSB109",
   "SOV. SOYUZ",
   "Battleship",
   9
  ],
  "4277024464": [
+  "PJSD017",
   "F\u016aJIN",
   "Destroyer",
   5
  ],
  "4186912016": [
+  "PXSB103",
   "HERACLES ",
   "Battleship",
   9
  ],
  "3554555600": [
+  "PJSD706",
   "SHINONOME",
   "Destroyer",
   6
  ],
  "4292851696": [
+  "PASA002",
   "BOGUE (OLD)",
   "AirCarrier",
   5
  ],
  "4185864144": [
+  "PBSB104",
   "ORION",
   "Battleship",
   4
  ],
  "3760142032": [
+  "PJSB510",
   "SHIKISHIMA",
   "Battleship",
   10
  ],
  "3374266064": [
+  "PJSB878",
   "IGNIS PURGATIO",
   "Battleship",
   8
  ],
  "3764303664": [
+  "PGSC506",
   "GRAF SPEE",
   "Cruiser",
   6
  ],
  "4182652656": [
+  "PISD107",
   "L. TARIGO",
   "Destroyer",
   7
  ],
  "4184815440": [
+  "PFSB105",
   "BRETAGNE",
   "Battleship",
   5
  ],
  "4185798448": [
+  "PGSD104",
   "V-170",
   "Destroyer",
   4
  ],
  "3751196368": [
+  "PJSS518",
   "I-56",
   "Submarine",
   8
  ],
  "4077303056": [
+  "PXSS207",
   "SEEL\u00d6WE",
   "Submarine",
   10
  ],
  "4183734064": [
+  "PGSC106",
   "N\u00dcRNBERG",
   "Cruiser",
   6
  ],
  "4290688272": [
+  "PXSC004",
   "GALAXY",
   "Cruiser",
   7
  ],
  "3752769232": [
+  "PJSC517",
   "MAYA",
   "Cruiser",
   7
  ],
  "4179506928": [
+  "PISD110",
   "A. REGOLO",
   "Destroyer",
   10
  ],
  "3972445456": [
+  "PXSS307",
   "GERFALCON",
   "Submarine",
   7
  ],
  "4289639696": [
+  "PXSC005",
   "ZAYA",
   "Cruiser",
   7
  ],
  "4270077200": [
+  "PXSX023",
   "LORINA",
   "Auxiliary",
   2
  ],
  "3248437200": [
+  "PBSB998",
   "ST. LAWRENCE",
   "Battleship",
   10
  ],
  "3764271056": [
+  "PBSD506",
   "GALLANT",
   "Destroyer",
   6
  ],
  "3768857872": [
+  "PXSX501",
   "LIBERTY",
   "Auxiliary",
   6
  ],
  "4179539728": [
+  "PHSC110",
   "GOUDEN LEEUW",
   "Cruiser",
   10
  ],
  "4186847024": [
+  "PGSD103",
   "G-101",
   "Destroyer",
   3
  ],
  "4184749872": [
+  "PGSD105",
   "T-22",
   "Destroyer",
   5
  ],
  "3667867440": [
+  "PGSB598",
   "TIRPITZ B",
   "Battleship",
   8
  ],
  "3751786480": [
+  "PASA518",
   "ENTERPRISE",
   "AirCarrier",
   8
  ],
  "4269683984": [
+  "PXSD024",
   "MUTANTOVSK",
   "Destroyer",
   10
  ],
  "4179506384": [
+  "PZSD110",
   "YUEYANG",
   "Destroyer",
   10
  ],
  "4078843600": [
+  "PJSD206",
   "HATSUHARU",
   "Destroyer",
   6
  ],
  "3762206160": [
+  "PRSC508",
   "KUTUZOV",
   "Cruiser",
   8
  ],
  "4185798384": [
+  "PISD104",
   "TURBINE",
   "Destroyer",
   4
  ],
  "4179539760": [
+  "PGSC110",
   "HINDENBURG",
   "Cruiser",
   10
  ],
  "3555636944": [
+  "PJSC705",
   "ARP MY\u014cK\u014c",
   "Cruiser",
   7
  ],
  "4182717904": [
+  "PRSB107",
   "SINOP",
   "Battleship",
   7
  ],
  "4276041712": [
+  "PASB018",
   "IOWA",
   "Battleship",
   9
  ],
  "3332323024": [
+  "PJSB918",
   "[YAMATO]",
   "Battleship",
   10
  ],
  "3346282480": [
+  "PASX904",
   "CIMARRON TEST",
   "Auxiliary",
   5
  ],
  "4274960368": [
+  "PASC019",
   "BUFFALO",
   "Cruiser",
   10
  ],
  "4282300112": [
+  "PJSC012",
   "IBUKI",
   "Cruiser",
   9
  ],
  "4259591440": [
+  "PXSX033",
   "MINELAYER",
   "Auxiliary",
   2
  ],
  "4188977104": [
+  "PBSC101",
   "BLACK SWAN",
   "Cruiser",
   1
  ],
  "3764303312": [
+  "PRSC506",
   "MOLOTOV",
   "Cruiser",
   6
  ],
  "4188976336": [
+  "PZSC101",
   "CHENGAN",
   "Cruiser",
   1
  ],
  "3761125104": [
+  "PISD509",
   "PAOLO EMILIO",
   "Destroyer",
   9
  ],
  "4186846672": [
+  "PRSD103",
   "DERZKI",
   "Destroyer",
   3
  ],
  "4284364496": [
+  "PJSD010",
   "KAGER\u014c (OLD)",
   "Destroyer",
   9
  ],
  "4247008528": [
+  "PXSX045",
   "LIBERTY CIVIL",
   "Auxiliary",
   5
  ],
  "3553540080": [
+  "PASC707",
   "FLINT",
   "Cruiser",
   7
  ],
  "4074649296": [
+  "PJSD210",
   "HARUGUMO",
   "Destroyer",
   10
  ],
  "4181702640": [
+  "PASA108",
   "LEXINGTON",
   "AirCarrier",
   8
  ],
  "3763221968": [
+  "PRSD507",
   "LENINGRAD",
   "Destroyer",
   7
  ],
  "4184749904": [
+  "PFSD105",
   "JAGUAR",
   "Destroyer",
   5
  ],
  "3741234640": [
+  "PRSC528",
   "OCHAKOV",
   "Cruiser",
   8
  ],
  "4180555568": [
+  "PGSD109",
   "Z-46",
   "Destroyer",
   9
  ],
  "3552491216": [
+  "PJSC708",
   "ARP TAKAO",
   "Cruiser",
   8
  ],
  "3668883440": [
+  "PASC597",
   "BOISE",
   "Cruiser",
   7
  ],
  "4182718192": [
+  "PISB107",
   "F.\u00a0CARACCIOLO",
   "Battleship",
   7
  ],
  "4182685456": [
+  "PHSC107",
   "EENDRACHT",
   "Cruiser",
   7
  ],
  "4290721040": [
+  "PXSB004",
   "MAGNU-S",
   "Battleship",
   8
  ],
  "3667802064": [
+  "PBSD598",
   "COSSACK B",
   "Destroyer",
   8
  ],
  "4179539920": [
+  "PBSC110",
   "MINOTAUR",
   "Cruiser",
   10
  ],
  "3762271440": [
+  "PZSA508",
   "SANZANG",
   "AirCarrier",
   8
  ],
  "4076779504": [
+  "PASC208",
   "CLEVELAND",
   "Cruiser",
   8
  ],
  "4069438928": [
+  "PRSC215",
   "KOTOVSKY",
   "Cruiser",
   5
  ],
  "3762206704": [
+  "PASC508",
   "WICHITA",
   "Cruiser",
   8
  ],
  "4182652368": [
+  "PRSD107",
   "UDALOI",
   "Destroyer",
   9
  ],
  "4186912720": [
+  "PBSB103",
   "BELLEROPHON",
   "Battleship",
   3
  ],
  "4266931472": [
+  "PXSX026",
   "CANTERBURY",
   "Auxiliary",
   2
  ],
  "4291737040": [
+  "PRSC003",
   "MURMANSK",
   "Cruiser",
   5
  ],
  "4180588336": [
+  "PGSC109",
   "ROON",
   "Cruiser",
   9
  ],
  "3340679120": [
+  "PBSC910",
   "CYCLOPS",
   "Cruiser",
   10
  ],
  "4079891920": [
+  "PRSD205",
   "PODVOISKY",
   "Destroyer",
   5
  ],
  "4082055120": [
+  "PBSB203",
   "INDEFATIGABLE",
   "Battleship",
   3
  ],
  "3542005456": [
+  "PJSC718",
   "ARP MAYA",
   "Cruiser",
   8
  ],
  "4183799760": [
+  "PBSA106",
   "FURIOUS",
   "AirCarrier",
   6
  ],
  "3550394352": [
+  "PASC710",
   "SALEM",
   "Cruiser",
   10
  ],
  "3765352400": [
+  "PBSC505",
   "EXETER",
   "Cruiser",
   5
  ],
  "3764336432": [
+  "PGSB506",
   "P. E. FRIEDRICH",
   "Battleship",
   6
  ],
  "4287510224": [
+  "PJSD007",
   "FUBUKI (OLD)",
   "Destroyer",
   8
  ],
  "3762271696": [
+  "PRSA508",
   "CHKALOV",
   "AirCarrier",
   8
  ],
  "4179507152": [
+  "PBSD110",
   "DARING",
   "Destroyer",
   10
  ],
  "4187895088": [
+  "PWSD102",
   "T\u00c1TRA",
   "Destroyer",
   2
  ],
  "4255397136": [
+  "PXSX037",
   "DAIHATSU",
   "Auxiliary",
   2
  ],
  "4264441840": [
+  "PASD029",
   "SIMS",
   "Destroyer",
   7
  ],
  "3764270928": [
+  "PFSD506",
   "AIGLE",
   "Destroyer",
   6
  ],
  "4288559088": [
+  "PASD006",
   "MAHAN",
   "Destroyer",
   7
  ],
  "4183700688": [
+  "PZSD106",
   "FUSHUN",
   "Destroyer",
   6
  ],
  "4288952304": [
+  "PASX005",
   "ST. CLAIR",
   "Auxiliary",
   5
  ],
  "3750704848": [
+  "PJSB519",
   "HIZEN",
   "Battleship",
   9
  ],
  "4181669872": [
+  "PASB108",
   "KANSAS",
   "Battleship",
   8
  ],
  "4281251536": [
+  "PJSC013",
   "KUMA",
   "Cruiser",
   4
  ],
  "3763287856": [
+  "PGSB507",
   "SCHARNHORST",
   "Battleship",
   7
  ],
  "3763287888": [
+  "PFSB507",
   "STRASBOURG",
   "Battleship",
   7
  ],
  "3660461904": [
+  "PFSD605",
   "CYCLONE",
   "Destroyer",
   5
  ],
  "3760076080": [
+  "PWSD510",
   "FRIESLAND",
   "Destroyer",
   9
  ],
  "3762206544": [
+  "PFSC508",
   "BAYARD",
   "Cruiser",
   8
  ],
  "3751753168": [
+  "PRSB518",
   "LENIN",
   "Battleship",
   8
  ],
  "3740153648": [
+  "PGSD529",
   "ZF-6",
   "Destroyer",
   9
  ],
  "4179572720": [
+  "PASB110",
   "VERMONT",
   "Battleship",
   10
  ],
  "3731830736": [
+  "PBSB537",
   "COLLINGWOOD",
   "Battleship",
   7
  ],
  "4184782576": [
+  "PISC105",
   "MONTECUCCOLI",
   "Cruiser",
   5
  ],
  "3764271088": [
+  "PASD506",
   "MONAGHAN",
   "Destroyer",
   6
  ],
  "4179572560": [
+  "PFSB110",
   "R\u00c9PUBLIQUE",
   "Battleship",
   10
  ],
  "4291769616": [
+  "PXSB003",
   "ZIKASA",
   "Battleship",
   2
  ],
  "3765319664": [
+  "PASD505",
   "HILL",
   "Destroyer",
   5
  ],
  "3445503440": [
+  "PRSD810",
   "DD R-10",
   "Destroyer",
   10
  ],
  "4252251408": [
+  "PXSX040",
   "ESCORT 8",
   "Auxiliary",
   2
  ],
  "4290688720": [
+  "PJSC004",
   "Y\u016aBARI",
   "Cruiser",
   4
  ],
  "4182652880": [
+  "PBSD107",
   "JERVIS",
   "Destroyer",
   7
  ],
  "3761681872": [
+  "PRSS508",
   "S-189",
   "Submarine",
   8
  ],
  "3741235152": [
+  "PBSC528",
   "BELFAST '43",
   "Cruiser",
   8
  ],
  "4288624336": [
+  "PJSB006",
   "FUS\u014c",
   "Battleship",
   6
  ],
  "4076746448": [
+  "PJSD208",
   "KAGER\u014c",
   "Destroyer",
   8
  ],
  "4079957808": [
+  "PGSB205",
   "DERFFLINGER",
   "Battleship",
   5
  ],
  "4183733712": [
+  "PRSC106",
   "BUDYONNY",
   "Cruiser",
   6
  ],
  "4284364048": [
+  "PXSD010",
   "CELESTIAL",
   "Destroyer",
   7
  ],
  "3764369232": [
+  "PFSA506",
   "B\u00c9ARN",
   "AirCarrier",
   6
  ],
  "4186879728": [
+  "PISC103",
   "TARANTO",
   "Cruiser",
   3
  ],
  "4277122768": [
+  "PJSA017",
   "HAKURY\u016a (OLD)",
   "AirCarrier",
   10
  ],
  "4178458320": [
+  "PJSD111",
   "YAMAGIRI",
   "Destroyer",
   11
  ],
  "4181604304": [
+  "PBSD108",
   "LIGHTNING",
   "Destroyer",
   8
  ],
  "3730749424": [
+  "PASC538",
   "ROCHESTER",
   "Cruiser",
   8
  ],
  "3751786448": [
+  "PBSA518",
   "ARK ROYAL",
   "AirCarrier",
   6
  ],
  "3763320816": [
+  "PASA507",
   "SAIPAN (OLD)",
   "AirCarrier",
   7
  ],
  "3746477520": [
+  "PRSC523",
   "AL AVRORA",
   "Cruiser",
   3
  ],
  "3761682128": [
+  "PJSS508",
   "I-58",
   "Submarine",
   8
  ],
  "4280203248": [
+  "PASC014",
   "NEW ORLEANS (OLD)",
   "Cruiser",
   8
  ],
  "3655218480": [
+  "PWSD610",
   "SM\u00c5LAND",
   "Destroyer",
   10
  ],
  "4082054960": [
+  "PGSB203",
   "VON DER TANN",
   "Battleship",
   3
  ],
  "4180587728": [
+  "PZSC109",
   "SEJONG",
   "Cruiser",
   9
  ],
  "3765384528": [
+  "PVSB505",
   "RIO DE\u00a0JANEIRO",
   "Battleship",
   5
  ],
  "3768497968": [
+  "PGSC502",
   "EMDEN",
   "Cruiser",
   2
  ],
  "4182160656": [
+  "PXSS107",
   "ZIPPER SUB",
   "Submarine",
   7
  ],
  "4187928304": [
+  "PISC102",
   "NINO BIXIO",
   "Cruiser",
   2
  ],
  "3764303216": [
+  "PUSC506",
   "PERTH",
   "Cruiser",
   6
  ],
  "4185896400": [
+  "PRSA104",
   "KOMSOMOLETS",
   "AirCarrier",
   4
  ],
  "4182685520": [
+  "PFSC107",
   "ALG\u00c9RIE",
   "Cruiser",
   7
  ],
  "4278106096": [
+  "PASC016",
   "WORCESTER",
   "Cruiser",
   10
  ],
  "3756963280": [
+  "PRSC513",
   "VARYAG",
   "Cruiser",
   3
  ],
  "4185797936": [
+  "PWSD104",
   "KLAS HORN",
   "Destroyer",
   4
  ],
  "4259231440": [
+  "PJSC034",
   "ZA\u014c",
   "Cruiser",
   10
  ],
  "4187895632": [
+  "PFSD102",
   "EN. GABOLDE",
   "Destroyer",
   2
  ],
  "4181112816": [
+  "PASS108",
   "SALMON",
   "Submarine",
   8
  ],
  "4183799792": [
+  "PASA106",
   "RANGER",
   "AirCarrier",
   6
  ],
  "4185896752": [
+  "PGSA104",
   "RHEIN",
   "AirCarrier",
   4
  ],
  "4289640432": [
+  "PASC005",
   "OMAHA",
   "Cruiser",
   5
  ],
  "3743365072": [
+  "PBSB526",
   "REPULSE",
   "Battleship",
   6
  ],
  "3559143120": [
+  "PJSX701",
   "ARP I-401",
   "Auxiliary",
   11
  ],
  "4281284592": [
+  "PASB013",
   "ARKANSAS B",
   "Battleship",
   4
  ],
  "4188976912": [
+  "PHSC101",
   "VAN KINSBERGEN",
   "Cruiser",
   1
  ],
  "3763255024": [
+  "PISC507",
   "ABRUZZI",
   "Cruiser",
   7
  ],
  "3767416176": [
+  "PUSD503",
   "VAMPIRE",
   "Destroyer",
   3
  ],
  "4184782640": [
+  "PGSC105",
   "K\u00d6NIGSBERG",
   "Cruiser",
   5
  ],
  "3971888592": [
+  "PRSD308",
   "KIEV",
   "Destroyer",
   8
  ],
  "4271781136": [
+  "PXSD022",
   "ANGLER",
   "Destroyer",
   10
  ],
  "4289607664": [
+  "PASD005",
   "FARRAGUT",
   "Destroyer",
   6
  ],
  "3765351888": [
+  "PRSC505",
   "KRASNY KRYM",
   "Cruiser",
   5
  ],
  "4284397008": [
+  "PRSC010",
   "DIANA L",
   "Cruiser",
   2
  ],
  "3763221872": [
+  "PUSD507",
   "HAIDA",
   "Destroyer",
   7
  ],
  "4075697872": [
+  "PJSD209",
   "Y\u016aGUMO",
   "Destroyer",
   9
  ],
  "4288657104": [
+  "PJSA006",
   "ZUIH\u014c (OLD)",
   "AirCarrier",
   5
  ],
  "3761190640": [
+  "PISB509",
   "MARCO POLO",
   "Battleship",
   9
  ],
  "4293801424": [
+  "PRSD001",
   "GREMYASHCHY",
   "Destroyer",
   5
  ],
  "4183701200": [
+  "PJSD106",
   "FUBUKI",
   "Destroyer",
   6
  ],
  "3763222256": [
+  "PISD507",
   "FR25",
   "Destroyer",
   7
  ],
  "4186847056": [
+  "PFSD103",
   "FUSILIER",
   "Destroyer",
   3
  ],
  "4182652720": [
+  "PGSD107",
   "MAASS",
   "Destroyer",
   7
  ],
  "3759585072": [
+  "PGSS510",
   "U-4501",
   "Submarine",
   10
  ],
  "4285412624": [
+  "PXSD009",
   "RAZORWORM",
   "Destroyer",
   7
  ],
  "4293867216": [
+  "PJSB001",
   "KAWACHI",
   "Battleship",
   3
  ],
  "3754866128": [
+  "PRSC515",
   "MIKOYAN",
   "Cruiser",
   5
  ],
  "3667801296": [
+  "PZSD598",
   "LOYANG B",
   "Destroyer",
   8
  ],
  "4290655504": [
+  "PXSD004",
   "FLYFIRE",
   "Destroyer",
   7
  ],
  "3764336464": [
+  "PFSB506",
   "DUNKERQUE",
   "Battleship",
   6
  ],
  "3762173776": [
+  "PFSD508",
   "LE\u00a0TERRIBLE",
   "Destroyer",
   8
  ],
  "4074715088": [
+  "PBSB210",
   "ST.\u00a0VINCENT",
   "Battleship",
   10
  ],
  "3551442640": [
+  "PJSC709",
   "ARP HAGURO",
   "Cruiser",
   7
  ],
  "3760109552": [
+  "PASC510",
   "ALASKA",
   "Cruiser",
   9
  ],
  "3762271984": [
+  "PISA508",
   "AQUILA",
   "AirCarrier",
   8
  ],
  "3753785136": [
+  "PGSD516",
   "K. SCH\u00d6NBERG",
   "Destroyer",
   6
  ],
  "3751753552": [
+  "PFSB518",
   "JEAN BART",
   "Battleship",
   9
  ],
  "4279154384": [
+  "PJSC015",
   "TENRY\u016a",
   "Cruiser",
   3
  ],
  "4179015120": [
+  "PRSS110",
   "K-1",
   "Submarine",
   10
  ],
  "4279121168": [
+  "PXSD015",
   "ATOMIC RAGE",
   "Destroyer",
   8
  ],
  "4273878288": [
+  "PXSD020",
   "SEASCYTHE",
   "Destroyer",
   10
  ],
  "4185831376": [
+  "PBSC104",
   "DANAE",
   "Cruiser",
   4
  ],
  "4179539696": [
+  "PISC110",
   "VENEZIA",
   "Cruiser",
   10
  ],
  "3762239216": [
+  "PISB508",
   "ROMA",
   "Battleship",
   8
  ],
  "4077828048": [
+  "PBSC207",
   "SURREY",
   "Cruiser",
   7
  ],
  "3760076144": [
+  "PUSD510",
   "VAMPIRE II",
   "Destroyer",
   10
  ],
  "4081006384": [
+  "PGSB204",
   "MOLTKE",
   "Battleship",
   4
  ],
  "4292818736": [
+  "PGSB002",
   "TIRPITZ",
   "Battleship",
   8
  ],
  "4286527472": [
+  "PASB008",
   "COLORADO",
   "Battleship",
   7
  ],
  "4281251088": [
+  "PXSC013",
   "FOSSIL",
   "Cruiser",
   10
  ],
  "4075763664": [
+  "PBSB209",
   "DUNCAN",
   "Battleship",
   9
  ],
  "4185798480": [
+  "PFSD104",
   "BOURRASQUE",
   "Destroyer",
   4
  ],
  "4293866768": [
+  "PXSB001",
   "JACKAL",
   "Battleship",
   3
  ],
  "4186846480": [
+  "PXSD103",
   "HECTOR",
   "Destroyer",
   10
  ],
  "3515102480": [
+  "PXSX743",
   "INTANIA QUEEN",
   "Auxiliary",
   11
  ],
  "3760076752": [
+  "PBSD510",
   "DRUID",
   "Destroyer",
   10
  ],
  "4279219920": [
+  "PJSA015",
   "TAIH\u014c (OLD)",
   "AirCarrier",
   9
  ],
  "4255037136": [
+  "PJSC038",
   "ATAGO",
   "Cruiser",
   8
  ],
  "3542005744": [
+  "PASC718",
   "AL MONTPELIER",
   "Cruiser",
   8
  ],
  "3554588464": [
+  "PGSC706",
   "HSF GRAF SPEE",
   "Cruiser",
   6
  ],
  "4179539152": [
+  "PZSC110",
   "JINAN",
   "Cruiser",
   10
  ],
  "4184782032": [
+  "PZSC105",
   "CHUNGKING",
   "Cruiser",
   5
  ],
  "3764270416": [
+  "PVSD506",
   "JURU\u00c1",
   "Destroyer",
   6
  ],
  "3761125136": [
+  "PHSD509",
   "GRONINGEN",
   "Destroyer",
   9
  ],
  "4267587280": [
+  "PJSD026",
   "KAMIKAZE R",
   "Destroyer",
   5
  ],
  "3760109264": [
+  "PJSC510",
   "AZUMA",
   "Cruiser",
   9
  ],
  "4268635856": [
+  "PJSD025",
   "KAMIKAZE",
   "Destroyer",
   5
  ],
  "4179506640": [
+  "PRSD110",
   "KHABAROVSK",
   "Destroyer",
   10
  ],
  "3730814960": [
+  "PASA538",
   "HORNET",
   "AirCarrier",
   8
  ],
  "4179572688": [
+  "PBSB110",
   "CONQUEROR",
   "Battleship",
   10
  ],
  "4283381008": [
+  "PXSB011",
   "CROCOSAUR",
   "Battleship",
   10
  ],
  "3679369200": [
+  "PASC587",
   "ATLANTA B",
   "Cruiser",
   7
  ],
  "4182718416": [
+  "PBSB107",
   "KING GEORGE V",
   "Battleship",
   7
  ],
  "3762238928": [
+  "PRSB508",
   "POLTAVA",
   "Battleship",
   7
  ],
  "3720263664": [
+  "PASC548",
   "SAN DIEGO",
   "Cruiser",
   8
  ],
  "4178491184": [
+  "PGSC111",
   "CLAUSEWITZ",
   "Cruiser",
   11
  ],
  "4186879952": [
+  "PBSC103",
   "CALEDON",
   "Cruiser",
   3
  ],
  "3331241680": [
+  "PJSC919",
   "TONE 3",
   "Cruiser",
   8
  ],
  "4181702096": [
+  "PRSA108",
   "POBEDA",
   "AirCarrier",
   8
  ],
  "3762173232": [
+  "PWSD508",
   "ORKAN",
   "Destroyer",
   8
  ],
  "3763255248": [
+  "PBSC507",
   "BELFAST",
   "Cruiser",
   7
  ],
  "3667900208": [
+  "PGSA598",
   "GRAF ZEPPELIN B",
   "AirCarrier",
   8
  ],
  "3751753712": [
+  "PASB518",
   "MASSACHUSETTS",
   "Battleship",
   8
  ],
  "4180554960": [
+  "PZSD109",
   "CHUNG MU",
   "Destroyer",
   9
  ],
  "4183766832": [
+  "PGSB106",
   "BAYERN",
   "Battleship",
   6
  ],
  "4076779344": [
+  "PFSC208",
   "CHERBOURG",
   "Cruiser",
   8
  ],
  "3764303696": [
+  "PFSC506",
   "DE GRASSE",
   "Cruiser",
   6
  ],
  "4076812080": [
+  "PGSB208",
   "ZIETEN",
   "Battleship",
   8
  ],
  "4183701456": [
+  "PBSD106",
   "ICARUS",
   "Destroyer",
   6
  ],
  "3666818864": [
+  "PGSB599",
   "POMMERN B",
   "Battleship",
   9
  ],
  "4293145872": [
+  "PXSX001",
   "TRANSYLVANIA",
   "Auxiliary",
   5
  ],
  "3552458448": [
+  "PJSD708",
   "HSF HAREKAZE",
   "Destroyer",
   8
  ],
  "4179015472": [
+  "PGSS110",
   "U-2501",
   "Submarine",
   10
  ],
  "3765385200": [
+  "PASB505",
   "OKLAHOMA",
   "Battleship",
   5
  ],
  "4269684432": [
+  "PJSD024",
   "WAKATAKE",
   "Destroyer",
   3
  ],
  "3760109008": [
+  "PRSC510",
   "STALINGRAD",
   "Cruiser",
   10
  ],
  "3762272048": [
+  "PGSA508",
   "GRAF ZEPPELIN (OLD)",
   "AirCarrier",
   8
  ],
  "3552523984": [
+  "PJSB708",
   "ARP HIEI",
   "Battleship",
   5
  ],
  "4184749808": [
+  "PISD105",
   "MAESTRALE",
   "Destroyer",
   5
  ],
  "4180621104": [
+  "PGSB109",
   "F. DER GROSSE",
   "Battleship",
   9
  ],
  "4282365648": [
+  "PJSA012",
   "SH\u014cKAKU (OLD)",
   "AirCarrier",
   8
  ],
  "4076812240": [
+  "PBSB208",
   "HAWKE",
   "Battleship",
   8
  ],
  "3667900112": [
+  "PJSA598",
   "KAGA B",
   "AirCarrier",
   8
  ],
  "3542005552": [
+  "PGSC718",
   "CROSS OF DORN",
   "Cruiser",
   8
  ],
  "3767416784": [
+  "PBSD503",
   "CAMPBELTOWN",
   "Destroyer",
   3
  ],
  "3763255280": [
+  "PASC507",
   "INDIANAPOLIS",
   "Cruiser",
   7
  ],
  "4288558800": [
+  "PJSD006",
   "HATSUHARU (OLD)",
   "Destroyer",
   7
  ],
  "3763255120": [
+  "PFSC507",
   "TOULON",
   "Cruiser",
   7
  ],
  "4276368656": [
+  "PXSX017",
   "CABOTEUR",
   "Auxiliary",
   2
  ],
  "4078352176": [
+  "PGSS206",
   "U-69",
   "Submarine",
   6
  ],
  "4270732560": [
+  "PXSD023",
   "STEEL LANCET",
   "Destroyer",
   9
  ],
  "4293834192": [
+  "PRSC001",
   "AURORA",
   "Cruiser",
   3
  ],
  "4248745968": [
+  "PASC044",
   "MARBLEHEAD",
   "Cruiser",
   5
  ],
  "4281218320": [
+  "PXSD013",
   "MESSER",
   "Destroyer",
   8
  ],
  "3763222224": [
+  "PJSD507",
   "Y\u016aDACHI",
   "Destroyer",
   7
  ],
  "4078876624": [
+  "PBSC206",
   "DEVONSHIRE",
   "Cruiser",
   6
  ],
  "3749623504": [
+  "PJSC520",
   "YOSHINO",
   "Cruiser",
   10
  ],
  "4077794768": [
+  "PRSD207",
   "MINSK",
   "Destroyer",
   7
  ],
  "4074649392": [
+  "PGSD210",
   "ELBING",
   "Destroyer",
   10
  ],
  "4292850960": [
+  "PXSA002",
   "AIR FORCE",
   "AirCarrier",
   4
  ],
  "3751720752": [
+  "PGSC518",
   "MAINZ",
   "Cruiser",
   8
  ],
  "4277057520": [
+  "PASC017",
   "BALTIMORE (OLD)",
   "Cruiser",
   9
  ],
  "4186879760": [
+  "PHSC103",
   "JAVA",
   "Cruiser",
   3
  ],
  "3667900400": [
+  "PASA598",
   "SAIPAN B",
   "AirCarrier",
   8
  ],
  "3762239472": [
+  "PASB508",
   "ALABAMA",
   "Battleship",
   8
  ],
  "3762272208": [
+  "PBSA508",
   "INDOMITABLE",
   "AirCarrier",
   8
  ],
  "3551475152": [
+  "PRSB709",
   "AL SOV. ROSSIYA",
   "Battleship",
   9
  ],
  "3763287408": [
+  "PUSB507",
   "YUKON",
   "Battleship",
   7
  ],
  "3655251952": [
+  "PASC610",
   "PUERTO RICO",
   "Cruiser",
   10
  ],
  "4181637072": [
+  "PBSC108",
   "EDINBURGH",
   "Cruiser",
   8
  ],
  "4293146608": [
+  "PASX001",
   "CIMARRON",
   "Auxiliary",
   5
  ],
  "3762239440": [
+  "PBSB508",
   "VANGUARD",
   "Battleship",
   8
  ],
  "4258542864": [
+  "PXSX034",
   "JOHN CATTLING",
   "Auxiliary",
   2
  ],
  "3760109392": [
+  "PFSC510",
   "COLBERT",
   "Cruiser",
   10
  ],
  "3553572560": [
+  "PJSB707",
   "ARP HARUNA",
   "Battleship",
   5
  ],
  "3340645840": [
+  "PRSD910",
   "[GROZOVOI]",
   "Destroyer",
   10
  ],
  "3762206512": [
+  "PGSC508",
   "PRINZ EUGEN",
   "Cruiser",
   8
  ],
  "3552524016": [
+  "PISB708",
   "AL LITTORIO",
   "Battleship",
   8
  ],
  "3741300720": [
+  "PASA528",
   "SAIPAN",
   "AirCarrier",
   8
  ],
  "4276008656": [
+  "PJSC018",
   "TONE",
   "Cruiser",
   8
  ],
  "3768497488": [
+  "PVSC502",
   "ALTE ABREU",
   "Cruiser",
   2
  ],
  "4185896656": [
+  "PJSA104",
   "H\u014cSH\u014c",
   "AirCarrier",
   4
  ],
  "4253299984": [
+  "PXSX039",
   "LST 325",
   "Auxiliary",
   2
  ],
  "3761190896": [
+  "PASB509",
   "MISSOURI",
   "Battleship",
   9
  ],
  "4185863632": [
+  "PRSB104",
   "GANGUT",
   "Battleship",
   4
  ],
  "4081006544": [
+  "PBSB204",
   "QUEEN MARY",
   "Battleship",
   4
  ],
  "4293834736": [
+  "PASC001",
   "ERIE",
   "Cruiser",
   1
  ],
  "4283315472": [
+  "PXSD011",
   "COMET TRACE",
   "Destroyer",
   7
  ],
  "4183799600": [
+  "PGSA106",
   "WESER",
   "AirCarrier",
   6
  ],
  "3767448848": [
+  "PXSC503",
   "SHIP",
   "Cruiser",
   1
  ],
  "3761125360": [
+  "PASD509",
   "BENHAM",
   "Destroyer",
   9
  ],
  "3553572848": [
+  "PASB707",
   "CALIFORNIA",
   "Battleship",
   7
  ],
  "4181669616": [
+  "PISB108",
   "V.\u00a0VENETO",
   "Battleship",
   8
  ],
  "4178523952": [
+  "PGSB111",
   "HANNOVER",
   "Battleship",
   11
  ],
  "4181112624": [
+  "PGSS108",
   "U-190",
   "Submarine",
   8
  ],
  "4183799248": [
+  "PRSA106",
   "SEROV",
   "AirCarrier",
   6
  ],
  "4291736848": [
+  "PXSC003",
   "SVYATOZAR",
   "Cruiser",
   8
  ],
  "3655284688": [
+  "PBSB610",
   "INCOMPARABLE",
   "Battleship",
   10
  ],
  "3750639408": [
+  "PGSD519",
   "Z-44",
   "Destroyer",
   9
  ],
  "4180555600": [
+  "PFSD109",
   "MOGADOR",
   "Destroyer",
   9
  ],
  "3762239312": [
+  "PFSB508",
   "GASCOGNE",
   "Battleship",
   8
  ],
  "4184782800": [
+  "PBSC105",
   "EMERALD",
   "Cruiser",
   5
  ],
  "4292818896": [
+  "PBSB002",
   "WARSPITE",
   "Battleship",
   6
  ],
  "3750705136": [
+  "PASB519",
   "KEARSARGE",
   "Battleship",
   9
  ],
  "3865982416": [
+  "PRSD409",
   "TASHKENT",
   "Destroyer",
   9
  ],
  "4178491216": [
+  "PFSC111",
   "COND\u00c9",
   "Cruiser",
   11
  ],
  "4184815056": [
+  "PRSB105",
   "PYOTR VELIKIY",
   "Battleship",
   5
  ],
  "4185830864": [
+  "PRSC104",
   "SVIETLANA",
   "Cruiser",
   4
  ],
  "4078876656": [
+  "PASC206",
   "DALLAS",
   "Cruiser",
   6
  ],
  "4179507024": [
+  "PFSD110",
   "KL\u00c9BER",
   "Destroyer",
   10
  ],
  "4074714928": [
+  "PGSB210",
   "SCHLIEFFEN",
   "Battleship",
   10
  ],
  "4293801680": [
+  "PJSD001",
   "TACHIBANA",
   "Destroyer",
   2
  ],
  "4179572464": [
+  "PISB110",
   "C.\u00a0COLOMBO",
   "Battleship",
   10
  ],
  "4182685488": [
+  "PGSC107",
   "YORCK",
   "Cruiser",
   7
  ],
  "4185831184": [
+  "PHSC104",
   "DE RUYTER",
   "Cruiser",
   4
  ],
  "4074157872": [
+  "PGSS210",
   "U-2501",
   "Submarine",
   10
  ],
  "4077795120": [
+  "PGSD207",
   "Z-31",
   "Destroyer",
   7
  ],
  "3760109296": [
+  "PISC510",
   "NAPOLI",
   "Cruiser",
   10
  ],
  "3337500656": [
+  "PASD913",
   "[GEARING]",
   "Destroyer",
   10
  ],
  "3760175088": [
+  "PASA510",
   "F.\u00a0D.\u00a0ROOSEVELT",
   "AirCarrier",
   10
  ],
  "4180555504": [
+  "PISD109",
   "ADRIATICO",
   "Destroyer",
   9
  ],
  "3659445712": [
+  "PRSC606",
   "MAKAROV",
   "Cruiser",
   6
  ],
  "3741267408": [
+  "PRSB528",
   "BORODINO",
   "Battleship",
   8
  ],
  "4290689008": [
+  "PASC004",
   "ST.\u00a0LOUIS",
   "Cruiser",
   3
  ],
  "4187895536": [
+  "PISD102",
   "CURTATONE",
   "Destroyer",
   2
  ],
  "4291704528": [
+  "PJSD003",
   "ISOKAZE",
   "Destroyer",
   4
  ],
  "4275975440": [
+  "PXSD018",
   "MIZU-JET",
   "Destroyer",
   9
  ],
  "4185831248": [
+  "PFSC104",
   "DUGUAY-TROUIN",
   "Cruiser",
   4
  ],
  "3741267760": [
+  "PGSB528",
   "ANHALT",
   "Battleship",
   8
  ],
  "3752802288": [
+  "PASB517",
   "FLORIDA",
   "Battleship",
   7
  ],
  "4183734032": [
+  "PHSC106",
   "KIJKDUIN",
   "Cruiser",
   6
  ],
  "3764336624": [
+  "PASB506",
   "ARIZONA",
   "Battleship",
   6
  ],
  "3551410160": [
+  "PASD709",
   "BLACK",
   "Destroyer",
   9
  ],
  "4181702608": [
+  "PBSA108",
   "IMPLACABLE",
   "AirCarrier",
   8
  ],
  "4183799504": [
+  "PJSA106",
   "RY\u016aJ\u014c",
   "AirCarrier",
   6
  ],
  "4266538992": [
+  "PASD027",
   "WICKES",
   "Destroyer",
   3
  ],
  "4078352368": [
+  "PASS206",
   "CACHALOT",
   "Submarine",
   6
  ],
  "4183734224": [
+  "PBSC106",
   "LEANDER",
   "Cruiser",
   6
  ],
  "3765385168": [
+  "PBSB505",
   "AGINCOURT",
   "Battleship",
   5
  ],
  "3867587856": [
+  "PXSS407",
   "BARRACUDA",
   "Submarine",
   7
  ],
  "4182685680": [
+  "PASC107",
   "NEW ORLEANS",
   "Cruiser",
   7
  ],
  "3658397424": [
+  "PISC607",
   "GORIZIA",
   "Cruiser",
   7
  ],
  "4287575760": [
+  "PJSB007",
   "KONG\u014c",
   "Battleship",
   5
  ],
  "4184749520": [
+  "PRSD105",
   "GNEVNY (OLD)",
   "Destroyer",
   5
  ],
  "4187928528": [
+  "PBSC102",
   "WEYMOUTH",
   "Cruiser",
   2
  ],
  "4181636880": [
+  "PHSC108",
   "HAARLEM",
   "Cruiser",
   8
  ],
  "3762730256": [
+  "PXSS507",
   "KILLER WHALE",
   "Submarine",
   10
  ],
  "4274926864": [
+  "PXSD019",
   "STEALTHEDO",
   "Destroyer",
   10
  ],
  "4076746192": [
+  "PRSD208",
   "OGNEVOI",
   "Destroyer",
   8
  ],
  "3247355344": [
+  "PRSC999",
   "TEST SHIP",
   "Cruiser",
   10
  ],
  "4187928016": [
+  "PRSC102",
   "NOVIK",
   "Cruiser",
   2
  ],
  "3560912592": [
+  "PJSB700",
   "ARP YAMATO",
   "Battleship",
   10
  ],
  "4074747856": [
+  "PBSA210",
   "AUDACIOUS",
   "AirCarrier",
   10
  ],
  "4284396816": [
+  "PXSC010",
   "CENTURY HAWK",
   "Cruiser",
   7
  ],
  "4267980048": [
+  "PXSX025",
   "MEDWAY QUEEN",
   "Auxiliary",
   2
  ],
  "3550393808": [
+  "PRSC710",
   "SEVASTOPOL",
   "Cruiser",
   10
  ],
  "4282333168": [
+  "PASB012",
   "N. CAROLINA",
   "Battleship",
   8
  ],
  "4291704080": [
+  "PXSD003",
   "URASHIMA",
   "Destroyer",
   8
  ],
  "3763288048": [
+  "PASB507",
   "W. VIRGINIA 1941",
   "Battleship",
   6
  ],
  "4077860656": [
+  "PGSB207",
   "P.\u00a0HEINRICH",
   "Battleship",
   7
  ],
  "3752802256": [
+  "PBSB517",
   "NELSON",
   "Battleship",
   7
  ],
  "3667801808": [
+  "PJSD598",
   "ASASHIO B",
   "Destroyer",
   8
  ],
  "4181636848": [
+  "PISC108",
   "AMALFI",
   "Cruiser",
   8
  ],
  "4077828080": [
+  "PASC207",
   "HELENA",
   "Cruiser",
   7
  ],
  "4285478160": [
+  "PXSB009",
   "SCORPIOID",
   "Battleship",
   10
  ],
  "4280170480": [
+  "PASD014",
   "NICHOLAS",
   "Destroyer",
   5
  ],
  "3750672080": [
+  "PJSC519",
   "AL AZUMA",
   "Cruiser",
   9
  ],
  "3760142160": [
+  "PFSB510",
   "BOURGOGNE",
   "Battleship",
   10
  ],
  "3450812144": [
+  "PISB805",
   "GIUNIO BRUTO",
   "Battleship",
   6
  ],
  "4180588304": [
+  "PHSC109",
   "JOHAN DE WITT",
   "Cruiser",
   9
  ],
  "4272830448": [
+  "PASD021",
   "FLETCHER",
   "Destroyer",
   9
  ],
  "4181636560": [
+  "PRSC108",
   "CHAPAYEV",
   "Cruiser",
   8
  ],
  "4179605296": [
+  "PGSA110",
   "M.\u00a0RICHTHOFEN",
   "AirCarrier",
   10
  ],
  "3762206480": [
+  "PHSC508",
   "DE 7 PROVINCI\u00cbN",
   "Cruiser",
   8
  ],
  "3764369200": [
+  "PGSA506",
   "E. LOEWENHARDT",
   "AirCarrier",
   6
  ],
  "3743332304": [
+  "PBSC526",
   "DIDO",
   "Cruiser",
   6
  ],
  "4178556912": [
+  "PASA111",
   "UNITED STATES",
   "AirCarrier",
   11
  ],
  "4281219056": [
+  "PASD013",
   "GEARING",
   "Destroyer",
   10
  ],
  "4290721776": [
+  "PASB004",
   "WYOMING",
   "Battleship",
   4
  ],
  "4179015664": [
+  "PASS110",
   "BALAO",
   "Submarine",
   10
  ],
  "4248057104": [
+  "PXSX044",
   "CIMARRON CIVIL",
   "Auxiliary",
   5
  ],
  "4183700944": [
+  "PRSD106",
   "OGNEVOI (OLD)",
   "Destroyer",
   6
  ],
  "4081039312": [
+  "PBSA204",
   "HERMES",
   "AirCarrier",
   4
  ],
  "4184815344": [
+  "PISB105",
   "CAVOUR",
   "Battleship",
   5
  ],
  "3445503984": [
+  "PASD810",
   "GEARING P",
   "Destroyer",
   10
  ],
  "4274927600": [
+  "PASD019",
   "CLEMSON",
   "Destroyer",
   4
  ],
  "4293867504": [
+  "PASB001",
   "S. CAROLINA",
   "Battleship",
   3
  ],
  "3764303600": [
+  "PISC506",
   "DUCA D'AOSTA",
   "Cruiser",
   6
  ],
  "4180588496": [
+  "PBSC109",
   "NEPTUNE",
   "Cruiser",
   9
  ],
  "4179539408": [
+  "PRSC110",
   "MOSKVA",
   "Cruiser",
   10
  ],
  "4181603536": [
+  "PZSD108",
   "HSIENYANG",
   "Destroyer",
   8
  ],
  "4293866960": [
+  "PRSB001",
   "NIKOLAI I",
   "Battleship",
   4
  ],
  "4184749776": [
+  "PJSD105",
   "MUTSUKI",
   "Destroyer",
   5
  ],
  "4291802384": [
+  "PXSA003",
   "NOBILIUM",
   "AirCarrier",
   8
  ],
  "4292785968": [
+  "PGSC002",
   "DRESDEN",
   "Cruiser",
   2
  ],
  "3764270896": [
+  "PGSD506",
   "T-61",
   "Destroyer",
   6
  ],
  "4187895600": [
+  "PGSD102",
   "V-25",
   "Destroyer",
   2
  ],
  "3751720944": [
+  "PASC518",
   "ANCHORAGE",
   "Cruiser",
   8
  ],
  "3751687888": [
+  "PJSD518",
   "ASASHIO",
   "Destroyer",
   8
  ],
  "4292753104": [
+  "PJSD002",
   "UMIKAZE",
   "Destroyer",
   2
  ],
  "3763255088": [
+  "PGSC507",
   "M\u00dcNCHEN",
   "Cruiser",
   7
  ],
  "4257494288": [
+  "PXSX035",
   "LANDING SHIP 1",
   "Auxiliary",
   2
  ],
  "4284430032": [
+  "PJSB010",
   "NAGATO",
   "Battleship",
   7
  ],
  "4292753392": [
+  "PASD002",
   "SAMPSON",
   "Destroyer",
   2
  ],
  "3660462032": [
+  "PBSD605",
   "ANTHONY",
   "Destroyer",
   5
  ],
  "4183734096": [
+  "PFSC106",
   "LA GALISSONNI\u00c8RE",
   "Cruiser",
   6
  ],
  "4258182864": [
+  "PJSC035",
   "CHIKUMA",
   "Cruiser",
   2
  ],
  "4178491344": [
+  "PBSC111",
   "EDGAR",
   "Cruiser",
   11
  ],
  "4183733456": [
+  "PZSC106",
   "RAHMAT",
   "Cruiser",
   6
  ],
  "4074649040": [
+  "PRSD210",
   "GROZOVOI",
   "Destroyer",
   10
  ],
  "3667867632": [
+  "PASB598",
   "MASSACHUSETTS B",
   "Battleship",
   8
  ],
  "4180588272": [
+  "PISC109",
   "BRINDISI",
   "Cruiser",
   9
  ],
  "4187928400": [
+  "PFSC102",
   "JURIEN",
   "Cruiser",
   2
  ],
  "3766433072": [
+  "PWSB504",
   "VIRIBUS UNITIS",
   "Battleship",
   5
  ],
  "3751720144": [
+  "PZSC518",
   "WUKONG",
   "Cruiser",
   8
  ],
  "3333371888": [
+  "PASB917",
   "[MONTANA]",
   "Battleship",
   10
  ],
  "4180588368": [
+  "PFSC109",
   "SAINT-LOUIS",
   "Cruiser",
   9
  ],
  "4293801232": [
+  "PXSD001",
   "BLADE",
   "Destroyer",
   3
  ],
  "3761190864": [
+  "PBSB509",
   "MARLBOROUGH",
   "Battleship",
   9
  ],
  "4180555216": [
+  "PRSD109",
   "KIEV (OLD)",
   "Destroyer",
   7
  ],
  "4182652752": [
+  "PFSD107",
   "VAUQUELIN",
   "Destroyer",
   7
  ],
  "4178458064": [
+  "PRSD111",
   "ZORKIY",
   "Destroyer",
   11
  ],
  "4284429584": [
+  "PXSB010",
   "MAVERICK",
   "Battleship",
   9
  ],
  "4293834000": [
+  "PXSC001",
   "IGOR",
   "Cruiser",
   3
  ],
  "4181669328": [
+  "PRSB108",
   "VLADIVOSTOK",
   "Battleship",
   8
  ],
  "4180621136": [
+  "PFSB109",
   "ALSACE",
   "Battleship",
   9
  ],
  "4286494416": [
+  "PJSC008",
   "MY\u014cK\u014c",
   "Cruiser",
   7
  ],
  "4074682352": [
+  "PASC210",
   "WORCESTER",
   "Cruiser",
   10
  ],
  "4076779472": [
+  "PBSC208",
   "ALBEMARLE",
   "Cruiser",
   8
  ],
  "3760141776": [
+  "PRSB510",
   "SLAVA",
   "Battleship",
   10
  ],
  "3744380368": [
+  "PRSC525",
   "KIROV",
   "Cruiser",
   5
  ],
  "4283348240": [
+  "PXSC011",
   "OCTODROID",
   "Cruiser",
   10
  ],
  "4185798096": [
+  "PRSD104",
   "IZYASLAV",
   "Destroyer",
   4
  ],
  "4179506992": [
+  "PGSD110",
   "Z-52",
   "Destroyer",
   10
  ],
  "4181636912": [
+  "PGSC108",
   "HIPPER",
   "Cruiser",
   8
  ],
  "4187895760": [
+  "PBSD102",
   "MEDEA",
   "Destroyer",
   2
  ],
  "3655251408": [
+  "PRSC610",
   "SMOLENSK",
   "Cruiser",
   10
  ],
  "3752736720": [
+  "PBSD517",
   "COSSACK",
   "Destroyer",
   8
  ],
  "4292786160": [
+  "PASC002",
   "CHESTER",
   "Cruiser",
   2
  ],
  "3668850672": [
+  "PASD597",
   "SIMS B",
   "Destroyer",
   7
  ],
  "4187928336": [
+  "PHSC102",
   "GELDERLAND",
   "Cruiser",
   2
  ],
  "4184750032": [
+  "PBSD105",
   "ACASTA",
   "Destroyer",
   5
  ],
  "4074681808": [
+  "PRSC210",
   "A.\u00a0NEVSKY",
   "Cruiser",
   10
  ],
  "3765352176": [
+  "PISC505",
   "GENOVA",
   "Cruiser",
   5
  ],
  "3751786192": [
+  "PJSA518",
   "KAGA",
   "AirCarrier",
   8
  ],
  "4183766480": [
+  "PRSB106",
   "IZMAIL",
   "Battleship",
   6
  ],
  "3445536592": [
+  "PFSC810",
   "BRENNUS",
   "Cruiser",
   10
  ],
  "4179572176": [
+  "PRSB110",
   "KREMLIN",
   "Battleship",
   10
  ],
  "4293834544": [
+  "PGSC001",
   "HERMELIN",
   "Cruiser",
   1
  ],
  "4074158064": [
+  "PASS210",
   "BALAO",
   "Submarine",
   10
  ],
  "4259264496": [
+  "PASB034",
   "NEW MEXICO",
   "Battleship",
   6
  ],
  "3751196656": [
+  "PASS518",
   "GATO",
   "Submarine",
   10
  ],
  "4076255024": [
+  "PGSS208",
   "U-190",
   "Submarine",
   8
  ],
  "4182718256": [
+  "PGSB107",
   "GNEISENAU",
   "Battleship",
   7
  ],
  "3340678608": [
+  "PRSC910",
   "[MOSKVA]",
   "Cruiser",
   10
  ],
  "3751786288": [
+  "PGSA518",
   "GRAF ZEPPELIN",
   "AirCarrier",
   8
  ],
  "4285445840": [
+  "PJSC009",
   "MOGAMI",
   "Cruiser",
   8
  ],
  "4285445392": [
+  "PXSC009",
   "OCTOPUS",
   "Cruiser",
   7
  ],
  "4181636944": [
+  "PFSC108",
   "CHARLES MARTEL",
   "Cruiser",
   8
  ],
  "4267620048": [
+  "PJSC026",
   "IWAKI A",
   "Cruiser",
   4
  ],
  "3340678960": [
+  "PGSC910",
   "[HINDENBURG]",
   "Cruiser",
   10
  ],
  "4290753808": [
+  "PXSA004",
   "THE GREAT GORGON",
   "AirCarrier",
   8
  ],
  "3760076208": [
+  "PSSD510",
   "\u00c1LVARO DE\u00a0BAZ\u00c1N",
   "Destroyer",
   10
  ],
  "4185797840": [
+  "PZSD104",
   "SHENYANG",
   "Destroyer",
   4
  ],
  "4292785616": [
+  "PRSC002",
   "DIANA",
   "Cruiser",
   2
  ],
  "4280169744": [
+  "PXSD014",
   "CARNAL",
   "Destroyer",
   8
  ],
  "3530504176": [
+  "PASB729",
   "GEORGIA",
   "Battleship",
   9
  ],
  "4287542992": [
+  "PJSC007",
   "AOBA",
   "Cruiser",
   6
  ],
  "4178523856": [
+  "PJSB111",
   "SATSUMA",
   "Battleship",
   11
  ],
  "4289607376": [
+  "PJSD005",
   "MUTSUKI (OLD)",
   "Destroyer",
   6
  ],
  "3749623248": [
+  "PRSC520",
   "STALINGRAD #2",
   "Cruiser",
   10
  ],
  "3655284528": [
+  "PGSB610",
   "MECKLENBURG",
   "Battleship",
   10
  ],
  "4291737584": [
+  "PASC003",
   "ALBANY",
   "Cruiser",
   2
  ],
  "4268635408": [
+  "PXSD025",
   "FANGBLADE",
   "Destroyer",
   10
  ],
  "4185863984": [
+  "PGSB104",
   "KAISER",
   "Battleship",
   4
  ],
  "4079925200": [
+  "PBSC205",
   "HAWKINS",
   "Cruiser",
   5
  ],
  "4183766992": [
+  "PBSB106",
   "QUEEN ELIZABETH",
   "Battleship",
   6
  ],
  "3315513040": [
+  "PJSC934",
   "[ZA\u014c]",
   "Cruiser",
   10
  ],
  "3864933840": [
+  "PRSD410",
   "DELNY",
   "Destroyer",
   10
  ],
  "4186847184": [
+  "PBSD103",
   "VALKYRIE",
   "Destroyer",
   3
  ],
  "3765352144": [
+  "PJSC505",
   "YAHAGI",
   "Cruiser",
   5
  ],
  "4181637104": [
+  "PASC108",
   "BALTIMORE",
   "Cruiser",
   8
  ],
  "3551409616": [
+  "PRSD709",
   "NEUSTRASHIMY",
   "Destroyer",
   9
  ],
  "4075763504": [
+  "PGSB209",
   "P.\u00a0RUPPRECHT",
   "Battleship",
   9
  ],
  "4286461200": [
+  "PXSD008",
   "STEEL RAT",
   "Destroyer",
   7
  ],
  "4181669680": [
+  "PGSB108",
   "BISMARCK",
   "Battleship",
   8
  ],
  "4187894992": [
+  "PZSD102",
   "LONGJIANG",
   "Destroyer",
   2
  ],
  "4182718288": [
+  "PFSB107",
   "LYON",
   "Battleship",
   7
  ],
  "3761190096": [
+  "PZSB509",
   "BAJIE",
   "Battleship",
   9
  ],
  "4280202960": [
+  "PJSC014",
   "KITAKAMI",
   "Cruiser",
   10
  ],
  "4292785424": [
+  "PXSC002",
   "SCARAB",
   "Cruiser",
   7
  ],
  "4188976976": [
+  "PFSC101",
   "BOUGAINVILLE",
   "Cruiser",
   1
  ],
  "4178457904": [
+  "PWSD111",
   "DALARNA",
   "Destroyer",
   11
  ],
  "3762239280": [
+  "PGSB508",
   "ODIN",
   "Battleship",
   8
  ],
  "3767449040": [
+  "PRSC503",
   "OLEG",
   "Cruiser",
   3
  ],
  "3676223184": [
+  "PJSC590",
   "YOSHINO B",
   "Cruiser",
   10
  ],
  "4286461936": [
+  "PASD008",
   "BENSON",
   "Destroyer",
   8
  ],
  "4183766768": [
+  "PISB106",
   "ANDREA DORIA",
   "Battleship",
   6
  ],
  "4287542544": [
+  "PXSC007",
   "AURORA",
   "Cruiser",
   7
  ],
  "4074682320": [
+  "PBSC210",
   "GOLIATH",
   "Cruiser",
   10
  ],
  "4287543280": [
+  "PASC007",
   "CLEVELAND (OLD)",
   "Cruiser",
   6
  ],
  "3363780304": [
+  "PJSB888",
   "RAGNAROK",
   "Battleship",
   8
  ],
  "4178491376": [
+  "PASC111",
   "ANNAPOLIS",
   "Cruiser",
   11
  ],
  "3750704336": [
+  "PZSB519",
   "WUJING",
   "Battleship",
   9
  ],
  "4181604176": [
+  "PFSD108",
   "LE FANTASQUE",
   "Destroyer",
   8
  ],
  "4287575312": [
+  "PXSB007",
   "ALLDESTROYER",
   "Battleship",
   7
  ],
  "4182685648": [
+  "PBSC107",
   "FIJI",
   "Cruiser",
   7
  ],
  "3447600976": [
+  "PFSD808",
   "L'EFFRONT\u00c9",
   "Destroyer",
   8
  ],
  "4183734256": [
+  "PASC106",
   "PENSACOLA",
   "Cruiser",
   6
  ],
  "4183209776": [
+  "PGSS106",
   "U-69",
   "Submarine",
   6
  ],
  "3332290256": [
+  "PJSC918",
   "TONE 2",
   "Cruiser",
   8
  ],
  "4185798608": [
+  "PBSD104",
   "WAKEFUL",
   "Destroyer",
   4
  ],
  "4278105360": [
+  "PXSC016",
   "THORNRIDGE",
   "Cruiser",
   10
  ],
  "4288657392": [
+  "PASA006",
   "INDEPENDENCE (OLD)",
   "AirCarrier",
   6
  ],
  "3761157968": [
+  "PFSC509",
   "CARNOT",
   "Cruiser",
   9
  ],
  "3340711888": [
+  "PBSB910",
   "[CONQUEROR]",
   "Battleship",
   10
  ],
  "3741267792": [
+  "PFSB528",
   "CHAMPAGNE",
   "Battleship",
   8
  ],
  "4074682192": [
+  "PFSC210",
   "MARSEILLE",
   "Cruiser",
   10
  ],
  "4184749264": [
+  "PZSD105",
   "JIANWEI",
   "Destroyer",
   5
  ],
  "3765319120": [
+  "PRSD505",
   "OKHOTNIK",
   "Destroyer",
   5
  ],
  "4290655952": [
+  "PJSD004",
   "MINEKAZE",
   "Destroyer",
   5
  ],
  "4285511376": [
+  "PJSA009",
   "RY\u016aJ\u014c (OLD)",
   "AirCarrier",
   6
  ],
  "4286527184": [
+  "PJSB008",
   "ISHIZUCHI",
   "Battleship",
   4
  ],
  "3760109520": [
+  "PBSC510",
   "PLYMOUTH",
   "Cruiser",
   10
  ],
  "4186846960": [
+  "PISD103",
   "N. SAURO",
   "Destroyer",
   3
  ],
  "4180621296": [
+  "PASB109",
   "MINNESOTA",
   "Battleship",
   9
  ],
  "3751720400": [
+  "PRSC518",
   "LAZO",
   "Cruiser",
   7
  ],
  "3445536464": [
+  "PJSC810",
   "ZA\u014c P",
   "Cruiser",
   10
  ],
  "3763287760": [
+  "PJSB507",
   "ASHITAKA",
   "Battleship",
   7
  ],
  "4288591120": [
+  "PXSC006",
   "NORMA",
   "Cruiser",
   7
  ],
  "3753818064": [
+  "PBSC516",
   "LONDON",
   "Cruiser",
   6
  ],
  "4181604144": [
+  "PGSD108",
   "Z-23",
   "Destroyer",
   8
  ],
  "3340645680": [
+  "PWSD910",
   "LAPPLAND",
   "Destroyer",
   10
  ],
  "4280170192": [
+  "PJSD014",
   "TACHIBANA L",
   "Destroyer",
   2
  ],
  "3767482320": [
+  "PBSB503",
   "DREADNOUGHT",
   "Battleship",
   3
  ],
  "3751687376": [
+  "PZSD518",
   "FENYANG",
   "Destroyer",
   8
  ],
  "4181604080": [
+  "PISD108",
   "V. CUNIBERTI",
   "Destroyer",
   8
  ],
  "4076255216": [
+  "PASS208",
   "SALMON",
   "Submarine",
   8
  ],
  "3730782192": [
+  "PASB538",
   "CONSTELLATION",
   "Battleship",
   8
  ],
  "4282300400": [
+  "PASC012",
   "PENSACOLA (OLD)",
   "Cruiser",
   7
  ],
  "4180587984": [
+  "PRSC109",
   "DM. DONSKOI",
   "Cruiser",
   9
  ],
  "4184815408": [
+  "PGSB105",
   "K\u00d6NIG",
   "Battleship",
   5
  ],
  "4291770064": [
+  "PJSB003",
   "MY\u014cGI",
   "Battleship",
   4
  ],
  "4188976432": [
+  "PWSC101",
   "GRYF",
   "Cruiser",
   1
  ],
  "3545183952": [
+  "PJSB715",
   "HSF HIEI",
   "Battleship",
   5
  ],
  "4277090288": [
+  "PASB017",
   "MONTANA",
   "Battleship",
   10
  ],
  "4182684880": [
+  "PZSC107",
   "CHUMPHON",
   "Cruiser",
   7
  ],
  "4076845040": [
+  "PASA208",
   "YORKTOWN",
   "AirCarrier",
   8
  ],
  "4178556880": [
+  "PBSA111",
   "EAGLE",
   "AirCarrier",
   11
  ],
  "4182652112": [
+  "PZSD107",
   "GADJAH MADA",
   "Destroyer",
   7
  ],
  "4075730896": [
+  "PBSC209",
   "DRAKE",
   "Cruiser",
   9
  ],
  "3753850320": [
+  "PRSB516",
   "NOVOROSSIYSK",
   "Battleship",
   6
  ],
  "3969824208": [
+  "PRSC310",
   "PETROPAVLOVSK",
   "Cruiser",
   10
  ],
  "4287509776": [
+  "PXSD007",
   "SCHNELLBOOT",
   "Destroyer",
   1
  ],
  "4247697392": [
+  "PASC045",
   "MARBLEHEAD L",
   "Cruiser",
   5
  ],
  "3760142288": [
+  "PBSB510",
   "THUNDERER",
   "Battleship",
   10
  ],
  "3761157936": [
+  "PGSC509",
   "SIEGFRIED",
   "Cruiser",
   9
  ],
  "4078909232": [
+  "PGSB206",
   "MACKENSEN",
   "Battleship",
   6
  ],
  "3338548944": [
+  "PJSD912",
   "[SHIMAKAZE]",
   "Destroyer",
   10
  ],
  "4178523984": [
+  "PFSB111",
   "PATRIE",
   "Battleship",
   11
  ],
  "4179539792": [
+  "PFSC110",
   "HENRI IV",
   "Cruiser",
   10
  ],
  "4179605488": [
+  "PASA110",
   "MIDWAY",
   "AirCarrier",
   10
  ],
  "4279220208": [
+  "PASA015",
   "MIDWAY (OLD)",
   "AirCarrier",
   10
  ],
  "4283381456": [
+  "PJSB011",
   "MIKASA",
   "Battleship",
   2
  ],
  "4188976400": [
+  "PXSC101",
   "VALKYRIE",
   "Cruiser",
   9
  ],
  "3667834576": [
+  "PJSC598",
   "ATAGO B",
   "Cruiser",
   8
  ],
  "3762238800": [
+  "PVSB508",
   "ATL\u00c2NTICO",
   "Battleship",
   8
  ],
  "3543054032": [
+  "PJSC717",
   "S. DRAGON",
   "Cruiser",
   7
  ],
  "3753817456": [
+  "PUSC516",
   "MYSORE",
   "Cruiser",
   6
  ],
  "3751720912": [
+  "PBSC518",
   "TIGER '59",
   "Cruiser",
   8
  ],
  "3340711728": [
+  "PGSB910",
   "[G. KURF\u00dcRST]",
   "Battleship",
   10
  ],
  "3741235184": [
+  "PASC528",
   "CONGRESS",
   "Cruiser",
   8
  ],
  "4077795024": [
+  "PJSD207",
   "SHIRATSUYU",
   "Destroyer",
   7
  ],
  "4179572528": [
+  "PGSB110",
   "G.\u00a0KURF\u00dcRST",
   "Battleship",
   10
  ],
  "3541972688": [
+  "PJSD718",
   "AL YUKIKAZE",
   "Destroyer",
   8
  ],
  "4181702352": [
+  "PJSA108",
   "SH\u014cKAKU",
   "AirCarrier",
   8
  ],
  "4078843344": [
+  "PRSD206",
   "GNEVNY",
   "Destroyer",
   6
  ],
  "4183701296": [
+  "PGSD106",
   "GAEDE",
   "Destroyer",
   6
  ],
  "4289672464": [
+  "PXSB005",
   "VARG",
   "Battleship",
   7
  ],
  "4281284304": [
+  "PJSB013",
   "AMAGI",
   "Battleship",
   8
  ],
  "3655317296": [
+  "PGSA610",
   "M.\u00a0IMMELMANN",
   "AirCarrier",
   10
  ],
  "4078909392": [
+  "PBSB206",
   "RENOWN",
   "Battleship",
   6
  ],
  "3340744656": [
+  "PBSA910",
   "[AUDACIOUS]",
   "AirCarrier",
   10
  ],
  "4183701232": [
+  "PISD106",
   "AVIERE",
   "Destroyer",
   6
  ],
  "3334420176": [
+  "PJSB916",
   "ISE 3",
   "Battleship",
   6
  ],
  "3335501808": [
+  "PASA915",
   "[MIDWAY]",
   "AirCarrier",
   10
  ],
  "4183701328": [
+  "PFSD106",
   "GU\u00c9PARD",
   "Destroyer",
   6
  ],
  "4179605200": [
+  "PJSA110",
   "HAKURY\u016a",
   "AirCarrier",
   10
  ],
  "3669964624": [
+  "PFSB596",
   "DUNKERQUE\u00a0B",
   "Battleship",
   6
  ],
  "3445569520": [
+  "PASB810",
   "MONTANA P",
   "Battleship",
   10
  ],
  "4188976880": [
+  "PISC101",
   "ERITREA",
   "Cruiser",
   1
  ],
  "3768465392": [
+  "PASD502",
   "SMITH",
   "Destroyer",
   2
  ],
  "3761157584": [
+  "PRSC509",
   "KRONSHTADT",
   "Cruiser",
   9
  ],
  "4181603632": [
+  "PWSD108",
   "\u00d6LAND",
   "Destroyer",
   8
  ],
  "3751753520": [
+  "PGSB518",
   "BRANDENBURG",
   "Battleship",
   8
  ],
  "3769513264": [
+  "PWSD501",
   "B\u0141YSKAWICA",
   "Destroyer",
   7
  ],
  "3730781648": [
+  "PRSB538",
   "V. I. LENIN",
   "Battleship",
   8
  ],
  "4079957968": [
+  "PBSB205",
   "TIGER",
   "Battleship",
   5
  ],
  "4186879824": [
+  "PFSC103",
   "FRIANT",
   "Cruiser",
   3
  ],
  "4185896944": [
+  "PASA104",
   "LANGLEY",
   "AirCarrier",
   4
  ],
  "4182685136": [
+  "PRSC107",
   "SHCHORS",
   "Cruiser",
   7
  ],
  "4282267344": [
+  "PJSD012",
   "SHIMAKAZE",
   "Destroyer",
   10
  ],
  "4293899536": [
+  "PXSA001",
   "LUFTWAFFE",
   "AirCarrier",
   4
  ],
  "4273911792": [
+  "PASC020",
   "DES MOINES",
   "Cruiser",
   10
  ],
  "4292851408": [
+  "PJSA002",
   "H\u014cSH\u014c (OLD)",
   "AirCarrier",
   4
  ],
  "3764270288": [
+  "PZSD506",
   "ANSHAN",
   "Destroyer",
   6
  ],
  "3457103568": [
+  "PJSB799",
   "ARP KIRISHIMA",
   "Battleship",
   5
  ],
  "4291049456": [
+  "PASX003",
   "LIBERTY",
   "Auxiliary",
   5
  ],
  "3550360880": [
+  "PWSD710",
   "RAGNAR",
   "Destroyer",
   10
  ],
  "3752769328": [
+  "PGSC517",
   "WEIMAR",
   "Cruiser",
   7
  ],
  "3730748880": [
+  "PRSC538",
   "P. BAGRATION",
   "Cruiser",
   8
  ],
  "4179604944": [
+  "PRSA110",
   "NAKHIMOV",
   "AirCarrier",
   10
  ],
  "4276041424": [
+  "PJSB018",
   "YAMATO",
   "Battleship",
   10
  ],
  "4187895056": [
+  "PXSD102",
   "WHIRLWIND",
   "Destroyer",
   10
  ],
  "3760076784": [
+  "PASD510",
   "SOMERS",
   "Destroyer",
   10
  ],
  "3439605008": [
+  "PXSX815",
   "BOGUE",
   "Auxiliary",
   5
  ],
  "3553539792": [
+  "PJSC707",
   "ARP ASHIGARA",
   "Cruiser",
   7
  ],
  "4256085712": [
+  "PJSC037",
   "HASHIDATE",
   "Cruiser",
   1
  ],
  "4179506480": [
+  "PWSD110",
   "HALLAND",
   "Destroyer",
   10
  ],
  "4269717488": [
+  "PASC024",
   "PHOENIX",
   "Cruiser",
   4
  ],
  "4289705232": [
+  "PXSA005",
   "HELLCARRIER",
   "AirCarrier",
   7
  ],
  "3763254608": [
+  "PVSC507",
   "NUEVE DE JULIO",
   "Cruiser",
   7
  ],
  "3762173136": [
+  "PZSD508",
   "LOYANG",
   "Destroyer",
   8
  ],
  "3742316496": [
+  "PBSB527",
   "DUKE OF YORK",
   "Battleship",
   7
  ],
  "3720263120": [
+  "PRSC548",
   "BAGRATION",
   "Cruiser",
   8
  ],
  "4181702448": [
+  "PGSA108",
   "A.\u00a0PARSEVAL",
   "AirCarrier",
   8
  ],
  "3762173936": [
+  "PASD508",
   "KIDD",
   "Destroyer",
   8
  ],
  "4186912592": [
+  "PFSB103",
   "TURENNE",
   "Battleship",
   3
  ],
  "4187895248": [
+  "PRSD102",
   "STOROZHEVOI",
   "Destroyer",
   2
  ],
  "4189009168": [
+  "PXSB101",
   "AVENGER",
   "Battleship",
   10
  ],
  "4290754544": [
+  "PASA004",
   "LANGLEY (OLD)",
   "AirCarrier",
   4
  ],
  "3762272240": [
+  "PASA508",
   "ENTERPRISE (OLD)",
   "AirCarrier",
   8
  ],
  "3969857328": [
+  "PGSB310",
   "PREUSSEN",
   "Battleship",
   10
  ],
  "3762173744": [
+  "PGSD508",
   "Z-39",
   "Destroyer",
   7
  ],
  "3767449296": [
+  "PJSC503",
   "KATORI",
   "Cruiser",
   3
  ],
  "3541972176": [
+  "PZSD718",
   "SHIP SMASHA",
   "Destroyer",
   8
  ],
  "3750704880": [
+  "PISB519",
   "GIUSEPPE VERDI",
   "Battleship",
   9
  ],
  "4281317360": [
+  "PASA013",
   "ESSEX (OLD)",
   "AirCarrier",
   9
  ],
  "4183209968": [
+  "PASS106",
   "CACHALOT",
   "Submarine",
   6
  ],
  "4181669840": [
+  "PBSB108",
   "MONARCH",
   "Battleship",
   8
  ],
  "4183766864": [
+  "PFSB106",
   "NORMANDIE",
   "Battleship",
   6
  ],
  "4277024016": [
+  "PXSD017",
   "LANCET",
   "Destroyer",
   9
  ],
  "4180588528": [
+  "PASC109",
   "BUFFALO",
   "Cruiser",
   9
  ],
  "4183734000": [
+  "PISC106",
   "TRENTO",
   "Cruiser",
   6
  ],
  "4076746544": [
+  "PGSD208",
   "G. J. MAERKER",
   "Destroyer",
   8
  ],
  "4284463088": [
+  "PASA010",
   "RANGER (OLD)",
   "AirCarrier",
   7
  ],
  "4075730928": [
+  "PASC209",
   "SEATTLE",
   "Cruiser",
   9
  ],
  "3522082512": [
+  "PJSC737",
   "ARP NACHI",
   "Cruiser",
   7
  ],
  "3751687984": [
+  "PGSD518",
   "Z-35",
   "Destroyer",
   8
  ],
  "3762205904": [
+  "PZSC508",
   "IRIAN",
   "Cruiser",
   8
  ],
  "4180555056": [
+  "PWSD109",
   "\u00d6STERG\u00d6TLAND",
   "Destroyer",
   9
  ],
  "3655251664": [
+  "PJSC610",
   "KITAKAMI",
   "Cruiser",
   10
  ],
  "4289640144": [
+  "PJSC005",
   "FURUTAKA",
   "Cruiser",
   5
  ],
  "3760076496": [
+  "PJSD510",
   "HAYATE",
   "Destroyer",
   10
  ],
  "4184782288": [
+  "PRSC105",
   "KIROV (OLD)",
   "Cruiser",
   5
  ],
  "4186912208": [
+  "PRSB103",
   "KNYAZ SUVOROV",
   "Battleship",
   3
  ],
  "3765384656": [
+  "PRSB505",
   "OKT.\u00a0REVOLUTSIYA",
   "Battleship",
   5
  ],
  "3767449584": [
+  "PASC503",
   "CHARLESTON",
   "Cruiser",
   3
  ],
  "4181603792": [
+  "PRSD108",
   "TASHKENT (OLD)",
   "Destroyer",
   8
  ],
  "3741202128": [
+  "PJSD528",
   "HSF HAREKAZE II",
   "Destroyer",
   8
  ],
  "4186879792": [
+  "PGSC103",
   "KOLBERG",
   "Cruiser",
   3
  ],
  "3730782032": [
+  "PFSB538",
   "FLANDRE",
   "Battleship",
   8
  ],
  "3340711920": [
+  "PASB910",
   "CONNECTICUT",
   "Battleship",
   10
  ],
  "4077860816": [
+  "PBSB207",
   "ROOKE",
   "Battleship",
   7
  ],
  "4269028624": [
+  "PXSX024",
   "ARONIA",
   "Auxiliary",
   2
  ],
  "4289606928": [
+  "PXSD005",
   "BLUE ASTER",
   "Destroyer",
   7
  ],
  "3765384944": [
+  "PISB505",
   "GIULIO CESARE",
   "Battleship",
   5
  ],
  "3655251920": [
+  "PBSC610",
   "GIBRALTAR",
   "Cruiser",
   10
  ],
  "3752736112": [
+  "PUSD517",
   "HURON",
   "Destroyer",
   7
  ],
  "3767482160": [
+  "PGSB503",
   "K. ALBERT",
   "Battleship",
   3
  ],
  "4185831216": [
+  "PGSC104",
   "KARLSRUHE",
   "Cruiser",
   4
  ],
  "4292752656": [
+  "PXSD002",
   "GHOUL",
   "Destroyer",
   7
  ],
  "3743364816": [
+  "PJSB526",
   "ISE",
   "Battleship",
   6
  ],
  "4185863920": [
+  "PISB104",
   "D.\u00a0ALIGHIERI",
   "Battleship",
   4
  ],
  "4075697968": [
+  "PGSD209",
   "F.\u00a0SCHULTZ",
   "Destroyer",
   9
  ],
  "4283414224": [
+  "PJSA011",
   "HIRY\u016a (OLD)",
   "AirCarrier",
   7
  ],
  "4185864016": [
+  "PFSB104",
   "COURBET",
   "Battleship",
   4
  ],
  "4186912560": [
+  "PGSB103",
   "NASSAU",
   "Battleship",
   3
  ],
  "4272829712": [
+  "PXSD021",
   "RUMBLE",
   "Destroyer",
   10
  ],
  "3763288016": [
+  "PBSB507",
   "HOOD",
   "Battleship",
   7
  ],
  "4186846416": [
+  "PZSD103",
   "PHRA RUANG",
   "Destroyer",
   3
  ],
  "4182652624": [
+  "PJSD107",
   "AKATSUKI",
   "Destroyer",
   7
  ],
  "3760174896": [
+  "PGSA510",
   "W. VOSS",
   "AirCarrier",
   10
  ],
  "3554621136": [
+  "PJSB706",
   "ARP KIRISHIMA",
   "Battleship",
   5
  ],
  "4184749360": [
+  "PWSD105",
   "VISBY",
   "Destroyer",
   5
  ],
  "4282365936": [
+  "PASA012",
   "LEXINGTON (OLD)",
   "AirCarrier",
   8
  ],
  "4288624624": [
+  "PASB006",
   "NEW YORK",
   "Battleship",
   5
  ],
  "4277417232": [
+  "PXSX016",
   "GOLIATH",
   "Auxiliary",
   2
  ],
  "3532568272": [
+  "PJSC727",
   "E. DRAGON",
   "Cruiser",
   7
  ],
  "4075730384": [
+  "PRSC209",
   "RIGA",
   "Cruiser",
   9
  ],
  "3246831056": [
+  "PRSS999",
   "TEST SUB 1",
   "Submarine",
   10
  ],
  "4184782608": [
+  "PHSC105",
   "CELEBES",
   "Cruiser",
   5
  ],
  "4282299664": [
+  "PXSC012",
   "RUST NIGHTFALL",
   "Cruiser",
   9
  ],
  "3761190608": [
+  "PJSB509",
   "MUSASHI",
   "Battleship",
   9
  ],
  "3741267952": [
+  "PASB528",
   "ALABAMA VL",
   "Battleship",
   8
  ],
  "3764303056": [
+  "PZSC506",
   "HUANGHE",
   "Cruiser",
   6
  ],
  "3558094544": [
+  "PJSX702",
   "ARP I-401",
   "Auxiliary",
   11
  ],
  "3448747280": [
+  "PXSA807",
   "RANGER",
   "AirCarrier",
   7
  ],
  "4286526736": [
+  "PXSB008",
   "LEVIATHAN",
   "Battleship",
   7
  ],
  "3752802000": [
+  "PJSB517",
   "HY\u016aGA",
   "Battleship",
   7
  ],
  "4188976592": [
+  "PRSC101",
   "ORLAN",
   "Cruiser",
   1
  ],
  "4186879440": [
+  "PRSC103",
   "BOGATYR",
   "Cruiser",
   3
  ],
  "4185831152": [
+  "PISC104",
   "GIUSSANO",
   "Cruiser",
   4
  ],
  "4076778960": [
+  "PRSC208",
   "TALLINN",
   "Cruiser",
   8
  ],
  "4065212112": [
+  "PJSD219",
   "KITAKAZE",
   "Destroyer",
   9
  ],
  "4180621040": [
+  "PISB109",
   "LEPANTO",
   "Battleship",
   9
  ],
  "4187927824": [
+  "PXSC102",
   "GALE",
   "Cruiser",
   9
  ],
  "4181604048": [
+  "PJSD108",
   "AKIZUKI",
   "Destroyer",
   8
  ],
  "3666818896": [
+  "PFSB599",
   "JEAN BART B",
   "Battleship",
   9
  ],
  "3764270832": [
+  "PISD506",
   "LEONE",
   "Destroyer",
   6
  ],
  "3247388464": [
+  "PGSB999",
   "HANNOVER (OLD)",
   "Battleship",
   11
  ],
  "3760142320": [
+  "PASB510",
   "OHIO",
   "Battleship",
   10
  ],
  "3761157328": [
+  "PZSC509",
   "DALIAN",
   "Cruiser",
   9
  ],
  "4292818192": [
+  "PXSB002",
   "RASPUTIN",
   "Battleship",
   7
  ],
  "3668916016": [
+  "PGSB597",
   "SCHARNHORST B",
   "Battleship",
   7
  ],
  "4183209424": [
+  "PRSS106",
   "S-1",
   "Submarine",
   6
  ],
  "3655219184": [
+  "PASD610",
   "F. SHERMAN",
   "Destroyer",
   10
  ],
  "3766368080": [
+  "PFSD504",
   "SIROCO",
   "Destroyer",
   5
  ],
  "3333404368": [
+  "PJSA917",
   "[HAKURY\u016a]",
   "AirCarrier",
   10
  ],
  "4180555728": [
+  "PBSD109",
   "JUTLAND",
   "Destroyer",
   9
  ],
  "3750672368": [
+  "PASC519",
   "TULSA",
   "Cruiser",
   9
  ],
  "4180621264": [
+  "PBSB109",
   "LION",
   "Battleship",
   9
  ],
  "3762206672": [
+  "PBSC508",
   "CHESHIRE",
   "Cruiser",
   8
  ],
  "3764303280": [
+  "PSSC506",
   "CANARIAS",
   "Cruiser",
   6
  ],
  "4249105680": [
+  "PXSX043",
   "MEDWAY QUEEN",
   "Auxiliary",
   2
  ],
  "4279186704": [
+  "PXSB015",
   "LOBSTER-EYED",
   "Battleship",
   10
  ],
  "3555670000": [
+  "PASB705",
   "TEXAS",
   "Battleship",
   5
  ],
  "3764336336": [
+  "PJSB506",
   "MUTSU",
   "Battleship",
   6
  ],
  "3247388368": [
+  "PJSB999",
   "SATSUMA (OLD)",
   "Battleship",
   11
  ],
  "4182652208": [
+  "PWSD107",
   "SK\u00c5NE",
   "Destroyer",
   7
  ],
  "4272895696": [
+  "PJSB021",
   "IZUMO",
   "Battleship",
   9
  ],
  "4278072592": [
+  "PXSD016",
   "SEA DEVIL",
   "Destroyer",
   9
  ],
  "3666786288": [
+  "PASC599",
   "ALASKA B",
   "Cruiser",
   9
  ],
  "3750672176": [
+  "PGSC519",
   "\u00c4GIR",
   "Cruiser",
   9
  ],
  "4076745936": [
+  "PZSD208",
   "SILIWANGI",
   "Destroyer",
   8
  ],
  "4184815568": [
+  "PBSB105",
   "IRON DUKE",
   "Battleship",
   5
  ],
  "4282266896": [
+  "PXSD012",
   "ROVER",
   "Destroyer",
   7
  ],
  "4186846512": [
+  "PWSD103",
   "ROMULUS",
   "Destroyer",
   3
  ],
  "3740219088": [
+  "PJSB529",
   "IWAMI",
   "Battleship",
   9
  ],
  "4288591856": [
+  "PASC006",
   "ATLANTA",
   "Cruiser",
   7
  ],
  "4184782672": [
+  "PFSC105",
   "\u00c9MILE BERTIN",
   "Cruiser",
   5
  ],
  "3344905936": [
+  "PJSB906",
   "ISE 2",
   "Battleship",
   6
  ],
  "3763320528": [
+  "PJSA507",
   "KAGA (OLD)",
   "AirCarrier",
   7
  ],
  "4182685424": [
+  "PISC107",
   "ZARA",
   "Cruiser",
   7
  ],
  "3552524272": [
+  "PASB708",
   "ALABAMA ST",
   "Battleship",
   8
  ],
  "4074649424": [
+  "PFSD210",
   "MARCEAU",
   "Destroyer",
   10
  ],
  "4288623888": [
+  "PXSB006",
   "PARIS",
   "Battleship",
   7
  ],
  "4181636304": [
+  "PZSC108",
   "HARBIN",
   "Cruiser",
   8
  ],
  "3762239184": [
+  "PJSB508",
   "KII",
   "Battleship",
   8
  ],
  "4183700784": [
+  "PWSD106",
   "V\u00c4STER\u00c5S",
   "Destroyer",
   6
  ],
  "3445536752": [
+  "PASC810",
   "AUSTIN",
   "Cruiser",
   10
  ],
  "3761190704": [
+  "PGSB509",
   "POMMERN",
   "Battleship",
   9
  ],
  "3730749392": [
+  "PBSC538",
   "HAMPSHIRE",
   "Cruiser",
   8
  ],
  "4181669712": [
+  "PFSB108",
   "RICHELIEU",
   "Battleship",
   8
  ],
  "4075730768": [
+  "PFSC209",
   "BREST",
   "Cruiser",
   9

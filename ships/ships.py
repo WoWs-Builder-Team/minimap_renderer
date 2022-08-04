@@ -45,11 +45,12 @@ if __name__ == '__main__':
         mo_string: MOEntry
         dict_strings[mo_string.msgid] = mo_string.msgstr
 
-    dict_ships_info: Dict[int, tuple[str, str, int]] = {}
+    dict_ships_info: Dict[int, tuple[str, str, str, int]] = {}
 
     for ship in dict_ships.values():
 
         si = (
+            ship.index,
             dict_strings[f"IDS_{ship.index}"].upper(),
             ship.typeinfo.species,
             ship.level
