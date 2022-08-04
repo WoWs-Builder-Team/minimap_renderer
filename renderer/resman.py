@@ -3,6 +3,7 @@ import json
 from importlib.resources import open_text, open_binary
 from PIL import Image
 from typing import Optional
+from PIL import ImageFont
 
 
 class ResourceManager:
@@ -19,10 +20,15 @@ class ResourceManager:
         with open_text(package, filename) as tr:
             return json.load(tr, object_hook=self.key_converter)
 
+    def load_font(self, filename, package=f"{__package__}.resources", size=12):
+        with open_binary(package, filename) as fr:
+            return ImageFont.truetype(fr, size=size)
+
     def load_image(
         self,
         package: str,
         filename: str,
+        nearest=False,
         size: Optional[tuple[int, int]] = None,
     ) -> Image.Image:
         """Loads the image from the package or from the memory.
@@ -37,9 +43,11 @@ class ResourceManager:
             Image.Image: The loaded image.
         """
         if size:
-            key_name = f"{package}.{filename}.{'.'.join(map(str, size))}"
+            key_name = (
+                f"{package}.{filename}.{'.'.join(map(str, size))}.{nearest}"
+            )
         else:
-            key_name = f"{package}.{filename}"
+            key_name = f"{package}.{filename}.{nearest}"
 
         if key_name in self._resources:
             return self._resources[key_name].copy()
@@ -48,7 +56,9 @@ class ResourceManager:
                 image = Image.open(br)
 
                 if size:
-                    image = image.resize(size, Image.LANCZOS)
+                    image = image.resize(
+                        size, Image.LANCZOS if not nearest else Image.NEAREST
+                    )
 
                 self._resources[key_name] = image.copy()
                 return image.copy()
