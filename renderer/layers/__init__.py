@@ -7,3 +7,4 @@ from .ward import LayerWardBase
 from .capture import LayerCaptureBase
 from .health import LayerHealthBase
 from .score import LayerScoreBase
+from .frag import LayerFragBase
