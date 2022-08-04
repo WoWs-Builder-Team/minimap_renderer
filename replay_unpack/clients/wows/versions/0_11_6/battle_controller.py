@@ -23,6 +23,7 @@ from renderer.data import (
     Ward,
     ControlPoint,
     Score,
+    Frag,
 )
 from replay_unpack.utils import unpack_values, unpack_plane_id
 
@@ -105,6 +106,7 @@ class BattleController(IBattleController):
         self._acc_torpedoes: list[Torpedo] = []
         self._acc_hits: list[int] = []
         self._acc_consumables: dict[int, list[Consumable]] = {}
+        self._acc_frags: list[Frag] = []
 
         #######################################################################
 
@@ -333,6 +335,7 @@ class BattleController(IBattleController):
             evt_ward=copy.copy(self._dict_ward),
             evt_control=copy.copy(self._dict_control),
             evt_score=copy.copy(self._dict_score),
+            evt_frag=copy.copy(self._acc_frags),
         )
 
         self._dict_events[battle_time] = evt
@@ -340,6 +343,7 @@ class BattleController(IBattleController):
         self._acc_torpedoes.clear()
         self._acc_hits.clear()
         self._acc_consumables.clear()
+        self._acc_frags.clear()
 
     def _add_plane(
         self, entity: Entity, plane_id: int, team_id, params_id, pos, unk
@@ -758,6 +762,13 @@ class BattleController(IBattleController):
     def receiveVehicleDeath(
         self, avatar, killedVehicleId, fraggerVehicleId, typeDeath
     ):
+        self._acc_frags.append(
+            Frag(
+                killed_id=killedVehicleId,
+                fragger_id=fraggerVehicleId,
+                death_type=typeDeath,
+            )
+        )
         self._death_map.append((killedVehicleId, fraggerVehicleId, typeDeath))
 
     def g_receiveDamagesOnShip(self, vehicle, damages):
