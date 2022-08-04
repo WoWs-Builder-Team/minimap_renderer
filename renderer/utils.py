@@ -194,3 +194,7 @@ def getEquidistantPoints(
         np.round(np.linspace(p1[0], p2[0], parts + 1)),
         np.round(np.linspace(p1[1], p2[1], parts + 1)),
     )
+
+
+def do_trim(text: str, min_len=8):
+    return text if len(text) < min_len else f"{text[:min_len]}..."
