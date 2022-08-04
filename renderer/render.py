@@ -54,7 +54,7 @@ class Renderer:
         video_writer = write_frames(
             path="minimap.mp4",
             fps=20,
-            quality=6,
+            quality=7,
             pix_fmt_in="rgba",
             macro_block_size=17,
             size=self.minimap_bg.size,
