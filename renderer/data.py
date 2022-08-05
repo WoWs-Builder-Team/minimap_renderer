@@ -1,4 +1,4 @@
-from typing import NamedTuple
+from typing import NamedTuple, Optional
 
 
 class PlayerInfo(NamedTuple):
@@ -142,6 +142,7 @@ class Events(NamedTuple):
     evt_damage_maps: dict[str, dict[int, tuple[int, float]]]
     evt_frag: list[Frag]
     evt_ribbon: dict
+    evt_times_to_win: Optional[tuple[float, float]]
 
 
 class ReplayData(NamedTuple):
