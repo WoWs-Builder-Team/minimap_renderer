@@ -128,6 +128,7 @@ class Frag(NamedTuple):
 class Events(NamedTuple):
     """Match events."""
 
+    time_left: int
     evt_vehicle: dict[int, Vehicle]
     evt_plane: dict[int, Plane]
     evt_ward: dict[int, Ward]

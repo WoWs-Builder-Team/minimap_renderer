@@ -325,6 +325,7 @@ class BattleController(IBattleController):
 
         battle_time = self._durations[-1] - self._time_left
         evt = Events(
+            time_left=self._time_left,
             evt_vehicle=copy.copy(self._dict_vehicle),
             evt_smoke=copy.copy(self._dict_smoke),
             evt_shot=copy.copy(self._acc_shots),
