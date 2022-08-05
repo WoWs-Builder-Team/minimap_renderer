@@ -42,7 +42,7 @@ class BattleController(IBattleController):
         self._ribbons = {}
         self._players = PlayersInfo()
         self._battle_result = None
-        self._damage_map = {}
+        self._damage_maps = {name: {} for name in DamageStatsType.ids}
         self._shots_damage_map = {}
         self._death_map = []
         self._map = ""
@@ -335,6 +335,7 @@ class BattleController(IBattleController):
             evt_ward=copy.copy(self._dict_ward),
             evt_control=copy.copy(self._dict_control),
             evt_score=copy.copy(self._dict_score),
+            evt_damage_maps=copy.deepcopy(self._damage_maps),
             evt_frag=copy.copy(self._acc_frags),
         )
 
@@ -640,7 +641,7 @@ class BattleController(IBattleController):
             ribbons=self._ribbons,
             players=players,
             battle_result=self._battle_result,
-            damage_map=self._damage_map,
+            damage_maps=self._damage_maps,
             shots_damage_map=self._shots_damage_map,
             death_map=self._death_map,
             death_info=self._getDeathsInfo(),
@@ -740,14 +741,17 @@ class BattleController(IBattleController):
         self._create_player_vehicle_data(True)
 
     def receiveDamageStat(self, avatar, blob):
-        normalized = {}
+        normalized_map = {}
+
         for (type_, bool_), value in pickle.loads(blob).items():
-            # TODO: improve damage_map and list other damage types too
-            if bool_ != DamageStatsType.DAMAGE_STATS_ENEMY:
-                continue
-            normalized.setdefault(type_, {}).setdefault(bool_, 0)
-            normalized[type_][bool_] = value
-        self._damage_map.update(normalized)
+            if (name := DamageStatsType.names[bool_]) not in normalized_map:
+                normalized_map[name] = {}
+
+            normalized_map[name].setdefault(type_, {})
+            normalized_map[name][type_] = tuple(value)
+
+        for name, normalized in normalized_map.items():
+            self._damage_maps[name].update(normalized)
 
     def onRibbon(self, avatar, ribbon_id):
         self._ribbons.setdefault(avatar.id, {}).setdefault(ribbon_id, 0)

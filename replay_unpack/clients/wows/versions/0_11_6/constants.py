@@ -37,6 +37,9 @@ class DamageStatsType:
     DAMAGE_STATS_SPOT = 2
     DAMAGE_STATS_AGRO = 3
 
+    ids = {'Enemy': 0, 'Ally': 1, 'Spot': 2, 'Agro': 3}
+    names = {0: 'Enemy', 1: 'Ally', 2: 'Spot', 3: 'Agro'}
+
 
 class Category(object):
     """Category of task to separate for UI"""
