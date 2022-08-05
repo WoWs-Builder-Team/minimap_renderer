@@ -28,12 +28,6 @@ class LayerCounterBase(LayerBase):
             renderer (Renderer): The renderer.
         """
         self._renderer = renderer
-        self._dict_counts: dict[str, list] = {
-            "Enemy": [0, False],
-            "Agro": [0, False],
-            "Spot": [0, False],
-        }
-
         self._font_main = self._renderer.resman.load_font(
             filename="warhelios_bold.ttf", size=25
         )
