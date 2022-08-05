@@ -11,6 +11,7 @@ class LayerCaptureBase(LayerBase):
     Args:
         LayerBase (_type_): _description_
     """
+
     def __init__(self, renderer: Renderer):
         """Initiates this class.
 
@@ -23,6 +24,9 @@ class LayerCaptureBase(LayerBase):
             for p in self._renderer.replay_data.player_info.values()
             if p.relation == -1
         ].pop()
+        self._generated_caps: dict[
+            int, tuple[Image.Image, tuple[int, int]]
+        ] = {}
 
     def draw(self, game_time: int, image: Image.Image):
         """Draws the capture area on the minimap image.
@@ -35,6 +39,13 @@ class LayerCaptureBase(LayerBase):
         cps = events[game_time].evt_control.values()
 
         for count, cp in enumerate(cps):
+            cp_hash = hash(cp) & 1000000000
+
+            if cp_hash in self._generated_caps:
+                cap_image, cap_pos = self._generated_caps[cp_hash]
+                image.paste(cap_image, cap_pos, cap_image)
+                continue
+
             if not cp.is_visible:
                 continue
             x, y = self._renderer.get_scaled(cp.position)
@@ -47,8 +58,10 @@ class LayerCaptureBase(LayerBase):
             else:
                 icon_name = f"lettered_{count}.png"
 
+            relation_str = RELATION_NORMAL_STR[cp.relation]
             icon = self._renderer.resman.load_image(
-                f"{self._renderer.res}.cap_icons.{RELATION_NORMAL_STR[cp.relation]}", icon_name
+                f"{self._renderer.res}.cap_icons.{relation_str}",
+                icon_name,
             )
 
             if cp.has_invaders and cp.invader_team != -1:
@@ -81,6 +94,8 @@ class LayerCaptureBase(LayerBase):
 
             cx = round(x - cp_area.width / 2)
             cy = round(y - cp_area.height / 2)
+
+            self._generated_caps[cp_hash] = (cp_area.copy(), (cx, cy))
 
             image.paste(cp_area, (cx, cy), cp_area)
 
