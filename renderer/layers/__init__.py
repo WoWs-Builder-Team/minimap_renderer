@@ -10,3 +10,4 @@ from .score import LayerScoreBase
 from .counter import LayerCounterBase
 from .frag import LayerFragBase
 from .timer import LayerTimerBase
+from .ribbon import LayerRibbonBase

@@ -141,6 +141,7 @@ class Events(NamedTuple):
     evt_score: dict[int, Score]
     evt_damage_maps: dict[str, dict[int, tuple[int, float]]]
     evt_frag: list[Frag]
+    evt_ribbon: dict
 
 
 class ReplayData(NamedTuple):

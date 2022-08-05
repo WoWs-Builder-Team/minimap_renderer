@@ -345,6 +345,7 @@ class BattleController(IBattleController):
             evt_score=copy.copy(self._dict_score),
             evt_damage_maps=copy.deepcopy(self._damage_maps),
             evt_frag=copy.copy(self._acc_frags),
+            evt_ribbon=copy.deepcopy(self._ribbons)
         )
 
         self._dict_events[battle_time] = evt
