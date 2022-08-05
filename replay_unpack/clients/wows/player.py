@@ -39,7 +39,9 @@ class ReplayPlayer(ControlledPlayerBase):
     def _get_packets_mapping(self):
         return PACKETS_MAPPING
 
-    def _process_packet(self, packet):
+    def _process_packet(self, packet, t: float):
+        self._battle_controller.set_packet_time(t)
+
         if isinstance(packet, Version):
             self._battle_controller._version = packet.version
 

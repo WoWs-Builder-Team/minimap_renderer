@@ -20,13 +20,17 @@ class PlayerBase:
         raise NotImplementedError
 
     def _deserialize_packet(self, packet: NetPacket):
-        
+
         if packet.type in self._mapping:
             return self._mapping[packet.type](packet.raw_data)
-        logging.info('unknown packet %s %s', hex(packet.type), str(packet.raw_data.read().hex()))
+        logging.info(
+            "unknown packet %s %s",
+            hex(packet.type),
+            str(packet.raw_data.read().hex()),
+        )
         return None
 
-    def _process_packet(self, packet):
+    def _process_packet(self, packet, t: float):
         raise NotImplementedError
 
     def play(self, replay_data, strict_mode=False):
@@ -34,10 +38,16 @@ class PlayerBase:
         while io.tell() != len(replay_data):
             packet = NetPacket(io)
             try:
-                self._process_packet(self._deserialize_packet(packet))
+                self._process_packet(
+                    self._deserialize_packet(packet), packet.time
+                )
             except Exception:
-                logging.exception("Problem with packet %s:%s:%s",
-                                  packet.time, packet.type, self._mapping.get(packet.type))
+                logging.exception(
+                    "Problem with packet %s:%s:%s",
+                    packet.time,
+                    packet.type,
+                    self._mapping.get(packet.type),
+                )
                 if strict_mode:
                     raise
 

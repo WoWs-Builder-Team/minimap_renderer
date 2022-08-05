@@ -1,3 +1,17 @@
+import pickle
+import io
+import builtins
+
+
+safe_builtins = {
+    "range",
+    "complex",
+    "set",
+    "frozenset",
+    "slice",
+}
+
+
 def unpack_value(packed_value, value_min, value_max, bits):
     return packed_value / (2**bits - 1) * (
         abs(value_min) + abs(value_max)
@@ -28,3 +42,33 @@ def unpack_plane_id(packed_value: int) -> tuple:
         packed_value = packed_value >> bit
         values.append(value)
     return tuple(values)
+
+
+class CamouflageInfo:
+    def __init__(self, *args, **kwargs):
+        pass
+
+
+class PlayerMode:
+    def __init__(self, *args, **kwargs):
+        pass
+
+
+class RestrictedUnpickler(pickle.Unpickler):
+    def find_class(self, module, name):
+        # Only allow safe classes from builtins.
+        if module == "builtins" and name in safe_builtins:
+            return getattr(builtins, name)
+        elif module == "CamouflageInfo" and name == "CamouflageInfo":
+            return CamouflageInfo
+        elif module == "PlayerModeDef" and name == "PlayerMode":
+            return PlayerMode
+        # Forbid everything else.
+        raise pickle.UnpicklingError(
+            "global '%s.%s' is forbidden" % (module, name)
+        )
+
+
+def restricted_loads(data, **kwargs):
+    """Helper function analogous to pickle.loads()."""
+    return RestrictedUnpickler(io.BytesIO(data), **kwargs).load()

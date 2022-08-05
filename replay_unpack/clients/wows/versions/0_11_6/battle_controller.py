@@ -1,7 +1,6 @@
 # coding=utf-8
 import copy
 import logging
-import pickle
 import math
 import struct
 
@@ -25,7 +24,11 @@ from renderer.data import (
     Score,
     Frag,
 )
-from replay_unpack.utils import unpack_values, unpack_plane_id
+from replay_unpack.utils import (
+    unpack_values,
+    unpack_plane_id,
+    restricted_loads,
+)
 
 
 try:
@@ -99,6 +102,7 @@ class BattleController(IBattleController):
         self._version: str = ""
         self._battle_type: int = 0
         self._win_score: int = 1000
+        self._packet_time: float = 0.0
 
         # ACCUMULATORS #
 
@@ -217,6 +221,9 @@ class BattleController(IBattleController):
         )
 
     ###########################################################################
+
+    def set_packet_time(self, t: float):
+        self._packet_time = t
 
     def _set_regenerated_health(self, entity, health):
         self._dict_vehicle[entity.id] = self._dict_vehicle[entity.id]._replace(
@@ -582,7 +589,7 @@ class BattleController(IBattleController):
     ###########################################################################
 
     def onSetConsumable(self, vehicle, blob):
-        print(pickle.loads(blob, encoding="latin1"))
+        print(restricted_loads(blob, encoding="latin1"))
 
     @property
     def entities(self):
@@ -694,13 +701,13 @@ class BattleController(IBattleController):
         self, entity, playersData, botsData, observersData
     ):
         self._players.create_or_update_players(
-            pickle.loads(playersData, encoding="latin1"), PlayerType.PLAYER
+            restricted_loads(playersData, encoding="latin1"), PlayerType.PLAYER
         )
         self._players.create_or_update_players(
-            pickle.loads(botsData, encoding="latin1"), PlayerType.BOT
+            restricted_loads(botsData, encoding="latin1"), PlayerType.BOT
         )
         self._players.create_or_update_players(
-            pickle.loads(observersData, encoding="latin1"),
+            restricted_loads(observersData, encoding="latin1"),
             PlayerType.OBSERVER,
         )
         self._create_player_vehicle_data()
@@ -718,33 +725,35 @@ class BattleController(IBattleController):
     ):
         self._arena_id = arenaUniqueId
         self._players.create_or_update_players(
-            pickle.loads(playersStates, encoding="latin1"), PlayerType.PLAYER
+            restricted_loads(playersStates, encoding="latin1"),
+            PlayerType.PLAYER,
         )
         self._players.create_or_update_players(
-            pickle.loads(botsStates, encoding="latin1"), PlayerType.BOT
+            restricted_loads(botsStates, encoding="latin1"), PlayerType.BOT
         )
         self._players.create_or_update_players(
-            pickle.loads(observersState, encoding="latin1"),
+            restricted_loads(observersState, encoding="latin1"),
             PlayerType.OBSERVER,
         )
         self._create_player_vehicle_data()
 
     def onPlayerInfoUpdate(self, avatar, playersData, botsData, observersData):
         self._players.create_or_update_players(
-            pickle.loads(playersData, encoding="latin1"), PlayerType.PLAYER
+            restricted_loads(playersData, encoding="latin1"), PlayerType.PLAYER
         )
         self._players.create_or_update_players(
-            pickle.loads(botsData, encoding="latin1"), PlayerType.BOT
+            restricted_loads(botsData, encoding="latin1"), PlayerType.BOT
         )
         self._players.create_or_update_players(
-            pickle.loads(observersData, encoding="latin1"), PlayerType.OBSERVER
+            restricted_loads(observersData, encoding="latin1"),
+            PlayerType.OBSERVER,
         )
         self._create_player_vehicle_data(True)
 
     def receiveDamageStat(self, avatar, blob):
         normalized_map = {}
 
-        for (type_, bool_), value in pickle.loads(blob).items():
+        for (type_, bool_), value in restricted_loads(blob).items():
             if (name := DamageStatsType.names[bool_]) not in normalized_map:
                 normalized_map[name] = {}
 
