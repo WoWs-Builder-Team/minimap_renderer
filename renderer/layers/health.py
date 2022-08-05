@@ -103,7 +103,7 @@ class LayerHealthBase(LayerBase):
                 bg_bar.paste(regen_bar_img, mask=mask_regen_img)
             bg_bar.paste(hp_bar_img, mask=mask_hp_img)
 
-        px = 940 - round(bg_bar.width / 2)
+        px = 920 - round(bg_bar.width / 2)
 
         hp_current = "{:,}".format(round(ship.health)).replace(",", " ")
         hp_max = "{:,}".format(round(self._player.max_health)).replace(

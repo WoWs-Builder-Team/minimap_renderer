@@ -7,6 +7,8 @@ COUNTERS = [("Enemy", "DAMAGE", "caused_damage.png", 25, 30, 9, 9),
             ("Agro", "POTENTIAL", "blocked_damage.png", 17, 65, 1, 6),
             ("Spot", "SPOTTING", "assisted_damage.png", 17, 96, 1, 6)]
 COUNTER_COLOR = "#ffffff"
+LEFT = 1100
+RIGHT = 1330
 
 
 class LayerCounterBase(LayerBase):
@@ -48,16 +50,16 @@ class LayerCounterBase(LayerBase):
             l_w, l_h = font.getsize(label)
             i_w, i_h = icon.width, icon.height
 
-            image.paste(icon, (1110 + l_w + gap, y), icon)
+            image.paste(icon, (LEFT + l_w + gap, y), icon)
             draw.text(
-                (1110, y + i_h / 2 + anchor_shift),
+                (LEFT, y + i_h / 2 + anchor_shift),
                 label,
                 fill=COUNTER_COLOR,
                 font=font,
                 anchor='ls'
             )
             draw.text(
-                (1330 - v_w, y + i_h / 2 + anchor_shift),
+                (RIGHT - v_w, y + i_h / 2 + anchor_shift),
                 value,
                 fill=COUNTER_COLOR,
                 font=font,
