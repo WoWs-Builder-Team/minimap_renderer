@@ -49,6 +49,7 @@ class Renderer:
             layer_capture,
             layer_health,
             layer_score,
+            layer_counter,
             layer_frag,
         ) = self._check_versioned_layers()
 
@@ -79,6 +80,7 @@ class Renderer:
 
             layer_health.draw(game_time, minimap_bg)
             layer_score.draw(game_time, minimap_bg)
+            layer_counter.draw(game_time, minimap_bg)
             layer_frag.draw(game_time, minimap_bg)
 
             minimap_bg.paste(minimap_img, (40, 90))  # 40, 40 w/o logs
@@ -211,6 +213,7 @@ class Renderer:
             "LayerCapture",
             "LayerHealth",
             "LayerScore",
+            "LayerCounter",
             "LayerFrag",
         ]
         init_layers = []

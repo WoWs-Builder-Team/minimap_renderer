@@ -138,6 +138,7 @@ class Events(NamedTuple):
     evt_consumable: dict[int, list[Consumable]]
     evt_control: dict[int, ControlPoint]
     evt_score: dict[int, Score]
+    evt_damage_maps: dict[str, dict[int, tuple[int, float]]]
     evt_frag: list[Frag]
 
 
