@@ -9,8 +9,6 @@ COUNTERS = [
     ("Spot", "SPOTTING", "assisted_damage.png", 70, 1),
 ]
 COUNTER_COLOR = "#ffffff"
-LEFT = 1100
-RIGHT = 1330
 
 X_POS = 1100
 Y_POS = 27
@@ -43,9 +41,11 @@ class LayerCounterBase(LayerBase):
             filename="warhelios_bold.ttf", size=17
         )
         self._y_positions: list[int] = []
+        self._counter_numbers: dict[str, list] = {}
         self._counter_name = self.damage_name_icon()
 
     def damage_name_icon(self):
+        assert self._renderer.minimap_bg
         base = Image.new("RGBA", (125, 95))
         draw = ImageDraw.Draw(base)
         space = 12
@@ -57,12 +57,12 @@ class LayerCounterBase(LayerBase):
                 f"{self._renderer.res}.counter_icons", filename
             )
             font = self._font_main if name == "DAMAGE" else self._font_com
-            self._y_positions.append(y_pos + 27)
+            self._y_positions.append(y_pos + Y_POS)
             tw, th = font.getsize(name)
-            draw.text((0, y_pos), name, "#ffffff", font)
+            draw.text((0, y_pos), name, COUNTER_COLOR, font)
             base.paste(icon, (tw + offset_x, icon_y))
             y_pos += th + space
-        return base.copy()
+        self._renderer.minimap_bg.paste(base, (X_POS, Y_POS), base)
 
     def draw(self, game_time: int, image: Image.Image):
         """Draws the counters on the minimap image.
@@ -71,14 +71,9 @@ class LayerCounterBase(LayerBase):
             game_time (int): Game time. Used to sync. events.
             image (Image.Image): Image where the capture are will be pasted on.
         """
-        image.paste(self._counter_name, (X_POS, Y_POS), self._counter_name)
         events = self._renderer.replay_data.events
         damage_maps = events[game_time].evt_damage_maps
         y_positions = list(reversed(self._y_positions))
-
-        # c_enemy = int(sum(val[1] for val in damage_maps["Enemy"].values()))
-        # c_agro = int(sum(val[1] for val in damage_maps["Agro"].values()))
-        # c_spot = int(sum(val[1] for val in damage_maps["Spot"].values()))
 
         for counter in COUNTERS:
             (
@@ -87,10 +82,20 @@ class LayerCounterBase(LayerBase):
             ) = counter
             font = self._font_main if name == "Enemy" else self._font_com
             dmg = int(sum(val[1] for val in damage_maps[name].values()))
+            y_pos = y_positions.pop()
+
+            if val := self._counter_numbers.get(name, None):
+                l_damage, l_image = val
+                if l_damage == dmg:
+                    x_pos = image.width - l_image.width - 30
+                    image.paste(l_image, (x_pos, y_pos), l_image)
+                    continue
+
             value = f"{dmg:,}".replace(",", " ")
             fw, fh = font.getsize(value)
             base = Image.new("RGBA", (fw, fh))
             draw = ImageDraw.Draw(base)
             x_pos = image.width - base.width - 30
-            draw.text((0, 0), value, "white", font)
-            image.paste(base, (x_pos, y_positions.pop()), base)
+            draw.text((0, 0), value, COUNTER_COLOR, font)
+            self._counter_numbers[name] = [dmg, base.copy()]
+            image.paste(base, (x_pos, y_pos), base)
