@@ -301,7 +301,7 @@ class BattleController(IBattleController):
             team_id=cp["teamId"],
             invader_team=cp["invaderTeam"],
             control_point_type=cp["controlPointType"],
-            progress=cp["progress"],
+            progress=round(cp["progress"], 1),
             both_inside=bool(cp["bothInside"]),
             has_invaders=bool(cp["hasInvaders"]),
             capture_time=cp["captureTime"],
