@@ -51,6 +51,7 @@ class Renderer:
             layer_score,
             layer_counter,
             layer_frag,
+            layer_timer,
         ) = self._check_versioned_layers()
 
         video_writer = write_frames(
@@ -82,6 +83,7 @@ class Renderer:
             layer_score.draw(game_time, minimap_bg)
             layer_counter.draw(game_time, minimap_bg)
             layer_frag.draw(game_time, minimap_bg)
+            layer_timer.draw(game_time, minimap_bg)
 
             minimap_bg.paste(minimap_img, (40, 90))  # 40, 40 w/o logs
             video_writer.send(minimap_bg.tobytes())
@@ -215,6 +217,7 @@ class Renderer:
             "LayerScore",
             "LayerCounter",
             "LayerFrag",
+            "LayerTimer",
         ]
         init_layers = []
 
