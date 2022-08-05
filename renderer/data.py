@@ -152,5 +152,7 @@ class ReplayData(NamedTuple):
     game_map: str
     game_battle_type: int
     game_win_score: int
+    owner_avatar_id: int
+    owner_vehicle_id: int
     player_info: dict[int, PlayerInfo]
     events: dict[int, Events]
