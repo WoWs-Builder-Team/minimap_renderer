@@ -576,6 +576,10 @@ class BattleController(IBattleController):
         for player in self._players.get_info().values():
             if not self._owner:
                 continue
+            
+            if player["playerType"] == 3:
+                continue
+
             is_ally = self._owner["teamId"] == player["teamId"]
 
             try:
@@ -682,6 +686,8 @@ class BattleController(IBattleController):
             game_map=self._map,
             game_battle_type=self._battle_type,
             game_win_score=self._win_score,
+            owner_avatar_id=self._owner["avatarId"],
+            owner_vehicle_id=self._owner["shipId"],
             player_info=self._dict_info,
             events=self._dict_events,
         )
