@@ -69,17 +69,13 @@ class LayerCaptureBase(LayerBase):
                 to_color = COLORS_NORMAL[cp.relation]
                 progress = replace_color(normal, from_color, to_color)
 
-            progress = progress.resize(
-                (round(w / 3), round(h / 3)), resample=Image.BICUBIC
-            )
-
-            px = round(cp_area.width / 2 - progress.width / 2)
-            py = round(cp_area.height / 2 - progress.height / 2)
+            px = round(cp_area.width / 2 - progress.width / 2) + 1
+            py = round(cp_area.height / 2 - progress.height / 2) + 1
 
             cp_area.paste(progress, (px, py), progress)
 
-            ix = round(cp_area.width / 2 - icon.width / 2)
-            iy = round(cp_area.height / 2 - icon.height / 2)
+            ix = round(cp_area.width / 2 - icon.width / 2) + 1
+            iy = round(cp_area.height / 2 - icon.height / 2) + 1
 
             cp_area.paste(icon, (ix, iy), icon)
 
