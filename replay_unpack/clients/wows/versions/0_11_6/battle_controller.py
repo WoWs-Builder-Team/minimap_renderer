@@ -324,6 +324,46 @@ class BattleController(IBattleController):
     def _remove_ward(self, entity, plane_id):
         self._dict_ward.pop(plane_id)
 
+    @staticmethod
+    def _time_to_win(reward, period, score_left):
+        if not reward:
+            return -1
+
+        return period * score_left / reward
+
+    def _times_to_win(self):
+        if not self._time_left:
+            return None
+
+        try:
+            # TODO: drop assumption that all caps have same property?
+            mission = self.battle_logic.properties["client"]["state"][
+                "missions"
+            ]["hold"][0]
+            reward, period = mission["reward"], mission["period"]
+        except TypeError:
+            return None
+
+        ally_tick, enemy_tick = 0, 0
+        for cap in self._getCapturePointsInfo():
+            if (
+                cap["isEnabled"]
+                and not cap["bothInside"]
+                and cap["teamId"] != -1
+            ):
+                if cap["teamId"] == self._owner["teamId"]:
+                    ally_tick += reward
+                else:
+                    enemy_tick += reward
+
+        ally_ttw = self._time_to_win(
+            ally_tick, period, self._win_score - self._dict_score[0].score
+        )
+        enemy_ttw = self._time_to_win(
+            enemy_tick, period, self._win_score - self._dict_score[1].score
+        )
+        return ally_ttw, enemy_ttw
+
     def _update(self, entity, time_left):
         self._time_left = time_left
 
@@ -345,7 +385,8 @@ class BattleController(IBattleController):
             evt_score=copy.copy(self._dict_score),
             evt_damage_maps=copy.deepcopy(self._damage_maps),
             evt_frag=copy.copy(self._acc_frags),
-            evt_ribbon=copy.deepcopy(self._ribbons)
+            evt_ribbon=copy.deepcopy(self._ribbons),
+            evt_times_to_win=self._times_to_win(),
         )
 
         self._dict_events[battle_time] = evt
