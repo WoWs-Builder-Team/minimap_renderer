@@ -3,12 +3,15 @@ from renderer.base import LayerBase
 from renderer.render import Renderer
 
 
-COUNTERS = [("Enemy", "DAMAGE", "caused_damage.png", 25, 30, 9, 9),
-            ("Agro", "POTENTIAL", "blocked_damage.png", 17, 65, 1, 6),
-            ("Spot", "SPOTTING", "assisted_damage.png", 17, 96, 1, 6)]
+COUNTERS = [
+    ("Enemy", "DAMAGE", "caused_damage.png", 3, 9),
+    ("Agro", "POTENTIAL", "blocked_damage.png", 38, 1),
+    ("Spot", "SPOTTING", "assisted_damage.png", 70, 1),
+]
 COUNTER_COLOR = "#ffffff"
-LEFT = 1100
-RIGHT = 1330
+
+X_POS = 1100
+Y_POS = 27
 
 
 class LayerCounterBase(LayerBase):
@@ -17,6 +20,7 @@ class LayerCounterBase(LayerBase):
     Args:
         LayerBase (_type_): _description_
     """
+
     def __init__(self, renderer: Renderer):
         """Initiates this class.
 
@@ -24,6 +28,35 @@ class LayerCounterBase(LayerBase):
             renderer (Renderer): The renderer.
         """
         self._renderer = renderer
+        self._font_main = self._renderer.resman.load_font(
+            filename="warhelios_bold.ttf", size=25
+        )
+        self._font_com = self._renderer.resman.load_font(
+            filename="warhelios_bold.ttf", size=17
+        )
+        self._y_positions: list[int] = []
+        self._counter_numbers: dict[str, list] = {}
+        self._counter_name = self.damage_name_icon()
+
+    def damage_name_icon(self):
+        assert self._renderer.minimap_bg
+        base = Image.new("RGBA", (125, 95))
+        draw = ImageDraw.Draw(base)
+        space = 12
+        y_pos = 0
+
+        for counter in COUNTERS:
+            _, name, filename, icon_y, offset_x = counter
+            icon = self._renderer.resman.load_image(
+                f"{self._renderer.res}.counter_icons", filename
+            )
+            font = self._font_main if name == "DAMAGE" else self._font_com
+            self._y_positions.append(y_pos + Y_POS)
+            tw, th = font.getsize(name)
+            draw.text((0, y_pos), name, COUNTER_COLOR, font)
+            base.paste(icon, (tw + offset_x, icon_y))
+            y_pos += th + space
+        self._renderer.minimap_bg.paste(base, (X_POS, Y_POS), base)
 
     def draw(self, game_time: int, image: Image.Image):
         """Draws the counters on the minimap image.
@@ -32,38 +65,31 @@ class LayerCounterBase(LayerBase):
             game_time (int): Game time. Used to sync. events.
             image (Image.Image): Image where the capture are will be pasted on.
         """
-        draw = ImageDraw.Draw(image)
         events = self._renderer.replay_data.events
         damage_maps = events[game_time].evt_damage_maps
+        y_positions = list(reversed(self._y_positions))
 
-        for name, label, icon_name, font_size, y, gap, anchor_shift in COUNTERS:
-            icon = self._renderer.resman.load_image(
-                f"{self._renderer.res}.counter_icons", icon_name
-            )
-            font = self._renderer.resman.load_font(
-                filename="warhelios_bold.ttf", size=font_size
-            )
+        for counter in COUNTERS:
+            (
+                name,
+                *_,
+            ) = counter
+            font = self._font_main if name == "Enemy" else self._font_com
+            dmg = int(sum(val[1] for val in damage_maps[name].values()))
+            y_pos = y_positions.pop()
 
-            count = int(sum(val[1] for val in damage_maps[name].values()))
-            value = f"{count:,}".replace(',', ' ')
-            v_w, v_h = font.getsize(value)
-            l_w, l_h = font.getsize(label)
-            i_w, i_h = icon.width, icon.height
+            if val := self._counter_numbers.get(name, None):
+                l_damage, l_image = val
+                if l_damage == dmg:
+                    x_pos = image.width - l_image.width - 30
+                    image.paste(l_image, (x_pos, y_pos), l_image)
+                    continue
 
-            image.paste(icon, (LEFT + l_w + gap, y), icon)
-            draw.text(
-                (LEFT, y + i_h / 2 + anchor_shift),
-                label,
-                fill=COUNTER_COLOR,
-                font=font,
-                anchor='ls'
-            )
-            draw.text(
-                (RIGHT - v_w, y + i_h / 2 + anchor_shift),
-                value,
-                fill=COUNTER_COLOR,
-                font=font,
-                anchor='ls'
-            )
-
-            y += icon.height + 5
+            value = f"{dmg:,}".replace(",", " ")
+            fw, fh = font.getsize(value)
+            base = Image.new("RGBA", (fw, fh))
+            draw = ImageDraw.Draw(base)
+            x_pos = image.width - base.width - 30
+            draw.text((0, 0), value, COUNTER_COLOR, font)
+            self._counter_numbers[name] = [dmg, base.copy()]
+            image.paste(base, (x_pos, y_pos), base)
