@@ -8,6 +8,11 @@ from renderer.const import RELATION_NORMAL_STR, COLORS_NORMAL
 from PIL import Image, ImageDraw, ImageColor
 from math import floor
 
+from .counter import X_POS as COUNTERS_POS
+
+
+CENTER = (800 + COUNTERS_POS) // 2
+
 
 class LayerHealthBase(LayerBase):
     def __init__(self, renderer: Renderer):
@@ -103,8 +108,6 @@ class LayerHealthBase(LayerBase):
                 bg_bar.paste(regen_bar_img, mask=mask_regen_img)
             bg_bar.paste(hp_bar_img, mask=mask_hp_img)
 
-        px = 920 - round(bg_bar.width / 2)
-
         hp_current = "{:,}".format(round(ship.health)).replace(",", " ")
         hp_max = "{:,}".format(round(self._player.max_health)).replace(
             ",", " "
@@ -116,6 +119,8 @@ class LayerHealthBase(LayerBase):
         n_w, n_h = self._font.getsize(name)
 
         bg_bar = bg_bar.resize((235, 62), resample=Image.LANCZOS)
+
+        px = CENTER - round(bg_bar.width / 2)
 
         th = Image.new("RGBA", (bg_bar.width, max(hp_h, n_h, hp_c_h)))
         th_draw = ImageDraw.Draw(th)
