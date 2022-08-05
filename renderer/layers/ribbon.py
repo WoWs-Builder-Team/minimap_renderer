@@ -21,7 +21,8 @@ class LayerRibbonBase(LayerBase):
 
     def draw(self, game_time: int, image: Image.Image):
         evt_ribbons = self._renderer.replay_data.events[game_time].evt_ribbon
-
-        for rid, count in evt_ribbons.items():
-            match rid:
-                case 
+        print(evt_ribbons)
+        # for rid, count in evt_ribbons.items():
+        #     print(rid)
+        #     match rid:
+        #         case 14 | 15 | 16 | 17: print(count)
