@@ -7,5 +7,5 @@ from .ward import LayerWardBase
 from .capture import LayerCaptureBase
 from .health import LayerHealthBase
 from .score import LayerScoreBase
-from .counter import LayerCounterBase
+from .counter_b import LayerCounterBase
 from .frag import LayerFragBase
