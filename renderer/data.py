@@ -143,6 +143,7 @@ class Events(NamedTuple):
     evt_damage_maps: dict[str, dict[int, tuple[int, float]]]
     evt_frag: list[Frag]
     evt_ribbon: dict
+    evt_achievement: dict
     evt_times_to_win: Optional[tuple[float, float]]
 
 
@@ -155,5 +156,6 @@ class ReplayData(NamedTuple):
     game_win_score: int
     owner_avatar_id: int
     owner_vehicle_id: int
+    owner_id: int
     player_info: dict[int, PlayerInfo]
     events: dict[int, Events]

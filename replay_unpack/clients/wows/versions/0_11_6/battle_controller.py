@@ -387,6 +387,7 @@ class BattleController(IBattleController):
             evt_frag=copy.copy(self._acc_frags),
             evt_ribbon=copy.deepcopy(self._ribbons),
             evt_times_to_win=self._times_to_win(),
+            evt_achievement=copy.deepcopy(self._achievements)
         )
 
         self._dict_events[battle_time] = evt
@@ -696,6 +697,7 @@ class BattleController(IBattleController):
             game_win_score=self._win_score,
             owner_avatar_id=self._owner["avatarId"],
             owner_vehicle_id=self._owner["shipId"],
+            owner_id=self._owner["id"],
             player_info=self._dict_info,
             events=self._dict_events,
         )
