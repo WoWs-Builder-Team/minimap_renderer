@@ -63,9 +63,9 @@ class BattleController(IBattleController):
         Entity.subscribe_method_call(
             "Avatar", "receiveVehicleDeath", self.receiveVehicleDeath
         )
-        # Entity.subscribe_method_call(
-        #     "Vehicle", "setConsumables", self.onSetConsumable
-        # )
+        Entity.subscribe_method_call(
+            "Vehicle", "setConsumables", self.onSetConsumable
+        )
         Entity.subscribe_method_call("Avatar", "onRibbon", self.onRibbon)
         Entity.subscribe_method_call(
             "Avatar", "onAchievementEarned", self.onAchievementEarned
@@ -576,7 +576,7 @@ class BattleController(IBattleController):
         for player in self._players.get_info().values():
             if not self._owner:
                 continue
-            
+
             if player["playerType"] == 3:
                 continue
 
@@ -629,13 +629,21 @@ class BattleController(IBattleController):
                 is_visible=False,
                 not_in_range=True,
                 visibility_flag=0,
+                consumables_state={},
             )
             self._dict_vehicle[player["shipId"]] = vi
 
     ###########################################################################
 
     def onSetConsumable(self, vehicle, blob):
-        print(restricted_loads(blob, encoding="latin1"))
+        consumables = {}
+        for c in restricted_loads(blob, encoding="latin1"):
+            cid, state = c
+            consumables[cid] = state
+
+        self._dict_vehicle[vehicle.id] = self._dict_vehicle[
+            vehicle.id
+        ]._replace(consumables_state=consumables)
 
     @property
     def entities(self):
