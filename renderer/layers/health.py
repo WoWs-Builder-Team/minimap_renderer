@@ -80,32 +80,36 @@ class LayerHealthBase(LayerBase):
                 ((0, 0), (mask_hp_img_w, mask_hp_img.width)), fill="black"
             )
 
-            if 9 in ability:
-                wt = ability["workTime"]
-                rhs = ability["regenerationHPSpeed"]
-                maxHeal = floor(wt) * rhs * self._player.max_health
-                canHeal = (
-                    ship.regeneration_health
-                    if ship.regeneration_health < maxHeal
-                    else maxHeal
-                )
+            if regen := ship.consumables_state.get(9, None):
+                st, count, en, t = regen
+                if count:
+                    wt = ability["workTime"]
+                    rhs = ability["regenerationHPSpeed"]
+                    maxHeal = floor(wt) * rhs * self._player.max_health
+                    canHeal = (
+                        ship.regeneration_health
+                        if ship.regeneration_health < maxHeal
+                        else maxHeal
+                    )
 
-                per_limit = (canHeal + ship.health) / self._player.max_health
+                    per_limit = (
+                        canHeal + ship.health
+                    ) / self._player.max_health
 
-                regen_bar_arr = np.array(fg_bar)
-                regen_bar_arr[
-                    regen_bar_arr[:, :, 3] > alpha
-                ] = self._color_gray
-                regen_bar_img = Image.fromarray(regen_bar_arr)
-                mask_regen_img = Image.new(fg_bar.mode, fg_bar.size)
-                mask_regen_img_w = mask_regen_img.width * per_limit
-                mask_regen_draw = ImageDraw.Draw(mask_regen_img)
-                mask_regen_draw.rectangle(
-                    ((0, 0), (mask_regen_img_w, mask_regen_img.width)),
-                    fill="black",
-                )
+                    regen_bar_arr = np.array(fg_bar)
+                    regen_bar_arr[
+                        regen_bar_arr[:, :, 3] > alpha
+                    ] = self._color_gray
+                    regen_bar_img = Image.fromarray(regen_bar_arr)
+                    mask_regen_img = Image.new(fg_bar.mode, fg_bar.size)
+                    mask_regen_img_w = mask_regen_img.width * per_limit
+                    mask_regen_draw = ImageDraw.Draw(mask_regen_img)
+                    mask_regen_draw.rectangle(
+                        ((0, 0), (mask_regen_img_w, mask_regen_img.width)),
+                        fill="black",
+                    )
 
-                bg_bar.paste(regen_bar_img, mask=mask_regen_img)
+                    bg_bar.paste(regen_bar_img, mask=mask_regen_img)
             bg_bar.paste(hp_bar_img, mask=mask_hp_img)
 
         hp_current = "{:,}".format(round(ship.health)).replace(",", " ")
