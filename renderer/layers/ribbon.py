@@ -2,74 +2,6 @@ from PIL import Image, ImageDraw
 from renderer.base import LayerBase
 from renderer.render import Renderer
 
-"""
-    |  RIBBON_BASE_CAPTURE = 10
-     |
-     |  RIBBON_BASE_CAPTURE_ASSIST = 11
-     |
-     |  RIBBON_BASE_DEFENSE = 9
-     |
-     |  RIBBON_BOMB = 2
-     |
-     |  RIBBON_BOMB_BULGE = 29
-     |
-     |  RIBBON_BOMB_NO_PENETRATION = 22
-     |
-     |  RIBBON_BOMB_OVER_PENETRATION = 20
-     |
-     |  RIBBON_BOMB_PENETRATION = 21
-     |
-     |  RIBBON_BOMB_RICOCHET = 23
-     |
-     |  RIBBON_BUILDING_KILL = 18
-     |
-     |  RIBBON_BULGE = 28
-     |
-     |  RIBBON_BURN = 6
-     |
-     |  RIBBON_CITADEL = 8
-     |
-     |  RIBBON_CRIT = 4
-     |
-     |  RIBBON_DETECTED = 19
-     |
-     |  RIBBON_FLOOD = 7
-     |
-     |  RIBBON_FRAG = 5
-     |
-     |  RIBBON_MAIN_CALIBER = 0
-     |
-     |  RIBBON_MAIN_CALIBER_NO_PENETRATION = 16
-     |
-     |  RIBBON_MAIN_CALIBER_OVER_PENETRATION = 14
-     |
-     |  RIBBON_MAIN_CALIBER_PENETRATION = 15
-     |
-     |  RIBBON_MAIN_CALIBER_RICOCHET = 17
-     |
-     |  RIBBON_PLANE = 3
-     |
-     |  RIBBON_ROCKET = 24
-     |
-     |  RIBBON_ROCKET_BULGE = 30
-     |
-     |  RIBBON_ROCKET_NO_PENETRATION = 26
-     |
-     |  RIBBON_ROCKET_OVER_PENETRATION = 35
-     |
-     |  RIBBON_ROCKET_PENETRATION = 25
-     |
-     |  RIBBON_ROCKET_RICOCHET = 34
-     |
-     |  RIBBON_SECONDARY_CALIBER = 13
-     |
-     |  RIBBON_SPLANE = 27
-     |
-     |  RIBBON_SUPPRESSED = 12
-     |
-     |  RIBBON_TORPEDO = 1
-"""
-
 SOLO_MAP = {
     1: "torpedo",
     3: "plane",
@@ -96,9 +28,20 @@ class LayerRibbonBase(LayerBase):
             filename="warhelios_bold.ttf", size=25
         )
         self._images: dict[str, tuple[int, Image.Image]] = {}
+        self._achievements = renderer.resman.load_json(
+            renderer.res, "achievement.json"
+        )
 
     def draw(self, game_time: int, image: Image.Image):
         evt_ribbons = self._renderer.replay_data.events[game_time].evt_ribbon
+        evt_achievement = self._renderer.replay_data.events[
+            game_time
+        ].evt_achievement
+
+        x_pos = 805
+        y_pos = 145
+        last_y_height = 0
+        ribbon_count = 0
 
         if evt_ribbons := evt_ribbons.get(
             self._renderer.replay_data.owner_avatar_id
@@ -122,10 +65,9 @@ class LayerRibbonBase(LayerBase):
                     totals.setdefault(name, 0)
                     totals[name] += count
 
-            x_pos = 805
-            y_pos = 145
+            ribbon_count = len(totals)
 
-            for idx, (r_name, r_count) in enumerate(totals.items()):
+            for idx, (r_name, r_count) in enumerate(totals.items(), 1):
                 r_res = f"{self._renderer.res}.ribbon_icons"
                 if "unknown" in r_name:
                     f_name = "ribbon_unknown.png"
@@ -137,8 +79,9 @@ class LayerRibbonBase(LayerBase):
                     if c_count == r_count:
                         image.paste(c_image, (x_pos, y_pos), c_image)
                         x_pos += c_image.width
+                        last_y_height = c_image.height
 
-                        if (idx + 1) % 4 == 0:
+                        if idx % 4 == 0:
                             y_pos += c_image.height
                             x_pos = 805
                         continue
@@ -158,9 +101,62 @@ class LayerRibbonBase(LayerBase):
 
                 image.paste(r_img, (x_pos, y_pos), r_img)
                 x_pos += r_img.width
+                last_y_height = r_img.height
 
-                if (idx + 1) % 4 == 0:
+                if idx % 4 == 0:
                     y_pos += r_img.height
                     x_pos = 805
 
                 self._images[r_name] = (r_count, r_img.copy())
+
+        a_x_pos = 805
+
+        if ribbon_count % 4 != 0:
+            y_pos += last_y_height
+
+        if achievements := evt_achievement.get(
+            self._renderer.replay_data.owner_id, None
+        ):
+            for a_idx, (a_id, a_count) in enumerate(achievements.items(), 1):
+                ui_name = self._achievements[a_id]
+
+                if a_id in self._images:
+                    a_c_count, a_c_image = self._images[a_id]
+                    if a_count == a_c_count:
+                        image.paste(a_c_image, (a_x_pos, y_pos), a_c_image)
+                        a_x_pos += a_c_image.width
+
+                        if a_idx % 6 == 0:
+                            y_pos += a_c_image.height
+                            x_pos = 805
+                        continue
+
+                a_icon_res = f"{self._renderer.res}.achievement_icons"
+                a_filename = f"icon_achievement_{ui_name}.png"
+                a_image = self._renderer.resman.load_image(
+                    a_icon_res, a_filename
+                )
+
+                if a_count > 1:
+                    a_image_draw = ImageDraw.Draw(a_image)
+                    a_tw, a_th = self._font.getsize(f"x{a_count}")
+                    a_image_draw.text(
+                        (
+                            (a_image.width - a_tw - 3),
+                            (a_image.height - a_th - 3),
+                        ),
+                        f"x{a_count}",
+                        "white",
+                        self._font,
+                        stroke_width=1,
+                        stroke_fill="black",
+                    )
+
+                image.paste(a_image, (a_x_pos, y_pos), a_image)
+                a_x_pos += a_image.width
+
+                if a_idx % 6 == 0:
+                    y_pos += a_image.height
+                    a_x_pos = 805
+
+                self._images[a_id] = (a_count, a_image.copy())
