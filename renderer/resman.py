@@ -65,6 +65,9 @@ class ResourceManager:
             with open_binary(package, filename) as br:
                 image = Image.open(br)
 
+                if image.mode != "RGBA":
+                    image = image.convert("RGBA")
+
                 if size:
                     image = image.resize(
                         size, Image.LANCZOS if not nearest else Image.NEAREST
