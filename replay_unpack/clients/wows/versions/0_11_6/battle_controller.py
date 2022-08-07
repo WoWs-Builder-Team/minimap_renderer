@@ -219,11 +219,19 @@ class BattleController(IBattleController):
         Entity.subscribe_property_change(
             "Vehicle", "regenerationHealth", self._set_regeneration_health
         )
+        Entity.subscribe_property_change(
+            "Vehicle", "burningFlags", self._set_burning_flags
+        )
 
     ###########################################################################
 
     def set_packet_time(self, t: float):
         self._packet_time = t
+
+    def _set_burning_flags(self, entity, flags):
+        self._dict_vehicle[entity.id] = self._dict_vehicle[entity.id]._replace(
+            burn_flags=flags
+        )
 
     def _set_regenerated_health(self, entity, health):
         self._dict_vehicle[entity.id] = self._dict_vehicle[entity.id]._replace(
@@ -630,6 +638,7 @@ class BattleController(IBattleController):
                 is_visible=False,
                 not_in_range=False,
                 visibility_flag=0,
+                burn_flags=0,
                 consumables_state={},
             )
             self._dict_vehicle[player["shipId"]] = vi

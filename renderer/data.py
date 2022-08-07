@@ -35,6 +35,7 @@ class Vehicle(NamedTuple):
     is_visible: bool
     not_in_range: bool
     visibility_flag: int
+    burn_flags: int
     consumables_state: dict[int, tuple]
     regenerated_health: float = 0.0
     regen_crew_hp_limit: float = 0.0
