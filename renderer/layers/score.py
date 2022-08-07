@@ -1,11 +1,7 @@
-import numpy as np
-
-from typing import Union
-from renderer.data import PlayerInfo
 from renderer.render import Renderer
 from renderer.base import LayerBase
-from renderer.const import RELATION_NORMAL_STR, COLORS_NORMAL
-from PIL import Image, ImageDraw, ImageColor
+from renderer.const import COLORS_NORMAL
+from PIL import Image, ImageDraw
 
 
 ALLY_TIMER_POS = (20, 16)
@@ -24,8 +20,20 @@ class LayerScoreBase(LayerBase):
         self._base = Image.new("RGBA", (714, 50))
         self._timers_base = Image.new("RGBA", (40, 50))
         draw = ImageDraw.Draw(self._timers_base)
-        draw.text(ALLY_TIMER_POS, ":", COLORS_NORMAL[0], self._timers_font, anchor='mm')
-        draw.text(ENEMY_TIMER_POS, ":", COLORS_NORMAL[1], self._timers_font, anchor='mm')
+        draw.text(
+            ALLY_TIMER_POS,
+            ":",
+            COLORS_NORMAL[0],
+            self._timers_font,
+            anchor="mm",
+        )
+        draw.text(
+            ENEMY_TIMER_POS,
+            ":",
+            COLORS_NORMAL[1],
+            self._timers_font,
+            anchor="mm",
+        )
 
     @staticmethod
     def _ttw_label(time_to_win: float) -> tuple[str, str]:
@@ -56,7 +64,7 @@ class LayerScoreBase(LayerBase):
             ),
             text=st,
             font=self._font,
-            fill="white"
+            fill="white",
         )
 
         mid = base.width / 2
@@ -83,7 +91,9 @@ class LayerScoreBase(LayerBase):
         if ttw is None:
             ally_label, enemy_label = ("--", "--"), ("--", "--")
         else:
-            ally_label, enemy_label = self._ttw_label(ttw[0]), self._ttw_label(ttw[1])
+            ally_label, enemy_label = self._ttw_label(ttw[0]), self._ttw_label(
+                ttw[1]
+            )
         timers_base = self._timers_base.copy()
         draw = ImageDraw.Draw(timers_base)
 
@@ -92,27 +102,27 @@ class LayerScoreBase(LayerBase):
             ally_label[0],
             COLORS_NORMAL[0],
             self._timers_font,
-            anchor='rm'
+            anchor="rm",
         )
         draw.text(
             (ALLY_TIMER_POS[0] + 2, ALLY_TIMER_POS[1]),
             ally_label[1],
             COLORS_NORMAL[0],
             self._timers_font,
-            anchor='lm'
+            anchor="lm",
         )
         draw.text(
             (ENEMY_TIMER_POS[0] - 3, ENEMY_TIMER_POS[1]),
             enemy_label[0],
             COLORS_NORMAL[1],
             self._timers_font,
-            anchor='rm'
+            anchor="rm",
         )
         draw.text(
             (ENEMY_TIMER_POS[0] + 2, ENEMY_TIMER_POS[1]),
             enemy_label[1],
             COLORS_NORMAL[1],
             self._timers_font,
-            anchor='lm'
+            anchor="lm",
         )
         image.paste(timers_base, (757, 0), timers_base)
