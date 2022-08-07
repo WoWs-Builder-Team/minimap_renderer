@@ -133,3 +133,19 @@ DEATH_TYPES = {
         "name": "ADBOMB",
     },
 }
+
+LAYERS = [
+    "LayerShip",
+    "LayerShot",
+    "LayerTorpedo",
+    "LayerSmoke",
+    "LayerPlane",
+    "LayerWard",
+    "LayerCapture",
+    "LayerHealth",
+    "LayerScore",
+    "LayerCounter",
+    "LayerFrag",
+    "LayerTimer",
+    "LayerRibbon",
+]
