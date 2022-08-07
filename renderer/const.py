@@ -14,6 +14,8 @@ TIER_ROMAN = [
     "XI",
 ]
 
+OPERATIONS = ["07_Advance"]
+
 
 DEATH_TYPES = {
     0: {"sound": "Health", "icon": "frags", "id": 0, "name": "NONE"},

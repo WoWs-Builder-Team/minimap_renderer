@@ -4,6 +4,7 @@ from typing import Optional, Union
 from importlib.resources import open_text
 from importlib import import_module
 
+from renderer.const import OPERATIONS
 from renderer.data import ReplayData
 from renderer.utils import draw_grid, LOGGER
 from renderer.resman import ResourceManager
@@ -24,13 +25,14 @@ class Renderer:
         """
         self.replay_data: ReplayData = replay_data
         self.res: str = f"{__package__}.resources"
+        self.resman = ResourceManager()
         # MAP INFO
         self.minimap_image: Optional[Image.Image] = None
         self.minimap_bg: Optional[Image.Image] = None
         self.minimap_size: int = 0
         self.space_size: int = 0
         self.scaling: float = 0.0
-        self.resman = ResourceManager()
+        self.is_operations = False
 
     def start(self):
         """Starts the rendering process"""
@@ -142,6 +144,7 @@ class Renderer:
         try:
             try:
                 with open_text(pkg, "manifest.json") as mr:
+
                     manifest = json.load(mr)[self.replay_data.game_map]
                     self.minimap_size, self.space_size, self.scaling = manifest
                 LOGGER.info(
