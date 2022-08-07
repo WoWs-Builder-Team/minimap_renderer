@@ -219,8 +219,14 @@ class BattleController(IBattleController):
         Entity.subscribe_property_change(
             "Vehicle", "regenerationHealth", self._set_regeneration_health
         )
+        Entity.subscribe_method_call(
+            "Avatar", "onChatMessage", self._on_chat_message
+        )
 
     ###########################################################################
+    def _on_chat_message(self, entity: Entity, *args, **kwargs):
+        player_id, *_ = args
+        print(self._dict_info[player_id].name)
 
     def set_packet_time(self, t: float):
         self._packet_time = t
