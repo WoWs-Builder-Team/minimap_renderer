@@ -795,6 +795,9 @@ class BattleController(IBattleController):
         )
         self._create_player_vehicle_data()
 
+    def _update_player_data(self):
+        pass
+
     def onPlayerInfoUpdate(self, avatar, playersData, botsData, observersData):
         self._players.create_or_update_players(
             restricted_loads(playersData, encoding="latin1"), PlayerType.PLAYER
@@ -806,7 +809,7 @@ class BattleController(IBattleController):
             restricted_loads(observersData, encoding="latin1"),
             PlayerType.OBSERVER,
         )
-        self._create_player_vehicle_data(True)
+        # self._create_player_vehicle_data(True)
 
     def receiveDamageStat(self, avatar, blob):
         normalized_map = {}
