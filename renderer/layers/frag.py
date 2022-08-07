@@ -44,10 +44,10 @@ class LayerFragBase(LayerBase):
                 frag_fname, path="frag_icons"
             )
 
-            _, f_name, f_species, f_level = self._ships[
+            _, f_name, f_species, f_level, _ = self._ships[
                 fragger_info.ship_params_id
             ]
-            _, k_name, k_species, k_level = self._ships[
+            _, k_name, k_species, k_level, _ = self._ships[
                 killed_info.ship_params_id
             ]
             icon_res = "ship_icons"

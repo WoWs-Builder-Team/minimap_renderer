@@ -42,7 +42,7 @@ class LayerHealthBase(LayerBase):
         ship = ships[self._player.ship_id]
         ability = self._abilities[self._player.ship_params_id]
         per = ship.health / self._player.max_health
-        index, name, species, level = self._ships[self._player.ship_params_id]
+        index, name, species, level, hulls = self._ships[self._player.ship_params_id]
 
         suffix_fg = "_h"
         suffix_bg = "_h_bg" if ship.is_alive else "_h_bgdead"

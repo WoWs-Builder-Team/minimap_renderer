@@ -48,12 +48,23 @@ if __name__ == '__main__':
     dict_ships_info: Dict[int, tuple[str, str, str, int]] = {}
 
     for ship in dict_ships.values():
+        hulls = {}
+        for key, value in ship.ShipUpgradeInfo.__dict__.items():
+            try:
+                if value.ucType == '_Hull':
+                    hull_name = value.components['hull'][0]
+                    hull = getattr(ship, hull_name)
+                    hulls[hull_name] = [len(hull.burnNodes), len(hull.floodNodes)]
+
+            except AttributeError:
+                continue
 
         si = (
             ship.index,
             dict_strings[f"IDS_{ship.index}"].upper(),
             ship.typeinfo.species,
-            ship.level
+            ship.level,
+            hulls,
         )
 
         dict_ships_info[ship.id] = si
