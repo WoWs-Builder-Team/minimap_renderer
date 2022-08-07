@@ -23,6 +23,7 @@ from renderer.data import (
     ControlPoint,
     Score,
     Frag,
+    Message,
 )
 from replay_unpack.utils import (
     unpack_values,
@@ -111,6 +112,7 @@ class BattleController(IBattleController):
         self._acc_hits: list[int] = []
         self._acc_consumables: dict[int, list[Consumable]] = {}
         self._acc_frags: list[Frag] = []
+        self._acc_message: list[Message] = []
 
         #######################################################################
 
@@ -224,9 +226,12 @@ class BattleController(IBattleController):
         )
 
     ###########################################################################
-    def _on_chat_message(self, entity: Entity, *args, **kwargs):
-        player_id, *_ = args
-        print(self._dict_info[player_id].name)
+    def _on_chat_message(
+        self, entity: Entity, player_id, namespace, message, unk
+    ):
+        self._acc_message.append(
+            Message(player_id=player_id, namespace=namespace, message=message)
+        )
 
     def set_packet_time(self, t: float):
         self._packet_time = t
@@ -393,7 +398,8 @@ class BattleController(IBattleController):
             evt_frag=copy.copy(self._acc_frags),
             evt_ribbon=copy.deepcopy(self._ribbons),
             evt_times_to_win=self._times_to_win(),
-            evt_achievement=copy.deepcopy(self._achievements)
+            evt_achievement=copy.deepcopy(self._achievements),
+            evt_chat=copy.deepcopy(self._acc_message),
         )
 
         self._dict_events[battle_time] = evt
@@ -402,6 +408,7 @@ class BattleController(IBattleController):
         self._acc_hits.clear()
         self._acc_consumables.clear()
         self._acc_frags.clear()
+        self._acc_message.clear()
 
     def _add_plane(
         self, entity: Entity, plane_id: int, team_id, params_id, pos, unk

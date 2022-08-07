@@ -53,6 +53,7 @@ class Renderer:
         layer_frag = self._load_base_or_versioned("LayerFrag")
         layer_timer = self._load_base_or_versioned("LayerTimer")
         layer_ribbon = self._load_base_or_versioned("LayerRibbon")
+        layer_chat = self._load_base_or_versioned("LayerChat")
 
         video_writer = write_frames(
             path="minimap.mp4",
@@ -83,6 +84,7 @@ class Renderer:
             layer_frag.draw(game_time, minimap_bg)
             layer_timer.draw(game_time, minimap_bg)
             layer_ribbon.draw(game_time, minimap_bg)
+            layer_chat.draw(game_time, minimap_bg)
 
             minimap_bg.paste(minimap_img, (40, 90))  # 40, 40 w/o logs
             video_writer.send(minimap_bg.tobytes())

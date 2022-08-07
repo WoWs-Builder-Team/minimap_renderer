@@ -11,3 +11,4 @@ from .counter import LayerCounterBase
 from .frag import LayerFragBase
 from .timer import LayerTimerBase
 from .ribbon import LayerRibbonBase
+from .chat import LayerChatBase

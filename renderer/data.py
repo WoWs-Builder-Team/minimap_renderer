@@ -126,6 +126,12 @@ class Frag(NamedTuple):
     death_type: int
 
 
+class Message(NamedTuple):
+    player_id: int
+    namespace: str
+    message: str
+
+
 class Events(NamedTuple):
     """Match events."""
 
@@ -145,6 +151,7 @@ class Events(NamedTuple):
     evt_ribbon: dict
     evt_achievement: dict
     evt_times_to_win: Optional[tuple[float, float]]
+    evt_chat: list[Message]
 
 
 class ReplayData(NamedTuple):
