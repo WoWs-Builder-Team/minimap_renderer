@@ -48,7 +48,7 @@ class LayerCounterBase(LayerBase):
         for counter in COUNTERS:
             _, name, filename, icon_y, offset_x = counter
             icon = self._renderer.resman.load_image(
-                f"{self._renderer.res}.counter_icons", filename
+                filename, path="counter_icons"
             )
             font = self._font_main if name == "DAMAGE" else self._font_com
             self._y_positions.append(y_pos + Y_POS)

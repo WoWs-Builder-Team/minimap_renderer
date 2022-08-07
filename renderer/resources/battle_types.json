@@ -1,0 +1,4412 @@
+[
+    {
+        "scenario": "2Wagons",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "2Wagons",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "2Wagons",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "2Wagons",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "2Wagons",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "2Wagons",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "2Wagons",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "2Wagons",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "2Wagons",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "2Wagons",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "2Wagons_Reverced",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "2Wagons_Reverced",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "2Wagons_Reverced",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "2Wagons_Reverced",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "2Wagons_Reverced",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "2Wagons_Reverced",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "2Wagons_Reverced",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "2Wagons_Reverced",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "2Wagons_Reverced",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "2Wagons_Reverced",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_DEV_QA_TRIGGER_TEST",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_DEV_QA_TRIGGER_TEST",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_DEV_QA_TRIGGER_TEST",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_DEV_QA_TRIGGER_TEST",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_DEV_QA_TRIGGER_TEST",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_DEV_QA_TRIGGER_TEST",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_DEV_QA_TRIGGER_TEST",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_DEV_QA_TRIGGER_TEST",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_DEV_QA_TRIGGER_TEST",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_DEV_QA_TRIGGER_TEST",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_1",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_1",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_1",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_1",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_1",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_1",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_1",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_1",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_1",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_1",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_10",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_10",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_10",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_10",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_10",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_10",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_10",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_10",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_10",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_10",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_5",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_5",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_5",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_5",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_5",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_5",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_5",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_5",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_5",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AI_TEST_5",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ArmsRace",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ArmsRace",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ArmsRace",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ArmsRace",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ArmsRace",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ArmsRace",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ArmsRace",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ArmsRace",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ArmsRace",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ArmsRace",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ArmsRace_Coop",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ArmsRace_Coop",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ArmsRace_Coop",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ArmsRace_Coop",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ArmsRace_Coop",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ArmsRace_Coop",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ArmsRace_Coop",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ArmsRace_Coop",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ArmsRace_Coop",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ArmsRace_Coop",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Armsrace",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Armsrace",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Armsrace",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Armsrace",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Armsrace",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Armsrace",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Armsrace",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Armsrace",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Armsrace",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Armsrace",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Attack_On_Base_Normal",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Attack_On_Base_Normal",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Attack_On_Base_Normal",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Attack_On_Base_Normal",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Attack_On_Base_Normal",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Attack_On_Base_Normal",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Attack_On_Base_Normal",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Attack_On_Base_Normal",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Attack_On_Base_Normal",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Attack_On_Base_Normal",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AutomationTest",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AutomationTest",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AutomationTest",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AutomationTest",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AutomationTest",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AutomationTest",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AutomationTest",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AutomationTest",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AutomationTest",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "AutomationTest",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Battle_Royale",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Battle_Royale",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Battle_Royale",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Battle_Royale",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Battle_Royale",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Battle_Royale",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Battle_Royale",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Battle_Royale",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Battle_Royale",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Battle_Royale",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Battle_Royale_",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Battle_Royale_",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Battle_Royale_",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Battle_Royale_",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Battle_Royale_",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Battle_Royale_",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Battle_Royale_",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Battle_Royale_",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Battle_Royale_",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Battle_Royale_",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination_brawl",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination_brawl",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination_brawl",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination_brawl",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination_brawl",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination_brawl",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination_brawl",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination_brawl",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination_brawl",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination_brawl",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination_cyclone",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination_cyclone",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination_cyclone",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination_cyclone",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination_cyclone",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination_cyclone",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination_cyclone",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination_cyclone",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination_cyclone",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "CvC_Domination_cyclone",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Defense",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Defense",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Defense",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Defense",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Defense",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Defense",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Defense",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Defense",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Defense",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Defense",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_2point",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_2point",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_2point",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_2point",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_2point",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_2point",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_2point",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_2point",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_2point",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_2point",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_2point_Coop",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_2point_Coop",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_2point_Coop",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_2point_Coop",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_2point_Coop",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_2point_Coop",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_2point_Coop",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_2point_Coop",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_2point_Coop",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_2point_Coop",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_3point",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_3point",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_3point",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_3point",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_3point",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_3point",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_3point",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_3point",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_3point",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_3point",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_3point_Coop",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_3point_Coop",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_3point_Coop",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_3point_Coop",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_3point_Coop",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_3point_Coop",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_3point_Coop",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_3point_Coop",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_3point_Coop",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_3point_Coop",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_4point",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_4point",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_4point",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_4point",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_4point",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_4point",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_4point",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_4point",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_4point",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_4point",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_4point_Coop",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_4point_Coop",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_4point_Coop",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_4point_Coop",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_4point_Coop",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_4point_Coop",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_4point_Coop",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_4point_Coop",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_4point_Coop",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_4point_Coop",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_3point_Coop",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_3point_Coop",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_3point_Coop",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_3point_Coop",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_3point_Coop",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_3point_Coop",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_3point_Coop",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_3point_Coop",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_3point_Coop",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_3point_Coop",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_3points",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_3points",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_3points",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_3points",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_3points",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_3points",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_3points",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_3points",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_3points",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_3points",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_4point_Coop",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_4point_Coop",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_4point_Coop",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_4point_Coop",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_4point_Coop",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_4point_Coop",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_4point_Coop",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_4point_Coop",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_4point_Coop",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_4point_Coop",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_4points",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_4points",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_4points",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_4points",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_4points",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_4points",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_4points",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_4points",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_4points",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_LocalWeather_4points",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_Special",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_Special",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_Special",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_Special",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_Special",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_Special",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_Special",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_Special",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_Special",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_Special",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_tournament_3points",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_tournament_3points",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_tournament_3points",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_tournament_3points",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_tournament_3points",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_tournament_3points",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_tournament_3points",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_tournament_3points",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_tournament_3points",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_tournament_3points",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_tournament_4points",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_tournament_4points",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_tournament_4points",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_tournament_4points",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_tournament_4points",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_tournament_4points",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_tournament_4points",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_tournament_4points",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_tournament_4points",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Domination_tournament_4points",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Dunkirk_Normal",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Dunkirk_Normal",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Dunkirk_Normal",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Dunkirk_Normal",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Dunkirk_Normal",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Dunkirk_Normal",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Dunkirk_Normal",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Dunkirk_Normal",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Dunkirk_Normal",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Dunkirk_Normal",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Coop",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Coop",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Coop",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Coop",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Coop",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Coop",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Coop",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Coop",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Coop",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Coop",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_LocalWeather",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_LocalWeather",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_LocalWeather",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_LocalWeather",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_LocalWeather",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_LocalWeather",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_LocalWeather",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_LocalWeather",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_LocalWeather",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_LocalWeather",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_LocalWeather_Coop",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_LocalWeather_Coop",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_LocalWeather_Coop",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_LocalWeather_Coop",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_LocalWeather_Coop",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_LocalWeather_Coop",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_LocalWeather_Coop",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_LocalWeather_Coop",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_LocalWeather_Coop",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_LocalWeather_Coop",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Special",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Special",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Special",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Special",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Special",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Special",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Special",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Special",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Special",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Special",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Tournament",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Tournament",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Tournament",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Tournament",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Tournament",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Tournament",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Tournament",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Tournament",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Tournament",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Epicenter_Tournament",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "FIRST_BATTLE",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "FIRST_BATTLE",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "FIRST_BATTLE",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "FIRST_BATTLE",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "FIRST_BATTLE",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "FIRST_BATTLE",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "FIRST_BATTLE",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "FIRST_BATTLE",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "FIRST_BATTLE",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "FIRST_BATTLE",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016_Hard",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016_Hard",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016_Hard",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016_Hard",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016_Hard",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016_Hard",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016_Hard",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016_Hard",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016_Hard",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016_Hard",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016_Nightmare",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016_Nightmare",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016_Nightmare",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016_Nightmare",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016_Nightmare",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016_Nightmare",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016_Nightmare",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016_Nightmare",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016_Nightmare",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2016_Nightmare",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017_Hard",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017_Hard",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017_Hard",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017_Hard",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017_Hard",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017_Hard",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017_Hard",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017_Hard",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017_Hard",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017_Hard",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017_Nightmare",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017_Nightmare",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017_Nightmare",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017_Nightmare",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017_Nightmare",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017_Nightmare",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017_Nightmare",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017_Nightmare",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017_Nightmare",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Halloween_2017_Nightmare",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "LePVE",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "LePVE",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "LePVE",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "LePVE",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "LePVE",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "LePVE",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "LePVE",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "LePVE",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "LePVE",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "LePVE",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "MINE_TEST",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "MINE_TEST",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "MINE_TEST",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "MINE_TEST",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "MINE_TEST",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "MINE_TEST",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "MINE_TEST",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "MINE_TEST",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "MINE_TEST",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "MINE_TEST",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_01_01_ATTACK_ON_CONVOY_1",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_01_01_ATTACK_ON_CONVOY_1",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_01_01_ATTACK_ON_CONVOY_1",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_01_01_ATTACK_ON_CONVOY_1",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_01_01_ATTACK_ON_CONVOY_1",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_01_01_ATTACK_ON_CONVOY_1",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_01_01_ATTACK_ON_CONVOY_1",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_01_01_ATTACK_ON_CONVOY_1",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_01_01_ATTACK_ON_CONVOY_1",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_01_01_ATTACK_ON_CONVOY_1",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_01_03_NORMAL",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_01_03_NORMAL",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_01_03_NORMAL",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_01_03_NORMAL",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_01_03_NORMAL",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_01_03_NORMAL",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_01_03_NORMAL",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_01_03_NORMAL",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_01_03_NORMAL",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_01_03_NORMAL",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_02_02_NORMAL",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_02_02_NORMAL",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_02_02_NORMAL",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_02_02_NORMAL",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_02_02_NORMAL",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_02_02_NORMAL",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_02_02_NORMAL",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_02_02_NORMAL",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_02_02_NORMAL",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_02_02_NORMAL",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_02_03_s07_Advance",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_02_03_s07_Advance",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_02_03_s07_Advance",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_02_03_s07_Advance",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_02_03_s07_Advance",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_02_03_s07_Advance",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_02_03_s07_Advance",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_02_03_s07_Advance",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_02_03_s07_Advance",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "OP_02_03_s07_Advance",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Hard",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Hard",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Hard",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Hard",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Hard",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Hard",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Hard",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Hard",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Hard",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Hard",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Nightmare",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Nightmare",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Nightmare",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Nightmare",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Nightmare",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Nightmare",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Nightmare",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Nightmare",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Nightmare",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Nightmare",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Ultrahard",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Ultrahard",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Ultrahard",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Ultrahard",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Ultrahard",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Ultrahard",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Ultrahard",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Ultrahard",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Ultrahard",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Portal_Ultrahard",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Ranked_Domination",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Ranked_Domination",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Ranked_Domination",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Ranked_Domination",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Ranked_Domination",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Ranked_Domination",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Ranked_Domination",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Ranked_Domination",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Ranked_Domination",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Ranked_Domination",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Ranked_Epicenter",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Ranked_Epicenter",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Ranked_Epicenter",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Ranked_Epicenter",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Ranked_Epicenter",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Ranked_Epicenter",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Ranked_Epicenter",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Ranked_Epicenter",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Ranked_Epicenter",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "Ranked_Epicenter",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ST_Test",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ST_Test",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ST_Test",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ST_Test",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ST_Test",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ST_Test",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ST_Test",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ST_Test",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ST_Test",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "ST_Test",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "USS_CL",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "USS_CL",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "USS_CL",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "USS_CL",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "USS_CL",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "USS_CL",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "USS_CL",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "USS_CL",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "USS_CL",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "USS_CL",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy1R_Light",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy1R_Light",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy1R_Light",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy1R_Light",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy1R_Light",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy1R_Light",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy1R_Light",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy1R_Light",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy1R_Light",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy1R_Light",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12_B",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12_B",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12_B",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12_B",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12_B",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12_B",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12_B",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12_B",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12_B",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12_B",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12_W",
+        "gameLogic": "Domination",
+        "name": "1x1",
+        "playersPerTeam": 1,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12_W",
+        "gameLogic": "Domination",
+        "name": "2x2",
+        "playersPerTeam": 2,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12_W",
+        "gameLogic": "Domination",
+        "name": "3x3",
+        "playersPerTeam": 3,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12_W",
+        "gameLogic": "Domination",
+        "name": "4x4",
+        "playersPerTeam": 4,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12_W",
+        "gameLogic": "Domination",
+        "name": "5x5",
+        "playersPerTeam": 5,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12_W",
+        "gameLogic": "Domination",
+        "name": "6x6",
+        "playersPerTeam": 6,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12_W",
+        "gameLogic": "Domination",
+        "name": "7x7",
+        "playersPerTeam": 7,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12_W",
+        "gameLogic": "Domination",
+        "name": "8x8",
+        "playersPerTeam": 8,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12_W",
+        "gameLogic": "Domination",
+        "name": "9x9",
+        "playersPerTeam": 9,
+        "teamsCount": 2
+    },
+    {
+        "scenario": "convoy_12x12_W",
+        "gameLogic": "Domination",
+        "name": "12x12",
+        "playersPerTeam": 12,
+        "teamsCount": 2
+    }
+]

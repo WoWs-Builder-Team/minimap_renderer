@@ -17,9 +17,7 @@ CENTER = (800 + COUNTERS_POS) // 2
 class LayerHealthBase(LayerBase):
     def __init__(self, renderer: Renderer):
         self._renderer = renderer
-        self._ships = renderer.resman.load_json(
-            self._renderer.res, "ships.json"
-        )
+        self._ships = renderer.resman.load_json("ships.json")
         self._player: Union[PlayerInfo, None] = None
         self._font = self._renderer.resman.load_font(
             filename="warhelios_bold.ttf", size=16
@@ -28,9 +26,7 @@ class LayerHealthBase(LayerBase):
         self._yellow = ImageColor.getrgb("#ffc400ff")
         self._red = ImageColor.getrgb("#fe4d2aff")
         self._color_gray = ImageColor.getrgb("#ffffffc3")
-        self._abilities = renderer.resman.load_json(
-            self._renderer.res, "abilities.json"
-        )
+        self._abilities = renderer.resman.load_json("abilities.json")
         self.prepare()
 
     def prepare(self):
@@ -48,16 +44,15 @@ class LayerHealthBase(LayerBase):
         per = ship.health / self._player.max_health
         index, name, species, level = self._ships[self._player.ship_params_id]
 
-        bar_res = f"{self._renderer.res}.ship_bars"
         suffix_fg = "_h"
         suffix_bg = "_h_bg" if ship.is_alive else "_h_bgdead"
 
         bg_bar = self._renderer.resman.load_image(
-            bar_res, f"{index}{suffix_bg}.png", nearest=False
+            f"{index}{suffix_bg}.png", nearest=False, path="ship_bars"
         )
 
         fg_bar = self._renderer.resman.load_image(
-            bar_res, f"{index}{suffix_fg}.png", nearest=False
+            f"{index}{suffix_fg}.png", nearest=False, path="ship_bars"
         )
         fg_bar = fg_bar.resize(bg_bar.size, Image.LANCZOS)
 

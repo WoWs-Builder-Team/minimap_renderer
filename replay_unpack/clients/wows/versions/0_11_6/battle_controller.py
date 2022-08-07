@@ -341,7 +341,7 @@ class BattleController(IBattleController):
                 "missions"
             ]["hold"][0]
             reward, period = mission["reward"], mission["period"]
-        except (IndexError, TypeError):
+        except (TypeError, IndexError):
             return None
 
         ally_tick, enemy_tick = 0, 0
@@ -628,7 +628,7 @@ class BattleController(IBattleController):
                 yaw=-180,
                 relation=relation,
                 is_visible=False,
-                not_in_range=True,
+                not_in_range=False,
                 visibility_flag=0,
                 consumables_state={},
             )

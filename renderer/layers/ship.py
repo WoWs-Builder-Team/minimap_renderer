@@ -30,12 +30,8 @@ class LayerShipBase(LayerBase):
             self._renderer.replay_data.player_info
         )
         self._active_consumables: dict[int, dict[int, float]] = {}
-        self._abilities = renderer.resman.load_json(
-            self._renderer.res, "abilities.json"
-        )
-        self._ships = renderer.resman.load_json(
-            self._renderer.res, "ships.json"
-        )
+        self._abilities = renderer.resman.load_json("abilities.json")
+        self._ships = renderer.resman.load_json("ships.json")
 
     def draw(self, game_time: int, image: Image.Image):
         """Draws the ship icons to the minimap image.
@@ -65,9 +61,6 @@ class LayerShipBase(LayerBase):
             holder = self._ship_info[vehicle.avatar_id]
             player = self._renderer.replay_data.player_info[vehicle.avatar_id]
             index, name, species, level = self._ships[player.ship_params_id]
-
-            # if consumables_used := consumables.get(vehicle_id, None):
-            #     print(consumables_used)
 
             player = player_info[vehicle.avatar_id]
 
@@ -187,8 +180,8 @@ class LayerShipBase(LayerBase):
                 cname = self._abilities[params_id][aid]
                 filename = f"consumable_{cname}.png"
                 c_image = self._renderer.resman.load_image(
-                    f"{self._renderer.res}.consumables",
                     filename,
+                    path="consumables",
                     size=(20, 20),
                 )
                 c_icons_holder.paste(c_image, (x_pos, 0), c_image)
@@ -241,5 +234,5 @@ class LayerShipBase(LayerBase):
                 icon_type = "dead"
 
         return self._renderer.resman.load_image(
-            f"{self._renderer.res}.ship_icons.{icon_type}", f"{species}.png"
+            f"{species}.png", path=f"ship_icons.{icon_type}"
         )

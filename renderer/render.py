@@ -3,7 +3,9 @@ import json
 from typing import Optional, Union
 from importlib.resources import open_text
 from importlib import import_module
+from renderer.base import LayerBase
 
+from renderer.const import OPERATIONS, LAYERS
 from renderer.data import ReplayData
 from renderer.utils import draw_grid, LOGGER
 from renderer.resman import ResourceManager
@@ -24,13 +26,14 @@ class Renderer:
         """
         self.replay_data: ReplayData = replay_data
         self.res: str = f"{__package__}.resources"
+        self.resman = ResourceManager(replay_data.game_version)
         # MAP INFO
         self.minimap_image: Optional[Image.Image] = None
         self.minimap_bg: Optional[Image.Image] = None
         self.minimap_size: int = 0
         self.space_size: int = 0
         self.scaling: float = 0.0
-        self.resman = ResourceManager()
+        self.is_operations = False
 
     def start(self):
         """Starts the rendering process"""
@@ -39,21 +42,19 @@ class Renderer:
         assert self.minimap_image
         assert self.minimap_bg
 
-        (
-            layer_ship,
-            layer_shot,
-            layer_torpedo,
-            layer_smoke,
-            layer_plane,
-            layer_ward,
-            layer_capture,
-            layer_health,
-            layer_score,
-            layer_counter,
-            layer_frag,
-            layer_timer,
-            layer_ribbon,
-        ) = self._check_versioned_layers()
+        layer_ship = self._load_base_or_versioned("LayerShip")
+        layer_shot = self._load_base_or_versioned("LayerShot")
+        layer_torpedo = self._load_base_or_versioned("LayerTorpedo")
+        layer_smoke = self._load_base_or_versioned("LayerSmoke")
+        layer_plane = self._load_base_or_versioned("LayerPlane")
+        layer_ward = self._load_base_or_versioned("LayerWard")
+        layer_capture = self._load_base_or_versioned("LayerCapture")
+        layer_health = self._load_base_or_versioned("LayerHealth")
+        layer_score = self._load_base_or_versioned("LayerScore")
+        layer_counter = self._load_base_or_versioned("LayerCounter")
+        layer_frag = self._load_base_or_versioned("LayerFrag")
+        layer_timer = self._load_base_or_versioned("LayerTimer")
+        layer_ribbon = self._load_base_or_versioned("LayerRibbon")
 
         video_writer = write_frames(
             path="minimap.mp4",
@@ -70,8 +71,6 @@ class Renderer:
             minimap_bg = self.minimap_bg.copy()
 
             draw = ImageDraw.Draw(minimap_img)
-            draw_bg = ImageDraw.Draw(minimap_bg)
-
             layer_capture.draw(game_time, minimap_img)
             layer_ward.draw(game_time, minimap_img)
             layer_shot.draw(game_time, draw)
@@ -100,15 +99,13 @@ class Renderer:
             MapManifestLoadError: Raised when an error occurs when loading maps
             manifest.
         """
-        LOGGER.info("Looking for versioned map resource...")
-        map_res = self._load_map_manifest()
+        self._load_map_manifest()
+        path = f"spaces.{self.replay_data.game_map}"
 
         try:
-            map_legends = self.resman.load_image(
-                self.res, "minimap_grid_legends.png"
-            )
-            map_land = self.resman.load_image(map_res, "minimap.png")
-            map_water = self.resman.load_image(map_res, "minimap_water.png")
+            map_legends = self.resman.load_image("minimap_grid_legends.png")
+            map_land = self.resman.load_image("minimap.png", path=path)
+            map_water = self.resman.load_image("minimap_water.png", path=path)
             self.minimap_bg = map_water.copy().resize((1360, 850))  # 800, 800
             self.minimap_bg.paste(
                 map_legends,
@@ -124,7 +121,7 @@ class Renderer:
         except (FileNotFoundError, ModuleNotFoundError) as e:
             raise MapLoadError from e
 
-    def _load_map_manifest(self) -> str:
+    def _load_map_manifest(self):
         """Loads the map's metadata and checks its values.
 
         Raises:
@@ -134,44 +131,15 @@ class Renderer:
         Returns:
             str: Package on where the map resources will be loaded.
         """
-        version = self.replay_data.game_version
-        pkg = f"{__package__}.versions.{version}.resources.spaces"
-        map_default = f"{self.res}.spaces.{self.replay_data.game_map}"
-        map_versioned = f"{pkg}.{self.replay_data.game_map}"
-
-        try:
-            try:
-                with open_text(pkg, "manifest.json") as mr:
-                    manifest = json.load(mr)[self.replay_data.game_map]
-                    self.minimap_size, self.space_size, self.scaling = manifest
-                LOGGER.info(
-                    "Versioned map resource found. Loading that instead..."
-                )
-                map_res = map_versioned
-            except (FileNotFoundError, KeyError):
-                with open_text(
-                    f"{self.res}.spaces", "manifest.json"
-                ) as reader:
-                    manifest = json.load(reader)
-                    (
-                        self.minimap_size,
-                        self.space_size,
-                        self.scaling,
-                    ) = manifest[self.replay_data.game_map]
-                LOGGER.info(
-                    "No versioned map resource found. Loading default..."
-                )
-                map_res = map_default
-
-            assert isinstance(self.minimap_size, int)
-            assert isinstance(self.space_size, int)
-            assert isinstance(self.scaling, float)
-            assert 0 < self.space_size <= 1600
-            assert 760 == self.minimap_size
-        except Exception as e:
-            raise MapManifestLoadError from e
-        else:
-            return map_res
+        manifest = self.resman.load_json("manifest.json", "spaces")
+        manifest = manifest[self.replay_data.game_map]
+        print(manifest)
+        self.minimap_size, self.space_size, self.scaling = manifest
+        assert isinstance(self.minimap_size, int)
+        assert isinstance(self.space_size, int)
+        assert isinstance(self.scaling, float)
+        assert 0 < self.space_size <= 1600
+        assert 760 == self.minimap_size
 
     def get_scaled(
         self, xy: tuple[Number, Number], flip_y=True
@@ -197,42 +165,16 @@ class Renderer:
     def get_scaled_r(self, r: Number):
         return r * self.scaling
 
-    def _check_versioned_layers(self):
-        """Check for versioned layer(s) and loads it.
-
-        Returns:
-            _type_: Initialized layers.
-        """
+    def _load_base_or_versioned(self, layer_name: str) -> LayerBase:
+        assert layer_name in LAYERS
         versioned_layers_pkg = (
             f"{__package__}.versions.{self.replay_data.game_version}"
         )
-
-        layers = [
-            "LayerShip",
-            "LayerShot",
-            "LayerTorpedo",
-            "LayerSmoke",
-            "LayerPlane",
-            "LayerWard",
-            "LayerCapture",
-            "LayerHealth",
-            "LayerScore",
-            "LayerCounter",
-            "LayerFrag",
-            "LayerTimer",
-            "LayerRibbon",
-        ]
-        init_layers = []
-
-        LOGGER.info("Looking for versioned layers")
-
-        for layer in layers:
-            try:
-                mod = import_module(".layers", versioned_layers_pkg)
-                m_layer = getattr(mod, layer)
-                LOGGER.info(f"Versioned {layer} found. Using that instead.")
-            except (ModuleNotFoundError, AttributeError):
-                mod = import_module(".layers", __package__)
-                m_layer = getattr(mod, f"{layer}Base")
-            init_layers.append(m_layer(self))
-        return init_layers
+        try:
+            mod = import_module(".layers", versioned_layers_pkg)
+            m_layer = getattr(mod, layer_name)
+            LOGGER.info(f"Versioned {layer_name} found. Using that instead.")
+        except (ModuleNotFoundError, AttributeError):
+            mod = import_module(".layers", __package__)
+            m_layer = getattr(mod, f"{layer_name}Base")
+        return m_layer(self)
