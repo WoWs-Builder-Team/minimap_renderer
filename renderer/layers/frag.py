@@ -19,9 +19,7 @@ class LayerFragBase(LayerBase):
             filename="warhelios_bold.ttf", size=12
         )
         self._frags: list[Frag] = []
-        self._ships = self._renderer.resman.load_json(
-            self._renderer.res, "ships.json"
-        )
+        self._ships = self._renderer.resman.load_json("ships.json")
         self._players = renderer.replay_data.player_info
         self._vehicle_id_to_player = {
             v.ship_id: v for k, v in self._players.items()
@@ -41,9 +39,10 @@ class LayerFragBase(LayerBase):
         for frag in reversed(self._frags[-5:]):
             fragger_info = self._vehicle_id_to_player[frag.fragger_id]
             killed_info = self._vehicle_id_to_player[frag.killed_id]
-            res_frag = f"{self._renderer.res}.frag_icons"
             frag_fname = f"{DEATH_TYPES[frag.death_type]['icon']}.png"
-            death_icon = self._renderer.resman.load_image(res_frag, frag_fname)
+            death_icon = self._renderer.resman.load_image(
+                frag_fname, path="frag_icons"
+            )
 
             _, f_name, f_species, f_level = self._ships[
                 fragger_info.ship_params_id
@@ -51,16 +50,15 @@ class LayerFragBase(LayerBase):
             _, k_name, k_species, k_level = self._ships[
                 killed_info.ship_params_id
             ]
-            icon_res = f"{self._renderer.res}.ship_icons"
-
+            icon_res = "ship_icons"
             line = []
 
             if frag.fragger_id in self._allies:
                 ally_icon = self._renderer.resman.load_image(
-                    f"{icon_res}.ally", f"{f_species}.png", rot=-90
+                    f"{f_species}.png", rot=-90, path=f"{icon_res}.ally"
                 )
                 enemy_icon = self._renderer.resman.load_image(
-                    f"{icon_res}.enemy", f"{k_species}.png", rot=90
+                    f"{k_species}.png", rot=90, path=f"{icon_res}.enemy"
                 )
 
                 if fragger_info.clan_tag:
@@ -106,10 +104,10 @@ class LayerFragBase(LayerBase):
                 )
             else:
                 ally_icon = self._renderer.resman.load_image(
-                    f"{icon_res}.ally", f"{k_species}.png", rot=-90
+                    f"{k_species}.png", rot=-90, path=f"{icon_res}.ally"
                 )
                 enemy_icon = self._renderer.resman.load_image(
-                    f"{icon_res}.enemy", f"{f_species}.png", rot=90
+                    f"{f_species}.png", rot=90, path=f"{icon_res}.enemy"
                 )
 
                 if fragger_info.clan_tag:

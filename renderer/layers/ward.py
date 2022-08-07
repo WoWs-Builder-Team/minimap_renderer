@@ -9,6 +9,7 @@ class LayerWardBase(LayerBase):
     Args:
         LayerBase (_type_): _description_
     """
+
     def __init__(self, renderer: Renderer):
         """Initializes this class.
 
@@ -44,7 +45,7 @@ class LayerWardBase(LayerBase):
                 "ward_ally" if ward.relation in [-1, 0] else "ward_enemy"
             )
             ward_image = self._renderer.resman.load_image(
-                self._renderer.res, f"{filename}.png", size=(w, h)
+                f"{filename}.png", size=(w, h)
             )
 
             image.paste(

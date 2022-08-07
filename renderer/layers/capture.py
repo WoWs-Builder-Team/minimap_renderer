@@ -60,8 +60,7 @@ class LayerCaptureBase(LayerBase):
 
             relation_str = RELATION_NORMAL_STR[cp.relation]
             icon = self._renderer.resman.load_image(
-                f"{self._renderer.res}.cap_icons.{relation_str}",
-                icon_name,
+                icon_name, path=f"cap_icons.{relation_str}"
             )
 
             if cp.has_invaders and cp.invader_team != -1:
@@ -75,9 +74,7 @@ class LayerCaptureBase(LayerBase):
                     from_color, to_color, cp.progress
                 )
             else:
-                normal = self._renderer.resman.load_image(
-                    self._renderer.res, "cap_normal.png"
-                )
+                normal = self._renderer.resman.load_image("cap_normal.png")
                 from_color = "#000000"
                 to_color = COLORS_NORMAL[cp.relation]
                 progress = replace_color(normal, from_color, to_color)
@@ -109,10 +106,9 @@ class LayerCaptureBase(LayerBase):
         Returns:
             Image.Image: Image of the capture area, resized.
         """
-        package = self._renderer.res
         relation_to_str = {-1: "neutral", 0: "ally", 1: "enemy"}
         filename = f"cap_{relation_to_str[relation]}.png"
-        return self._renderer.resman.load_image(package, filename, size=size)
+        return self._renderer.resman.load_image(filename, size=size)
 
     def _get_progress(self, from_color: str, to_color: str, percent: float):
         """Gets the diamond progress `bar` from the resources and properly
@@ -126,9 +122,7 @@ class LayerCaptureBase(LayerBase):
         Returns:
             Image.Image: Diamond progress `bar` image.
         """
-        pd = self._renderer.resman.load_image(
-            self._renderer.res, "cap_invaded.png"
-        )
+        pd = self._renderer.resman.load_image("cap_invaded.png")
 
         bg_diamond = replace_color(pd, "#000000", from_color)
         fg_diamond = replace_color(pd, "#000000", to_color)

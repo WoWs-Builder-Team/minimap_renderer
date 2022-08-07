@@ -28,9 +28,7 @@ class LayerRibbonBase(LayerBase):
             filename="warhelios_bold.ttf", size=25
         )
         self._images: dict[str, tuple[int, Image.Image]] = {}
-        self._achievements = renderer.resman.load_json(
-            renderer.res, "achievement.json"
-        )
+        self._achievements = renderer.resman.load_json("achievement.json")
 
     def draw(self, game_time: int, image: Image.Image):
         evt_ribbons = self._renderer.replay_data.events[game_time].evt_ribbon
@@ -68,7 +66,7 @@ class LayerRibbonBase(LayerBase):
             ribbon_count = len(totals)
 
             for idx, (r_name, r_count) in enumerate(totals.items(), 1):
-                r_res = f"{self._renderer.res}.ribbon_icons"
+                r_res = "ribbon_icons"
                 if "unknown" in r_name:
                     f_name = "ribbon_unknown.png"
                 else:
@@ -86,7 +84,7 @@ class LayerRibbonBase(LayerBase):
                             x_pos = 805
                         continue
 
-                r_img = self._renderer.resman.load_image(r_res, f_name)
+                r_img = self._renderer.resman.load_image(f_name, path=r_res)
                 r_draw = ImageDraw.Draw(r_img)
                 text = f"x{r_count}"
                 t_w, t_h = self._font.getsize(text)
@@ -131,10 +129,10 @@ class LayerRibbonBase(LayerBase):
                             x_pos = 805
                         continue
 
-                a_icon_res = f"{self._renderer.res}.achievement_icons"
+                a_icon_res = "achievement_icons"
                 a_filename = f"icon_achievement_{ui_name}.png"
                 a_image = self._renderer.resman.load_image(
-                    a_icon_res, a_filename
+                    a_filename, path=a_icon_res
                 )
 
                 if a_count > 1:

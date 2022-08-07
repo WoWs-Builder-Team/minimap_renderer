@@ -14,6 +14,7 @@ class LayerPlaneBase(LayerBase):
     Args:
         LayerBase (_type_): _description_
     """
+
     def __init__(self, renderer: Renderer):
         """Initiates this class.
 
@@ -21,9 +22,7 @@ class LayerPlaneBase(LayerBase):
             renderer (Renderer): The renderer.
         """
         self._renderer = renderer
-        self._planes = renderer.resman.load_json(
-            self._renderer.res, "planes.json"
-        )
+        self._planes = renderer.resman.load_json("planes.json")
 
     def draw(self, game_time: int, image: Image.Image):
         """Draws the planes to the minimap image.
@@ -55,24 +54,32 @@ class LayerPlaneBase(LayerBase):
         """
         ptype, ammo = self._planes[plane.params_id]
         relation = RELATION_NORMAL_STR[plane.relation]
-        icon_res = f"{self._renderer.res}.plane_icons.{relation}"
+        icon_res = f"plane_icons.{relation}"
 
         if plane.purpose in [0, 1]:
             if ptype == "Dive":
                 filename = f"Dive_{ammo}.png"
-                icon = self._renderer.resman.load_image(icon_res, filename)
+                icon = self._renderer.resman.load_image(
+                    filename, path=icon_res
+                )
             else:
                 filename = f"{ptype}.png"
-                icon = self._renderer.resman.load_image(icon_res, filename)
+                icon = self._renderer.resman.load_image(
+                    filename, path=icon_res
+                )
         elif plane.purpose in [2, 3]:
-            icon = self._renderer.resman.load_image(icon_res, "Cap.png")
+            icon = self._renderer.resman.load_image("Cap.png", path=icon_res)
         else:
             if plane.purpose == 6:
                 filename = f"Airstrike_{ammo}.png"
-                icon = self._renderer.resman.load_image(icon_res, filename)
+                icon = self._renderer.resman.load_image(
+                    filename, path=icon_res
+                )
             else:
                 filename = "Scout.png"
-                icon = self._renderer.resman.load_image(icon_res, filename)
+                icon = self._renderer.resman.load_image(
+                    filename, path=icon_res
+                )
 
         if plane.purpose == 1:
             icon_px = np.array(icon)
