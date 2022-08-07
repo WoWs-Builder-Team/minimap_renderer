@@ -23,6 +23,7 @@ from renderer.data import (
     ControlPoint,
     Score,
     Frag,
+    Message,
 )
 from replay_unpack.utils import (
     unpack_values,
@@ -111,6 +112,7 @@ class BattleController(IBattleController):
         self._acc_hits: list[int] = []
         self._acc_consumables: dict[int, list[Consumable]] = {}
         self._acc_frags: list[Frag] = []
+        self._acc_message: list[Message] = []
 
         #######################################################################
 
@@ -219,11 +221,20 @@ class BattleController(IBattleController):
         Entity.subscribe_property_change(
             "Vehicle", "regenerationHealth", self._set_regeneration_health
         )
+        Entity.subscribe_method_call(
+            "Avatar", "onChatMessage", self._on_chat_message
+        )
         Entity.subscribe_property_change(
             "Vehicle", "burningFlags", self._set_burning_flags
         )
 
     ###########################################################################
+    def _on_chat_message(
+        self, entity: Entity, player_id, namespace, message, unk
+    ):
+        self._acc_message.append(
+            Message(player_id=player_id, namespace=namespace, message=message)
+        )
 
     def set_packet_time(self, t: float):
         self._packet_time = t
@@ -395,7 +406,8 @@ class BattleController(IBattleController):
             evt_frag=copy.copy(self._acc_frags),
             evt_ribbon=copy.deepcopy(self._ribbons),
             evt_times_to_win=self._times_to_win(),
-            evt_achievement=copy.deepcopy(self._achievements)
+            evt_achievement=copy.deepcopy(self._achievements),
+            evt_chat=copy.deepcopy(self._acc_message),
         )
 
         self._dict_events[battle_time] = evt
@@ -404,6 +416,7 @@ class BattleController(IBattleController):
         self._acc_hits.clear()
         self._acc_consumables.clear()
         self._acc_frags.clear()
+        self._acc_message.clear()
 
     def _add_plane(
         self, entity: Entity, plane_id: int, team_id, params_id, pos, unk
@@ -804,6 +817,9 @@ class BattleController(IBattleController):
         )
         self._create_player_vehicle_data()
 
+    def _update_player_data(self):
+        pass
+
     def onPlayerInfoUpdate(self, avatar, playersData, botsData, observersData):
         self._players.create_or_update_players(
             restricted_loads(playersData, encoding="latin1"), PlayerType.PLAYER
@@ -815,7 +831,7 @@ class BattleController(IBattleController):
             restricted_loads(observersData, encoding="latin1"),
             PlayerType.OBSERVER,
         )
-        self._create_player_vehicle_data(True)
+        # self._create_player_vehicle_data(True)
 
     def receiveDamageStat(self, avatar, blob):
         normalized_map = {}

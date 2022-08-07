@@ -148,4 +148,5 @@ LAYERS = [
     "LayerFrag",
     "LayerTimer",
     "LayerRibbon",
+    "LayerChat"
 ]
