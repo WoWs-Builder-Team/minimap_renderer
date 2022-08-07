@@ -153,7 +153,8 @@ class LayerFragBase(LayerBase):
                 )
             line_img = self.build(line)
             y_pos -= line_img.height
-            image.paste(line_img, (800, y_pos), line_img)
+            x_pos = (image.width - 30) - line_img.width
+            image.paste(line_img, (x_pos, y_pos), line_img)
 
     def _hash(self, line):
         hashables = []
@@ -199,5 +200,6 @@ class LayerFragBase(LayerBase):
                         pos_x += a.width
             elif isinstance(el, int):
                 pos_x += el
+        ib = ib.crop((0, 0, pos_x, ib.height))
         self._generated_lines[line_hash] = ib.copy()
         return ib.copy()
