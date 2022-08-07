@@ -23,6 +23,7 @@ class ResourceManager:
         self,
         filename: str,
         path: Optional[str] = None,
+        ignore_versioned: bool = False,
     ) -> dict:
         """Loads a json file from the given package and converts its numeric
         keys to integer.
@@ -32,13 +33,15 @@ class ResourceManager:
             return cached
 
         try:
+            if ignore_versioned:
+                raise ModuleNotFoundError
+
             res_package = f"{__package__}.versions.{self._versions}.resources"
             res_package = res_package if not path else f"{res_package}.{path}"
 
             if not is_resource(res_package, filename):
                 raise FileNotFoundError
-            LOGGER.debug(f"Versioned {filename} found.")
-        except FileNotFoundError:
+        except (FileNotFoundError, ModuleNotFoundError):
             res_package = self._default_res
             res_package = res_package if not path else f"{res_package}.{path}"
 
@@ -59,7 +62,7 @@ class ResourceManager:
             if not is_resource(res_package, filename):
                 raise FileNotFoundError
             LOGGER.debug(f"Versioned {filename} found.")
-        except FileNotFoundError:
+        except (FileNotFoundError, ModuleNotFoundError):
             res_package = self._default_res
             res_package = res_package if not path else f"{res_package}.{path}"
 

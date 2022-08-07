@@ -1,7 +1,5 @@
-import json
-
+from json import JSONDecodeError
 from typing import Optional, Union
-from importlib.resources import open_text
 from importlib import import_module
 from renderer.base import LayerBase
 
@@ -9,7 +7,7 @@ from renderer.const import OPERATIONS, LAYERS
 from renderer.data import ReplayData
 from renderer.utils import draw_grid, LOGGER
 from renderer.resman import ResourceManager
-from renderer.exceptions import MapLoadError, MapManifestLoadError
+from renderer.exceptions import MapLoadError
 from PIL import Image, ImageDraw
 from imageio_ffmpeg import write_frames
 from tqdm import tqdm
@@ -131,9 +129,13 @@ class Renderer:
         Returns:
             str: Package on where the map resources will be loaded.
         """
-        manifest = self.resman.load_json("manifest.json", "spaces")
-        manifest = manifest[self.replay_data.game_map]
-        print(manifest)
+        try:
+            manifest = self.resman.load_json("manifest.json", "spaces")
+            manifest = manifest[self.replay_data.game_map]
+        except (KeyError, JSONDecodeError):
+            manifest = self.resman.load_json("manifest.json", "spaces", True)
+            manifest = manifest[self.replay_data.game_map]
+
         self.minimap_size, self.space_size, self.scaling = manifest
         assert isinstance(self.minimap_size, int)
         assert isinstance(self.space_size, int)
