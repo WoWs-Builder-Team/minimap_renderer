@@ -45,7 +45,7 @@ if __name__ == '__main__':
         mo_string: MOEntry
         dict_strings[mo_string.msgid] = mo_string.msgstr
 
-    dict_ships_info: Dict[int, tuple[str, str, str, int]] = {}
+    dict_ships_info: Dict[int, tuple[str, str, str, int, dict[str, int]]] = {}
 
     for ship in dict_ships.values():
         hulls = {}
