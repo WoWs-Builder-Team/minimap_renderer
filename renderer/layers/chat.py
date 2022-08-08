@@ -59,7 +59,11 @@ class LayerChatBase(LayerBase):
             )
             x_pos += c_w
 
-        n_color = COLORS_NORMAL[player.relation]
+        n_color = (
+            COLORS_NORMAL[0]
+            if player.relation in [-1, 0]
+            else COLORS_NORMAL[1]
+        )
 
         n_w, n_h = self._font.getsize(f"{player.name}: ")
         draw.text((x_pos, 0), f"{player.name}: ", n_color, self._font)
