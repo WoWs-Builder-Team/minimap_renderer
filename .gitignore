@@ -168,3 +168,4 @@ replays/
 /*.json
 /*.png
 !requirements.txt
+*.csv
