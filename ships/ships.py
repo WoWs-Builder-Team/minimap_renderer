@@ -19,20 +19,24 @@ class GPEncode(json.JSONEncoder):
             return {}
 
 
-def get_ship_data(gp_type: str):
+def get_gp_dict():
     gp_file_path = os.path.join(os.path.dirname(__file__), 'GameParams.data')
     with open(gp_file_path, "rb") as f:
         gp_data: bytes = f.read()
         gp_data: bytes = struct.pack('B' * len(gp_data), *gp_data[::-1])
         gp_data: bytes = zlib.decompress(gp_data)
         gp_data_dict: dict = pickle.loads(gp_data, encoding='latin1')
-    return filter(lambda g: g.typeinfo.type == gp_type,
-                  gp_data_dict[0].values())
+    return gp_data_dict
 
 
 if __name__ == '__main__':
     dict_ships = {}
-    list_ships = get_ship_data('Ship')
+    gp_dict = get_gp_dict()
+    list_ships = filter(lambda g: g.typeinfo.type == 'Ship',
+                        gp_dict[0].values())
+    list_units = filter(lambda g: g.typeinfo.type == 'Unit',
+                        gp_dict[0].values())
+    units_name_to_id = {unit.name: unit.id for unit in list_units}
 
     for ship in list_ships:
         dict_ships[ship.id] = ship
@@ -54,7 +58,7 @@ if __name__ == '__main__':
                 if value.ucType == '_Hull':
                     hull_name = value.components['hull'][0]
                     hull = getattr(ship, hull_name)
-                    hulls[hull_name] = [len(hull.burnNodes), len(hull.floodNodes)]
+                    hulls[units_name_to_id[key]] = [len(hull.burnNodes), len(hull.floodNodes)]
 
             except AttributeError:
                 continue
@@ -68,6 +72,11 @@ if __name__ == '__main__':
         )
 
         dict_ships_info[ship.id] = si
+    #
+    # for unit in list_units:
+    #     for ship in dict_ships_info.values():
+    #         if ship[4].get(unit.name, None):
+    #             ship[4][unit.id] = ship[4].pop(unit.name)
 
     with open(os.path.join(os.path.dirname(__file__), 'ships.json'), 'w') as f:
         json.dump(dict_ships_info, f, indent=1)
