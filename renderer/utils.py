@@ -57,7 +57,7 @@ def generate_ship_data(
 
     for player in player_info.values():
         font_color = COLORS_NORMAL[player.relation]
-        index, ship_name, ship_species, ship_level = ships[
+        index, ship_name, ship_species, ship_level, hulls = ships[
             str(player.ship_params_id)
         ]
         holder: Image.Image = Image.new("RGBA", (hw, hh))

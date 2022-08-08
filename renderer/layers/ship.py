@@ -60,7 +60,7 @@ class LayerShipBase(LayerBase):
         ):
             holder = self._ship_info[vehicle.avatar_id]
             player = self._renderer.replay_data.player_info[vehicle.avatar_id]
-            index, name, species, level = self._ships[player.ship_params_id]
+            index, name, species, level, hulls = self._ships[player.ship_params_id]
 
             player = player_info[vehicle.avatar_id]
 
