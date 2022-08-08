@@ -37,7 +37,7 @@ class LayerRibbonBase(LayerBase):
         ].evt_achievement
 
         x_pos = 805
-        y_pos = 145
+        y_pos = 260
         last_y_height = 0
         ribbon_count = 0
 
