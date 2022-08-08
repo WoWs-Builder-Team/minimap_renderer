@@ -51,7 +51,12 @@ class LayerChatBase(LayerBase):
 
         if player.clan_tag:
             c_w, c_h = self._font.getsize(f"[{player.clan_tag}]")
-            draw.text((x_pos, 0), f"[{player.clan_tag}]", "white", self._font)
+            draw.text(
+                (x_pos, 0),
+                f"[{player.clan_tag}]",
+                self.unpack_color(player.clan_color),
+                self._font,
+            )
             x_pos += c_w
 
         n_color = COLORS_NORMAL[player.relation]
@@ -69,3 +74,13 @@ class LayerChatBase(LayerBase):
         draw.text((x_pos, 0), message.message, m_color, self._font)
         x_pos += m_w
         return base
+
+    @staticmethod
+    def unpack_color(packed_value: int) -> tuple:
+        bits = [8, 8, 8]
+        values = []
+        for bit in bits:
+            value = packed_value & (2**bit - 1)
+            packed_value = packed_value >> bit
+            values.append(value)
+        return tuple(reversed(values))
