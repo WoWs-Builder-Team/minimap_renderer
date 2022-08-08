@@ -188,8 +188,8 @@ class LayerHealthBase(LayerBase):
                 FLOOD_NODE_POSITIONS[flood_nodes]
             )
 
-        image.paste(th, (px, 90), th)
-        image.paste(bg_bar, (px, 30), bg_bar)
+        image.paste(th, (px, 205), th)
+        image.paste(bg_bar, (px, 145), bg_bar)
 
     def _draw_nodes(self, image: Image.Image, icon: Image.Image, flags: str, positions: list):
         for index, bit in enumerate(flags):

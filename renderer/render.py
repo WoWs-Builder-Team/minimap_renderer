@@ -65,6 +65,8 @@ class Renderer:
         )
         video_writer.send(None)
 
+        self._draw_header(self.minimap_bg)
+
         for game_time in tqdm(self.replay_data.events.keys()):
             minimap_img = self.minimap_image.copy()
             minimap_bg = self.minimap_bg.copy()
@@ -89,6 +91,18 @@ class Renderer:
             minimap_bg.paste(minimap_img, (40, 90))  # 40, 40 w/o logs
             video_writer.send(minimap_bg.tobytes())
         video_writer.close()
+
+    def _draw_header(self, image: Image.Image):
+        draw = ImageDraw.Draw(image)
+
+        logo = self.resman.load_image("logo.png")
+        image.paste(logo, (840, 25), logo)
+
+        font_large = self.resman.load_font("warhelios_bold.ttf", size=35)
+        draw.text((945, 30), "Minimap Renderer", "white", font_large)
+
+        font_large = self.resman.load_font("warhelios_bold.ttf", size=16)
+        draw.text((945, 75), "https://github.com/WoWs-Builder-Team", "white", font_large)
 
     def _load_map(self):
         """Loads the map.

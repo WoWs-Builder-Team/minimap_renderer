@@ -11,7 +11,7 @@ COUNTERS = [
 COUNTER_COLOR = "#ffffff"
 
 X_POS = 1100
-Y_POS = 27
+Y_POS = 142
 
 
 class LayerCounterBase(LayerBase):
