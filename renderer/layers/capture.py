@@ -40,14 +40,15 @@ class LayerCaptureBase(LayerBase):
         cps = events[game_time].evt_control.values()
 
         for count, cp in enumerate(cps):
+            if not cp.is_visible:
+                continue
+
             if count in self._generated_caps:
                 cap_image, cap_pos, cap_hash = self._generated_caps[count]
                 if self._get_cap_hash(cp) == cap_hash:
                     image.paste(cap_image, cap_pos, cap_image)
                     continue
 
-            if not cp.is_visible:
-                continue
             x, y = self._renderer.get_scaled(cp.position)
             radius = self._renderer.get_scaled_r(cp.radius)
             w = h = round(radius * 2)
