@@ -3,6 +3,7 @@ from renderer.base import LayerBase
 from renderer.render import Renderer
 from renderer.const import COLORS_NORMAL, RELATION_NORMAL_STR
 from renderer.utils import replace_color
+from renderer.data import ControlPoint
 
 
 class LayerCaptureBase(LayerBase):
@@ -25,7 +26,7 @@ class LayerCaptureBase(LayerBase):
             if p.relation == -1
         ].pop()
         self._generated_caps: dict[
-            int, tuple[Image.Image, tuple[int, int]]
+            int, tuple[Image.Image, tuple[int, int], int]
         ] = {}
 
     def draw(self, game_time: int, image: Image.Image):
@@ -39,12 +40,11 @@ class LayerCaptureBase(LayerBase):
         cps = events[game_time].evt_control.values()
 
         for count, cp in enumerate(cps):
-            cp_hash = hash(cp) & 1000000000
-
-            if cp_hash in self._generated_caps:
-                cap_image, cap_pos = self._generated_caps[cp_hash]
-                image.paste(cap_image, cap_pos, cap_image)
-                continue
+            if count in self._generated_caps:
+                cap_image, cap_pos, cap_hash = self._generated_caps[count]
+                if self._get_cap_hash(cp) == cap_hash:
+                    image.paste(cap_image, cap_pos, cap_image)
+                    continue
 
             if not cp.is_visible:
                 continue
@@ -92,9 +92,31 @@ class LayerCaptureBase(LayerBase):
             cx = round(x - cp_area.width / 2)
             cy = round(y - cp_area.height / 2)
 
-            self._generated_caps[cp_hash] = (cp_area.copy(), (cx, cy))
+            self._generated_caps[count] = (
+                cp_area.copy(),
+                (cx, cy),
+                self._get_cap_hash(cp),
+            )
 
             image.paste(cp_area, (cx, cy), cp_area)
+
+    def _get_cap_hash(self, cap: ControlPoint):
+        cap_hash = (
+            hash(
+                (
+                    cap.both_inside,
+                    cap.has_invaders,
+                    cap.invader_team,
+                    cap.is_visible,
+                    cap.progress,
+                    cap.radius,
+                    cap.relation,
+                    cap.team_id,
+                )
+            )
+            & 1000000000
+        )
+        return cap_hash
 
     def _get_capture_area(self, relation: int, size: tuple) -> Image.Image:
         """Loads the proper capture area image from the resources.
