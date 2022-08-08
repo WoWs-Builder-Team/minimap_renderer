@@ -9,6 +9,11 @@ ENEMY_TIMER_POS = (20, 34)
 
 
 class LayerScoreBase(LayerBase):
+    """The class that handles team scores & score timer.
+
+    Args:
+        LayerBase (_type_): _description_
+    """
     def __init__(self, renderer: Renderer):
         self._renderer = renderer
         self._font = self._renderer.resman.load_font(
@@ -37,6 +42,14 @@ class LayerScoreBase(LayerBase):
 
     @staticmethod
     def _ttw_label(time_to_win: float) -> tuple[str, str]:
+        """Formats the time.
+
+        Args:
+            time_to_win (float): Time to win.
+
+        Returns:
+            tuple[str, str]: The formatted time.
+        """
         if time_to_win == -1:
             return "--", "--"
 
@@ -44,6 +57,12 @@ class LayerScoreBase(LayerBase):
         return f"{minutes:02d}", f"{seconds:02d}"
 
     def draw(self, game_time: int, image: Image.Image):
+        """Draws the score bar, score text and score timer into the image.
+
+        Args:
+            game_time (int): _description_
+            image (Image.Image): _description_
+        """
         evt_score = self._renderer.replay_data.events[game_time].evt_score
         base = self._base.copy()
 

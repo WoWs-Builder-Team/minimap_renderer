@@ -22,6 +22,11 @@ SOLO_MAP = {
 
 
 class LayerRibbonBase(LayerBase):
+    """The class for handling ribbons & achievements.
+
+    Args:
+        LayerBase (_type_): _description_
+    """
     def __init__(self, renderer: Renderer):
         self._renderer = renderer
         self._font = self._renderer.resman.load_font(
@@ -31,6 +36,12 @@ class LayerRibbonBase(LayerBase):
         self._achievements = renderer.resman.load_json("achievement.json")
 
     def draw(self, game_time: int, image: Image.Image):
+        """Draws the ribbons/achievements into the image.
+
+        Args:
+            game_time (int): The game time.
+            image (Image.Image): The image.
+        """
         evt_ribbons = self._renderer.replay_data.events[game_time].evt_ribbon
         evt_achievement = self._renderer.replay_data.events[
             game_time

@@ -102,7 +102,12 @@ class Renderer:
         draw.text((945, 30), "Minimap Renderer", "white", font_large)
 
         font_large = self.resman.load_font("warhelios_bold.ttf", size=16)
-        draw.text((945, 75), "https://github.com/WoWs-Builder-Team", "white", font_large)
+        draw.text(
+            (945, 75),
+            "https://github.com/WoWs-Builder-Team",
+            "white",
+            font_large,
+        )
 
     def _load_map(self):
         """Loads the map.

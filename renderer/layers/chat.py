@@ -1,18 +1,18 @@
-from typing import Union
-
 from PIL import Image, ImageDraw
 from renderer.base import LayerBase
-from renderer.const import (
-    COLORS_NORMAL,
-    DEATH_TYPES,
-    TIER_ROMAN,
-)
+from renderer.const import COLORS_NORMAL
 from renderer.data import Message
 from renderer.render import Renderer
 from renderer.utils import do_trim
 
 
 class LayerChatBase(LayerBase):
+    """The class for handling in-game chat messages.
+
+    Args:
+        LayerBase (_type_): _description_
+    """
+
     def __init__(self, renderer: Renderer):
         self._renderer = renderer
         self._font = self._renderer.resman.load_font(
@@ -24,12 +24,13 @@ class LayerChatBase(LayerBase):
         self._messages: list[Message] = []
         self._lines: dict[int, Image.Image] = {}
 
-    def _draw_separator(self):
-        assert self._renderer.minimap_bg
-        draw = ImageDraw.Draw(self._renderer.minimap_bg)
-        draw.line(((830, 760), (1330, 760)), fill="white", width=5)
-
     def draw(self, game_time: int, image: Image.Image):
+        """Draw the in-game chat to the image.
+
+        Args:
+            game_time (int): The game time.
+            image (Image.Image): The image where the chat will be pasted to,
+        """
         evt_messages = self._renderer.replay_data.events[game_time].evt_chat
         self._messages.extend(evt_messages)
 
@@ -43,7 +44,16 @@ class LayerChatBase(LayerBase):
             y_pos -= l_h
             image.paste(line, (x_pos, y_pos), line)
 
-    def build(self, message: Message):
+    def build(self, message: Message) -> Image.Image:
+        """Builds the line message as an image.
+
+        Args:
+            message (Message): The message.
+
+        Returns:
+            Image.Image: Image of the chat message.
+        """
+
         m_hash = hash(message) & 1000000000
 
         if image := self._lines.get(m_hash, None):
@@ -99,6 +109,14 @@ class LayerChatBase(LayerBase):
 
     @staticmethod
     def unpack_color(packed_value: int) -> tuple:
+        """Unpacks packed color integer as RGB component.
+
+        Args:
+            packed_value (int): The packed color integer.
+
+        Returns:
+            tuple: RGB component.
+        """
         bits = [8, 8, 8]
         values = []
         for bit in bits:

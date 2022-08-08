@@ -13,6 +13,11 @@ from renderer.utils import do_trim
 
 
 class LayerFragBase(LayerBase):
+    """The class for handling frag logs.
+
+    Args:
+        LayerBase (_type_): _description_
+    """
     def __init__(self, renderer: Renderer):
         self._renderer = renderer
         self._font = self._renderer.resman.load_font(
@@ -30,6 +35,12 @@ class LayerFragBase(LayerBase):
         self._generated_lines: dict[int, Image.Image] = {}
 
     def draw(self, game_time: int, image: Image.Image):
+        """Draws the frags on the image.
+
+        Args:
+            game_time (int): The game time.
+            image (Image.Image): The image where the logs will be drawn into.
+        """
         evt_flag = self._renderer.replay_data.events[game_time].evt_frag
         self._base = Image.new("RGBA", (560, 50))
         self._frags.extend(evt_flag)
@@ -157,6 +168,14 @@ class LayerFragBase(LayerBase):
             image.paste(line_img, (x_pos, y_pos), line_img)
 
     def _hash(self, line):
+        """Hashes the line for caching.
+
+        Args:
+            line (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
         hashables = []
         for el in line:
             if isinstance(el, tuple):
@@ -168,6 +187,14 @@ class LayerFragBase(LayerBase):
         return hash(tuple(hashables)) & 1000000000
 
     def build(self, line: list[Union[int, str, Image.Image]]):
+        """Builds the line or loads it from the cache.
+
+        Args:
+            line (list[Union[int, str, Image.Image]]): The line.
+
+        Returns:
+            _type_: The image of the line.
+        """
         line_hash = self._hash(line)
 
         if line_hash in self._generated_lines:

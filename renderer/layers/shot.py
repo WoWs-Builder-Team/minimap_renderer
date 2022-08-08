@@ -1,5 +1,3 @@
-import numpy as np
-
 from renderer.base import LayerBase
 from renderer.const import COLORS_NORMAL
 from renderer.render import Renderer
@@ -44,12 +42,6 @@ class LayerShotBase(LayerBase):
 
         if not events[game_time].evt_shot and not self._projectiles:
             return
-
-        # self._hits.update(self._events[game_time].evt_hits)
-
-        # for hit in self._hits.copy():
-        #     if self._projectiles.pop(hit, None):
-        #         self._hits.remove(hit)
 
         for shot in events[game_time].evt_shot:
             result = getEquidistantPoints(

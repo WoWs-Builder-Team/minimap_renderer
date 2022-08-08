@@ -2,7 +2,6 @@ from PIL import Image, ImageDraw
 from renderer.base import LayerBase
 from renderer.render import Renderer
 
-
 COUNTERS = [
     ("Enemy", "DAMAGE", "caused_damage.png", 3, 9),
     ("Agro", "POTENTIAL", "blocked_damage.png", 38, 1),
@@ -39,6 +38,7 @@ class LayerCounterBase(LayerBase):
         self._counter_name = self.damage_name_icon()
 
     def damage_name_icon(self):
+        """Draws the damage name and icon permanently."""
         assert self._renderer.minimap_bg
         base = Image.new("RGBA", (125, 95))
         draw = ImageDraw.Draw(base)

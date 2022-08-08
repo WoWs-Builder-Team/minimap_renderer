@@ -113,8 +113,7 @@ class LayerCaptureBase(LayerBase):
                     cap.relation,
                     cap.team_id,
                 )
-            )
-            & 1000000000
+            ) & 1000000000
         )
         return cap_hash
 

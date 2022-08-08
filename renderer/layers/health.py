@@ -12,7 +12,14 @@ from .counter import X_POS as COUNTERS_POS
 
 
 CENTER = (800 + COUNTERS_POS) // 2
-SKILLS_ORDER = ["AirCarrier", "Battleship", "Cruiser", "Destroyer", "Auxiliary", "Submarine"]
+SKILLS_ORDER = [
+    "AirCarrier",
+    "Battleship",
+    "Cruiser",
+    "Destroyer",
+    "Auxiliary",
+    "Submarine",
+]
 FIRE_PREVENTION_ID = 14
 BURN_NODE_BITS = 4
 BURN_NODE_POSITIONS = [
@@ -20,21 +27,34 @@ BURN_NODE_POSITIONS = [
     [(0.5, 0.52), None, None, None],  # subs
     [(0.125, 0.52), None, None, (0.875, 0.52)],  # only auxiliary ships?
     [(0.125, 0.52), (0.5, 0.52), None, (0.875, 0.52)],  # battleships w/ FP
-    [(0.125, 0.52), (0.375, 0.52), (0.625, 0.52), (0.875, 0.52)]  # everything else
+    [
+        (0.125, 0.52),
+        (0.375, 0.52),
+        (0.625, 0.52),
+        (0.875, 0.52),
+    ],  # everything else
 ]
 FLOOD_NODE_BITS = 2
 FLOOD_NODE_POSITIONS = [
     [None, None],
     [(0.5, 0.86), None],  # subs
-    [(0.252, 0.86), (0.748, 0.86)]  # everything else
+    [(0.252, 0.86), (0.748, 0.86)],  # everything else
 ]
 
 
 class LayerHealthBase(LayerBase):
+    """The class for handling player's ship health bar.
+
+    Args:
+        LayerBase (_type_): _description_
+    """
+
     def __init__(self, renderer: Renderer):
         self._renderer = renderer
         self._ships = renderer.resman.load_json("ships.json")
-        self._player: Union[PlayerInfo, None] = None
+        self._player = renderer.replay_data.player_info[
+            renderer.replay_data.owner_id
+        ]
         self._font = self._renderer.resman.load_font(
             filename="warhelios_bold.ttf", size=16
         )
@@ -51,27 +71,25 @@ class LayerHealthBase(LayerBase):
             "flooding.png", path="status_icons"
         )
 
-        self.prepare()
-
-    def prepare(self):
-        self._player = [
-            p
-            for p in self._renderer.replay_data.player_info.values()
-            if p.relation == -1
-        ].pop()
-
     def _add_padding(self, bar: Image.Image):
         padded = Image.new("RGBA", (bar.width, bar.height + 4), (0, 0, 0, 0))
         padded.paste(bar, (0, 0))
         return padded
 
     def draw(self, game_time: int, image: Image.Image):
-        assert self._player
+        """Draws the health bar into the image.
+
+        Args:
+            game_time (int): The game time.
+            image (Image.Image): The minimap image.
+        """
         ships = self._renderer.replay_data.events[game_time].evt_vehicle
         ship = ships[self._player.ship_id]
         ability = self._abilities[self._player.ship_params_id]
         per = ship.health / self._player.max_health
-        index, name, species, level, hulls = self._ships[self._player.ship_params_id]
+        index, name, species, level, hulls = self._ships[
+            self._player.ship_params_id
+        ]
 
         suffix_fg = "_h"
         suffix_bg = "_h_bg" if ship.is_alive else "_h_bgdead"
@@ -119,13 +137,13 @@ class LayerHealthBase(LayerBase):
                     )
 
                     per_limit = (
-                                        canHeal + ship.health
-                                ) / self._player.max_health
+                        canHeal + ship.health
+                    ) / self._player.max_health
 
                     regen_bar_arr = np.array(fg_bar)
                     regen_bar_arr[
                         regen_bar_arr[:, :, 3] > alpha
-                        ] = self._color_gray
+                    ] = self._color_gray
                     regen_bar_img = Image.fromarray(regen_bar_arr)
                     mask_regen_img = Image.new(fg_bar.mode, fg_bar.size)
                     mask_regen_img_w = mask_regen_img.width * per_limit
@@ -169,7 +187,7 @@ class LayerHealthBase(LayerBase):
             font=self._font,
         )
 
-        if (flags := bin(ship.burn_flags)[2:][::-1]) != '0':
+        if (flags := bin(ship.burn_flags)[2:][::-1]) != "0":
             burn_nodes, flood_nodes = hulls[self._player.hull]
             active_skills = self._player.skills[SKILLS_ORDER.index(species)]
             if FIRE_PREVENTION_ID in active_skills:
@@ -179,25 +197,41 @@ class LayerHealthBase(LayerBase):
                 bg_bar,
                 self._burn_icon,
                 flags[0:BURN_NODE_BITS],
-                BURN_NODE_POSITIONS[burn_nodes]
+                BURN_NODE_POSITIONS[burn_nodes],
             )
             self._draw_nodes(
                 bg_bar,
                 self._flood_icon,
-                flags[BURN_NODE_BITS:BURN_NODE_BITS + FLOOD_NODE_BITS],
-                FLOOD_NODE_POSITIONS[flood_nodes]
+                flags[BURN_NODE_BITS: BURN_NODE_BITS + FLOOD_NODE_BITS],
+                FLOOD_NODE_POSITIONS[flood_nodes],
             )
 
         image.paste(th, (px, 205), th)
         image.paste(bg_bar, (px, 145), bg_bar)
 
-    def _draw_nodes(self, image: Image.Image, icon: Image.Image, flags: str, positions: list):
+    def _draw_nodes(
+        self,
+        image: Image.Image,
+        icon: Image.Image,
+        flags: str,
+        positions: list,
+    ):
+        """Draws the status nodes into the health bar.
+
+        Args:
+            image (Image.Image): Base image.
+            icon (Image.Image): Status icon.
+            flags (str): ?
+            positions (list): The position of the node.
+        """
         for index, bit in enumerate(flags):
-            if bit == '1':
+            if bit == "1":
                 x_per, y_per = positions[index]
                 image.paste(
                     icon,
-                    (round(image.width * x_per - icon.width / 2),
-                     round(image.height * y_per - icon.height / 2)),
-                    icon
+                    (
+                        round(image.width * x_per - icon.width / 2),
+                        round(image.height * y_per - icon.height / 2),
+                    ),
+                    icon,
                 )

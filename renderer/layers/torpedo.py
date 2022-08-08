@@ -1,5 +1,3 @@
-import numpy as np
-
 from renderer.base import LayerBase
 from renderer.const import COLORS_NORMAL
 from renderer.render import Renderer
