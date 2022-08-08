@@ -7,7 +7,7 @@ from renderer.const import (
     DEATH_TYPES,
     TIER_ROMAN,
 )
-from renderer.data import Frag
+from renderer.data import Message
 from renderer.render import Renderer
 from renderer.utils import do_trim
 
@@ -21,8 +21,7 @@ class LayerChatBase(LayerBase):
         self._ships = self._renderer.resman.load_json("ships.json")
         self._players = renderer.replay_data.player_info
         self._generated_lines: dict[int, Image.Image] = {}
-        self._messages = []
-        self._draw_separator()
+        self._messages: list[Message] = []
 
     def _draw_separator(self):
         assert self._renderer.minimap_bg
@@ -32,4 +31,41 @@ class LayerChatBase(LayerBase):
     def draw(self, game_time: int, image: Image.Image):
         evt_messages = self._renderer.replay_data.events[game_time].evt_chat
         self._messages.extend(evt_messages)
-        # print(len(self._messages))
+
+        x_pos = 805
+        y_pos = 760
+
+        for message in reversed(self._messages[-5:]):
+
+            line = self.build(message)
+            l_w, l_h = line.size
+            y_pos -= l_h
+            image.paste(line, (x_pos, y_pos), line)
+
+    def build(self, message: Message):
+        base = Image.new("RGBA", (560, 15))
+        draw = ImageDraw.Draw(base)
+        player = self._players[message.player_id]
+
+        x_pos = 0
+
+        if player.clan_tag:
+            c_w, c_h = self._font.getsize(f"[{player.clan_tag}]")
+            draw.text((x_pos, 0), f"[{player.clan_tag}]", "white", self._font)
+            x_pos += c_w
+
+        n_color = COLORS_NORMAL[player.relation]
+
+        n_w, n_h = self._font.getsize(f"{player.name}: ")
+        draw.text((x_pos, 0), f"{player.name}: ", n_color, self._font)
+        x_pos += n_w
+
+        if message.namespace == "battle_common":
+            m_color = "white"
+        else:
+            m_color = n_color
+
+        m_w, m_h = self._font.getsize(message.message)
+        draw.text((x_pos, 0), message.message, m_color, self._font)
+        x_pos += m_w
+        return base
