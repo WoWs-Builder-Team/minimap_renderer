@@ -173,7 +173,7 @@ class LayerFragBase(LayerBase):
         if line_hash in self._generated_lines:
             return self._generated_lines[line_hash]
 
-        ib = Image.new("RGBA", (560, 15))
+        ib = Image.new("RGBA", (560, 17))
         ibd = ImageDraw.Draw(ib)
 
         pos_x = 0

@@ -49,7 +49,7 @@ class LayerChatBase(LayerBase):
         if image := self._lines.get(m_hash, None):
             return image
 
-        base = Image.new("RGBA", (560, 15))
+        base = Image.new("RGBA", (560, 17))
         draw = ImageDraw.Draw(base)
         player = self._players[message.player_id]
 
