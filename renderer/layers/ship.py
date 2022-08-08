@@ -31,6 +31,7 @@ class LayerShipBase(LayerBase):
         self._active_consumables: dict[int, dict[int, float]] = {}
         self._abilities = renderer.resman.load_json("abilities.json")
         self._ships = renderer.resman.load_json("ships.json")
+        self._consumable_cache: dict[int, Image.Image] = {}
 
     def draw(self, game_time: int, image: Image.Image):
         """Draws the ship icons to the minimap image.
@@ -99,7 +100,9 @@ class LayerShipBase(LayerBase):
                         draw_health_bar(
                             holder,
                             color=color,
-                            hp_per=vehicle.health / player.max_health,
+                            hp_per=round(
+                                vehicle.health / player.max_health, 2
+                            ),
                         )
 
                     side_points = [
@@ -174,25 +177,36 @@ class LayerShipBase(LayerBase):
             params_id (int): The vehicle's game params id.
         """
         if ac := self._active_consumables.get(vehicle_id, {}):
-            c_icons_holder = Image.new("RGBA", (20 * len(ac), 20))
-            x_pos = 0
-
-            for aid, duration in ac.items():
-                cname = self._abilities[params_id][aid]
-                filename = f"consumable_{cname}.png"
-                c_image = self._renderer.resman.load_image(
-                    filename,
-                    path="consumables",
-                    size=(20, 20),
+            aid_hash = hash(tuple(ac)) & 1000000000
+            
+            if c_image := self._consumable_cache.get(aid_hash, None):
+                image.paste(
+                    c_image,
+                    (int(image.width / 2 - c_image.width / 2), y),
+                    c_image,
                 )
-                c_icons_holder.paste(c_image, (x_pos, 0), c_image)
-                x_pos += 20
+            else:
+                c_icons_holder = Image.new("RGBA", (20 * len(ac), 20))
+                x_pos = 0
 
-            image.paste(
-                c_icons_holder,
-                (int(image.width / 2 - c_icons_holder.width / 2), y),
-                c_icons_holder,
-            )
+                for aid, duration in ac.items():
+                    cname = self._abilities[params_id][aid]
+                    filename = f"consumable_{cname}.png"
+                    c_image = self._renderer.resman.load_image(
+                        filename,
+                        path="consumables",
+                        size=(20, 20),
+                    )
+                    c_icons_holder.paste(c_image, (x_pos, 0), c_image)
+                    x_pos += 20
+
+                self._consumable_cache[aid_hash] = c_icons_holder
+
+                image.paste(
+                    c_icons_holder,
+                    (int(image.width / 2 - c_icons_holder.width / 2), y),
+                    c_icons_holder,
+                )
 
     def _ship_icon(
         self,
