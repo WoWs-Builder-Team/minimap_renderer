@@ -22,6 +22,7 @@ class LayerChatBase(LayerBase):
         self._players = renderer.replay_data.player_info
         self._generated_lines: dict[int, Image.Image] = {}
         self._messages: list[Message] = []
+        self._lines: dict[int, Image.Image] = {}
 
     def _draw_separator(self):
         assert self._renderer.minimap_bg
@@ -43,6 +44,11 @@ class LayerChatBase(LayerBase):
             image.paste(line, (x_pos, y_pos), line)
 
     def build(self, message: Message):
+        m_hash = hash(message) & 1000000000
+
+        if image := self._lines.get(m_hash, None):
+            return image
+
         base = Image.new("RGBA", (560, 15))
         draw = ImageDraw.Draw(base)
         player = self._players[message.player_id]
@@ -75,8 +81,20 @@ class LayerChatBase(LayerBase):
             m_color = n_color
 
         m_w, m_h = self._font.getsize(message.message)
-        draw.text((x_pos, 0), message.message, m_color, self._font)
+        text = message.message
+
+        if x_pos + m_w + 805 > 1330:
+            for i in range(1, len(message.message)):
+                n_t = f"{message.message[:-i]}..."
+                m_w, m_h = self._font.getsize(n_t)
+
+                if x_pos + m_w + 805 <= 1330:
+                    text = n_t
+                    break
+
+        draw.text((x_pos, 0), text, m_color, self._font)
         x_pos += m_w
+        self._lines[m_hash] = base
         return base
 
     @staticmethod
