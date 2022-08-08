@@ -487,7 +487,8 @@ class BattleController(IBattleController):
         with BytesIO(config) as bio:
             bio.seek(3 * 4, 1)
             (d,) = struct.unpack("<L", bio.read(4))  # len
-            bio.seek(4 * d, 1)
+            (hull,) = struct.unpack("<L", bio.read(4))  # hull unit
+            bio.seek(4 * (d - 1), 1)
             (e,) = struct.unpack("<L", bio.read(4))  # modernization slot len
             modern = struct.unpack("<" + "L" * e, bio.read(e * 4))
 
@@ -508,6 +509,11 @@ class BattleController(IBattleController):
             # inter = any(set(modern).intersection([4220702640, 4219654064]))
             # print(entity.id, modern, inter)
             try:
+                self._dict_info[
+                    self._vehicle_to_id[entity.id]
+                ] = self._dict_info[self._vehicle_to_id[entity.id]]._replace(
+                    hull=hull
+                )
                 self._dict_info[
                     self._vehicle_to_id[entity.id]
                 ] = self._dict_info[self._vehicle_to_id[entity.id]]._replace(
@@ -630,6 +636,7 @@ class BattleController(IBattleController):
                 is_bot=bool(player["isBot"]),
                 ship_params_id=player["shipParamsId"],
                 relation=relation,
+                hull=None,
                 modernization=(),
                 skills=[],
             )

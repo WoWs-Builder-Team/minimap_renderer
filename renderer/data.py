@@ -17,6 +17,7 @@ class PlayerInfo(NamedTuple):
     is_bot: bool
     ship_params_id: int
     relation: int
+    hull: Optional[int]
     modernization: tuple
     skills: list[list[int]]
 
