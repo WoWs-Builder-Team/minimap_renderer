@@ -34,7 +34,7 @@ class LayerChatBase(LayerBase):
         self._messages.extend(evt_messages)
 
         x_pos = 805
-        y_pos = 760
+        y_pos = image.height - 5
 
         for message in reversed(self._messages[-5:]):
 
