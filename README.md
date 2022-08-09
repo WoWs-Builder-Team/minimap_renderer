@@ -24,7 +24,7 @@ A virtual environment can be created with `python3.10 -m venv venv`.
 
 ```
 
-git clone https://github.com/imkindaprogrammermyself/minimap_renderer.git
+git clone https://github.com/WoWs-Builder-Team/minimap_renderer.git
 
 ```
 
