@@ -54,8 +54,6 @@ class Renderer:
         """Starts the rendering process"""
         self._load_map()
 
-        print(self.logs)
-
         assert self.minimap_image
         assert self.minimap_bg
 
