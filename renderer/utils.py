@@ -68,7 +68,7 @@ def generate_ship_data(
         holder_draw.text(
             xy=(text_x, text_y), text=ship_name, fill=font_color, font=font
         )
-        dict_player_holder[player.avatar_id] = holder
+        dict_player_holder[player.id] = holder
     return dict_player_holder
 
 
