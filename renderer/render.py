@@ -81,7 +81,14 @@ class Renderer:
             pix_fmt_in="rgba",
             macro_block_size=m_block,
             size=self.minimap_bg.size,
-            output_params=["-profile:v", "high"],
+            output_params=[
+                "-profile:v",
+                "high",
+                "-movflags",
+                "+faststart",
+                "-tune",
+                "animation"
+            ],
         )
         video_writer.send(None)
 
