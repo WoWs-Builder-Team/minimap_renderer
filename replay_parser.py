@@ -1,13 +1,16 @@
 # coding=utf-8
+from typing import BinaryIO
 import logging
 import os
-from json import JSONEncoder
+import json
+import struct
+import zlib
 
 from replay_unpack.clients import wot, wows
-from replay_unpack.replay_reader import ReplayReader, ReplayInfo
+from replay_unpack.replay_reader import ReplayReader, ReplayInfo, REPLAY_SIGNATURE
 
 
-class DefaultEncoder(JSONEncoder):
+class DefaultEncoder(json.JSONEncoder):
     def default(self, o):
         try:
             return o.__dict__
@@ -15,13 +18,56 @@ class DefaultEncoder(JSONEncoder):
             return str(o)
 
 
+class CustomReader(ReplayReader):
+    # noinspection PyMissingConstructor
+    def __init__(self, fp: BinaryIO, dump_binary=False):
+        self._dump_binary_data = dump_binary
+        self._fp = fp
+        self._type = "wowsreplay"
+
+    def get_replay_data(self) -> ReplayInfo:
+        """
+        Get open info about replay
+        (stored as Json at the beginning of file)
+        and closed one
+        (after decrypt & decompress);
+        :rtype: tuple[dict, str]
+        """
+        if self._fp.read(4) != REPLAY_SIGNATURE:
+            raise ValueError("File %s is not a valid replay" % self._replay_path)
+
+        blocks_count = struct.unpack("i", self._fp.read(4))[0]
+
+        block_size = struct.unpack("i", self._fp.read(4))[0]
+        engine_data = json.loads(self._fp.read(block_size))
+
+        extra_data = []
+        for i in range(blocks_count - 1):
+            block_size = struct.unpack("i", self._fp.read(4))[0]
+            data = json.loads(self._fp.read(block_size))
+            extra_data.append(data)
+
+        # noinspection PyUnresolvedReferences
+        decrypted_data = zlib.decompress(self._ReplayReader__decrypt_data(self._fp.read()))
+
+        if self._dump_binary_data:
+            self._save_decrypted_data(decrypted_data)
+
+        return ReplayInfo(
+            game="wows",
+            engine_data=engine_data,
+            extra_data=extra_data,
+            decrypted_data=decrypted_data,
+        )
+
+
 class ReplayParser(object):
     BASE_PATH = os.path.dirname(__file__)
 
-    def __init__(self, replay_path, strict: bool = False, raw_data_output=None):
-        self._replay_path = replay_path
+    def __init__(self, fp: BinaryIO, strict: bool = False, raw_data_output=None):
+        self._fp = fp
         self._is_strict_mode = strict
-        self._reader = ReplayReader(replay_path)
+        self._reader = CustomReader(fp)
         self._raw_data_output = raw_data_output
 
     def get_info(self):
@@ -65,11 +111,27 @@ class ReplayParser(object):
             raise NotImplementedError
 
         if self._raw_data_output:
-            with open(self._raw_data_output, 'wb') as f:
-                f.write(replay.decrypted_data)
+            with open(self._raw_data_output, 'wb') as fp:
+                fp.write(replay.decrypted_data)
 
         player.play(replay.decrypted_data, self._is_strict_mode)
         return player.get_info()
+
+
+def main(replay, strict_mode, raw_data_output):
+    logging.basicConfig(level=getattr(logging, namespace.log_level))
+
+    with open(replay, "rb") as fp:
+        replay_info = ReplayParser(
+            fp,
+            strict=strict_mode,
+            raw_data_output=raw_data_output
+        ).get_info()
+
+    import pickle
+    with open("data.dat", "wb") as f:
+        pickle.dump(replay_info["hidden"]["replay_data"], f)
+    # print(json.dumps(replay_info, indent=1, cls=DefaultEncoder))
 
 
 if __name__ == '__main__':
@@ -96,13 +158,4 @@ if __name__ == '__main__':
     )
 
     namespace = parser.parse_args()
-    logging.basicConfig(
-        level=getattr(logging, namespace.log_level))
-    replay_info = ReplayParser(
-        namespace.replay, strict=namespace.strict_mode,
-        raw_data_output=namespace.raw_data_output).get_info()
-    import pickle 
-
-    with open("data.dat", "wb") as f:
-        pickle.dump(replay_info["hidden"]["replay_data"], f)
-    # print(json.dumps(replay_info, indent=1, cls=DefaultEncoder))
+    main(namespace.replay, namespace.strict_mode, namespace.raw_data_output)
