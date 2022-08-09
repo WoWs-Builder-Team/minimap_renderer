@@ -16,7 +16,13 @@ Number = Union[int, float]
 
 
 class Renderer:
-    def __init__(self, replay_data: ReplayData, logs=False):
+    def __init__(
+        self,
+        replay_data: ReplayData,
+        logs: bool = False,
+        anon: bool = False,
+        enable_chat: bool = True,
+    ):
         """Orchestrates the rendering process.
 
         Args:
@@ -33,20 +39,19 @@ class Renderer:
         self.space_size: int = 0
         self.scaling: float = 0.0
         self.is_operations = False
-        self.anon: bool = False
+        self.anon: bool = anon
+        self.enable_chat = enable_chat
         self.usernames: dict[int, str] = {}
 
-    def _create_usernames(self):
-        for i, (pid, pi) in enumerate(self.replay_data.player_info.items(), 1):
-            name = f"Player {i}"
-            self.usernames[pid] = name
+        if self.anon:
+            for i, (pid, pi) in enumerate(
+                self.replay_data.player_info.items(), 1
+            ):
+                name = f"Player {i}"
+                self.usernames[pid] = name
 
-    def start(self, path: str, fps: int = 20, enable_chat=True, anon=False):
+    def start(self, path: str, fps: int = 20):
         """Starts the rendering process"""
-        self.anon = anon
-        if anon:
-            self._create_usernames()
-
         self._load_map()
 
         assert self.minimap_image
@@ -101,7 +106,7 @@ class Renderer:
                 layer_frag.draw(game_time, minimap_bg)
 
                 layer_ribbon.draw(game_time, minimap_bg)
-                if enable_chat:
+                if self.enable_chat:
                     layer_chat.draw(game_time, minimap_bg)
 
             minimap_bg.paste(minimap_img, (40, 90))
