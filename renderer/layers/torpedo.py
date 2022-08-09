@@ -25,7 +25,7 @@ class LayerTorpedoBase(LayerBase):
         self._renderer = renderer
         self._torpedoes: dict[int, list] = {}
         self._projectiles: dict = self._renderer.resman.load_json(
-            "projectile.json"
+            "projectiles.json"
         )
         self._relations = {
             v.ship_id: v.relation

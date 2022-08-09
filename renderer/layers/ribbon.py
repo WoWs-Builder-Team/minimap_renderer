@@ -33,7 +33,7 @@ class LayerRibbonBase(LayerBase):
             filename="warhelios_bold.ttf", size=25
         )
         self._images: dict[str, tuple[int, Image.Image]] = {}
-        self._achievements = renderer.resman.load_json("achievement.json")
+        self._achievements = renderer.resman.load_json("achievements.json")
 
     def draw(self, game_time: int, image: Image.Image):
         """Draws the ribbons/achievements into the image.
