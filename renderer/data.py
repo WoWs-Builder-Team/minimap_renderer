@@ -5,7 +5,7 @@ class PlayerInfo(NamedTuple):
     """Player information"""
 
     account_db_id: int
-    avatar_id: int
+    id: int
     clan_color: int
     clan_id: int
     clan_tag: int
@@ -25,7 +25,7 @@ class PlayerInfo(NamedTuple):
 class Vehicle(NamedTuple):
     """Vehicle data."""
 
-    avatar_id: int
+    player_id: int
     vehicle_id: int
     health: int
     is_alive: bool
