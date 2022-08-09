@@ -8,7 +8,7 @@ class PlayerInfo(NamedTuple):
     id: int
     clan_color: int
     clan_id: int
-    clan_tag: int
+    clan_tag: str
     max_health: int
     name: str
     realm: str
