@@ -33,7 +33,7 @@ class Renderer:
         self.scaling: float = 0.0
         self.is_operations = False
 
-    def start(self, path: str):
+    def start(self, path: str, fps: int = 20, enable_chat=True):
         """Starts the rendering process"""
         self._load_map()
 
@@ -57,7 +57,7 @@ class Renderer:
 
         video_writer = write_frames(
             path=path,
-            fps=20,
+            fps=fps,
             quality=7,
             pix_fmt_in="rgba",
             macro_block_size=17,
@@ -86,7 +86,8 @@ class Renderer:
             layer_frag.draw(game_time, minimap_bg)
             layer_timer.draw(game_time, minimap_bg)
             layer_ribbon.draw(game_time, minimap_bg)
-            layer_chat.draw(game_time, minimap_bg)
+            if enable_chat:
+                layer_chat.draw(game_time, minimap_bg)
 
             minimap_bg.paste(minimap_img, (40, 90))  # 40, 40 w/o logs
             video_writer.send(minimap_bg.tobytes())
