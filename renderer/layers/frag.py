@@ -46,7 +46,7 @@ class LayerFragBase(LayerBase):
         self._base = Image.new("RGBA", (560, 50))
         self._frags.extend(evt_flag)
 
-        y_pos = image.height - 5
+        y_pos = 755
 
         for frag in reversed(self._frags[-5:]):
             fragger_info = self._vehicle_id_to_player[frag.fragger_id]
@@ -75,10 +75,9 @@ class LayerFragBase(LayerBase):
 
                 if killed_info.relation == -1:
                     kd_name = killed_info.name
-
             else:
-                fr_name = do_trim(fragger_info.name)
-                kd_name = do_trim(killed_info.name)
+                fr_name = fragger_info.name
+                kd_name = killed_info.name
                 fr_ctag = fragger_info.clan_tag
                 kd_ctag = killed_info.clan_tag
 
@@ -89,110 +88,110 @@ class LayerFragBase(LayerBase):
                 killed_info.ship_params_id
             ]
             icon_res = "ship_icons"
+
             line = []
 
             if frag.fragger_id in self._allies:
-                ally_icon = self._renderer.resman.load_image(
-                    f"{f_species}.png", rot=-90, path=f"{icon_res}.ally"
-                )
-                enemy_icon = self._renderer.resman.load_image(
-                    f"{k_species}.png", rot=90, path=f"{icon_res}.enemy"
-                )
-
                 if fr_ctag:
-                    cn = [
-                        (f"[{fr_ctag}]", COLORS_NORMAL[0]),
-                        (fr_name, COLORS_NORMAL[0]),
-                    ]
+                    line.append((f"[{fr_ctag}]{fr_name}", COLORS_NORMAL[0]))
                 else:
-                    cn = [(fr_name, COLORS_NORMAL[0])]
+                    line.append([fr_name, COLORS_NORMAL[0]])
 
-                line.extend(cn)
-                line.extend(
-                    [
-                        5,
-                        (ally_icon, 4, 1),
-                        5,
-                        (TIER_ROMAN[f_level - 1], COLORS_NORMAL[0]),
-                        5,
-                        (f_name, COLORS_NORMAL[0]),
-                        5,
-                        (death_icon, -3, 1),
-                        5,
-                    ]
+                line.append(5)
+                line.append(
+                    (
+                        self._renderer.resman.load_image(
+                            f"{f_species}.png",
+                            rot=-90,
+                            path=f"{icon_res}.ally",
+                        ),
+                        4,
+                        1,
+                    )
                 )
+                line.append(5)
+                line.append((TIER_ROMAN[f_level - 1], COLORS_NORMAL[0]))
+                line.append(5)
+                line.append((f_name, COLORS_NORMAL[0]))
+                line.append(5)
+                line.append((death_icon, -3, 1))
+                line.append("after")
+                line.append(5)
 
                 if kd_ctag:
-                    cn = [
-                        (f"[{kd_ctag}]", COLORS_NORMAL[1]),
-                        (kd_name, COLORS_NORMAL[1]),
-                    ]
+                    line.append((f"[{kd_ctag}]{kd_name}", COLORS_NORMAL[1]))
                 else:
-                    cn = [(kd_name, COLORS_NORMAL[1])]
-                line.extend(cn)
-                line.extend(
-                    [
-                        5,
-                        (enemy_icon, 4, 1),
-                        5,
-                        (TIER_ROMAN[k_level - 1], COLORS_NORMAL[1]),
-                        5,
-                        (k_name, COLORS_NORMAL[1]),
-                    ]
+                    line.append([kd_name, COLORS_NORMAL[1]])
+
+                line.append(5)
+                line.append(
+                    (
+                        self._renderer.resman.load_image(
+                            f"{k_species}.png",
+                            rot=90,
+                            path=f"{icon_res}.enemy",
+                        ),
+                        4,
+                        1,
+                    )
                 )
+                line.append(5)
+                line.append((TIER_ROMAN[k_level - 1], COLORS_NORMAL[1]))
+                line.append(5)
+                line.append((k_name, COLORS_NORMAL[1]))
             else:
-                ally_icon = self._renderer.resman.load_image(
-                    f"{k_species}.png", rot=-90, path=f"{icon_res}.ally"
-                )
-                enemy_icon = self._renderer.resman.load_image(
-                    f"{f_species}.png", rot=90, path=f"{icon_res}.enemy"
-                )
-
                 if fr_ctag:
-                    cn = [
-                        (f"[{fr_ctag}]", COLORS_NORMAL[1]),
-                        (fr_name, COLORS_NORMAL[1]),
-                    ]
+                    line.append((f"[{fr_ctag}]{fr_name}", COLORS_NORMAL[1]))
                 else:
-                    cn = [(fr_name, COLORS_NORMAL[1])]
+                    line.append([fr_name, COLORS_NORMAL[1]])
 
-                line.extend(cn)
-                line.extend(
-                    [
-                        5,
-                        (enemy_icon, 4, 1),
-                        5,
-                        (TIER_ROMAN[f_level - 1], COLORS_NORMAL[1]),
-                        5,
-                        (f_name, COLORS_NORMAL[1]),
-                        5,
-                        (death_icon, -3, 1),
-                        5,
-                    ]
+                line.append(5)
+                line.append(
+                    (
+                        self._renderer.resman.load_image(
+                            f"{f_species}.png",
+                            rot=90,
+                            path=f"{icon_res}.enemy",
+                        ),
+                        4,
+                        1,
+                    )
                 )
+                line.append(5)
+                line.append((TIER_ROMAN[f_level - 1], COLORS_NORMAL[1]))
+                line.append(5)
+                line.append((f_name, COLORS_NORMAL[1]))
+                line.append(5)
+                line.append((death_icon, -3, 1))
+                line.append("after")
+                line.append(5)
 
                 if kd_ctag:
-                    cn = [
-                        (f"[{kd_ctag}]", COLORS_NORMAL[0]),
-                        (kd_name, COLORS_NORMAL[0]),
-                    ]
+                    line.append((f"[{kd_ctag}]{kd_name}", COLORS_NORMAL[0]))
                 else:
-                    cn = [(kd_name, COLORS_NORMAL[0])]
-                line.extend(cn)
-                line.extend(
-                    [
-                        5,
-                        (ally_icon, 4, 1),
-                        5,
-                        (TIER_ROMAN[k_level - 1], COLORS_NORMAL[0]),
-                        5,
-                        (k_name, COLORS_NORMAL[0]),
-                    ]
+                    line.append([kd_name, COLORS_NORMAL[0]])
+
+                line.append(5)
+                line.append(
+                    (
+                        self._renderer.resman.load_image(
+                            f"{k_species}.png",
+                            rot=-90,
+                            path=f"{icon_res}.ally",
+                        ),
+                        4,
+                        1,
+                    )
                 )
-            line_img = self.build(line)
-            y_pos -= line_img.height
-            x_pos = (image.width - 30) - line_img.width
-            image.paste(line_img, (x_pos, y_pos), line_img)
+                line.append(5)
+                line.append((TIER_ROMAN[k_level - 1], COLORS_NORMAL[0]))
+                line.append(5)
+                line.append((k_name, COLORS_NORMAL[0]))
+
+            for img in self.build(line):
+                y_pos -= img.height
+                x_pos = (image.width - 30) - img.width
+                image.paste(img, (x_pos, y_pos), img)
 
     def _hash(self, line):
         """Hashes the line for caching.
@@ -222,38 +221,73 @@ class LayerFragBase(LayerBase):
         Returns:
             _type_: The image of the line.
         """
-        line_hash = self._hash(line)
+        # line_hash = self._hash(line)
+
+        # if line_hash in self._generated_lines:
+        #     return self._generated_lines[line_hash]
+
+        parts: dict[int, list] = {}
+        total_width = 0
+        idx = 0
+
+        for el in line:
+            part = parts.setdefault(idx, [])
+            match el:
+                case (a, b) if isinstance(a, str) and isinstance(b, str):
+                    str_w, str_h = self._font.getsize(a)
+                    total_width += str_w
+                    part.append(el)
+                case (a, b, c) if isinstance(a, Image.Image) and isinstance(
+                    b, int
+                ) and isinstance(c, int):
+                    nw, nh = round(a.width * c), round(a.height * c)
+                    a = a.resize((nw, nh), Image.LANCZOS)
+                    total_width += a.width
+                    part.append(el)
+                case a if isinstance(a, int):
+                    total_width += a
+                    part.append(el)
+                case "after":
+                    idx += 1
+
+        is_long = total_width > 525
+
+        part_a = parts[0]
+        part_b = parts[1]
+
+        if not is_long:
+            part_a.extend(part_b)
+            yield self._part_to_image(part_a)
+        else:
+            for part in [part_b, part_a]:
+                yield self._part_to_image(part)
+        return
+
+    def _part_to_image(self, part):
+        line_hash = self._hash(part)
 
         if line_hash in self._generated_lines:
             return self._generated_lines[line_hash]
 
-        ib = Image.new("RGBA", (560, 17))
-        ibd = ImageDraw.Draw(ib)
-
+        base = Image.new("RGBA", (525, 17))
+        base_draw = ImageDraw.Draw(base)
         pos_x = 0
 
-        for el in line:
-            if isinstance(el, tuple):
-                if len(el) == 2:
-                    a, b = el
-                    if isinstance(a, str) and isinstance(b, str):
-                        str_w, str_h = self._font.getsize(a)
-                        ibd.text((pos_x, 0), a, b, self._font)
-                        pos_x += str_w
-                elif len(el) == 3:
-                    a, b, c = el
-                    pattern_image = [
-                        isinstance(a, Image.Image),
-                        isinstance(b, int),
-                        isinstance(c, int),
-                    ]
-                    if pattern_image:
-                        nw, nh = round(a.width * c), round(a.height * c)
-                        a = a.resize((nw, nh), Image.LANCZOS)
-                        ib.paste(a, (pos_x, b), a)
-                        pos_x += a.width
-            elif isinstance(el, int):
-                pos_x += el
-        ib = ib.crop((0, 0, pos_x, ib.height))
-        self._generated_lines[line_hash] = ib.copy()
-        return ib.copy()
+        for el in part:
+            match el:
+                case (a, b) if isinstance(a, str) and isinstance(b, str):
+                    str_w, str_h = self._font.getsize(a)
+                    base_draw.text((pos_x, 0), a, b, self._font)
+                    pos_x += str_w
+                case (a, b, c) if isinstance(a, Image.Image) and isinstance(
+                    b, int
+                ) and isinstance(c, int):
+                    nw, nh = round(a.width * c), round(a.height * c)
+                    a = a.resize((nw, nh), Image.LANCZOS)
+                    base.paste(a, (pos_x, 0 + b), a)
+                    pos_x += a.width
+                case a if isinstance(a, int):
+                    pos_x += a
+        base = base.crop((0, 0, pos_x, 17))
+        self._generated_lines[line_hash] = base
+        return base
