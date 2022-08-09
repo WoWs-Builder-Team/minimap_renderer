@@ -178,7 +178,7 @@ class LayerShipBase(LayerBase):
         """
         if ac := self._active_consumables.get(vehicle_id, {}):
             aid_hash = hash(tuple(ac)) & 1000000000
-            
+
             if c_image := self._consumable_cache.get(aid_hash, None):
                 image.paste(
                     c_image,
