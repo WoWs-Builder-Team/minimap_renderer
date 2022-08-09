@@ -33,7 +33,7 @@ class Renderer:
         self.scaling: float = 0.0
         self.is_operations = False
 
-    def start(self):
+    def start(self, path: str):
         """Starts the rendering process"""
         self._load_map()
 
@@ -56,7 +56,7 @@ class Renderer:
         layer_chat = self._load_base_or_versioned("LayerChat")
 
         video_writer = write_frames(
-            path="minimap.mp4",
+            path=path,
             fps=20,
             quality=7,
             pix_fmt_in="rgba",
