@@ -3,7 +3,6 @@ from renderer.base import LayerBase
 from renderer.const import COLORS_NORMAL
 from renderer.data import Message
 from renderer.render import Renderer
-from renderer.utils import do_trim
 
 
 class LayerChatBase(LayerBase):
