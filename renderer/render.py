@@ -19,7 +19,7 @@ class Renderer:
     def __init__(
         self,
         replay_data: ReplayData,
-        logs: bool = False,
+        logs: bool = True,
         anon: bool = False,
         enable_chat: bool = True,
     ):
@@ -54,6 +54,8 @@ class Renderer:
         """Starts the rendering process"""
         self._load_map()
 
+        print(self.logs)
+
         assert self.minimap_image
         assert self.minimap_bg
 
@@ -72,12 +74,14 @@ class Renderer:
         layer_ribbon = self._load_base_or_versioned("LayerRibbon")
         layer_chat = self._load_base_or_versioned("LayerChat")
 
+        m_block = 10 if self.logs else 17
+
         video_writer = write_frames(
             path=path,
             fps=fps,
             quality=7,
             pix_fmt_in="rgba",
-            macro_block_size=17,
+            macro_block_size=m_block,
             size=self.minimap_bg.size,
         )
         video_writer.send(None)
@@ -146,7 +150,7 @@ class Renderer:
             map_legends = self.resman.load_image("minimap_grid_legends.png")
             map_land = self.resman.load_image("minimap.png", path=path)
             map_water = self.resman.load_image("minimap_water.png", path=path)
-            if self.logs:
+            if not self.logs:
                 self.minimap_bg = map_water.copy().resize((800, 850))
             else:
                 self.minimap_bg = map_water.copy().resize((1360, 850))
