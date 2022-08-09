@@ -623,7 +623,7 @@ class BattleController(IBattleController):
                 relation = -1
 
             pi = PlayerInfo(
-                avatar_id=player["id"],
+                id=player["id"],
                 account_db_id=player["accountDBID"],
                 clan_color=player["clanColor"],
                 clan_id=player["clanID"],
@@ -647,7 +647,7 @@ class BattleController(IBattleController):
                 continue
 
             vi = Vehicle(
-                avatar_id=player["id"],
+                player_id=player["id"],
                 vehicle_id=player["shipId"],
                 health=player["maxHealth"],
                 is_alive=True,

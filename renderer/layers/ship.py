@@ -58,13 +58,13 @@ class LayerShipBase(LayerBase):
             events[game_time].evt_vehicle.values(),
             key=lambda s: (s.is_alive, s.is_visible),
         ):
-            holder = self._ship_info[vehicle.avatar_id]
-            player = self._renderer.replay_data.player_info[vehicle.avatar_id]
+            holder = self._ship_info[vehicle.player_id]
+            player = self._renderer.replay_data.player_info[vehicle.player_id]
             index, name, species, level, hulls = self._ships[
                 player.ship_params_id
             ]
 
-            player = player_info[vehicle.avatar_id]
+            player = player_info[vehicle.player_id]
 
             icon = self._ship_icon(
                 vehicle.is_alive,
