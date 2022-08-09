@@ -24,5 +24,5 @@ def create_planes_data():
 
         dict_planes[aircraft.id] = (aircraft.typeinfo.species, at)
 
-    with open(os.path.join(os.getcwd(), "generated", "plane.json"), "w") as f:
+    with open(os.path.join(os.getcwd(), "generated", "planes.json"), "w") as f:
         json.dump(dict_planes, f)

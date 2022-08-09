@@ -53,5 +53,5 @@ def create_ships_data():
 
         dict_ships_info[ship.id] = si
 
-    with open(os.path.join(os.getcwd(), "generated", "ship.json"), "w") as f:
+    with open(os.path.join(os.getcwd(), "generated", "ships.json"), "w") as f:
         json.dump(dict_ships_info, f)

@@ -4,7 +4,7 @@ from data.gameparams import get_data
 from data.utils import LOGGER
 
 
-def create_projectile_data():
+def create_projectiles_data():
     LOGGER.info("Creating projectile data...")
     dict_projectile = {}
     list_projectile = get_data("Projectile")
@@ -17,6 +17,6 @@ def create_projectile_data():
             )
 
     with open(
-        os.path.join(os.getcwd(), "generated", "projectile.json"), "w"
+        os.path.join(os.getcwd(), "generated", "projectiles.json"), "w"
     ) as f:
         json.dump(dict_projectile, f)

@@ -5,7 +5,7 @@ from data.gameparams import get_data
 from data.utils import LOGGER
 
 
-def create_achievement_data():
+def create_achievements_data():
     LOGGER.info("Creating achievement data...")
     list_achievement = get_data("Achievement")
 
@@ -15,6 +15,6 @@ def create_achievement_data():
         dict_achievement[achievement.id] = achievement.uiName
 
     with open(
-        os.path.join(os.getcwd(), "generated", "achievement.json"), "w"
+        os.path.join(os.getcwd(), "generated", "achievements.json"), "w"
     ) as f:
         json.dump(dict_achievement, f)
