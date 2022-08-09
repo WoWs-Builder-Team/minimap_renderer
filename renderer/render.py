@@ -16,7 +16,7 @@ Number = Union[int, float]
 
 
 class Renderer:
-    def __init__(self, replay_data: ReplayData):
+    def __init__(self, replay_data: ReplayData, logs=False):
         """Orchestrates the rendering process.
 
         Args:
@@ -28,6 +28,7 @@ class Renderer:
         # MAP INFO
         self.minimap_image: Optional[Image.Image] = None
         self.minimap_bg: Optional[Image.Image] = None
+        self.logs: bool = logs
         self.minimap_size: int = 0
         self.space_size: int = 0
         self.scaling: float = 0.0
@@ -80,16 +81,19 @@ class Renderer:
             layer_smoke.draw(game_time, minimap_img)
             layer_plane.draw(game_time, minimap_img)
 
-            layer_health.draw(game_time, minimap_bg)
-            layer_score.draw(game_time, minimap_bg)
-            layer_counter.draw(game_time, minimap_bg)
-            layer_frag.draw(game_time, minimap_bg)
             layer_timer.draw(game_time, minimap_bg)
-            layer_ribbon.draw(game_time, minimap_bg)
-            if enable_chat:
-                layer_chat.draw(game_time, minimap_bg)
+            layer_score.draw(game_time, minimap_bg)
 
-            minimap_bg.paste(minimap_img, (40, 90))  # 40, 40 w/o logs
+            if self.logs:
+                layer_health.draw(game_time, minimap_bg)
+                layer_counter.draw(game_time, minimap_bg)
+                layer_frag.draw(game_time, minimap_bg)
+
+                layer_ribbon.draw(game_time, minimap_bg)
+                if enable_chat:
+                    layer_chat.draw(game_time, minimap_bg)
+
+            minimap_bg.paste(minimap_img, (40, 90))
             video_writer.send(minimap_bg.tobytes())
         video_writer.close()
 
@@ -126,7 +130,10 @@ class Renderer:
             map_legends = self.resman.load_image("minimap_grid_legends.png")
             map_land = self.resman.load_image("minimap.png", path=path)
             map_water = self.resman.load_image("minimap_water.png", path=path)
-            self.minimap_bg = map_water.copy().resize((1360, 850))  # 800, 800
+            if self.logs:
+                self.minimap_bg = map_water.copy().resize((800, 850))
+            else:
+                self.minimap_bg = map_water.copy().resize((1360, 850))
             self.minimap_bg.paste(
                 map_legends,
                 (
