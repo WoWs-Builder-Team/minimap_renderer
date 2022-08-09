@@ -64,11 +64,18 @@ class LayerChatBase(LayerBase):
 
         x_pos = 0
 
+        if self._renderer.anon and player.clan_tag:
+            clan_tag = "#" * len(player.clan_tag)
+        elif player.clan_tag:
+            clan_tag = player.clan_tag
+        else:
+            clan_tag = ""
+
         if player.clan_tag:
-            c_w, c_h = self._font.getsize(f"[{player.clan_tag}]")
+            c_w, c_h = self._font.getsize(f"[{clan_tag}]")
             draw.text(
                 (x_pos, 0),
-                f"[{player.clan_tag}]",
+                f"[{clan_tag}]",
                 self.unpack_color(player.clan_color),
                 self._font,
             )
@@ -80,8 +87,13 @@ class LayerChatBase(LayerBase):
             else COLORS_NORMAL[1]
         )
 
-        n_w, n_h = self._font.getsize(f"{player.name}: ")
-        draw.text((x_pos, 0), f"{player.name}: ", n_color, self._font)
+        if self._renderer.anon:
+            name = self._renderer.usernames[player.id]
+        else:
+            name = player.name
+
+        n_w, n_h = self._font.getsize(f"{name}: ")
+        draw.text((x_pos, 0), f"{name}: ", n_color, self._font)
         x_pos += n_w
 
         if message.namespace == "battle_common":

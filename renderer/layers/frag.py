@@ -18,6 +18,7 @@ class LayerFragBase(LayerBase):
     Args:
         LayerBase (_type_): _description_
     """
+
     def __init__(self, renderer: Renderer):
         self._renderer = renderer
         self._font = self._renderer.resman.load_font(
@@ -55,6 +56,32 @@ class LayerFragBase(LayerBase):
                 frag_fname, path="frag_icons"
             )
 
+            if self._renderer.anon:
+                fr_name = self._renderer.usernames[fragger_info.id]
+                kd_name = self._renderer.usernames[killed_info.id]
+
+                if fragger_info.clan_tag:
+                    fr_ctag = "#" * len(fragger_info.clan_tag)
+                else:
+                    fr_ctag = ""
+
+                if killed_info.clan_tag:
+                    kd_ctag = "#" * len(killed_info.clan_tag)
+                else:
+                    kd_ctag = ""
+
+                if fragger_info.relation == -1:
+                    fr_name = fragger_info.name
+
+                if killed_info.relation == -1:
+                    kd_name = killed_info.name
+
+            else:
+                fr_name = do_trim(fragger_info.name)
+                kd_name = do_trim(killed_info.name)
+                fr_ctag = fragger_info.clan_tag
+                kd_ctag = killed_info.clan_tag
+
             _, f_name, f_species, f_level, _ = self._ships[
                 fragger_info.ship_params_id
             ]
@@ -72,13 +99,13 @@ class LayerFragBase(LayerBase):
                     f"{k_species}.png", rot=90, path=f"{icon_res}.enemy"
                 )
 
-                if fragger_info.clan_tag:
+                if fr_ctag:
                     cn = [
-                        (f"[{fragger_info.clan_tag}]", COLORS_NORMAL[0]),
-                        (do_trim(fragger_info.name), COLORS_NORMAL[0]),
+                        (f"[{fr_ctag}]", COLORS_NORMAL[0]),
+                        (fr_name, COLORS_NORMAL[0]),
                     ]
                 else:
-                    cn = [(do_trim(fragger_info.name), COLORS_NORMAL[0])]
+                    cn = [(fr_name, COLORS_NORMAL[0])]
 
                 line.extend(cn)
                 line.extend(
@@ -95,13 +122,13 @@ class LayerFragBase(LayerBase):
                     ]
                 )
 
-                if killed_info.clan_tag:
+                if kd_ctag:
                     cn = [
-                        (f"[{killed_info.clan_tag}]", COLORS_NORMAL[1]),
-                        (do_trim(killed_info.name), COLORS_NORMAL[1]),
+                        (f"[{kd_ctag}]", COLORS_NORMAL[1]),
+                        (kd_name, COLORS_NORMAL[1]),
                     ]
                 else:
-                    cn = [(do_trim(killed_info.name), COLORS_NORMAL[1])]
+                    cn = [(kd_name, COLORS_NORMAL[1])]
                 line.extend(cn)
                 line.extend(
                     [
@@ -121,13 +148,13 @@ class LayerFragBase(LayerBase):
                     f"{f_species}.png", rot=90, path=f"{icon_res}.enemy"
                 )
 
-                if fragger_info.clan_tag:
+                if fr_ctag:
                     cn = [
-                        (f"[{fragger_info.clan_tag}]", COLORS_NORMAL[1]),
-                        (do_trim(fragger_info.name), COLORS_NORMAL[1]),
+                        (f"[{fr_ctag}]", COLORS_NORMAL[1]),
+                        (fr_name, COLORS_NORMAL[1]),
                     ]
                 else:
-                    cn = [(do_trim(fragger_info.name), COLORS_NORMAL[1])]
+                    cn = [(fr_name, COLORS_NORMAL[1])]
 
                 line.extend(cn)
                 line.extend(
@@ -144,13 +171,13 @@ class LayerFragBase(LayerBase):
                     ]
                 )
 
-                if killed_info.clan_tag:
+                if kd_ctag:
                     cn = [
-                        (f"[{killed_info.clan_tag}]", COLORS_NORMAL[0]),
-                        (do_trim(killed_info.name), COLORS_NORMAL[0]),
+                        (f"[{kd_ctag}]", COLORS_NORMAL[0]),
+                        (kd_name, COLORS_NORMAL[0]),
                     ]
                 else:
-                    cn = [(do_trim(killed_info.name), COLORS_NORMAL[0])]
+                    cn = [(kd_name, COLORS_NORMAL[0])]
                 line.extend(cn)
                 line.extend(
                     [

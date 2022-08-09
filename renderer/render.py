@@ -16,7 +16,7 @@ Number = Union[int, float]
 
 
 class Renderer:
-    def __init__(self, replay_data: ReplayData, anon: bool = False):
+    def __init__(self, replay_data: ReplayData):
         """Orchestrates the rendering process.
 
         Args:
@@ -32,16 +32,20 @@ class Renderer:
         self.space_size: int = 0
         self.scaling: float = 0.0
         self.is_operations = False
-        self._anon = anon
+        self.anon: bool = False
         self.usernames: dict[int, str] = {}
 
     def _create_usernames(self):
         for i, (pid, pi) in enumerate(self.replay_data.player_info.items(), 1):
-            name = f"PLAYER_{i}"
+            name = f"Player {i}"
             self.usernames[pid] = name
 
-    def start(self, path: str, fps: int = 20, enable_chat=True):
+    def start(self, path: str, fps: int = 20, enable_chat=True, anon=False):
         """Starts the rendering process"""
+        self.anon = anon
+        if anon:
+            self._create_usernames()
+
         self._load_map()
 
         assert self.minimap_image
