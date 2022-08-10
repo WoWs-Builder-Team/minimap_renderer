@@ -1,0 +1,38 @@
+<root>
+	<BaseMethods>
+	</BaseMethods>
+
+	<ClientMethods>
+	</ClientMethods>
+
+	<Properties>
+	</Properties>
+
+	<TempProperties>
+		<planesManager/>
+		<hasActiveMainSquadron/>
+		<aiConfig/>
+
+		<_AviationOwner__spottedMinimapSquadrons/>
+		<_AviationOwner__spottedMinimapFighters/>
+		<_AviationOwner__planeRegenPercentVaryId/>
+		<_AviationOwner__planeHealCoef/>
+	</TempProperties>
+
+	<CellMethods>
+		<dev_killPlane>
+			<Exposed/>
+		</dev_killPlane>
+
+		<useSquadConsumable>
+		    <Arg>UINT32</Arg> <!-- squadronId -->
+			<Arg>INT8</Arg> <!-- consId -->
+		</useSquadConsumable>
+
+		<spawnPlane>
+			<Arg>	UINT8	</Arg> <!-- spawn squadron index -->
+			<Arg>	VECTOR3	</Arg> <!-- spawn point -->
+			<Arg>	FLOAT	</Arg> <!-- spawn yaw -->
+		</spawnPlane>
+	</CellMethods>
+</root>
