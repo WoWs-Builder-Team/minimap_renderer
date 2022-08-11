@@ -1,5 +1,7 @@
+from typing import Optional
 from PIL import Image, ImageDraw
 from renderer.base import LayerBase
+from ..data import ReplayData
 from renderer.render import Renderer
 
 COUNTERS = [
@@ -20,13 +22,18 @@ class LayerCounterBase(LayerBase):
         LayerBase (_type_): _description_
     """
 
-    def __init__(self, renderer: Renderer):
+    def __init__(
+        self, renderer: Renderer, replay_data: Optional[ReplayData] = None
+    ):
         """Initiates this class.
 
         Args:
             renderer (Renderer): The renderer.
         """
         self._renderer = renderer
+        self._replay_data = (
+            replay_data if replay_data else self._renderer.replay_data
+        )
         self._font_main = self._renderer.resman.load_font(
             filename="warhelios_bold.ttf", size=25
         )
@@ -65,7 +72,7 @@ class LayerCounterBase(LayerBase):
             game_time (int): Game time. Used to sync. events.
             image (Image.Image): Image where the capture are will be pasted on.
         """
-        events = self._renderer.replay_data.events
+        events = self._replay_data.events
         damage_maps = events[game_time].evt_damage_maps
         y_positions = list(reversed(self._y_positions))
 

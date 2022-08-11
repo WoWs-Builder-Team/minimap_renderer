@@ -6,6 +6,7 @@ from importlib.resources import open_binary, open_text
 from PIL import Image, ImageDraw, ImageFont, ImageColor
 from .data import PlayerInfo
 from .const import COLORS_NORMAL
+from typing import Optional
 
 logging.basicConfig(
     level=logging.INFO,
@@ -33,7 +34,8 @@ def draw_grid() -> Image.Image:
 
 
 def generate_ship_data(
-    player_info: dict[int, PlayerInfo]
+    player_info: dict[int, PlayerInfo],
+    color: Optional[str] = None,
 ) -> dict[int, Image.Image]:
     """Gets ship information and creates and image with the ship name on it.
 
@@ -56,7 +58,11 @@ def generate_ship_data(
         font = ImageFont.FreeTypeFont(binary_reader, size=12)
 
     for player in player_info.values():
-        font_color = COLORS_NORMAL[player.relation]
+        if color:
+            font_color = COLORS_NORMAL[0 if color == "green" else 1]
+        else:
+            font_color = COLORS_NORMAL[player.relation]
+
         index, ship_name, ship_species, ship_level, hulls = ships[
             str(player.ship_params_id)
         ]

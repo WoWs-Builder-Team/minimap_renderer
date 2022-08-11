@@ -1,3 +1,5 @@
+from typing import Optional
+from ..data import ReplayData
 from renderer.render import Renderer
 from renderer.base import LayerBase
 from renderer.const import RELATION_NORMAL_STR, COLORS_NORMAL
@@ -18,15 +20,24 @@ class LayerShipBase(LayerBase):
         LayerBase (_type_): _description_
     """
 
-    def __init__(self, renderer: Renderer):
+    def __init__(
+        self,
+        renderer: Renderer,
+        replay_data: Optional[ReplayData] = None,
+        color: Optional[str] = None,
+    ):
         """Initializes this class.
 
         Args:
             renderer (Renderer): The renderer.
         """
         self._renderer = renderer
+        self._replay_data = (
+            replay_data if replay_data else self._renderer.replay_data
+        )
+        self._color = color
         self._ship_info = generate_ship_data(
-            self._renderer.replay_data.player_info
+            self._replay_data.player_info, color
         )
         self._active_consumables: dict[int, dict[int, float]] = {}
         self._abilities = renderer.resman.load_json("abilities.json")
@@ -40,8 +51,8 @@ class LayerShipBase(LayerBase):
             game_time (int): The game time.
             image (Image.Image): The minimap image.
         """
-        player_info = self._renderer.replay_data.player_info
-        events = self._renderer.replay_data.events
+        player_info = self._replay_data.player_info
+        events = self._replay_data.events
         players_consumables = events[game_time].evt_consumable
 
         if players_consumables := events[game_time].evt_consumable:
@@ -58,11 +69,25 @@ class LayerShipBase(LayerBase):
             events[game_time].evt_vehicle.values(),
             key=lambda s: (s.is_alive, s.is_visible),
         ):
+            if self._renderer.dual_mode and vehicle.relation == 1:
+                continue
+
             holder = self._ship_info[vehicle.player_id]
-            player = self._renderer.replay_data.player_info[vehicle.player_id]
+            player = self._replay_data.player_info[vehicle.player_id]
             index, name, species, level, hulls = self._ships[
                 player.ship_params_id
             ]
+
+            if self._color:
+                relation = 0 if self._color == "green" else 1
+                color = COLORS_NORMAL[0 if self._color == "green" else 1]
+            else:
+                relation = player.relation
+                color = (
+                    COLORS_NORMAL[0]
+                    if vehicle.relation == -1
+                    else COLORS_NORMAL[vehicle.relation]
+                )
 
             player = player_info[vehicle.player_id]
 
@@ -70,16 +95,11 @@ class LayerShipBase(LayerBase):
                 vehicle.is_alive,
                 vehicle.is_visible,
                 species,
-                player.relation,
+                relation,
                 vehicle.not_in_range,
             )
             icon = icon.rotate(-vehicle.yaw, Image.BICUBIC, True)
             x, y = self._renderer.get_scaled((vehicle.x, vehicle.y))
-            color = (
-                COLORS_NORMAL[0]
-                if vehicle.relation == -1
-                else COLORS_NORMAL[vehicle.relation]
-            )
 
             if vehicle.is_alive:
                 if vehicle.is_visible:

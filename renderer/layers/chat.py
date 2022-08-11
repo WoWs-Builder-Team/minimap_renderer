@@ -1,7 +1,8 @@
+from typing import Optional
 from PIL import Image, ImageDraw
 from renderer.base import LayerBase
 from renderer.const import COLORS_NORMAL
-from renderer.data import Message
+from renderer.data import Message, ReplayData
 from renderer.render import Renderer
 
 
@@ -12,13 +13,18 @@ class LayerChatBase(LayerBase):
         LayerBase (_type_): _description_
     """
 
-    def __init__(self, renderer: Renderer):
+    def __init__(
+        self, renderer: Renderer, replay_data: Optional[ReplayData] = None
+    ):
         self._renderer = renderer
+        self._replay_data = (
+            replay_data if replay_data else self._renderer.replay_data
+        )
         self._font = self._renderer.resman.load_font(
             filename="warhelios_bold.ttf", size=12
         )
         self._ships = self._renderer.resman.load_json("ships.json")
-        self._players = renderer.replay_data.player_info
+        self._players = self._replay_data.player_info
         self._generated_lines: dict[int, Image.Image] = {}
         self._messages: list[Message] = []
         self._lines: dict[int, Image.Image] = {}
@@ -30,7 +36,7 @@ class LayerChatBase(LayerBase):
             game_time (int): The game time.
             image (Image.Image): The image where the chat will be pasted to,
         """
-        evt_messages = self._renderer.replay_data.events[game_time].evt_chat
+        evt_messages = self._replay_data.events[game_time].evt_chat
         self._messages.extend(evt_messages)
 
         x_pos = 805

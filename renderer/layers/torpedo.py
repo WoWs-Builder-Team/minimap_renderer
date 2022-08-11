@@ -4,6 +4,8 @@ from renderer.render import Renderer
 from renderer.utils import flip_y, getEquidistantPoints
 from PIL import ImageDraw
 from math import cos, sin, radians, hypot, atan2
+from typing import Optional
+from renderer.data import ReplayData
 
 
 class LayerTorpedoBase(LayerBase):
@@ -16,6 +18,8 @@ class LayerTorpedoBase(LayerBase):
     def __init__(
         self,
         renderer: Renderer,
+        replay_data: Optional[ReplayData] = None,
+        color: Optional[str] = None,
     ):
         """Initializes this class.
 
@@ -23,13 +27,17 @@ class LayerTorpedoBase(LayerBase):
             renderer (Renderer): _description_
         """
         self._renderer = renderer
+        self._replay_data = (
+            replay_data if replay_data else self._renderer.replay_data
+        )
+        self._color = color
         self._torpedoes: dict[int, list] = {}
         self._projectiles: dict = self._renderer.resman.load_json(
             "projectiles.json"
         )
         self._relations = {
             v.ship_id: v.relation
-            for v in self._renderer.replay_data.player_info.values()
+            for v in self._replay_data.player_info.values()
         }
         self._hits: set[int] = set()
 
@@ -40,7 +48,7 @@ class LayerTorpedoBase(LayerBase):
             game_time (int): The game time.
             draw (ImageDraw.ImageDraw): Draw.
         """
-        events = self._renderer.replay_data.events
+        events = self._replay_data.events
         self._hits.update(events[game_time].evt_hits)
 
         if not events[game_time].evt_torpedo and not self._torpedoes:
@@ -83,9 +91,17 @@ class LayerTorpedoBase(LayerBase):
                     _cy,
                 ) = torp
 
+                if self._relations[_cid] == 1 and self._renderer.dual_mode:
+                    continue
+
+                if self._color:
+                    color = COLORS_NORMAL[0 if self._color == "green" else 1]
+                else:
+                    color = COLORS_NORMAL[self._relations[_cid]]
+
                 draw.ellipse(
                     [(_cx - 2, _cy - 2), (_cx + 2, _cy + 2)],
-                    fill=COLORS_NORMAL[self._relations[_cid]],
+                    fill=color,
                 )
             except IndexError:
                 pass

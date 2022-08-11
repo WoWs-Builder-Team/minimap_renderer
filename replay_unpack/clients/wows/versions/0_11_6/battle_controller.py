@@ -51,7 +51,7 @@ class BattleController(IBattleController):
         self._death_map = []
         self._map = ""
         self._player_id = None
-        self._arena_id = None
+        self._arena_id: int = 0
         self._dead_planes = {}
 
         Entity.subscribe_method_call("Avatar", "onBattleEnd", self.onBattleEnd)
@@ -720,6 +720,7 @@ class BattleController(IBattleController):
             )
 
         rd = ReplayData(
+            game_arena_id=self._arena_id,
             game_version=self._version[:-2].replace(",", "_"),
             game_map=self._map,
             game_battle_type=self._battle_type,

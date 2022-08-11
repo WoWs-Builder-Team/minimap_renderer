@@ -1,5 +1,7 @@
+from typing import Optional
 from renderer.base import LayerBase
 from renderer.const import COLORS_NORMAL
+from ..data import ReplayData
 from renderer.render import Renderer
 from renderer.utils import flip_y, getEquidistantPoints
 
@@ -16,6 +18,8 @@ class LayerShotBase(LayerBase):
     def __init__(
         self,
         renderer: Renderer,
+        replay_data: Optional[ReplayData] = None,
+        color: Optional[str] = None,
     ):
         """Initilizes this class.
 
@@ -23,10 +27,14 @@ class LayerShotBase(LayerBase):
             renderer (Renderer): The renderer.
         """
         self._renderer = renderer
+        self._replay_data = (
+            replay_data if replay_data else self._renderer.replay_data
+        )
+        self._color = color
         self._projectiles: dict[int, list] = {}
         self._relations = {
             v.ship_id: v.relation
-            for v in self._renderer.replay_data.player_info.values()
+            for v in self._replay_data.player_info.values()
         }
         self._empties = 0
         self._hits: set[int] = set()
@@ -38,7 +46,7 @@ class LayerShotBase(LayerBase):
             game_time (int): The game time.
             draw (ImageDraw.ImageDraw): Draw.
         """
-        events = self._renderer.replay_data.events
+        events = self._replay_data.events
 
         if not events[game_time].evt_shot and not self._projectiles:
             return
@@ -70,9 +78,20 @@ class LayerShotBase(LayerBase):
                 if projectile := self._projectiles[sid]:
                     try:
                         cid, cx, cy, px, py = projectile.pop(0)
+                        rel = self._relations[cid]
+                        if rel == 1 and self._renderer.dual_mode:
+                            continue
+
+                        if self._color:
+                            color = COLORS_NORMAL[
+                                0 if self._color == "green" else 1
+                            ]
+                        else:
+                            color = COLORS_NORMAL[self._relations[cid]]
+
                         draw.line(
                             [(cx, cy), (px, py)],
-                            fill=COLORS_NORMAL[self._relations[cid]],
+                            fill=color,
                             width=2,
                         )
                     except IndexError:

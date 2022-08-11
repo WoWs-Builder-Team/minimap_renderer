@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Optional, Union
 
 from PIL import Image, ImageDraw
 from renderer.base import LayerBase
@@ -7,7 +7,7 @@ from renderer.const import (
     DEATH_TYPES,
     TIER_ROMAN,
 )
-from renderer.data import Frag
+from renderer.data import Frag, ReplayData
 from renderer.render import Renderer
 from renderer.utils import do_trim
 
@@ -19,14 +19,19 @@ class LayerFragBase(LayerBase):
         LayerBase (_type_): _description_
     """
 
-    def __init__(self, renderer: Renderer):
+    def __init__(
+        self, renderer: Renderer, replay_data: Optional[ReplayData] = None
+    ):
         self._renderer = renderer
+        self._replay_data = (
+            replay_data if replay_data else self._renderer.replay_data
+        )
         self._font = self._renderer.resman.load_font(
             filename="warhelios_bold.ttf", size=12
         )
         self._frags: list[Frag] = []
         self._ships = self._renderer.resman.load_json("ships.json")
-        self._players = renderer.replay_data.player_info
+        self._players = self._replay_data.player_info
         self._vehicle_id_to_player = {
             v.ship_id: v for k, v in self._players.items()
         }
@@ -42,7 +47,7 @@ class LayerFragBase(LayerBase):
             game_time (int): The game time.
             image (Image.Image): The image where the logs will be drawn into.
         """
-        evt_flag = self._renderer.replay_data.events[game_time].evt_frag
+        evt_flag = self._replay_data.events[game_time].evt_frag
         self._base = Image.new("RGBA", (560, 50))
         self._frags.extend(evt_flag)
 

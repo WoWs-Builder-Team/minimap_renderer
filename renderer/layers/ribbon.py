@@ -1,5 +1,7 @@
+from typing import Optional
 from PIL import Image, ImageDraw
 from renderer.base import LayerBase
+from ..data import ReplayData
 from renderer.render import Renderer
 
 SOLO_MAP = {
@@ -27,8 +29,14 @@ class LayerRibbonBase(LayerBase):
     Args:
         LayerBase (_type_): _description_
     """
-    def __init__(self, renderer: Renderer):
+
+    def __init__(
+        self, renderer: Renderer, replay_data: Optional[ReplayData] = None
+    ):
         self._renderer = renderer
+        self._replay_data = (
+            replay_data if replay_data else self._renderer.replay_data
+        )
         self._font = self._renderer.resman.load_font(
             filename="warhelios_bold.ttf", size=25
         )
@@ -42,8 +50,8 @@ class LayerRibbonBase(LayerBase):
             game_time (int): The game time.
             image (Image.Image): The image.
         """
-        evt_ribbons = self._renderer.replay_data.events[game_time].evt_ribbon
-        evt_achievement = self._renderer.replay_data.events[
+        evt_ribbons = self._replay_data.events[game_time].evt_ribbon
+        evt_achievement = self._replay_data.events[
             game_time
         ].evt_achievement
 
@@ -53,7 +61,7 @@ class LayerRibbonBase(LayerBase):
         ribbon_count = 0
 
         if evt_ribbons := evt_ribbons.get(
-            self._renderer.replay_data.owner_avatar_id
+            self._replay_data.owner_avatar_id
         ):
             totals = {}
 
@@ -124,7 +132,7 @@ class LayerRibbonBase(LayerBase):
             y_pos += last_y_height
 
         if achievements := evt_achievement.get(
-            self._renderer.replay_data.owner_id, None
+            self._replay_data.owner_id, None
         ):
             for a_idx, (a_id, a_count) in enumerate(achievements.items(), 1):
                 ui_name = self._achievements[a_id]

@@ -1,3 +1,5 @@
+from typing import Optional
+from ..data import ReplayData
 from renderer.render import Renderer
 from renderer.base import LayerBase
 from renderer.const import COLORS_NORMAL
@@ -14,8 +16,14 @@ class LayerScoreBase(LayerBase):
     Args:
         LayerBase (_type_): _description_
     """
-    def __init__(self, renderer: Renderer):
+
+    def __init__(
+        self, renderer: Renderer, replay_data: Optional[ReplayData] = None
+    ):
         self._renderer = renderer
+        self._replay_data = (
+            replay_data if replay_data else self._renderer.replay_data
+        )
         self._font = self._renderer.resman.load_font(
             filename="warhelios_bold.ttf", size=28
         )
@@ -63,14 +71,14 @@ class LayerScoreBase(LayerBase):
             game_time (int): _description_
             image (Image.Image): _description_
         """
-        evt_score = self._renderer.replay_data.events[game_time].evt_score
+        evt_score = self._replay_data.events[game_time].evt_score
         base = self._base.copy()
 
         sc1 = evt_score[0]
         sc2 = evt_score[1]
 
-        per1 = 1 - sc1.score / self._renderer.replay_data.game_win_score
-        per2 = 1 - sc2.score / self._renderer.replay_data.game_win_score
+        per1 = 1 - sc1.score / self._replay_data.game_win_score
+        per2 = 1 - sc2.score / self._replay_data.game_win_score
 
         draw = ImageDraw.Draw(base)
         st = f"{sc1.score} : {sc2.score}"
@@ -106,7 +114,7 @@ class LayerScoreBase(LayerBase):
         draw.rectangle(((a3, b3), (a4, b4)), fill=COLORS_NORMAL[1])
         image.paste(base, (40, 0), base)
 
-        ttw = self._renderer.replay_data.events[game_time].evt_times_to_win
+        ttw = self._replay_data.events[game_time].evt_times_to_win
         if ttw is None:
             ally_label, enemy_label = ("--", "--"), ("--", "--")
         else:

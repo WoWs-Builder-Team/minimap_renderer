@@ -7,7 +7,14 @@ import struct
 import zlib
 
 from replay_unpack.clients import wot, wows
-from replay_unpack.replay_reader import ReplayReader, ReplayInfo, REPLAY_SIGNATURE
+from replay_unpack.replay_reader import (
+    ReplayReader,
+    ReplayInfo,
+    REPLAY_SIGNATURE,
+)
+
+
+logging.basicConfig(level=logging.ERROR)
 
 
 class DefaultEncoder(json.JSONEncoder):
@@ -34,7 +41,9 @@ class CustomReader(ReplayReader):
         :rtype: tuple[dict, str]
         """
         if self._fp.read(4) != REPLAY_SIGNATURE:
-            raise ValueError("File %s is not a valid replay" % self._replay_path)
+            raise ValueError(
+                "File %s is not a valid replay" % self._replay_path
+            )
 
         blocks_count = struct.unpack("i", self._fp.read(4))[0]
 
@@ -48,7 +57,9 @@ class CustomReader(ReplayReader):
             extra_data.append(data)
 
         # noinspection PyUnresolvedReferences
-        decrypted_data = zlib.decompress(self._ReplayReader__decrypt_data(self._fp.read()))
+        decrypted_data = zlib.decompress(
+            self._ReplayReader__decrypt_data(self._fp.read())
+        )
 
         if self._dump_binary_data:
             self._save_decrypted_data(decrypted_data)
@@ -64,7 +75,9 @@ class CustomReader(ReplayReader):
 class ReplayParser(object):
     BASE_PATH = os.path.dirname(__file__)
 
-    def __init__(self, fp: BinaryIO, strict: bool = False, raw_data_output=None):
+    def __init__(
+        self, fp: BinaryIO, strict: bool = False, raw_data_output=None
+    ):
         self._fp = fp
         self._is_strict_mode = strict
         self._reader = CustomReader(fp)
@@ -90,28 +103,31 @@ class ReplayParser(object):
             open=replay.engine_data,
             extra_data=replay.extra_data,
             hidden=hidden_data,
-            error=error
+            error=error,
         )
 
     def _get_hidden_data(self, replay: ReplayInfo):
-        if replay.game == 'wot':
+        if replay.game == "wot":
             # 'World of Tanks v.1.8.0.2 #252'
-            version = '.'.join(replay.engine_data.get('clientVersionFromXml')
-                               .replace('World of Tanks v.', '')
-                               .replace(' ', '.')
-                               .replace('#', '')
-                               .split('.')[:3])
+            version = ".".join(
+                replay.engine_data.get("clientVersionFromXml")
+                .replace("World of Tanks v.", "")
+                .replace(" ", ".")
+                .replace("#", "")
+                .split(".")[:3]
+            )
             player = wot.ReplayPlayer(version)
-        elif replay.game == 'wows':
-            player = wows.ReplayPlayer(replay.engine_data
-                                       .get('clientVersionFromXml')
-                                       .replace(' ', '')
-                                       .split(','))
+        elif replay.game == "wows":
+            player = wows.ReplayPlayer(
+                replay.engine_data.get("clientVersionFromXml")
+                .replace(" ", "")
+                .split(",")
+            )
         else:
             raise NotImplementedError
 
         if self._raw_data_output:
-            with open(self._raw_data_output, 'wb') as fp:
+            with open(self._raw_data_output, "wb") as fp:
                 fp.write(replay.decrypted_data)
 
         player.play(replay.decrypted_data, self._is_strict_mode)
@@ -123,38 +139,33 @@ def main(replay, strict_mode, raw_data_output):
 
     with open(replay, "rb") as fp:
         replay_info = ReplayParser(
-            fp,
-            strict=strict_mode,
-            raw_data_output=raw_data_output
+            fp, strict=strict_mode, raw_data_output=raw_data_output
         ).get_info()
 
     import pickle
+
     with open("data.dat", "wb") as f:
         pickle.dump(replay_info["hidden"]["replay_data"], f)
     # print(json.dumps(replay_info, indent=1, cls=DefaultEncoder))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--replay', type=str, required=True)
+    parser.add_argument("--replay", type=str, required=True)
     parser.add_argument(
-        '--log_level',
-        choices=['CRITICAL', 'ERROR', 'WARNING', 'INFO', 'DEBUG'],
+        "--log_level",
+        choices=["CRITICAL", "ERROR", "WARNING", "INFO", "DEBUG"],
         required=False,
-        default='ERROR'
+        default="ERROR",
     )
+    parser.add_argument("--strict_mode", action="store_true", required=False)
     parser.add_argument(
-        '--strict_mode',
-        action='store_true',
-        required=False
-    )
-    parser.add_argument(
-        '--raw_data_output',
-        help='File where raw replay content (decoded and decompressed) will be written',
+        "--raw_data_output",
+        help="File where raw replay content (decoded and decompressed) will be written",
         required=False,
-        default=None
+        default=None,
     )
 
     namespace = parser.parse_args()

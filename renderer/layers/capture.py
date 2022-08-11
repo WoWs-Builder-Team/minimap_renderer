@@ -1,9 +1,10 @@
+from typing import Optional
 from PIL import Image, ImageDraw
 from renderer.base import LayerBase
 from renderer.render import Renderer
 from renderer.const import COLORS_NORMAL, RELATION_NORMAL_STR
 from renderer.utils import replace_color
-from renderer.data import ControlPoint
+from renderer.data import ControlPoint, ReplayData
 
 
 class LayerCaptureBase(LayerBase):
@@ -13,16 +14,21 @@ class LayerCaptureBase(LayerBase):
         LayerBase (_type_): _description_
     """
 
-    def __init__(self, renderer: Renderer):
+    def __init__(
+        self, renderer: Renderer, replay_data: Optional[ReplayData] = None
+    ):
         """Initiates this class.
 
         Args:
             renderer (Renderer): The renderer.
         """
         self._renderer = renderer
+        self._replay_data = (
+            replay_data if replay_data else self._renderer.replay_data
+        )
         self._owner = [
             p
-            for p in self._renderer.replay_data.player_info.values()
+            for p in self._replay_data.player_info.values()
             if p.relation == -1
         ].pop()
         self._generated_caps: dict[
@@ -36,7 +42,7 @@ class LayerCaptureBase(LayerBase):
             game_time (int): Game time. Used to sync. events.
             image (Image.Image): Image where the capture are will be pasted on.
         """
-        events = self._renderer.replay_data.events
+        events = self._replay_data.events
         cps = events[game_time].evt_control.values()
 
         for count, cp in enumerate(cps):
@@ -114,7 +120,8 @@ class LayerCaptureBase(LayerBase):
                     cap.relation,
                     cap.team_id,
                 )
-            ) & 1000000000
+            )
+            & 1000000000
         )
         return cap_hash
 

@@ -1,7 +1,7 @@
 import numpy as np
 
-from typing import Union
-from renderer.data import PlayerInfo
+from typing import Optional, Union
+from renderer.data import PlayerInfo, ReplayData
 from renderer.render import Renderer
 from renderer.base import LayerBase
 from renderer.const import RELATION_NORMAL_STR, COLORS_NORMAL
@@ -49,11 +49,16 @@ class LayerHealthBase(LayerBase):
         LayerBase (_type_): _description_
     """
 
-    def __init__(self, renderer: Renderer):
+    def __init__(
+        self, renderer: Renderer, replay_data: Optional[ReplayData] = None
+    ):
         self._renderer = renderer
+        self._replay_data = (
+            replay_data if replay_data else self._renderer.replay_data
+        )
         self._ships = renderer.resman.load_json("ships.json")
-        self._player = renderer.replay_data.player_info[
-            renderer.replay_data.owner_id
+        self._player = self._replay_data.player_info[
+            self._replay_data.owner_id
         ]
         self._font = self._renderer.resman.load_font(
             filename="warhelios_bold.ttf", size=16
@@ -83,7 +88,7 @@ class LayerHealthBase(LayerBase):
             game_time (int): The game time.
             image (Image.Image): The minimap image.
         """
-        ships = self._renderer.replay_data.events[game_time].evt_vehicle
+        ships = self._replay_data.events[game_time].evt_vehicle
         ship = ships[self._player.ship_id]
         ability = self._abilities[self._player.ship_params_id]
         per = ship.health / self._player.max_health

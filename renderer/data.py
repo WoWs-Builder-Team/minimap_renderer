@@ -159,6 +159,7 @@ class Events(NamedTuple):
 class ReplayData(NamedTuple):
     """Replay data."""
 
+    game_arena_id: int
     game_version: str
     game_map: str
     game_battle_type: int

@@ -1,6 +1,7 @@
+from typing import Optional
 import numpy as np
 
-from renderer.data import Plane
+from renderer.data import Plane, ReplayData
 from renderer.render import Renderer
 from renderer.base import LayerBase
 from renderer.const import RELATION_NORMAL_STR
@@ -15,13 +16,22 @@ class LayerPlaneBase(LayerBase):
         LayerBase (_type_): _description_
     """
 
-    def __init__(self, renderer: Renderer):
+    def __init__(
+        self,
+        renderer: Renderer,
+        replay_data: Optional[ReplayData] = None,
+        color: Optional[str] = None,
+    ):
         """Initiates this class.
 
         Args:
             renderer (Renderer): The renderer.
         """
         self._renderer = renderer
+        self._replay_data = (
+            replay_data if replay_data else self._renderer.replay_data
+        )
+        self._color = color
         self._planes = renderer.resman.load_json("planes.json")
 
     def draw(self, game_time: int, image: Image.Image):
@@ -31,12 +41,15 @@ class LayerPlaneBase(LayerBase):
             game_time (int): Game time.
             image (Image.Image): The minimap image.
         """
-        planes = self._renderer.replay_data.events[game_time].evt_plane
+        planes = self._replay_data.events[game_time].evt_plane
 
         if not planes:
             return
 
         for plane in planes.values():
+            if plane.relation == 1 and self._renderer.dual_mode:
+                continue
+
             x, y = self._renderer.get_scaled(plane.position)
             icon = self._get_plane_icon(plane)
             m1 = round(icon.width / 2)
@@ -53,7 +66,12 @@ class LayerPlaneBase(LayerBase):
             Image.Image: The image of the plane.
         """
         ptype, ammo = self._planes[plane.params_id]
-        relation = RELATION_NORMAL_STR[plane.relation]
+
+        if self._color:
+            relation = "ally" if self._color == "green" else "enemy"
+        else:
+            relation = RELATION_NORMAL_STR[plane.relation]
+
         icon_res = f"plane_icons.{relation}"
 
         if plane.purpose in [0, 1]:
