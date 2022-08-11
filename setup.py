@@ -1,7 +1,6 @@
 from setuptools import setup, find_packages
 
 PACKAGES = find_packages()
-PACKAGES.append("replay_parser")
 
 
 setup(
@@ -15,6 +14,7 @@ setup(
     license="AGPL 3.0",
     keywords="minimap renderer worldofwarships wows replay",
     url="https://github.com/WoWs-Builder-Team/minimap_renderer",
+    py_modules=["replay_parser.py"],
     packages=PACKAGES,
     scripts=[
         "create_data.py",
