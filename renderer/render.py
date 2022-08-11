@@ -18,7 +18,11 @@ Number = Union[int, float]
 
 class RenderDual:
     def __init__(
-        self, green_replay_data: ReplayData, red_replay_data: ReplayData
+        self,
+        green_replay_data: ReplayData,
+        red_replay_data: ReplayData,
+        green_tag: Optional[str] = None,
+        red_tag: Optional[str] = None,
     ):
         self.replay_g: ReplayData = green_replay_data
         self.replay_r: ReplayData = red_replay_data
@@ -31,6 +35,9 @@ class RenderDual:
         self.space_size: int = 0
         self.scaling: float = 0.0
         self.dual_mode: bool = True
+        self.green_tag = green_tag
+        self.red_tag = red_tag
+        self.bg_color: tuple[int, int, int] = (0, 0, 0)
 
     def start(self):
         self._load_map()
@@ -62,7 +69,7 @@ class RenderDual:
             self, self.replay_g
         )
         g_score = self._load_base_or_versioned("LayerScore")(
-            self, self.replay_g
+            self, self.replay_g, green_tag=self.green_tag, red_tag=self.red_tag
         )
         g_timer = self._load_base_or_versioned("LayerTimer")(
             self, self.replay_g
@@ -160,6 +167,7 @@ class RenderDual:
                 ),
                 mask=map_legends,
             )
+            self.bg_color = map_water.getpixel((10, 10))
 
             map_water = Image.alpha_composite(map_water, draw_grid())
             self.minimap_image = Image.alpha_composite(map_water, map_land)
@@ -256,6 +264,7 @@ class Renderer:
         self.enable_chat = enable_chat
         self.usernames: dict[int, str] = {}
         self.dual_mode: bool = False
+        self.bg_color: tuple[int, int, int] = (0, 0, 0)
 
         if self.anon:
             for i, (pid, pi) in enumerate(
@@ -391,7 +400,7 @@ class Renderer:
                 ),
                 mask=map_legends,
             )  # no pos.
-
+            self.bg_color = map_water.getpixel((10, 10))
             map_water = Image.alpha_composite(map_water, draw_grid())
             self.minimap_image = Image.alpha_composite(map_water, map_land)
         except (FileNotFoundError, ModuleNotFoundError) as e:

@@ -18,12 +18,18 @@ class LayerScoreBase(LayerBase):
     """
 
     def __init__(
-        self, renderer: Renderer, replay_data: Optional[ReplayData] = None
+        self,
+        renderer: Renderer,
+        replay_data: Optional[ReplayData] = None,
+        green_tag: Optional[str] = None,
+        red_tag: Optional[str] = None,
     ):
         self._renderer = renderer
         self._replay_data = (
             replay_data if replay_data else self._renderer.replay_data
         )
+        self._green_tag = green_tag
+        self._red_tag = red_tag
         self._font = self._renderer.resman.load_font(
             filename="warhelios_bold.ttf", size=28
         )
@@ -112,6 +118,26 @@ class LayerScoreBase(LayerBase):
         a4, b4 = base.width - margin, base.height - margin
         a4 = x4 - (base.width / 2 - space_width / 2) * per2 + (margin * per2)
         draw.rectangle(((a3, b3), (a4, b4)), fill=COLORS_NORMAL[1])
+
+        if self._green_tag:
+            self._draw_tag(draw, self._green_tag, (x1, x2), (y1, y2))
+
+        if self._red_tag:
+            self._draw_tag(draw, self._red_tag, (x3, x4), (y3, y4))
+
+        # if self._red_tag:
+        #     g_tw, g_th = self._font.getsize(self._red_tag)
+        #     g_bar_mid = (x2 - x1) / 2
+        #     g_bar_mid += x1
+        #     g_ty = y1 + (y2 - y1) / 2 - g_th / 2
+        #     g_ty -= 5
+        #     draw.text(
+        #         (g_bar_mid - g_tw / 2, g_ty),
+        #         self._red_tag,
+        #         "white",
+        #         self._font,
+        #     )
+
         image.paste(base, (40, 0), base)
 
         ttw = self._replay_data.events[game_time].evt_times_to_win
@@ -153,3 +179,26 @@ class LayerScoreBase(LayerBase):
             anchor="lm",
         )
         image.paste(timers_base, (757, 0), timers_base)
+
+    def _draw_tag(
+        self,
+        draw: ImageDraw.ImageDraw,
+        tag: str,
+        bar_xs: tuple,
+        bar_ys: tuple,
+    ):
+        x1, x2 = bar_xs
+        y1, y2 = bar_ys
+        tw, th = self._font.getsize(tag)
+        bar_mid = (x2 - x1) / 2
+        bar_mid += x1
+        ty = y1 + (y2 - y1) / 2 - th / 2
+        ty -= 5
+        draw.text(
+            (bar_mid - tw / 2, ty),
+            tag,
+            "white",
+            self._font,
+            stroke_fill=self._renderer.bg_color,
+            stroke_width=2,
+        )
