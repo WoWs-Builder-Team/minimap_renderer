@@ -18,6 +18,11 @@ setup(
     url="https://github.com/WoWs-Builder-Team/minimap_renderer",
     py_modules=["replay_parser"],
     packages=find_packages(),
+    package_data={
+        "renderer": ["*.png", "*.json", "*.ttf", "*.settings"],
+        "replay_unpack": ["*.def", "*.xml"]
+    },
+    include_package_data=True,
     python_requires=">=3.10",
     scripts=[
         "create_data.py",
