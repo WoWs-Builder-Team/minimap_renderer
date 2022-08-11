@@ -10,7 +10,7 @@ class RenameUnpickler(pickle.Unpickler):
     def find_class(self, module, name):
         renamed_module = module
         if module == "GameParams":
-            renamed_module = "data.gameparams.GameParams"
+            renamed_module = "renderer_data.gameparams.GameParams"
 
         return super(RenameUnpickler, self).find_class(renamed_module, name)
 

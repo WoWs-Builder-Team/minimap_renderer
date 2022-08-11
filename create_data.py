@@ -1,6 +1,6 @@
-from data.utils import LOGGER
+from renderer_data.utils import LOGGER
 
-from data import (
+from renderer_data import (
     create_ships_data,
     create_planes_data,
     create_projectiles_data,

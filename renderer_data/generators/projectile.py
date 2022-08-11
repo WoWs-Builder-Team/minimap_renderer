@@ -1,7 +1,7 @@
 import json
 import os
-from data.gameparams import get_data
-from data.utils import LOGGER
+from renderer_data.gameparams import get_data
+from renderer_data.utils import LOGGER
 
 
 def create_projectiles_data():

@@ -4,8 +4,8 @@ import os
 
 from polib import MOFile, MOEntry
 from typing import Dict
-from data.gameparams import get_data
-from data.utils import LOGGER
+from renderer_data.gameparams import get_data
+from renderer_data.utils import LOGGER
 
 
 def create_ships_data():
