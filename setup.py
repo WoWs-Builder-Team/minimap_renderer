@@ -19,7 +19,7 @@ setup(
     py_modules=["replay_parser"],
     packages=find_packages(),
     package_data={
-        "": ["*.*"],
+        "": ["*.*", "*.png", "*.json", "*.ttf", "*.settings", "*def", "*.xml"],
     },
     include_package_data=True,
     python_requires=">=3.10",
