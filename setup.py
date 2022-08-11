@@ -1,5 +1,8 @@
 from setuptools import setup, find_packages
 
+PACKAGES = find_packages()
+PACKAGES.append("replay_parser.py")
+
 
 setup(
     name="Minimap Renderer",
