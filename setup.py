@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
-PACKAGES = find_packages()
-
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
 setup(
     name="Minimap Renderer",
@@ -11,11 +11,14 @@ setup(
         "Minimap Renderer parses World of Warships replays to create a "
         "timelapse video that resembles the in-game minimap."
     ),
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     license="AGPL 3.0",
     keywords="minimap renderer worldofwarships wows replay",
     url="https://github.com/WoWs-Builder-Team/minimap_renderer",
     py_modules=["replay_parser"],
-    packages=PACKAGES,
+    packages=find_packages(),
+    python_requires=">=3.10",
     scripts=[
         "create_data.py",
         "render_dual.py",
