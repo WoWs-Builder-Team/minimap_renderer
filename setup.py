@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 PACKAGES = find_packages()
-PACKAGES.append("replay_parser.py")
+PACKAGES.append("replay_parser")
 
 
 setup(
