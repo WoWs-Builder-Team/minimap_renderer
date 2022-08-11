@@ -14,7 +14,7 @@ setup(
     license="AGPL 3.0",
     keywords="minimap renderer worldofwarships wows replay",
     url="https://github.com/WoWs-Builder-Team/minimap_renderer",
-    py_modules=["replay_parser.py"],
+    py_modules=["replay_parser"],
     packages=PACKAGES,
     scripts=[
         "create_data.py",
