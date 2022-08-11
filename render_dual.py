@@ -22,5 +22,5 @@ if __name__ == "__main__":
         r_replay_data: ReplayData = r_replay_info["hidden"]["replay_data"]
 
         RenderDual(
-            g_replay_data, r_replay_data, green_tag="W33B", red_tag="B00M3RS"
+            g_replay_data, r_replay_data, green_tag="W33BS", red_tag="B00M3RS"
         ).start()
