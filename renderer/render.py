@@ -282,7 +282,7 @@ class Renderer:
                 name = f"Player {i}"
                 self.usernames[pid] = name
 
-    def start(self, path: str, fps: int = 20):
+    def start(self, path: str, fps: int = 20, quality: int = 7):
         """Starts the rendering process"""
         self._load_map()
 
@@ -310,7 +310,7 @@ class Renderer:
         video_writer = write_frames(
             path=path,
             fps=fps,
-            quality=7,
+            quality=quality,
             pix_fmt_in="rgba",
             macro_block_size=m_block,
             size=self.minimap_bg.size,
