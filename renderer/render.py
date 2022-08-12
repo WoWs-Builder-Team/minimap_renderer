@@ -23,6 +23,7 @@ class RenderDual:
         red_replay_data: ReplayData,
         green_tag: Optional[str] = None,
         red_tag: Optional[str] = None,
+        use_tqdm: bool = True,
     ):
         self.replay_g: ReplayData = green_replay_data
         self.replay_r: ReplayData = red_replay_data
@@ -38,6 +39,7 @@ class RenderDual:
         self.green_tag = green_tag
         self.red_tag = red_tag
         self.bg_color: tuple[int, int, int] = (0, 0, 0)
+        self.use_tqdm = use_tqdm
 
     def start(self):
         self._load_map()
@@ -110,9 +112,14 @@ class RenderDual:
         )
         video_writer.send(None)
 
-        for i in tqdm(
-            set(self.replay_g.events).intersection(self.replay_r.events)
-        ):
+        if self.use_tqdm:
+            prog = tqdm(
+                set(self.replay_g.events).intersection(self.replay_r.events)
+            )
+        else:
+            prog = set(self.replay_g.events).intersection(self.replay_r.events)
+
+        for i in prog:
             minimap_img = self.minimap_image.copy()
             minimap_bg = self.minimap_bg.copy()
             draw = ImageDraw.Draw(minimap_img)
@@ -244,6 +251,7 @@ class Renderer:
         logs: bool = True,
         anon: bool = False,
         enable_chat: bool = True,
+        use_tqdm: bool = False,
     ):
         """Orchestrates the rendering process.
 
@@ -265,6 +273,7 @@ class Renderer:
         self.usernames: dict[int, str] = {}
         self.dual_mode: bool = False
         self.bg_color: tuple[int, int, int] = (0, 0, 0)
+        self.use_tqdm = use_tqdm
 
         if self.anon:
             for i, (pid, pi) in enumerate(
@@ -319,9 +328,13 @@ class Renderer:
         self._draw_header(self.minimap_bg)
 
         last_key = list(self.replay_data.events)[-1]
-        print(last_key)
 
-        for game_time in tqdm(self.replay_data.events.keys()):
+        if self.use_tqdm:
+            prog = tqdm(self.replay_data.events.keys())
+        else:
+            prog = self.replay_data.events.keys()
+
+        for game_time in prog:
             minimap_img = self.minimap_image.copy()
             minimap_bg = self.minimap_bg.copy()
 
