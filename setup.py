@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="minimap-renderer",
-    version="0.0.2",
+    version="0.0.3",
     author="notyourfather, trackpad",
     description=(
         "Minimap Renderer parses World of Warships replays to create a "
