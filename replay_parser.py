@@ -76,12 +76,17 @@ class ReplayParser(object):
     BASE_PATH = os.path.dirname(__file__)
 
     def __init__(
-        self, fp: BinaryIO, strict: bool = False, raw_data_output=None
+        self,
+        fp: BinaryIO,
+        strict: bool = False,
+        raw_data_output=None,
+        logging_level: int = logging.ERROR,
     ):
         self._fp = fp
         self._is_strict_mode = strict
         self._reader = CustomReader(fp)
         self._raw_data_output = raw_data_output
+        logging.basicConfig(level=logging_level)
 
     def get_info(self):
         replay = self._reader.get_replay_data()
