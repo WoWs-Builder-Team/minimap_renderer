@@ -14,9 +14,6 @@ from replay_unpack.replay_reader import (
 )
 
 
-logging.basicConfig(level=logging.ERROR)
-
-
 class DefaultEncoder(json.JSONEncoder):
     def default(self, o):
         try:
@@ -87,6 +84,8 @@ class ReplayParser(object):
         self._reader = CustomReader(fp)
         self._raw_data_output = raw_data_output
         logging.basicConfig(level=logging_level)
+        root = logging.getLogger()
+        root.setLevel(logging.ERROR)
 
     def get_info(self):
         replay = self._reader.get_replay_data()
