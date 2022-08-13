@@ -17,15 +17,9 @@ setup(
     keywords="minimap renderer worldofwarships wows replay",
     url="https://github.com/WoWs-Builder-Team/minimap_renderer",
     py_modules=["replay_parser"],
-    packages=find_packages(),
+    packages=find_packages(exclude=["renderer_data"]),
     include_package_data=True,
     python_requires=">=3.10",
-    scripts=[
-        "create_data.py",
-        "render_dual.py",
-        "render.py",
-        "replay_parser.py",
-    ],
     install_requires=[
         "astroid==2.11.7",
         "autopep8==1.6.0",
