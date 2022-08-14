@@ -42,12 +42,12 @@ def create_abilities_data():
         "trigger9": 30,
         "circleWave": 32,
         "goDeep": 33,
-        "submarineLocator": 35,
         "hydrophone": 35,
         "fastRudders": 36,
         "subsEnergyFreeze": 37,
         "affectedBuffAura": 39,
         "invisibilityExtraBuffConsumable": 40,
+        "submarineLocator": 41,
     }
     ship_abilities = {}
 
