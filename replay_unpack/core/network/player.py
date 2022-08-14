@@ -23,11 +23,11 @@ class PlayerBase:
 
         if packet.type in self._mapping:
             return self._mapping[packet.type](packet.raw_data)
-        logging.info(
-            "unknown packet %s %s",
-            hex(packet.type),
-            str(packet.raw_data.read().hex()),
-        )
+        # logging.info(
+        #     "unknown packet %s %s",
+        #     hex(packet.type),
+        #     str(packet.raw_data.read().hex()),
+        # )
         return None
 
     def _process_packet(self, packet, t: float):
