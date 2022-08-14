@@ -349,13 +349,13 @@ class Renderer:
             prog = self.replay_data.events.keys()
 
         total = len(prog)
-        sent = set()
+        last_per = 0.0
 
         for idx, game_time in enumerate(prog):
             if progress_cb:
                 per = round((idx + 1) / total, 1)
-                if per not in sent:
-                    sent.add(per)
+                if per > last_per:
+                    last_per = per
                     progress_cb(per)
 
             minimap_img = self.minimap_image.copy()
