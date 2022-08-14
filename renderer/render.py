@@ -282,8 +282,16 @@ class Renderer:
                 name = f"Player {i}"
                 self.usernames[pid] = name
 
+    def _check_if_operations(self):
+        bts = self.resman.load_json("battle_types.json")
+        bt = bts[self.replay_data.game_battle_type]
+
+        if bt["scenario"][:2].startswith("OP"):
+            self.is_operations = True
+
     def start(self, path: str, fps: int = 20, quality: int = 7):
         """Starts the rendering process"""
+        self._check_if_operations()
         self._load_map()
 
         assert self.minimap_image
@@ -394,8 +402,14 @@ class Renderer:
             MapManifestLoadError: Raised when an error occurs when loading maps
             manifest.
         """
+
+        if self.is_operations:
+            map_name = f"s{self.replay_data.game_map}"
+        else:
+            map_name = self.replay_data.game_map
+
         self._load_map_manifest()
-        path = f"spaces.{self.replay_data.game_map}"
+        path = f"spaces.{map_name}"
 
         try:
             map_legends = self.resman.load_image("minimap_grid_legends.png")
@@ -429,12 +443,17 @@ class Renderer:
         Returns:
             str: Package on where the map resources will be loaded.
         """
+        if self.is_operations:
+            map_name = f"s{self.replay_data.game_map}"
+        else:
+            map_name = self.replay_data.game_map
+
         try:
             manifest = self.resman.load_json("manifest.json", "spaces")
-            manifest = manifest[self.replay_data.game_map]
+            manifest = manifest[map_name]
         except (KeyError, JSONDecodeError):
             manifest = self.resman.load_json("manifest.json", "spaces", True)
-            manifest = manifest[self.replay_data.game_map]
+            manifest = manifest[map_name]
 
         self.minimap_size, self.space_size, self.scaling = manifest
         assert isinstance(self.minimap_size, int)
