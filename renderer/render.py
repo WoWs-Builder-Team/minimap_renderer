@@ -353,10 +353,10 @@ class Renderer:
 
         for idx, game_time in enumerate(prog):
             if progress_cb:
-                per = round((idx + 1) / total * 100)
-                if per % 10 == 0 and per not in sent:
+                per = round((idx + 1) / total, 1)
+                if per not in sent:
                     sent.add(per)
-                    progress_cb(round((idx + 1) / total, 1))
+                    progress_cb(per)
 
             minimap_img = self.minimap_image.copy()
             minimap_bg = self.minimap_bg.copy()
