@@ -1,6 +1,6 @@
 from json import JSONDecodeError
 from optparse import Option
-from typing import Optional, Type, Union
+from typing import Any, Callable, Optional, Type, Union
 from importlib import import_module
 from renderer.base import LayerBase
 
@@ -289,7 +289,13 @@ class Renderer:
         if bt["scenario"][:2].startswith("OP"):
             self.is_operations = True
 
-    def start(self, path: str, fps: int = 20, quality: int = 7):
+    def start(
+        self,
+        path: str,
+        fps: int = 20,
+        quality: int = 7,
+        progress_cb: Optional[Callable[[float, int], Any]] = None,
+    ):
         """Starts the rendering process"""
         self._check_if_operations()
         self._load_map()
@@ -342,7 +348,16 @@ class Renderer:
         else:
             prog = self.replay_data.events.keys()
 
-        for game_time in prog:
+        total = len(prog)
+        sent = set()
+
+        for idx, game_time in enumerate(prog):
+            if progress_cb:
+                per = round((idx + 1) / total * 100)
+                if per % 10 == 0 and per not in sent:
+                    sent.add(per)
+                    progress_cb((idx + 1) / total, per)
+
             minimap_img = self.minimap_image.copy()
             minimap_bg = self.minimap_bg.copy()
 

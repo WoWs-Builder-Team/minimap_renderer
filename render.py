@@ -1,21 +1,14 @@
 import pickle
-import timeit
 
 from renderer.render import Renderer
 
-setup = """
-from renderer.render import Renderer
-import pickle
-"""
-code = """
-with open("data.dat", "rb") as f:
-    Renderer(pickle.load(f)).start()
-"""
+
+def progress(a, b):
+    print(a, b)
+
 
 if __name__ == "__main__":
     with open("data.dat", "rb") as f:
         Renderer(
-            pickle.load(f), logs=True, enable_chat=True, use_tqdm=True
-        ).start("minimap.mp4")
-    # result = timeit.timeit(code, setup, number=10)
-    # print(result)
+            pickle.load(f), logs=True, enable_chat=True, use_tqdm=False
+        ).start("minimap.mp4", progress_cb=progress)
