@@ -232,7 +232,7 @@ class BattleController(IBattleController):
     def _on_chat_message(
         self, entity: Entity, player_id, namespace, message, unk
     ):
-        if not player_id:
+        if player_id in [0, -1]:
             return
         self._acc_message.append(
             Message(player_id=player_id, namespace=namespace, message=message)
