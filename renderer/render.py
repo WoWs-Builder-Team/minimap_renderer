@@ -294,7 +294,7 @@ class Renderer:
         path: str,
         fps: int = 20,
         quality: int = 7,
-        progress_cb: Optional[Callable[[float, int], Any]] = None,
+        progress_cb: Optional[Callable[[float], Any]] = None,
     ):
         """Starts the rendering process"""
         self._check_if_operations()
@@ -356,7 +356,7 @@ class Renderer:
                 per = round((idx + 1) / total * 100)
                 if per % 10 == 0 and per not in sent:
                     sent.add(per)
-                    progress_cb((idx + 1) / total, per)
+                    progress_cb(round((idx + 1) / total, 1))
 
             minimap_img = self.minimap_image.copy()
             minimap_bg = self.minimap_bg.copy()

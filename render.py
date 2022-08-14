@@ -3,8 +3,8 @@ import pickle
 from renderer.render import Renderer
 
 
-def progress(a, b):
-    print(a, b)
+def progress(a):
+    print(a)
 
 
 if __name__ == "__main__":
