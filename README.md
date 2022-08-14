@@ -83,4 +83,6 @@ This project is licensed under the GNU AGPLv3 License.
 
 - However, it would not have been possible without Monstrofil's [replays_unpack](https://github.com/Monstrofil/replays_unpack)!
 
-- A Discord bot wrapper is available [here](https://github.com/padtrack/track).
+- A minimal Discord bot wrapper is available [here](https://github.com/WoWs-Builder-Team/minimap_renderer_bot).
+
+  - One with additional features is available [here](https://github.com/padtrack/track).
