@@ -51,7 +51,10 @@ class LayerFragBase(LayerBase):
         self._base = Image.new("RGBA", (560, 50))
         self._frags.extend(evt_flag)
 
-        y_pos = 755
+        if not self._renderer.enable_chat:
+            y_pos = image.height - 5
+        else:
+            y_pos = 755
 
         for frag in reversed(self._frags[-5:]):
             fragger_info = self._vehicle_id_to_player[frag.fragger_id]
