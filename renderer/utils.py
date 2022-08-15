@@ -35,6 +35,7 @@ def draw_grid() -> Image.Image:
 
 def generate_ship_data(
     player_info: dict[int, PlayerInfo],
+    resman,
     color: Optional[str] = None,
 ) -> dict[int, Image.Image]:
     """Gets ship information and creates and image with the ship name on it.
@@ -49,13 +50,10 @@ def generate_ship_data(
     dict_player_holder: dict[int, Image.Image] = {}
     text_offset = 16
     hw, hh = (100, 100)
-    res_path = "renderer.resources"
 
-    with open_text(res_path, "ships.json") as text_reader:
-        ships = json.load(text_reader)
+    ships = resman.load_json("ships.json")
 
-    with open_binary(res_path, "warhelios_bold.ttf") as binary_reader:
-        font = ImageFont.FreeTypeFont(binary_reader, size=12)
+    font = resman.load_font(filename="warhelios_bold.ttf", size=12)
 
     for player in player_info.values():
         if color:
@@ -64,7 +62,7 @@ def generate_ship_data(
             font_color = COLORS_NORMAL[player.relation]
 
         index, ship_name, ship_species, ship_level, hulls = ships[
-            str(player.ship_params_id)
+            player.ship_params_id
         ]
         holder: Image.Image = Image.new("RGBA", (hw, hh))
         holder_draw: ImageDraw.ImageDraw = ImageDraw.Draw(holder)

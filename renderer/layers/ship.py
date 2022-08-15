@@ -37,7 +37,7 @@ class LayerShipBase(LayerBase):
         )
         self._color = color
         self._ship_info = generate_ship_data(
-            self._replay_data.player_info, color
+            self._replay_data.player_info, renderer.resman, color
         )
         self._active_consumables: dict[int, dict[int, float]] = {}
         self._abilities = renderer.resman.load_json("abilities.json")
