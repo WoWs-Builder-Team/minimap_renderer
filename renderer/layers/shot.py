@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Union
 from renderer.base import LayerBase
 from renderer.const import COLORS_NORMAL
 from ..data import ReplayData
@@ -6,6 +6,13 @@ from renderer.render import Renderer
 from renderer.utils import flip_y, getEquidistantPoints
 
 from PIL import ImageDraw
+
+
+SHELL_COLORS = {
+    "HE": (247, 167, 47),
+    "AP": (184, 184, 184),
+    "CS": (255, 48, 48),
+}
 
 
 class LayerShotBase(LayerBase):
@@ -32,6 +39,7 @@ class LayerShotBase(LayerBase):
         )
         self._color = color
         self._projectiles: dict[int, list] = {}
+        self._projectiles_data = self._renderer.resman.load_json("projectiles.json")
         self._relations = {
             v.ship_id: v.relation
             for v in self._replay_data.player_info.values()
@@ -65,6 +73,7 @@ class LayerShotBase(LayerBase):
                 p.append(
                     (
                         shot.owner_id,
+                        shot.params_id,
                         x,
                         y,
                         prev_x if prev_x else x,
@@ -77,17 +86,22 @@ class LayerShotBase(LayerBase):
             try:
                 if projectile := self._projectiles[sid]:
                     try:
-                        cid, cx, cy, px, py = projectile.pop(0)
-                        rel = self._relations[cid]
-                        if rel == 1 and self._renderer.dual_mode:
-                            continue
+                        cid, params_id, cx, cy, px, py = projectile.pop(0)
 
-                        if self._color:
-                            color = COLORS_NORMAL[
-                                0 if self._color == "green" else 1
-                            ]
+                        if self._renderer.team_tracers:
+                            rel = self._relations[cid]
+                            if rel == 1 and self._renderer.dual_mode:
+                                continue
+
+                            if self._color:
+                                color = COLORS_NORMAL[
+                                    0 if self._color == "green" else 1
+                                ]
+                            else:
+                                color = COLORS_NORMAL[self._relations[cid]]
                         else:
-                            color = COLORS_NORMAL[self._relations[cid]]
+                            shell_type = self._projectiles_data[params_id]
+                            color = SHELL_COLORS[shell_type]
 
                         draw.line(
                             [(cx, cy), (px, py)],

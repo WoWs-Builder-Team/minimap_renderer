@@ -23,6 +23,7 @@ class RenderDual:
         red_replay_data: ReplayData,
         green_tag: Optional[str] = None,
         red_tag: Optional[str] = None,
+        team_tracers: bool = False,
         use_tqdm: bool = True,
     ):
         self.replay_g: ReplayData = green_replay_data
@@ -38,6 +39,7 @@ class RenderDual:
         self.dual_mode: bool = True
         self.green_tag = green_tag
         self.red_tag = red_tag
+        self.team_tracers = team_tracers
         self.bg_color: tuple[int, int, int] = (0, 0, 0)
         self.use_tqdm = use_tqdm
 
@@ -265,6 +267,7 @@ class Renderer:
         logs: bool = True,
         anon: bool = False,
         enable_chat: bool = True,
+        team_tracers: bool = False,
         use_tqdm: bool = False,
     ):
         """Orchestrates the rendering process.
@@ -281,9 +284,10 @@ class Renderer:
         self.minimap_size: int = 0
         self.space_size: int = 0
         self.scaling: float = 0.0
-        self.is_operations = False
+        self.is_operations: bool = False
         self.anon: bool = anon
-        self.enable_chat = enable_chat
+        self.enable_chat: bool = enable_chat
+        self.team_tracers: bool = team_tracers
         self.usernames: dict[int, str] = {}
         self.dual_mode: bool = False
         self.bg_color: tuple[int, int, int] = (0, 0, 0)
