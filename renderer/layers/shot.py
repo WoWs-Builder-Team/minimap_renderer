@@ -10,7 +10,7 @@ from PIL import ImageDraw
 
 SHELL_COLORS = {
     "HE": (247, 167, 47),
-    "AP": (184, 184, 184),
+    "AP": (222, 222, 222),
     "CS": (255, 48, 48),
 }
 
