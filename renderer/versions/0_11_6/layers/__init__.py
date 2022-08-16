@@ -1,1 +1,0 @@
-from .shot import LayerShot
