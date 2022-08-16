@@ -10,6 +10,9 @@ def create_projectiles_data():
     list_projectile = get_data("Projectile")
 
     for projectile in list_projectile:
+        if projectile.typeinfo.species == "Artillery":
+            dict_projectile[projectile.id] = projectile.ammoType
+
         if projectile.typeinfo.species == "Torpedo":
             dict_projectile[projectile.id] = (
                 round(projectile.speed / 1.94384),
