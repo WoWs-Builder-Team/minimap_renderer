@@ -55,6 +55,7 @@ class Shot(NamedTuple):
     """Shot data."""
 
     owner_id: int
+    params_id: int
     origin: tuple[int, int]
     destination: tuple[int, int]
     shot_id: int

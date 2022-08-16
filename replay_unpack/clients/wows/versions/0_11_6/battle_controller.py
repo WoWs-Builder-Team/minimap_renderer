@@ -534,6 +534,7 @@ class BattleController(IBattleController):
                 self._acc_shots.append(
                     Shot(
                         owner_id,
+                        shot["paramsID"],
                         (x1, y1),
                         (x2, y2),
                         int(f"{owner_id}{projectile['shotID']}"),
