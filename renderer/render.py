@@ -41,7 +41,12 @@ class RenderDual:
         self.bg_color: tuple[int, int, int] = (0, 0, 0)
         self.use_tqdm = use_tqdm
 
-    def start(self):
+    def start(self,
+        path: str,
+        fps: int = 20,
+        quality: int = 7,
+        progress_cb: Optional[Callable[[float], Any]] = None,
+    ):
         self._load_map()
 
         assert self.minimap_image
@@ -95,9 +100,9 @@ class RenderDual:
         )
 
         video_writer = write_frames(
-            path="minimap_dual.mp4",
-            fps=20,
-            quality=7,
+            path=path,
+            fps=fps,
+            quality=quality,
             pix_fmt_in="rgba",
             macro_block_size=10,
             size=self.minimap_bg.size,
@@ -119,7 +124,16 @@ class RenderDual:
         else:
             prog = set(self.replay_g.events).intersection(self.replay_r.events)
 
-        for i in prog:
+        total = len(prog)
+        last_per = 0.0
+
+        for idx, i in enumerate(prog):
+            if progress_cb:
+                per = round((idx + 1) / total, 1)
+                if per > last_per:
+                    last_per = per
+                    progress_cb(per)
+
             minimap_img = self.minimap_image.copy()
             minimap_bg = self.minimap_bg.copy()
             draw = ImageDraw.Draw(minimap_img)
