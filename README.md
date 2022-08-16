@@ -4,7 +4,7 @@
 
 Minimap Renderer parses World of Warships replays to create a timelapse video that resembles the in-game minimap.
 
-![enter image description here](https://github.com/WoWs-Builder-Team/minimap_renderer/blob/master/docs/minimap.gif?raw=true)
+![enter image description here](docs/minimap.gif)
 
 ### Installation
 
