@@ -362,7 +362,7 @@ class BattleController(IBattleController):
                 "missions"
             ]["hold"][0]
             reward, period = mission["reward"], mission["period"]
-        except (TypeError, IndexError):
+        except (TypeError, IndexError, KeyError):
             return None
 
         ally_tick, enemy_tick = 0, 0
