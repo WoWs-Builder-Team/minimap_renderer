@@ -401,8 +401,32 @@ class Renderer:
                 if self.enable_chat:
                     layer_chat.draw(game_time, minimap_bg)
 
-            if game_time == last_key:
-                minimap_img.show()
+            if (
+                game_time == last_key
+                and self.replay_data.game_result.victory_type != -1
+            ):
+                font = self.resman.load_font("warhelios_bold.ttf", size=36)
+                player = self.replay_data.player_info[
+                    self.replay_data.owner_id
+                ]
+
+                if player.team_id == self.replay_data.game_result.team_id:
+                    text = "YOUR TEAM WON"
+                else:
+                    text = "THE ENEMY TEAM WON"
+
+                tw, th = map(lambda i: i / 2, font.getsize(text))
+                mid_x, mid_y = map(lambda i: i / 2, minimap_img.size)
+                offset_y = 4
+                px, py = mid_x - tw, mid_y - th - offset_y
+                draw.text(
+                    (px, py),
+                    text=text,
+                    font=font,
+                    fill="#ffffff",
+                    stroke_width=4,
+                    stroke_fill=self.bg_color,
+                )
 
             # insert win time here
 
