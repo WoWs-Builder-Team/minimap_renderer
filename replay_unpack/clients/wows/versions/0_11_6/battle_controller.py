@@ -5,6 +5,7 @@ import math
 import struct
 
 from io import BytesIO
+from turtle import st
 from replay_unpack.core import IBattleController
 from replay_unpack.core.entity import Entity
 from .constants import DamageStatsType, Category, TaskType, Status
@@ -24,6 +25,7 @@ from renderer.data import (
     Score,
     Frag,
     Message,
+    BattleResult,
 )
 from replay_unpack.utils import (
     unpack_values,
@@ -104,6 +106,7 @@ class BattleController(IBattleController):
         self._battle_type: int = 0
         self._win_score: int = 1000
         self._packet_time: float = 0.0
+        self._battle_result_nt: BattleResult = BattleResult(-1, -1)
 
         # ACCUMULATORS #
 
@@ -234,6 +237,7 @@ class BattleController(IBattleController):
     ):
         if player_id in [0, -1]:
             return
+
         self._acc_message.append(
             Message(player_id=player_id, namespace=namespace, message=message)
         )
@@ -728,6 +732,7 @@ class BattleController(IBattleController):
             game_map=self._map,
             game_battle_type=self._battle_type,
             game_win_score=self._win_score,
+            game_result=self._battle_result_nt,
             owner_avatar_id=self._owner["avatarId"],
             owner_vehicle_id=self._owner["shipId"],
             owner_id=self._owner["id"],
@@ -786,6 +791,9 @@ class BattleController(IBattleController):
             }
 
     def onBattleEnd(self, avatar, teamId, state):
+        self._battle_result_nt = self._battle_result_nt._replace(
+            team_id=teamId, victory_type=state
+        )
         self._battle_result = dict(winner_team_id=teamId, victory_type=state)
 
     def onNewPlayerSpawnedInBattle(

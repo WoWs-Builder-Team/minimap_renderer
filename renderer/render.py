@@ -43,7 +43,8 @@ class RenderDual:
         self.bg_color: tuple[int, int, int] = (0, 0, 0)
         self.use_tqdm = use_tqdm
 
-    def start(self,
+    def start(
+        self,
         path: str,
         fps: int = 20,
         quality: int = 7,
@@ -399,6 +400,11 @@ class Renderer:
                 layer_ribbon.draw(game_time, minimap_bg)
                 if self.enable_chat:
                     layer_chat.draw(game_time, minimap_bg)
+
+            if game_time == last_key:
+                minimap_img.show()
+
+            # insert win time here
 
             minimap_bg.paste(minimap_img, (40, 90))
 

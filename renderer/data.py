@@ -135,6 +135,11 @@ class Message(NamedTuple):
     message: str
 
 
+class BattleResult(NamedTuple):
+    team_id: int
+    victory_type: int
+
+
 class Events(NamedTuple):
     """Match events."""
 
@@ -165,6 +170,7 @@ class ReplayData(NamedTuple):
     game_map: str
     game_battle_type: int
     game_win_score: int
+    game_result: BattleResult
     owner_avatar_id: int
     owner_vehicle_id: int
     owner_id: int
