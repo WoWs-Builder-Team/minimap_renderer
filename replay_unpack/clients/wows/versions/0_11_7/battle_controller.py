@@ -5,7 +5,6 @@ import math
 import struct
 
 from io import BytesIO
-from turtle import st
 from replay_unpack.core import IBattleController
 from replay_unpack.core.entity import Entity
 from .constants import DamageStatsType, Category, TaskType, Status
