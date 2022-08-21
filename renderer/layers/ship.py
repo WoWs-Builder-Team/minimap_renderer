@@ -140,20 +140,20 @@ class LayerShipBase(LayerBase):
                     angle = 0
                     c_y_pos = 20
 
-                    if d1 <= 40 and d2 <= 40:
-                        angle = -135
-                    elif d2 <= 40 and d3 <= 40:
-                        angle = 135
-                    elif d3 <= 40 and d4 <= 40:
-                        angle = 45
-                    elif d4 <= 40 and d1 <= 40:
-                        angle = -45
-                    else:
-                        if d1 <= 40:
+                    match (d1, d2, d3, d4):
+                        case (d1, d2, d3, d4) if d1 <= 40 and d2 <= 40:
+                            angle = -135
+                        case (d1, d2, d3, d4) if d2 <= 40 and d3 <= 40:
+                            angle = 135
+                        case (d1, d2, d3, d4) if d3 <= 40 and d4 <= 40:
+                            angle = 45
+                        case (d1, d2, d3, d4) if d4 <= 40 and d1 <= 40:
+                            angle = -45
+                        case (d1, d2, d3, d4) if d1 <= 40:
                             angle = -90
-                        elif d2 <= 40:
+                        case (d1, d2, d3, d4) if d2 <= 40:
                             angle = -180
-                        elif d3 <= 40:
+                        case (d1, d2, d3, d4) if d3 <= 40:
                             angle = 90
 
                     if angle or d4 <= 40:
@@ -166,7 +166,7 @@ class LayerShipBase(LayerBase):
                         c_y_pos,
                     )
 
-                    if holder:
+                    if holder and angle:
                         holder = holder.rotate(
                             angle, Image.BICUBIC, expand=True
                         )
