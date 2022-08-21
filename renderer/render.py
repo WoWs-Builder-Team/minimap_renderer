@@ -401,41 +401,74 @@ class Renderer:
                 if self.enable_chat:
                     layer_chat.draw(game_time, minimap_bg)
 
-            if (
-                game_time == last_key
-                and self.replay_data.game_result.victory_type != -1
-            ):
+            # if (
+            #     game_time == last_key
+            #     and self.replay_data.game_result.victory_type != -1
+            # ):
+            #     font = self.resman.load_font("warhelios_bold.ttf", size=36)
+            #     player = self.replay_data.player_info[
+            #         self.replay_data.owner_id
+            #     ]
+
+            #     if player.team_id == self.replay_data.game_result.team_id:
+            #         text = "YOUR TEAM WON"
+            #     else:
+            #         text = "THE ENEMY TEAM WON"
+
+            #     tw, th = map(lambda i: i / 2, font.getsize(text))
+            #     mid_x, mid_y = map(lambda i: i / 2, minimap_img.size)
+            #     offset_y = 4
+            #     px, py = mid_x - tw, mid_y - th - offset_y
+            #     draw.text(
+            #         (px, py),
+            #         text=text,
+            #         font=font,
+            #         fill="#ffffff",
+            #         stroke_width=4,
+            #         stroke_fill=self.bg_color,
+            #     )
+
+            # minimap_bg.paste(minimap_img, (40, 90))
+
+            if game_time == last_key:
+                img_win = Image.new("RGBA", self.minimap_image.size)
+                drw_win = ImageDraw.Draw(img_win)
                 font = self.resman.load_font("warhelios_bold.ttf", size=36)
                 player = self.replay_data.player_info[
                     self.replay_data.owner_id
                 ]
 
-                if player.team_id == self.replay_data.game_result.team_id:
-                    text = "YOUR TEAM WON"
-                else:
-                    text = "THE ENEMY TEAM WON"
+                team_id = self.replay_data.game_result.team_id
+
+                match team_id:
+                    case a if a == player.team_id and a != -1:
+                        text = "YOUR TEAM WON"
+                    case a if a != player.team_id and a != -1:
+                        text = "THE ENEMY TEAM WON"
+                    case _:
+                        text = "???"
 
                 tw, th = map(lambda i: i / 2, font.getsize(text))
                 mid_x, mid_y = map(lambda i: i / 2, minimap_img.size)
                 offset_y = 4
                 px, py = mid_x - tw, mid_y - th - offset_y
-                draw.text(
-                    (px, py),
-                    text=text,
-                    font=font,
-                    fill="#ffffff",
-                    stroke_width=4,
-                    stroke_fill=self.bg_color,
-                )
 
-            # insert win time here
+                for i in range(3 * fps):
+                    per = min(1, i / (1.5 * fps))
+                    drw_win.text(
+                        (px, py),
+                        text=text,
+                        font=font,
+                        fill=(255, 255, 255, round(255 * per)),
+                        stroke_width=4,
+                        stroke_fill=(*self.bg_color[:3], round(255 * per)),
+                    )
 
-            minimap_bg.paste(minimap_img, (40, 90))
-
-            if game_time == last_key:
-                for _ in range(3 * fps):
+                    minimap_img = Image.alpha_composite(minimap_img, img_win)
+                    minimap_bg.paste(minimap_img, (40, 90))
                     video_writer.send(minimap_bg.tobytes())
             else:
+                minimap_bg.paste(minimap_img, (40, 90))
                 video_writer.send(minimap_bg.tobytes())
         video_writer.close()
 
