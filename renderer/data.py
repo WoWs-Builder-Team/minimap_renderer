@@ -42,6 +42,13 @@ class Vehicle(NamedTuple):
     regen_crew_hp_limit: float = 0.0
     regeneration_health: float = 0.0
 
+    def __lt__(self, other):
+        if isinstance(other, self.__class__):
+            return (self.is_alive < other.is_alive) or (
+                self.is_visible < other.is_visible
+            )
+        raise TypeError
+
 
 class Smoke(NamedTuple):
     """Smoke data."""
