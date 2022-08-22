@@ -67,7 +67,6 @@ class LayerShipBase(LayerBase):
 
         for vehicle in sorted(
             events[game_time].evt_vehicle.values(),
-            key=lambda s: (s.is_alive, s.is_visible),
         ):
             if self._renderer.dual_mode and vehicle.relation == 1:
                 continue
@@ -173,7 +172,6 @@ class LayerShipBase(LayerBase):
 
                     image.paste(**paste_args_centered(holder, x, y, True))
             image.paste(**paste_args_centered(icon, x, y, True))
-
         # Decrement consumable timer and pop if 0
 
         for apcs in list(self._active_consumables.keys()):
