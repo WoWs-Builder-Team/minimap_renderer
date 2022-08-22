@@ -9,7 +9,6 @@ from renderer.const import (
 )
 from renderer.data import Frag, ReplayData
 from renderer.render import Renderer
-from renderer.utils import do_trim
 
 
 class LayerFragBase(LayerBase):

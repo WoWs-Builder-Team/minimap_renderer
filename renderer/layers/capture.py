@@ -26,11 +26,7 @@ class LayerCaptureBase(LayerBase):
         self._replay_data = (
             replay_data if replay_data else self._renderer.replay_data
         )
-        self._owner = [
-            p
-            for p in self._replay_data.player_info.values()
-            if p.relation == -1
-        ].pop()
+        self._owner = self._replay_data.player_info[self._replay_data.owner_id]
         self._generated_caps: dict[
             int, tuple[Image.Image, tuple[int, int], int]
         ] = {}

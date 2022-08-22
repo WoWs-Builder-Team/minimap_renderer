@@ -1,10 +1,7 @@
-from functools import cache
 import json
-from optparse import Option
 
 from renderer.utils import LOGGER
 from importlib.resources import open_text, open_binary, is_resource
-from struct import pack
 from PIL import Image
 from typing import Optional
 from PIL import ImageFont
@@ -15,7 +12,7 @@ class ResourceManager:
 
     def __init__(self, version: str):
         """Initializes this class."""
-        self._resources = {}
+        self._cache = {}
         self._default_res = f"{__package__}.resources"
         self._versions = version
 
@@ -29,7 +26,7 @@ class ResourceManager:
         keys to integer.
         """
         key = f"{path}.{filename}"
-        if cached := self._resources.get(key, None):
+        if cached := self._cache.get(key, None):
             return cached
 
         try:
@@ -47,12 +44,12 @@ class ResourceManager:
 
         with open_text(res_package, filename) as tr:
             data = json.load(tr, object_hook=self.key_converter)
-            self._resources[key] = data
+            self._cache[key] = data
             return data
 
     def load_font(self, filename: str, path: Optional[str] = None, size=12):
         key = f"{path}.{filename}.{size}"
-        if cached := self._resources.get(key, None):
+        if cached := self._cache.get(key, None):
             return cached
 
         try:
@@ -68,7 +65,7 @@ class ResourceManager:
 
         with open_binary(res_package, filename) as fr:
             data = ImageFont.truetype(fr, size=size)
-            self._resources[key] = data
+            self._cache[key] = data
             return data
 
     def load_image(
@@ -104,8 +101,8 @@ class ResourceManager:
         key.append(str(nearest))
         key_name = "_".join(key)
 
-        if key_name in self._resources:
-            return self._resources[key_name].copy()
+        if key_name in self._cache:
+            return self._cache[key_name].copy()
 
         try:
             res_package = f"{__package__}.versions.{self._versions}.resources"
@@ -130,7 +127,7 @@ class ResourceManager:
             if rot:
                 image = image.rotate(rot, resample=Image.BICUBIC, expand=True)
 
-            self._resources[key_name] = image.copy()
+            self._cache[key_name] = image.copy()
             return image.copy()
 
     @staticmethod

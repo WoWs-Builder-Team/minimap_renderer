@@ -1,4 +1,4 @@
-from typing import Optional, Union
+from typing import Optional
 from renderer.base import LayerBase
 from renderer.const import COLORS_NORMAL
 from ..data import ReplayData

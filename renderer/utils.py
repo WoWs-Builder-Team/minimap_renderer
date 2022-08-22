@@ -1,9 +1,7 @@
-import json
 import logging
 import numpy as np
 
-from importlib.resources import open_binary, open_text
-from PIL import Image, ImageDraw, ImageFont, ImageColor
+from PIL import Image, ImageDraw, ImageColor
 from .data import PlayerInfo
 from .const import COLORS_NORMAL
 from typing import Optional
@@ -104,25 +102,6 @@ def paste_args_centered(
     return result
 
 
-def paste_centered(
-    bg: Image.Image, fg: Image.Image, masked=False
-) -> Image.Image:
-    """Paste fg on top of bg.
-
-    Args:
-        bg (Image.Image): Image to be pasted on.
-        fg (Image.Image): Image to be pasted to.
-        masked (bool, optional): If masked. Defaults to False.
-
-    Returns:
-        Image.Image: Combined images.
-    """
-    x = round(bg.width / 2 - fg.width / 2)
-    y = round(bg.height / 2 - fg.height / 2)
-    bg.paste(fg, (x, y), mask=fg if masked else None)
-    return bg
-
-
 def draw_health_bar(
     image: Image.Image, width=50, height=5, y_pos=65, color="red", hp_per=1.0
 ):
@@ -198,7 +177,3 @@ def getEquidistantPoints(
         np.round(np.linspace(p1[0], p2[0], parts + 1)),
         np.round(np.linspace(p1[1], p2[1], parts + 1)),
     )
-
-
-def do_trim(text: str, min_len=8):
-    return text if len(text) < min_len else f"{text[:min_len]}..."

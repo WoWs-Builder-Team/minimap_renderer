@@ -1,8 +1,6 @@
-from typing import Any, Generator, Union, Optional
+from typing import Union
 from abc import ABC, abstractmethod
-from .data import ReplayData
 from PIL import Image, ImageDraw
-from .resman import ResourceManager
 
 
 class LayerBase(ABC):
@@ -13,9 +11,7 @@ class LayerBase(ABC):
         pass
 
     @abstractmethod
-    def draw(
-        self, game_time: int, arg: Union[Image.Image, ImageDraw.ImageDraw]
-    ):
+    def draw(self, game_time: int, arg: Image.Image | ImageDraw.ImageDraw):
         """_summary_
 
         Args:

@@ -1,10 +1,9 @@
 import numpy as np
 
-from typing import Optional, Union
-from renderer.data import PlayerInfo, ReplayData
+from typing import Optional
+from renderer.data import ReplayData
 from renderer.render import Renderer
 from renderer.base import LayerBase
-from renderer.const import RELATION_NORMAL_STR, COLORS_NORMAL
 from PIL import Image, ImageDraw, ImageColor
 from math import floor
 
