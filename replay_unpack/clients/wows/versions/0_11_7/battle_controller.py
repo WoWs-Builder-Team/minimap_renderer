@@ -718,6 +718,31 @@ class BattleController(IBattleController):
         self._player_id = entity_id
 
     def get_info(self):
+        # force copy of last frame to handle subsecond events
+        battle_time = self._durations[-1] - self._time_left + 1
+        evt = Events(
+            time_left=self._time_left,
+            evt_vehicle=copy.copy(self._dict_vehicle),
+            evt_smoke=copy.copy(self._dict_smoke),
+            evt_shot=copy.copy(self._acc_shots),
+            evt_torpedo=copy.copy(self._acc_torpedoes),
+            evt_hits=copy.copy(self._acc_hits),
+            evt_consumable=copy.copy(self._acc_consumables),
+            evt_plane=copy.copy(self._dict_plane),
+            evt_ward=copy.copy(self._dict_ward),
+            evt_control=copy.copy(self._dict_control),
+            evt_score=copy.copy(self._dict_score),
+            evt_damage_maps=copy.deepcopy(self._damage_maps),
+            evt_frag=copy.copy(self._acc_frags),
+            evt_ribbon=copy.deepcopy(self._ribbons),
+            evt_times_to_win=self._times_to_win(),
+            evt_achievement=copy.deepcopy(self._achievements),
+            evt_chat=copy.deepcopy(self._acc_message),
+            last_frame=True,
+        )
+
+        self._dict_events[battle_time] = evt
+
         # adding killed planes data
         players = copy.deepcopy(self._players.get_info())
         for player in players.values():
