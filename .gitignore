@@ -168,3 +168,4 @@ code_testing/
 !requirements.txt
 *.csv
 /scratch
+.coveragerc
