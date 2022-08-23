@@ -403,7 +403,7 @@ class Renderer:
             if game_time == last_key:
                 img_win = Image.new("RGBA", self.minimap_image.size)
                 drw_win = ImageDraw.Draw(img_win)
-                font = self.resman.load_font("warhelios_bold.ttf", size=36)
+                font = self.resman.load_font("warhelios_bold.ttf", size=48)
                 player = self.replay_data.player_info[
                     self.replay_data.owner_id
                 ]
@@ -412,15 +412,15 @@ class Renderer:
 
                 match team_id:
                     case a if a == player.team_id and a != -1:
-                        text = "YOUR TEAM WON"
+                        text = "VICTORY"
                     case a if a != player.team_id and a != -1:
-                        text = "THE ENEMY TEAM WON"
+                        text = "DEFEAT"
                     case _:
-                        text = "???"
+                        text = "DRAW"
 
                 tw, th = map(lambda i: i / 2, font.getbbox(text)[2:])
                 mid_x, mid_y = map(lambda i: i / 2, minimap_img.size)
-                offset_y = 4
+                offset_y = 6
                 px, py = mid_x - tw, mid_y - th - offset_y
 
                 for i in range(3 * fps):
