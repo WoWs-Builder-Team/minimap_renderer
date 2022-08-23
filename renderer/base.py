@@ -8,7 +8,7 @@ class LayerBase(ABC):
 
     @abstractmethod
     def __init__(self, *args, **kwargs):
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def draw(self, game_time: int, arg: Image.Image | ImageDraw.ImageDraw):
@@ -19,4 +19,4 @@ class LayerBase(ABC):
             arg (Union[Image.Image, ImageDraw.ImageDraw]): Depends on how the
             layer elements will be draw.
         """
-        pass
+        raise NotImplementedError
