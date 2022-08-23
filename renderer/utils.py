@@ -64,7 +64,7 @@ def generate_ship_data(
         ]
         holder: Image.Image = Image.new("RGBA", (hw, hh))
         holder_draw: ImageDraw.ImageDraw = ImageDraw.Draw(holder)
-        text_w, text_h = holder_draw.textsize(text=ship_name, font=font)
+        text_w, text_h = font.getbbox(ship_name)[2:]
         text_x = round((hw / 2) - (text_w / 2))
         text_y = round((hh - text_h) - text_offset)
         holder_draw.text(

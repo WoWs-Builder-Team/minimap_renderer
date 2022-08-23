@@ -47,7 +47,9 @@ class ResourceManager:
             self._cache[key] = data
             return data
 
-    def load_font(self, filename: str, path: Optional[str] = None, size=12):
+    def load_font(
+        self, filename: str, path: Optional[str] = None, size=12
+    ) -> ImageFont.FreeTypeFont:
         key = f"{path}.{filename}.{size}"
         if cached := self._cache.get(key, None):
             return cached
@@ -122,10 +124,15 @@ class ResourceManager:
                 image = image.convert("RGBA")
             if size:
                 image = image.resize(
-                    size, Image.LANCZOS if not nearest else Image.NEAREST
+                    size,
+                    Image.Resampling.LANCZOS
+                    if not nearest
+                    else Image.Resampling.NEAREST,
                 )
             if rot:
-                image = image.rotate(rot, resample=Image.BICUBIC, expand=True)
+                image = image.rotate(
+                    rot, resample=Image.Resampling.BICUBIC, expand=True
+                )
 
             self._cache[key_name] = image.copy()
             return image.copy()

@@ -241,14 +241,14 @@ class LayerFragBase(LayerBase):
             part = parts.setdefault(idx, [])
             match el:
                 case (a, b) if isinstance(a, str) and isinstance(b, str):
-                    str_w, str_h = self._font.getsize(a)
+                    str_w, str_h = self._font.getbbox(a)[2:]
                     total_width += str_w
                     part.append(el)
                 case (a, b, c) if isinstance(a, Image.Image) and isinstance(
                     b, int
                 ) and isinstance(c, int):
                     nw, nh = round(a.width * c), round(a.height * c)
-                    a = a.resize((nw, nh), Image.LANCZOS)
+                    a = a.resize((nw, nh), Image.Resampling.LANCZOS)
                     total_width += a.width
                     part.append(el)
                 case a if isinstance(a, int):
@@ -283,14 +283,14 @@ class LayerFragBase(LayerBase):
         for el in part:
             match el:
                 case (a, b) if isinstance(a, str) and isinstance(b, str):
-                    str_w, str_h = self._font.getsize(a)
+                    str_w, str_h = self._font.getbbox(a)[2:]
                     base_draw.text((pos_x, 0), a, b, self._font)
                     pos_x += str_w
                 case (a, b, c) if isinstance(a, Image.Image) and isinstance(
                     b, int
                 ) and isinstance(c, int):
                     nw, nh = round(a.width * c), round(a.height * c)
-                    a = a.resize((nw, nh), Image.LANCZOS)
+                    a = a.resize((nw, nh), Image.Resampling.LANCZOS)
                     base.paste(a, (pos_x, 0 + b), a)
                     pos_x += a.width
                 case a if isinstance(a, int):

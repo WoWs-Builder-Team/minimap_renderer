@@ -59,7 +59,7 @@ class LayerCounterBase(LayerBase):
             )
             font = self._font_main if name == "DAMAGE" else self._font_com
             self._y_positions.append(y_pos + Y_POS)
-            tw, th = font.getsize(name)
+            tw, th = font.getbbox(name)[2:]
             draw.text((0, y_pos), name, COUNTER_COLOR, font)
             base.paste(icon, (tw + offset_x, icon_y))
             y_pos += th + space
@@ -93,7 +93,7 @@ class LayerCounterBase(LayerBase):
                     continue
 
             value = f"{dmg:,}".replace(",", " ")
-            fw, fh = font.getsize(value)
+            fw, fh = font.getbbox(value)[2:]
             base = Image.new("RGBA", (fw, fh))
             draw = ImageDraw.Draw(base)
             x_pos = image.width - base.width - 30

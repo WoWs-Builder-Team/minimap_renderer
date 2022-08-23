@@ -97,7 +97,7 @@ class LayerShipBase(LayerBase):
                 relation,
                 vehicle.not_in_range,
             )
-            icon = icon.rotate(-vehicle.yaw, Image.BICUBIC, True)
+            icon = icon.rotate(-vehicle.yaw, Image.Resampling.BICUBIC, True)
             x, y = self._renderer.get_scaled((vehicle.x, vehicle.y))
 
             if vehicle.is_alive:
@@ -167,7 +167,7 @@ class LayerShipBase(LayerBase):
 
                     if holder and angle:
                         holder = holder.rotate(
-                            angle, Image.BICUBIC, expand=True
+                            angle, Image.Resampling.BICUBIC, expand=True
                         )
 
                     image.paste(**paste_args_centered(holder, x, y, True))

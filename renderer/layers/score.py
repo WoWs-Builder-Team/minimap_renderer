@@ -88,7 +88,7 @@ class LayerScoreBase(LayerBase):
 
         draw = ImageDraw.Draw(base)
         st = f"{sc1.score} : {sc2.score}"
-        st_w, st_h = self._font.getsize(st)
+        st_w, st_h = self._font.getbbox(st)[2:]
         st_h += 5
         draw.text(
             (

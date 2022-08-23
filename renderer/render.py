@@ -418,7 +418,7 @@ class Renderer:
                     case _:
                         text = "???"
 
-                tw, th = map(lambda i: i / 2, font.getsize(text))
+                tw, th = map(lambda i: i / 2, font.getbbox(text)[2:])
                 mid_x, mid_y = map(lambda i: i / 2, minimap_img.size)
                 offset_y = 4
                 px, py = mid_x - tw, mid_y - th - offset_y

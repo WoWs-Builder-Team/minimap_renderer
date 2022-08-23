@@ -78,7 +78,7 @@ class LayerChatBase(LayerBase):
             clan_tag = ""
 
         if player.clan_tag:
-            c_w, c_h = self._font.getsize(f"[{clan_tag}]")
+            c_w, c_h = self._font.getbbox(f"[{clan_tag}]")[2:]
             draw.text(
                 (x_pos, 0),
                 f"[{clan_tag}]",
@@ -98,7 +98,7 @@ class LayerChatBase(LayerBase):
         else:
             name = player.name
 
-        n_w, n_h = self._font.getsize(f"{name}: ")
+        n_w, n_h = self._font.getbbox(f"{name}: ")[2:]
         draw.text((x_pos, 0), f"{name}: ", n_color, self._font)
         x_pos += n_w
 
@@ -107,13 +107,13 @@ class LayerChatBase(LayerBase):
         else:
             m_color = n_color
 
-        m_w, m_h = self._font.getsize(message.message)
+        m_w, m_h = self._font.getbbox(message.message)[2:]
         text = message.message
 
         if x_pos + m_w + 805 > 1330:
             for i in range(1, len(message.message)):
                 n_t = f"{message.message[:-i]}..."
-                m_w, m_h = self._font.getsize(n_t)
+                m_w, m_h = self._font.getbbox(n_t)[2:]
 
                 if x_pos + m_w + 805 <= 1330:
                     text = n_t
