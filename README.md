@@ -1,6 +1,6 @@
 
 ## Minimap Renderer
-![Tests](https://github.com/WoWs-Builder-Team/minimap_renderer/actions/workflows/tests.yaml/badge.svg)
+![Tests](https://github.com/WoWs-Builder-Team/minimap_renderer/actions/workflows/tests.yml/badge.svg)
 
   
 
@@ -10,7 +10,7 @@ Minimap Renderer parses World of Warships replays to create a timelapse video th
 
   
 
-![enter image description here](docs/minimap.gif)
+![enter image description here](images/minimap.gif)
 
   
 
