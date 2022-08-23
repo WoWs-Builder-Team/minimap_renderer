@@ -145,7 +145,7 @@ class LayerRibbonBase(LayerBase):
 
                         if a_idx % 6 == 0:
                             y_pos += a_c_image.height
-                            x_pos = 805
+                            a_x_pos = 805
                         continue
 
                 a_icon_res = "achievement_icons"
