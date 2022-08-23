@@ -20,6 +20,10 @@ setup(
     packages=find_packages(exclude=["renderer_data*"]),
     include_package_data=True,
     python_requires=">=3.10",
+    classifiers=[
+        "Programming Language :: Python :: 3.10",
+        "License :: OSI Approved :: GNU Affero General Public License v3",
+    ],
     install_requires=[
         "black==22.6.0",
         "click==8.1.3",
