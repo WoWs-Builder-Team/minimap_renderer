@@ -167,6 +167,7 @@ class Events(NamedTuple):
     evt_achievement: dict
     evt_times_to_win: Optional[tuple[float, float]]
     evt_chat: list[Message]
+    last_frame: bool = False
 
 
 class ReplayData(NamedTuple):
