@@ -17,5 +17,25 @@ def test_parser(file):
 def test_render(file):
     with open(file, "rb") as f:
         Renderer(
-            pickle.load(f), logs=True, enable_chat=True, use_tqdm=False
+            pickle.load(f), logs=True, enable_chat=True
+        ).start("minimap.mp4")
+
+    with open(file, "rb") as f:
+        Renderer(
+            pickle.load(f), logs=True, enable_chat=False
+        ).start("minimap.mp4")
+
+    with open(file, "rb") as f:
+        Renderer(
+            pickle.load(f), logs=True, enable_chat=True, anon=True
+        ).start("minimap.mp4")
+
+    with open(file, "rb") as f:
+        Renderer(
+            pickle.load(f), logs=False
+        ).start("minimap.mp4")
+
+    with open(file, "rb") as f:
+        Renderer(
+            pickle.load(f), logs=False, team_tracers=True
         ).start("minimap.mp4")
