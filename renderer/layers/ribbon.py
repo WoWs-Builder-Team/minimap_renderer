@@ -106,7 +106,7 @@ class LayerRibbonBase(LayerBase):
                 r_img = self._renderer.resman.load_image(f_name, path=r_res)
                 r_draw = ImageDraw.Draw(r_img)
                 text = f"x{r_count}"
-                t_w, t_h = self._font.getsize(text)
+                t_w, t_h = self._font.getbbox(text)[2:]
                 r_draw.text(
                     ((r_img.width - t_w) - 3, (r_img.height - t_h) - 3),
                     text,
@@ -145,7 +145,7 @@ class LayerRibbonBase(LayerBase):
 
                         if a_idx % 6 == 0:
                             y_pos += a_c_image.height
-                            x_pos = 805
+                            a_x_pos = 805
                         continue
 
                 a_icon_res = "achievement_icons"

@@ -24,6 +24,7 @@ from renderer.data import (
     Score,
     Frag,
     Message,
+    BattleResult,
 )
 from replay_unpack.utils import (
     unpack_values,
@@ -104,6 +105,7 @@ class BattleController(IBattleController):
         self._battle_type: int = 0
         self._win_score: int = 1000
         self._packet_time: float = 0.0
+        self._battle_result_nt: BattleResult = BattleResult(-1, -1)
 
         # ACCUMULATORS #
 
@@ -234,6 +236,7 @@ class BattleController(IBattleController):
     ):
         if player_id in [0, -1]:
             return
+
         self._acc_message.append(
             Message(player_id=player_id, namespace=namespace, message=message)
         )
@@ -362,7 +365,7 @@ class BattleController(IBattleController):
                 "missions"
             ]["hold"][0]
             reward, period = mission["reward"], mission["period"]
-        except (TypeError, IndexError):
+        except (TypeError, IndexError, KeyError):
             return None
 
         ally_tick, enemy_tick = 0, 0
@@ -715,6 +718,31 @@ class BattleController(IBattleController):
         self._player_id = entity_id
 
     def get_info(self):
+        # force copy of last frame to handle subsecond events
+        battle_time = self._durations[-1] - self._time_left + 1
+        evt = Events(
+            time_left=self._time_left,
+            evt_vehicle=copy.copy(self._dict_vehicle),
+            evt_smoke=copy.copy(self._dict_smoke),
+            evt_shot=copy.copy(self._acc_shots),
+            evt_torpedo=copy.copy(self._acc_torpedoes),
+            evt_hits=copy.copy(self._acc_hits),
+            evt_consumable=copy.copy(self._acc_consumables),
+            evt_plane=copy.copy(self._dict_plane),
+            evt_ward=copy.copy(self._dict_ward),
+            evt_control=copy.copy(self._dict_control),
+            evt_score=copy.copy(self._dict_score),
+            evt_damage_maps=copy.deepcopy(self._damage_maps),
+            evt_frag=copy.copy(self._acc_frags),
+            evt_ribbon=copy.deepcopy(self._ribbons),
+            evt_times_to_win=self._times_to_win(),
+            evt_achievement=copy.deepcopy(self._achievements),
+            evt_chat=copy.deepcopy(self._acc_message),
+            last_frame=True,
+        )
+
+        self._dict_events[battle_time] = evt
+
         # adding killed planes data
         players = copy.deepcopy(self._players.get_info())
         for player in players.values():
@@ -728,6 +756,7 @@ class BattleController(IBattleController):
             game_map=self._map,
             game_battle_type=self._battle_type,
             game_win_score=self._win_score,
+            game_result=self._battle_result_nt,
             owner_avatar_id=self._owner["avatarId"],
             owner_vehicle_id=self._owner["shipId"],
             owner_id=self._owner["id"],
@@ -786,6 +815,9 @@ class BattleController(IBattleController):
             }
 
     def onBattleEnd(self, avatar, teamId, state):
+        self._battle_result_nt = self._battle_result_nt._replace(
+            team_id=teamId, victory_type=state
+        )
         self._battle_result = dict(winner_team_id=teamId, victory_type=state)
 
     def onNewPlayerSpawnedInBattle(

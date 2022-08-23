@@ -1,10 +1,9 @@
 from json import JSONDecodeError
-from optparse import Option
 from typing import Any, Callable, Optional, Type, Union
 from importlib import import_module
 from renderer.base import LayerBase
 
-from renderer.const import OPERATIONS, LAYERS
+from renderer.const import LAYERS
 from renderer.data import ReplayData
 from renderer.utils import draw_grid, LOGGER
 from renderer.resman import ResourceManager
@@ -43,7 +42,8 @@ class RenderDual:
         self.bg_color: tuple[int, int, int] = (0, 0, 0)
         self.use_tqdm = use_tqdm
 
-    def start(self,
+    def start(
+        self,
         path: str,
         fps: int = 20,
         quality: int = 7,
@@ -400,12 +400,45 @@ class Renderer:
                 if self.enable_chat:
                     layer_chat.draw(game_time, minimap_bg)
 
-            minimap_bg.paste(minimap_img, (40, 90))
-
             if game_time == last_key:
-                for _ in range(3 * fps):
+                img_win = Image.new("RGBA", self.minimap_image.size)
+                drw_win = ImageDraw.Draw(img_win)
+                font = self.resman.load_font("warhelios_bold.ttf", size=36)
+                player = self.replay_data.player_info[
+                    self.replay_data.owner_id
+                ]
+
+                team_id = self.replay_data.game_result.team_id
+
+                match team_id:
+                    case a if a == player.team_id and a != -1:
+                        text = "YOUR TEAM WON"
+                    case a if a != player.team_id and a != -1:
+                        text = "THE ENEMY TEAM WON"
+                    case _:
+                        text = "???"
+
+                tw, th = map(lambda i: i / 2, font.getbbox(text)[2:])
+                mid_x, mid_y = map(lambda i: i / 2, minimap_img.size)
+                offset_y = 4
+                px, py = mid_x - tw, mid_y - th - offset_y
+
+                for i in range(3 * fps):
+                    per = min(1, i / (1.5 * fps))
+                    drw_win.text(
+                        (px, py),
+                        text=text,
+                        font=font,
+                        fill=(255, 255, 255, round(255 * per)),
+                        stroke_width=4,
+                        stroke_fill=(*self.bg_color[:3], round(255 * per)),
+                    )
+
+                    minimap_img = Image.alpha_composite(minimap_img, img_win)
+                    minimap_bg.paste(minimap_img, (40, 90))
                     video_writer.send(minimap_bg.tobytes())
             else:
+                minimap_bg.paste(minimap_img, (40, 90))
                 video_writer.send(minimap_bg.tobytes())
         video_writer.close()
 

@@ -42,6 +42,13 @@ class Vehicle(NamedTuple):
     regen_crew_hp_limit: float = 0.0
     regeneration_health: float = 0.0
 
+    def __lt__(self, other):
+        if isinstance(other, self.__class__):
+            return (self.is_alive < other.is_alive) or (
+                self.is_visible < other.is_visible
+            )
+        raise TypeError
+
 
 class Smoke(NamedTuple):
     """Smoke data."""
@@ -135,6 +142,11 @@ class Message(NamedTuple):
     message: str
 
 
+class BattleResult(NamedTuple):
+    team_id: int
+    victory_type: int
+
+
 class Events(NamedTuple):
     """Match events."""
 
@@ -155,6 +167,7 @@ class Events(NamedTuple):
     evt_achievement: dict
     evt_times_to_win: Optional[tuple[float, float]]
     evt_chat: list[Message]
+    last_frame: bool = False
 
 
 class ReplayData(NamedTuple):
@@ -165,6 +178,7 @@ class ReplayData(NamedTuple):
     game_map: str
     game_battle_type: int
     game_win_score: int
+    game_result: BattleResult
     owner_avatar_id: int
     owner_vehicle_id: int
     owner_id: int

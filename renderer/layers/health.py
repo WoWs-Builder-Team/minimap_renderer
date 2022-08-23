@@ -1,10 +1,9 @@
 import numpy as np
 
-from typing import Optional, Union
-from renderer.data import PlayerInfo, ReplayData
+from typing import Optional
+from renderer.data import ReplayData
 from renderer.render import Renderer
 from renderer.base import LayerBase
-from renderer.const import RELATION_NORMAL_STR, COLORS_NORMAL
 from PIL import Image, ImageDraw, ImageColor
 from math import floor
 
@@ -108,7 +107,7 @@ class LayerHealthBase(LayerBase):
             f"{index}{suffix_fg}.png", nearest=False, path="ship_bars"
         )
         fg_bar = self._add_padding(fg_bar)
-        fg_bar = fg_bar.resize(bg_bar.size, Image.LANCZOS)
+        fg_bar = fg_bar.resize(bg_bar.size, Image.Resampling.LANCZOS)
 
         if per > 0.8:
             bar_color = self._green
@@ -167,11 +166,11 @@ class LayerHealthBase(LayerBase):
         )
         hp_max_text = f"/{hp_max}"
 
-        hp_c_w, hp_c_h = self._font.getsize(hp_current)
-        hp_w, hp_h = self._font.getsize(hp_max_text)
-        n_w, n_h = self._font.getsize(name)
+        hp_c_w, hp_c_h = self._font.getbbox(hp_current)[2:]
+        hp_w, hp_h = self._font.getbbox(hp_max_text)[2:]
+        n_w, n_h = self._font.getbbox(name)[2:]
 
-        bg_bar = bg_bar.resize((235, 62), resample=Image.LANCZOS)
+        bg_bar = bg_bar.resize((235, 62), resample=Image.Resampling.LANCZOS)
 
         px = CENTER - round(bg_bar.width / 2)
 
@@ -207,7 +206,7 @@ class LayerHealthBase(LayerBase):
             self._draw_nodes(
                 bg_bar,
                 self._flood_icon,
-                flags[BURN_NODE_BITS: BURN_NODE_BITS + FLOOD_NODE_BITS],
+                flags[BURN_NODE_BITS : BURN_NODE_BITS + FLOOD_NODE_BITS],
                 FLOOD_NODE_POSITIONS[flood_nodes],
             )
 

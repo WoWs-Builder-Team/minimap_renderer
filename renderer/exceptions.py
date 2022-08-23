@@ -1,6 +1,3 @@
-from .utils import LOGGER
-
-
 class MapLoadError(Exception):
     """Raised when there's an error at loading the map file(s).
 

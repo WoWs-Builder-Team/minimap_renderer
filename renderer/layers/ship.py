@@ -67,7 +67,6 @@ class LayerShipBase(LayerBase):
 
         for vehicle in sorted(
             events[game_time].evt_vehicle.values(),
-            key=lambda s: (s.is_alive, s.is_visible),
         ):
             if self._renderer.dual_mode and vehicle.relation == 1:
                 continue
@@ -98,7 +97,7 @@ class LayerShipBase(LayerBase):
                 relation,
                 vehicle.not_in_range,
             )
-            icon = icon.rotate(-vehicle.yaw, Image.BICUBIC, True)
+            icon = icon.rotate(-vehicle.yaw, Image.Resampling.BICUBIC, True)
             x, y = self._renderer.get_scaled((vehicle.x, vehicle.y))
 
             if vehicle.is_alive:
@@ -140,20 +139,20 @@ class LayerShipBase(LayerBase):
                     angle = 0
                     c_y_pos = 20
 
-                    if d1 <= 40 and d2 <= 40:
-                        angle = -135
-                    elif d2 <= 40 and d3 <= 40:
-                        angle = 135
-                    elif d3 <= 40 and d4 <= 40:
-                        angle = 45
-                    elif d4 <= 40 and d1 <= 40:
-                        angle = -45
-                    else:
-                        if d1 <= 40:
+                    match (d1, d2, d3, d4):
+                        case (d1, d2, d3, d4) if d1 <= 40 and d2 <= 40:
+                            angle = -135
+                        case (d1, d2, d3, d4) if d2 <= 40 and d3 <= 40:
+                            angle = 135
+                        case (d1, d2, d3, d4) if d3 <= 40 and d4 <= 40:
+                            angle = 45
+                        case (d1, d2, d3, d4) if d4 <= 40 and d1 <= 40:
+                            angle = -45
+                        case (d1, d2, d3, d4) if d1 <= 40:
                             angle = -90
-                        elif d2 <= 40:
+                        case (d1, d2, d3, d4) if d2 <= 40:
                             angle = -180
-                        elif d3 <= 40:
+                        case (d1, d2, d3, d4) if d3 <= 40:
                             angle = 90
 
                     if angle or d4 <= 40:
@@ -166,14 +165,13 @@ class LayerShipBase(LayerBase):
                         c_y_pos,
                     )
 
-                    if holder:
+                    if holder and angle:
                         holder = holder.rotate(
-                            angle, Image.BICUBIC, expand=True
+                            angle, Image.Resampling.BICUBIC, expand=True
                         )
 
                     image.paste(**paste_args_centered(holder, x, y, True))
             image.paste(**paste_args_centered(icon, x, y, True))
-
         # Decrement consumable timer and pop if 0
 
         for apcs in list(self._active_consumables.keys()):

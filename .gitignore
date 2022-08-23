@@ -160,7 +160,6 @@ cython_debug/
 .vscode/
 .cspell/
 code_testing/
-replays/
 *.mp4
 *.txt
 /*.dat
