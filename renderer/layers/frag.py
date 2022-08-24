@@ -56,149 +56,161 @@ class LayerFragBase(LayerBase):
             y_pos = 755
 
         for frag in reversed(self._frags[-5:]):
-            fragger_info = self._vehicle_id_to_player[frag.fragger_id]
-            killed_info = self._vehicle_id_to_player[frag.killed_id]
-            frag_fname = f"{DEATH_TYPES[frag.death_type]['icon']}.png"
-            death_icon = self._renderer.resman.load_image(
-                frag_fname, path="frag_icons"
-            )
+            try:
+                fragger_info = self._vehicle_id_to_player[frag.fragger_id]
+                killed_info = self._vehicle_id_to_player[frag.killed_id]
+            except KeyError:
+                pass
+            else:
+                frag_fname = f"{DEATH_TYPES[frag.death_type]['icon']}.png"
+                death_icon = self._renderer.resman.load_image(
+                    frag_fname, path="frag_icons"
+                )
 
-            if self._renderer.anon:
-                fr_name = self._renderer.usernames[fragger_info.id]
-                kd_name = self._renderer.usernames[killed_info.id]
+                if self._renderer.anon:
+                    fr_name = self._renderer.usernames[fragger_info.id]
+                    kd_name = self._renderer.usernames[killed_info.id]
 
-                if fragger_info.clan_tag:
-                    fr_ctag = "#" * len(fragger_info.clan_tag)
+                    if fragger_info.clan_tag:
+                        fr_ctag = "#" * len(fragger_info.clan_tag)
+                    else:
+                        fr_ctag = ""
+
+                    if killed_info.clan_tag:
+                        kd_ctag = "#" * len(killed_info.clan_tag)
+                    else:
+                        kd_ctag = ""
+
+                    if fragger_info.relation == -1:
+                        fr_name = fragger_info.name
+
+                    if killed_info.relation == -1:
+                        kd_name = killed_info.name
                 else:
-                    fr_ctag = ""
-
-                if killed_info.clan_tag:
-                    kd_ctag = "#" * len(killed_info.clan_tag)
-                else:
-                    kd_ctag = ""
-
-                if fragger_info.relation == -1:
                     fr_name = fragger_info.name
-
-                if killed_info.relation == -1:
                     kd_name = killed_info.name
-            else:
-                fr_name = fragger_info.name
-                kd_name = killed_info.name
-                fr_ctag = fragger_info.clan_tag
-                kd_ctag = killed_info.clan_tag
+                    fr_ctag = fragger_info.clan_tag
+                    kd_ctag = killed_info.clan_tag
 
-            _, f_name, f_species, f_level, _ = self._ships[
-                fragger_info.ship_params_id
-            ]
-            _, k_name, k_species, k_level, _ = self._ships[
-                killed_info.ship_params_id
-            ]
-            icon_res = "ship_icons"
+                _, f_name, f_species, f_level, _ = self._ships[
+                    fragger_info.ship_params_id
+                ]
+                _, k_name, k_species, k_level, _ = self._ships[
+                    killed_info.ship_params_id
+                ]
+                icon_res = "ship_icons"
 
-            line = []
+                line = []
 
-            if frag.fragger_id in self._allies:
-                if fr_ctag:
-                    line.append((f"[{fr_ctag}]{fr_name}", COLORS_NORMAL[0]))
-                else:
-                    line.append([fr_name, COLORS_NORMAL[0]])
+                if frag.fragger_id in self._allies:
+                    if fr_ctag:
+                        line.append(
+                            (f"[{fr_ctag}]{fr_name}", COLORS_NORMAL[0])
+                        )
+                    else:
+                        line.append([fr_name, COLORS_NORMAL[0]])
 
-                line.append(5)
-                line.append(
-                    (
-                        self._renderer.resman.load_image(
-                            f"{f_species}.png",
-                            rot=-90,
-                            path=f"{icon_res}.ally",
-                        ),
-                        4,
-                        1,
+                    line.append(5)
+                    line.append(
+                        (
+                            self._renderer.resman.load_image(
+                                f"{f_species}.png",
+                                rot=-90,
+                                path=f"{icon_res}.ally",
+                            ),
+                            4,
+                            1,
+                        )
                     )
-                )
-                line.append(5)
-                line.append((TIER_ROMAN[f_level - 1], COLORS_NORMAL[0]))
-                line.append(5)
-                line.append((f_name, COLORS_NORMAL[0]))
-                line.append(5)
-                line.append((death_icon, -3, 1))
-                line.append("after")
-                line.append(5)
+                    line.append(5)
+                    line.append((TIER_ROMAN[f_level - 1], COLORS_NORMAL[0]))
+                    line.append(5)
+                    line.append((f_name, COLORS_NORMAL[0]))
+                    line.append(5)
+                    line.append((death_icon, -3, 1))
+                    line.append("after")
+                    line.append(5)
 
-                if kd_ctag:
-                    line.append((f"[{kd_ctag}]{kd_name}", COLORS_NORMAL[1]))
-                else:
-                    line.append([kd_name, COLORS_NORMAL[1]])
+                    if kd_ctag:
+                        line.append(
+                            (f"[{kd_ctag}]{kd_name}", COLORS_NORMAL[1])
+                        )
+                    else:
+                        line.append([kd_name, COLORS_NORMAL[1]])
 
-                line.append(5)
-                line.append(
-                    (
-                        self._renderer.resman.load_image(
-                            f"{k_species}.png",
-                            rot=90,
-                            path=f"{icon_res}.enemy",
-                        ),
-                        4,
-                        1,
+                    line.append(5)
+                    line.append(
+                        (
+                            self._renderer.resman.load_image(
+                                f"{k_species}.png",
+                                rot=90,
+                                path=f"{icon_res}.enemy",
+                            ),
+                            4,
+                            1,
+                        )
                     )
-                )
-                line.append(5)
-                line.append((TIER_ROMAN[k_level - 1], COLORS_NORMAL[1]))
-                line.append(5)
-                line.append((k_name, COLORS_NORMAL[1]))
-            else:
-                if fr_ctag:
-                    line.append((f"[{fr_ctag}]{fr_name}", COLORS_NORMAL[1]))
+                    line.append(5)
+                    line.append((TIER_ROMAN[k_level - 1], COLORS_NORMAL[1]))
+                    line.append(5)
+                    line.append((k_name, COLORS_NORMAL[1]))
                 else:
-                    line.append([fr_name, COLORS_NORMAL[1]])
+                    if fr_ctag:
+                        line.append(
+                            (f"[{fr_ctag}]{fr_name}", COLORS_NORMAL[1])
+                        )
+                    else:
+                        line.append([fr_name, COLORS_NORMAL[1]])
 
-                line.append(5)
-                line.append(
-                    (
-                        self._renderer.resman.load_image(
-                            f"{f_species}.png",
-                            rot=90,
-                            path=f"{icon_res}.enemy",
-                        ),
-                        4,
-                        1,
+                    line.append(5)
+                    line.append(
+                        (
+                            self._renderer.resman.load_image(
+                                f"{f_species}.png",
+                                rot=90,
+                                path=f"{icon_res}.enemy",
+                            ),
+                            4,
+                            1,
+                        )
                     )
-                )
-                line.append(5)
-                line.append((TIER_ROMAN[f_level - 1], COLORS_NORMAL[1]))
-                line.append(5)
-                line.append((f_name, COLORS_NORMAL[1]))
-                line.append(5)
-                line.append((death_icon, -3, 1))
-                line.append("after")
-                line.append(5)
+                    line.append(5)
+                    line.append((TIER_ROMAN[f_level - 1], COLORS_NORMAL[1]))
+                    line.append(5)
+                    line.append((f_name, COLORS_NORMAL[1]))
+                    line.append(5)
+                    line.append((death_icon, -3, 1))
+                    line.append("after")
+                    line.append(5)
 
-                if kd_ctag:
-                    line.append((f"[{kd_ctag}]{kd_name}", COLORS_NORMAL[0]))
-                else:
-                    line.append([kd_name, COLORS_NORMAL[0]])
+                    if kd_ctag:
+                        line.append(
+                            (f"[{kd_ctag}]{kd_name}", COLORS_NORMAL[0])
+                        )
+                    else:
+                        line.append([kd_name, COLORS_NORMAL[0]])
 
-                line.append(5)
-                line.append(
-                    (
-                        self._renderer.resman.load_image(
-                            f"{k_species}.png",
-                            rot=-90,
-                            path=f"{icon_res}.ally",
-                        ),
-                        4,
-                        1,
+                    line.append(5)
+                    line.append(
+                        (
+                            self._renderer.resman.load_image(
+                                f"{k_species}.png",
+                                rot=-90,
+                                path=f"{icon_res}.ally",
+                            ),
+                            4,
+                            1,
+                        )
                     )
-                )
-                line.append(5)
-                line.append((TIER_ROMAN[k_level - 1], COLORS_NORMAL[0]))
-                line.append(5)
-                line.append((k_name, COLORS_NORMAL[0]))
+                    line.append(5)
+                    line.append((TIER_ROMAN[k_level - 1], COLORS_NORMAL[0]))
+                    line.append(5)
+                    line.append((k_name, COLORS_NORMAL[0]))
 
-            for img in self.build(line):
-                y_pos -= img.height
-                x_pos = (image.width - 30) - img.width
-                image.paste(img, (x_pos, y_pos), img)
+                for img in self.build(line):
+                    y_pos -= img.height
+                    x_pos = (image.width - 30) - img.width
+                    image.paste(img, (x_pos, y_pos), img)
 
     def _hash(self, line):
         """Hashes the line for caching.
