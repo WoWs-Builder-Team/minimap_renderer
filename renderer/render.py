@@ -385,6 +385,7 @@ class Renderer:
 
             if not self.is_operations:
                 layer_capture.draw(game_time, minimap_img)
+                layer_score.draw(game_time, minimap_bg)
 
             layer_building.draw(game_time, minimap_img)
             layer_ward.draw(game_time, minimap_img)
@@ -393,9 +394,7 @@ class Renderer:
             layer_ship.draw(game_time, minimap_img)
             layer_smoke.draw(game_time, minimap_img)
             layer_plane.draw(game_time, minimap_img)
-
             layer_timer.draw(game_time, minimap_bg)
-            layer_score.draw(game_time, minimap_bg)
 
             if self.logs:
                 layer_health.draw(game_time, minimap_bg)
