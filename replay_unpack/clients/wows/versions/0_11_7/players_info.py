@@ -3,6 +3,7 @@ from .constants import (
     id_property_map,
     id_property_map_bots,
     id_property_map_observer,
+    id_property_map_buildings,
 )
 
 
@@ -10,6 +11,7 @@ class PlayerType:
     PLAYER = 1
     BOT = 2
     OBSERVER = 3
+    BUILDING = 4
 
 
 class PlayersInfo(object):
@@ -22,6 +24,8 @@ class PlayersInfo(object):
             property_map = id_property_map
         elif player_type == PlayerType.BOT:
             property_map = id_property_map_bots
+        elif player_type == PlayerType.BUILDING:
+            property_map = id_property_map_buildings
         elif player_type == PlayerType.OBSERVER:
             property_map = id_property_map_observer
         else:

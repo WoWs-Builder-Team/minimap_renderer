@@ -50,6 +50,31 @@ class Vehicle(NamedTuple):
         raise TypeError
 
 
+class BuildingInfo(NamedTuple):
+    """Building information"""
+
+    id: int
+    is_alive: bool
+    is_hidden: bool
+    is_suppressed: bool
+    name: str
+    params_id: int
+    team_id: int
+    unique_id: int
+    relation: int
+    ship_params_id: int
+    clan_tag: str = ""
+
+
+class Building(NamedTuple):
+    is_alive: bool
+    is_suppressed: bool
+    is_visible: bool
+    x: int
+    y: int
+    yaw: int
+
+
 class Smoke(NamedTuple):
     """Smoke data."""
 
@@ -152,6 +177,7 @@ class Events(NamedTuple):
 
     time_left: int
     evt_vehicle: dict[int, Vehicle]
+    evt_building: dict[int, Building]
     evt_plane: dict[int, Plane]
     evt_ward: dict[int, Ward]
     evt_smoke: dict[int, Smoke]
@@ -183,4 +209,5 @@ class ReplayData(NamedTuple):
     owner_vehicle_id: int
     owner_id: int
     player_info: dict[int, PlayerInfo]
+    building_info: dict[int, BuildingInfo]
     events: dict[int, Events]

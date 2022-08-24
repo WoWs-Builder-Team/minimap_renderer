@@ -25,6 +25,8 @@ from renderer.data import (
     Frag,
     Message,
     BattleResult,
+    BuildingInfo,
+    Building,
 )
 from replay_unpack.utils import (
     unpack_values,
@@ -93,7 +95,9 @@ class BattleController(IBattleController):
         self._time_left: int = 0
         self._battle_stage: int = -1
         self._dict_info: dict[int, PlayerInfo] = {}
+        self._dict_building_info: dict[int, BuildingInfo] = {}
         self._dict_vehicle: dict[int, Vehicle] = {}
+        self._dict_building: dict[int, Building] = {}
         self._dict_smoke: dict[int, Smoke] = {}
         self._dict_plane: dict[int, Plane] = {}
         self._dict_ward: dict[int, Ward] = {}
@@ -229,8 +233,22 @@ class BattleController(IBattleController):
         Entity.subscribe_property_change(
             "Vehicle", "burningFlags", self._set_burning_flags
         )
+        Entity.subscribe_property_change(
+            "Building", "isSuppressed", self._is_suppressed
+        )
+        Entity.subscribe_property_change("Building", "isAlive", self._is_alive)
 
     ###########################################################################
+    def _is_suppressed(self, entity: Entity, val):
+        self._dict_building[entity.id] = self._dict_building[
+            entity.id
+        ]._replace(is_suppressed=val)
+
+    def _is_alive(self, entity: Entity, val):
+        self._dict_building[entity.id] = self._dict_building[
+            entity.id
+        ]._replace(is_alive=val)
+
     def _on_chat_message(
         self, entity: Entity, player_id, namespace, message, unk
     ):
@@ -398,6 +416,7 @@ class BattleController(IBattleController):
         evt = Events(
             time_left=self._time_left,
             evt_vehicle=copy.copy(self._dict_vehicle),
+            evt_building=copy.copy(self._dict_building),
             evt_smoke=copy.copy(self._dict_smoke),
             evt_shot=copy.copy(self._acc_shots),
             evt_torpedo=copy.copy(self._acc_torpedoes),
@@ -555,6 +574,8 @@ class BattleController(IBattleController):
         self._dict_vehicle[entity.id] = self._dict_vehicle[entity.id]._replace(
             health=health
         )
+        if entity.id == 959830:
+            exit()
 
     def _set_is_alive(self, entity: Entity, is_alive):
         self._dict_vehicle[entity.id] = self._dict_vehicle[entity.id]._replace(
@@ -574,6 +595,21 @@ class BattleController(IBattleController):
             (-2500.0, 2500.0, 11),
             (-3.141592753589793, 3.141592753589793, 8),
         )
+        for e in buildings_minimap_diff:
+            vehicle_id = e["vehicleID"]
+            x, y, yaw = unpack_values(e["packedData"], pack_pattern)
+            x, y, yaw = map(round, (x, y, math.degrees(yaw)))
+            is_visible = x != -2500 or y != -2500
+
+            if is_visible:
+                self._dict_building[vehicle_id] = self._dict_building[
+                    vehicle_id
+                ]._replace(x=x, y=y, yaw=yaw, is_visible=is_visible)
+            else:
+                self._dict_building[vehicle_id] = self._dict_building[
+                    vehicle_id
+                ]._replace(is_visible=is_visible)
+
         for e in ships_minimap_diff:
             vehicle_id = e["vehicleID"]
             x, y, yaw = unpack_values(e["packedData"], pack_pattern)
@@ -625,45 +661,73 @@ class BattleController(IBattleController):
             else:
                 relation = -1
 
-            pi = PlayerInfo(
-                id=player["id"],
-                account_db_id=player["accountDBID"],
-                clan_color=player["clanColor"],
-                clan_id=player["clanID"],
-                clan_tag=player["clanTag"],
-                max_health=player["maxHealth"],
-                name=player["name"],
-                realm=player["realm"],
-                ship_id=player["shipId"],
-                team_id=player["teamId"],
-                is_bot=bool(player["isBot"]),
-                ship_params_id=player["shipParamsId"],
-                relation=relation,
-                hull=None,
-                modernization=(),
-                skills=[],
-            )
-            if player["id"] not in self._dict_info:
-                self._dict_info[player["id"]] = pi
-                self._vehicle_to_id[player["shipId"]] = player["id"]
-    
-            vi = Vehicle(
-                player_id=player["id"],
-                vehicle_id=player["shipId"],
-                health=player["maxHealth"],
-                is_alive=True,
-                x=-2500,
-                y=-2500,
-                yaw=-180,
-                relation=relation,
-                is_visible=False,
-                not_in_range=False,
-                visibility_flag=0,
-                burn_flags=0,
-                consumables_state={},
-            )
-            if player["shipId"] not in self._dict_vehicle:
-                self._dict_vehicle[player["shipId"]] = vi
+            if player["playerType"] in [1, 2]:
+                pi = PlayerInfo(
+                    id=player["id"],
+                    account_db_id=player["accountDBID"],
+                    clan_color=player["clanColor"],
+                    clan_id=player["clanID"],
+                    clan_tag=player["clanTag"],
+                    max_health=player["maxHealth"],
+                    name=player["name"],
+                    realm=player["realm"],
+                    ship_id=player["shipId"],
+                    team_id=player["teamId"],
+                    is_bot=bool(player["isBot"]),
+                    ship_params_id=player["shipParamsId"],
+                    relation=relation,
+                    hull=None,
+                    modernization=(),
+                    skills=[],
+                )
+
+                if player["id"] not in self._dict_info:
+                    self._dict_info[player["id"]] = pi
+                    self._vehicle_to_id[player["shipId"]] = player["id"]
+
+                vi = Vehicle(
+                    player_id=player["id"],
+                    vehicle_id=player["shipId"],
+                    health=player["maxHealth"],
+                    is_alive=True,
+                    x=-2500,
+                    y=-2500,
+                    yaw=-180,
+                    relation=relation,
+                    is_visible=False,
+                    not_in_range=False,
+                    visibility_flag=0,
+                    burn_flags=0,
+                    consumables_state={},
+                )
+                if player["shipId"] not in self._dict_vehicle:
+                    self._dict_vehicle[player["shipId"]] = vi
+            elif player["playerType"] == 4:
+                bi = BuildingInfo(
+                    id=player["id"],
+                    is_alive=player["isAlive"],
+                    is_hidden=player["isHidden"],
+                    is_suppressed=player["isSuppressed"],
+                    name=player["name"],
+                    params_id=player["paramsId"],
+                    team_id=player["teamId"],
+                    unique_id=player["uniqueId"],
+                    relation=relation,
+                    ship_params_id=player["paramsId"],
+                )
+
+                self._dict_building_info.setdefault(player["id"], bi)
+
+                building = Building(
+                    is_alive=player["isAlive"],
+                    is_suppressed=player["isSuppressed"],
+                    is_visible=False,
+                    x=-2500,
+                    y=-2500,
+                    yaw=-180,
+                )
+
+                self._dict_building.setdefault(player["id"], building)
 
     ###########################################################################
 
@@ -714,12 +778,12 @@ class BattleController(IBattleController):
         self._player_id = entity_id
 
     def get_info(self):
-        print(self._vehicle_to_id)
         # force copy of last frame to handle subsecond events
         battle_time = self._durations[-1] - self._time_left + 1
         evt = Events(
             time_left=self._time_left,
             evt_vehicle=copy.copy(self._dict_vehicle),
+            evt_building=copy.copy(self._dict_building),
             evt_smoke=copy.copy(self._dict_smoke),
             evt_shot=copy.copy(self._acc_shots),
             evt_torpedo=copy.copy(self._acc_torpedoes),
@@ -758,6 +822,7 @@ class BattleController(IBattleController):
             owner_vehicle_id=self._owner["shipId"],
             owner_id=self._owner["id"],
             player_info=self._dict_info,
+            building_info=self._dict_building_info,
             events=self._dict_events,
         )
 
@@ -852,13 +917,15 @@ class BattleController(IBattleController):
             restricted_loads(botsStates, encoding="latin1"), PlayerType.BOT
         )
         self._players.create_or_update_players(
+            restricted_loads(buildingsInfo, encoding="latin1"),
+            PlayerType.BUILDING,
+        )
+        self._players.create_or_update_players(
             restricted_loads(observersState, encoding="latin1"),
             PlayerType.OBSERVER,
         )
-        self._create_player_vehicle_data()
 
-    def _update_player_data(self):
-        pass
+        self._create_player_vehicle_data()
 
     def onPlayerInfoUpdate(self, avatar, playersData, botsData, observersData):
         self._players.create_or_update_players(

@@ -329,7 +329,7 @@ class Renderer:
         layer_smoke = self._load_base_or_versioned("LayerSmoke")
         layer_plane = self._load_base_or_versioned("LayerPlane")
         layer_ward = self._load_base_or_versioned("LayerWard")
-
+        layer_building = self._load_base_or_versioned("LayerBuilding")
         layer_capture = self._load_base_or_versioned("LayerCapture")
         layer_health = self._load_base_or_versioned("LayerHealth")
         layer_score = self._load_base_or_versioned("LayerScore")
@@ -386,6 +386,7 @@ class Renderer:
             if not self.is_operations:
                 layer_capture.draw(game_time, minimap_img)
 
+            layer_building.draw(game_time, minimap_img)
             layer_ward.draw(game_time, minimap_img)
             layer_shot.draw(game_time, draw)
             layer_torpedo.draw(game_time, draw)
