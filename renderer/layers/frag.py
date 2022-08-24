@@ -31,12 +31,19 @@ class LayerFragBase(LayerBase):
         self._frags: list[Frag] = []
         self._ships = self._renderer.resman.load_json("ships.json")
         self._players = self._replay_data.player_info
+        self._buildings = self._replay_data.building_info
         self._vehicle_id_to_player = {
             v.ship_id: v for k, v in self._players.items()
+        }
+        self._vehicle_id_to_building = {
+            v.id: v for k, v in self._buildings.items()
         }
         self._allies = [
             p.ship_id for p in self._players.values() if p.relation in [-1, 0]
         ]
+        self._allies.extend(
+            p.id for p in self._buildings.values() if p.relation in [-1, 0]
+        )
         self._generated_lines: dict[int, Image.Image] = {}
 
     def draw(self, game_time: int, image: Image.Image):
@@ -56,61 +63,84 @@ class LayerFragBase(LayerBase):
             y_pos = 755
 
         for frag in reversed(self._frags[-5:]):
+            is_fragger_building = False
+            is_killed_building = False
+
             try:
                 fragger_info = self._vehicle_id_to_player[frag.fragger_id]
+            except KeyError:
+                fragger_info = self._vehicle_id_to_building[frag.fragger_id]
+                is_fragger_building = True
+
+            try:
                 killed_info = self._vehicle_id_to_player[frag.killed_id]
             except KeyError:
-                pass
-            else:
-                frag_fname = f"{DEATH_TYPES[frag.death_type]['icon']}.png"
-                death_icon = self._renderer.resman.load_image(
-                    frag_fname, path="frag_icons"
-                )
+                killed_info = self._vehicle_id_to_building[frag.killed_id]
+                is_killed_building = True
 
-                if self._renderer.anon:
-                    fr_name = self._renderer.usernames[fragger_info.id]
-                    kd_name = self._renderer.usernames[killed_info.id]
+            frag_fname = f"{DEATH_TYPES[frag.death_type]['icon']}.png"
+            death_icon = self._renderer.resman.load_image(
+                frag_fname, path="frag_icons"
+            )
 
-                    if fragger_info.clan_tag:
-                        fr_ctag = "#" * len(fragger_info.clan_tag)
-                    else:
-                        fr_ctag = ""
+            if self._renderer.anon:
+                fr_name = self._renderer.usernames[fragger_info.id]
+                kd_name = self._renderer.usernames[killed_info.id]
 
-                    if killed_info.clan_tag:
-                        kd_ctag = "#" * len(killed_info.clan_tag)
-                    else:
-                        kd_ctag = ""
-
-                    if fragger_info.relation == -1:
-                        fr_name = fragger_info.name
-
-                    if killed_info.relation == -1:
-                        kd_name = killed_info.name
+                if fragger_info.clan_tag:
+                    fr_ctag = "#" * len(fragger_info.clan_tag)
                 else:
-                    fr_name = fragger_info.name
-                    kd_name = killed_info.name
-                    fr_ctag = fragger_info.clan_tag
-                    kd_ctag = killed_info.clan_tag
+                    fr_ctag = ""
 
+                if killed_info.clan_tag:
+                    kd_ctag = "#" * len(killed_info.clan_tag)
+                else:
+                    kd_ctag = ""
+
+                if fragger_info.relation == -1:
+                    fr_name = fragger_info.name
+
+                if killed_info.relation == -1:
+                    kd_name = killed_info.name
+            else:
+                fr_name = fragger_info.name
+                kd_name = killed_info.name
+                fr_ctag = fragger_info.clan_tag
+                kd_ctag = killed_info.clan_tag
+
+            try:
                 _, f_name, f_species, f_level, _ = self._ships[
                     fragger_info.ship_params_id
                 ]
+            except KeyError:
+                f_name, f_species, f_level = "", "", 0
+
+            try:
                 _, k_name, k_species, k_level, _ = self._ships[
                     killed_info.ship_params_id
                 ]
-                icon_res = "ship_icons"
+            except KeyError:
+                k_name, k_species, k_level = "", "", 0
 
-                line = []
+            icon_res = "ship_icons"
 
-                if frag.fragger_id in self._allies:
-                    if fr_ctag:
-                        line.append(
-                            (f"[{fr_ctag}]{fr_name}", COLORS_NORMAL[0])
-                        )
-                    else:
-                        line.append([fr_name, COLORS_NORMAL[0]])
+            line = []
 
-                    line.append(5)
+            if is_fragger_building:
+                fr_name = "FORT"
+
+            if is_killed_building:
+                kd_name = "FORT"
+
+            if frag.fragger_id in self._allies:
+                if fr_ctag:
+                    line.append((f"[{fr_ctag}]{fr_name}", COLORS_NORMAL[0]))
+                else:
+                    line.append([fr_name, COLORS_NORMAL[0]])
+
+                line.append(5)
+
+                if not is_fragger_building:
                     line.append(
                         (
                             self._renderer.resman.load_image(
@@ -127,18 +157,17 @@ class LayerFragBase(LayerBase):
                     line.append(5)
                     line.append((f_name, COLORS_NORMAL[0]))
                     line.append(5)
-                    line.append((death_icon, -3, 1))
-                    line.append("after")
-                    line.append(5)
+                line.append((death_icon, -3, 1))
+                line.append("after")
+                line.append(5)
 
-                    if kd_ctag:
-                        line.append(
-                            (f"[{kd_ctag}]{kd_name}", COLORS_NORMAL[1])
-                        )
-                    else:
-                        line.append([kd_name, COLORS_NORMAL[1]])
+                if kd_ctag:
+                    line.append((f"[{kd_ctag}]{kd_name}", COLORS_NORMAL[1]))
+                else:
+                    line.append([kd_name, COLORS_NORMAL[1]])
 
-                    line.append(5)
+                line.append(5)
+                if not is_killed_building:
                     line.append(
                         (
                             self._renderer.resman.load_image(
@@ -154,15 +183,15 @@ class LayerFragBase(LayerBase):
                     line.append((TIER_ROMAN[k_level - 1], COLORS_NORMAL[1]))
                     line.append(5)
                     line.append((k_name, COLORS_NORMAL[1]))
+            else:
+                if fr_ctag:
+                    line.append((f"[{fr_ctag}]{fr_name}", COLORS_NORMAL[1]))
                 else:
-                    if fr_ctag:
-                        line.append(
-                            (f"[{fr_ctag}]{fr_name}", COLORS_NORMAL[1])
-                        )
-                    else:
-                        line.append([fr_name, COLORS_NORMAL[1]])
+                    line.append([fr_name, COLORS_NORMAL[1]])
 
-                    line.append(5)
+                line.append(5)
+
+                if not is_fragger_building:
                     line.append(
                         (
                             self._renderer.resman.load_image(
@@ -179,18 +208,18 @@ class LayerFragBase(LayerBase):
                     line.append(5)
                     line.append((f_name, COLORS_NORMAL[1]))
                     line.append(5)
-                    line.append((death_icon, -3, 1))
-                    line.append("after")
-                    line.append(5)
+                line.append((death_icon, -3, 1))
+                line.append("after")
+                line.append(5)
 
-                    if kd_ctag:
-                        line.append(
-                            (f"[{kd_ctag}]{kd_name}", COLORS_NORMAL[0])
-                        )
-                    else:
-                        line.append([kd_name, COLORS_NORMAL[0]])
+                if kd_ctag:
+                    line.append((f"[{kd_ctag}]{kd_name}", COLORS_NORMAL[0]))
+                else:
+                    line.append([kd_name, COLORS_NORMAL[0]])
 
-                    line.append(5)
+                line.append(5)
+
+                if not is_killed_building:
                     line.append(
                         (
                             self._renderer.resman.load_image(
@@ -207,10 +236,10 @@ class LayerFragBase(LayerBase):
                     line.append(5)
                     line.append((k_name, COLORS_NORMAL[0]))
 
-                for img in self.build(line):
-                    y_pos -= img.height
-                    x_pos = (image.width - 30) - img.width
-                    image.paste(img, (x_pos, y_pos), img)
+            for img in self.build(line):
+                y_pos -= img.height
+                x_pos = (image.width - 30) - img.width
+                image.paste(img, (x_pos, y_pos), img)
 
     def _hash(self, line):
         """Hashes the line for caching.
