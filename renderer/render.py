@@ -306,6 +306,8 @@ class Renderer:
 
         if bt["scenario"][:2].startswith("OP"):
             self.is_operations = True
+        if bt["scenario"] == "Defense":
+            self.is_operations = True
 
     def start(
         self,
@@ -327,8 +329,8 @@ class Renderer:
         layer_smoke = self._load_base_or_versioned("LayerSmoke")
         layer_plane = self._load_base_or_versioned("LayerPlane")
         layer_ward = self._load_base_or_versioned("LayerWard")
-        layer_capture = self._load_base_or_versioned("LayerCapture")
 
+        layer_capture = self._load_base_or_versioned("LayerCapture")
         layer_health = self._load_base_or_versioned("LayerHealth")
         layer_score = self._load_base_or_versioned("LayerScore")
         layer_counter = self._load_base_or_versioned("LayerCounter")
@@ -380,7 +382,10 @@ class Renderer:
             minimap_bg = self.minimap_bg.copy()
 
             draw = ImageDraw.Draw(minimap_img)
-            layer_capture.draw(game_time, minimap_img)
+
+            if not self.is_operations:
+                layer_capture.draw(game_time, minimap_img)
+
             layer_ward.draw(game_time, minimap_img)
             layer_shot.draw(game_time, draw)
             layer_torpedo.draw(game_time, draw)
