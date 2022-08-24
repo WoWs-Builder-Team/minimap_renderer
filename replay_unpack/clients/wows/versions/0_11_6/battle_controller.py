@@ -575,30 +575,27 @@ class BattleController(IBattleController):
             (-3.141592753589793, 3.141592753589793, 8),
         )
         for e in ships_minimap_diff:
-            try:
-                vehicle_id = e["vehicleID"]
-                x, y, yaw = unpack_values(e["packedData"], pack_pattern)
-                x, y, yaw = map(round, (x, y, math.degrees(yaw)))
+            vehicle_id = e["vehicleID"]
+            x, y, yaw = unpack_values(e["packedData"], pack_pattern)
+            x, y, yaw = map(round, (x, y, math.degrees(yaw)))
 
-                is_visible = x != -2500 or y != -2500
+            is_visible = x != -2500 or y != -2500
 
-                if is_visible:
-                    self._dict_vehicle[vehicle_id] = self._dict_vehicle[
-                        vehicle_id
-                    ]._replace(x=x, y=y, yaw=yaw, is_visible=is_visible)
-                else:
-                    self._dict_vehicle[vehicle_id] = self._dict_vehicle[
-                        vehicle_id
-                    ]._replace(is_visible=is_visible)
-            except KeyError:
-                pass
+            if is_visible:
+                self._dict_vehicle[vehicle_id] = self._dict_vehicle[
+                    vehicle_id
+                ]._replace(x=x, y=y, yaw=yaw, is_visible=is_visible)
+            else:
+                self._dict_vehicle[vehicle_id] = self._dict_vehicle[
+                    vehicle_id
+                ]._replace(is_visible=is_visible)
 
     def _set_smoke_points(self, entity: Entity, points):
         self._dict_smoke[entity.id] = self._dict_smoke[entity.id]._replace(
             points=copy.copy(points)
         )
 
-    def _create_player_vehicle_data(self, update=False):
+    def _create_player_vehicle_data(self):
         if not self._owner:
             for player in self._players.get_info().values():
                 try:
@@ -646,12 +643,10 @@ class BattleController(IBattleController):
                 modernization=(),
                 skills=[],
             )
-            self._vehicle_to_id[player["shipId"]] = player["id"]
-            self._dict_info[player["id"]] = pi
-
-            if update:
-                continue
-
+            if player["id"] not in self._dict_info:
+                self._dict_info[player["id"]] = pi
+                self._vehicle_to_id[player["shipId"]] = player["id"]
+    
             vi = Vehicle(
                 player_id=player["id"],
                 vehicle_id=player["shipId"],
@@ -667,7 +662,8 @@ class BattleController(IBattleController):
                 burn_flags=0,
                 consumables_state={},
             )
-            self._dict_vehicle[player["shipId"]] = vi
+            if player["shipId"] not in self._dict_vehicle:
+                self._dict_vehicle[player["shipId"]] = vi
 
     ###########################################################################
 
@@ -718,6 +714,7 @@ class BattleController(IBattleController):
         self._player_id = entity_id
 
     def get_info(self):
+        print(self._vehicle_to_id)
         # force copy of last frame to handle subsecond events
         battle_time = self._durations[-1] - self._time_left + 1
         evt = Events(
@@ -874,7 +871,6 @@ class BattleController(IBattleController):
             restricted_loads(observersData, encoding="latin1"),
             PlayerType.OBSERVER,
         )
-        # self._create_player_vehicle_data(True)
 
     def receiveDamageStat(self, avatar, blob):
         normalized_map = {}
