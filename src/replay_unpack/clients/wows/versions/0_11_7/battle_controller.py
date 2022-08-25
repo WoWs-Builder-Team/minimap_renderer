@@ -681,9 +681,8 @@ class BattleController(IBattleController):
                     skills=[],
                 )
 
-                if player["id"] not in self._dict_info:
-                    self._dict_info[player["id"]] = pi
-                    self._vehicle_to_id[player["shipId"]] = player["id"]
+                self._dict_info.setdefault(player["id"], pi)
+                self._vehicle_to_id.setdefault(player["shipId"], player["id"])
 
                 vi = Vehicle(
                     player_id=player["id"],
@@ -700,8 +699,8 @@ class BattleController(IBattleController):
                     burn_flags=0,
                     consumables_state={},
                 )
-                if player["shipId"] not in self._dict_vehicle:
-                    self._dict_vehicle[player["shipId"]] = vi
+                self._dict_vehicle.setdefault(player["shipId"], vi)
+
             elif player["playerType"] == 4:
                 bi = BuildingInfo(
                     id=player["id"],
@@ -994,5 +993,5 @@ class BattleController(IBattleController):
         raise NotImplementedError()
 
     @map.setter
-    def map(self, value):
-        self._map = value.lstrip("spaces/")
+    def map(self, value: str):
+        self._map = value.removeprefix("spaces/")

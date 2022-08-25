@@ -474,10 +474,7 @@ class Renderer:
             manifest.
         """
 
-        if self.is_operations:
-            map_name = f"s{self.replay_data.game_map}"
-        else:
-            map_name = self.replay_data.game_map
+        map_name = self.replay_data.game_map
 
         self._load_map_manifest()
         path = f"spaces.{map_name}"
@@ -514,10 +511,7 @@ class Renderer:
         Returns:
             str: Package on where the map resources will be loaded.
         """
-        if self.is_operations:
-            map_name = f"s{self.replay_data.game_map}"
-        else:
-            map_name = self.replay_data.game_map
+        map_name = self.replay_data.game_map
 
         try:
             manifest = self.resman.load_json("manifest.json", "spaces")
