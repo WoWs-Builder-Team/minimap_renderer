@@ -38,14 +38,14 @@ class LayerSmokeBase(LayerBase):
         if not smokes:
             return
 
-        assert self._renderer.minimap_image
-        base = Image.new("RGBA", self._renderer.minimap_image.size)
+        assert self._renderer.minimap_fg
+        base = Image.new("RGBA", self._renderer.minimap_fg.size)
         draw = ImageDraw.Draw(base, mode="RGBA")
 
         for smoke in smokes:
             for point in smoke.points:
                 x, y = self._renderer.get_scaled(point)
-                r = round(smoke.radius * self._renderer.scaling)
+                r = round(smoke.radius * self._renderer.minimap_scaling)
                 draw.ellipse(
                     [(x - r, y - r), (x + r, y + r)], fill="#ffffff40"
                 )
