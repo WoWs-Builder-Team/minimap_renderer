@@ -2,7 +2,7 @@ import pytest
 import pickle
 
 from renderer.render import Renderer
-from replay_parser import ReplayParser
+from src.replay_parser import ReplayParser
 
 
 @pytest.mark.parametrize(

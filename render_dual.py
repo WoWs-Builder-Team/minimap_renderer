@@ -1,7 +1,7 @@
 import os
 
 from os import path
-from replay_parser import ReplayParser
+from src.replay_parser import ReplayParser
 from renderer.data import ReplayData
 from renderer.render import RenderDual
 
