@@ -7,6 +7,7 @@ from renderer_data import (
     create_achievements_data,
     create_abilities_data,
     create_building_data,
+    create_modernization_data,
 )
 
 
@@ -16,5 +17,6 @@ if __name__ == "__main__":
     create_projectiles_data()
     create_achievements_data()
     create_abilities_data()
+    create_modernization_data()
     create_building_data()
     LOGGER.info("Done.")
