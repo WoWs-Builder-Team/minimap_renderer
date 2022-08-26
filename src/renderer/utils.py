@@ -59,16 +59,14 @@ def generate_ship_data(
         else:
             font_color = COLORS_NORMAL[player.relation]
 
-        index, ship_name, ship_species, ship_level, hulls = ships[
-            player.ship_params_id
-        ]
+        info = ships[player.ship_params_id]
         holder: Image.Image = Image.new("RGBA", (hw, hh))
         holder_draw: ImageDraw.ImageDraw = ImageDraw.Draw(holder)
-        text_w, text_h = font.getbbox(ship_name)[2:]
+        text_w, text_h = font.getbbox(info["name"])[2:]
         text_x = round((hw / 2) - (text_w / 2))
         text_y = round((hh - text_h) - text_offset)
         holder_draw.text(
-            xy=(text_x, text_y), text=ship_name, fill=font_color, font=font
+            xy=(text_x, text_y), text=info["name"], fill=font_color, font=font
         )
         dict_player_holder[player.id] = holder
     return dict_player_holder
