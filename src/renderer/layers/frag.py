@@ -109,16 +109,18 @@ class LayerFragBase(LayerBase):
                 kd_ctag = killed_info.clan_tag
 
             try:
-                _, f_name, f_species, f_level, _ = self._ships[
-                    fragger_info.ship_params_id
-                ]
+                f_ship = self._ships[fragger_info.ship_params_id]
+                f_name = f_ship["name"]
+                f_species = f_ship["species"]
+                f_level = f_ship["level"]
             except KeyError:
                 f_name, f_species, f_level = "", "", 0
 
             try:
-                _, k_name, k_species, k_level, _ = self._ships[
-                    killed_info.ship_params_id
-                ]
+                k_ship = self._ships[killed_info.ship_params_id]
+                k_name = k_ship["name"]
+                k_species = k_ship["species"]
+                k_level = k_ship["level"]
             except KeyError:
                 k_name, k_species, k_level = "", "", 0
 
