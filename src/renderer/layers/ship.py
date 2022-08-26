@@ -12,6 +12,20 @@ from renderer.utils import (
 from PIL import Image, ImageDraw
 from math import hypot
 
+MIN_VIEW_DISTANCES = {
+    1: 15000,
+    2: 15000,
+    3: 17000,
+    4: 20000,
+    5: 23000,
+    6: 26000,
+    7: 27000,
+    8: 30000,
+    9: 33000,
+    10: 35000,
+    11: 35000,
+}
+
 
 class LayerShipBase(LayerBase):
     """A class that handles/draws ships to the minimap.
@@ -43,6 +57,30 @@ class LayerShipBase(LayerBase):
         self._abilities = renderer.resman.load_json("abilities.json")
         self._ships = renderer.resman.load_json("ships.json")
         self._consumable_cache: dict[int, Image.Image] = {}
+        self._owner = self._replay_data.player_info[self._replay_data.owner_id]
+        self._owner_view_range = self._get_max_dist()
+
+    def _get_max_dist(self):
+        ship = self._ships[self._owner.ship_params_id]
+        if ship["species"] in ["AirCarrier", "Submarine"]:
+            return -1
+
+        artillery_comp = self._owner.ship_components["artillery"]
+        fire_control_comp = self._owner.ship_components["fireControl"]
+        ship_comp = ship["components"]
+        max_dist = ship_comp[artillery_comp]["maxDist"]
+        max_dist_coef = ship_comp[fire_control_comp]["maxDistCoef"]
+        max_dist = max_dist * max_dist_coef
+        modernizations = self._renderer.resman.load_json("modernizations.json")
+
+        if mods := set(self._owner.modernization).intersection(
+            modernizations["mb_range_modifiers"]
+        ):
+            for mod_id in mods:
+                max_dist *= modernizations["modernizations"][mod_id][
+                    "GMMaxDist"
+                ]
+        return max_dist
 
     def draw(self, game_time: int, image: Image.Image):
         """Draws the ship icons to the minimap image.
@@ -64,6 +102,7 @@ class LayerShipBase(LayerBase):
                     acs[player_consumable.consumable_id] = round(
                         player_consumable.duration
                     )
+        owner_vehicle = events[game_time].evt_vehicle[self._owner.ship_id]
 
         for vehicle in sorted(
             events[game_time].evt_vehicle.values(),
@@ -73,9 +112,35 @@ class LayerShipBase(LayerBase):
 
             holder = self._ship_info[vehicle.player_id]
             player = self._replay_data.player_info[vehicle.player_id]
-            index, name, species, level, hulls = self._ships[
-                player.ship_params_id
-            ]
+            ship = self._ships[player.ship_params_id]
+
+            owner_view_range = self._owner_view_range
+
+            if acs := self._active_consumables.get(
+                owner_vehicle.vehicle_id, None
+            ):
+                if 1 in acs:
+                    owner_abilities = self._abilities[
+                        self._owner.ship_params_id
+                    ]
+                    subtype = owner_abilities["id_to_subtype"][1]
+                    owner_view_range *= owner_abilities[subtype][
+                        "artilleryDistCoeff"
+                    ]
+
+            is_in_view_range = False
+
+            if vehicle.is_visible and vehicle != owner_vehicle:
+                distance_bw = hypot(
+                    vehicle.x - owner_vehicle.x, vehicle.y - owner_vehicle.y
+                )
+                owner_ship = self._ships[self._owner.ship_params_id]
+                owner_view_range *= 1.25
+                owner_view_range = max(
+                    owner_view_range, MIN_VIEW_DISTANCES[owner_ship["level"]]
+                )
+                distance_m = distance_bw * 30
+                is_in_view_range = owner_view_range >= distance_m
 
             if self._color:
                 relation = 0 if self._color == "green" else 1
@@ -93,9 +158,9 @@ class LayerShipBase(LayerBase):
             icon = self._ship_icon(
                 vehicle.is_alive,
                 vehicle.is_visible,
-                species,
+                ship["species"],
                 relation,
-                vehicle.not_in_range,
+                is_in_view_range,
             )
             icon = icon.rotate(-vehicle.yaw, Image.Resampling.BICUBIC, True)
             x, y = self._renderer.get_scaled((vehicle.x, vehicle.y))
@@ -115,7 +180,7 @@ class LayerShipBase(LayerBase):
                             ((vx, vy), (vx + 5, vy + 5)), fill="orange"
                         )
 
-                    if not vehicle.not_in_range:
+                    if is_in_view_range:
                         draw_health_bar(
                             holder,
                             color=color,
@@ -194,7 +259,7 @@ class LayerShipBase(LayerBase):
             vehicle_id (int): The vehicle id.
             params_id (int): The vehicle's game params id.
         """
-        if ac := self._active_consumables.get(vehicle_id, {}):
+        if ac := self._active_consumables.get(vehicle_id, None):
             aid_hash = hash(tuple(ac)) & 1000000000
 
             if c_image := self._consumable_cache.get(aid_hash, None):
@@ -208,8 +273,9 @@ class LayerShipBase(LayerBase):
                 x_pos = 0
 
                 for aid, duration in ac.items():
-                    cname = self._abilities[params_id][aid]
-                    filename = f"consumable_{cname}.png"
+                    abilities = self._abilities[params_id]
+                    index = abilities["id_to_index"][aid]
+                    filename = f"consumable_{index}.png"
                     c_image = self._renderer.resman.load_image(
                         filename,
                         path="consumables",
@@ -232,7 +298,7 @@ class LayerShipBase(LayerBase):
         is_visible: bool,
         species: str,
         relation: int,
-        not_in_range: bool,
+        is_in_view_range: bool,
     ) -> Image.Image:
         """Returns an image associated with ship's state.
 
@@ -247,25 +313,28 @@ class LayerShipBase(LayerBase):
             Image.Image: An icon associated with the ship's state.
         """
 
-        icon_type = RELATION_NORMAL_STR[relation]
+        relation_str = RELATION_NORMAL_STR[relation]
+        filename_parts: list[str] = []
 
         if relation == -1:
             if is_alive:
-                species = "alive"
+                filename_parts.append("alive")
             else:
-                species = "dead"
+                filename_parts.append("dead")
         else:
-            if is_alive:
-                if is_visible:
-                    if not not_in_range:
-                        icon_type = icon_type
-                    else:
-                        icon_type = f"outside.{icon_type}"
-                else:
-                    icon_type = "hidden"
-            else:
-                icon_type = "dead"
+            filename_parts.append(species)
 
-        return self._renderer.resman.load_image(
-            f"{species}.png", path=f"ship_icons.{icon_type}"
-        )
+            match (is_alive, is_visible, is_in_view_range):
+                case True, True, False:
+                    filename_parts.append(relation_str)
+                    filename_parts.append("outside")
+                case True, False, _:
+                    filename_parts.append("hidden")
+                case False, _, _:
+                    filename_parts.append("dead")
+                case _:
+                    filename_parts.append(relation_str)
+        filename = "_".join(filename_parts)
+        filename = f"{filename}.png"
+        return self._renderer.resman.load_image(filename, "ship_icons")
+
