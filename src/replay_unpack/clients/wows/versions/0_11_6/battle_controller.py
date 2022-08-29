@@ -519,23 +519,18 @@ class BattleController(IBattleController):
             bio.seek(4 * (d - 4), 1)
             (e,) = struct.unpack("<L", bio.read(4))  # modernization slot len
             modern = struct.unpack("<" + "L" * e, bio.read(e * 4))
-
             (f,) = struct.unpack("<L", bio.read(4))
             signals = struct.unpack("<" + "L" * f, bio.read(4 * f))
             (supply_state,) = struct.unpack("<L", bio.read(4))
 
             (h,) = struct.unpack("<L", bio.read(4))
-            if h:
-                camo = struct.unpack("<" + "L" * h, bio.read(4 * h))
+            for i in range(h):
+                camo = struct.unpack("<" + "L", bio.read(4))
                 camo_scheme = struct.unpack("<L", bio.read(4))
 
             (i,) = struct.unpack("<L", bio.read(4))
             abilities = struct.unpack("<" + "L" * i, bio.read(4 * i))
 
-            # print(abilities)
-
-            # inter = any(set(modern).intersection([4220702640, 4219654064]))
-            # print(entity.id, modern, inter)
             try:
                 self._dict_info[
                     self._vehicle_to_id[entity.id]
