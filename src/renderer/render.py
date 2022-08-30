@@ -271,8 +271,8 @@ class RenderDual(RendererBase):
             g_torpedo.draw(i, draw)
             r_torpedo.draw(i, draw)
 
-            g_shot.draw(i, draw)
-            r_shot.draw(i, draw)
+            g_shot.draw(i, minimap_img)
+            r_shot.draw(i, minimap_img)
 
             g_ship.draw(i, minimap_img)
             r_ship.draw(i, minimap_img)
@@ -390,7 +390,7 @@ class Renderer(RendererBase):
 
             layer_building.draw(game_time, minimap_img)
             layer_ward.draw(game_time, minimap_img)
-            layer_shot.draw(game_time, draw)
+            layer_shot.draw(game_time, minimap_img)
             layer_torpedo.draw(game_time, draw)
             layer_ship.draw(game_time, minimap_img)
             layer_smoke.draw(game_time, minimap_img)
