@@ -141,6 +141,8 @@ class LayerShipBase(LayerBase):
                 )
                 distance_m = distance_bw * 30
                 is_in_view_range = owner_view_range >= distance_m
+            elif vehicle.is_visible and vehicle == owner_vehicle:
+                is_in_view_range = True
 
             if self._color:
                 relation = 0 if self._color == "green" else 1
