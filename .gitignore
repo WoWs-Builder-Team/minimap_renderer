@@ -169,3 +169,4 @@ code_testing/
 *.csv
 /scratch
 .coveragerc
+/replays/team*.wowsreplay

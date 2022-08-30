@@ -44,11 +44,13 @@ class LayerBuildingBase(LayerBase):
             species = self._buildings[bi.params_id]
 
             if species == "Military":
+                if building.is_alive:
+                    color = COLORS_NORMAL[bi.relation]
+                else:
+                    color = "#000000"
                 icon = Image.new("RGBA", (5, 5))
                 icon_draw = ImageDraw.Draw(icon)
-                icon_draw.ellipse(
-                    [(0, 0), icon.size], COLORS_NORMAL[bi.relation]
-                )
+                icon_draw.ellipse([(0, 0), icon.size], color)
             else:
                 icon = self._get_icon(
                     building.is_alive,

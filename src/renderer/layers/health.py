@@ -91,20 +91,18 @@ class LayerHealthBase(LayerBase):
         ship = ships[self._player.ship_id]
         ability = self._abilities[self._player.ship_params_id]
         per = ship.health / self._player.max_health
-        index, name, species, level, hulls = self._ships[
-            self._player.ship_params_id
-        ]
+        info = self._ships[self._player.ship_params_id]
 
         suffix_fg = "_h"
         suffix_bg = "_h_bg" if ship.is_alive else "_h_bgdead"
 
         bg_bar = self._renderer.resman.load_image(
-            f"{index}{suffix_bg}.png", nearest=False, path="ship_bars"
+            f"{info['index']}{suffix_bg}.png", nearest=False, path="ship_bars"
         )
         bg_bar = self._add_padding(bg_bar)
 
         fg_bar = self._renderer.resman.load_image(
-            f"{index}{suffix_fg}.png", nearest=False, path="ship_bars"
+            f"{info['index']}{suffix_fg}.png", nearest=False, path="ship_bars"
         )
         fg_bar = self._add_padding(fg_bar)
         fg_bar = fg_bar.resize(bg_bar.size, Image.Resampling.LANCZOS)
@@ -131,8 +129,9 @@ class LayerHealthBase(LayerBase):
             if regen := ship.consumables_state.get(9, None):
                 st, count, en, t = regen
                 if count:
-                    wt = ability["workTime"]
-                    rhs = ability["regenerationHPSpeed"]
+                    subtype = ability["id_to_subtype"][9]
+                    wt = ability[subtype]["workTime"]
+                    rhs = ability[subtype]["regenerationHPSpeed"]
                     maxHeal = floor(wt) * rhs * self._player.max_health
                     canHeal = (
                         ship.regeneration_health
@@ -168,7 +167,7 @@ class LayerHealthBase(LayerBase):
 
         hp_c_w, hp_c_h = self._font.getbbox(hp_current)[2:]
         hp_w, hp_h = self._font.getbbox(hp_max_text)[2:]
-        n_w, n_h = self._font.getbbox(name)[2:]
+        n_w, n_h = self._font.getbbox(info["name"])[2:]
 
         bg_bar = bg_bar.resize((235, 62), resample=Image.Resampling.LANCZOS)
 
@@ -177,7 +176,7 @@ class LayerHealthBase(LayerBase):
         th = Image.new("RGBA", (bg_bar.width, max(hp_h, n_h, hp_c_h)))
         th_draw = ImageDraw.Draw(th)
 
-        th_draw.text((0, 0), name, fill="white", font=self._font)
+        th_draw.text((0, 0), info["name"], fill="white", font=self._font)
         th_draw.text(
             (th.width - (hp_w + hp_c_w), 0),
             hp_current,
@@ -192,8 +191,10 @@ class LayerHealthBase(LayerBase):
         )
 
         if (flags := bin(ship.burn_flags)[2:][::-1]) != "0":
-            burn_nodes, flood_nodes = hulls[self._player.hull]
-            active_skills = self._player.skills[SKILLS_ORDER.index(species)]
+            burn_nodes, flood_nodes = info["hulls"][self._player.hull]
+            active_skills = self._player.skills[
+                SKILLS_ORDER.index(info["species"])
+            ]
             if FIRE_PREVENTION_ID in active_skills:
                 burn_nodes -= 1
 

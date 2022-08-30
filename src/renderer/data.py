@@ -18,8 +18,10 @@ class PlayerInfo(NamedTuple):
     ship_params_id: int
     relation: int
     hull: Optional[int]
+    abilities: tuple
     modernization: tuple
     skills: list[list[int]]
+    ship_components: dict
 
 
 class Vehicle(NamedTuple):

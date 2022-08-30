@@ -26,10 +26,12 @@ def create_ships_data():
         mo_string: MOEntry
         dict_strings[mo_string.msgid] = mo_string.msgstr
 
-    dict_ships_info: Dict[int, tuple[str, str, str, int, dict[str, int]]] = {}
+    dict_ships_info: Dict[int, dict] = {}
 
     for ship in dict_ships.values():
         hulls = {}
+        components = {}
+
         for key, value in ship.ShipUpgradeInfo.__dict__.items():
             try:
                 if value.ucType == "_Hull":
@@ -39,17 +41,28 @@ def create_ships_data():
                         len(hull.burnNodes),
                         len(hull.floodNodes),
                     ]
+                elif value.ucType == "_Artillery":
+                    for comp in value.components["artillery"]:
+                        components[comp] = {
+                            "maxDist": getattr(ship, comp).maxDist
+                        }
+                elif value.ucType == "_Suo":
+                    for comp in value.components["fireControl"]:
+                        components[comp] = {
+                            "maxDistCoef": getattr(ship, comp).maxDistCoef
+                        }
 
             except AttributeError:
                 continue
 
-        si = (
-            ship.index,
-            dict_strings[f"IDS_{ship.index}"].upper(),
-            ship.typeinfo.species,
-            ship.level,
-            hulls,
-        )
+        si = {
+            "index": ship.index,
+            "name": dict_strings[f"IDS_{ship.index}"].upper(),
+            "species": ship.typeinfo.species,
+            "level": ship.level,
+            "hulls": hulls,
+            "components": components
+        }
 
         dict_ships_info[ship.id] = si
 

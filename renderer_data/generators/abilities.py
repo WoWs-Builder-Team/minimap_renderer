@@ -2,7 +2,6 @@ import json
 import os
 
 from renderer_data.gameparams import get_data
-from renderer_data.gameparams.GameParams import GPData
 from renderer_data.utils import LOGGER
 
 
@@ -11,13 +10,12 @@ def create_abilities_data():
     list_ships = get_data("Ship")
     list_ability = get_data("Ability")
 
-    abilities = {}
+    ability_entities = {}
 
     for ab in list_ability:
         for k, v in vars(ab).items():
-            if isinstance(v, GPData):
-                sub = abilities.setdefault(ab.name, {})
-                sub[k] = v  # type: ignore
+            sub = ability_entities.setdefault(ab.name, {})
+            sub[k] = v  # type: ignore
 
     ability_type_to_id = {
         "crashCrew": 0,
@@ -49,7 +47,7 @@ def create_abilities_data():
         "invisibilityExtraBuffConsumable": 40,
         "submarineLocator": 41,
     }
-    ship_abilities = {}
+    _abils = {}
 
     for ship in list_ships:
         for abilityslot in [
@@ -57,20 +55,26 @@ def create_abilities_data():
             for i in dir(ship.ShipAbilities)
             if "AbilitySlot" in i
         ]:
-            if ability := abilityslot.abils:
-                at = ship_abilities.setdefault(ship.id, {})
+            if ship_abilities := abilityslot.abils:
+                at = _abils.setdefault(ship.id, {})
+                id_to_type = at.setdefault("id_to_subtype", {})
+                id_to_index = at.setdefault("id_to_index", {})
+                params_id_to_subtype = at.setdefault(
+                    "params_id_to_subtype", {}
+                )
 
-                for abs in abilityslot.abils:
+                for abs in ship_abilities:
                     name, sub_name = abs
-                    sa = abilities[name][sub_name]
-
-                    if sa.consumableType == "regenCrew":
-                        at["regenerationHPSpeed"] = sa.regenerationHPSpeed
-                        at["workTime"] = sa.workTime
-
-                    at[ability_type_to_id[sa.consumableType]] = name
+                    ability = ability_entities[name]
+                    sa = ability[sub_name]
+                    id_to_type[
+                        ability_type_to_id[sa.consumableType]
+                    ] = sub_name
+                    id_to_index[ability_type_to_id[sa.consumableType]] = name
+                    params_id_to_subtype[ability["id"]] = sub_name
+                    at[sub_name] = {**sa.__dict__}
 
     with open(
         os.path.join(os.getcwd(), "generated", "abilities.json"), "w"
     ) as f:
-        json.dump(ship_abilities, f)
+        json.dump(_abils, f)
