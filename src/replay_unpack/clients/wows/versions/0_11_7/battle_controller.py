@@ -356,6 +356,7 @@ class BattleController(IBattleController):
     def _add_ward(
         self, entity, plane_id, position, radius, duration, team_id, vehicle_id
     ):
+        radius = radius if radius else 60
         self._dict_ward[plane_id] = Ward(
             plane_id=plane_id,
             position=tuple(map(round, position[::2])),
