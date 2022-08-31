@@ -47,7 +47,7 @@ class LayerChatBase(LayerBase):
             line = self.build(message)
             l_w, l_h = line.size
             y_pos -= l_h
-            image.paste(line, (x_pos, y_pos), line)
+            image.alpha_composite(line, (x_pos, y_pos))
 
     def build(self, message: Message) -> Image.Image:
         """Builds the line message as an image.

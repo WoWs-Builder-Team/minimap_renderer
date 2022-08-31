@@ -48,7 +48,7 @@ class LayerCaptureBase(LayerBase):
             if count in self._generated_caps:
                 cap_image, cap_pos, cap_hash = self._generated_caps[count]
                 if self._get_cap_hash(cp) == cap_hash:
-                    image.paste(cap_image, cap_pos, cap_image)
+                    image.alpha_composite(cap_image, cap_pos)
                     continue
 
             x, y = self._renderer.get_scaled(cp.position)
@@ -85,12 +85,14 @@ class LayerCaptureBase(LayerBase):
             px = round(cp_area.width / 2 - progress.width / 2) + 1
             py = round(cp_area.height / 2 - progress.height / 2) + 1
 
-            cp_area.paste(progress, (px, py), progress)
+            # cp_area.paste(progress, (px, py), progress)
+            cp_area.alpha_composite(progress, (px, py))
 
             ix = round(cp_area.width / 2 - icon.width / 2) + 1
             iy = round(cp_area.height / 2 - icon.height / 2) + 1
 
-            cp_area.paste(icon, (ix, iy), icon)
+            # cp_area.paste(icon, (ix, iy), icon)
+            cp_area.alpha_composite(icon, (ix, iy))
 
             cx = round(x - cp_area.width / 2)
             cy = round(y - cp_area.height / 2)
@@ -101,7 +103,8 @@ class LayerCaptureBase(LayerBase):
                 self._get_cap_hash(cp),
             )
 
-            image.paste(cp_area, (cx, cy), cp_area)
+            # image.paste(cp_area, (cx, cy), cp_area)
+            image.alpha_composite(cp_area, (cx, cy))
 
     def _get_cap_hash(self, cap: ControlPoint):
         cap_hash = (
@@ -162,5 +165,6 @@ class LayerCaptureBase(LayerBase):
             end=(-90 + 360 * percent),
             fill="black",
         )
-        bg_diamond.paste(fg_diamond, mask=mask)
+        # bg_diamond.paste(fg_diamond, mask=mask)
+        bg_diamond.alpha_composite(fg_diamond)
         return bg_diamond

@@ -138,7 +138,8 @@ class LayerScoreBase(LayerBase):
         #         self._font,
         #     )
 
-        image.paste(base, (40, 0), base)
+        # image.paste(base, (40, 0), base)
+        image.alpha_composite(base, (40, 0))
 
         ttw = self._replay_data.events[game_time].evt_times_to_win
         if ttw is None:
@@ -178,7 +179,8 @@ class LayerScoreBase(LayerBase):
             self._timers_font,
             anchor="lm",
         )
-        image.paste(timers_base, (757, 0), timers_base)
+        # image.paste(timers_base, (757, 0), timers_base)
+        image.alpha_composite(timers_base, (757, 0))
 
     def _draw_tag(
         self,

@@ -236,9 +236,17 @@ class LayerShipBase(LayerBase):
                         holder = holder.rotate(
                             angle, Image.Resampling.BICUBIC, expand=True
                         )
-
-                    image.paste(**paste_args_centered(holder, x, y, True))
-            image.paste(**paste_args_centered(icon, x, y, True))
+                    image.alpha_composite(
+                        holder,
+                        dest=(
+                            x - round(holder.width / 2),
+                            y - round(holder.height / 2),
+                        ),
+                    )
+            image.alpha_composite(
+                icon,
+                dest=(x - round(icon.width / 2), y - round(icon.height / 2)),
+            )
         # Decrement consumable timer and pop if 0
 
         for apcs in list(self._active_consumables.keys()):
@@ -265,11 +273,8 @@ class LayerShipBase(LayerBase):
             aid_hash = hash(tuple(ac)) & 1000000000
 
             if c_image := self._consumable_cache.get(aid_hash, None):
-                image.paste(
-                    c_image,
-                    (int(image.width / 2 - c_image.width / 2), y),
-                    c_image,
-                )
+                x = int(image.width / 2 - c_image.width / 2)
+                image.alpha_composite(c_image, (x, y))
             else:
                 c_icons_holder = Image.new("RGBA", (20 * len(ac), 20))
                 x_pos = 0
@@ -283,15 +288,16 @@ class LayerShipBase(LayerBase):
                         path="consumables",
                         size=(20, 20),
                     )
-                    c_icons_holder.paste(c_image, (x_pos, 0), c_image)
+                    c_icons_holder.alpha_composite(
+                        c_image,
+                        (x_pos, 0)
+                    )
                     x_pos += 20
 
                 self._consumable_cache[aid_hash] = c_icons_holder
-
-                image.paste(
+                image.alpha_composite(
                     c_icons_holder,
                     (int(image.width / 2 - c_icons_holder.width / 2), y),
-                    c_icons_holder,
                 )
 
     def _ship_icon(
@@ -339,4 +345,3 @@ class LayerShipBase(LayerBase):
         filename = "_".join(filename_parts)
         filename = f"{filename}.png"
         return self._renderer.resman.load_image(filename, "ship_icons")
-

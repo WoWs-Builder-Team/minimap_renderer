@@ -49,4 +49,4 @@ class LayerSmokeBase(LayerBase):
                 draw.ellipse(
                     [(x - r, y - r), (x + r, y + r)], fill="#ffffff40"
                 )
-        image.paste(base, mask=base)
+        image.alpha_composite(base)

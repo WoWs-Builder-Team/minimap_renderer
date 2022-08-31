@@ -60,7 +60,14 @@ class LayerBuildingBase(LayerBase):
                 )
 
             pos = self._renderer.get_scaled((building.x, building.y))
-            image.paste(**paste_args_centered(icon, pos[0], pos[1], True))
+            # image.paste(**paste_args_centered(icon, pos[0], pos[1], True))
+            image.alpha_composite(
+                icon,
+                (
+                    pos[0] - round(icon.width / 2),
+                    pos[1] - round(icon.height / 2),
+                ),
+            )
 
     def _get_icon(self, is_alive, is_suppressed, relation, species):
         relation_dict = {-1: "neutral", 0: "ally", 1: "enemy"}
