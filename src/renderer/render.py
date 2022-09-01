@@ -7,6 +7,7 @@ from renderer.const import LAYERS
 from renderer.data import ReplayData
 from renderer.utils import draw_grid, LOGGER
 from renderer.resman import ResourceManager
+from renderer.conman import ConsumableManager
 from renderer.exceptions import MapLoadError
 from PIL import Image, ImageDraw
 from imageio_ffmpeg import write_frames
@@ -25,10 +26,12 @@ class RendererBase:
     bg_color: tuple[int]
     resman: ResourceManager
     logs: bool
+    conman: ConsumableManager
 
     def __init__(self, replay_data: ReplayData) -> None:
         self.replay_data: ReplayData = replay_data
         self.resman = ResourceManager(self.replay_data.game_version)
+        self.conman = ConsumableManager([self.replay_data])
 
     def get_writer(self, path: str, fps: int, quality: int):
         m_block = 10
@@ -183,6 +186,7 @@ class RenderDual(RendererBase):
         use_tqdm: bool = True,
     ):
         super().__init__(green_replay_data)
+        self.conman = ConsumableManager([green_replay_data, red_replay_data])
         self.replay_r: ReplayData = red_replay_data
         assert self.replay_data.game_arena_id == self.replay_r.game_arena_id
         assert self.replay_data.game_version == self.replay_r.game_version
@@ -224,6 +228,7 @@ class RenderDual(RendererBase):
             red_tag=self.red_tag,
         )
         g_timer = self._load_layer("LayerTimer")(self, self.replay_data)
+        g_markers = self._load_layer("LayerMarkers")(self, self.replay_data)
 
         # red
         r_ship = self._load_layer("LayerShip")(self, self.replay_r, "red")
@@ -233,6 +238,8 @@ class RenderDual(RendererBase):
         )
         r_plane = self._load_layer("LayerPlane")(self, self.replay_r, "red")
         r_ward = self._load_layer("LayerWard")(self, self.replay_r, "red")
+
+        r_markers = self._load_layer("LayerMarkers")(self, self.replay_r)
 
         video_writer = self.get_writer(path, fps, quality)
         video_writer.send(None)
@@ -256,6 +263,8 @@ class RenderDual(RendererBase):
                     last_per = per
                     progress_cb(per)
 
+            self.conman.update(i)
+
             minimap_img = self.minimap_fg.copy()
             minimap_bg = self.minimap_bg.copy()
             draw = ImageDraw.Draw(minimap_img)
@@ -268,6 +277,9 @@ class RenderDual(RendererBase):
             g_ward.draw(i, minimap_img)
             r_ward.draw(i, minimap_img)
 
+            g_markers.draw(i, minimap_img)
+            r_markers.draw(i, minimap_img)
+
             g_torpedo.draw(i, draw)
             r_torpedo.draw(i, draw)
 
@@ -279,6 +291,8 @@ class RenderDual(RendererBase):
 
             g_plane.draw(i, minimap_img)
             r_plane.draw(i, minimap_img)
+
+            self.conman.tick()
 
             minimap_bg.paste(minimap_img, (40, 90))
             video_writer.send(minimap_bg.tobytes())
@@ -357,6 +371,7 @@ class Renderer(RendererBase):
         layer_timer = self._load_layer("LayerTimer")(self)
         layer_ribbon = self._load_layer("LayerRibbon")(self)
         layer_chat = self._load_layer("LayerChat")(self)
+        layer_markers = self._load_layer("LayerMarkers")(self)
 
         video_writer = self.get_writer(path, fps, quality)
         video_writer.send(None)
@@ -383,6 +398,7 @@ class Renderer(RendererBase):
             minimap_bg = self.minimap_bg.copy()
 
             draw = ImageDraw.Draw(minimap_img)
+            self.conman.update(game_time)
 
             if not self.is_operations:
                 layer_capture.draw(game_time, minimap_img)
@@ -390,6 +406,7 @@ class Renderer(RendererBase):
 
             layer_building.draw(game_time, minimap_img)
             layer_ward.draw(game_time, minimap_img)
+            layer_markers.draw(game_time, minimap_img)
             layer_shot.draw(game_time, minimap_img)
             layer_torpedo.draw(game_time, draw)
             layer_ship.draw(game_time, minimap_img)
@@ -405,6 +422,8 @@ class Renderer(RendererBase):
                 layer_ribbon.draw(game_time, minimap_bg)
                 if self.enable_chat:
                     layer_chat.draw(game_time, minimap_bg)
+
+            self.conman.tick()
 
             if game_time == last_key:
                 img_win = Image.new("RGBA", self.minimap_fg.size)

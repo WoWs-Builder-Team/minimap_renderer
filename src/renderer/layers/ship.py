@@ -53,7 +53,6 @@ class LayerShipBase(LayerBase):
         self._ship_info = generate_ship_data(
             self._replay_data.player_info, renderer.resman, color
         )
-        self._active_consumables: dict[int, dict[int, float]] = {}
         self._abilities = renderer.resman.load_json("abilities.json")
         self._ships = renderer.resman.load_json("ships.json")
         self._consumable_cache: dict[int, Image.Image] = {}
@@ -91,17 +90,6 @@ class LayerShipBase(LayerBase):
         """
         player_info = self._replay_data.player_info
         events = self._replay_data.events
-        players_consumables = events[game_time].evt_consumable
-
-        if players_consumables := events[game_time].evt_consumable:
-            for player_consumables in players_consumables.values():
-                for player_consumable in player_consumables:
-                    acs = self._active_consumables.setdefault(
-                        player_consumable.ship_id, {}
-                    )
-                    acs[player_consumable.consumable_id] = round(
-                        player_consumable.duration
-                    )
         owner_vehicle = events[game_time].evt_vehicle[self._owner.ship_id]
 
         for vehicle in sorted(
@@ -116,7 +104,7 @@ class LayerShipBase(LayerBase):
 
             owner_view_range = self._owner_view_range
 
-            if acs := self._active_consumables.get(
+            if acs := self._renderer.conman.active_consumables.get(
                 owner_vehicle.vehicle_id, None
             ):
                 if 1 in acs:
@@ -247,17 +235,6 @@ class LayerShipBase(LayerBase):
                 icon,
                 dest=(x - round(icon.width / 2), y - round(icon.height / 2)),
             )
-        # Decrement consumable timer and pop if 0
-
-        for apcs in list(self._active_consumables.keys()):
-            for apc in list(self._active_consumables[apcs]):
-                if self._active_consumables[apcs][apc] > 0:
-                    self._active_consumables[apcs][apc] -= 1
-                else:
-                    self._active_consumables[apcs].pop(apc)
-
-                    if not self._active_consumables[apcs]:
-                        self._active_consumables.pop(apcs)
 
     def _ship_consumable(
         self, image: Image.Image, vehicle_id: int, params_id: int, y=20
@@ -269,8 +246,10 @@ class LayerShipBase(LayerBase):
             vehicle_id (int): The vehicle id.
             params_id (int): The vehicle's game params id.
         """
-        if ac := self._active_consumables.get(vehicle_id, None):
-            aid_hash = hash(tuple(ac)) & 1000000000
+        if ac := self._renderer.conman.active_consumables.get(
+            vehicle_id, None
+        ):
+            aid_hash = hash(tuple(ac))
 
             if c_image := self._consumable_cache.get(aid_hash, None):
                 x = int(image.width / 2 - c_image.width / 2)
@@ -288,10 +267,7 @@ class LayerShipBase(LayerBase):
                         path="consumables",
                         size=(20, 20),
                     )
-                    c_icons_holder.alpha_composite(
-                        c_image,
-                        (x_pos, 0)
-                    )
+                    c_icons_holder.alpha_composite(c_image, (x_pos, 0))
                     x_pos += 20
 
                 self._consumable_cache[aid_hash] = c_icons_holder
