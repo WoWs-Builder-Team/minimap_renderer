@@ -59,8 +59,19 @@ def create_ships_data():
                             }
                 elif value.ucType == "_Artillery":
                     for comp in value.components["artillery"]:
+                        ammo_list = components.setdefault(comp, [])
+
+                        for k, v in vars(getattr(ship, comp)).items():
+                            if hasattr(v, "typeinfo"):
+                                if v.typeinfo.species == "Main":
+                                    for ammo in v.ammoList:
+                                        ammo_list.append(
+                                            dict_projectiles[ammo]
+                                        )
+
                         components[comp] = {
-                            "maxDist": getattr(ship, comp).maxDist
+                            "maxDist": getattr(ship, comp).maxDist,
+                            "ammo_list": list(set(ammo_list)),
                         }
                 elif value.ucType == "_Suo":
                     for comp in value.components["fireControl"]:
