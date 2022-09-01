@@ -1,6 +1,23 @@
 from typing import NamedTuple, Optional
 
 
+class Units(NamedTuple):
+    hull: int
+    artillery: int
+    torpedoes: int
+    suo: int
+    engine: int
+    flight_control: int
+    fighter: int
+    torpedo_bomber: int
+    dive_bomber: int
+    hydrophone: int
+    skip_bomber: int
+    primary_weapons: int
+    secondary_weapons: int
+    abilities: int
+
+
 class PlayerInfo(NamedTuple):
     """Player information"""
 
@@ -22,6 +39,8 @@ class PlayerInfo(NamedTuple):
     modernization: tuple
     skills: list[list[int]]
     ship_components: dict
+    units: Optional[Units] = None
+    signals: Optional[tuple] = None
 
 
 class Vehicle(NamedTuple):

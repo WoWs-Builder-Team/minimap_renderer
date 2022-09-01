@@ -27,6 +27,7 @@ from renderer.data import (
     BattleResult,
     BuildingInfo,
     Building,
+    Units,
 )
 from replay_unpack.utils import (
     unpack_values,
@@ -204,11 +205,6 @@ class BattleController(IBattleController):
         Entity.subscribe_property_change(
             "BattleLogic", "state", self._set_state
         )
-        # Entity.subscribe_nested_property_change(
-        #     "BattleLogic",
-        #     "state.missions.teamsScore",
-        #     lambda *a, **b: print(a, b),
-        # )
         Entity.subscribe_property_change(
             "BattleLogic", "battleType", self._set_battle_type
         )
@@ -448,7 +444,6 @@ class BattleController(IBattleController):
         self, entity: Entity, plane_id: int, team_id, params_id, pos, unk
     ):
         owner_id, index, purpose, departures = unpack_plane_id(plane_id)
-        # print(owner_id, index, purpose, departures, pos, params_id)
         self._dict_plane[plane_id] = Plane(
             plane_id=plane_id,
             owner_id=owner_id,
@@ -510,21 +505,22 @@ class BattleController(IBattleController):
         ]._replace(skills=params["learnedSkills"])
 
     def _modernization(self, entity: Entity, config: bytes):
+
         with BytesIO(config) as bio:
-            bio.seek(3 * 4, 1)
+            # bio.seek(3 * 4, 1)
+            (unknown_1,) = struct.unpack("<L", bio.read(4))
+            (ship_params_id,) = struct.unpack("<L", bio.read(4))
+            (unknown_2,) = struct.unpack("<L", bio.read(4))
             (d,) = struct.unpack("<L", bio.read(4))  # len
-            (hull_unit,) = struct.unpack("<L", bio.read(4))  # hull unit
-            (artillery_unit,) = struct.unpack("<L", bio.read(4))
-            (torpedo_unit,) = struct.unpack("<L", bio.read(4))
-            (suo_unit,) = struct.unpack("<L", bio.read(4))
-            bio.seek(4 * (d - 4), 1)
+            units = struct.unpack("<" + "L" * d, bio.read(4 * d))
+            u = Units._make(units)
+            hull_unit = units[0]
             (e,) = struct.unpack("<L", bio.read(4))  # modernization slot len
             modern = struct.unpack("<" + "L" * e, bio.read(e * 4))
             (f,) = struct.unpack("<L", bio.read(4))
             signals = struct.unpack("<" + "L" * f, bio.read(4 * f))
             (supply_state,) = struct.unpack("<L", bio.read(4))
             (h,) = struct.unpack("<L", bio.read(4))
-
             for i in range(h):
                 camo = struct.unpack("<" + "L", bio.read(4))
                 camo_scheme = struct.unpack("<L", bio.read(4))
@@ -536,17 +532,11 @@ class BattleController(IBattleController):
                 self._dict_info[
                     self._vehicle_to_id[entity.id]
                 ] = self._dict_info[self._vehicle_to_id[entity.id]]._replace(
-                    abilities=abilities
-                )
-                self._dict_info[
-                    self._vehicle_to_id[entity.id]
-                ] = self._dict_info[self._vehicle_to_id[entity.id]]._replace(
-                    hull=hull_unit
-                )
-                self._dict_info[
-                    self._vehicle_to_id[entity.id]
-                ] = self._dict_info[self._vehicle_to_id[entity.id]]._replace(
-                    modernization=modern
+                    abilities=abilities,
+                    hull=hull_unit,
+                    modernization=modern,
+                    units=u,
+                    signals=signals
                 )
             except KeyError:
                 pass

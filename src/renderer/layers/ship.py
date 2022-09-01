@@ -5,7 +5,6 @@ from renderer.base import LayerBase
 from renderer.const import RELATION_NORMAL_STR, COLORS_NORMAL
 from renderer.utils import (
     generate_ship_data,
-    paste_args_centered,
     draw_health_bar,
 )
 
@@ -77,8 +76,8 @@ class LayerShipBase(LayerBase):
         ):
             for mod_id in mods:
                 max_dist *= modernizations["modernizations"][mod_id][
-                    "GMMaxDist"
-                ]
+                    "modifiers"
+                ]["GMMaxDist"]
         return max_dist
 
     def draw(self, game_time: int, image: Image.Image):

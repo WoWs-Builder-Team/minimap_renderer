@@ -89,6 +89,7 @@ def create_ships_data():
             "level": ship.level,
             "hulls": hulls,
             "components": components,
+            "nation": ship.typeinfo.nation
         }
 
         dict_ships_info[ship.id] = si
