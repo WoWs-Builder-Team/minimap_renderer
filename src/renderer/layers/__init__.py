@@ -13,3 +13,4 @@ from .timer import LayerTimerBase
 from .ribbon import LayerRibbonBase
 from .chat import LayerChatBase
 from .building import LayerBuildingBase
+from .markers import LayerMarkersBase
