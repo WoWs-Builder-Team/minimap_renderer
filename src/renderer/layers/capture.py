@@ -165,7 +165,5 @@ class LayerCaptureBase(LayerBase):
             end=(-90 + 360 * percent),
             fill="black",
         )
-        # bg_diamond.paste(fg_diamond, mask=mask)
-        # bg_diamond.alpha_composite(fg_diamond)
         bg_diamond.paste(fg_diamond, mask=mask)
         return bg_diamond
