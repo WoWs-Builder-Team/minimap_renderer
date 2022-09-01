@@ -109,10 +109,17 @@ class LayerShotBase(LayerBase):
 
                 cid, params_id, cx, cy, px, py = projectile
                 spid, scomp = self._vehicle_components[cid]
-                atba = self._ships[spid]["components"][scomp["atba"]][
+                try:
+                    atba = self._ships[spid]["components"][scomp["atba"]][
+                        "ammo_list"
+                    ]
+                except KeyError:
+                    atba = []
+                main = self._ships[spid]["components"][scomp["artillery"]][
                     "ammo_list"
                 ]
                 is_secondary = params_id in atba
+                is_secondary = params_id not in main
 
                 if self._renderer.team_tracers:
                     rel = self._relations[cid]
