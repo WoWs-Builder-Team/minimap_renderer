@@ -79,8 +79,11 @@ class LayerWardBase(LayerBase):
             bw = m / 30
             r = self._renderer.get_scaled_r(bw)
 
-            for sid in set(player.skills[0]).intersection(RADIUS_MOD):
-                r *= RADIUS_MOD[sid]
+            try:
+                for sid in set(player.skills[0]).intersection(RADIUS_MOD):
+                    r *= RADIUS_MOD[sid]
+            except IndexError:
+                pass
 
             w = h = round(r * 2)
 
