@@ -24,7 +24,7 @@ class ShipBuilder:
         ship_index: str = ship["index"]
         ship_nation: str = ship["nation"]
         units = [self._units[v] for v in player.units._asdict().values() if v]
-        upgrades = [modern[v]["index"] for v in player.modernization]
+        upgrades = [modern[v]["index"] for v in player.modernization if v]
         captain = "PCW001"
         skills = player.skills.by_species(ship["species"])
         consumables = [abilities[v] for v in player.abilities if v]

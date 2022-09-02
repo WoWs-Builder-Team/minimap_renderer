@@ -344,15 +344,24 @@ class Renderer(RendererBase):
         if bt["scenario"] == "Defense":
             self.is_operations = True
 
-    def get_player_build(self) -> str:
+    def get_player_build(self) -> list[dict]:
         url = "https://app.wowssb.com/ship?shipIndexes="
-        try:
-            index, build_str = self._builder.get_build(
-                self.replay_data.player_info[self.replay_data.owner_id]
+        builds = []
+
+        for player in self.replay_data.player_info.values():
+            try:
+                index, build_str = self._builder.get_build(player)
+                build_url = f"{url}{index}&build={build_str}"
+            except Exception:
+                build_url = ""
+            builds.append(
+                {
+                    "name": player.name,
+                    "clan": player.clan_tag,
+                    "build_url": build_url,
+                }
             )
-            return f"{url}{index}&build={build_str}"
-        except Exception:
-            return ""
+        return builds
 
     def start(
         self,

@@ -21,4 +21,5 @@ if __name__ == "__main__":
             enable_chat=True,
             use_tqdm=True,
         )
+        # print(renderer.get_player_build())
         renderer.start(f"{filename}.mp4")
