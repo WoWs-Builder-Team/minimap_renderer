@@ -358,6 +358,7 @@ class Renderer(RendererBase):
                 {
                     "name": player.name,
                     "clan": player.clan_tag,
+                    "relation": player.relation,
                     "build_url": build_url,
                 }
             )
