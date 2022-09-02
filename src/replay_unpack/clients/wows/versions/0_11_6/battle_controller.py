@@ -28,6 +28,7 @@ from renderer.data import (
     BuildingInfo,
     Building,
     Units,
+    Skills,
 )
 from replay_unpack.utils import (
     unpack_values,
@@ -502,7 +503,7 @@ class BattleController(IBattleController):
     def _crew_skills(self, entity: Entity, params):
         self._dict_info[self._vehicle_to_id[entity.id]] = self._dict_info[
             self._vehicle_to_id[entity.id]
-        ]._replace(skills=params["learnedSkills"])
+        ]._replace(skills=Skills(*params["learnedSkills"]))
 
     def _modernization(self, entity: Entity, config: bytes):
 
@@ -513,7 +514,7 @@ class BattleController(IBattleController):
             (unknown_2,) = struct.unpack("<L", bio.read(4))
             (d,) = struct.unpack("<L", bio.read(4))  # len
             units = struct.unpack("<" + "L" * d, bio.read(4 * d))
-            u = Units._make(units)
+            u = Units(*units)
             hull_unit = units[0]
             (e,) = struct.unpack("<L", bio.read(4))  # modernization slot len
             modern = struct.unpack("<" + "L" * e, bio.read(e * 4))
@@ -674,7 +675,7 @@ class BattleController(IBattleController):
                     hull=None,
                     abilities=(),
                     modernization=(),
-                    skills=[],
+                    skills=Skills(),
                     ship_components=player["shipComponents"],
                 )
 

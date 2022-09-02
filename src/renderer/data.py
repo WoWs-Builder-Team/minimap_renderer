@@ -2,20 +2,32 @@ from typing import NamedTuple, Optional
 
 
 class Units(NamedTuple):
-    hull: int
-    artillery: int
-    torpedoes: int
-    suo: int
-    engine: int
-    flight_control: int
-    fighter: int
-    torpedo_bomber: int
-    dive_bomber: int
-    hydrophone: int
-    skip_bomber: int
-    primary_weapons: int
-    secondary_weapons: int
-    abilities: int
+    hull: int = 0
+    artillery: int = 0
+    torpedoes: int = 0
+    suo: int = 0
+    engine: int = 0
+    flight_control: int = 0
+    fighter: int = 0
+    torpedo_bomber: int = 0
+    dive_bomber: int = 0
+    hydrophone: int = 0
+    skip_bomber: int = 0
+    primary_weapons: int = 0
+    secondary_weapons: int = 0
+    abilities: int = 0
+
+
+class Skills(NamedTuple):
+    AirCarrier: list[int] = []
+    Battleship: list[int] = []
+    Cruiser: list[int] = []
+    Destroyer: list[int] = []
+    Auxiliary: list[int] = []
+    Submarine: list[int] = []
+
+    def by_species(self, species: str) -> list[int]:
+        return self.__getattribute__(species)
 
 
 class PlayerInfo(NamedTuple):
@@ -37,10 +49,10 @@ class PlayerInfo(NamedTuple):
     hull: Optional[int]
     abilities: tuple
     modernization: tuple
-    skills: list[list[int]]
     ship_components: dict
-    units: Optional[Units] = None
-    signals: Optional[tuple] = None
+    skills: Skills = Skills()
+    units: Units = Units()
+    signals: tuple = ()
 
 
 class Vehicle(NamedTuple):

@@ -70,7 +70,7 @@ class LayerPlaneBase(LayerBase):
         """
         player = self._vehicle_id_to_player[plane.owner_id]
         try:
-            upgrade = 22 in player.skills[0]
+            upgrade = 22 in player.skills.AirCarrier
         except IndexError:
             upgrade = False
         ptype, ammo = self._planes[plane.params_id]

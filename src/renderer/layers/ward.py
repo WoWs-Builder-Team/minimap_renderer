@@ -80,7 +80,9 @@ class LayerWardBase(LayerBase):
             r = self._renderer.get_scaled_r(bw)
 
             try:
-                for sid in set(player.skills[0]).intersection(RADIUS_MOD):
+                for sid in set(player.skills.AirCarrier).intersection(
+                    RADIUS_MOD
+                ):
                     r *= RADIUS_MOD[sid]
             except IndexError:
                 pass

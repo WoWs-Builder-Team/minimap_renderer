@@ -14,10 +14,11 @@ if __name__ == "__main__":
         replay_info = ReplayParser(
             f, strict=True, raw_data_output=False
         ).get_info()
-
-        Renderer(
+        
+        renderer = Renderer(
             replay_info["hidden"]["replay_data"],
             logs=True,
             enable_chat=True,
             use_tqdm=True,
-        ).start(f"{filename}.mp4")
+        )
+        renderer.start(f"{filename}.mp4")

@@ -195,9 +195,7 @@ class LayerHealthBase(LayerBase):
 
         if (flags := bin(ship.burn_flags)[2:][::-1]) != "0":
             burn_nodes, flood_nodes = info["hulls"][self._player.hull]
-            active_skills = self._player.skills[
-                SKILLS_ORDER.index(info["species"])
-            ]
+            active_skills = self._player.skills.by_species(info["species"])
             if FIRE_PREVENTION_ID in active_skills:
                 burn_nodes -= 1
 

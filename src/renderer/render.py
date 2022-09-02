@@ -9,6 +9,7 @@ from renderer.utils import draw_grid, LOGGER
 from renderer.resman import ResourceManager
 from renderer.conman import ConsumableManager
 from renderer.exceptions import MapLoadError
+from renderer.shipbuilder import ShipBuilder
 from PIL import Image, ImageDraw
 from imageio_ffmpeg import write_frames
 from tqdm import tqdm
@@ -325,6 +326,7 @@ class Renderer(RendererBase):
         self.dual_mode: bool = False
         self.bg_color: tuple[int, int, int] = (0, 0, 0)
         self.use_tqdm = use_tqdm
+        self._builder = ShipBuilder(self.resman)
 
         if self.anon:
             for i, (pid, pi) in enumerate(
@@ -341,6 +343,16 @@ class Renderer(RendererBase):
             self.is_operations = True
         if bt["scenario"] == "Defense":
             self.is_operations = True
+
+    def get_player_build(self) -> str:
+        url = "https://app.wowssb.com/ship?shipIndexes="
+        try:
+            index, build_str = self._builder.get_build(
+                self.replay_data.player_info[self.replay_data.owner_id]
+            )
+            return f"{url}{index}&build={build_str}"
+        except Exception:
+            return ""
 
     def start(
         self,
