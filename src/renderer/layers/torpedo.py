@@ -70,7 +70,6 @@ class LayerTorpedoBase(LayerBase):
             m_s = m_s / igs
             t_target = round(torpedo_range / m_s)
             t_target = round(((t_target / 30) * igs) + igs)
-            print(t_target)
             torpedo_range = torpedo_range / 30
 
             (x2, y2) = (
