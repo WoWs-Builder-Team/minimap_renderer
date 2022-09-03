@@ -61,18 +61,21 @@ class LayerTorpedoBase(LayerBase):
         for torpedo in events[game_time].evt_torpedo:
             x1, y1 = flip_y(torpedo.origin)
             a, b = torpedo.direction
-
+            igs = 5.219842235292642
             t_range = self._projectiles[torpedo.params_id][1]
-            line_length = t_range * 30
+            torpedo_range = t_range * 1000
             angle = atan2(a, b)
             angle = angle - radians(90)
-            c = 0.1740001682033952
-            m_s = hypot(a, b) / c
-            t_target = round((t_range * 1000 / m_s) * c)
+            m_s = hypot(a, b) * 30
+            m_s = m_s / igs
+            t_target = round(torpedo_range / m_s)
+            t_target = round(((t_target / 30) * igs) + igs)
+            print(t_target)
+            torpedo_range = torpedo_range / 30
 
             (x2, y2) = (
-                x1 + line_length * cos(angle),
-                y1 + line_length * sin(angle),
+                x1 + torpedo_range * cos(angle),
+                y1 + torpedo_range * sin(angle),
             )
             x1, y1 = self._renderer.get_scaled((x1, y1), False)
             x2, y2 = self._renderer.get_scaled((x2, y2), False)
