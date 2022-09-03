@@ -2,14 +2,12 @@ from typing import Optional
 from renderer.data import ReplayData
 from renderer.render import Renderer
 from renderer.base import LayerBase
-from renderer.const import RELATION_NORMAL_STR, COLORS_NORMAL
+from renderer.const import COLORS_NORMAL
 from PIL import Image, ImageDraw
-
-NAME = {13: "radar", 11: "hydro"}
 
 
 class LayerMarkersBase(LayerBase):
-    """A class that handles/draws ships to the minimap.
+    """A class that draws markers to the minimap.
 
     Args:
         LayerBase (_type_): _description_
@@ -35,7 +33,7 @@ class LayerMarkersBase(LayerBase):
         self._shape_cache: dict[int, Image.Image] = {}
 
     def draw(self, game_time: int, image: Image.Image):
-        """Draws the ship icons to the minimap image.
+        """Draws the markers to the minimap image.
 
         Args:
             game_time (int): The game time.

@@ -159,5 +159,4 @@ class LayerShotBase(LayerBase):
             except KeyError:
                 pass
 
-        # image.paste(base, mask=base)
         image.alpha_composite(base)

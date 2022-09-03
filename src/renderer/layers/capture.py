@@ -85,13 +85,11 @@ class LayerCaptureBase(LayerBase):
             px = round(cp_area.width / 2 - progress.width / 2) + 1
             py = round(cp_area.height / 2 - progress.height / 2) + 1
 
-            # cp_area.paste(progress, (px, py), progress)
             cp_area.alpha_composite(progress, (px, py))
 
             ix = round(cp_area.width / 2 - icon.width / 2) + 1
             iy = round(cp_area.height / 2 - icon.height / 2) + 1
 
-            # cp_area.paste(icon, (ix, iy), icon)
             cp_area.alpha_composite(icon, (ix, iy))
 
             cx = round(x - cp_area.width / 2)

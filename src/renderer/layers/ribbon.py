@@ -90,7 +90,6 @@ class LayerRibbonBase(LayerBase):
                 if r_name in self._images:
                     c_count, c_image = self._images[r_name]
                     if c_count == r_count:
-                        # image.paste(c_image, (x_pos, y_pos), c_image)
                         image.alpha_composite(c_image, (x_pos, y_pos))
                         x_pos += c_image.width
                         last_y_height = c_image.height
@@ -113,7 +112,6 @@ class LayerRibbonBase(LayerBase):
                     stroke_width=1,
                 )
 
-                # image.paste(r_img, (x_pos, y_pos), r_img)
                 image.alpha_composite(r_img, (x_pos, y_pos))
                 x_pos += r_img.width
                 last_y_height = r_img.height
@@ -138,7 +136,6 @@ class LayerRibbonBase(LayerBase):
                 if a_id in self._images:
                     a_c_count, a_c_image = self._images[a_id]
                     if a_count == a_c_count:
-                        # image.paste(a_c_image, (a_x_pos, y_pos), a_c_image)
                         image.alpha_composite(a_c_image, (a_x_pos, y_pos))
                         a_x_pos += a_c_image.width
 
@@ -168,7 +165,6 @@ class LayerRibbonBase(LayerBase):
                         stroke_fill="black",
                     )
 
-                # image.paste(a_image, (a_x_pos, y_pos), a_image)
                 image.alpha_composite(a_image, (a_x_pos, y_pos))
 
                 a_x_pos += a_image.width

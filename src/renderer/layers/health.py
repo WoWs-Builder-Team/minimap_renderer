@@ -233,14 +233,6 @@ class LayerHealthBase(LayerBase):
         for index, bit in enumerate(flags):
             if bit == "1":
                 x_per, y_per = positions[index]
-                # image.paste(
-                #     icon,
-                #     (
-                #         round(image.width * x_per - icon.width / 2),
-                #         round(image.height * y_per - icon.height / 2),
-                #     ),
-                #     icon,
-                # )
                 image.alpha_composite(
                     icon,
                     (

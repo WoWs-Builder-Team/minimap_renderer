@@ -23,7 +23,6 @@ class LayerChatBase(LayerBase):
         self._font = self._renderer.resman.load_font(
             filename="warhelios_bold.ttf", size=12
         )
-        self._ships = self._renderer.resman.load_json("ships.json")
         self._players = self._replay_data.player_info
         self._generated_lines: dict[int, Image.Image] = {}
         self._messages: list[Message] = []
@@ -45,7 +44,7 @@ class LayerChatBase(LayerBase):
         for message in reversed(self._messages[-5:]):
 
             line = self.build(message)
-            l_w, l_h = line.size
+            _, l_h = line.size
             y_pos -= l_h
             image.alpha_composite(line, (x_pos, y_pos))
 
@@ -78,7 +77,7 @@ class LayerChatBase(LayerBase):
             clan_tag = ""
 
         if player.clan_tag:
-            c_w, c_h = self._font.getbbox(f"[{clan_tag}]")[2:]
+            c_w, _ = self._font.getbbox(f"[{clan_tag}]")[2:]
             draw.text(
                 (x_pos, 0),
                 f"[{clan_tag}]",
@@ -98,7 +97,7 @@ class LayerChatBase(LayerBase):
         else:
             name = player.name
 
-        n_w, n_h = self._font.getbbox(f"{name}: ")[2:]
+        n_w, _ = self._font.getbbox(f"{name}: ")[2:]
         draw.text((x_pos, 0), f"{name}: ", n_color, self._font)
         x_pos += n_w
 
@@ -107,13 +106,13 @@ class LayerChatBase(LayerBase):
         else:
             m_color = n_color
 
-        m_w, m_h = self._font.getbbox(message.message)[2:]
+        m_w, _ = self._font.getbbox(message.message)[2:]
         text = message.message
 
         if x_pos + m_w + 805 > 1330:
             for i in range(1, len(message.message)):
                 n_t = f"{message.message[:-i]}..."
-                m_w, m_h = self._font.getbbox(n_t)[2:]
+                m_w, _ = self._font.getbbox(n_t)[2:]
 
                 if x_pos + m_w + 805 <= 1330:
                     text = n_t

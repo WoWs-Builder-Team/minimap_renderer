@@ -61,10 +61,8 @@ class LayerCounterBase(LayerBase):
             self._y_positions.append(y_pos + Y_POS)
             tw, th = font.getbbox(name)[2:]
             draw.text((0, y_pos), name, COUNTER_COLOR, font)
-            # base.paste(icon, (tw + offset_x, icon_y))
             base.alpha_composite(icon, (tw + offset_x, icon_y))
             y_pos += th + space
-        # self._renderer.minimap_bg.paste(base, (X_POS, Y_POS), base)
         self._renderer.minimap_bg.alpha_composite(base, (X_POS, Y_POS))
 
     def draw(self, game_time: int, image: Image.Image):
@@ -91,7 +89,6 @@ class LayerCounterBase(LayerBase):
                 l_damage, l_image = val
                 if l_damage == dmg:
                     x_pos = image.width - l_image.width - 30
-                    # image.paste(l_image, (x_pos, y_pos), l_image)
                     image.alpha_composite(l_image, (x_pos, y_pos))
                     continue
 
@@ -102,5 +99,4 @@ class LayerCounterBase(LayerBase):
             x_pos = image.width - base.width - 30
             draw.text((0, 0), value, COUNTER_COLOR, font)
             self._counter_numbers[name] = [dmg, base.copy()]
-            # image.paste(base, (x_pos, y_pos), base)
             image.alpha_composite(base, (x_pos, y_pos))
