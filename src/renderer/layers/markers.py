@@ -2,7 +2,7 @@ from typing import Optional
 from renderer.data import ReplayData
 from renderer.render import Renderer
 from renderer.base import LayerBase
-from renderer.const import RELATION_NORMAL_STR
+from renderer.const import RELATION_NORMAL_STR, COLORS_NORMAL
 from PIL import Image, ImageDraw
 
 NAME = {13: "radar", 11: "hydro"}
@@ -32,6 +32,7 @@ class LayerMarkersBase(LayerBase):
         )
         self._color = color
         self._abilities = renderer.resman.load_json("abilities.json")
+        self._shape_cache: dict[int, Image.Image] = {}
 
     def draw(self, game_time: int, image: Image.Image):
         """Draws the ship icons to the minimap image.
@@ -68,22 +69,81 @@ class LayerMarkersBase(LayerBase):
                     continue
 
                 if self._color:
-                    relation = 0 if self._color == "green" else 1
+                    # relation = 0 if self._color == "green" else 1
+                    color = (
+                        COLORS_NORMAL[0]
+                        if self._color == "green"
+                        else COLORS_NORMAL[1]
+                    )
                 else:
-                    relation = player.relation
-
-                relation_str = RELATION_NORMAL_STR[relation]
+                    color = COLORS_NORMAL[vehicle.relation]
 
                 for aid in {11, 13}.intersection(ac):
                     dist_ship_bw = abilities[aid_to_subtype[aid]]["distShip"]
                     r = round(self._renderer.get_scaled_r(dist_ship_bw) / 2)
                     w = h = r * 2
 
-                    filename = f"{NAME[aid]}_{relation_str}.png"
-
-                    marker = self._renderer.resman.load_image(
-                        filename, "markers", size=(w, h)
-                    )
+                    if aid == 11:
+                        # 200 = 6km
+                        per = dist_ship_bw / 200
+                        dash = round(30 * per)
+                        shape = self._draw_arc_aa((w, h), color, dash=dash)
+                    else:
+                        shape = self._draw_ellipse_aa((w, h), color)
                     image.alpha_composite(
-                        marker, (x - marker.width // 2, y - marker.height // 2)
+                        shape, (x - shape.width // 2, y - shape.height // 2)
                     )
+
+    def _draw_arc_aa(
+        self,
+        size: tuple[int, int],
+        color: str = "red",
+        aa_level=2,
+        width=2,
+        dash=60,
+    ) -> Image.Image:
+        arg_hash = hash((*size, color, dash))
+
+        if shape_image := self._shape_cache.get(arg_hash):
+            return shape_image
+
+        w, h = map(lambda s: s * aa_level, size)
+        width *= aa_level
+        base = Image.new("RGBA", (w, h))
+        draw = ImageDraw.Draw(base)
+
+        d = 360 / dash / 2
+        s, e = 0, d
+        for _ in range(dash):
+            draw.arc(
+                [(0, 0), (w - 1, h - 1)],
+                fill=color,
+                start=s,
+                end=e,
+                width=width,
+            )
+            s += d * 2
+            e = s + d
+        shape_image = base.resize(size, resample=Image.Resampling.LANCZOS)
+        self._shape_cache[arg_hash] = shape_image
+        return shape_image
+
+    def _draw_ellipse_aa(
+        self, size: tuple[int, int], color: str = "red", aa_level=2, width=2
+    ):
+        arg_hash = hash((*size, color))
+
+        if shape_image := self._shape_cache.get(arg_hash):
+            return shape_image
+
+        w, h = map(lambda s: s * aa_level, size)
+        width *= aa_level
+        base = Image.new("RGBA", (w, h))
+        draw = ImageDraw.Draw(base)
+
+        for _ in range(36):
+            draw.ellipse([(0, 0), (w - 1, h - 1)], outline=color, width=width)
+
+        shape_image = base.resize(size, resample=Image.Resampling.LANCZOS)
+        self._shape_cache[arg_hash] = shape_image
+        return shape_image
