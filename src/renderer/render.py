@@ -229,7 +229,9 @@ class RenderDual(RendererBase):
             red_tag=self.red_tag,
         )
         g_timer = self._load_layer("LayerTimer")(self, self.replay_data)
-        g_markers = self._load_layer("LayerMarkers")(self, self.replay_data)
+        g_markers = self._load_layer("LayerMarkers")(
+            self, self.replay_data, "green"
+        )
 
         # red
         r_ship = self._load_layer("LayerShip")(self, self.replay_r, "red")
@@ -240,7 +242,9 @@ class RenderDual(RendererBase):
         r_plane = self._load_layer("LayerPlane")(self, self.replay_r, "red")
         r_ward = self._load_layer("LayerWard")(self, self.replay_r, "red")
 
-        r_markers = self._load_layer("LayerMarkers")(self, self.replay_r)
+        r_markers = self._load_layer("LayerMarkers")(
+            self, self.replay_r, "red"
+        )
 
         video_writer = self.get_writer(path, fps, quality)
         video_writer.send(None)
