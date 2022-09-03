@@ -81,7 +81,7 @@ class LayerMarkersBase(LayerBase):
                 for aid in {11, 13}.intersection(ac):
                     dist_ship_bw = abilities[aid_to_subtype[aid]]["distShip"]
                     r = round(self._renderer.get_scaled_r(dist_ship_bw) / 2)
-                    w = h = r * 2
+                    w = h = r * 4
 
                     if aid == 11:
                         # 200 = 6km
