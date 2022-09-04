@@ -244,12 +244,30 @@ class BattleController(IBattleController):
 
     ###########################################################################
 
+    # receiveTorpedoDirection(self, ownerId, torpedoId, serverPos, targetYaw,
+    # targetDepth, speedCoef, curYawSpeed, curPitchSpeed, canReachDepth)
+
     def _receive_torpedo_dir(
-        self, entity: Entity, vehicle_id: int, shot_id: int, pos: tuple, *args
+        self,
+        entity: Entity,
+        vehicle_id: int,
+        shot_id: int,
+        pos: tuple,
+        t_yaw,
+        t_depth,
+        speed_coef,
+        cur_yaw_speed,
+        cur_pitch_speed,
+        can_reach_depth,
     ):
         x, y = map(round, pos[::2])
         self._acc_acoustic_torpedoes[(vehicle_id, shot_id)] = AcousticTorpedo(
-            vehicle_id, shot_id, x, y
+            vehicle_id,
+            int(f"{vehicle_id}{shot_id}"),
+            x,
+            y,
+            t_yaw,
+            cur_yaw_speed,
         )
 
     def _is_suppressed(self, entity: Entity, val):
@@ -506,14 +524,18 @@ class BattleController(IBattleController):
             for torpedo in shot["torpedoes"]:
                 x, y = map(round, torpedo["pos"][::2])
                 a, b = torpedo["dir"][::2]
+                yaw = math.atan2(a, b)
+                speed_bw = math.hypot(a, b)
 
                 self._acc_torpedoes.append(
                     Torpedo(
                         params_id=shot["paramsID"],
                         owner_id=owner_id,
                         origin=(x, y),
-                        direction=(a, b),
+                        # direction=(a, b),
                         shot_id=int(f"{owner_id}{torpedo['shotID']}"),
+                        yaw=yaw,
+                        speed_bw=speed_bw,
                     )
                 )
 

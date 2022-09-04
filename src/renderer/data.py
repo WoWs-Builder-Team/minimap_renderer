@@ -133,7 +133,9 @@ class Torpedo(NamedTuple):
     owner_id: int
     params_id: int
     origin: tuple[int, int]
-    direction: tuple[float, float]
+    # direction: tuple[float, float]
+    yaw: float
+    speed_bw: float
     shot_id: int
 
 
@@ -144,6 +146,8 @@ class AcousticTorpedo(NamedTuple):
     shot_id: int
     x: int
     y: int
+    yaw: float
+    yaw_speed: float
 
 
 class Consumable(NamedTuple):

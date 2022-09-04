@@ -5,7 +5,7 @@ from renderer.utils import flip_y, getEquidistantPoints
 from PIL import ImageDraw
 from math import cos, sin, radians, hypot, atan2
 from typing import Optional
-from renderer.data import ReplayData
+from renderer.data import ReplayData, Torpedo
 
 
 class LayerTorpedoBase(LayerBase):
@@ -31,7 +31,7 @@ class LayerTorpedoBase(LayerBase):
             replay_data if replay_data else self._renderer.replay_data
         )
         self._color = color
-        self._torpedoes: dict[int, list] = {}
+        self._torpedoes: dict[int, list[Torpedo]] = {}
         self._projectiles: dict = self._renderer.resman.load_json(
             "projectiles.json"
         )
@@ -52,82 +52,95 @@ class LayerTorpedoBase(LayerBase):
         events = self._replay_data.events
         self._hits.update(events[game_time].evt_hits)
 
-        if events[game_time].evt_acoustic_torpedo:
-            for t in events[game_time].evt_acoustic_torpedo.values():
-                self._fired.append(int(f"{t.owner_id}{t.shot_id}"))
-                x, y = self._renderer.get_scaled((t.x, t.y))
-
-                if (
-                    self._relations[t.owner_id] == 1
-                    and self._renderer.dual_mode
-                ):
-                    continue
-
-                if self._color:
-                    color = COLORS_NORMAL[0 if self._color == "green" else 1]
-                else:
-                    color = COLORS_NORMAL[self._relations[t.owner_id]]
-
-                draw.ellipse(
-                    [(x - 2, y - 2), (x + 2, y + 2)],
-                    fill=color,
-                )
-
         if not events[game_time].evt_torpedo and not self._torpedoes:
             return
 
         for hit in self._hits.copy():
-            if self._torpedoes.pop(hit, None):
-                self._hits.remove(hit)
+            try:
+                f_torps = self._torpedoes[game_time]
+                if _ := f_torps.pop(
+                    f_torps.index(
+                        [t for t in f_torps if t.shot_id == hit].pop()
+                    )
+                ):
+                    self._hits.remove(hit)
+            except Exception:
+                pass
+
+        for at in events[game_time].evt_acoustic_torpedo.values():
+            try:
+                f_torps = self._torpedoes[game_time]
+                if matched := f_torps.pop(
+                    f_torps.index(
+                        [t for t in f_torps if t.shot_id == at.shot_id].pop()
+                    )
+                ):
+                    if at.yaw_speed == 0.0:
+                        kwargs = {
+                            "origin": (at.x, at.y),
+                        }
+                    else:
+                        kwargs = {"origin": (at.x, at.y), "yaw": at.yaw}
+                    f_torps.append(matched._replace(**kwargs))
+            except Exception:
+                pass
 
         for torpedo in events[game_time].evt_torpedo:
-            if torpedo.shot_id in self._fired:
-                continue
-            x1, y1 = flip_y(torpedo.origin)
-            a, b = torpedo.direction
-            igs = 5.219842235292642
-            t_range = self._projectiles[torpedo.params_id][1]
-            torpedo_range = t_range * 1000
-            angle = atan2(a, b)
-            angle = angle - radians(90)
-            m_s = hypot(a, b) * 30
-            m_s = m_s / igs
-            t_target = round(torpedo_range / m_s)
-            t_target = round(((t_target / 30) * igs) + igs)
-            torpedo_range = torpedo_range / 30
-
-            (x2, y2) = (
-                x1 + torpedo_range * cos(angle),
-                y1 + torpedo_range * sin(angle),
+            x, y = self._renderer.get_scaled(
+                (torpedo.origin[0], torpedo.origin[1])
             )
-            x1, y1 = self._renderer.get_scaled((x1, y1), False)
-            x2, y2 = self._renderer.get_scaled((x2, y2), False)
-            points = getEquidistantPoints((x1, y1), (x2, y2), t_target)
+            if (
+                self._relations[torpedo.owner_id] == 1
+                and self._renderer.dual_mode
+            ):
+                continue
 
-            p = self._torpedoes.setdefault(torpedo.shot_id, [])
-            for (px, py) in points:
-                p.append((torpedo.owner_id, px, py))
+            if self._color:
+                color = COLORS_NORMAL[0 if self._color == "green" else 1]
+            else:
+                color = COLORS_NORMAL[self._relations[torpedo.owner_id]]
 
-        for timed_shot in self._torpedoes.values():
-            try:
-                torp = timed_shot.pop(0)
-                (
-                    _cid,
-                    _cx,
-                    _cy,
-                ) = torp
+            draw.ellipse(
+                [(x - 2, y - 2), (x + 2, y + 2)],
+                fill=color,
+            )
 
-                if self._relations[_cid] == 1 and self._renderer.dual_mode:
-                    continue
+            p = self._torpedoes.setdefault(game_time + 1, [])
+            p.append(torpedo)
 
-                if self._color:
-                    color = COLORS_NORMAL[0 if self._color == "green" else 1]
+        if torpedoes := self._torpedoes.get(game_time):
+            for torpedo in torpedoes[:]:
+                try:
+                    old = torpedoes.pop(torpedoes.index(torpedo))
+                except Exception:
+                    pass
                 else:
-                    color = COLORS_NORMAL[self._relations[_cid]]
+                    x1, y1 = flip_y(old.origin)
+                    angle = torpedo.yaw
+                    angle = angle - radians(90)
+                    m_s_bw = torpedo.speed_bw
+                    (x2, y2) = (
+                        x1 + m_s_bw * cos(angle),
+                        y1 + m_s_bw * sin(angle),
+                    )
+                    x, y = self._renderer.get_scaled((x2, y2), False)
 
-                draw.ellipse(
-                    [(_cx - 2, _cy - 2), (_cx + 2, _cy + 2)],
-                    fill=color,
-                )
-            except IndexError:
-                pass
+                    if (
+                        self._relations[old.owner_id] == 1
+                        and self._renderer.dual_mode
+                    ):
+                        continue
+
+                    if self._color:
+                        color = COLORS_NORMAL[
+                            0 if self._color == "green" else 1
+                        ]
+                    else:
+                        color = COLORS_NORMAL[self._relations[old.owner_id]]
+
+                    draw.ellipse(
+                        [(x - 2, y - 2), (x + 2, y + 2)],
+                        fill=color,
+                    )
+                    t = self._torpedoes.setdefault(game_time + 1, [])
+                    t.append(old._replace(origin=(x2, -y2)))
