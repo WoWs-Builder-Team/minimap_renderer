@@ -137,6 +137,15 @@ class Torpedo(NamedTuple):
     shot_id: int
 
 
+class AcousticTorpedo(NamedTuple):
+    """Acoustic torpedo data."""
+
+    owner_id: int
+    shot_id: int
+    x: int
+    y: int
+
+
 class Consumable(NamedTuple):
     """Consumable data."""
 
@@ -226,6 +235,7 @@ class Events(NamedTuple):
     evt_achievement: dict
     evt_times_to_win: Optional[tuple[float, float]]
     evt_chat: list[Message]
+    evt_acoustic_torpedo: dict[tuple[int, int], AcousticTorpedo]
     last_frame: bool = False
 
 

@@ -29,6 +29,7 @@ from renderer.data import (
     Building,
     Units,
     Skills,
+    AcousticTorpedo,
 )
 from replay_unpack.utils import (
     unpack_values,
@@ -121,6 +122,9 @@ class BattleController(IBattleController):
         self._acc_consumables: dict[int, list[Consumable]] = {}
         self._acc_frags: list[Frag] = []
         self._acc_message: list[Message] = []
+        self._acc_acoustic_torpedoes: dict[
+            tuple[int, int], AcousticTorpedo
+        ] = {}
 
         #######################################################################
 
@@ -234,8 +238,19 @@ class BattleController(IBattleController):
             "Building", "isSuppressed", self._is_suppressed
         )
         Entity.subscribe_property_change("Building", "isAlive", self._is_alive)
+        Entity.subscribe_method_call(
+            "Avatar", "receiveTorpedoDirection", self._receive_torpedo_dir
+        )
 
     ###########################################################################
+
+    def _receive_torpedo_dir(
+        self, entity: Entity, vehicle_id: int, shot_id: int, pos: tuple, *args
+    ):
+        x, y = map(round, pos[::2])
+        self._acc_acoustic_torpedoes[(vehicle_id, shot_id)] = AcousticTorpedo(
+            vehicle_id, shot_id, x, y
+        )
 
     def _is_suppressed(self, entity: Entity, val):
         self._dict_building[entity.id] = self._dict_building[
@@ -431,6 +446,7 @@ class BattleController(IBattleController):
             evt_times_to_win=self._times_to_win(),
             evt_achievement=copy.deepcopy(self._achievements),
             evt_chat=copy.deepcopy(self._acc_message),
+            evt_acoustic_torpedo=copy.deepcopy(self._acc_acoustic_torpedoes),
         )
 
         self._dict_events[battle_time] = evt
@@ -440,6 +456,7 @@ class BattleController(IBattleController):
         self._acc_consumables.clear()
         self._acc_frags.clear()
         self._acc_message.clear()
+        self._acc_acoustic_torpedoes.clear()
 
     def _add_plane(
         self, entity: Entity, plane_id: int, team_id, params_id, pos, unk
@@ -537,7 +554,7 @@ class BattleController(IBattleController):
                     hull=hull_unit,
                     modernization=modern,
                     units=u,
-                    signals=signals
+                    signals=signals,
                 )
             except KeyError:
                 pass
@@ -796,6 +813,7 @@ class BattleController(IBattleController):
             evt_times_to_win=self._times_to_win(),
             evt_achievement=copy.deepcopy(self._achievements),
             evt_chat=copy.deepcopy(self._acc_message),
+            evt_acoustic_torpedo=copy.deepcopy(self._acc_acoustic_torpedoes),
             last_frame=True,
         )
 

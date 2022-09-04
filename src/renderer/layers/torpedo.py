@@ -40,6 +40,7 @@ class LayerTorpedoBase(LayerBase):
             for v in self._replay_data.player_info.values()
         }
         self._hits: set[int] = set()
+        self._fired = []
 
     def draw(self, game_time: int, draw: ImageDraw.ImageDraw):
         """This draws the torpedoes to the minimap.
@@ -51,6 +52,27 @@ class LayerTorpedoBase(LayerBase):
         events = self._replay_data.events
         self._hits.update(events[game_time].evt_hits)
 
+        if events[game_time].evt_acoustic_torpedo:
+            for t in events[game_time].evt_acoustic_torpedo.values():
+                self._fired.append(int(f"{t.owner_id}{t.shot_id}"))
+                x, y = self._renderer.get_scaled((t.x, t.y))
+
+                if (
+                    self._relations[t.owner_id] == 1
+                    and self._renderer.dual_mode
+                ):
+                    continue
+
+                if self._color:
+                    color = COLORS_NORMAL[0 if self._color == "green" else 1]
+                else:
+                    color = COLORS_NORMAL[self._relations[t.owner_id]]
+
+                draw.ellipse(
+                    [(x - 2, y - 2), (x + 2, y + 2)],
+                    fill=color,
+                )
+
         if not events[game_time].evt_torpedo and not self._torpedoes:
             return
 
@@ -59,6 +81,8 @@ class LayerTorpedoBase(LayerBase):
                 self._hits.remove(hit)
 
         for torpedo in events[game_time].evt_torpedo:
+            if torpedo.shot_id in self._fired:
+                continue
             x1, y1 = flip_y(torpedo.origin)
             a, b = torpedo.direction
             igs = 5.219842235292642
