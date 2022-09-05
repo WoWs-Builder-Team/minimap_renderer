@@ -228,7 +228,7 @@ class Events(NamedTuple):
     evt_ward: dict[int, Ward]
     evt_smoke: dict[int, Smoke]
     evt_shot: list[Shot]
-    evt_torpedo: list[Torpedo]
+    evt_torpedo: dict[int, Torpedo]
     evt_hits: list[int]
     evt_consumable: dict[int, list[Consumable]]
     evt_control: dict[int, ControlPoint]
@@ -239,7 +239,7 @@ class Events(NamedTuple):
     evt_achievement: dict
     evt_times_to_win: Optional[tuple[float, float]]
     evt_chat: list[Message]
-    evt_acoustic_torpedo: dict[tuple[int, int], AcousticTorpedo]
+    evt_acoustic_torpedo: dict[int, AcousticTorpedo]
     last_frame: bool = False
 
 

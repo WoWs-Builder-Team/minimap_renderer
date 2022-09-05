@@ -117,14 +117,12 @@ class BattleController(IBattleController):
         # ACCUMULATORS #
 
         self._acc_shots: list[Shot] = []
-        self._acc_torpedoes: list[Torpedo] = []
+        self._acc_torpedoes: dict[int, Torpedo] = {}
         self._acc_hits: list[int] = []
         self._acc_consumables: dict[int, list[Consumable]] = {}
         self._acc_frags: list[Frag] = []
         self._acc_message: list[Message] = []
-        self._acc_acoustic_torpedoes: dict[
-            tuple[int, int], AcousticTorpedo
-        ] = {}
+        self._acc_acoustic_torpedoes: dict[int, AcousticTorpedo] = {}
 
         #######################################################################
 
@@ -261,7 +259,9 @@ class BattleController(IBattleController):
         can_reach_depth,
     ):
         x, y = map(round, pos[::2])
-        self._acc_acoustic_torpedoes[(vehicle_id, shot_id)] = AcousticTorpedo(
+        self._acc_acoustic_torpedoes[
+            int(f"{vehicle_id}{shot_id}")
+        ] = AcousticTorpedo(
             vehicle_id,
             int(f"{vehicle_id}{shot_id}"),
             x,
@@ -526,17 +526,14 @@ class BattleController(IBattleController):
                 a, b = torpedo["dir"][::2]
                 yaw = math.atan2(a, b)
                 speed_bw = math.hypot(a, b)
-
-                self._acc_torpedoes.append(
-                    Torpedo(
-                        params_id=shot["paramsID"],
-                        owner_id=owner_id,
-                        origin=(x, y),
-                        # direction=(a, b),
-                        shot_id=int(f"{owner_id}{torpedo['shotID']}"),
-                        yaw=yaw,
-                        speed_bw=speed_bw,
-                    )
+                shot_id = torpedo["shotID"]
+                self._acc_torpedoes[int(f"{owner_id}{shot_id}")] = Torpedo(
+                    params_id=shot["paramsID"],
+                    owner_id=owner_id,
+                    origin=(x, y),
+                    shot_id=int(f"{owner_id}{torpedo['shotID']}"),
+                    yaw=yaw,
+                    speed_bw=speed_bw,
                 )
 
     def _crew_skills(self, entity: Entity, params):
