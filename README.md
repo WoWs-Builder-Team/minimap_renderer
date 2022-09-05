@@ -23,11 +23,11 @@ Minimap Renderer parses World of Warships replays to create a timelapse video th
 4. You're set!
 
 ### Usage
-Replays can be parsed with `replay_parser.py`. The full usage is:
+Replays can be parsed with `render.py`. The full usage is:
 ```
-replay_parser.py --replay <replay_path> [--strict_mode]
+render.py --replay <replay_path>
 ```
-This will generate `data.dat` in the root directory. Now, you can simply run `render.py` to create `minimap.mp4`.
+This will create a video file of your replay.
 
 ### License
 
