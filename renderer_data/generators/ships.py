@@ -13,7 +13,9 @@ def create_ships_data():
     dict_ships = {}
     list_ships = get_data("Ship")
     list_units = get_data("Unit")
+    list_projectile = get_data("Projectile")
     units_name_to_id = {unit.name: unit.id for unit in list_units}
+    dict_projectiles = {v.name: v.id for v in list_projectile}
 
     for ship in list_ships:
         dict_ships[ship.id] = ship
@@ -41,10 +43,35 @@ def create_ships_data():
                         len(hull.burnNodes),
                         len(hull.floodNodes),
                     ]
+                    if atbas := value.components.get("atba"):
+                        for atba in atbas:
+                            ammo_list = components.setdefault(atba, [])
+                            if atba_comp := getattr(ship, atba, None):
+                                for k, v in vars(atba_comp).items():
+                                    if hasattr(v, "typeinfo"):
+                                        if v.typeinfo.species == "Secondary":
+                                            for ammo in v.ammoList:
+                                                ammo_list.append(
+                                                    dict_projectiles[ammo]
+                                                )
+                            components[atba] = {
+                                "ammo_list": list(set(components[atba]))
+                            }
                 elif value.ucType == "_Artillery":
                     for comp in value.components["artillery"]:
+                        ammo_list = components.setdefault(comp, [])
+
+                        for k, v in vars(getattr(ship, comp)).items():
+                            if hasattr(v, "typeinfo"):
+                                if v.typeinfo.species == "Main":
+                                    for ammo in v.ammoList:
+                                        ammo_list.append(
+                                            dict_projectiles[ammo]
+                                        )
+
                         components[comp] = {
-                            "maxDist": getattr(ship, comp).maxDist
+                            "maxDist": getattr(ship, comp).maxDist,
+                            "ammo_list": list(set(ammo_list)),
                         }
                 elif value.ucType == "_Suo":
                     for comp in value.components["fireControl"]:
@@ -61,7 +88,8 @@ def create_ships_data():
             "species": ship.typeinfo.species,
             "level": ship.level,
             "hulls": hulls,
-            "components": components
+            "components": components,
+            "nation": ship.typeinfo.nation
         }
 
         dict_ships_info[ship.id] = si

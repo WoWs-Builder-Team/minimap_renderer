@@ -5,7 +5,7 @@ from ..data import ReplayData
 from renderer.render import Renderer
 from renderer.utils import flip_y, getEquidistantPoints
 
-from PIL import ImageDraw
+from PIL import ImageDraw, Image, ImageColor
 
 
 SHELL_COLORS = {
@@ -42,14 +42,19 @@ class LayerShotBase(LayerBase):
         self._projectiles_data = self._renderer.resman.load_json(
             "projectiles.json"
         )
+        self._ships = renderer.resman.load_json("ships.json")
         self._relations = {
             v.ship_id: v.relation
+            for v in self._replay_data.player_info.values()
+        }
+        self._vehicle_components = {
+            v.ship_id: (v.ship_params_id, v.ship_components)
             for v in self._replay_data.player_info.values()
         }
         self._empties = 0
         self._hits: set[int] = set()
 
-    def draw(self, game_time: int, draw: ImageDraw.ImageDraw):
+    def draw(self, game_time: int, image: Image.Image):
         """Draws the shots directly to the image via ImageDraw.
 
         Args:
@@ -60,6 +65,9 @@ class LayerShotBase(LayerBase):
 
         if not events[game_time].evt_shot and not self._projectiles:
             return
+
+        base = Image.new("RGBA", image.size)
+        draw = ImageDraw.Draw(base)
 
         for shot in events[game_time].evt_shot:
             result = getEquidistantPoints(
@@ -98,7 +106,21 @@ class LayerShotBase(LayerBase):
 
         for projectile in projectiles:
             try:
+
                 cid, params_id, cx, cy, px, py = projectile
+                spid, scomp = self._vehicle_components[cid]
+                try:
+                    atba = self._ships[spid]["components"][scomp["atba"]][
+                        "ammo_list"
+                    ]
+                except KeyError:
+                    atba = []
+                main = self._ships[spid]["components"][scomp["artillery"]][
+                    "ammo_list"
+                ]
+                is_secondary = params_id in atba
+                is_secondary = params_id not in main
+
                 if self._renderer.team_tracers:
                     rel = self._relations[cid]
                     if rel == 1 and self._renderer.dual_mode:
@@ -114,6 +136,21 @@ class LayerShotBase(LayerBase):
                     shell_type = self._projectiles_data[params_id]
                     color = SHELL_COLORS[shell_type]
 
+                if is_secondary:
+                    if isinstance(color, str):
+                        color = ImageColor.getrgb(color)
+
+                    color = list(color)
+
+                    if len(color) == 3:
+                        color.append(85)
+                    elif len(color) == 4:
+                        color[3] = 85
+                    else:
+                        raise ValueError("Not a valid color")
+
+                    color = tuple(color)
+
                 draw.line(
                     [(cx, cy), (px, py)],
                     fill=color,
@@ -121,3 +158,5 @@ class LayerShotBase(LayerBase):
                 )
             except KeyError:
                 pass
+
+        image.alpha_composite(base)

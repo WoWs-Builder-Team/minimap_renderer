@@ -13,33 +13,20 @@ def test_parser(file):
         ReplayParser(bio, strict=True).get_info()["hidden"]["replay_data"]
 
 
-@pytest.mark.parametrize("file", ["replays/116.dat", "replays/117.dat"])
+@pytest.mark.parametrize(
+    "file", ["replays/116.wowsreplay", "replays/117.wowsreplay"]
+)
 def test_t_logs_t_chat(file):
     with open(file, "rb") as f:
-        Renderer(pickle.load(f), logs=True, enable_chat=True).start(
-            "minimap.mp4"
+        replay_info = ReplayParser(
+            f, strict=True, raw_data_output=False
+        ).get_info()
+
+        renderer = Renderer(
+            replay_info["hidden"]["replay_data"],
+            logs=True,
+            enable_chat=True,
+            use_tqdm=True,
         )
-
-
-@pytest.mark.parametrize("file", ["replays/116.dat", "replays/117.dat"])
-def test_t_logs_f_chat(file):
-    with open(file, "rb") as f:
-        Renderer(pickle.load(f), logs=True, enable_chat=False).start(
-            "minimap.mp4"
-        )
-
-
-@pytest.mark.parametrize("file", ["replays/116.dat", "replays/117.dat"])
-def test_t_logs_t_chat_t_anon(file):
-    with open(file, "rb") as f:
-        Renderer(pickle.load(f), logs=True, enable_chat=True, anon=True).start(
-            "minimap.mp4"
-        )
-
-
-@pytest.mark.parametrize("file", ["replays/116.dat", "replays/117.dat"])
-def test_f_logs_t_tracers(file):
-    with open(file, "rb") as f:
-        Renderer(pickle.load(f), logs=False, team_tracers=True).start(
-            "minimap.mp4"
-        )
+        renderer.get_player_build()
+        renderer.start("minimap.mp4")

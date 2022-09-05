@@ -5,6 +5,14 @@ from renderer_data.gameparams import get_data
 from renderer_data.utils import LOGGER
 
 
+REQUIRED = {
+    "workTime",
+    "regenerationHPSpeed",
+    "distShip",
+    "artilleryDistCoeff",
+}
+
+
 def create_abilities_data():
     LOGGER.info("Creating abilities data...")
     list_ships = get_data("Ship")
@@ -62,6 +70,7 @@ def create_abilities_data():
                 params_id_to_subtype = at.setdefault(
                     "params_id_to_subtype", {}
                 )
+                params_id_to_index = at.setdefault("params_id_to_index", {})
 
                 for abs in ship_abilities:
                     name, sub_name = abs
@@ -72,7 +81,10 @@ def create_abilities_data():
                     ] = sub_name
                     id_to_index[ability_type_to_id[sa.consumableType]] = name
                     params_id_to_subtype[ability["id"]] = sub_name
-                    at[sub_name] = {**sa.__dict__}
+                    params_id_to_index[ability["id"]] = ability["index"]
+                    at[sub_name] = {
+                        k: v for k, v in sa.__dict__.items() if k in REQUIRED
+                    }
 
     with open(
         os.path.join(os.getcwd(), "generated", "abilities.json"), "w"

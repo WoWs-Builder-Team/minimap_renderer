@@ -33,6 +33,9 @@ class LayerPlaneBase(LayerBase):
         )
         self._color = color
         self._planes = renderer.resman.load_json("planes.json")
+        self._vehicle_id_to_player = {
+            v.ship_id: v for v in self._replay_data.player_info.values()
+        }
 
     def draw(self, game_time: int, image: Image.Image):
         """Draws the planes to the minimap image.
@@ -54,7 +57,7 @@ class LayerPlaneBase(LayerBase):
             icon = self._get_plane_icon(plane)
             m1 = round(icon.width / 2)
             m2 = round(icon.height / 2)
-            image.paste(icon, (x - m1, y - m2), icon)
+            image.alpha_composite(icon, (x - m1, y - m2))
 
     def _get_plane_icon(self, plane: Plane) -> Image.Image:
         """Loads the plane icon from the resources.
@@ -65,6 +68,11 @@ class LayerPlaneBase(LayerBase):
         Returns:
             Image.Image: The image of the plane.
         """
+        player = self._vehicle_id_to_player[plane.owner_id]
+        try:
+            upgrade = 22 in player.skills.AirCarrier
+        except IndexError:
+            upgrade = False
         ptype, ammo = self._planes[plane.params_id]
 
         if self._color:
@@ -86,7 +94,17 @@ class LayerPlaneBase(LayerBase):
                     filename, path=icon_res
                 )
         elif plane.purpose in [2, 3]:
-            icon = self._renderer.resman.load_image("Cap.png", path=icon_res)
+            relation = "ally" if plane.relation == -1 else relation
+            icon_res = f"plane_icons.{relation}"
+
+            if plane.purpose == 2 and upgrade:
+                icon = self._renderer.resman.load_image(
+                    "Cap_upgrade.png", path=icon_res
+                )
+            else:
+                icon = self._renderer.resman.load_image(
+                    "Cap.png", path=icon_res
+                )
         else:
             if plane.purpose == 6:
                 filename = f"Airstrike_{ammo}.png"

@@ -125,20 +125,7 @@ class LayerScoreBase(LayerBase):
         if self._red_tag:
             self._draw_tag(draw, self._red_tag, (x3, x4), (y3, y4))
 
-        # if self._red_tag:
-        #     g_tw, g_th = self._font.getsize(self._red_tag)
-        #     g_bar_mid = (x2 - x1) / 2
-        #     g_bar_mid += x1
-        #     g_ty = y1 + (y2 - y1) / 2 - g_th / 2
-        #     g_ty -= 5
-        #     draw.text(
-        #         (g_bar_mid - g_tw / 2, g_ty),
-        #         self._red_tag,
-        #         "white",
-        #         self._font,
-        #     )
-
-        image.paste(base, (40, 0), base)
+        image.alpha_composite(base, (40, 0))
 
         ttw = self._replay_data.events[game_time].evt_times_to_win
         if ttw is None:
@@ -178,7 +165,7 @@ class LayerScoreBase(LayerBase):
             self._timers_font,
             anchor="lm",
         )
-        image.paste(timers_base, (757, 0), timers_base)
+        image.alpha_composite(timers_base, (757, 0))
 
     def _draw_tag(
         self,

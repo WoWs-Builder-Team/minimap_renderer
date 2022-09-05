@@ -149,5 +149,6 @@ LAYERS = [
     "LayerTimer",
     "LayerRibbon",
     "LayerChat",
-    "LayerBuilding"
+    "LayerBuilding",
+    "LayerMarkers"
 ]

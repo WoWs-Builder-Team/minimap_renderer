@@ -241,7 +241,7 @@ class LayerFragBase(LayerBase):
             for img in self.build(line):
                 y_pos -= img.height
                 x_pos = (image.width - 30) - img.width
-                image.paste(img, (x_pos, y_pos), img)
+                image.alpha_composite(img, (x_pos, y_pos))
 
     def _hash(self, line):
         """Hashes the line for caching.
@@ -334,7 +334,7 @@ class LayerFragBase(LayerBase):
                 ) and isinstance(c, int):
                     nw, nh = round(a.width * c), round(a.height * c)
                     a = a.resize((nw, nh), Image.Resampling.LANCZOS)
-                    base.paste(a, (pos_x, 0 + b), a)
+                    base.alpha_composite(a, (pos_x, 0 + b))
                     pos_x += a.width
                 case a if isinstance(a, int):
                     pos_x += a

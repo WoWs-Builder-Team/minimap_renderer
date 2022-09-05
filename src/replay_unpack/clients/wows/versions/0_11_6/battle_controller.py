@@ -27,6 +27,9 @@ from renderer.data import (
     BattleResult,
     BuildingInfo,
     Building,
+    Units,
+    Skills,
+    AcousticTorpedo,
 )
 from replay_unpack.utils import (
     unpack_values,
@@ -114,11 +117,12 @@ class BattleController(IBattleController):
         # ACCUMULATORS #
 
         self._acc_shots: list[Shot] = []
-        self._acc_torpedoes: list[Torpedo] = []
+        self._acc_torpedoes: dict[int, Torpedo] = {}
         self._acc_hits: list[int] = []
         self._acc_consumables: dict[int, list[Consumable]] = {}
         self._acc_frags: list[Frag] = []
         self._acc_message: list[Message] = []
+        self._acc_acoustic_torpedoes: dict[int, AcousticTorpedo] = {}
 
         #######################################################################
 
@@ -204,11 +208,6 @@ class BattleController(IBattleController):
         Entity.subscribe_property_change(
             "BattleLogic", "state", self._set_state
         )
-        # Entity.subscribe_nested_property_change(
-        #     "BattleLogic",
-        #     "state.missions.teamsScore",
-        #     lambda *a, **b: print(a, b),
-        # )
         Entity.subscribe_property_change(
             "BattleLogic", "battleType", self._set_battle_type
         )
@@ -237,8 +236,39 @@ class BattleController(IBattleController):
             "Building", "isSuppressed", self._is_suppressed
         )
         Entity.subscribe_property_change("Building", "isAlive", self._is_alive)
+        Entity.subscribe_method_call(
+            "Avatar", "receiveTorpedoDirection", self._receive_torpedo_dir
+        )
 
     ###########################################################################
+
+    # receiveTorpedoDirection(self, ownerId, torpedoId, serverPos, targetYaw,
+    # targetDepth, speedCoef, curYawSpeed, curPitchSpeed, canReachDepth)
+
+    def _receive_torpedo_dir(
+        self,
+        entity: Entity,
+        vehicle_id: int,
+        shot_id: int,
+        pos: tuple,
+        t_yaw,
+        t_depth,
+        speed_coef,
+        cur_yaw_speed,
+        cur_pitch_speed,
+        can_reach_depth,
+    ):
+        x, y = map(round, pos[::2])
+        self._acc_acoustic_torpedoes[
+            int(f"{vehicle_id}{shot_id}")
+        ] = AcousticTorpedo(
+            vehicle_id,
+            int(f"{vehicle_id}{shot_id}"),
+            x,
+            y,
+            t_yaw,
+            cur_yaw_speed,
+        )
 
     def _is_suppressed(self, entity: Entity, val):
         self._dict_building[entity.id] = self._dict_building[
@@ -356,6 +386,7 @@ class BattleController(IBattleController):
     def _add_ward(
         self, entity, plane_id, position, radius, duration, team_id, vehicle_id
     ):
+        radius = radius if radius else 60
         self._dict_ward[plane_id] = Ward(
             plane_id=plane_id,
             position=tuple(map(round, position[::2])),
@@ -433,6 +464,7 @@ class BattleController(IBattleController):
             evt_times_to_win=self._times_to_win(),
             evt_achievement=copy.deepcopy(self._achievements),
             evt_chat=copy.deepcopy(self._acc_message),
+            evt_acoustic_torpedo=copy.deepcopy(self._acc_acoustic_torpedoes),
         )
 
         self._dict_events[battle_time] = evt
@@ -442,12 +474,12 @@ class BattleController(IBattleController):
         self._acc_consumables.clear()
         self._acc_frags.clear()
         self._acc_message.clear()
+        self._acc_acoustic_torpedoes.clear()
 
     def _add_plane(
         self, entity: Entity, plane_id: int, team_id, params_id, pos, unk
     ):
         owner_id, index, purpose, departures = unpack_plane_id(plane_id)
-        # print(owner_id, index, purpose, departures, pos, params_id)
         self._dict_plane[plane_id] = Plane(
             plane_id=plane_id,
             owner_id=owner_id,
@@ -492,37 +524,39 @@ class BattleController(IBattleController):
             for torpedo in shot["torpedoes"]:
                 x, y = map(round, torpedo["pos"][::2])
                 a, b = torpedo["dir"][::2]
-
-                self._acc_torpedoes.append(
-                    Torpedo(
-                        params_id=shot["paramsID"],
-                        owner_id=owner_id,
-                        origin=(x, y),
-                        direction=(a, b),
-                        shot_id=int(f"{owner_id}{torpedo['shotID']}"),
-                    )
+                yaw = math.atan2(a, b)
+                speed_bw = math.hypot(a, b)
+                shot_id = torpedo["shotID"]
+                self._acc_torpedoes[int(f"{owner_id}{shot_id}")] = Torpedo(
+                    params_id=shot["paramsID"],
+                    owner_id=owner_id,
+                    origin=(x, y),
+                    shot_id=int(f"{owner_id}{torpedo['shotID']}"),
+                    yaw=yaw,
+                    speed_bw=speed_bw,
                 )
 
     def _crew_skills(self, entity: Entity, params):
         self._dict_info[self._vehicle_to_id[entity.id]] = self._dict_info[
             self._vehicle_to_id[entity.id]
-        ]._replace(skills=params["learnedSkills"])
+        ]._replace(skills=Skills(*params["learnedSkills"]))
 
     def _modernization(self, entity: Entity, config: bytes):
+
         with BytesIO(config) as bio:
-            bio.seek(3 * 4, 1)
+            # bio.seek(3 * 4, 1)
+            (unknown_1,) = struct.unpack("<L", bio.read(4))
+            (ship_params_id,) = struct.unpack("<L", bio.read(4))
+            (unknown_2,) = struct.unpack("<L", bio.read(4))
             (d,) = struct.unpack("<L", bio.read(4))  # len
-            (hull_unit,) = struct.unpack("<L", bio.read(4))  # hull unit
-            (artillery_unit,) = struct.unpack("<L", bio.read(4))
-            (torpedo_unit,) = struct.unpack("<L", bio.read(4))
-            (suo_unit,) = struct.unpack("<L", bio.read(4))
-            bio.seek(4 * (d - 4), 1)
+            units = struct.unpack("<" + "L" * d, bio.read(4 * d))
+            u = Units(*units)
+            hull_unit = units[0]
             (e,) = struct.unpack("<L", bio.read(4))  # modernization slot len
             modern = struct.unpack("<" + "L" * e, bio.read(e * 4))
             (f,) = struct.unpack("<L", bio.read(4))
             signals = struct.unpack("<" + "L" * f, bio.read(4 * f))
             (supply_state,) = struct.unpack("<L", bio.read(4))
-
             (h,) = struct.unpack("<L", bio.read(4))
             for i in range(h):
                 camo = struct.unpack("<" + "L", bio.read(4))
@@ -535,17 +569,11 @@ class BattleController(IBattleController):
                 self._dict_info[
                     self._vehicle_to_id[entity.id]
                 ] = self._dict_info[self._vehicle_to_id[entity.id]]._replace(
-                    abilities=abilities
-                )
-                self._dict_info[
-                    self._vehicle_to_id[entity.id]
-                ] = self._dict_info[self._vehicle_to_id[entity.id]]._replace(
-                    hull=hull_unit
-                )
-                self._dict_info[
-                    self._vehicle_to_id[entity.id]
-                ] = self._dict_info[self._vehicle_to_id[entity.id]]._replace(
-                    modernization=modern
+                    abilities=abilities,
+                    hull=hull_unit,
+                    modernization=modern,
+                    units=u,
+                    signals=signals,
                 )
             except KeyError:
                 pass
@@ -683,7 +711,7 @@ class BattleController(IBattleController):
                     hull=None,
                     abilities=(),
                     modernization=(),
-                    skills=[],
+                    skills=Skills(),
                     ship_components=player["shipComponents"],
                 )
 
@@ -804,6 +832,7 @@ class BattleController(IBattleController):
             evt_times_to_win=self._times_to_win(),
             evt_achievement=copy.deepcopy(self._achievements),
             evt_chat=copy.deepcopy(self._acc_message),
+            evt_acoustic_torpedo=copy.deepcopy(self._acc_acoustic_torpedoes),
             last_frame=True,
         )
 

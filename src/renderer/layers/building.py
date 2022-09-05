@@ -3,19 +3,21 @@ from ..data import ReplayData
 from renderer.render import Renderer
 from renderer.base import LayerBase
 from renderer.const import COLORS_NORMAL
-from renderer.utils import (
-    paste_args_centered,
-)
 
 from PIL import Image, ImageDraw
 
 
 class LayerBuildingBase(LayerBase):
+    """Class that draws building icons on the minimap.
+
+    Args:
+        LayerBase (_type_): Layer base.
+    """
+
     def __init__(
         self,
         renderer: Renderer,
         replay_data: Optional[ReplayData] = None,
-        color: Optional[str] = None,
     ):
         """Initializes this class.
 
@@ -33,9 +35,6 @@ class LayerBuildingBase(LayerBase):
     def draw(self, game_time: int, image: Image.Image):
         if not self._replay_data.events[game_time].evt_building:
             return
-
-        # {'CoastalArtillery', 'Complex', 'RayTower', 'Generator', 'Military',
-        # 'AirBase', 'SensorTower', 'AntiAircraft', 'SpaceStation'}
 
         for b_id, building in self._replay_data.events[
             game_time
@@ -60,7 +59,13 @@ class LayerBuildingBase(LayerBase):
                 )
 
             pos = self._renderer.get_scaled((building.x, building.y))
-            image.paste(**paste_args_centered(icon, pos[0], pos[1], True))
+            image.alpha_composite(
+                icon,
+                (
+                    pos[0] - round(icon.width / 2),
+                    pos[1] - round(icon.height / 2),
+                ),
+            )
 
     def _get_icon(self, is_alive, is_suppressed, relation, species):
         relation_dict = {-1: "neutral", 0: "ally", 1: "enemy"}

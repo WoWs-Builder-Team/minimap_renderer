@@ -45,8 +45,9 @@ class LayerSmokeBase(LayerBase):
         for smoke in smokes:
             for point in smoke.points:
                 x, y = self._renderer.get_scaled(point)
-                r = round(smoke.radius * self._renderer.minimap_scaling)
+                r = self._renderer.get_scaled_r(smoke.radius)
                 draw.ellipse(
                     [(x - r, y - r), (x + r, y + r)], fill="#ffffff40"
                 )
-        image.paste(base, mask=base)
+
+        image.alpha_composite(base)

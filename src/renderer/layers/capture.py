@@ -4,7 +4,7 @@ from renderer.base import LayerBase
 from renderer.render import Renderer
 from renderer.const import COLORS_NORMAL, RELATION_NORMAL_STR
 from renderer.utils import replace_color
-from renderer.data import ControlPoint, ReplayData
+from renderer.data import ReplayData
 
 
 class LayerCaptureBase(LayerBase):
@@ -47,8 +47,8 @@ class LayerCaptureBase(LayerBase):
 
             if count in self._generated_caps:
                 cap_image, cap_pos, cap_hash = self._generated_caps[count]
-                if self._get_cap_hash(cp) == cap_hash:
-                    image.paste(cap_image, cap_pos, cap_image)
+                if hash(cp) == cap_hash:
+                    image.alpha_composite(cap_image, cap_pos)
                     continue
 
             x, y = self._renderer.get_scaled(cp.position)
@@ -85,12 +85,12 @@ class LayerCaptureBase(LayerBase):
             px = round(cp_area.width / 2 - progress.width / 2) + 1
             py = round(cp_area.height / 2 - progress.height / 2) + 1
 
-            cp_area.paste(progress, (px, py), progress)
+            cp_area.alpha_composite(progress, (px, py))
 
             ix = round(cp_area.width / 2 - icon.width / 2) + 1
             iy = round(cp_area.height / 2 - icon.height / 2) + 1
 
-            cp_area.paste(icon, (ix, iy), icon)
+            cp_area.alpha_composite(icon, (ix, iy))
 
             cx = round(x - cp_area.width / 2)
             cy = round(y - cp_area.height / 2)
@@ -98,28 +98,10 @@ class LayerCaptureBase(LayerBase):
             self._generated_caps[count] = (
                 cp_area.copy(),
                 (cx, cy),
-                self._get_cap_hash(cp),
+                hash(cp)
             )
 
-            image.paste(cp_area, (cx, cy), cp_area)
-
-    def _get_cap_hash(self, cap: ControlPoint):
-        cap_hash = (
-            hash(
-                (
-                    cap.both_inside,
-                    cap.has_invaders,
-                    cap.invader_team,
-                    cap.is_visible,
-                    cap.progress,
-                    cap.radius,
-                    cap.relation,
-                    cap.team_id,
-                )
-            )
-            & 1000000000
-        )
-        return cap_hash
+            image.alpha_composite(cp_area, (cx, cy))
 
     def _get_capture_area(self, relation: int, size: tuple) -> Image.Image:
         """Loads the proper capture area image from the resources.

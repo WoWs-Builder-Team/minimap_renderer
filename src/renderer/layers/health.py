@@ -77,7 +77,8 @@ class LayerHealthBase(LayerBase):
 
     def _add_padding(self, bar: Image.Image):
         padded = Image.new("RGBA", (bar.width, bar.height + 4), (0, 0, 0, 0))
-        padded.paste(bar, (0, 0))
+        # padded.paste(bar, (0, 0))
+        padded.alpha_composite(bar, (0, 0))
         return padded
 
     def draw(self, game_time: int, image: Image.Image):
@@ -157,7 +158,9 @@ class LayerHealthBase(LayerBase):
                     )
 
                     bg_bar.paste(regen_bar_img, mask=mask_regen_img)
+                    # bg_bar.alpha_composite(regen_bar_img)
             bg_bar.paste(hp_bar_img, mask=mask_hp_img)
+            # bg_bar.alpha_composite(hp_bar_img)
 
         hp_current = "{:,}".format(round(ship.health)).replace(",", " ")
         hp_max = "{:,}".format(round(self._player.max_health)).replace(
@@ -192,9 +195,7 @@ class LayerHealthBase(LayerBase):
 
         if (flags := bin(ship.burn_flags)[2:][::-1]) != "0":
             burn_nodes, flood_nodes = info["hulls"][self._player.hull]
-            active_skills = self._player.skills[
-                SKILLS_ORDER.index(info["species"])
-            ]
+            active_skills = self._player.skills.by_species(info["species"])
             if FIRE_PREVENTION_ID in active_skills:
                 burn_nodes -= 1
 
@@ -232,11 +233,10 @@ class LayerHealthBase(LayerBase):
         for index, bit in enumerate(flags):
             if bit == "1":
                 x_per, y_per = positions[index]
-                image.paste(
+                image.alpha_composite(
                     icon,
                     (
                         round(image.width * x_per - icon.width / 2),
                         round(image.height * y_per - icon.height / 2),
                     ),
-                    icon,
                 )

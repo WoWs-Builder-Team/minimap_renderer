@@ -1,6 +1,35 @@
 from typing import NamedTuple, Optional
 
 
+class Units(NamedTuple):
+    hull: int = 0
+    artillery: int = 0
+    torpedoes: int = 0
+    suo: int = 0
+    engine: int = 0
+    flight_control: int = 0
+    fighter: int = 0
+    torpedo_bomber: int = 0
+    dive_bomber: int = 0
+    hydrophone: int = 0
+    skip_bomber: int = 0
+    primary_weapons: int = 0
+    secondary_weapons: int = 0
+    abilities: int = 0
+
+
+class Skills(NamedTuple):
+    AirCarrier: list[int] = []
+    Battleship: list[int] = []
+    Cruiser: list[int] = []
+    Destroyer: list[int] = []
+    Auxiliary: list[int] = []
+    Submarine: list[int] = []
+
+    def by_species(self, species: str) -> list[int]:
+        return self.__getattribute__(species)
+
+
 class PlayerInfo(NamedTuple):
     """Player information"""
 
@@ -20,8 +49,10 @@ class PlayerInfo(NamedTuple):
     hull: Optional[int]
     abilities: tuple
     modernization: tuple
-    skills: list[list[int]]
     ship_components: dict
+    skills: Skills = Skills()
+    units: Units = Units()
+    signals: tuple = ()
 
 
 class Vehicle(NamedTuple):
@@ -102,8 +133,21 @@ class Torpedo(NamedTuple):
     owner_id: int
     params_id: int
     origin: tuple[int, int]
-    direction: tuple[float, float]
+    # direction: tuple[float, float]
+    yaw: float
+    speed_bw: float
     shot_id: int
+
+
+class AcousticTorpedo(NamedTuple):
+    """Acoustic torpedo data."""
+
+    owner_id: int
+    shot_id: int
+    x: int
+    y: int
+    yaw: float
+    yaw_speed: float
 
 
 class Consumable(NamedTuple):
@@ -184,7 +228,7 @@ class Events(NamedTuple):
     evt_ward: dict[int, Ward]
     evt_smoke: dict[int, Smoke]
     evt_shot: list[Shot]
-    evt_torpedo: list[Torpedo]
+    evt_torpedo: dict[int, Torpedo]
     evt_hits: list[int]
     evt_consumable: dict[int, list[Consumable]]
     evt_control: dict[int, ControlPoint]
@@ -195,6 +239,7 @@ class Events(NamedTuple):
     evt_achievement: dict
     evt_times_to_win: Optional[tuple[float, float]]
     evt_chat: list[Message]
+    evt_acoustic_torpedo: dict[int, AcousticTorpedo]
     last_frame: bool = False
 
 

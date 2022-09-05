@@ -17,7 +17,10 @@ def create_modernization_data():
             modernizations["mb_range_modifiers"].append(modernization.id)
         modernizations["modernizations"][
             modernization.id
-        ] = modernization.modifiers.__dict__
+        ] = {
+            "modifiers": modernization.modifiers.__dict__,
+            "index": modernization.index
+        }
 
     with open(
         os.path.join(os.getcwd(), "generated", "modernizations.json"), "w"
