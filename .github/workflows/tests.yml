@@ -1,7 +1,9 @@
 name: Tests
 
 on:
-  - push
+  push:
+    paths:
+      - 'src/**'
   - pull_request
 
 jobs:
