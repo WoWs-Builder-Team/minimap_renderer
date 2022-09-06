@@ -25,4 +25,5 @@ if __name__ == "__main__":
             use_tqdm=True,
         )
         renderer.start(str(video_path))
+        LOGGER.info(f"The video file is at: {str(video_path)}")
         LOGGER.info("Done.")
