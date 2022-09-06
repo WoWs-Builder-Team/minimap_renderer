@@ -20,42 +20,27 @@ Minimap Renderer parses World of Warships replays to create a timelapse video th
 ### Installation
 
 1. Install Python 3.10
+2. Create a Python virtual environment and activate it.
 
-2. Clone this repository, wait for it to finish and `cd` into it.
+	- Linux
 
-```
+		```
+		python3.10 -m venv venv && . venv/bin/activate
+		```
 
-cd minimap_renderer
+	- Windows
 
-```
-
-3. Create a Python virtual environment.
-
-- Linux
-
-```
-
-. venv/bin/activate
-
-```
-
-- Windows
-
-```
-
-. venv/bin/activate
-
-```
+		```
+		py -3.10 -m venv venv && venv\Scripts\activate.bat
+		```
 
 - You should now see `(venv)` at the start of the command prompt.
 
 4. Install the renderer package. To install the renderer package use this command.
 
-```
-
-pip install -e .
-
-```
+	```
+	pip install --upgrade --force-reinstall git+https://github.com/WoWs-Builder-Team/minimap_renderer.git
+	```
 
 5. You're all set.
 
