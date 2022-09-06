@@ -146,9 +146,9 @@ class LayerFragBase(LayerBase):
                     line.append(
                         (
                             self._renderer.resman.load_image(
-                                f"{f_species}.png",
+                                f"{f_species}_ally.png",
                                 rot=-90,
-                                path=f"{icon_res}.ally",
+                                path="ship_icons",
                             ),
                             4,
                             1,
@@ -173,9 +173,9 @@ class LayerFragBase(LayerBase):
                     line.append(
                         (
                             self._renderer.resman.load_image(
-                                f"{k_species}.png",
+                                f"{k_species}_enemy.png",
                                 rot=90,
-                                path=f"{icon_res}.enemy",
+                                path="ship_icons",
                             ),
                             4,
                             1,
@@ -197,9 +197,9 @@ class LayerFragBase(LayerBase):
                     line.append(
                         (
                             self._renderer.resman.load_image(
-                                f"{f_species}.png",
+                                f"{f_species}_enemy.png",
                                 rot=90,
-                                path=f"{icon_res}.enemy",
+                                path="ship_icons",
                             ),
                             4,
                             1,
@@ -225,9 +225,9 @@ class LayerFragBase(LayerBase):
                     line.append(
                         (
                             self._renderer.resman.load_image(
-                                f"{k_species}.png",
+                                f"{k_species}_ally.png",
                                 rot=-90,
-                                path=f"{icon_res}.ally",
+                                path="ship_icons",
                             ),
                             4,
                             1,
@@ -271,10 +271,6 @@ class LayerFragBase(LayerBase):
         Returns:
             _type_: The image of the line.
         """
-        # line_hash = self._hash(line)
-
-        # if line_hash in self._generated_lines:
-        #     return self._generated_lines[line_hash]
 
         parts: dict[int, list] = {}
         total_width = 0
