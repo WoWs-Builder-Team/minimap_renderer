@@ -1,9 +1,9 @@
 from renderer.base import LayerBase
 from renderer.const import COLORS_NORMAL
 from renderer.render import Renderer
-from renderer.utils import flip_y, getEquidistantPoints
+from renderer.utils import flip_y
 from PIL import ImageDraw
-from math import cos, sin, radians, hypot, atan2, degrees
+from math import cos, sin, radians, degrees
 from typing import Optional
 from renderer.data import AcousticTorpedo, ReplayData, Torpedo
 

@@ -1,4 +1,3 @@
-from typing import Union
 from abc import ABC, abstractmethod
 from PIL import Image, ImageDraw
 

@@ -4,7 +4,7 @@ from renderer.render import Renderer
 from renderer.base import LayerBase
 from renderer.const import RELATION_NORMAL_STR, COLORS_NORMAL
 from renderer.utils import (
-    generate_ship_data,
+    generate_holder,
     draw_health_bar,
 )
 
@@ -49,7 +49,7 @@ class LayerShipBase(LayerBase):
             replay_data if replay_data else self._renderer.replay_data
         )
         self._color = color
-        self._ship_info = generate_ship_data(
+        self._holders = generate_holder(
             self._replay_data.player_info, renderer.resman, color
         )
         self._abilities = renderer.resman.load_json("abilities.json")
@@ -107,7 +107,7 @@ class LayerShipBase(LayerBase):
             if vehicle.vehicle_id in self._deads:
                 continue
 
-            holder = self._ship_info[vehicle.player_id]
+            holder = self._holders[vehicle.player_id]
             player = self._replay_data.player_info[vehicle.player_id]
             ship = self._ships[player.ship_params_id]
 

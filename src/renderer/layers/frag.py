@@ -124,8 +124,6 @@ class LayerFragBase(LayerBase):
             except KeyError:
                 k_name, k_species, k_level = "", "", 0
 
-            icon_res = "ship_icons"
-
             line = []
 
             if is_fragger_building:
@@ -280,7 +278,7 @@ class LayerFragBase(LayerBase):
             part = parts.setdefault(idx, [])
             match el:
                 case (a, b) if isinstance(a, str) and isinstance(b, str):
-                    str_w, str_h = self._font.getbbox(a)[2:]
+                    str_w, _ = self._font.getbbox(a)[2:]
                     total_width += str_w
                     part.append(el)
                 case (a, b, c) if isinstance(a, Image.Image) and isinstance(
@@ -322,7 +320,7 @@ class LayerFragBase(LayerBase):
         for el in part:
             match el:
                 case (a, b) if isinstance(a, str) and isinstance(b, str):
-                    str_w, str_h = self._font.getbbox(a)[2:]
+                    str_w, _ = self._font.getbbox(a)[2:]
                     base_draw.text((pos_x, 0), a, b, self._font)
                     pos_x += str_w
                 case (a, b, c) if isinstance(a, Image.Image) and isinstance(

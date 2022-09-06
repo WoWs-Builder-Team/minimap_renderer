@@ -77,7 +77,6 @@ class LayerHealthBase(LayerBase):
 
     def _add_padding(self, bar: Image.Image):
         padded = Image.new("RGBA", (bar.width, bar.height + 4), (0, 0, 0, 0))
-        # padded.paste(bar, (0, 0))
         padded.alpha_composite(bar, (0, 0))
         return padded
 
@@ -128,7 +127,7 @@ class LayerHealthBase(LayerBase):
             )
 
             if regen := ship.consumables_state.get(9, None):
-                st, count, en, t = regen
+                _, count, _, _ = regen
                 if count:
                     subtype = ability["id_to_subtype"][9]
                     wt = ability[subtype]["workTime"]
@@ -158,9 +157,7 @@ class LayerHealthBase(LayerBase):
                     )
 
                     bg_bar.paste(regen_bar_img, mask=mask_regen_img)
-                    # bg_bar.alpha_composite(regen_bar_img)
             bg_bar.paste(hp_bar_img, mask=mask_hp_img)
-            # bg_bar.alpha_composite(hp_bar_img)
 
         hp_current = "{:,}".format(round(ship.health)).replace(",", " ")
         hp_max = "{:,}".format(round(self._player.max_health)).replace(

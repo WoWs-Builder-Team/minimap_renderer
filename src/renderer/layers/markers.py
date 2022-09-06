@@ -67,7 +67,6 @@ class LayerMarkersBase(LayerBase):
                     continue
 
                 if self._color:
-                    # relation = 0 if self._color == "green" else 1
                     color = (
                         COLORS_NORMAL[0]
                         if self._color == "green"
@@ -82,7 +81,6 @@ class LayerMarkersBase(LayerBase):
                     w = h = r * 4
 
                     if aid == 11:
-                        # 200 = 6km
                         per = dist_ship_bw / 200
                         dash = round(30 * per)
                         shape = self._draw_arc_aa((w, h), color, dash=dash)

@@ -28,12 +28,12 @@ def draw_grid() -> Image.Image:
             continue
         draw.line([(x, 0), (x, base.height)], fill="#ffffff40")
         draw.line([(0, x), (base.width, x)], fill="#ffffff40")
-    # draw.rectangle((0, 0, base.width - 1, base.height - 1),
-    #                outline="#ffffff40", width=1)
+    draw.rectangle((0, 0, base.width - 1, base.height - 1),
+                   outline="#ffffff40", width=1)
     return base.copy()
 
 
-def generate_ship_data(
+def generate_holder(
     player_info: dict[int, PlayerInfo],
     resman,
     color: Optional[str] = None,
@@ -50,9 +50,7 @@ def generate_ship_data(
     dict_player_holder: dict[int, Image.Image] = {}
     text_offset = 16
     hw, hh = (100, 100)
-
     ships = resman.load_json("ships.json")
-
     font = resman.load_font(filename="warhelios_bold.ttf", size=12)
 
     for player in player_info.values():
