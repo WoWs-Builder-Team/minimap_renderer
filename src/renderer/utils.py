@@ -6,11 +6,13 @@ from .data import PlayerInfo
 from .const import COLORS_NORMAL
 from typing import Optional
 
+
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s | %(name)s | %(levelname)s | %(message)s",
+    format="%(asctime)s | %(name)s | %(levelname)s | %(message)s"
 )
 LOGGER = logging.getLogger("renderer")
+LOGGER.setLevel(logging.INFO)
 
 
 def draw_grid() -> Image.Image:
