@@ -57,6 +57,10 @@ class LayerShipBase(LayerBase):
         self._consumable_cache: dict[int, Image.Image] = {}
         self._owner = self._replay_data.player_info[self._replay_data.owner_id]
         self._owner_view_range = self._get_max_dist()
+        self._deads: list[int] = []
+        self._image_dead = Image.new(
+            renderer.minimap_fg.mode, renderer.minimap_fg.size
+        )
 
     def _get_max_dist(self):
         ship = self._ships[self._owner.ship_params_id]
@@ -91,10 +95,16 @@ class LayerShipBase(LayerBase):
         events = self._replay_data.events
         owner_vehicle = events[game_time].evt_vehicle[self._owner.ship_id]
 
+        if self._deads:
+            image.alpha_composite(self._image_dead)
+
         for vehicle in sorted(
             events[game_time].evt_vehicle.values(),
         ):
             if self._renderer.dual_mode and vehicle.relation == 1:
+                continue
+
+            if vehicle.vehicle_id in self._deads:
                 continue
 
             holder = self._ship_info[vehicle.player_id]
@@ -193,20 +203,20 @@ class LayerShipBase(LayerBase):
                     angle = 0
                     c_y_pos = 20
 
-                    match (d1, d2, d3, d4):
-                        case (d1, d2, d3, d4) if d1 <= 40 and d2 <= 40:
-                            angle = -135
-                        case (d1, d2, d3, d4) if d2 <= 40 and d3 <= 40:
-                            angle = 135
-                        case (d1, d2, d3, d4) if d3 <= 40 and d4 <= 40:
-                            angle = 45
-                        case (d1, d2, d3, d4) if d4 <= 40 and d1 <= 40:
-                            angle = -45
-                        case (d1, d2, d3, d4) if d1 <= 40:
+                    if d1 <= 40 and d2 <= 40:
+                        angle = -135
+                    elif d2 <= 40 and d3 <= 40:
+                        angle = 135
+                    elif d3 <= 40 and d4 <= 40:
+                        angle = 45
+                    elif d4 <= 40 and d1 <= 40:
+                        angle = -45
+                    else:
+                        if d1 <= 40:
                             angle = -90
-                        case (d1, d2, d3, d4) if d2 <= 40:
+                        if d2 <= 40:
                             angle = -180
-                        case (d1, d2, d3, d4) if d3 <= 40:
+                        if d3 <= 40:
                             angle = 90
 
                     if angle or d4 <= 40:
@@ -230,6 +240,16 @@ class LayerShipBase(LayerBase):
                             y - round(holder.height / 2),
                         ),
                     )
+            if not vehicle.is_alive and vehicle.vehicle_id not in self._deads:
+                self._deads.append(vehicle.vehicle_id)
+                self._image_dead.alpha_composite(
+                    icon,
+                    dest=(
+                        x - round(icon.width / 2),
+                        y - round(icon.height / 2),
+                    ),
+                )
+
             image.alpha_composite(
                 icon,
                 dest=(x - round(icon.width / 2), y - round(icon.height / 2)),
@@ -257,7 +277,7 @@ class LayerShipBase(LayerBase):
                 c_icons_holder = Image.new("RGBA", (20 * len(ac), 20))
                 x_pos = 0
 
-                for aid, duration in ac.items():
+                for aid, _ in ac.items():
                     abilities = self._abilities[params_id]
                     index = abilities["id_to_index"][aid]
                     filename = f"consumable_{index}.png"
@@ -298,6 +318,7 @@ class LayerShipBase(LayerBase):
 
         relation_str = RELATION_NORMAL_STR[relation]
         filename_parts: list[str] = []
+        state = (is_alive, is_visible, is_in_view_range)
 
         if relation == -1:
             if is_alive:
@@ -307,16 +328,16 @@ class LayerShipBase(LayerBase):
         else:
             filename_parts.append(species)
 
-            match (is_alive, is_visible, is_in_view_range):
-                case True, True, False:
-                    filename_parts.append(relation_str)
-                    filename_parts.append("outside")
-                case True, False, _:
-                    filename_parts.append("hidden")
-                case False, _, _:
-                    filename_parts.append("dead")
-                case _:
-                    filename_parts.append(relation_str)
+            if state == (True, True, False):
+                filename_parts.append(relation_str)
+                filename_parts.append("outside")
+            elif (state[0], state[1]) == (True, False):
+                filename_parts.append("hidden")
+            elif not state[0]:
+                filename_parts.append("dead")
+            else:
+                filename_parts.append(relation_str)
+
         filename = "_".join(filename_parts)
         filename = f"{filename}.png"
         return self._renderer.resman.load_image(filename, "ship_icons")
