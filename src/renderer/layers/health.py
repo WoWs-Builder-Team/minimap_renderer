@@ -202,10 +202,11 @@ class LayerHealthBase(LayerBase):
                 flags[0:BURN_NODE_BITS],
                 BURN_NODE_POSITIONS[burn_nodes],
             )
+            total_bits = BURN_NODE_BITS + FLOOD_NODE_BITS
             self._draw_nodes(
                 bg_bar,
                 self._flood_icon,
-                flags[BURN_NODE_BITS : BURN_NODE_BITS + FLOOD_NODE_BITS],
+                flags[BURN_NODE_BITS:total_bits],
                 FLOOD_NODE_POSITIONS[flood_nodes],
             )
 
