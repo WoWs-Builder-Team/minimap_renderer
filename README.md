@@ -6,6 +6,8 @@ Minimap Renderer parses World of Warships replays to create a timelapse video th
 
  ![enter image description here](images/minimap.gif)
 
+Try it on in [Google Colab](https://colab.research.google.com/drive/1OyomQe5pHaDDozpt0rs9JMg54No8QMjE?usp=sharing)
+
 ### Installation
 
 1. Install Python 3.10
