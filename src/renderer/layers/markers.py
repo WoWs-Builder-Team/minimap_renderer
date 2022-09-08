@@ -4,6 +4,7 @@ from renderer.render import Renderer
 from renderer.base import LayerBase
 from renderer.const import COLORS_NORMAL
 from PIL import Image, ImageDraw
+from functools import lru_cache
 
 
 class LayerMarkersBase(LayerBase):
@@ -30,7 +31,6 @@ class LayerMarkersBase(LayerBase):
         )
         self._color = color
         self._abilities = renderer.resman.load_json("abilities.json")
-        self._shape_cache: dict[int, Image.Image] = {}
 
     def draw(self, game_time: int, image: Image.Image):
         """Draws the markers to the minimap image.
@@ -90,6 +90,7 @@ class LayerMarkersBase(LayerBase):
                         shape, (x - shape.width // 2, y - shape.height // 2)
                     )
 
+    @lru_cache
     def _draw_arc_aa(
         self,
         size: tuple[int, int],
@@ -98,11 +99,6 @@ class LayerMarkersBase(LayerBase):
         width=2,
         dash=60,
     ) -> Image.Image:
-        arg_hash = hash((*size, color, dash))
-
-        if shape_image := self._shape_cache.get(arg_hash):
-            return shape_image
-
         w, h = map(lambda s: s * aa_level, size)
         width *= aa_level
         base = Image.new("RGBA", (w, h))
@@ -121,16 +117,12 @@ class LayerMarkersBase(LayerBase):
             s += d * 2
             e = s + d
         shape_image = base.resize(size, resample=Image.Resampling.LANCZOS)
-        self._shape_cache[arg_hash] = shape_image
         return shape_image
 
+    @lru_cache
     def _draw_ellipse_aa(
         self, size: tuple[int, int], color: str = "red", aa_level=2, width=2
     ):
-        arg_hash = hash((*size, color))
-
-        if shape_image := self._shape_cache.get(arg_hash):
-            return shape_image
 
         w, h = map(lambda s: s * aa_level, size)
         width *= aa_level
@@ -141,5 +133,4 @@ class LayerMarkersBase(LayerBase):
             draw.ellipse([(0, 0), (w - 1, h - 1)], outline=color, width=width)
 
         shape_image = base.resize(size, resample=Image.Resampling.LANCZOS)
-        self._shape_cache[arg_hash] = shape_image
         return shape_image
