@@ -239,8 +239,17 @@ class BattleController(IBattleController):
         Entity.subscribe_method_call(
             "Avatar", "receiveTorpedoDirection", self._receive_torpedo_dir
         )
+        Entity.subscribe_property_change(
+            "Vehicle", "maxHealth", self._set_max_health
+        )
 
     ###########################################################################
+
+    def _set_max_health(self, entity: Entity, max_health):
+        pid = self._vehicle_to_id[entity.id]
+        self._dict_info[pid] = self._dict_info[pid]._replace(
+            max_health=max_health
+        )
 
     # receiveTorpedoDirection(self, ownerId, torpedoId, serverPos, targetYaw,
     # targetDepth, speedCoef, curYawSpeed, curPitchSpeed, canReachDepth)
@@ -480,6 +489,17 @@ class BattleController(IBattleController):
         self, entity: Entity, plane_id: int, team_id, params_id, pos, unk
     ):
         owner_id, index, purpose, departures = unpack_plane_id(plane_id)
+
+        try:
+            relation = self._dict_info[self._vehicle_to_id[owner_id]].relation
+        except KeyError:
+            if self._owner["teamId"] == team_id and team_id != -1:
+                relation = 0
+            elif self._owner["teamId"] != team_id and team_id != -1:
+                relation = 1
+            else:
+                relation = -1
+
         self._dict_plane[plane_id] = Plane(
             plane_id=plane_id,
             owner_id=owner_id,
@@ -487,7 +507,7 @@ class BattleController(IBattleController):
             index=index,
             purpose=purpose,
             departures=departures,
-            relation=self._dict_info[self._vehicle_to_id[owner_id]].relation,
+            relation=relation,
             position=tuple(map(round, pos)),
         )
 
