@@ -73,7 +73,7 @@ class BattleController(IBattleController):
         Entity.subscribe_method_call(
             "Vehicle", "setConsumables", self.onSetConsumable
         )
-        Entity.subscribe_method_call("Avatar", "onRibbon", self.onRibbon)
+        Entity.subscribe_method_call("Vehicle", "onRibbon", self.onRibbon)
         Entity.subscribe_method_call(
             "Avatar", "onAchievementEarned", self.onAchievementEarned
         )
@@ -1006,9 +1006,9 @@ class BattleController(IBattleController):
         for name, normalized in normalized_map.items():
             self._damage_maps[name].update(normalized)
 
-    def onRibbon(self, avatar, ribbon_id):
-        self._ribbons.setdefault(avatar.id, {}).setdefault(ribbon_id, 0)
-        self._ribbons[avatar.id][ribbon_id] += 1
+    def onRibbon(self, vehicle, ribbon_id):
+        self._ribbons.setdefault(vehicle.id, {}).setdefault(ribbon_id, 0)
+        self._ribbons[vehicle.id][ribbon_id] += 1
 
     def onAchievementEarned(self, avatar, avatar_id, achievement_id):
         self._achievements.setdefault(avatar_id, {}).setdefault(

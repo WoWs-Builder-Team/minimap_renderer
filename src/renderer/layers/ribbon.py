@@ -58,7 +58,7 @@ class LayerRibbonBase(LayerBase):
         last_y_height = 0
         ribbon_count = 0
 
-        if evt_ribbons := evt_ribbons.get(self._replay_data.owner_avatar_id):
+        if evt_ribbons := evt_ribbons.get(self._replay_data.owner_vehicle_id):
             totals = {}
 
             for r_id, count in evt_ribbons.items():
