@@ -7,6 +7,7 @@ from renderer.base import LayerBase
 from renderer.const import RELATION_NORMAL_STR
 
 from PIL import Image
+from functools import lru_cache
 
 
 class LayerPlaneBase(LayerBase):
@@ -59,6 +60,7 @@ class LayerPlaneBase(LayerBase):
             m2 = round(icon.height / 2)
             image.alpha_composite(icon, (x - m1, y - m2))
 
+    @lru_cache
     def _get_plane_icon(self, plane: Plane) -> Image.Image:
         """Loads the plane icon from the resources.
 
