@@ -340,13 +340,7 @@ class Renderer(RendererBase):
                 self.usernames[pid] = name
 
     def _check_if_operations(self):
-        bts = self.resman.load_json("battle_types.json")
-        bt = bts[self.replay_data.game_battle_type]
-
-        if bt["scenario"][:2].startswith("OP"):
-            self.is_operations = True
-        if bt["scenario"] == "Defense":
-            self.is_operations = True
+        self.is_operations = self.replay_data.game_map.startswith('s')
 
     def get_player_build(self) -> list[dict]:
         url = "https://app.wowssb.com/ship?shipIndexes="
