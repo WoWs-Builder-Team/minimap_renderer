@@ -5,6 +5,7 @@ from renderer.render import Renderer
 from renderer.const import COLORS_NORMAL, RELATION_NORMAL_STR
 from renderer.utils import replace_color
 from renderer.data import ReplayData
+from functools import lru_cache
 
 
 class LayerCaptureBase(LayerBase):
@@ -117,6 +118,7 @@ class LayerCaptureBase(LayerBase):
         filename = f"cap_{relation_to_str[relation]}.png"
         return self._renderer.resman.load_image(filename, size=size)
 
+    @lru_cache
     def _get_progress(self, from_color: str, to_color: str, percent: float):
         """Gets the diamond progress `bar` from the resources and properly
         color it depending from the colors and percentage provided.
