@@ -66,16 +66,18 @@ class LayerTorpedoBase(LayerBase):
 
         for sid, torpedo in events.evt_torpedo.items():
             owner_id = torpedo.owner_id
+            relation = self._relations.get(torpedo.owner_id, 1)
+
             x, y = self._renderer.get_scaled(
                 (torpedo.origin[0], torpedo.origin[1])
             )
-            if self._relations[owner_id] == 1 and self._renderer.dual_mode:
+            if relation == 1 and self._renderer.dual_mode:
                 continue
 
             if self._color:
                 color = COLORS_NORMAL[0 if self._color == "green" else 1]
             else:
-                color = COLORS_NORMAL[self._relations[torpedo.owner_id]]
+                color = COLORS_NORMAL[relation]
 
             draw.ellipse(
                 [(x - 2, y - 2), (x + 2, y + 2)],
@@ -107,6 +109,7 @@ class LayerTorpedoBase(LayerBase):
 
         for sid, active_torpedo in self._active_torpedoes.items():
             owner_id = active_torpedo.owner_id
+            relation = self._relations.get(active_torpedo.owner_id, 1)
             x1, y1 = flip_y(active_torpedo.origin)
             angle = active_torpedo.yaw
             angle = angle - radians(90)
@@ -117,13 +120,13 @@ class LayerTorpedoBase(LayerBase):
             )
             x, y = self._renderer.get_scaled((x2, y2), False)
 
-            if self._relations[owner_id] == 1 and self._renderer.dual_mode:
+            if relation == 1 and self._renderer.dual_mode:
                 continue
 
             if self._color:
                 color = COLORS_NORMAL[0 if self._color == "green" else 1]
             else:
-                color = COLORS_NORMAL[self._relations[owner_id]]
+                color = COLORS_NORMAL[relation]
 
             draw.ellipse(
                 [(x - 2, y - 2), (x + 2, y + 2)],
