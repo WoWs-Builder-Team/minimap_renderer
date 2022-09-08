@@ -70,10 +70,13 @@ class LayerPlaneBase(LayerBase):
         Returns:
             Image.Image: The image of the plane.
         """
-        player = self._vehicle_id_to_player[plane.owner_id]
         try:
-            upgrade = 22 in player.skills.AirCarrier
-        except IndexError:
+            player = self._vehicle_id_to_player[plane.owner_id]
+            try:
+                upgrade = 22 in player.skills.AirCarrier
+            except IndexError:
+                upgrade = False
+        except KeyError:
             upgrade = False
         ptype, ammo = self._planes[plane.params_id]
 
