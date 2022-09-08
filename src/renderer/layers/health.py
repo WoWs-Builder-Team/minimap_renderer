@@ -130,8 +130,10 @@ class LayerHealthBase(LayerBase):
                 _, count, _, _ = regen
                 if count:
                     subtype = ability["id_to_subtype"][9]
-                    wt = ability[subtype]["workTime"]
-                    rhs = ability[subtype]["regenerationHPSpeed"]
+                    index = ability["id_to_index"][9]
+                    name = f"{index}.{subtype}"
+                    wt = ability[name]["workTime"]
+                    rhs = ability[name]["regenerationHPSpeed"]
                     maxHeal = floor(wt) * rhs * self._player.max_health
                     canHeal = (
                         ship.regeneration_health

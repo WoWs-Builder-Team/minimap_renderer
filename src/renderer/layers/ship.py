@@ -121,8 +121,9 @@ class LayerShipBase(LayerBase):
                     owner_abilities = self._abilities[
                         self._owner.ship_params_id
                     ]
+                    index = owner_abilities["id_to_index"][1]
                     subtype = owner_abilities["id_to_subtype"][1]
-                    owner_view_range *= owner_abilities[subtype][
+                    owner_view_range *= owner_abilities[f"{index}.{subtype}"][
                         "artilleryDistCoeff"
                     ]
 

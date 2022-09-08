@@ -82,7 +82,7 @@ def create_abilities_data():
                     id_to_index[ability_type_to_id[sa.consumableType]] = name
                     params_id_to_subtype[ability["id"]] = sub_name
                     params_id_to_index[ability["id"]] = ability["index"]
-                    at[sub_name] = {
+                    at[f"{name}.{sub_name}"] = {
                         k: v for k, v in sa.__dict__.items() if k in REQUIRED
                     }
 

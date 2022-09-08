@@ -57,7 +57,8 @@ class LayerMarkersBase(LayerBase):
 
             player = self._replay_data.player_info[vehicle.player_id]
             abilities = self._abilities[player.ship_params_id]
-            aid_to_subtype = abilities["id_to_subtype"]
+            id_to_subtype = abilities["id_to_subtype"]
+            id_to_index = abilities["id_to_index"]
             x, y = self._renderer.get_scaled((vehicle.x, vehicle.y))
 
             if ac := self._renderer.conman.active_consumables.get(
@@ -76,7 +77,8 @@ class LayerMarkersBase(LayerBase):
                     color = COLORS_NORMAL[vehicle.relation]
 
                 for aid in {11, 13}.intersection(ac):
-                    dist_ship_bw = abilities[aid_to_subtype[aid]]["distShip"]
+                    name = f"{id_to_index[aid]}.{id_to_subtype[aid]}"
+                    dist_ship_bw = abilities[name]["distShip"]
                     r = round(self._renderer.get_scaled_r(dist_ship_bw) / 2)
                     w = h = r * 4
 
