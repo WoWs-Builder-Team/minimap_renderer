@@ -10,6 +10,7 @@ from renderer.utils import (
 
 from PIL import Image, ImageDraw
 from math import hypot
+from functools import lru_cache
 
 MIN_VIEW_DISTANCES = {
     1: 15000,
@@ -295,6 +296,7 @@ class LayerShipBase(LayerBase):
                     (int(image.width / 2 - c_icons_holder.width / 2), y),
                 )
 
+    @lru_cache
     def _ship_icon(
         self,
         is_alive: bool,
