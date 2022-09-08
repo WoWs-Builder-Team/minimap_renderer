@@ -6,9 +6,14 @@ from src.replay_parser import ReplayParser
 
 
 @pytest.mark.parametrize(
-    "file", ["replays/116.wowsreplay", "replays/117.wowsreplay"]
+    "file",
+    [
+        "replays/116.wowsreplay",
+        "replays/117.wowsreplay",
+        "replays/118.wowsreplay",
+    ],
 )
-def test_t_logs_t_chat(file):
+def test_all(file):
     with open(file, "rb") as f:
         replay_info = ReplayParser(
             f, strict=True, raw_data_output=False
