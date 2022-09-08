@@ -4,6 +4,7 @@ from renderer.base import LayerBase
 from renderer.const import COLORS_NORMAL
 from renderer.data import Message, ReplayData
 from renderer.render import Renderer
+from functools import lru_cache
 
 
 class LayerChatBase(LayerBase):
@@ -26,7 +27,7 @@ class LayerChatBase(LayerBase):
         self._players = self._replay_data.player_info
         self._generated_lines: dict[int, Image.Image] = {}
         self._messages: list[Message] = []
-        self._lines: dict[int, Image.Image] = {}
+        # self._lines: dict[int, Image.Image] = {}
 
     def draw(self, game_time: int, image: Image.Image):
         """Draw the in-game chat to the image.
@@ -48,6 +49,7 @@ class LayerChatBase(LayerBase):
             y_pos -= l_h
             image.alpha_composite(line, (x_pos, y_pos))
 
+    @lru_cache
     def build(self, message: Message) -> Image.Image:
         """Builds the line message as an image.
 
@@ -58,10 +60,10 @@ class LayerChatBase(LayerBase):
             Image.Image: Image of the chat message.
         """
 
-        m_hash = hash(message) & 1000000000
+        # m_hash = hash(message) & 1000000000
 
-        if image := self._lines.get(m_hash, None):
-            return image
+        # if image := self._lines.get(m_hash, None):
+        #     return image
 
         base = Image.new("RGBA", (560, 17))
         draw = ImageDraw.Draw(base)
@@ -120,7 +122,7 @@ class LayerChatBase(LayerBase):
 
         draw.text((x_pos, 0), text, m_color, self._font)
         x_pos += m_w
-        self._lines[m_hash] = base
+        # self._lines[m_hash] = base
         return base
 
     @staticmethod
