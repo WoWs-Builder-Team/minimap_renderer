@@ -1,86 +1,51 @@
 ## Minimap Renderer
 
-  
+![Tests](https://github.com/WoWs-Builder-Team/minimap_renderer/actions/workflows/tests.yml/badge.svg)
 
 Minimap Renderer parses World of Warships replays to create a timelapse video that resembles the in-game minimap.
 
-![enter image description here](https://github.com/WoWs-Builder-Team/minimap_renderer/blob/master/docs/minimap.gif?raw=true)
+ ![enter image description here](images/minimap.gif)
+
+Try it on in [Google Colab](https://colab.research.google.com/drive/1OyomQe5pHaDDozpt0rs9JMg54No8QMjE?usp=sharing)
 
 ### Installation
 
-  
-
-1. Get Python 3.10 or higher
-
-  
-
-A virtual environment can be created with `python3.10 -m venv venv`.
-
-  
-
-2. Clone the repository
-
-  
-
-```
-
-git clone https://github.com/WoWs-Builder-Team/minimap_renderer.git
-
-```
-
-  
-
-3. Install dependencies
-
-  
-
-```
-
-cd minimap_renderer
-
-pip install -U -r requirements.txt
-
-```
-
-  
-
-4. You're set!
-
-  
-  
+1. Install Python 3.10
+2. Create a Python virtual environment and activate it.
+	- Linux
+		```
+		python3.10 -m venv venv && . venv/bin/activate
+		```
+	- Windows
+		```
+		py -3.10 -m venv venv && venv\Scripts\activate.bat
+		```
+	- You should now see `(venv)` at the start of the command prompt.
+3. Install the renderer package. To install the renderer package use this command.
+	```
+	pip install --upgrade --force-reinstall git+https://github.com/WoWs-Builder-Team/minimap_renderer.git
+	```
+4. You're all set.
 
 ### Usage
-
-  
-
-Replays can be parsed with `replay_parser.py`. The full usage is:
-
+Replays can be rendered with `render` module. The full usage is:
 ```
-
-replay_parser.py --replay <replay_path> [--strict_mode]
-
+python -m render --replay <replay_path>
 ```
+This will create a `.mp4` file from your replay file.
 
-  
-
-This will generate `data.dat` in the root directory. Now, you can simply run `render.py` to create `minimap.mp4`.
-
-  
+Since the renderer is installed to a virtual environment, you need to activate it once before you render. Once activated, you can render any replay file as long as it is a valid replay file.
 
 ### License
 
-  
-
 This project is licensed under the GNU AGPLv3 License.
 
-  
-
 ### Credits and Links
-
-  
 
 - This project is maintained by `@notyourfather#7816` and `@Trackpad#1234`.
 
 - However, it would not have been possible without Monstrofil's [replays_unpack](https://github.com/Monstrofil/replays_unpack)!
 
-- A Discord bot wrapper is available [here](https://github.com/padtrack/track).
+- A minimal Discord bot wrapper is available [here](https://github.com/WoWs-Builder-Team/minimap_renderer_bot).
+
+- One with additional features is available [here](https://github.com/padtrack/track).

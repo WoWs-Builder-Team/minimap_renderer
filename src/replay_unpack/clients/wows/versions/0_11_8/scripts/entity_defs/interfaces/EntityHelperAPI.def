@@ -1,0 +1,43 @@
+<root>
+	<Implements>
+		<Interface> AccountReady </Interface>
+	</Implements>
+
+	<TempProperties>
+		<_EntityHelperAPI__callbackByRequestID/>
+		<_EntityHelperAPI__logName/>
+		<_EntityHelperAPI__requestsCheckTimer/>
+	</TempProperties>
+
+	<Properties>
+		<_EntityHelperAPI__lastGeneratedRequestID>
+			<Type> UINT32 </Type>
+			<Flags> BASE </Flags>
+			<Persistent> False </Persistent>
+		</_EntityHelperAPI__lastGeneratedRequestID>
+	</Properties>
+
+	<BaseMethods>
+		<onCreateEntityFinished_>
+			<Arg> UINT32 </Arg>  <!-- requestID -->
+			<Arg> MAILBOX </Arg>  <!-- entityMBox -->
+			<Arg> UINT8 </Arg>  <!-- helperResponse -->
+		</onCreateEntityFinished_>
+
+		<onLookupAccountEntityByDBIDFinished_>
+			<Arg> UINT32 </Arg>  <!-- requestID -->
+			<Arg> MAILBOX </Arg>  <!-- accountMBox -->
+			<Arg> UINT8 </Arg>  <!-- accountResponse -->
+			<Arg> UINT8 </Arg>  <!-- helperResponse -->
+		</onLookupAccountEntityByDBIDFinished_>
+
+		<onLoadAccountEntityByDBIDFinished_>
+			<Arg> UINT32 </Arg>  <!-- requestID -->
+			<Arg> MAILBOX </Arg>  <!-- accountMBox -->
+			<Arg> BOOL </Arg>  <!-- wasReady -->
+			<Arg> UINT8 </Arg>  <!-- accountResponse -->
+			<Arg> UINT8 </Arg>  <!-- helperResponse -->
+		</onLoadAccountEntityByDBIDFinished_>
+
+	</BaseMethods>
+</root>

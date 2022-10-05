@@ -52,7 +52,6 @@ coverage.xml
 cover/
 
 # Translations
-*.mo
 *.pot
 
 # Django stuff:
@@ -161,7 +160,6 @@ cython_debug/
 .vscode/
 .cspell/
 code_testing/
-replays/
 *.mp4
 *.txt
 /*.dat
@@ -169,3 +167,6 @@ replays/
 /*.png
 !requirements.txt
 *.csv
+/scratch
+.coveragerc
+/replays/team*.wowsreplay

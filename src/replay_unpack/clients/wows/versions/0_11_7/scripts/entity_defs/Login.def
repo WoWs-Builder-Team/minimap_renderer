@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<root>
+    <Implements>
+        <Interface>EntityHelperAPI</Interface>
+        <Interface>GiveClientHelper</Interface>
+    </Implements>
+    <Properties></Properties>
+    <ClientMethods>
+        <onKickedFromServer>
+            <Args>
+                <checkoutPeripheryID>UINT32</checkoutPeripheryID>
+                <reasonID>UINT8</reasonID>
+                <extraInfo>STRING</extraInfo>
+            </Args>
+        </onKickedFromServer>
+        <receiveLoginQueueNumber>
+            <Args>
+                <processingType>UINT8</processingType>
+                <position>UINT64</position>
+            </Args>
+        </receiveLoginQueueNumber>
+        <syncUserStorage>
+            <Args>
+                <clientDataRevision>UINT32</clientDataRevision>
+                <spaID>UINT64</spaID>
+                <urls>ARRAY
+                    <of>STRING</of>
+                </urls>
+            </Args>
+        </syncUserStorage>
+    </ClientMethods>
+    <BaseMethods>
+        <checkGamePing>
+            <Exposed></Exposed>
+            <Args>
+                <clientTime>UINT64</clientTime>
+            </Args>
+        </checkGamePing>
+    </BaseMethods>
+</root>
+

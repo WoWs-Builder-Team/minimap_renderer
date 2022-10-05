@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<root>
+    <Implements>
+        <Interface>GiveClientHelper</Interface>
+    </Implements>
+    <Properties></Properties>
+    <ClientMethods>
+        <onCheckGamePing>
+            <Arg>UINT64</Arg>
+        </onCheckGamePing>
+        <onShutDownChanged></onShutDownChanged>
+    </ClientMethods>
+    <BaseMethods>
+        <stopReplay>
+            <Exposed></Exposed>
+        </stopReplay>
+        <checkGamePing>
+            <Arg>UINT64</Arg>
+            <Exposed></Exposed>
+        </checkGamePing>
+    </BaseMethods>
+</root>
+
