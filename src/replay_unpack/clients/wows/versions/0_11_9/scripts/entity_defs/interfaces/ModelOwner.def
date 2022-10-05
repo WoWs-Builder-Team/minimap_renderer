@@ -1,0 +1,47 @@
+<root>
+	<BaseMethods>
+	</BaseMethods>
+
+	<ClientMethods>
+		<onPlayEffect>
+			<Arg>STRING</Arg>   <!-- effect name -->
+			<Arg>STRING</Arg>   <!-- node name -->
+		</onPlayEffect>
+
+		<onPlaySound>
+			<Arg>STRING</Arg>   <!-- sound name -->
+			<Arg>STRING</Arg>   <!-- node name -->
+		</onPlaySound>
+
+		<onPlayLoopSound>
+			<Args>
+				<soundId> INT16 </soundId>
+				<name> STRING </name>
+				<node> STRING </node>
+			</Args>
+		</onPlayLoopSound>
+
+		<onStopSound>
+			<Args>
+				<soundId> INT16 </soundId>
+			</Args>
+		</onStopSound>
+	</ClientMethods>
+
+	<Properties>
+		<effects>
+			<Type>ARRAY<of>ENTITY_CLIENT_ACTION_STATE</of></Type>
+			<Flags> ALL_CLIENTS </Flags>
+		</effects>
+		<sounds>
+			<Type>ARRAY<of>ENTITY_CLIENT_ACTION_STATE</of></Type>
+			<Flags> ALL_CLIENTS </Flags>
+		</sounds>
+	</Properties>
+
+	<TempProperties>
+	</TempProperties>
+
+	<CellMethods>
+	</CellMethods>
+</root>
