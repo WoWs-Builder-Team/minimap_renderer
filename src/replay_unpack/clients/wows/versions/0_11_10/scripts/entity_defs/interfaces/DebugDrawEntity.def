@@ -1,0 +1,43 @@
+<root>
+	<ClientMethods>
+		<debugExec>
+			<Arg>	STRING	</Arg>
+			<Arg>	BLOB	</Arg>
+		</debugExec>
+		<drawDebugLine>
+			<Arg>	VECTOR3	</Arg>
+			<Arg>	VECTOR3	</Arg>
+			<Arg>	UINT32	</Arg>
+			<Arg>	UINT32	</Arg>
+		</drawDebugLine>
+		<drawDebugCircle>
+			<Arg>	VECTOR3	</Arg>
+			<Arg>	FLOAT32	</Arg>
+			<Arg>	UINT32	</Arg>
+			<Arg>	UINT8	</Arg>
+			<Arg>	UINT32	</Arg>
+		</drawDebugCircle>
+		<drawDebugCross>
+			<Arg>	VECTOR3	</Arg>
+			<Arg>	FLOAT32	</Arg>
+			<Arg>	UINT32	</Arg>
+			<Arg>	UINT32	</Arg>
+		</drawDebugCross>
+		<drawBoundingBox>
+            <Arg>	VECTOR3	</Arg>
+			<Arg>	VECTOR3	</Arg>
+			<Arg>	VECTOR3	</Arg>
+			<Arg>	FLOAT32	</Arg>
+		</drawBoundingBox>
+		<drawSphere>
+            <Arg>	VECTOR3	</Arg>
+			<Arg>	FLOAT32	</Arg>
+			<Arg>	FLOAT32	</Arg>
+		</drawSphere>
+		<drawCylinder>
+		    <Arg>	VECTOR3	</Arg>
+			<Arg>	VECTOR3	</Arg>
+			<Arg>	FLOAT32	</Arg>
+		</drawCylinder>
+	</ClientMethods>
+</root>

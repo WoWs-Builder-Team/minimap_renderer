@@ -9,8 +9,8 @@
 		<heightMapSize>	256	</heightMapSize>
 		<normalMapSize>	256	</normalMapSize>
 	</terrain>
-	<startPosition>	182.8865 22.6924 116.0291	</startPosition>
-	<startDirection>	0.0000 0.7208 -2.2176	</startDirection>
+	<startPosition>	-582.6093 13.5402 615.9019	</startPosition>
+	<startDirection>	0.0000 0.2645 -1.1125	</startDirection>
 	<navmeshGenerator>	navgen	</navmeshGenerator>
 	<UnprocessedData>
 		<shadows>	true	</shadows>

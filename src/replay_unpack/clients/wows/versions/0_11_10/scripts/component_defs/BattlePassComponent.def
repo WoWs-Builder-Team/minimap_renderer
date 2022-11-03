@@ -1,0 +1,43 @@
+<root>
+
+    <BaseMethods>
+        <buyBattlePass>
+            <Exposed/>
+            <Args>
+                <battlePassID> UINT16 </battlePassID>
+                <type> UINT8 </type>
+            </Args>
+	    </buyBattlePass>
+	    <claimRewards>
+	        <Exposed/>
+	        <Args>
+                <battlePassID> UINT16 </battlePassID>
+                <level> UINT16 </level>
+                <rewardType> UINT8 </rewardType>
+            </Args>
+	    </claimRewards>
+	    <claimAllRewards>
+	        <Exposed/>
+	        <Args>
+                <battlePassID> UINT16 </battlePassID>
+            </Args>
+	    </claimAllRewards>
+    </BaseMethods>
+
+    <ClientMethods>
+        <startSyncDelay/>
+        <syncEmptyBattlePass/>
+        <onClaimFailed>
+	        <Args>
+	            <battlePassID> UINT16 </battlePassID>
+                <level> UINT16 </level>
+                <rewardType> UINT8 </rewardType>
+            </Args>
+	    </onClaimFailed>
+	</ClientMethods>
+
+    <ofEntity>
+        <Account/>
+    </ofEntity>
+</root>
+

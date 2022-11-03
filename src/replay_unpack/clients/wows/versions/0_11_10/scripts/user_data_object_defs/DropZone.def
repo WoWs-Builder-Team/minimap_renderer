@@ -1,0 +1,65 @@
+<root>
+    <Domain> BASE </Domain>
+    <OptionsFlag>Enable</OptionsFlag>
+    <AdditionalProperties>
+        <drawInfo>
+            <property>tag</property>
+            <property>name</property>
+        </drawInfo>
+    </AdditionalProperties>
+
+    <Properties>
+        <description>
+            <Type> STRING </Type>
+            <Editable> true </Editable>
+        </description>
+
+        <name>
+            <Type>STRING</Type>
+            <Editable>true</Editable>
+        </name>
+
+        <team>
+            <Type>INT8</Type>
+            <Editable>True</Editable>
+        </team>
+
+        <tag>
+            <Type>STRING </Type>
+            <Editable>true</Editable>
+        </tag>
+
+        <radius>
+            <Type>FLOAT</Type>
+            <Default>10</Default>
+            <Widget>
+                RADIUS
+                <colour>0 192 96 192</colour>
+                <gizmoRadius>1</gizmoRadius>
+            </Widget>
+            <Editable>true</Editable>
+        </radius>
+
+        <group>
+            <Type> STRING </Type>
+            <Editable> True </Editable>
+        </group>
+
+        <subgroup>
+            <Type> STRING </Type>
+            <Editable> True </Editable>
+        </subgroup>
+
+        <enabled>
+            <Type> BOOL </Type>
+            <Editable> True </Editable>
+        </enabled>
+
+        <drop_visual>
+            <Type>STRING </Type>
+            <Editable>true</Editable>
+            <Default>PCOE001_Default</Default>
+            <resourceref/>
+        </drop_visual>
+    </Properties>
+</root>
