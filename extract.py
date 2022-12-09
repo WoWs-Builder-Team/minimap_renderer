@@ -21,6 +21,11 @@ UNPACK_LIST = (
     "gui/ribbons/*",
     "gui/ship_bars/*",
     "gui/ship_silhouettes/*",
+    "gui/consumables/consumable_*_*.png",
+    "gui/ship_bars/*",
+)
+EXCLUDE_LIST = (
+    "gui/consumables/consumable_*_*_empty.png",
 )
 
 
@@ -28,15 +33,13 @@ def main(bin_num):
     bin_path = fr"bin\{bin_num}"
     idx_path = fr"{bin_path}\idx"
     pkg_path = r"..\..\..\res_packages"
-    include = []
-    for pattern in UNPACK_LIST:
-        include.append("-I")
-        include.append(pattern)
+    include = [i for pattern in UNPACK_LIST for i in ("-I", pattern)]
+    exclude = [i for pattern in EXCLUDE_LIST for i in ("-X", pattern)]
 
     subprocess.run(["wowsunpack.exe", "-x", idx_path,
                     "-p", pkg_path,
                     "-o", OUTPUT_NAME,
-                    *include])
+                    *include, *exclude])
 
     texts_src = fr"{bin_path}\res\texts"
     texts_dest = fr"{OUTPUT_NAME}\texts"
