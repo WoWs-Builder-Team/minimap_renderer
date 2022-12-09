@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.INFO,
 
 LOGGER = logging.getLogger("spaces")
 
-BLACKLIST = ["shipyard_", "spaces", "dock"]
+BLACKLIST = ["shipyard_", "spaces", "dock", "exterior"]
 WHITELIST = ["space.settings", "minimap.png",
              "minimap_water.png", "__init__.py"]
 
