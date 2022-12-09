@@ -126,7 +126,6 @@
 			<wavesScale3>	1.670000 0.165000 1.000000 2.430000	</wavesScale3>
 		</Simulation>
 		<Sun>
-			<ambient>	0.329412 0.313726 0.454902 1.000000	</ambient>
 			<angularSize>	0.500000	</angularSize>
 			<color>	0.800000 0.658824 0.541176 1.000000	</color>
 			<lightMapBias>	0.005000	</lightMapBias>
