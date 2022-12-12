@@ -251,6 +251,9 @@ class BattleController(IBattleController):
     def _update_caps(self, entity: Entity, cp_l):
         cp = entity.properties["client"]
 
+        if not cp["componentsState"]["controlPoint"]:
+            return
+
         if cp["teamId"] == self._owner["teamId"] and cp["teamId"] != -1:
             relation = 0
         elif cp["teamId"] != self._owner["teamId"] and cp["teamId"] != -1:
@@ -275,6 +278,9 @@ class BattleController(IBattleController):
         )
 
     def _set_caps(self, entity: Entity, state):
+        if not state["controlPoint"]:
+            return
+
         cp = entity.properties["client"]
         cp_l = state["captureLogic"]
 
