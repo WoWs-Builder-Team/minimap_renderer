@@ -200,9 +200,6 @@ class BattleController(IBattleController):
             "Avatar", "receive_wardRemoved", self._remove_ward
         )
         Entity.subscribe_nested_property_change(
-            "BattleLogic", "state.controlPoints", self._set_control_points
-        )
-        Entity.subscribe_nested_property_change(
             "SmokeScreen", "points", self._set_smoke_points
         )
         Entity.subscribe_property_change(
@@ -242,8 +239,68 @@ class BattleController(IBattleController):
         Entity.subscribe_property_change(
             "Vehicle", "maxHealth", self._set_max_health
         )
+        Entity.subscribe_property_change(
+            "InteractiveZone", "componentsState", self._set_caps
+        )
+        Entity.subscribe_nested_property_change(
+            "InteractiveZone", "componentsState.captureLogic", self._update_caps
+        )
 
     ###########################################################################
+
+    def _update_caps(self, entity: Entity, cp_l):
+        cp = entity.properties["client"]
+
+        if cp["teamId"] == self._owner["teamId"] and cp["teamId"] != -1:
+            relation = 0
+        elif cp["teamId"] != self._owner["teamId"] and cp["teamId"] != -1:
+            relation = 1
+        else:
+            relation = -1
+
+        cid = cp["componentsState"]["controlPoint"]["index"]
+        self._dict_control[cid] = ControlPoint(
+            position=(round(entity.position.x), round(entity.position.z)),
+            radius=cp["radius"],
+            team_id=cp["teamId"],
+            invader_team=cp_l["invaderTeam"],
+            control_point_type=cp["type"],
+            progress=cp_l["progress"],
+            both_inside=cp_l["bothInside"],
+            has_invaders=cp_l["hasInvaders"],
+            capture_time=cp_l["captureTime"],
+            capture_speed=cp_l["captureSpeed"],
+            relation=relation,
+            is_visible=cp_l["isVisible"],
+        )
+
+    def _set_caps(self, entity: Entity, state):
+        cp = entity.properties["client"]
+        cp_l = state["captureLogic"]
+
+        if cp["teamId"] == self._owner["teamId"] and cp["teamId"] != -1:
+            relation = 0
+        elif cp["teamId"] != self._owner["teamId"] and cp["teamId"] != -1:
+            relation = 1
+        else:
+            relation = -1
+
+        cid = state["controlPoint"]["index"]
+
+        self._dict_control[cid] = ControlPoint(
+            position=(round(entity.position.x), round(entity.position.z)),
+            radius=cp["radius"],
+            team_id=cp["teamId"],
+            invader_team=cp_l["invaderTeam"],
+            control_point_type=cp["type"],
+            progress=cp_l["progress"],
+            both_inside=cp_l["bothInside"],
+            has_invaders=cp_l["hasInvaders"],
+            capture_time=cp_l["captureTime"],
+            capture_speed=cp_l["captureSpeed"],
+            relation=relation,
+            is_visible=cp_l["isVisible"],
+        )
 
     def _set_max_health(self, entity: Entity, max_health):
         pid = self._vehicle_to_id[entity.id]
@@ -344,54 +401,6 @@ class BattleController(IBattleController):
                 relation = 1
             self._dict_score[relation] = Score(relation, team_score["score"])
 
-        for cp in state["controlPoints"]:
-            if cp["teamId"] == self._owner["teamId"] and cp["teamId"] != -1:
-                relation = 0
-            elif cp["teamId"] != self._owner["teamId"] and cp["teamId"] != -1:
-                relation = 1
-            else:
-                relation = -1
-
-            cid = hash(tuple(cp["position"])) & 1000000000
-            self._dict_control[cid] = ControlPoint(
-                position=tuple(map(round, cp["position"])),
-                radius=cp["radius"],
-                team_id=cp["teamId"],
-                invader_team=cp["invaderTeam"],
-                control_point_type=cp["controlPointType"],
-                progress=cp["progress"],
-                both_inside=bool(cp["bothInside"]),
-                has_invaders=bool(cp["hasInvaders"]),
-                capture_time=cp["captureTime"],
-                capture_speed=cp["captureSpeed"],
-                relation=relation,
-                is_visible=cp["isVisible"],
-            )
-
-    def _set_control_points(self, ent, cp):
-        if cp["teamId"] == self._owner["teamId"] and cp["teamId"] != -1:
-            relation = 0
-        elif cp["teamId"] != self._owner["teamId"] and cp["teamId"] != -1:
-            relation = 1
-        else:
-            relation = -1
-
-        cid = hash(tuple(cp["position"])) & 1000000000
-        self._dict_control[cid] = self._dict_control[cid]._replace(
-            position=tuple(map(round, cp["position"])),
-            radius=cp["radius"],
-            team_id=cp["teamId"],
-            invader_team=cp["invaderTeam"],
-            control_point_type=cp["controlPointType"],
-            progress=round(cp["progress"], 1),
-            both_inside=bool(cp["bothInside"]),
-            has_invaders=bool(cp["hasInvaders"]),
-            capture_time=cp["captureTime"],
-            capture_speed=cp["captureSpeed"],
-            relation=relation,
-            is_visible=bool(cp["isVisible"]),
-        )
-
     def _add_ward(
         self, entity, plane_id, position, radius, duration, team_id, vehicle_id
     ):
@@ -428,13 +437,9 @@ class BattleController(IBattleController):
             return None
 
         ally_tick, enemy_tick = 0, 0
-        for cap in self._getCapturePointsInfo():
-            if (
-                cap["isEnabled"]
-                and not cap["bothInside"]
-                and cap["teamId"] != -1
-            ):
-                if cap["teamId"] == self._owner["teamId"]:
+        for cap in self._dict_control.values():
+            if not cap.both_inside and cap.team_id != -1:
+                if cap.relation == 0:
                     ally_tick += reward
                 else:
                     enemy_tick += reward
@@ -465,7 +470,7 @@ class BattleController(IBattleController):
             evt_consumable=copy.copy(self._acc_consumables),
             evt_plane=copy.copy(self._dict_plane),
             evt_ward=copy.copy(self._dict_ward),
-            evt_control=copy.copy(self._dict_control),
+            evt_control=dict(sorted(self._dict_control.items())),
             evt_score=copy.copy(self._dict_score),
             evt_damage_maps=copy.deepcopy(self._damage_maps),
             evt_frag=copy.copy(self._acc_frags),
@@ -844,7 +849,7 @@ class BattleController(IBattleController):
             evt_consumable=copy.copy(self._acc_consumables),
             evt_plane=copy.copy(self._dict_plane),
             evt_ward=copy.copy(self._dict_ward),
-            evt_control=copy.copy(self._dict_control),
+            evt_control=dict(sorted(self._dict_control.items())),
             evt_score=copy.copy(self._dict_score),
             evt_damage_maps=copy.deepcopy(self._damage_maps),
             evt_frag=copy.copy(self._acc_frags),
