@@ -100,6 +100,8 @@ class ReplayPlayer(ControlledPlayerBase):
                 spec=self._definitions.get_entity_def_by_index(packet.type),
             )
 
+            entity.position = packet.position
+
             values = packet.state.io()
             (values_count,) = struct.unpack("B", values.read(1))
             for i in range(values_count):
