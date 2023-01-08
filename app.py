@@ -43,6 +43,7 @@ def run_pip(pkg, desc=None, args=""):
     return run(f'"{python}" -m pip install {pkg} {args}', desc=f"Installing {desc}", errdesc=f"Couldn't install {desc}")
 
 def main(page):
+    # rendering
     def on_dialog_result(e: ft.FilePickerResultEvent):
         if not e.files:
             return
@@ -64,7 +65,7 @@ def main(page):
                     body.update()
 
                     path = Path(file)
-                    video_path = path.parent.joinpath(f"{path.stem}.mp4")
+                    video_path = output_path.joinpath(f"{path.stem}.mp4")
                     with open(path, "rb") as f:
                         LOGGER.info("Parsing the replay file...")
                         replay_info = ReplayParser(
@@ -95,7 +96,15 @@ def main(page):
             time.sleep(2)
             body.update()
 
-            os.startfile(path.parent)
+            os.startfile(output_path)
+
+    def set_output_folder(e: ft.FilePickerResultEvent):
+        if not e.path:
+            return
+        else:
+            page.client_storage.set("output_path", str(e.path))
+            output_path_title.value = f"{str(e.path)}\\"
+            output_path_title.update()
 
     def update_renderer(e):
         print('update')
@@ -114,7 +123,15 @@ def main(page):
         page.snack_bar.open = True
         page.update()
 
+    # reading settings
+    if page.client_storage.contains_key("output_path"):
+        output_path = Path(page.client_storage.get("output_path"))
+        
+    else:
+        output_path = Path(os.getcwd()).joinpath("output_videos")
+        output_path.mkdir(parents=True, exist_ok=True)
 
+    # components
     github_btn = ft.ElevatedButton(
         "Github", 
         icon=ft.icons.HOME_ROUNDED,
@@ -127,13 +144,14 @@ def main(page):
             shape = buttons.RoundedRectangleBorder(radius=2), 
         )
     )
+
     body = ft.ResponsiveRow([],
         vertical_alignment= ft.CrossAxisAlignment.CENTER,
         height=600,
     )
 
     upload_container = ft.Container(
-        ft.Text("choose replays", style=ft.TextThemeStyle.DISPLAY_MEDIUM),
+        ft.Text("Select replays", style=ft.TextThemeStyle.DISPLAY_MEDIUM),
         alignment = ft.alignment.center,
         border = ft.border.all(5, "#C0C0C0"),
         on_click=lambda _: file_picker.pick_files(allowed_extensions=["wowsreplay"], allow_multiple=True)
@@ -148,13 +166,29 @@ def main(page):
         icon = ft.icons.SETTINGS,
         items = [
             ft.PopupMenuItem(text="render setting", content=ft.Column([
-                ft.Text("render setting", style=ft.TextThemeStyle.BODY_LARGE),
+                ft.Text("Render setting", style=ft.TextThemeStyle.BODY_LARGE),
                 setting_chat,
                 setting_anon,
             ])),
             ft.PopupMenuItem(), # divider
-            ft.PopupMenuItem(
-                content=ft.ElevatedButton(
+
+            # ft.PopupMenuItem(text="D:\Codes\minimap_renderer\Codes\minimap_renderer", on_click = lambda _: output_folder_picker.get_directory_path()), # divider
+            ft.PopupMenuItem(text="output setting", content=ft.Column([
+                ft.Text("Output setting", tooltip="current output folder", style=ft.TextThemeStyle.BODY_LARGE),
+                output_path_title := ft.Text(f"{output_path}\\", style=ft.TextThemeStyle.BODY_SMALL),
+                ft.ElevatedButton(
+                    "change folder",
+                    tooltip = "change output folder",
+                    on_click =lambda _: output_folder_picker.get_directory_path(),
+                    style=ft.ButtonStyle(
+                        shape=buttons.RoundedRectangleBorder(radius=2),
+                    )
+                ),
+            ])),
+            ft.PopupMenuItem(), # divider
+            ft.PopupMenuItem(content=ft.Column([
+                ft.Text("Update", style=ft.TextThemeStyle.BODY_LARGE),
+                ft.ElevatedButton(
                     "update modules",
                     tooltip = "click it if WOWS updated recently and this tool failed to run",
                     on_click = update_renderer,
@@ -162,7 +196,7 @@ def main(page):
                         shape=buttons.RoundedRectangleBorder(radius=2),
                     )
                 )
-            ),
+        ])),
             ft.PopupMenuItem(), # divider
             ft.PopupMenuItem(
                 content = ft.Text("GUI made by B2U#0900", style=ft.TextThemeStyle.BODY_SMALL),
@@ -171,7 +205,7 @@ def main(page):
         ]
     )
 
-
+    # app bar
     page.appbar = ft.AppBar(
         leading=ft.Icon(ft.icons.MAP),
         leading_width=40,
@@ -184,10 +218,13 @@ def main(page):
         ],
     )
     
+    # filer pickers
     file_picker = ft.FilePicker(on_result=on_dialog_result)
+    output_folder_picker = ft.FilePicker(on_result=set_output_folder)
     page.overlay.append(file_picker)
+    page.overlay.append(output_folder_picker)
 
-
+    # page
     page.add(
         body
     )
@@ -196,8 +233,9 @@ def main(page):
 if __name__ == "__main__":
 
     if not is_installed("renderer"):
-        run_pip_from_git("https://github.com/WoWs-Builder-Team/minimap_renderer.git", "minimap_renderer", "-U")
         print("this might take a few minutes...")
+        run_pip_from_git("https://github.com/WoWs-Builder-Team/minimap_renderer.git", "minimap_renderer", "-U")
+        
         
     if not is_installed("flet"):
         run_pip("flet", "flet")
