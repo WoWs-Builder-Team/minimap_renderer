@@ -135,7 +135,7 @@ def main(page):
     upload_container = ft.Container(
         ft.Text("choose replays", style=ft.TextThemeStyle.DISPLAY_MEDIUM),
         alignment = ft.alignment.center,
-        border = ft.border.all(5, "white"),
+        border = ft.border.all(5, "#C0C0C0"),
         on_click=lambda _: file_picker.pick_files(allowed_extensions=["wowsreplay"], allow_multiple=True)
     )
     
