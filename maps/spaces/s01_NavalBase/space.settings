@@ -14,8 +14,8 @@
 	<navmeshGenerator>	navgen	</navmeshGenerator>
 	<UnprocessedData>
 		<shadows>	false	</shadows>
-		<heightMap>	true	</heightMap>
-		<miniMap>	true	</miniMap>
+		<heightMap>	false	</heightMap>
+		<miniMap>	false	</miniMap>
 		<saved>	false	</saved>
 	</UnprocessedData>
 </space.settings>

@@ -1,0 +1,17 @@
+<root>
+    <Domain> CLIENT </Domain>
+    
+    <Properties>
+        <description>
+            <Type> STRING </Type>
+            <Editable> true </Editable>
+        </description>
+
+        <eventName>
+            <Type> STRING </Type>
+            <Default> </Default>
+            <Editable> true </Editable>
+        </eventName>
+    </Properties>
+</root>
+

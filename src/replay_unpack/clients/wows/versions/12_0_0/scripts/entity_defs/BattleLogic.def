@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<root>
+    <Implements>
+        <Interface>StatsOwner</Interface>
+    </Implements>
+    <IsManualAoI>true</IsManualAoI>
+    <Properties>
+        <battleType>
+            <Type>UINT16</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </battleType>
+        <duration>
+            <Type>UINT16</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </duration>
+        <timeLeft>
+            <Type>UINT16</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </timeLeft>
+        <battleStage>
+            <Type>UINT8</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </battleStage>
+        <state>
+            <Type>BATTLE_LOGIC_STATE</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </state>
+        <teams>
+            <Type>TEAMS_DEF</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </teams>
+        <debugText>
+            <Type>ARRAY
+                <of>BATTLE_LOGIC_DEBUG_TEXT</of>
+            </Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </debugText>
+        <prerequisiteData>
+            <Type>PREREQUISITE_DATA</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </prerequisiteData>
+        <mapBorder>
+            <Type>MAP_BORDER</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </mapBorder>
+    </Properties>
+    <ClientMethods>
+        <onPlayWorldEffect>
+            <Arg>STRING</Arg>
+            <Arg>VECTOR3</Arg>
+            <Arg>FLOAT</Arg>
+        </onPlayWorldEffect>
+        <onPlayWorldSound>
+            <Arg>STRING</Arg>
+            <Arg>VECTOR3</Arg>
+            <Arg>FLOAT</Arg>
+        </onPlayWorldSound>
+    </ClientMethods>
+    <CellMethods></CellMethods>
+    <BaseMethods></BaseMethods>
+</root>
+

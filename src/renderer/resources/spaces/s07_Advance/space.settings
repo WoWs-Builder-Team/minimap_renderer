@@ -15,7 +15,7 @@
 	<UnprocessedData>
 		<shadows>	false	</shadows>
 		<heightMap>	false	</heightMap>
-		<miniMap>	true	</miniMap>
+		<miniMap>	false	</miniMap>
 		<saved>	false	</saved>
 	</UnprocessedData>
 </space.settings>
