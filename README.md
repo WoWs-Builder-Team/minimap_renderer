@@ -42,6 +42,10 @@ This project is licensed under the GNU AGPLv3 License.
 
 ### Credits and Links
 
+<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png" alt="JetBrains Logo (Main) logo." height="200">
+
+- This project is supported by [Jetbrains](https://www.jetbrains.com/) through their [Open Source Support](https://jb.gg/OpenSourceSupport) program.
+
 - This project is maintained by `@notyourfather#7816` and `@Trackpad#1234`.
 
 - However, it would not have been possible without Monstrofil's [replays_unpack](https://github.com/Monstrofil/replays_unpack)!
