@@ -162,9 +162,18 @@ class LayerShipBase(LayerBase):
                 ship["species"],
                 relation,
                 is_in_view_range,
+                vehicle.visibility_flag,
             )
             icon = icon.rotate(-vehicle.yaw, Image.Resampling.BICUBIC, True)
             x, y = self._renderer.get_scaled((vehicle.x, vehicle.y))
+
+            if vehicle.is_alive:
+                if not vehicle.is_visible or relation == 1 and not vehicle.visibility_flag and is_in_view_range:
+                    image.alpha_composite(
+                        icon,
+                        dest=(x - round(icon.width / 2), y - round(icon.height / 2)),
+                    )
+                    continue
 
             if vehicle.is_alive:
                 if vehicle.is_visible:
@@ -305,6 +314,7 @@ class LayerShipBase(LayerBase):
         species: str,
         relation: int,
         is_in_view_range: bool,
+        visibility_flag: int,
     ) -> Image.Image:
         """Returns an image associated with ship's state.
 
@@ -314,6 +324,7 @@ class LayerShipBase(LayerBase):
             species (str): Ship's type.
             relation (int): Ship's relation to player.
             not_in_range (bool): If the ship is in player's render range.
+            visibility_flag (int): Integer representing status of various detection reasons.
 
         Returns:
             Image.Image: An icon associated with the ship's state.
@@ -334,7 +345,7 @@ class LayerShipBase(LayerBase):
             if state == (True, True, False):
                 filename_parts.append(relation_str)
                 filename_parts.append("outside")
-            elif (state[0], state[1]) == (True, False):
+            elif (state[0], state[1]) == (True, False) or (relation == 1 and is_alive and not visibility_flag):
                 filename_parts.append("hidden")
             elif not state[0]:
                 filename_parts.append("dead")
