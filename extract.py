@@ -20,7 +20,7 @@ UNPACK_LIST = (
     "gui/achievements/*",
     "gui/ribbons/*",
     "gui/ship_bars/*",
-    "gui/ship_silhouettes/*",
+    "gui/ships_silhouettes/*",
     "gui/consumables/consumable_*_*.png",
     "gui/ship_bars/*",
 )
