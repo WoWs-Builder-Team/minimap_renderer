@@ -1,0 +1,47 @@
+<root>
+    <Domain> BASE </Domain>
+    <OptionsFlag>Enable</OptionsFlag>
+    <AdditionalProperties>
+        <radius>
+            <color>0x55bd8d06</color>
+            <property>radius</property>
+        </radius>
+        <drawInfo>
+            <property>tag</property>
+            <property>name</property>
+        </drawInfo>
+    </AdditionalProperties>
+    <Properties>
+        <description>
+            <Type> STRING </Type>
+            <Editable> true </Editable>
+        </description>
+
+        <name>
+            <Type>STRING</Type>
+            <Editable>true</Editable>
+        </name>
+
+        <team>
+            <Type>INT8</Type>
+            <Editable>True</Editable>
+        </team>
+
+        <tag>
+            <Type>STRING </Type>
+            <Editable>true</Editable>
+        </tag>
+
+        <radius>
+            <Type>FLOAT</Type>
+            <Default>10</Default>
+            <Widget>
+                RADIUS
+                <colour>	0 192 96 192	</colour>
+                <gizmoRadius>	1	</gizmoRadius>
+            </Widget>
+            <Editable>true</Editable>
+        </radius>
+
+    </Properties>
+</root>
