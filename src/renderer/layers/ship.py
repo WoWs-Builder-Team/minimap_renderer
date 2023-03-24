@@ -72,7 +72,12 @@ class LayerShipBase(LayerBase):
         fire_control_comp = self._owner.ship_components["fireControl"]
         ship_comp = ship["components"]
         max_dist = ship_comp[artillery_comp]["maxDist"]
-        max_dist_coef = ship_comp[fire_control_comp]["maxDistCoef"]
+
+        try:
+            max_dist_coef = ship_comp[fire_control_comp]["maxDistCoef"]
+        except KeyError:
+            max_dist_coef = 1
+
         max_dist = max_dist * max_dist_coef
         modernizations = self._renderer.resman.load_json("modernizations.json")
 
