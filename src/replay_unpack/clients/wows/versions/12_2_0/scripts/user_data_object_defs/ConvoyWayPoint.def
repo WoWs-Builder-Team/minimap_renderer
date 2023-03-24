@@ -1,0 +1,67 @@
+<root>
+    <OptionsFlag>Enable</OptionsFlag>
+    <AdditionalProperties>
+		<radius>
+			<color>0x5503a6bf</color>
+			<property>radius</property>
+		</radius>
+		<radius>
+			<color>0x55660066</color>
+			<property>catchRadius</property>
+		</radius>
+	</AdditionalProperties>
+    <Domain> BASE </Domain>
+    <Properties>
+        <name>
+            <Type> STRING </Type>
+            <Editable> true </Editable>
+        </name>
+
+        <description>
+            <Type> STRING </Type>
+            <Editable> true </Editable>
+        </description>
+
+        <next>
+            <Type>	ARRAY <of> UDO_REF </of>
+            </Type>
+            <Editable>	True	</Editable>
+        </next>
+
+        <team>
+            <Type> UINT8 </Type>
+            <Editable> True </Editable>
+        </team>
+
+        <tag>
+            <Type> STRING </Type>
+            <Editable> true </Editable>
+        </tag>
+
+        <radius>
+            <Type>FLOAT</Type>
+            <Default>10</Default>
+            <Widget>
+                RADIUS
+                <colour>	0 192 96 192	</colour>
+                <gizmoRadius>	1	</gizmoRadius>
+            </Widget>
+            <Editable>true</Editable>
+        </radius>
+        <maxSpeed>
+            <Type>FLOAT</Type>
+            <Default>1.0</Default>
+            <Editable>true</Editable>
+        </maxSpeed>
+        <catchRadius>
+            <Type>FLOAT</Type>
+            <Default>15</Default>
+            <Widget>
+                RADIUS
+                <colour>	255 168 0 192	</colour>
+                <gizmoRadius>	1	</gizmoRadius>
+            </Widget>
+            <Editable>true</Editable>
+        </catchRadius>
+    </Properties>
+</root>

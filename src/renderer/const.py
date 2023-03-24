@@ -130,6 +130,12 @@ DEATH_TYPES = {
         "id": 28,
         "name": "ADBOMB",
     },
+    29: {
+        "sound": "Torpedo",
+        "icon": "icon_frag_naval_mine",
+        "id": 29,
+        "name": "DBOMB_MINE",
+    },
 }
 
 LAYERS = [

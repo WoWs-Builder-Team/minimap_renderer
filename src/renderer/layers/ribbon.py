@@ -74,6 +74,8 @@ class LayerRibbonBase(LayerBase):
                         name = "acoustic_hit"
                     case 43 | 44:
                         name = "dbomb"
+                    case 45:
+                        name = "dbomb_mine"
                     case _ as solo:
                         name = SOLO_MAP.get(solo, f"unknown_{solo}")
                 if name:
