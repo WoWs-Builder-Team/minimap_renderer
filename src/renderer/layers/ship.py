@@ -172,7 +172,7 @@ class LayerShipBase(LayerBase):
             icon = icon.rotate(-vehicle.yaw, Image.Resampling.BICUBIC, True)
             x, y = self._renderer.get_scaled((vehicle.x, vehicle.y))
 
-            if vehicle.is_alive:
+            if vehicle.is_alive and not self._renderer.dual_mode:
                 if not vehicle.is_visible or relation == 1 and not vehicle.visibility_flag and is_in_view_range:
                     image.alpha_composite(
                         icon,
@@ -347,13 +347,15 @@ class LayerShipBase(LayerBase):
         else:
             filename_parts.append(species)
 
-            if state == (True, True, False):
+            if not state[0]:
+                filename_parts.append("dead")
+            elif self._renderer.dual_mode:
+                filename_parts.append(relation_str)
+            elif state == (True, True, False):
                 filename_parts.append(relation_str)
                 filename_parts.append("outside")
             elif (state[0], state[1]) == (True, False) or (relation == 1 and is_alive and not visibility_flag):
                 filename_parts.append("hidden")
-            elif not state[0]:
-                filename_parts.append("dead")
             else:
                 filename_parts.append(relation_str)
 
