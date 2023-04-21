@@ -23,6 +23,7 @@ UNPACK_LIST = (
     "gui/ships_silhouettes/*",
     "gui/consumables/consumable_*_*.png",
     "gui/ship_bars/*",
+    "gui/service_kit/building_icons/*",
 )
 EXCLUDE_LIST = (
     "gui/consumables/consumable_*_*_empty.png",

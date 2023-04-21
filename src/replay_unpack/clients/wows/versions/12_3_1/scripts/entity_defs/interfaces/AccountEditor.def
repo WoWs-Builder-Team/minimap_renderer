@@ -1,0 +1,31 @@
+<root>
+
+	<BaseMethods>
+
+		<!-- Method is called when requested changes in the account properties has been made. -->
+		<onAccountPropertiesChanged>
+			<!-- request id. -->
+			<Arg> INT32 </Arg>
+			<!-- error code, one of the ERROR_CODE.* values. -->
+			<Arg> INT32 </Arg>
+		</onAccountPropertiesChanged>
+
+		<!-- Method is called in response to sendPropertiesTo request. -->
+		<receiveProperties>
+			<!-- BigWorld id of the entity requested to send properties. -->
+			<Arg> OBJECT_ID </Arg>
+			<!-- database id of the entity requested to send properties. -->
+			<Arg> DB_ID </Arg>
+			<!-- request id. -->
+			<Arg> INT32 </Arg>
+			<!-- 
+				{ property name : property value, }
+				Dictionary content depends on types of information requested, 
+				see sendPropertiesTo for the details.
+			-->
+			<Arg> PYTHON </Arg>
+		</receiveProperties>
+
+	</BaseMethods>
+	
+</root>

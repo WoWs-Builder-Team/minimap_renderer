@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<root>
+    <Implements>
+        <Interface>BattleLogicEntityOwner</Interface>
+    </Implements>
+    <IsManualAoI>True</IsManualAoI>
+    <Properties>
+        <radius>
+            <Type>FLOAT32</Type>
+            <Flags>ALL_CLIENTS</Flags>
+            <Default>5.0</Default>
+        </radius>
+        <innerRadius>
+            <Type>FLOAT32</Type>
+            <Flags>ALL_CLIENTS</Flags>
+            <Default>0.0</Default>
+        </innerRadius>
+        <ownerId>
+            <Type>TARGET_ID</Type>
+            <Flags>ALL_CLIENTS</Flags>
+            <Default>0</Default>
+        </ownerId>
+        <name>
+            <Type>STRING</Type>
+            <Flags>ALL_CLIENTS</Flags>
+            <Default>""</Default>
+        </name>
+        <teamId>
+            <Type>TEAM_ID</Type>
+            <Flags>ALL_CLIENTS</Flags>
+            <Default>0</Default>
+        </teamId>
+        <visualState>
+            <Type>INTERACTIVE_ZONE_ENTITY_STATE</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </visualState>
+        <type>
+            <Type>UINT8</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </type>
+        <useRing>
+            <Type>BOOL</Type>
+            <Flags>ALL_CLIENTS</Flags>
+            <Default>True</Default>
+        </useRing>
+        <componentsState>
+            <Type>INTERACTIVE_ZONE_STATE</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </componentsState>
+    </Properties>
+    <CellMethods></CellMethods>
+</root>
+

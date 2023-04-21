@@ -11,9 +11,9 @@
 	</terrain>
 	<navmeshGenerator>	navgen	</navmeshGenerator>
 	<UnprocessedData>
-		<shadows>	false	</shadows>
-		<heightMap>	false	</heightMap>
-		<miniMap>	false	</miniMap>
+		<shadows>	true	</shadows>
+		<heightMap>	true	</heightMap>
+		<miniMap>	true	</miniMap>
 		<saved>	false	</saved>
 	</UnprocessedData>
 	<startPosition>	453.7263 77.8281 -421.1200	</startPosition>
