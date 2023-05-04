@@ -343,6 +343,7 @@ class Renderer(RendererBase):
         self.is_operations = self.replay_data.game_map.startswith('s')
 
     def get_player_build(self) -> list[dict]:
+        ships = self.resman.load_json("ships.json")
         url = "https://app.wowssb.com/ship?shipIndexes="
         builds = []
 
@@ -355,6 +356,7 @@ class Renderer(RendererBase):
             builds.append(
                 {
                     "name": player.name,
+                    "ship": ships[player.ship_params_id]["name"],
                     "clan": player.clan_tag,
                     "relation": player.relation,
                     "build_url": build_url,
