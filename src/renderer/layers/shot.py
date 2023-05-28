@@ -115,9 +115,12 @@ class LayerShotBase(LayerBase):
                     ]
                 except KeyError:
                     atba = []
-                main = self._ships[spid]["components"][scomp["artillery"]][
-                    "ammo_list"
-                ]
+                try:
+                    main = self._ships[spid]["components"][scomp["artillery"]][
+                        "ammo_list"
+                    ]
+                except KeyError:
+                    main = []
                 is_secondary = params_id in atba
                 is_secondary = params_id not in main
 
