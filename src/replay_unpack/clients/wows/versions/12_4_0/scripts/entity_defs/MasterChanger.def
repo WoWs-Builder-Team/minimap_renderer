@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<root>
+    <Implements>
+        <Interface>AccountReady</Interface>
+        <Interface>GiveClientHelper</Interface>
+    </Implements>
+    <Properties>
+        <countBattles>
+            <Type>UINT8</Type>
+            <Flags>BASE_AND_CLIENT</Flags>
+        </countBattles>
+        <lastBattleFinish>
+            <Type>UINT32</Type>
+            <Flags>BASE_AND_CLIENT</Flags>
+        </lastBattleFinish>
+    </Properties>
+    <ClientMethods>
+        <onKickedFromServer>
+            <Args>
+                <checkoutPeripheryID>UINT32</checkoutPeripheryID>
+                <reasonID>UINT8</reasonID>!-- Disconnect reason description. --&gt;
+                <extraInfo>STRING</extraInfo>
+            </Args>
+        </onKickedFromServer>
+        <onCheckGamePing>
+            <Arg>UINT64</Arg>
+        </onCheckGamePing>
+        <onChangeShutdown>
+            <Arg>UINT8</Arg>
+            <Arg>UINT32</Arg>
+        </onChangeShutdown>
+    </ClientMethods>
+    <BaseMethods>
+        <checkGamePing>
+            <Exposed></Exposed>
+            <Args>
+                <clientTime>UINT64</clientTime>
+            </Args>
+        </checkGamePing>
+    </BaseMethods>
+</root>
+
