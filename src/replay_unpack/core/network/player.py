@@ -8,7 +8,8 @@ from .net_packet import NetPacket
 
 
 class PlayerBase:
-    def __init__(self, version: str):
+    def __init__(self, version: list[str]):
+        self._version = tuple([int(i) for i in version])
         self._definitions = self._get_definitions(version)
 
         self._mapping = self._get_packets_mapping()
