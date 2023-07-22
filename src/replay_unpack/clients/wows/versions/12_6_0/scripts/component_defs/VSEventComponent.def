@@ -1,0 +1,67 @@
+<root>
+	<BaseMethods>
+	    <chooseParticipate>
+	        <Exposed/>
+	    </chooseParticipate>
+		<chooseSide>
+			<Arg>INT8</Arg>
+			<Exposed/>
+		</chooseSide>
+		<finalScreenShown>
+			<Exposed/>
+		</finalScreenShown>
+		<dev_setAutoProgress>
+			<!-- set auto add players points active. -->
+			<Arg> BOOL </Arg>
+			<Exposed/>
+		</dev_setAutoProgress>
+        <dev_updateTaskProgress>
+            <Exposed/>
+            <Args>
+                <targetTaskId> STRING </targetTaskId>
+                <progress> UINT32 </progress>
+            </Args>
+        </dev_updateTaskProgress>
+		<dev_changeDay>
+			 <Exposed/>
+		</dev_changeDay>
+		<devRequestStageStats>
+			 <Exposed/>
+		</devRequestStageStats>
+
+		<dev_changeStagePoints>
+			<!-- teams stage points -->
+			<Arg> UINT32 </Arg>
+			<!-- personal stage points  -->
+			<Arg> UINT32 </Arg>
+			 <Exposed/>
+		</dev_changeStagePoints>
+
+	</BaseMethods>
+
+	<ClientMethods>
+		<onSideChosen>
+			<Arg>INT8</Arg>
+		</onSideChosen>
+		<onParticipationChosen>
+		</onParticipationChosen>
+		<onChangeDay>
+		</onChangeDay>
+	</ClientMethods>
+
+	<TempProperties>
+		<_VSEventComponent__eventPdata/>
+		<_VSEventComponent__tasksProgress/>
+		<_VSEventComponent__shouldRequestFinalStats/>
+		<_VSEventComponent__notRequestedPersonalTasksRates/>
+		<_VSEventComponent__notSyncTasksProgress/>
+		<_VSEventComponent__notSyncFinalStats/>
+		<_VSEventComponent__shouldReSyncOnStageChanged/>
+		<_VSEventComponent__shouldSyncTasksProgressOnPrimeChanged/>
+		<_VSEventComponent__isSubscribed/>
+	</TempProperties>
+
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>

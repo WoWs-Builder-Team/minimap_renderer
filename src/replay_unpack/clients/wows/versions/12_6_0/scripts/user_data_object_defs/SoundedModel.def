@@ -1,0 +1,42 @@
+<root>
+    <Domain>	CLIENT	</Domain>
+    <OptionsFlag>Enable</OptionsFlag>
+    <Properties>
+        <description>
+            <Type> STRING </Type>
+            <Editable> true </Editable>
+        </description>
+
+        <model>
+            <Type>	STRING	</Type>
+            <Editable>	True	</Editable>
+            <resourceref/>
+        </model>
+
+        <nodeName>
+            <Type>	STRING	</Type>
+            <Editable>	True	</Editable>
+        </nodeName>
+
+        <action>
+            <Type>	STRING	</Type>
+            <Editable>	True	</Editable>
+        </action>
+
+        <animationSpeed>
+            <Type>	FLOAT32	</Type>
+            <Default>	1.0	</Default>
+            <Editable>	True	</Editable>
+        </animationSpeed>
+
+        <soundEventName>
+            <Type>	STRING	</Type>
+            <Editable>	True	</Editable>
+        </soundEventName>
+
+        <stopSoundOnZeroVelocity>
+            <Type>	BOOL	</Type>
+            <Editable>	False	</Editable>
+        </stopSoundOnZeroVelocity>
+    </Properties>
+</root>

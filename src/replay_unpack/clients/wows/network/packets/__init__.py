@@ -25,8 +25,8 @@ PACKETS_MAPPING = {
     # 0x6
     0x7: EntityProperty,
     0x8: EntityMethod,
-    0x27: Map,
-    0x22: NestedProperty,
+    0x28: Map,
+    0x23: NestedProperty,
     0x0a: Position,
     0x16: Version,
     0x2b: PlayerPosition

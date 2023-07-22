@@ -1,0 +1,148 @@
+<root>
+
+	<Properties>
+
+		<!-- Account name. -->
+		<name>
+			<Type> STRING </Type>
+			<Flags>BASE_AND_CLIENT</Flags>
+			<Persistent>True</Persistent>
+			<DatabaseLength> 96 </DatabaseLength>
+			<Default> </Default>
+		</name>
+		
+		<!-- Account normalized name. -->
+		<normalizedName>
+			<Type> STRING </Type>
+			<Flags> BASE </Flags>
+			<Persistent> true </Persistent>
+			<DatabaseLength> 96 </DatabaseLength>
+			<Identifier> true </Identifier>
+		</normalizedName>
+
+		<!-- Single point of authorization id. -->
+		<spaID>
+			<Type> DB_ID </Type>
+			<Flags> BASE_AND_CLIENT </Flags>
+			<Persistent> true </Persistent>
+		</spaID>
+
+		<!-- External id. (Xbox Live ID, PlayStation network ID, etc) -->
+		<externalID>
+			<Type> DB_ID </Type>
+			<Flags> BASE </Flags>
+			<Persistent> true </Persistent>
+			<Default> 0 </Default>
+		</externalID>
+
+		<!-- Persistent data format version. -->
+		<version>
+			<Type> INT16 </Type>
+			<Flags> BASE </Flags>
+			<Persistent> True </Persistent>
+		</version>
+		
+		<!-- int 32, bit mask: high 8 bits - primary group, next 8 bits - secondary group,
+			last 16 bits - reserverd for flags. -->
+		<accountType>
+			<Type> UINT32 </Type>
+			<Flags> BASE </Flags>
+			<Persistent> true </Persistent>
+		</accountType>
+		
+		<!-- Combination of ACCOUNT_ATTR.* flags. -->
+		<attrs>
+			<Type> UINT64 </Type>
+			<Flags> BASE_AND_CLIENT </Flags>
+			<Persistent> true </Persistent>
+			<Default> 0 </Default>
+		</attrs>
+		
+		<!-- Account level. Read-only. See AccountHelpers.AccountLeveling. -->
+		<level>
+			<Type> UINT32 </Type>
+			<Flags> BASE </Flags>
+			<Persistent> true </Persistent>
+			<Default> 0 </Default>
+		</level>
+		
+		<!-- Account teamkill status. Read-only. See AccountHelpers.AntiAbuseProcessor. -->
+		<isTeamkiller>
+			<Type> UINT8 </Type>
+			<Flags> BASE </Flags>
+			<Persistent> true </Persistent>
+			<Default> 0 </Default>
+		</isTeamkiller>
+		
+		<!-- Rank info in ranked battles (packed rank + season id). See AccountHelpers.RankedManager. -->
+		<rank>
+			<Type> UINT32 </Type>
+			<Flags> BASE </Flags>
+			<Persistent> true </Persistent>
+			<Default> 0 </Default>
+		</rank>
+		
+		<!-- Time stamp last game session: end time if account offline or start time if session is active -->
+		<lastGameTime>
+			<Type> UINT32 </Type>
+			<Flags> BASE </Flags>
+			<Persistent> True </Persistent>
+			<Default> 0 </Default>
+		</lastGameTime>
+
+		<!-- Account dogTag data -->
+		<dogTag>
+			<Type> STRING </Type>
+			<Flags> BASE </Flags>
+			<Persistent> True </Persistent>
+			<DatabaseLength> 1000 </DatabaseLength>
+		</dogTag>
+
+		<!-- Account persistent data -->
+		<persistentData>
+			<Type> STRING </Type>
+			<Flags> BASE </Flags>
+			<Persistent> True </Persistent>
+			<DatabaseLength> 100000 </DatabaseLength>
+		</persistentData>
+
+		<!-- Last used vital action id. -->
+		<vhID>
+			<Type> UINT64 </Type>
+			<Flags> BASE </Flags>
+			<Persistent> true </Persistent>
+		</vhID>
+		
+		<!--  -->
+		<dataRevision>
+			<Type> UINT64 </Type>
+			<Flags> BASE </Flags>
+			<Persistent> true </Persistent>
+			<Default> 1 </Default>
+		</dataRevision>
+		
+		
+		<ttkStatus>
+			<Type> UINT64 </Type>
+			<Flags> BASE </Flags>
+			<Persistent> true </Persistent>
+			<Default> 0 </Default>
+		</ttkStatus>
+
+		<_destroyResponseCode>
+			<Type> UINT8 </Type>
+			<Flags> BASE </Flags>
+		</_destroyResponseCode>
+
+		<suspended>
+			<Type> UINT8 </Type>
+			<Flags> BASE </Flags>
+			<Persistent> true </Persistent>
+			<Default> 0 </Default>
+		</suspended>
+	</Properties>
+
+	<BaseMethods>
+	</BaseMethods>
+	
+</root>

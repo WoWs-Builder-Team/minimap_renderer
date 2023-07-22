@@ -1,0 +1,90 @@
+<root>
+    <TempProperties>
+    	<_MasterEntityAPIComponent__loadEntitiesHelper/>
+    </TempProperties>
+	<Methods>
+		<createEntityOnCluster>
+			<Args>
+				<clusterID> CLUSTER_ID </clusterID>
+				<entityType> STRING </entityType>
+				<entityParams>ZIPPED_BLOB</entityParams>
+			</Args>
+			<ReturnValues>
+				<entityMailbox> MAILBOX </entityMailbox>
+			</ReturnValues>
+		</createEntityOnCluster>
+
+		<lookupAccountEntityByDBID>
+			<Args>
+				<accountDBID> DB_ID </accountDBID>
+				<redirectRequestToOtherCluster> BOOL </redirectRequestToOtherCluster>
+			</Args>
+			<ReturnValues>
+				<accountMailbox> MAILBOX </accountMailbox>
+			</ReturnValues>
+		</lookupAccountEntityByDBID>
+
+		<loadAccount>
+			<Arg>DB_ID</Arg>
+			<Arg>ACCOUNT_LOAD_ARGS</Arg>
+			<ReturnValues>
+				<account> MAILBOX </account>
+			</ReturnValues>
+		</loadAccount>
+
+		<loadEntityOnCurrentMaster>
+			<Args>
+				<entityType> STRING </entityType>
+				<entityID> DB_ID </entityID>
+				<entityParams>ZIPPED_BLOB</entityParams>
+			</Args>
+			<ReturnValues>
+				<entityMailbox> MAILBOX </entityMailbox>
+			</ReturnValues>
+		</loadEntityOnCurrentMaster>
+
+		<removeAccountOnCurrentMaster>
+			<Args>
+				<spaID> DB_ID </spaID>
+				<loadParams>ZIPPED_BLOB</loadParams>
+			</Args>
+			<ReturnValues>
+				<entityMailbox> UINT8 </entityMailbox>
+			</ReturnValues>
+		</removeAccountOnCurrentMaster>
+
+		<createBattleSessionEntity>
+			<Args>
+				<clusterID> CLUSTER_ID </clusterID>
+		        <entityParams> CREATE_BATTLE_SESSION_PARAMS </entityParams>
+			</Args>
+			<ReturnValues>
+				<entityMailbox> MAILBOX </entityMailbox>
+			</ReturnValues>
+		</createBattleSessionEntity>
+
+		<createPreBattleEntity>
+		    <Args>
+		        <clusterID> CLUSTER_ID </clusterID>
+		        <entityParams> CREATE_PRE_BATTLE_PARAMS </entityParams>
+            </Args>
+            <ReturnValues>
+				<entityMailbox> MAILBOX </entityMailbox>
+			</ReturnValues>
+		</createPreBattleEntity>
+
+		<createTrainingRoomEntity>
+			<Args>
+				<clusterID> CLUSTER_ID </clusterID>
+		        <entityParams> CREATE_TRAINING_ROOM_PARAMS </entityParams>
+			</Args>
+			<ReturnValues>
+				<entityMailbox> MAILBOX </entityMailbox>
+			</ReturnValues>
+		</createTrainingRoomEntity>
+	</Methods>
+
+	<ofService>
+	    <MasterService/>
+	</ofService>
+</root>
