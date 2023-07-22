@@ -50,8 +50,10 @@ class CustomReader(ReplayReader):
         extra_data = []
         for i in range(blocks_count - 1):
             block_size = struct.unpack("i", self._fp.read(4))[0]
-            data = json.loads(self._fp.read(block_size))
-            extra_data.append(data)
+            _ = self._fp.read(block_size)
+
+            # data = json.loads(self._fp.read(block_size))
+            # extra_data.append(data)
 
         # noinspection PyUnresolvedReferences
         decrypted_data = zlib.decompress(

@@ -1,0 +1,66 @@
+<root>
+    <Domain>	CLIENT	</Domain>
+    <OptionsFlag>Enable</OptionsFlag>
+    <Properties>
+        <description>
+            <Type> STRING </Type>
+            <Editable> true </Editable>
+        </description>
+
+        <!-- Links to other PatrolPoint objects. -->
+        <next>
+            <Type>	ARRAY <of> UDO_REF </of> </Type>
+            <Editable>	True	</Editable>
+        </next>
+
+        <speed>
+            <Type>	FLOAT32	</Type>
+            <Default>	20	</Default>
+            <Editable>	True	</Editable>
+        </speed>
+
+        <model>
+            <Type>	STRING	</Type>
+            <Editable>	True	</Editable>
+            <resourceref/>
+        </model>
+
+        <PBS>
+            <Type>	STRING	</Type>
+            <Editable>	True	</Editable>
+        </PBS>
+
+        <PBS_Misc>
+            <Type>	STRING	</Type>
+            <Editable>	True	</Editable>
+        </PBS_Misc>
+
+        <action>
+            <Type>	STRING	</Type>
+            <Editable>	True	</Editable>
+        </action>
+
+        <soundEventName>
+            <Type>	STRING	</Type>
+            <Editable>	True	</Editable>
+        </soundEventName>
+
+        <modelCount>
+            <Type>	UINT8	</Type>
+            <Default>	1	</Default>
+            <Editable>	True	</Editable>
+        </modelCount>
+
+        <delaySecMin>
+            <Type>	FLOAT32	</Type>
+            <Default>	1.0	</Default>
+            <Editable>	True	</Editable>
+        </delaySecMin>
+
+        <delaySecMax>
+            <Type>	FLOAT32	</Type>
+            <Default>	2.0	</Default>
+            <Editable>	True	</Editable>
+        </delaySecMax>
+    </Properties>
+</root>

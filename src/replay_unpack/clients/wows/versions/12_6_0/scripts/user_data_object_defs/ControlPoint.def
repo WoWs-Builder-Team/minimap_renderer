@@ -1,0 +1,98 @@
+<root>
+
+    <Domain>BASE</Domain>
+	<OptionsFlag>Enable</OptionsFlag>
+	<AdditionalProperties>
+		<drawInfo>
+			<property>tag</property>
+			<property>name</property>
+		</drawInfo>
+	</AdditionalProperties>
+
+
+    <Properties>
+        <controlPointType>
+            <Type> STRING </Type>
+            <Editable> True </Editable>
+        </controlPointType>
+
+        <next>
+            <Type>	ARRAY <of> UDO_REF </of> </Type>
+            <Editable>	True	</Editable>
+        </next>
+
+        <description>
+            <Type> STRING </Type>
+            <Editable> true </Editable>
+        </description>
+
+        <team>
+            <Type>INT8</Type>
+            <Editable>true</Editable>
+			<Default>-1</Default>
+        </team>
+
+        <radius>
+            <Type>FLOAT</Type>
+            <Editable>true</Editable>
+            <Widget>
+                RADIUS
+                <colour>255 0 0 192</colour>
+                <gizmoRadius>1</gizmoRadius>
+            </Widget>
+            <Default>10.0</Default>
+        </radius>
+
+        <innerRadius>
+            <Type>FLOAT</Type>
+            <Editable>true</Editable>
+            <Widget>
+                RADIUS
+                <colour>0 255 0 192</colour>
+                <gizmoRadius>1</gizmoRadius>
+            </Widget>
+            <Default>0.0</Default>
+        </innerRadius>
+
+        <captureTime>
+            <Type>UINT16</Type>
+            <Editable>true</Editable>
+        </captureTime>
+
+        <rewardPoints>
+            <Type>UINT16</Type>
+            <Editable>true</Editable>
+        </rewardPoints>
+
+        <tag>
+            <Type> STRING </Type>
+            <Editable> true </Editable>
+        </tag>
+
+        <name>
+            <Type> STRING </Type>
+            <Editable> True </Editable>
+        </name>
+
+        <buoys>
+            <Type>UINT8</Type>
+            <Editable>true</Editable>
+            <Default>10</Default>
+        </buoys>
+
+        <buoy_model>
+            <Type>STRING</Type>
+            <Editable>True</Editable>
+            <Default>LMY003</Default>
+            <resourceref/>
+        </buoy_model>
+
+        <baked>
+            <Type>BOOL</Type>
+            <Editable>True</Editable>
+            <Default>False</Default>
+        </baked>
+
+    </Properties>
+
+</root>

@@ -19,7 +19,7 @@ from .network.packets import (
     EntityLeave,
     PlayerPosition,
     Version,
-    PACKETS_MAPPING,
+    PACKETS_MAPPING, PACKETS_MAPPING_12_6_0,
 )
 
 
@@ -37,7 +37,11 @@ class ReplayPlayer(ControlledPlayerBase):
             return get_controller("_".join(version[:3]))
 
     def _get_packets_mapping(self):
-        return PACKETS_MAPPING
+        # Since gameclient version 12.6.0, some packets have had their indices changed.
+        if self._version >= (12, 6, 0, 0) or self._version > (12, 6, 0):
+            return PACKETS_MAPPING_12_6_0
+        else:
+            return PACKETS_MAPPING
 
     def _process_packet(self, packet, t: float):
         self._battle_controller.set_packet_time(t)
