@@ -46,7 +46,7 @@ PACKETS_MAPPING_12_6_0 = {
     0x23: NestedProperty,
     0x0a: Position,
     0x16: Version,
-    0x2b: PlayerPosition
+    0x2c: PlayerPosition
 }
 
 
