@@ -13,7 +13,7 @@
 	<startPosition>	23.010393 20.045877 -19.730942	</startPosition>
 	<startDirection>	0.000488 0.490000 1.042681	</startDirection>
 	<UnprocessedData>
-		<shadows>	false	</shadows>
+		<shadows>	true	</shadows>
 		<heightMap>	true	</heightMap>
 		<miniMap>	true	</miniMap>
 		<saved>	false	</saved>

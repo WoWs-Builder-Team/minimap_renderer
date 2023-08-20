@@ -9,8 +9,8 @@
 		<heightMapSize>	256	</heightMapSize>
 		<normalMapSize>	256	</normalMapSize>
 	</terrain>
-	<startPosition>	23.010393 20.045877 -19.730942	</startPosition>
-	<startDirection>	0.000488 0.490000 1.042681	</startDirection>
+	<startPosition>	-107.4235 4.6921 -143.7097	</startPosition>
+	<startDirection>	0.0000 0.0280 0.6011	</startDirection>
 	<UnprocessedData>
 		<shadows>	true	</shadows>
 		<heightMap>	true	</heightMap>

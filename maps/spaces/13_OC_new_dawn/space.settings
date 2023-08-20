@@ -10,7 +10,7 @@
 		<normalMapSize>	256	</normalMapSize>
 	</terrain>
 	<UnprocessedData>
-		<shadows>	true	</shadows>
+		<shadows>	false	</shadows>
 		<heightMap>	true	</heightMap>
 		<miniMap>	true	</miniMap>
 		<saved>	false	</saved>
