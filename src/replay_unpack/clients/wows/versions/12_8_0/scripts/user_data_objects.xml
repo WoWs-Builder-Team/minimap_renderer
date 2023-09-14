@@ -1,0 +1,21 @@
+<root>
+	<Barge/>
+	<Building/>
+	<ControlPoint/>
+	<ConvoyWayPoint/>
+	<DropZone/>
+	<Minefield/>
+	<Prefab/>
+	<MapPartInfo/>
+	<MapBorder/>
+	<MapSeparator/>
+	<SoundedEffect/>
+	<SoundedModel/>
+	<SpaceDebugTool/>
+	<SpatialUIDebugTool/>
+	<SquadronReticleTool/>
+	<SpawnPoint/>
+	<StaticSoundEmitter/>
+	<Trigger/>
+	<WayPoint/>
+</root>
