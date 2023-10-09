@@ -1,11 +1,12 @@
 from typing import Optional
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 from renderer.base import LayerBase
 from renderer.const import COLORS_NORMAL
 from renderer.data import Message, ReplayData
 from renderer.render import Renderer
 from functools import lru_cache
-
+from langdetect import detect
+from hanzidentifier import has_chinese
 
 class LayerChatBase(LayerBase):
     """The class for handling in-game chat messages.
@@ -21,9 +22,7 @@ class LayerChatBase(LayerBase):
         self._replay_data = (
             replay_data if replay_data else self._renderer.replay_data
         )
-        self._font = self._renderer.resman.load_font(
-            filename="warhelios_bold.ttf", size=12
-        )
+        self._font = None # to be decided per message
         self._players = self._replay_data.player_info
         self._generated_lines: dict[int, Image.Image] = {}
         self._messages: list[Message] = []
@@ -65,6 +64,7 @@ class LayerChatBase(LayerBase):
         # if image := self._lines.get(m_hash, None):
         #     return image
 
+        self._font = self._pick_font_with_message(message)
         base = Image.new("RGBA", (560, 17))
         draw = ImageDraw.Draw(base)
         player = self._players[message.player_id]
@@ -142,3 +142,32 @@ class LayerChatBase(LayerBase):
             packed_value = packed_value >> bit
             values.append(value)
         return tuple(reversed(values))
+
+    def _pick_font_with_message(self, message: Message) -> ImageFont.FreeTypeFont:
+        """Pick the font based on the message language.
+
+        Args:
+            message (Message): The message.
+
+        Returns:
+            ImageFont.FreeTypeFont: The font.
+        """
+        chat_message = message.message
+        language = detect(message.message) # this can detect Chinese as Korean
+        if has_chinese(chat_message):
+            return self._renderer.resman.load_font(
+                filename="warhelios_bold_zh.ttf", size=12
+            )
+    
+        if language == "ja":
+            return self._renderer.resman.load_font(
+                filename="warhelios_bold_ja.ttf", size=12
+            )
+        elif language == "ko":
+            return self._renderer.resman.load_font(
+                filename="warhelios_bold_ko.ttf", size=12
+            )
+        else: # fallback to the default font
+            return self._renderer.resman.load_font(
+                filename="warhelios_bold.ttf", size=12
+            )
