@@ -161,7 +161,7 @@ class LayerChatBase(LayerBase):
     
         if language == "ja":
             return self._renderer.resman.load_font(
-                filename="warhelios_bold_ja.ttf", size=12
+                filename="warhelios_bold_jp.ttf", size=12
             )
         elif language == "ko":
             return self._renderer.resman.load_font(
