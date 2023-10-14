@@ -1,0 +1,13 @@
+<root>
+	<BaseMethods>
+		<requestAuthToken>
+			<Exposed/>
+			<Args>
+				<requester> UINT8 </requester>
+			</Args>
+		</requestAuthToken>
+	</BaseMethods>
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>

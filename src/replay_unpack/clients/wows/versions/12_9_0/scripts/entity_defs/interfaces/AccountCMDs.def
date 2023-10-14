@@ -1,0 +1,382 @@
+<root>
+
+	<TempProperties>
+
+		<gateways/>
+
+	</TempProperties>
+
+	<!-- Clients commands -->
+	<BaseMethods>
+
+		<cmdEmpty>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Exposed/>
+		</cmdEmpty>
+
+		<cmdI1>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Exposed/>
+		</cmdI1>
+
+		<cmdI2>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Exposed/>
+		</cmdI2>
+
+		<cmdI3>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Exposed/>
+		</cmdI3>
+
+		<cmdI4>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Arg> INT32 </Arg> <!-- cmdData -->
+			<Arg> INT32 </Arg> <!-- cmdData -->
+			<Exposed/>
+		</cmdI4>
+
+		<cmdI3S1>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Arg> INT32 </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Exposed/>
+		</cmdI3S1>
+
+		<cmdI4S1>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Exposed/>
+		</cmdI4S1>
+
+		<cmdI5>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Exposed/>
+		</cmdI5>
+
+		<cmdI5S1>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> INT64 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> INT32 </Arg>
+			<Arg> INT32 </Arg>
+			<Arg> INT32 </Arg>
+			<Arg> UNICODE_STRING </Arg>
+			<Exposed/>
+		</cmdI5S1>
+
+		<cmdI6S1>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> INT64 </Arg>
+			<Arg> INT64 </Arg>
+			<Arg> INT64 </Arg>
+			<Arg> INT64 </Arg>
+			<Arg> INT64 </Arg>
+			<Arg> INT64 </Arg>
+			<Arg> UNICODE_STRING </Arg>
+			<Exposed/>
+		</cmdI6S1>
+
+		<cmdI6S2>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UNICODE_STRING </Arg>
+			<Arg> UNICODE_STRING </Arg>
+			<Exposed/>
+		</cmdI6S2>
+
+		<cmdI7S1>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> INT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UNICODE_STRING </Arg>
+			<Exposed/>
+		</cmdI7S1>
+
+		<cmdI8S1>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT64 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UNICODE_STRING </Arg>
+			<Exposed/>
+		</cmdI8S1>
+
+		<cmdI9S1>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> INT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT64 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UNICODE_STRING </Arg>
+			<Exposed/>
+		</cmdI9S1>
+
+		<cmdI7S2>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UINT32 </Arg>
+			<Arg> UNICODE_STRING </Arg>
+			<Arg> UNICODE_STRING </Arg>
+			<Exposed/>
+		</cmdI7S2>
+
+		<cmdS1>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> UNICODE_STRING </Arg>
+			<Exposed/>
+		</cmdS1>
+
+		<cmdB1>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> BLOB </Arg>
+			<Exposed/>
+		</cmdB1>
+
+		<cmdS2>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> UNICODE_STRING </Arg>
+			<Arg> UNICODE_STRING </Arg>
+			<Exposed/>
+		</cmdS2>
+
+		<cmdI1S1>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg>
+			<Exposed/>
+		</cmdI1S1>
+
+		<cmdI1S2>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Exposed/>
+		</cmdI1S2>
+
+		<cmdI1S3>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> INT32 </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Exposed/>
+		</cmdI1S3>
+
+		<cmdI1S4>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Exposed/>
+		</cmdI1S4>
+
+		<cmdI2S1>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg>
+			<Exposed/>
+		</cmdI2S1>
+
+		<cmdI2S2>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Arg> INT32 </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Exposed/>
+		</cmdI2S2>
+
+		<cmdI2S3>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Arg> INT32 </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Exposed/>
+		</cmdI2S3>
+
+		<cmdI2S4>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Arg> INT32 </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Exposed/>
+		</cmdI2S4>
+
+		<cmdI2S5>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> INT64 </Arg> <!-- cmdData -->
+			<Arg> INT32 </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Exposed/>
+		</cmdI2S5>
+
+		<cmdS1I1>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Arg> INT32 </Arg> <!-- cmdData -->
+			<Exposed/>
+		</cmdS1I1>
+
+		<cmdU1>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> DB_ID_LIST </Arg> <!-- cmdData -->
+			<Exposed/>
+		</cmdU1>
+
+		<cmdU1S1>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> DB_ID_LIST </Arg> <!-- cmdData -->
+			<Arg> UNICODE_STRING </Arg> <!-- cmdData -->
+			<Exposed/>
+		</cmdU1S1>
+
+		<cmdI2U1>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> INT64 </Arg>
+			<Arg> INT64 </Arg>
+			<Arg> ARRAY <of> UINT8 </of> </Arg>
+			<Exposed/>
+		</cmdI2U1>
+
+		<cmdI2U7>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> INT32 </Arg> <!-- cmdData -->
+			<Arg> INT32 </Arg> <!-- cmdData -->
+			<Arg> ARRAY <of> INT32 </of> </Arg> <!-- cmdData -->
+			<Arg> ARRAY <of> INT32 </of> </Arg> <!-- cmdData -->
+			<Arg> ARRAY <of> INT32 </of> </Arg> <!-- cmdData -->
+			<Arg> ARRAY <of> INT32 </of> </Arg> <!-- cmdData -->
+			<Arg> ARRAY <of> INT32 </of> </Arg> <!-- cmdData -->
+			<Arg> ARRAY <of> INT32 </of> </Arg> <!-- cmdData -->
+			<Arg> ARRAY <of> INT32 </of> </Arg> <!-- cmdData -->
+			<Exposed/>
+		</cmdI2U7>
+
+		<cmdI7S1R1>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> SHIP_ID </Arg> <!-- cmdData -->
+			<Arg> INT32 </Arg>
+			<Arg> INT32 </Arg>
+			<Arg> INT32 </Arg> <!-- cmdData -->
+			<Arg> INT32 </Arg>
+			<Arg> INT32 </Arg> <!-- cmdData -->
+			<Arg> INT32 </Arg>
+			<Arg> UNICODE_STRING </Arg>
+			<Arg> SHIP_RESTRICTIONS </Arg>
+			<Exposed/>
+		</cmdI7S1R1>
+
+		<cmdT1>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> TRAINING_ROOM_PROPERTIES </Arg>
+			<Exposed/>
+		</cmdT1>
+
+		<cmdD1>
+			<Arg> UINT8 </Arg>
+			<Arg> UINT8 </Arg>
+			<Arg> ARRAY <of> GAMEPARAMS_ID </of> </Arg>
+			<Exposed/>
+		</cmdD1>
+
+		<cmdL1>
+			<Arg>UINT8</Arg>
+			<Arg>UINT8</Arg>
+			<Arg>ARRAY<of>UINT64</of></Arg>
+			<Exposed/>
+		</cmdL1>
+	</BaseMethods>
+
+</root>

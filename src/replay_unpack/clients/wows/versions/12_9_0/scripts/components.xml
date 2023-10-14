@@ -1,0 +1,31 @@
+<root>
+	<TrainingRoomsManagerComponent/>
+	<DockComponent/>
+	<TrainingRoomComponent/>
+	<BrawlBattlesComponent/>
+	<PVEBattlesComponent/>
+	<RankedBattlesComponent/>
+	<AchievementsComponent/>
+	<AlmanacComponent/>
+	<HotFixComponent/>
+	<VSEventComponent/>
+	<ShipAcesComponent/>
+	<MatchmakerComponent/>
+	<XmppComponent/>
+	<UserDataComponent/>
+	<GiftListsComponent/>
+	<RequestPerformerComponent/>
+	<BattlePassComponent/>
+	<SurveysComponent/>
+	<NewbieQuestComponent/>
+	<KeyTargetComponent/>
+	<LootboxComponent/>
+	<DivisionsManagerComponent/>
+	<DivisionsManagerComponentAvatar/>
+	<ControllerToAccountConnector/>
+	<AccountReviverComponent/>
+	<SuperEntityAPIComponent/>
+	<MasterEntityAPIComponent/>
+	<PdataResetComponent/>
+	<StrategicActionsComponent/>
+</root>

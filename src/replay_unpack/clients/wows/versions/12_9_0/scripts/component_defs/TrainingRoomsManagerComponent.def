@@ -1,0 +1,32 @@
+<root>
+	<BaseMethods>
+		<createTrainingRoom>
+			<Arg>TRAINING_ROOM_PROPERTIES</Arg>
+			<Exposed/>
+		</createTrainingRoom>
+		
+		<getTrainingRoomsList>
+			<Arg>ARRAY
+				<of>DB_ID</of>
+			</Arg>
+			<Arg>UNICODE_STRING</Arg>
+			<Exposed/>
+		</getTrainingRoomsList>
+		
+		<joinTrainingRoom>
+			<Arg>UINT64</Arg>
+			<Arg>UNICODE_STRING</Arg>
+			<Exposed/>
+		</joinTrainingRoom>
+		
+		<rejectInvite>
+			<Arg>UINT64</Arg>
+			<Exposed/>
+		</rejectInvite>
+	
+	</BaseMethods>
+	
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>

@@ -1,0 +1,73 @@
+<root>
+	<BaseMethods>
+		<gotSprintSummaryShown>
+			<Args>
+				<seasonId> INT16 </seasonId>
+			</Args>
+			<Exposed/>
+		</gotSprintSummaryShown>
+		<gotSeasonSummaryShown>
+			<Args>
+				<seasonId> INT16 </seasonId>
+			</Args>
+			<Exposed/>
+		</gotSeasonSummaryShown>
+		<requestRankedDossier>
+			<Args>
+				<seasonId> INT16 </seasonId>
+				<leagueId> UINT8 </leagueId>
+				<isOld> BOOL </isOld>
+			</Args>
+			<Exposed/>
+		</requestRankedDossier>
+		<dev_getRankedStars>
+			<Args>
+				<stars> INT8 </stars>
+			</Args>
+			<Exposed/>
+		</dev_getRankedStars>
+		<dev_resetRankedSeason>
+			<Args>
+				<seasonId> INT16 </seasonId>
+			</Args>
+			<Exposed/>
+		</dev_resetRankedSeason>
+		<dev_finishRankedSprint>
+			<Args>
+			</Args>
+			<Exposed/>
+		</dev_finishRankedSprint>
+		<dev_finishRankedSeason>
+			<Args>
+			</Args>
+			<Exposed/>
+		</dev_finishRankedSeason>
+		<dev_setFakeBattlesResults>
+			<Args>
+				<result> INT8 </result>
+				<place> INT8 </place>
+				<isAfk> BOOL </isAfk>
+				<isLeaver> BOOL </isLeaver>
+				<isTShooter> BOOL </isTShooter>
+			</Args>
+			<Exposed/>
+		</dev_setFakeBattlesResults>
+	</BaseMethods>
+	
+	<ClientMethods>
+		<onStartRankBattlesSync/>
+		<getRankedBattlesStage>
+			<Args>
+				<seasonId> INT16 </seasonId>
+				<stage> INT8 </stage>
+				<currentSprintId> INT16 </currentSprintId>
+				<nextSprintId> INT16 </nextSprintId>
+				<previousSprintId> INT16 </previousSprintId>
+			</Args>
+		</getRankedBattlesStage>
+	</ClientMethods>
+
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>

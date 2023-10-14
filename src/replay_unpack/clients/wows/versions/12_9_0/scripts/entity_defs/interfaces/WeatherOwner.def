@@ -1,0 +1,20 @@
+<root>
+	<BaseMethods>
+	</BaseMethods>
+
+	<ClientMethods>
+	</ClientMethods>
+
+	<CellMethods>
+	</CellMethods>
+
+	<Properties>
+		<weatherParams>
+			<Type> WEATHER_LOGIC_PARAMS </Type>
+			<Flags> CELL_PRIVATE </Flags>
+		</weatherParams>
+	</Properties>
+
+	<TempProperties>
+	</TempProperties>
+</root>

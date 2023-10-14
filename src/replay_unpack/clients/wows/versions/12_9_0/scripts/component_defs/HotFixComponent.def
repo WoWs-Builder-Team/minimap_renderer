@@ -1,0 +1,28 @@
+<root>
+	<BaseMethods>
+		<uploadUserPrefs>
+			<Arg> BLOB </Arg>
+			<Exposed/>
+		</uploadUserPrefs>
+
+		<onClientSyncState>
+			<Args>
+				<isOk> BOOL </isOk>
+			</Args>
+			<Exposed/>
+		</onClientSyncState>
+	</BaseMethods>
+	
+	<ClientMethods>
+		<updateHotFixData>
+			<Args>
+				<updateData>PYTHON</updateData>
+			</Args>
+		</updateHotFixData>
+	</ClientMethods>
+	<ofEntity>
+		<Account/>
+		<Avatar/>
+		<Login/>
+	</ofEntity>
+</root>

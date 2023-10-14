@@ -1,0 +1,107 @@
+<root>
+	<BaseMethods>
+		<applySeekerAction>
+			<Args>
+				<seekerType>UINT8</seekerType>
+				<seekerAction>UINT8</seekerAction>
+				<comment>UNICODE_STRING</comment>
+			</Args>
+			<Exposed/>
+		</applySeekerAction>
+		
+		<getDivisions>
+			<Args>
+				<preBattleType>UINT8</preBattleType>
+			</Args>
+			<Exposed/>
+		</getDivisions>
+		
+		<createDynamic>
+			<Args>
+				<preBattleType>UINT8</preBattleType>
+				<shipID>SHIP_ID</shipID>
+				<queueType>QUEUE_TYPE</queueType>
+				<eventID>GAMEPARAMS_ID</eventID>
+				<battleID>ARENA_UNIQUE_ID</battleID>
+				<clusterID>MASTER_ID</clusterID>
+			</Args>
+			<Exposed/>
+		</createDynamic>
+
+		<joinDynamic>
+			<Args>
+				<divisionID>ENTITY_ID</divisionID>
+				<shipID>SHIP_ID</shipID>
+				<isDummy>BOOL</isDummy>
+			</Args>
+			<Exposed/>
+		</joinDynamic>
+		
+		<create>
+			<Args>
+				<preBattleType>UINT8</preBattleType>
+				<shipID>SHIP_ID</shipID>
+				<queueType>QUEUE_TYPE</queueType>
+				<eventID>GAMEPARAMS_ID</eventID>
+				<description>UNICODE_STRING</description>
+			</Args>
+			<Exposed/>
+		</create>
+
+		<join>
+			<Args>
+				<divisionID>ENTITY_ID</divisionID>
+				<shipID>SHIP_ID</shipID>
+			</Args>
+			<ReturnValues>
+				<resultCode>INT64</resultCode>
+			</ReturnValues>
+			<Exposed/>
+		</join>
+
+		<sendDivisionDumpByID>
+			<Args>
+				<divisionID>ENTITY_ID</divisionID>
+				<accountDBID>DB_ID</accountDBID>
+			</Args>
+			<Exposed/>
+		</sendDivisionDumpByID>
+
+		<rejectInvite>
+			<Args>
+				<divisionID>ENTITY_ID</divisionID>
+			</Args>
+			<Exposed/>
+		</rejectInvite>
+
+		<updateSeekerName>
+			<Args>
+				<dbid>DB_ID</dbid>
+				<name>UNICODE_STRING</name>
+			</Args>
+			<Exposed/>
+		</updateSeekerName>
+
+		<getDivisionInfo>
+			<Args>
+				<divisionID>ENTITY_ID</divisionID>
+			</Args>
+			<Exposed/>
+		</getDivisionInfo>
+	
+	</BaseMethods>
+
+	<ClientMethods>
+		<onPassiveSeekingSet>
+			<Args>
+				<preBattleType>UINT8</preBattleType>
+				<action>UINT8</action>
+				<comment>STRING</comment>
+			</Args>
+		</onPassiveSeekingSet>
+	</ClientMethods>
+	
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>

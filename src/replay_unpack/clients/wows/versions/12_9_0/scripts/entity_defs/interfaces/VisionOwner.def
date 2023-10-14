@@ -1,0 +1,52 @@
+<root>
+	<Properties>
+	</Properties>
+	
+	<TempProperties>
+		<_events/>
+		<_collectedVision/>
+		<_spotVaryId/>
+		<_visibilityUpdateVaryId/>
+		<_visionToEntityUpdateVaryId/>
+		<_visionToProjectileVaryId/>
+		<visibilityFlagsByEntities/>
+		<_visionFlag/>
+		<spotChecker/>
+
+		<blockerForce/>
+		<isInvisible/>
+
+		<vision/>
+		<directVision/>
+		<mainSquadronVision/>
+		<entitiesInVisionArea/>
+		<invisibleEntitiesInVisionArea />
+		<evMovedFromInvisibility />
+		<visibility/>
+		<visibilityByTeams/>
+		<visibilityFlags/>
+		<visibilityFlagsByTeams />
+		<visionCoefficient/>
+		<permanentlyVisibleByTeammates/>
+		<permanentlyVisibleByEnemies/>
+		<isBlind/>
+	</TempProperties>
+	
+	<CellMethods>
+		<onVisibilityChanged>
+			<Arg>	ENTITY_ID	</Arg>
+			<Arg>	VISIBILITY_FLAG		</Arg>
+		</onVisibilityChanged>
+		<removeFromVision>
+			<Arg>	ENTITY_ID	</Arg>
+		</removeFromVision>
+
+		<setPermanentlyVisibleByEnemies>
+			<Arg> BOOL </Arg>
+		</setPermanentlyVisibleByEnemies>
+
+		<setPermanentlyVisibleByTeammates>
+			<Arg> BOOL </Arg>
+		</setPermanentlyVisibleByTeammates>
+	</CellMethods>
+</root>

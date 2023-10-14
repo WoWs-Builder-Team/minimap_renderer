@@ -1,0 +1,32 @@
+<root>
+    <ClientMethods>
+        <sendFullState>
+            <Arg>ZIPPED_BLOB</Arg>
+            <VariableLengthHeaderSize>
+                <WarnLevel>none</WarnLevel>
+            </VariableLengthHeaderSize>
+        </sendFullState>
+        <onDayChanged>
+            <Arg>ZIPPED_BLOB</Arg> <!-- Almanac progress -->
+            <VariableLengthHeaderSize>
+                <WarnLevel>none</WarnLevel>
+            </VariableLengthHeaderSize>
+        </onDayChanged>
+        <onAlmanacRewardLooted>
+            <Arg>UINT16</Arg>
+            <Arg>UINT8</Arg>
+            <Arg>BOOL</Arg>
+        </onAlmanacRewardLooted>
+        <onAlmanacEnded/>
+    </ClientMethods>
+    <BaseMethods>
+        <lootStage>
+            <Arg>UINT16</Arg>
+            <Arg>UINT8</Arg>
+            <Exposed/>
+        </lootStage>
+    </BaseMethods>
+    <ofEntity>
+        <Account/>
+    </ofEntity>
+</root>

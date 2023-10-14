@@ -1,0 +1,15 @@
+<root>
+    <Domain>BASE</Domain>
+    <Properties>
+        <name>
+            <Type> STRING </Type>
+            <Editable>	True	</Editable>
+        </name>
+
+        <paramsId>
+            <Type> STRING </Type>
+            <Editable>	True	</Editable>
+            <resourceref/>
+        </paramsId>
+    </Properties>
+</root>

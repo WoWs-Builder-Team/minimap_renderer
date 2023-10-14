@@ -1,0 +1,31 @@
+<root>
+    <Domain> BASE </Domain>
+    <OptionsFlag>Enable</OptionsFlag>
+    <AdditionalProperties>
+		<drawInfo>
+			<property>name</property>
+		</drawInfo>
+	</AdditionalProperties>
+    <Properties>
+        <description>
+            <Type> STRING </Type>
+            <Editable> true </Editable>
+        </description>
+
+	    <next>
+            <Type>	ARRAY <of> UDO_REF </of> </Type>
+            <Editable>true</Editable>
+        </next>
+
+        <name>
+            <Type>STRING</Type>
+            <Editable>true</Editable>
+        </name>
+		
+        <tag>
+            <Type> STRING </Type>
+            <Editable> true </Editable>
+        </tag>		
+
+    </Properties>
+</root>

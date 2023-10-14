@@ -1,0 +1,23 @@
+<root>
+    <ClientMethods>
+        <receiveCommunicationRestrictions>
+            <Arg> MSGPACK_BLOB </Arg>
+        </receiveCommunicationRestrictions>
+        <onXmppChatCommunicationStatusChanged>
+            <Arg> BOOL </Arg>
+        </onXmppChatCommunicationStatusChanged>
+        <onBattleChatCommunicationStatusChanged>
+            <Arg> BOOL </Arg>
+        </onBattleChatCommunicationStatusChanged>
+        <onPrebattleChatCommunicationStatusChanged>
+            <Arg> BOOL </Arg>
+        </onPrebattleChatCommunicationStatusChanged>
+        <onDescriptionTextFieldsStatusChanged>
+            <Arg> BOOL </Arg>
+        </onDescriptionTextFieldsStatusChanged>
+    </ClientMethods>
+    <ofEntity>
+        <Account/>
+    </ofEntity>
+</root>
+

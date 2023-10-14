@@ -1,0 +1,26 @@
+<root>
+    <BaseMethods>
+
+        <sendAchievements>
+            <Exposed/>
+        </sendAchievements>
+
+        <dev_resetAchievements>
+            <Exposed/>
+        </dev_resetAchievements>
+
+        <dev_earnAchievement>
+            <Arg>UINT64</Arg>
+            <Exposed/>
+        </dev_earnAchievement>
+
+        <dev_dropAchievementsEarnTime>
+            <Exposed/>
+        </dev_dropAchievementsEarnTime>
+
+    </BaseMethods>
+
+    <ofEntity>
+        <Account/>
+    </ofEntity>
+</root>
