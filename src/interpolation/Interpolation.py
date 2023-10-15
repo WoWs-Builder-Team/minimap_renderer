@@ -14,29 +14,30 @@ class Interpolator():
             method="liner"
             ):
         logging.info("started interpolating")
+        evtList=list(replay_info.events.values())
         # add more frames in replays to support higher fps
         # by default, one frame in game represents 1 second
-        origTotLen=len(replay_info.events)
+        origTotLen=len(evtList)
         # number of events in one sec
-        evtsPerSec=fpsTarget/speedScale 
+        framePerEvt=fpsTarget/speedScale   
+        
 
         # total events 
-        afterLen=int((origTotLen - 1)/evtsPerSec) + 1   
-
+        afterLen=int((origTotLen - 1)/framePerEvt) + 1   
         newRepInfo=[]
         for i in tqdm(range(origTotLen)):
-            currentLenTarget=evtsPerSec*(i+1)
+            currentLenTarget=framePerEvt*(i+1)
             # in case speed scale is faster than 60 events per sec
             if currentLenTarget <= len(newRepInfo):
                 continue
             
-            originEvt=replay_info.events[i+2]
+            originEvt=evtList[i]
             newRepInfo.append(originEvt)
-            if originEvt.last_frame :
+            if originEvt.last_frame or i+1 >= origTotLen:
                 break
-            nextEvt=replay_info.events[i+3] 
+            nextEvt=evtList[i+1] 
 
-            eventsToAdd=math.floor(currentLenTarget - len(newRepInfo)) - 1
+            eventsToAdd=math.floor(currentLenTarget - len(newRepInfo))
 
             match method:
                 case "liner":

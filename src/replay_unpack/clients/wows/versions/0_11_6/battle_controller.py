@@ -593,6 +593,7 @@ class BattleController(IBattleController):
                         (x2, y2),
                         int(f"{owner_id}{projectile['shotID']}"),
                         t_time,
+                        server_time_left=projectile["serverTimeLeft"]
                     )
                 )
 

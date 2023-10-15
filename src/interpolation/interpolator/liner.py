@@ -72,7 +72,7 @@ class LinerInterpolationer:
         if eventsToAdd <= 0 :
             return result
         diffData=self.calcDiff(originEvt, nextEvt, eventsToAdd)
-        currentEvt = copy.deepcopy(originEvt)
+        currentEvt = self.initCurrentEvt(originEvt)
         for i in range(eventsToAdd): 
             tmpEvt = currentEvt._asdict()
             self.applyDiffData(diffData, tmpEvt)
@@ -80,6 +80,29 @@ class LinerInterpolationer:
             result.append(currentEvt)
         return result
 
+    def initCurrentEvt(self, originEvt: Events):
+        currentEvt = Events(
+            time_left=originEvt.time_left,
+            evt_vehicle=originEvt.evt_vehicle,
+            evt_plane=originEvt.evt_plane,
+            evt_shot=[],
+            evt_torpedo=originEvt.evt_torpedo,
+            evt_acoustic_torpedo=originEvt.evt_acoustic_torpedo,
+            evt_building = dict(),
+            evt_ward = originEvt.evt_ward,
+            evt_smoke = originEvt.evt_smoke,
+            evt_hits = [],
+            evt_consumable = dict(),
+            evt_control = originEvt.evt_control,
+            evt_score = originEvt.evt_score,
+            evt_damage_maps = originEvt.evt_damage_maps,
+            evt_frag = [],
+            evt_ribbon = dict(),
+            evt_achievement = dict(),
+            evt_times_to_win = originEvt.evt_times_to_win,
+            evt_chat = [],
+        )
+        return currentEvt
     
     def calcDiff(self, originEvt: Events, nextEvt: Events, eventsToAdd: int):
         result=LinerDiff(
@@ -192,9 +215,9 @@ class LinerInterpolationer:
                 logging.debug("diffVehicle: id %s is none.", vehicle.vehicle_id)
                 continue
             dic = vehicle._asdict()
-            dic['x']=round(dic['x'] + diffVehicle.x)
-            dic['y']=round(dic['y'] + diffVehicle.y)
-            dic['yaw']=round(dic['yaw'] + diffVehicle.yaw)
+            dic['x']=dic['x'] + diffVehicle.x
+            dic['y']=dic['y'] + diffVehicle.y
+            dic['yaw']=dic['yaw'] + diffVehicle.yaw
             dic['regenerated_health']=dic['regenerated_health']+diffVehicle.regenerated_health
             dic['regen_crew_hp_limit']=dic['regen_crew_hp_limit']+diffVehicle.regen_crew_hp_limit
             dic['regeneration_health']=dic['regeneration_health']+diffVehicle.regeneration_health
