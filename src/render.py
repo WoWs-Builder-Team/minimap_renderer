@@ -4,9 +4,7 @@ from replay_parser import ReplayParser
 from renderer.utils import LOGGER
 from interpolation.Interpolation import Interpolator
 
-def run(pathStr):
-    fps=60
-    speed_scale=20.0
+def run(pathStr, fps: int = 60, speed_scale: float = 20.0):
     path = Path(pathStr)
     video_path = path.parent.joinpath(f"{path.stem}.mp4")
     with open(path, "rb") as f:
@@ -41,5 +39,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--replay", type=str, required=True)
+    parser.add_argument("--fps", type=int, required=False, default=60)
+    parser.add_argument("--speed", type=float, required=False, default=20.0)
     namespace = parser.parse_args()
-    run(namespace.replay)
+    run(namespace.replay, namespace.fps, namespace.speed)
