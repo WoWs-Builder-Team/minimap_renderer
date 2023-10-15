@@ -36,10 +36,10 @@ def run(pathStr):
 
 if __name__ == "__main__":
     # run("/home/reinwd/replays/20231014/20231014_191413_PZSD110-Hsiang-Yang_54_Faroe.wowsreplay")
-    run("/home/reinwd/replays/20231014/20231014_194451_PZSD110-Hsiang-Yang_45_Zigzag.wowsreplay")
-#     import argparse
+    # run("/home/reinwd/replays/20231014/20231015_203924_PZSD110-Hsiang-Yang_53_Shoreside.wowsreplay")
+    import argparse
 
-#     parser = argparse.ArgumentParser()
-#     parser.add_argument("--replay", type=str, required=True)
-#     namespace = parser.parse_args()
-#     run(namespace.replay)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--replay", type=str, required=True)
+    namespace = parser.parse_args()
+    run(namespace.replay)
