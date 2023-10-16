@@ -1,0 +1,72 @@
+<root>
+	<Properties>
+	</Properties>
+
+	<TempProperties>
+	    <SuperEntityAPIComponent__accountLoadHelper/>
+	    <SuperEntityAPIComponent__clientsWatcherVaryID/>
+	</TempProperties>
+
+	<Methods>
+		<loadAccount>
+			<Args>
+				<accountDBID> DB_ID </accountDBID>
+				<loadArgs> ACCOUNT_LOAD_ARGS </loadArgs>
+			</Args>
+			<ReturnValues>
+				<account> MAILBOX </account>
+			</ReturnValues>
+		</loadAccount>
+
+		<loadAccountController>
+			<Args>
+				<accountControllerDBID> DB_ID </accountControllerDBID>
+				<loadArgs> ACCOUNT_LOAD_ARGS </loadArgs>
+			</Args>
+			<ReturnValues>
+				<account> MAILBOX </account>\
+			</ReturnValues>
+		</loadAccountController>
+
+		<storeAccountControllerInfo>
+			<Args>
+				<accountController> MAILBOX </accountController>
+				<accountDBID> DB_ID </accountDBID>
+				<masterID> MASTER_ID </masterID>
+			</Args>
+		</storeAccountControllerInfo>
+
+		<removeAccountControllerInfo>
+			<Args>
+				<accountDBID> DB_ID </accountDBID>
+				<isRetired> BOOL </isRetired>
+			</Args>
+		</removeAccountControllerInfo>
+
+		<onMasterChangeStarted>
+			<Args>
+				<accountDBID> DB_ID </accountDBID>
+				<accountController>MAILBOX</accountController>
+			</Args>
+			<ReturnValues>
+				<masterId>MASTER_ID</masterId>
+				<masterService>MAILBOX</masterService>
+			</ReturnValues>
+		</onMasterChangeStarted>
+
+		<removeGdprDataOnMasters>
+			<Args>
+				<accountController> MAILBOX </accountController>
+				<accountDBID> DB_ID </accountDBID>
+				<clearPersistentProperties> ZIPPED_BLOB </clearPersistentProperties>
+			</Args>
+			<ReturnValues>
+				<errorCode>UINT8</errorCode>
+			</ReturnValues>
+		</removeGdprDataOnMasters>
+	</Methods>
+
+	<ofService>
+	    <SuperService/>
+	</ofService>
+</root>

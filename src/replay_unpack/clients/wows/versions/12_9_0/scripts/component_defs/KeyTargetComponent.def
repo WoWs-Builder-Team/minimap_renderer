@@ -1,0 +1,18 @@
+<root>
+
+    <BaseMethods>
+    </BaseMethods>
+
+    <ClientMethods>
+	    <syncKeyTargetMarkers>
+	       <Args>
+				<markersState>	UINT32	</markersState>
+			</Args>
+	    </syncKeyTargetMarkers>
+	</ClientMethods>
+
+    <ofEntity>
+        <Account/>
+    </ofEntity>
+</root>
+

@@ -9,7 +9,7 @@
 	<startDirection>	0.0000 0.8600 -0.8190	</startDirection>
 	<navmeshGenerator>	navgen	</navmeshGenerator>
 	<UnprocessedData>
-		<shadows>	true	</shadows>
+		<shadows>	false	</shadows>
 		<heightMap>	true	</heightMap>
 		<miniMap>	true	</miniMap>
 		<saved>	false	</saved>

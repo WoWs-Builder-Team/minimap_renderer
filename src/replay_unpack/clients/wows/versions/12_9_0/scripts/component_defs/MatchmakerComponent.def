@@ -1,0 +1,93 @@
+<root>
+	<Properties>
+		<_MatchmakerComponent__realm>
+			<Type> STRING </Type>
+			<Flags> BASE </Flags>
+		</_MatchmakerComponent__realm>
+		<_MatchmakerComponent__queueType>
+			<Type> QUEUE_TYPE </Type>
+			<Flags> BASE </Flags>
+		</_MatchmakerComponent__queueType>
+		<_MatchmakerComponent__inDivision>
+			<Type> BOOL </Type>
+			<Flags> BASE </Flags>
+		</_MatchmakerComponent__inDivision>
+		<_MatchmakerComponent__battleStarterService>
+			<Type> MAILBOX </Type>
+			<Flags> BASE </Flags>
+		</_MatchmakerComponent__battleStarterService>
+	</Properties>
+	
+	<BaseMethods>
+		<enter>
+			<Exposed/>
+			<Args>
+				<shipID> SHIP_ID </shipID>
+				<queueType> QUEUE_TYPE </queueType>
+				<mapID> INT16 </mapID>  <!-- MAP_ID (UINT8) or -1 -->
+				<gameMode> INT32 </gameMode>  <!-- GAME_MODE (UINT16) or -1 -->
+				<operationID> GAMEPARAMS_ID </operationID>
+			</Args>
+		</enter>
+		
+		<leave>
+			<Exposed/>
+		</leave>
+		
+		<devAddBotDivision>
+			<Exposed/>
+			<Args>
+				<queueType> QUEUE_TYPE </queueType>
+				<shipLevel> SHIP_LEVEL </shipLevel>
+				<divisionSize> UINT8 </divisionSize>
+				<data> INT32 </data>
+				<shipType> UNICODE_STRING </shipType>
+			</Args>
+		</devAddBotDivision>
+		
+		<onEnterViaDivision>  <!-- Callback from Division -->
+			<Args>
+				<enqueueData> ENQUEUE_DATA </enqueueData>
+			</Args>
+		</onEnterViaDivision>
+
+		<onRedirectedViaDivision>  <!-- Callback from Division -->
+			<Args>
+				<enqueueData> ENQUEUE_DATA </enqueueData>
+			</Args>
+		</onRedirectedViaDivision>
+		
+		<onLeave>  <!-- Callback from Division -->
+			<Args>
+				<reason> UINT8 </reason>
+			</Args>
+		</onLeave>
+	</BaseMethods>
+	
+	<ClientMethods>
+		<onEnter>
+			<Args>
+				<queueType> QUEUE_TYPE </queueType>
+				<shipID> SHIP_ID </shipID>
+				<description> PICKLED_BLOB </description>
+			</Args>
+		</onEnter>
+		
+		<onQueueInfoReceived>
+			<Args>
+				<queueType> GAMEPARAMS_ID </queueType>  <!-- QUEUE_TYPE (UINT16) or OPERATION_ID (GAMEPARAMS_ID/UINT32) -->
+				<queueInfo> PICKLED_BLOB </queueInfo>
+			</Args>
+		</onQueueInfoReceived>
+		
+		<onLeave>
+			<Args>
+				<reason> UINT8 </reason>
+			</Args>
+		</onLeave>
+	</ClientMethods>
+	
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>
