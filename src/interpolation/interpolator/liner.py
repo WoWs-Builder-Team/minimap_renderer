@@ -97,8 +97,8 @@ class LinerInterpolationer:
             evt_score = originEvt.evt_score,
             evt_damage_maps = originEvt.evt_damage_maps,
             evt_frag = [],
-            evt_ribbon = dict(),
-            evt_achievement = dict(),
+            evt_ribbon = originEvt.evt_ribbon,
+            evt_achievement = originEvt.evt_achievement,
             evt_times_to_win = originEvt.evt_times_to_win,
             evt_chat = [],
         )
