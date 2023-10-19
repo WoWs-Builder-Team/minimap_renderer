@@ -1,4 +1,4 @@
-<root>
+ <root>
 	<BOOL> UINT8 </BOOL>
 	<PRE_BATTLE_ID>UINT32</PRE_BATTLE_ID>
 	<PLAYER_ID>INT32</PLAYER_ID>
@@ -706,7 +706,7 @@
 			<normal>    <Type> VECTOR3      </Type> </normal> <!-- нормаль плоскости попадания -->
 			<isAlive>   <Type> BOOL         </Type> </isAlive> <!-- жива ли цель в момент попадания -->
 			<entityId>  <Type> ENTITY_ID    </Type> </entityId> <!-- id entity -->
-			<matId>     <Type> INT32        </Type> </matId> <!-- id материала плоскости попадания-->
+			<matId>     <Type> INT32        </Type> </matId>
 			<isInside>  <Type> BOOL         </Type> </isInside> <!-- -->
 		</Properties>
 	</COLLISION_INFO_BASE>
