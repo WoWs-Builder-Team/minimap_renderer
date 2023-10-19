@@ -120,7 +120,7 @@ class LinerInterpolationer:
             return result
         for id, vehicle in originEvt.evt_vehicle.items():
             nextVehicle=nextEvt.evt_vehicle.get(id)
-            if nextVehicle == None: 
+            if nextVehicle is None: 
                 continue
             result[id]=VehicleDiff(
                 float(nextVehicle.x - vehicle.x)/ float(eventsToAdd),
@@ -139,7 +139,7 @@ class LinerInterpolationer:
             return result
         for id, plane in originEvt.evt_plane.items():
             nextPlane=nextEvt.evt_plane.get(id)
-            if nextPlane == None: 
+            if nextPlane is None: 
                 continue
             result[id]=PlaneDiff(
                 float(nextPlane.position[0] - plane.position[0])/ float(eventsToAdd),
@@ -160,7 +160,7 @@ class LinerInterpolationer:
                 if tmp.shot_id==id:
                     nextShot=tmp
                     break
-            if nextShot == None: 
+            if nextShot is None: 
                 continue
             result[id]=ShotDiff(
                 float(nextShot.origin[0] - shot.origin[0])/ float(eventsToAdd),
@@ -177,7 +177,7 @@ class LinerInterpolationer:
             return result
         for id, torpedo in originEvt.evt_torpedo.items():
             nextTorpedo=nextEvt.evt_torpedo.get(id)
-            if nextTorpedo == None: 
+            if nextTorpedo is None: 
                 continue
             result[id]=TorpedoDiff(
                 float(nextTorpedo.x - torpedo.x)/ float(eventsToAdd),
@@ -193,7 +193,7 @@ class LinerInterpolationer:
             return result
         for id, acousticTorpedo in originEvt.evt_acoustic_torpedo.items():
             nextAcousticTorpedo=nextEvt.evt_acoustic_torpedo.get(id)
-            if nextAcousticTorpedo == None: 
+            if nextAcousticTorpedo is None: 
                 continue
             result[id]=TorpedoDiff(
                 float(nextAcousticTorpedo.x - acousticTorpedo.x)/ float(eventsToAdd),
@@ -211,7 +211,7 @@ class LinerInterpolationer:
             diffVehicle = diffData.vehicleDiff.get(id)
             diffVehicle: VehicleDiff
 
-            if diffVehicle == None:
+            if diffVehicle is None:
                 logging.debug("diffVehicle: id %s is none.", vehicle.vehicle_id)
                 continue
             dic = vehicle._asdict()
@@ -229,7 +229,7 @@ class LinerInterpolationer:
             diffPlane = diffData.planeDiff.get(id)
             diffPlane: PlaneDiff
 
-            if diffPlane == None:
+            if diffPlane is None:
                 logging.debug("diffPlane: id %s is none.", id)
                 continue
             dic=plane._asdict()
@@ -246,7 +246,7 @@ class LinerInterpolationer:
             diffShot = diffData.shotDiff.get(id)
             diffShot: ShotDiff
 
-            if diffShot == None:
+            if diffShot is None:
                 logging.debug("diffShot: id %s is none.", id)
                 continue 
             dic=shot._asdict()
@@ -260,7 +260,7 @@ class LinerInterpolationer:
             diffTorpedo = diffData.torpedoDiff.get(id)
             diffTorpedo: TorpedoDiff
 
-            if diffTorpedo == None:
+            if diffTorpedo is None:
                 logging.debug("diffTorpedo: id %s is none.", id)
                 continue 
             dic=torpedo._asdict()
@@ -274,13 +274,13 @@ class LinerInterpolationer:
             diffAcousticTorpedo = diffData.acousticTorpedoDiff.get(id)
             diffAcousticTorpedo: AcousticTorpedoDiff
 
-            if diffAcousticTorpedo == None:
+            if diffAcousticTorpedo is None:
                 logging.debug("diffAcousticTorpedo: id %s is none.", id)
                 continue 
             dic=acoustic_torpedo._asdict()
             dic['x']=dic['x']+diffAcousticTorpedo.x
             dic['y']=dic['y']+diffAcousticTorpedo.y
-            dic['yaw']=dic['yaw']+diffTorpedo.yaw
+            dic['yaw']=dic['yaw']+diffAcousticTorpedo.yaw
             currentEvt['evt_acoustic_torpedo'][id]=toNamedTuple('AcousticTorpedo', dic)
 
 
