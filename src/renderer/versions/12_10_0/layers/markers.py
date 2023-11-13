@@ -46,7 +46,7 @@ class LayerMarkersBase(LayerBase):
         for i in self._renderer.conman.active_consumables.values():
             target_ids.update(i)
 
-        if not target_ids.intersection({11, 13}):
+        if not target_ids.intersection({10, 12}):
             return
 
         for vehicle in sorted(
@@ -82,7 +82,7 @@ class LayerMarkersBase(LayerBase):
                     r = round(self._renderer.get_scaled_r(dist_ship_bw) / 2)
                     w = h = r * 4
 
-                    if aid == 11:
+                    if aid == 10:
                         per = dist_ship_bw / 200
                         dash = round(30 * per)
                         shape = self._draw_arc_aa((w, h), color, dash=dash)
