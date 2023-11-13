@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<root>
+    <Implements>
+        <Interface>BattleLogicEntityOwner</Interface>
+        <Interface>AviationOwner</Interface>
+        <Interface>DamageDealerOwner</Interface>
+        <Interface>StatsOwner</Interface>
+        <Interface>WeatherOwner</Interface>
+        <Interface>VisionOwner</Interface>
+    </Implements>
+    <IsManualAoI>true</IsManualAoI>
+    <Properties>
+        <className>
+            <Type>STRING</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </className>
+        <name>
+            <Type>STRING</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </name>
+        <paramsId>
+            <Type>GAMEPARAMS_ID</Type>
+            <Flags>ALL_CLIENTS</Flags>
+            <Default>0</Default>
+        </paramsId>
+        <owner>
+            <Type>ENTITY_ID</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </owner>
+        <teamId>
+            <Type>TEAM_ID</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </teamId>
+        <isBot>
+            <Type>BOOL</Type>
+            <Flags>ALL_CLIENTS</Flags>
+            <Default>True</Default>
+        </isBot>
+        <friendlyFireEnabled>
+            <Type>BOOL</Type>
+            <Flags>ALL_CLIENTS</Flags>
+            <Default>1</Default>
+        </friendlyFireEnabled>
+    </Properties>
+    <ClientMethods></ClientMethods>
+    <BaseMethods></BaseMethods>
+    <shouldBackup>false</shouldBackup>
+</root>
+
