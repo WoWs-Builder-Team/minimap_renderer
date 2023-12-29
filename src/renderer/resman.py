@@ -5,7 +5,9 @@ from importlib.resources import open_text, open_binary, is_resource
 from PIL import Image
 from typing import Optional
 from PIL import ImageFont
-
+from langdetect import detect
+from hanzidentifier import has_chinese
+from renderer.data import Message
 
 class ResourceManager:
     """A resource manager."""
@@ -69,6 +71,35 @@ class ResourceManager:
             data = ImageFont.truetype(fr, size=size)
             self._cache[key] = data
             return data
+        
+    def load_font_with_message(self, message: Message) -> ImageFont.FreeTypeFont:
+        """Pick the font based on the message language.
+
+        Args:
+            message (Message): The message.
+
+        Returns:
+            ImageFont.FreeTypeFont: The font.
+        """
+        chat_message = message.message
+        language = detect(message.message) # this can detect Chinese as Korean
+        if has_chinese(chat_message):
+            return self.load_font(
+                filename="warhelios_bold_zh.ttf", size=12
+            )
+    
+        if language == "ja":
+            return self.load_font(
+                filename="warhelios_bold_jp.ttf", size=12
+            )
+        elif language == "ko":
+            return self.load_font(
+                filename="warhelios_bold_ko.ttf", size=12
+            )
+        else: # fallback to the default font
+            return self.load_font(
+                filename="warhelios_bold.ttf", size=12
+            )
 
     def load_image(
         self,
