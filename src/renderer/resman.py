@@ -72,34 +72,50 @@ class ResourceManager:
             self._cache[key] = data
             return data
         
-    def load_font_with_message(self, message: Message) -> ImageFont.FreeTypeFont:
-        """Pick the font based on the message language.
-
-        Args:
-            message (Message): The message.
+    def load_default_font(self, size=12) -> ImageFont.FreeTypeFont:
+        """Loads the default font.
 
         Returns:
             ImageFont.FreeTypeFont: The font.
         """
-        chat_message = message.message
-        language = detect(message.message) # this can detect Chinese as Korean
-        if has_chinese(chat_message):
+        return self.load_font(filename="warhelios_bold.ttf", size=size)
+        
+    def load_font_with_text(self, text: str, size=12) -> ImageFont.FreeTypeFont:
+        """Pick the font based on the message language.
+
+        Args:
+            text (str): The pure text.
+
+        Returns:
+            ImageFont.FreeTypeFont: The font.
+        """
+        return self._select_font_by_text(text, size)
+    
+    def _select_font_by_text(self, text: str, size: int) -> ImageFont.FreeTypeFont:
+        """Select the font based on the text language.
+        
+        Args:
+            text (str): The text.
+
+        Returns:
+            ImageFont.FreeTypeFont: The font.
+        """
+        language = detect(text) # this can detect Chinese as Korean
+        if has_chinese(text):
             return self.load_font(
-                filename="warhelios_bold_zh.ttf", size=12
+                filename="warhelios_bold_zh.ttf", size=size
             )
     
         if language == "ja":
             return self.load_font(
-                filename="warhelios_bold_jp.ttf", size=12
+                filename="warhelios_bold_jp.ttf", size=size
             )
         elif language == "ko":
             return self.load_font(
-                filename="warhelios_bold_ko.ttf", size=12
+                filename="warhelios_bold_ko.ttf", size=size
             )
         else: # fallback to the default font
-            return self.load_font(
-                filename="warhelios_bold.ttf", size=12
-            )
+            return self.load_default_font(size=size)
 
     def load_image(
         self,
