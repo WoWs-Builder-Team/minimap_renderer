@@ -1,0 +1,23 @@
+<root>
+	<BaseMethods>
+		<onKicked>
+			<Args>
+				<reason> UINT8 </reason>
+			</Args>
+		</onKicked>
+		<onRedirected>
+			<Args>
+				<realm> STRING </realm>
+				<battleStarterService> MAILBOX </battleStarterService>
+			</Args>
+		</onRedirected>
+		<onStartBattle>
+			<Args>
+				<battleInfo> PYTHON </battleInfo>
+			</Args>
+			<ReturnValues>
+				<resultCode> INT64 </resultCode>
+			</ReturnValues>
+		</onStartBattle>
+	</BaseMethods>
+</root>

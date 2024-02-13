@@ -1,0 +1,25 @@
+<root>
+    <Domain> BASE </Domain>
+    <Properties>
+        <description>
+            <Type> STRING </Type>
+            <Editable> true </Editable>
+        </description>
+
+        <radius>
+            <Type> FLOAT32 </Type>
+            <Editable> true </Editable>
+            <Default>15</Default>
+            <Widget>	RADIUS
+                <colour>	0 255 0 255	</colour>
+                <gizmoRadius>	1.5	</gizmoRadius>
+            </Widget>
+        </radius>
+
+        <force>
+            <Type> FLOAT32 </Type>
+            <Editable> true </Editable>
+            <Default>0.05</Default>
+        </force>
+    </Properties>
+</root>
