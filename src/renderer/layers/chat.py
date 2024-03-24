@@ -6,7 +6,6 @@ from renderer.data import Message, ReplayData
 from renderer.render import Renderer
 from functools import lru_cache
 
-
 class LayerChatBase(LayerBase):
     """The class for handling in-game chat messages.
 
@@ -21,9 +20,7 @@ class LayerChatBase(LayerBase):
         self._replay_data = (
             replay_data if replay_data else self._renderer.replay_data
         )
-        self._font = self._renderer.resman.load_font(
-            filename="warhelios_bold.ttf", size=12
-        )
+        self._font = None # to be decided per message
         self._players = self._replay_data.player_info
         self._generated_lines: dict[int, Image.Image] = {}
         self._messages: list[Message] = []
@@ -65,6 +62,9 @@ class LayerChatBase(LayerBase):
         # if image := self._lines.get(m_hash, None):
         #     return image
 
+        self._font = self._renderer.resman.load_font_with_text(
+            message.message, size=12
+        )
         base = Image.new("RGBA", (560, 17))
         draw = ImageDraw.Draw(base)
         player = self._players[message.player_id]
