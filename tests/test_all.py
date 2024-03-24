@@ -28,6 +28,7 @@ from src.replay_parser import ReplayParser
         "replays/1211.wowsreplay",
         "replays/130.wowsreplay",
         "replays/131.wowsreplay",
+        "replays/132.wowsreplay",
     ],
 )
 def test_all(file):

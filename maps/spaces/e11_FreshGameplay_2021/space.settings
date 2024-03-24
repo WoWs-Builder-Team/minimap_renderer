@@ -13,7 +13,7 @@
 	</terrain>
 	<navmeshGenerator>	navgen	</navmeshGenerator>
 	<UnprocessedData>
-		<shadows>	false	</shadows>
+		<shadows>	true	</shadows>
 		<heightMap>	true	</heightMap>
 		<miniMap>	true	</miniMap>
 		<saved>	false	</saved>
