@@ -414,15 +414,15 @@ class BattleController(IBattleController):
             self._dict_score[relation] = Score(relation, team_score["score"])
 
     def _add_ward(
-        self, entity, plane_id, position, radius, duration, team_id, vehicle_id
+        self, entity, squadronId, position, radius, ownerId, **kwargs
     ):
         radius = radius if radius else 60
-        self._dict_ward[plane_id] = Ward(
-            plane_id=plane_id,
+        self._dict_ward[squadronId] = Ward(
+            plane_id=squadronId,
             position=tuple(map(round, position[::2])),
             radius=radius,
-            relation=self._dict_info[self._vehicle_to_id[vehicle_id]].relation,
-            vehicle_id=vehicle_id,
+            relation=self._dict_info[self._vehicle_to_id[ownerId]].relation,
+            vehicle_id=ownerId,
         )
 
     def _remove_ward(self, entity, plane_id):
