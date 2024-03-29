@@ -175,7 +175,7 @@ class BattleController(IBattleController):
 
         Entity.subscribe_method_call(
             "Vehicle",
-            "consumableUsed",
+            "onConsumableUsed",
             self._on_consumable_used,
         )
         Entity.subscribe_method_call(
@@ -537,10 +537,10 @@ class BattleController(IBattleController):
     def _remove_plane(self, entity: Entity, plane_id: int):
         self._dict_plane.pop(plane_id)
 
-    def _on_consumable_used(self, entity: Entity, cid, dur):
+    def _on_consumable_used(self, entity: Entity, consumableType, workTimeLeft):
         consumables = self._acc_consumables.setdefault(entity.id, [])
         consumables.append(
-            Consumable(ship_id=entity.id, consumable_id=cid, duration=dur)
+            Consumable(ship_id=entity.id, consumable_id=consumableType, duration=workTimeLeft)
         )
 
     def _set_visibility_flag(self, entity: Entity, flag: int):
