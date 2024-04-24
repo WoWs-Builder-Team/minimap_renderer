@@ -1,0 +1,111 @@
+<root>
+	<BaseMethods>
+		<start>
+			<Exposed/>
+		</start>
+		
+		<stop>
+			<Exposed/>
+		</stop>
+		
+		<kickPlayer>
+			<Arg>UINT64</Arg>
+			<Exposed/>
+		</kickPlayer>
+		
+		<clearRoom>
+			<Exposed/>
+		</clearRoom>
+		
+		<setReady>
+			<Arg>INT64</Arg>
+			<Exposed/>
+		</setReady>
+		
+		<sendInvite>
+			<Arg>INT64</Arg>
+			<Arg>INT64</Arg>
+			<Arg>INT64</Arg>
+			<Exposed/>
+		</sendInvite>
+		
+		<sendInvite>
+			<Arg>INT64</Arg>
+			<Arg>INT64</Arg>
+			<Arg>INT64</Arg>
+			<Exposed/>
+		</sendInvite>
+		
+		<revokeInvite>
+			<Arg>INT64</Arg>
+			<Exposed/>
+		</revokeInvite>
+		
+		<revokeInvite>
+			<Arg>INT64</Arg>
+			<Exposed/>
+		</revokeInvite>
+		
+		<quit>
+			<Exposed/>
+		</quit>
+		
+		<changeOwner>
+			<Arg>INT64</Arg>
+			<Exposed/>
+		</changeOwner>
+		
+		<dismiss>
+			<Exposed/>
+		</dismiss>
+		
+		<setIgnore>
+			<Exposed/>
+		</setIgnore>
+		
+		<setPlayerTeam>
+			<Arg>INT64</Arg>
+			<Arg>INT64</Arg>
+			<Exposed/>
+		</setPlayerTeam>
+		
+		<addBot>
+			<Arg>INT64</Arg> <!-- cmdData -->
+			<Arg>INT64</Arg> <!-- cmdData -->
+			<Arg>INT32</Arg> <!-- cmdData -->
+			<Arg>INT32</Arg> <!-- cmdData -->
+			<Arg>UNICODE_STRING</Arg> <!-- cmdData -->
+			<Exposed/>
+		</addBot>
+		
+		<fillWithBots>
+			<Arg>INT64</Arg> <!-- cmdData -->
+			<Arg>INT64</Arg> <!-- cmdData -->
+			<Arg>INT32</Arg> <!-- cmdData -->
+			<Arg>INT32</Arg> <!-- cmdData -->
+			<Arg>INT32</Arg> <!-- cmdData -->
+			<Exposed/>
+		</fillWithBots>
+		
+		<setCommander>
+			<Arg>INT64</Arg>
+			<Arg>INT64</Arg>
+			<Exposed/>
+		</setCommander>
+		
+		<applyChanges>\
+			<Arg>TRAINING_ROOM_PROPERTIES</Arg>
+			<Exposed/>
+		</applyChanges>
+		
+		<unmakeCommander>
+			<Arg>INT64</Arg>
+			<Exposed/>
+		</unmakeCommander>
+	
+	</BaseMethods>
+	
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>
