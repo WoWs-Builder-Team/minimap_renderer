@@ -170,3 +170,4 @@ code_testing/
 /scratch
 .coveragerc
 /replays/team*.wowsreplay
+/.idea
