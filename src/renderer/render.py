@@ -495,13 +495,13 @@ class Renderer(RendererBase):
         logo = self.resman.load_image("logo.png")
         image.paste(logo, (840, 25), logo)
 
-        font_large = self.resman.load_font("warhelios_bold.ttf", size=35)
-        draw.text((945, 30), "Minimap Renderer", "white", font_large)
+        font_large = self.resman.load_font("warhelios_bold_zh.ttf", size=35)
+        draw.text((945, 30), "对局回放小地图", "white", font_large)
 
-        font_large = self.resman.load_font("warhelios_bold.ttf", size=16)
+        font_large = self.resman.load_font("warhelios_bold_zh.ttf", size=16)
         draw.text(
             (945, 75),
-            "https://github.com/WoWs-Builder-Team",
+            "QQ群：872725671",
             "white",
             font_large,
         )
