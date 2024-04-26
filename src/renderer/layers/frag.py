@@ -19,15 +19,15 @@ class LayerFragBase(LayerBase):
     """
 
     def __init__(
-        self, renderer: Renderer, replay_data: Optional[ReplayData] = None
+            self, renderer: Renderer, replay_data: Optional[ReplayData] = None
     ):
         self._renderer = renderer
         self._replay_data = (
             replay_data if replay_data else self._renderer.replay_data
         )
-        self._font = self._renderer.resman.load_font(
-            filename="warhelios_bold.ttf", size=12
-        )
+        realm = next(iter(self._replay_data.player_info.values())).realm
+        font_name = "warhelios_bold_zh.ttf" if realm == "CN" else "warhelios_bold.ttf"
+        self._font = self._renderer.resman.load_font(filename=font_name, size=12)
         self._frags: list[Frag] = []
         self._ships = self._renderer.resman.load_json("ships.json")
         self._players = self._replay_data.player_info
@@ -282,7 +282,7 @@ class LayerFragBase(LayerBase):
                     total_width += str_w
                     part.append(el)
                 case (a, b, c) if isinstance(a, Image.Image) and isinstance(
-                    b, int
+                        b, int
                 ) and isinstance(c, int):
                     nw, nh = round(a.width * c), round(a.height * c)
                     a = a.resize((nw, nh), Image.Resampling.LANCZOS)
@@ -324,7 +324,7 @@ class LayerFragBase(LayerBase):
                     base_draw.text((pos_x, 0), a, b, self._font)
                     pos_x += str_w
                 case (a, b, c) if isinstance(a, Image.Image) and isinstance(
-                    b, int
+                        b, int
                 ) and isinstance(c, int):
                     nw, nh = round(a.width * c), round(a.height * c)
                     a = a.resize((nw, nh), Image.Resampling.LANCZOS)

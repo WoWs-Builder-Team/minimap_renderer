@@ -5,6 +5,9 @@ from importlib.resources import open_text, open_binary, is_resource
 from PIL import Image
 from typing import Optional
 from PIL import ImageFont
+from langdetect import detect
+from hanzidentifier import has_chinese
+from renderer.data import Message
 
 
 class ResourceManager:
@@ -17,10 +20,10 @@ class ResourceManager:
         self._versions = version
 
     def load_json(
-        self,
-        filename: str,
-        path: Optional[str] = None,
-        ignore_versioned: bool = False,
+            self,
+            filename: str,
+            path: Optional[str] = None,
+            ignore_versioned: bool = False,
     ) -> dict:
         """Loads a json file from the given package and converts its numeric
         keys to integer.
@@ -48,7 +51,7 @@ class ResourceManager:
             return data
 
     def load_font(
-        self, filename: str, path: Optional[str] = None, size=12
+            self, filename: str, path: Optional[str] = None, size=12
     ) -> ImageFont.FreeTypeFont:
         key = f"{path}.{filename}.{size}"
         if cached := self._cache.get(key, None):
@@ -70,13 +73,58 @@ class ResourceManager:
             self._cache[key] = data
             return data
 
+    def load_default_font(self, size=12) -> ImageFont.FreeTypeFont:
+        """Loads the default font.
+
+        Returns:
+            ImageFont.FreeTypeFont: The font.
+        """
+        return self.load_font(filename="warhelios_bold.ttf", size=size)
+
+    def load_font_with_text(self, text: str, size=12) -> ImageFont.FreeTypeFont:
+        """Pick the font based on the message language.
+
+        Args:
+            text (str): The pure text.
+
+        Returns:
+            ImageFont.FreeTypeFont: The font.
+        """
+        return self._select_font_by_text(text, size)
+
+    def _select_font_by_text(self, text: str, size: int) -> ImageFont.FreeTypeFont:
+        """Select the font based on the text language.
+
+        Args:
+            text (str): The text.
+
+        Returns:
+            ImageFont.FreeTypeFont: The font.
+        """
+        language = detect(text)  # this can detect Chinese as Korean
+        if has_chinese(text):
+            return self.load_font(
+                filename="warhelios_bold_zh.ttf", size=size
+            )
+
+        if language == "ja":
+            return self.load_font(
+                filename="warhelios_bold_jp.ttf", size=size
+            )
+        elif language == "ko":
+            return self.load_font(
+                filename="warhelios_bold_ko.ttf", size=size
+            )
+        else:  # fallback to the default font
+            return self.load_default_font(size=size)
+
     def load_image(
-        self,
-        filename: str,
-        path: Optional[str] = None,
-        nearest=False,
-        size: Optional[tuple[int, int]] = None,
-        rot: Optional[int] = None,
+            self,
+            filename: str,
+            path: Optional[str] = None,
+            nearest=False,
+            size: Optional[tuple[int, int]] = None,
+            rot: Optional[int] = None,
     ) -> Image.Image:
         """Loads the image from the package or from the memory.
 
