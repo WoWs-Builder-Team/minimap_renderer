@@ -1,12 +1,12 @@
+import hashlib
 import io
 import json
 import os
 import secrets
-import uuid
 from typing import Annotated
 
-from fastapi import FastAPI, UploadFile, BackgroundTasks, Depends, HTTPException, status
-from fastapi.responses import FileResponse, StreamingResponse
+from fastapi import FastAPI, UploadFile, Depends, HTTPException, status
+from fastapi.responses import FileResponse
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 
 from renderer.render import Renderer
@@ -41,25 +41,51 @@ def get_current_username(
     return credentials.username
 
 
-@app.post("/uploadRep")
-async def upload_rep(file: UploadFile, username: Annotated[str, Depends(get_current_username)]):
-    video_name = str(uuid.uuid1()) + '.mp4'
+@app.post("/upload_replays_video", summary="上传rep文件返回视频流")
+async def upload_replays_video(file: UploadFile, username: Annotated[str, Depends(get_current_username)]):
+    binary_bytes = file.file.read()
+    binary_stream = io.BytesIO(binary_bytes)
+    uuid_str_mp4 = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + '/temp/' + hashlib.sha256(binary_bytes).hexdigest() + '.mp4'
+    if not os.path.exists(uuid_str_mp4):
+        replay_info = ReplayParser(
+            binary_stream, strict=True, raw_data_output=False
+        ).get_info()
+        renderer = Renderer(
+            replay_info["hidden"]["replay_data"],
+            logs=True,
+            enable_chat=True,
+            use_tqdm=True,
+        )
+        renderer.start(str(uuid_str_mp4))
+    return FileResponse(uuid_str_mp4, media_type="video/mp4")
+
+
+@app.post("/upload_replays_video_url", summary="上传rep文件返回视频名称")
+async def upload_replays_video_url(file: UploadFile, username: Annotated[str, Depends(get_current_username)]):
+    binary_bytes = file.file.read()
+    binary_stream = io.BytesIO(binary_bytes)
+    video_name = hashlib.sha256(binary_bytes).hexdigest() + '.mp4'
     uuid_str_mp4 = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + '/temp/' + video_name
-    binary_stream = io.BytesIO(file.file.read())
-    replay_info = ReplayParser(
-        binary_stream, strict=True, raw_data_output=False
-    ).get_info()
-    renderer = Renderer(
-        replay_info["hidden"]["replay_data"],
-        logs=True,
-        enable_chat=True,
-        use_tqdm=True,
-    )
-    renderer.start(str(uuid_str_mp4))
-    # 清理文件
-    task = BackgroundTasks()
-    task.add_task(del_file, uuid_str_mp4)
-    return FileResponse(uuid_str_mp4, media_type="video/mp4", background=task)
+    if not os.path.exists(uuid_str_mp4):
+        replay_info = ReplayParser(
+            binary_stream, strict=True, raw_data_output=False
+        ).get_info()
+        renderer = Renderer(
+            replay_info["hidden"]["replay_data"],
+            logs=True,
+            enable_chat=True,
+            use_tqdm=True,
+        )
+        renderer.start(str(uuid_str_mp4))
+    return video_name
+
+
+@app.get("/video_url", summary="上传rep文件返回视频地址")
+async def video_url(file_name: str):
+    file = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + '/temp/' + file_name
+    if os.path.exists(file):
+        return FileResponse(file, media_type="video/mp4")
+    return HTTPException(status_code=404, detail="文件不存在")
 
 
 def del_file(file_name):
