@@ -6,7 +6,7 @@ import uuid
 from typing import Annotated
 
 from fastapi import FastAPI, UploadFile, BackgroundTasks, Depends, HTTPException, status
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 
 from renderer.render import Renderer
@@ -21,7 +21,7 @@ def get_current_username(
 ):
     with open(os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "/token.json", 'r', encoding='utf8') as json_f:
         json_data = json.load(json_f)
-    print(json_data)
+
     current_username_bytes = credentials.username.encode("utf8")
     correct_username_bytes = str(json_data['username']).encode("utf8")
     is_correct_username = secrets.compare_digest(
@@ -43,7 +43,8 @@ def get_current_username(
 
 @app.post("/uploadRep")
 async def upload_rep(file: UploadFile, username: Annotated[str, Depends(get_current_username)]):
-    uuid_str_mp4 = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + '/temp/' + str(uuid.uuid1()) + '.mp4'
+    video_name = str(uuid.uuid1()) + '.mp4'
+    uuid_str_mp4 = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + '/temp/' + video_name
     binary_stream = io.BytesIO(file.file.read())
     replay_info = ReplayParser(
         binary_stream, strict=True, raw_data_output=False
