@@ -1,0 +1,11 @@
+<root>
+
+	<TempProperties>
+		<_WritableEntity__logID/>
+		<_WritableEntity__accountDataAtomicCommitSemaphor/>
+		<_WritableEntity__lastCommittedDataRevision/>
+		<_WritableEntity__lastSavedDataRevision/>
+		<_WritableEntity__onDataCommitted/>
+	</TempProperties>
+
+</root>
