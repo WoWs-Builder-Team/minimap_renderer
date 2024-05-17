@@ -4,7 +4,6 @@ import os
 from renderer_data.gameparams import get_data
 from renderer_data.utils import LOGGER
 
-
 REQUIRED = {
     "workTime",
     "regenerationHPSpeed",
@@ -25,51 +24,20 @@ def create_abilities_data():
             sub = ability_entities.setdefault(ab.name, {})
             sub[k] = v  # type: ignore
 
-    ability_type_to_id = {
-        'callFighters': 21,
-        'goDeep': 32,
-        'weaponReloadBooster': 33, 'planeMinefield': 42,
-        'subsEnergyFreeze': 36,
-        'All': 44,
-        'planeSmokeGenerator': 41,
-        'submarineLocator': 40,
-        'trigger4': 16,
-        'trigger5': 17,
-        'trigger6': 18,
-        'trigger7': 27,
-        'smokeGenerator': 6,
-        'trigger1': 13,
-        'trigger2': 14,
-        'trigger3': 15,
-        'beffsShift': 30,
-        'invulnerable': 19,
-        'trigger8': 28,
-        'trigger9': 29,
-        'airDefenseDisp': 2,
-        'torpedoReloader': 11,
-        'fastRudders': 35,
-        'healForsage': 20,
-        'hydrophone': 34,
-        'subsFourthState': 25,
-        'regenCrew': 8,
-        'scout': 1,
-        'artilleryBoosters': 4,
-        'groupAuraBuff': 37,
-        'invisibilityExtraBuffConsumable': 39,
-        'regenerateHealth': 22,
-        'rls': 12,
-        'subsOxygenRegen': 23,
-        'circleWave': 31,
-        'affectedBuffAura': 38,
-        'fighter': 9,
-        'crashCrew': 0,
-        'hangarBoosters': 5,
-        'speedBoosters': 3,
-        'sonar': 10,
-        'subsWaveGunBoost': 24,
-        'Any': 43,
-        'depthCharges': 26
-    }
+    # ConsumablesConstants.ConsumableIDsMap
+    ability_type_to_id = {'tacticalTrigger2': 46, 'callFighters': 21, 'smokePlane': 52, 'goDeep': 33,
+                          'weaponReloadBooster': 34, 'planeMinefield': 43, 'subsEnergyFreeze': 37, 'All': 55,
+                          'planeSmokeGenerator': 42, 'submarineLocator': 41, 'trigger4': 16, 'trigger5': 17,
+                          'trigger6': 18, 'trigger7': 27, 'smokeGenerator': 6, 'trigger1': 13, 'trigger2': 14,
+                          'trigger3': 15, 'tacticalTrigger3': 47, 'invulnerable': 19, 'tacticalTrigger1': 45,
+                          'trigger8': 28, 'trigger9': 29, 'tacticalTrigger5': 49, 'tacticalTrigger4': 48,
+                          'reconnaissanceSquad': 51, 'airDefenseDisp': 2, 'torpedoReloader': 11, 'minefield': 44,
+                          'fastRudders': 36, 'buff': 30, 'healForsage': 20, 'hydrophone': 35, 'subsFourthState': 25,
+                          'regenCrew': 8, 'tacticalBuff': 53, 'scout': 1, 'artilleryBoosters': 4, 'groupAuraBuff': 38,
+                          'buffsShift': 31, 'invisibilityExtraBuffConsumable': 40, 'regenerateHealth': 22, 'rls': 12,
+                          'subsOxygenRegen': 23, 'circleWave': 32, 'affectedBuffAura': 39, 'fighter': 9, 'crashCrew': 0,
+                          'Any': 54, 'hangarBoosters': 5, 'Special': 56, 'speedBoosters': 3, 'sonar': 10,
+                          'subsWaveGunBoost': 24, 'tacticalTrigger6': 50, 'depthCharges': 26}
     _abils = {}
 
     for ship in list_ships:
@@ -102,6 +70,6 @@ def create_abilities_data():
                     }
 
     with open(
-        os.path.join(os.getcwd(), "generated", "abilities.json"), "w"
+            os.path.join(os.getcwd(), "generated", "abilities.json"), "w"
     ) as f:
         json.dump(_abils, f)
