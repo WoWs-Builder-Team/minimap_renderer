@@ -27,7 +27,7 @@ class ShipBuilder:
         upgrades = [modern[v]["index"] for v in player.modernization if v]
         captain = "PCW001"
         skills = player.skills.by_species(ship["species"])
-        consumables = [abilities[v] for v in player.abilities if v]
+        consumables = [abilities[v] for v in player.abilities if v and v in abilities]
         signals = [self._exteriors[v] for v in player.signals if v]
         version = 2
 
