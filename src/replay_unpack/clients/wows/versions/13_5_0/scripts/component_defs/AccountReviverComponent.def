@@ -1,0 +1,26 @@
+<root>
+	<Properties>
+	</Properties>
+
+	<TempProperties>
+	    <AccountReviverComponent__getAccountsCountdown/>
+	    <AccountReviverComponent__accountsToRevive/>
+	    <AccountReviverComponent__removedAccountsDBIDs/>
+	    <AccountReviverComponent__reviverVaryID/>
+
+	    <AccountReviverComponent__lockedAccountsWatcherUpdatePeriod/>
+	    <AccountReviverComponent__lockedAccountsWatcherUpdateTimer/>
+	</TempProperties>
+
+	<Methods>
+		<setReloadSpeed>
+			<Args>
+				<speed>UINT8</speed>
+			</Args>
+		</setReloadSpeed>
+	</Methods>
+
+	<ofService>
+	    <SuperService/>
+	</ofService>
+</root>
