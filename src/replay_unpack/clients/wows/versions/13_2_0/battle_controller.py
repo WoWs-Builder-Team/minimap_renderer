@@ -781,7 +781,7 @@ class BattleController(IBattleController):
                     is_alive=player["isAlive"],
                     is_hidden=player["isHidden"],
                     is_suppressed=player["isSuppressed"],
-                    name=player["name"],
+                    name=player["name"].encode('ISO8859-1').decode('UTF-8'),
                     params_id=player["paramsId"],
                     team_id=player["teamId"],
                     unique_id=player["uniqueId"],
