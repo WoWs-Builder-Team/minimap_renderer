@@ -1,4 +1,4 @@
-<root>
+ <root>
     <ClientMethods>
         <receiveCommunicationRestrictions>
             <Arg> MSGPACK_BLOB </Arg>
