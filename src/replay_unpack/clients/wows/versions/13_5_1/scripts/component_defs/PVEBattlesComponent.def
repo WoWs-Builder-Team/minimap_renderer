@@ -1,0 +1,11 @@
+<root>
+	<BaseMethods>
+	</BaseMethods>
+	
+	<ClientMethods>
+	</ClientMethods>
+	
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>
