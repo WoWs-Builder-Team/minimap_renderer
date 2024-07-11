@@ -1,0 +1,2085 @@
+<root>
+	<BOOL> UINT8 </BOOL>
+	<PRE_BATTLE_ID>UINT32</PRE_BATTLE_ID>
+	<PLAYER_ID>INT32</PLAYER_ID>
+	<TEAM_ID>INT8</TEAM_ID>
+	<SHIP_ID>UINT32</SHIP_ID>
+	<CREW_ID>UINT32</CREW_ID>
+	<SHIP_TYPE_ID>UINT8</SHIP_TYPE_ID>
+	<SHIP_NATION_ID>UINT8</SHIP_NATION_ID>
+	<SHIP_LEVEL>UINT8</SHIP_LEVEL>
+	<PRESET_ID>UINT8</PRESET_ID>
+	<MODULE_ID>STRING</MODULE_ID>
+	<GAMEPARAMS_ID>UINT32</GAMEPARAMS_ID>
+	<OBJECT_ID> INT32 </OBJECT_ID>
+	<DB_ID>	INT64	</DB_ID>
+	<MAP_ID> UINT8 </MAP_ID>
+	<ENTITY_ID>INT32</ENTITY_ID>
+	<WEAPON_TYPE>UINT8</WEAPON_TYPE>
+	<GUN_ID>UINT8</GUN_ID>
+	<GUN_BITS>UINT16</GUN_BITS>
+	<PLANE_ID>INT64</PLANE_ID>
+	<TARGET_ID>INT64</TARGET_ID>			<!-- place in which we can use PLANE_ID or ENTITY_ID -->
+	<MASTER_ID>UINT32</MASTER_ID>
+	<CLUSTER_ID>UINT32</CLUSTER_ID>
+	<AVATAR_ID>INT64</AVATAR_ID>
+	<CAMPAIGN_TASK_ID>UINT32</CAMPAIGN_TASK_ID>
+	<ARENA_UNIQUE_ID>UINT64</ARENA_UNIQUE_ID>
+	<BUILDING_UNIQUE_ID>UINT32</BUILDING_UNIQUE_ID>
+	<REASON_ID>UINT32</REASON_ID>
+	<VISIBILITY_FLAG>UINT32</VISIBILITY_FLAG>
+	<SHOT_ID>UINT16</SHOT_ID>
+	<HISTORY_LOGGING_FLAGS>UINT32</HISTORY_LOGGING_FLAGS>
+	<ACES_TASK_PROGRESS>UINT32</ACES_TASK_PROGRESS>
+	<TEAM_INFO>UINT8</TEAM_INFO>
+	<QUEUE_TYPE>UINT16</QUEUE_TYPE>
+	<GAME_MODE>UINT16</GAME_MODE>
+	<SHIP_LEVEL>UINT8</SHIP_LEVEL>
+	<AI_CATEGORY>UINT8</AI_CATEGORY>
+	<RIBBON_ID>INT8</RIBBON_ID>
+	<STATE>UINT8</STATE>
+	<FIELD_ID>UINT64</FIELD_ID>
+	<HIT_TYPE>UINT8</HIT_TYPE>
+	<BUOYANCY_STATE>UINT8</BUOYANCY_STATE>
+	<INTERCLUSTER_ID>UINT64</INTERCLUSTER_ID>
+	<CONSUMABLE_ID>UINT8</CONSUMABLE_ID>
+	<BATTLE_CARD_ID>UINT32</BATTLE_CARD_ID>
+
+	<ZIPPED_BLOB>
+		USER_TYPE
+		<Type>BLOB</Type>
+		<implementedBy>ZippedBlobConverter.converter</implementedBy>
+	</ZIPPED_BLOB>
+
+	<CACHED_ZIPPED_BLOB>
+		USER_TYPE
+		<Type>BLOB</Type>
+		<implementedBy>BoundServiceUtils.CachedZippedBlobConverter.CachedZippedBlobConverter</implementedBy>
+	</CACHED_ZIPPED_BLOB>
+
+	<GAMEPARAMS>
+		USER_TYPE
+		<implementedBy>GameParams.converter</implementedBy>
+	</GAMEPARAMS>
+
+	<FLAT_VECTOR>
+		USER_TYPE
+		<Type>VECTOR2</Type>
+		<implementedBy>FlatVectorDef.converter</implementedBy>
+	</FLAT_VECTOR>
+
+	<ATBA_TARGETS>
+		ARRAY<of>UINT32</of>
+	</ATBA_TARGETS>
+	
+	<VISIBILITY_BY_TEAM>
+		ARRAY<of>TEAM_ID</of>
+	</VISIBILITY_BY_TEAM>
+
+	<VISIBILITY_DISTANCES>
+		FIXED_DICT
+		<Properties>
+			<byShip><Type>FLOAT</Type></byShip>
+			<byPlane><Type>FLOAT</Type></byPlane>
+			<bySmoke><Type>FLOAT</Type></bySmoke>
+		</Properties>
+	</VISIBILITY_DISTANCES>
+
+	<VISIBILITY_BY_CLIENTS>
+		ARRAY<of>AVATAR_ID</of>
+	</VISIBILITY_BY_CLIENTS>
+
+	<VISION>
+		ARRAY<of>ENTITY_ID</of>
+	</VISION>
+	
+	<DB_ID_LIST>
+		ARRAY<of>DB_ID</of>
+	</DB_ID_LIST>
+
+	<PLANE_WAYPOINT>
+		FIXED_DICT
+		<Properties>
+			<position><Type>VECTOR3</Type></position>
+			<yaw><Type>FLOAT</Type></yaw>
+			<pitch><Type>INT8</Type></pitch>
+			<time><Type>INT16</Type></time>
+			<type><Type>INT8</Type></type>
+		</Properties>
+	</PLANE_WAYPOINT>
+
+	<PLANE_PATH>
+		ARRAY <of> PLANE_WAYPOINT </of>
+	</PLANE_PATH>
+
+	<TEAM_STATE>
+		FIXED_DICT
+		<Properties>
+			<teamId><Type>TEAM_ID</Type></teamId>
+			<state><Type>TEAM_INFO</Type></state>
+		</Properties>
+	</TEAM_STATE>
+
+	<TEAMS_DEF>
+		FIXED_DICT
+		<Properties>
+			<default><Type>TEAM_INFO</Type></default>
+			<teams><Type>ARRAY<of>TEAM_STATE</of></Type></teams>
+		</Properties>
+		<implementedBy>TeamsDef.converter</implementedBy>
+	</TEAMS_DEF>
+
+	<WEAPON_LOCK_STATE>
+		FIXED_DICT
+		<Properties>
+			<weaponType><Type>WEAPON_TYPE</Type></weaponType>
+			<lockType><Type>UINT8</Type></lockType>
+			<targetId><Type>TARGET_ID</Type></targetId>
+			<hitPos><Type>VECTOR3</Type></hitPos>
+		</Properties>
+	</WEAPON_LOCK_STATE>
+
+	<BATTLE_DEF>
+		FIXED_DICT
+		<Properties>
+			<mapId><Type>MAP_ID</Type></mapId>
+			<type><Type>INT16</Type></type>
+			<duration><Type>INT16</Type></duration>
+			<weather><Type>INT8</Type></weather>
+			<level><Type>INT8</Type></level>
+			<teamBuildType><Type>UINT8</Type></teamBuildType>
+			<sseInfo><Type>STRING</Type></sseInfo>
+			<realms><Type>ARRAY<of>STRING</of></Type></realms>
+			<holderTeams><Type>ARRAY<of>TEAM_ID</of></Type></holderTeams>
+			<operationID><Type>GAMEPARAMS_ID</Type></operationID>
+		</Properties>
+		<implementedBy>BattleDef.converter</implementedBy>
+	</BATTLE_DEF>
+
+	<BATTLE_EVENT>
+		USER_TYPE
+		<implementedBy>BattleEventDef.converter</implementedBy>
+	</BATTLE_EVENT>
+
+	<SHIP_CONFIG>
+		USER_TYPE
+		<implementedBy>ShipConfig.converter</implementedBy>
+	</SHIP_CONFIG>
+
+	<PLAYER_CLAN_INFO>
+		FIXED_DICT
+		<Properties>
+			<clanID><Type>DB_ID</Type></clanID>
+			<clanTag><Type>UNICODE_STRING</Type></clanTag>
+			<clanColor><Type>UINT32</Type></clanColor>
+		</Properties>
+		<implementedBy>PlayerClanInfo.converter</implementedBy>
+		<AllowNone> true </AllowNone>
+	</PLAYER_CLAN_INFO>
+
+	<DIVISION_SEEKER_DEF>
+		FIXED_DICT
+		<Properties>
+			<dbid><Type>DB_ID</Type></dbid>
+			<name><Type>STRING</Type></name>
+			<level><Type>UINT32</Type></level>
+			<rankInfo><Type>UINT32</Type></rankInfo>
+			<isAbuser><Type>BOOL</Type></isAbuser>
+			<comment><Type>STRING</Type></comment>
+			<clanInfo><Type>PLAYER_CLAN_INFO</Type></clanInfo>
+			<dogTag><Type>ARRAY<of>GAMEPARAMS_ID</of></Type></dogTag>
+		</Properties>
+	</DIVISION_SEEKER_DEF>
+
+	<RANK_BATTLES_DENY_REASON>
+		FIXED_DICT
+		<Properties>
+			<dbid><Type>DB_ID</Type></dbid>
+			<reason><Type>UINT16</Type></reason>
+		</Properties>
+	</RANK_BATTLES_DENY_REASON>
+
+
+	<CREW_MODIFIERS_COMPACT_PARAMS>
+		FIXED_DICT
+		<Properties>
+			<paramsId><Type>UINT32</Type></paramsId>
+			<isInAdaptation><Type>BOOL</Type></isInAdaptation>
+            <learnedSkills><Type>ARRAY<of>ARRAY<of>UINT8</of></of></Type></learnedSkills>
+		</Properties>
+		<implementedBy>CrewModifiers.crewModifiersCompactParamsConverter</implementedBy>
+	</CREW_MODIFIERS_COMPACT_PARAMS>
+
+	<AI_CONFIG>
+		FIXED_DICT
+		<Properties>
+			<isBot><Type>BOOL</Type></isBot>
+			<level><Type>INT8</Type></level>
+			<canShoot><Type>BOOL</Type></canShoot>
+			<behaviourIdx><Type>UINT8</Type></behaviourIdx>
+			<disabledCategories><Type>ARRAY<of>AI_CATEGORY</of></Type></disabledCategories>
+		</Properties>
+		<implementedBy>AIConfigDef.converter</implementedBy>
+		<AllowNone> true </AllowNone>
+	</AI_CONFIG>
+
+	<BATTLE_CARD>
+		FIXED_DICT
+		<Properties>
+			<cardID><Type>GAMEPARAMS_ID</Type></cardID>
+			<level><Type>UINT8</Type></level>
+		</Properties>
+	</BATTLE_CARD>
+
+	<INSTALLED_BATTLE_CARD>
+		FIXED_DICT
+		<Properties>
+			<cardID><Type>GAMEPARAMS_ID</Type></cardID>
+			<isAutopicked><Type>BOOL</Type></isAutopicked>
+		</Properties>
+	</INSTALLED_BATTLE_CARD>
+
+	<BATTLE_CARDS>
+		ARRAY<of>BATTLE_CARD</of>
+	</BATTLE_CARDS>
+
+	<PLAYER_DEF>
+		FIXED_DICT
+		<Properties>
+			<mbox><Type>MAILBOX</Type></mbox>
+			<id><Type>PLAYER_ID</Type></id>
+			<name><Type>STRING</Type></name>
+			<dogTag><Type>ARRAY<of>GAMEPARAMS_ID</of></Type></dogTag>
+			<shipConfig><Type>SHIP_CONFIG</Type></shipConfig>
+			<compactCrewModifiers><Type>CREW_MODIFIERS_COMPACT_PARAMS</Type></compactCrewModifiers>
+			<aiConfig><Type>AI_CONFIG</Type></aiConfig>
+			<dbid><Type>DB_ID</Type></dbid>
+			<preBattleId><Type>DB_ID</Type></preBattleId>
+			<clanInfo><Type>PLAYER_CLAN_INFO</Type></clanInfo>
+			<extraInfo><Type>PYTHON</Type></extraInfo>
+			<realm><Type>STRING</Type><AllowNone> true </AllowNone></realm>
+			<isMercenary><Type>BOOL</Type></isMercenary>
+			<isInReferralSquad><Type>BOOL</Type></isInReferralSquad>
+		</Properties>
+		<implementedBy>PlayerDef.converter</implementedBy>
+		<AllowNone> true </AllowNone>
+	</PLAYER_DEF>
+
+	<PLAYERS_DEFS>
+		ARRAY <of> PLAYER_DEF </of>
+	</PLAYERS_DEFS>
+
+	<!-- Alias is used by matchmaker to send pack of players divided on teams to battle session -->
+	<TEAMSLIST>
+		ARRAY <of> PLAYERS_DEFS </of>
+	</TEAMSLIST>
+
+	<PRE_BATTLE_CREATOR_DEF>
+		FIXED_DICT
+		<Properties>
+			<id><Type>DB_ID</Type></id>
+			<info><Type>PYTHON</Type></info>
+		</Properties>
+		<AllowNone> true </AllowNone>
+	</PRE_BATTLE_CREATOR_DEF>
+
+	<PRE_BATTLE_SENDER_DEF>
+		FIXED_DICT
+		<Properties>
+			<senderName><Type>STRING</Type></senderName>
+			<senderId><Type>PLAYER_ID</Type></senderId>
+			<senderDBID><Type>DB_ID</Type></senderDBID>
+			<senderLevel><Type>UINT32</Type></senderLevel>
+			<senderRankInfo><Type>UINT32</Type></senderRankInfo>
+			<isAbuser><Type>BOOL</Type></isAbuser>
+			<clanID><Type>DB_ID</Type></clanID>
+			<clanTag><Type>UNICODE_STRING</Type></clanTag>
+			<clanColor><Type>UINT32</Type></clanColor>
+		</Properties>
+		<AllowNone> true </AllowNone>
+	</PRE_BATTLE_SENDER_DEF>
+
+	<PRE_BATTLE_INVITE_DEF>
+		FIXED_DICT
+		<Properties>
+			<preBattleId><Type>OBJECT_ID</Type></preBattleId>
+			<preBattleType><Type>INT8</Type></preBattleType>
+			<inviteType><Type>INT8</Type></inviteType>
+			<expirationTime><Type>UINT32</Type></expirationTime>
+			<creatorInfo><Type>PRE_BATTLE_CREATOR_DEF</Type></creatorInfo>
+			<senderInfo><Type>PRE_BATTLE_SENDER_DEF</Type></senderInfo>
+			<state><Type>STRING</Type></state>
+			<!--comment><Type>UNICODE_STRING</Type></comment-->
+		</Properties>
+	</PRE_BATTLE_INVITE_DEF>
+
+	<PRE_BATTLE_DEF>
+		FIXED_DICT
+		<Properties>
+			<id><Type>OBJECT_ID</Type></id>
+			<creatorDBID><Type>DB_ID</Type></creatorDBID>
+			<ownerId><Type>PLAYER_ID</Type></ownerId>
+			<ownerName><Type>STRING</Type></ownerName>
+			<ownerClanID><Type>DB_ID</Type></ownerClanID>
+			<description><Type>UNICODE_STRING</Type></description>
+			<battleDef><Type>BATTLE_DEF</Type></battleDef>
+			<playersLimit><Type>INT8</Type></playersLimit>
+			<playersCount><Type>INT8</Type></playersCount>
+			<invitedCount><Type>UINT16</Type></invitedCount>
+			<preBattleType><Type>INT8</Type></preBattleType>
+			<isLocked><Type>BOOL</Type></isLocked>
+			<isInBattle><Type>BOOL</Type></isInBattle>
+			<selectedQueueType><Type>INT32</Type></selectedQueueType>
+			<nonClanMembersCount><Type>INT8</Type></nonClanMembersCount>
+			<clanSquadId><Type>INT8</Type></clanSquadId>
+			<selectedOperationID><Type>GAMEPARAMS_ID</Type></selectedOperationID>
+			<enterMatchmaker><Type>BOOL</Type></enterMatchmaker>
+		</Properties>
+		<AllowNone>true</AllowNone>
+		<implementedBy>PreBattleDef.converter</implementedBy>
+	</PRE_BATTLE_DEF>
+
+	<MINIMAP_USER_INFO>
+		FIXED_DICT
+		<Properties>
+			<vehicleID><Type>UINT32</Type></vehicleID>
+			<packedData><Type>UINT32</Type></packedData>
+		</Properties>
+	</MINIMAP_USER_INFO>
+
+	<DAMAGES>
+		FIXED_DICT
+		<Properties>
+			<vehicleID><Type>ENTITY_ID</Type></vehicleID>
+			<damage><Type>FLOAT</Type></damage>
+		</Properties>
+	</DAMAGES>
+
+	<CAPTURE_INFO>
+		FIXED_DICT
+		<Properties>
+			<vehicleID><Type>SHIP_ID</Type></vehicleID>
+			<share><Type>FLOAT</Type></share>
+		</Properties>
+	</CAPTURE_INFO>
+
+	<MINIMAPINFO>
+		ARRAY <of> MINIMAP_USER_INFO </of>
+	</MINIMAPINFO>
+	<PLAYERS_MBS>
+		ARRAY <of> MAILBOX </of>
+	</PLAYERS_MBS>
+
+	<GOAL_DEF>
+		FIXED_DICT
+		<Properties>
+			<type><Type>UINT8</Type></type>
+			<id><Type>TARGET_ID</Type></id> <!-- PLANE_ID or ENTITY_ID -->
+			<position><Type>VECTOR3</Type></position>
+			<teamId><Type>TEAM_ID</Type></teamId>
+			<angle><Type>UINT8</Type></angle>
+		</Properties>
+		<implementedBy>GoalDef.converter</implementedBy>
+		<AllowNone> true </AllowNone>
+	</GOAL_DEF>
+
+	<ORDER_DEF>
+		FIXED_DICT
+		<Properties>
+			<id><Type>UINT8</Type></id>
+			<uniqueID><Type>UINT8</Type></uniqueID>
+			<primaryGoal><Type>GOAL_DEF</Type></primaryGoal>
+			<secondaryGoal><Type>GOAL_DEF</Type></secondaryGoal>
+		</Properties>
+		<implementedBy>OrderDef.converter</implementedBy>
+	</ORDER_DEF>
+
+	<SHOT>
+		FIXED_DICT
+		<Properties>
+			<pos>        	<Type>VECTOR3</Type>	</pos>
+            <pitch>         <Type>FLOAT</Type>	    </pitch>
+            <speed>         <Type>FLOAT</Type>	    </speed>
+			<tarPos>     	<Type>VECTOR3</Type>	</tarPos>
+			<shotID>     	<Type>SHOT_ID</Type>		</shotID>
+			<gunBarrelID>	<Type>UINT16</Type>		</gunBarrelID>
+			<serverTimeLeft><Type>FLOAT</Type>		</serverTimeLeft>
+			<shooterHeight>	<Type>FLOAT</Type>		</shooterHeight>
+			<hitDistance>	<Type>FLOAT</Type>		</hitDistance>
+		</Properties>
+	</SHOT>
+
+	<SHOTS_PACK>
+		FIXED_DICT
+		<Properties>
+			<paramsID>	<Type>GAMEPARAMS_ID</Type>		</paramsID>
+			<ownerID>	<Type>PLAYER_ID</Type>			</ownerID>
+			<salvoID>	<Type>INT32</Type>				</salvoID>
+			<shots>		<Type>ARRAY<of>SHOT</of></Type>	</shots>
+		</Properties>
+	</SHOTS_PACK>
+
+	<TORPEDO_MANEUVER_DUMP>
+		FIXED_DICT
+		<Properties>
+			<targetYaw>		<Type>FLOAT</Type>      </targetYaw>
+			<changeTime>	<Type>FLOAT</Type>      </changeTime>
+			<stopTime>		<Type>FLOAT</Type>      </stopTime>
+			<currentTime>	<Type>FLOAT</Type>      </currentTime>
+			<yawSpeed>		<Type>FLOAT</Type>      </yawSpeed>
+			<armPos>		<Type>VECTOR3</Type>      </armPos>
+			<finalPos>		<Type>VECTOR3</Type>      </finalPos>
+		</Properties>
+		<AllowNone> true </AllowNone>
+	</TORPEDO_MANEUVER_DUMP>
+
+	<TORPEDO_ACOUSTIC_DUMP>
+		FIXED_DICT
+		<Properties>
+			<isChasingTarget>   <Type>BOOL</Type>       </isChasingTarget>
+			<predictionLost>	<Type>BOOL</Type>	    </predictionLost>
+			<modificatorsLevel> <Type>UINT8</Type>	    </modificatorsLevel>
+			<activationTime>	<Type>FLOAT</Type>		</activationTime>
+			<degradationTime>	<Type>FLOAT</Type>	    </degradationTime>
+			<speedCoef>	        <Type>FLOAT</Type>	    </speedCoef>
+			<rotationYaw>	    <Type>FLOAT</Type>	    </rotationYaw>
+			<verticalSpeed>	    <Type>FLOAT</Type>	    </verticalSpeed>
+			<targetYaw>	        <Type>FLOAT</Type>	    </targetYaw>
+			<targetDepth>	    <Type>FLOAT</Type>	    </targetDepth>
+		</Properties>
+		<AllowNone> true </AllowNone>
+	</TORPEDO_ACOUSTIC_DUMP>
+
+	<TORPEDO>
+		FIXED_DICT
+		<Properties>
+			<pos>			<Type>VECTOR3</Type>	</pos>
+			<dir>			<Type>VECTOR3</Type>	</dir>
+			<shotID>		<Type>SHOT_ID</Type>	</shotID>
+			<armed>			<Type>BOOL</Type>		</armed>
+			<maneuverDump>	<Type>TORPEDO_MANEUVER_DUMP  </Type>	</maneuverDump>
+			<acousticDump>	<Type>TORPEDO_ACOUSTIC_DUMP  </Type>    </acousticDump>
+		</Properties>
+	</TORPEDO>
+
+	<TORPEDOES_PACK>
+		FIXED_DICT
+		<Properties>
+			<paramsID>	<Type>GAMEPARAMS_ID</Type>			</paramsID>
+			<ownerID>	<Type>PLAYER_ID</Type>				</ownerID>
+			<salvoID>	<Type>INT32</Type>					</salvoID>
+			<skinID>	<Type>GAMEPARAMS_ID</Type>			</skinID>
+			<torpedoes>	<Type>ARRAY<of>TORPEDO</of></Type>	</torpedoes>
+		</Properties>
+	</TORPEDOES_PACK>
+
+	<DEPTH_CHARGE>
+		FIXED_DICT
+		<Properties>
+			<pos>				<Type>	VECTOR3	</Type> </pos>
+			<dir>				<Type>	VECTOR3	</Type>	</dir>
+			<shotID>			<Type>	SHOT_ID	</Type>	</shotID>
+			<serverTimeLeft>	<Type>	FLOAT	</Type>	</serverTimeLeft>
+			<splashRadius>		<Type>	FLOAT	</Type>	</splashRadius>
+		</Properties>
+	</DEPTH_CHARGE>
+
+	<DEPTH_CHARGES_PACK>
+		FIXED_DICT
+		<Properties>
+			<ownerID>			<Type>	PLAYER_ID	</Type>	</ownerID>
+			<salvoID>			<Type>	INT32	</Type>	</salvoID>
+			<paramsID>			<Type>	GAMEPARAMS_ID	</Type> </paramsID>
+			<depthCharges>		<Type>	ARRAY 	<of> DEPTH_CHARGE </of> </Type>	</depthCharges>
+		</Properties>
+	</DEPTH_CHARGES_PACK>
+
+	<TERMINAL_BALLISTICS_INFO>
+		FIXED_DICT
+		<Properties>
+			<position> 				<Type> VECTOR3 	</Type> </position>
+			<velocity> 				<Type> VECTOR3 	</Type> </velocity>
+			<detonatorActivated> 	<Type> BOOL 	</Type> </detonatorActivated>
+			<materialAngle> 		<Type> FLOAT 	</Type> </materialAngle>
+		</Properties>
+		<AllowNone> true </AllowNone>
+	</TERMINAL_BALLISTICS_INFO>
+
+	<SHOTKILL>
+		FIXED_DICT
+		<Properties>
+			<pos>		<Type>	VECTOR3	</Type> </pos>
+			<shotID>	<Type>	SHOT_ID	</Type>	</shotID>
+			<terminalBallisticsInfo> <Type> TERMINAL_BALLISTICS_INFO </Type> </terminalBallisticsInfo>
+		</Properties>
+	</SHOTKILL>
+
+	<SHOTKILLS_PACK>
+		FIXED_DICT
+		<Properties>
+			<ownerID>	<Type>	PLAYER_ID				</Type>	</ownerID>
+			<hitType>	<Type>	HIT_TYPE				</Type>	</hitType>
+			<kills>		<Type>	ARRAY<of>SHOTKILL</of>	</Type>	</kills>
+		</Properties>
+	</SHOTKILLS_PACK>
+	
+	<EXPLOSION>
+		FIXED_DICT
+		<Properties>
+			<pos>        <Type>	VECTOR3	</Type> </pos>
+			<paramsID>   <Type>	GAMEPARAMS_ID	</Type>	</paramsID>
+			<hitType>    <Type>	HIT_TYPE	</Type>	</hitType>
+		</Properties>
+	</EXPLOSION>
+
+	<LASER_BEAM>
+		FIXED_DICT
+		<Properties>
+			<startPos> <Type> VECTOR3 </Type> </startPos>
+			<endPos> <Type> VECTOR3 </Type> </endPos>
+			<paramsID> <Type> GAMEPARAMS_ID </Type></paramsID>
+			<hitType> <Type> HIT_TYPE </Type> </hitType>
+			<ownerID> <Type> PLAYER_ID </Type></ownerID>
+			<gunID> <Type> GUN_ID </Type></gunID>
+			<isTargetFriendly> <Type> BOOL </Type></isTargetFriendly>
+		</Properties>
+	</LASER_BEAM>
+
+	<PINGER_SHOT>
+		FIXED_DICT
+		<Properties>
+            <ownerID>       <Type>PLAYER_ID</Type>     </ownerID>
+            <shotID>        <Type>SHOT_ID</Type>       </shotID>
+            <pos>           <Type>VECTOR3</Type>       </pos>
+            <pitch>         <Type>FLOAT</Type>         </pitch>
+            <yaw>           <Type>FLOAT</Type>         </yaw>
+            <width>         <Type>FLOAT</Type>         </width>
+            <endWidth>      <Type>FLOAT</Type>         </endWidth>
+            <speed>         <Type>FLOAT</Type>         </speed>
+            <distance>      <Type>FLOAT</Type>         </distance>
+			<maxHeight>      <Type>FLOAT</Type>         </maxHeight>
+		</Properties>
+	</PINGER_SHOT>
+
+	<PINGER_SHOT_KILL>
+		FIXED_DICT
+		<Properties>
+			<pos>		<Type>	VECTOR3		</Type>	</pos>
+			<hitNormal>	<Type>	VECTOR3		</Type>	</hitNormal>
+			<shotID>	<Type>	SHOT_ID		</Type>	</shotID>
+			<ownerID>	<Type>	PLAYER_ID	</Type>	</ownerID>
+			<hitType>	<Type>	HIT_TYPE	</Type>	</hitType>
+		</Properties>
+	</PINGER_SHOT_KILL>
+
+	<SECTOR>
+		FIXED_DICT
+		<Properties>
+			<startYaw> <Type> FLOAT </Type> </startYaw>
+			<endYaw> <Type> FLOAT </Type> </endYaw>
+		</Properties>
+	</SECTOR>
+
+	<SECTOR_WAVE_SHOT>
+		FIXED_DICT
+		<Properties>
+			<shotId>				<Type>	SHOT_ID  		</Type> </shotId>
+			<speed>					<Type>	FLOAT			</Type>	</speed>
+			<distance>				<Type>	FLOAT			</Type>	</distance>
+			<passedDistance>		<Type>	FLOAT			</Type>	</passedDistance>
+			<initialPosition>		<Type>	VECTOR3			</Type>	</initialPosition>
+			<direction>				<Type>	FLOAT			</Type>	</direction>
+			<sectorsDirections>		<Type>	ARRAY <of> SECTOR </of> </Type> </sectorsDirections>
+		</Properties>
+		<implementedBy>WaveDef.sectorConverter</implementedBy>
+		<AllowNone> false </AllowNone>
+	</SECTOR_WAVE_SHOT>
+
+	<SECTOR_WAVE_SHOTS_PACK>
+		FIXED_DICT
+		<Properties>
+			<ownerID>	<Type>	PLAYER_ID</Type>			</ownerID>
+			<paramsID>	<Type>	GAMEPARAMS_ID	</Type>	</paramsID>
+			<shots>		<Type>	ARRAY<of>SECTOR_WAVE_SHOT </of> </Type>	</shots>
+		</Properties>
+	</SECTOR_WAVE_SHOTS_PACK>
+
+	<ARENA_STATE>
+		FIXED_DICT
+		<Properties>
+			<arenaUniqueId>		<Type>	INT64	</Type>	</arenaUniqueId>
+			<teamBuildTypeId>	<Type>	INT8	</Type>	</teamBuildTypeId>
+			<preBattlesInfo>	<Type>	BLOB	</Type>	</preBattlesInfo>
+			<playersStates>		<Type>	BLOB	</Type>	</playersStates>
+			<buildingsInfo>		<Type>	BLOB	</Type>	</buildingsInfo>
+		</Properties>
+	</ARENA_STATE>
+
+	<STAT_INFO>
+		FIXED_DICT
+		<Properties>
+				<type>         <Type>	INT32	</Type> </type>
+				<amount>       <Type>	FLOAT	</Type>	</amount>
+				<vehicleId>    <Type>	PLAYER_ID	</Type> </vehicleId>
+				<victimId>     <Type>	TARGET_ID	</Type> </victimId>
+		</Properties>
+	</STAT_INFO>
+
+	<GENERIC_MESSENGER_ARGS>
+		FIXED_DICT
+		<Properties>
+			<int32Arg1>	<Type> INT32 </Type> </int32Arg1>
+			<int64Arg1>	<Type> INT64 </Type> </int64Arg1>
+			<strArg1>	<Type> STRING </Type> </strArg1>
+			<int64ListArg1> <Type> DB_ID_LIST </Type> </int64ListArg1>
+		</Properties>
+	</GENERIC_MESSENGER_ARGS>
+
+	<SQUADRON_STATE>
+		FIXED_DICT
+		<Properties>
+			<planeID>       	<Type>	PLANE_ID	</Type> </planeID>
+			<skinID>        	<Type>	GAMEPARAMS_ID </Type> </skinID>
+			<isActive>      	<Type>	BOOL	    </Type> </isActive>
+			<numPlanes>     	<Type>	UINT8	    </Type>	</numPlanes>
+			<position>      	<Type>	VECTOR3	    </Type>	</position>
+			<yaw>				<Type>	FLOAT 		</Type>	</yaw>
+			<throttleMode>		<Type>	INT8 		</Type> </throttleMode>
+			<turnMode>			<Type>  INT8 		</Type> </turnMode>
+			<turnDirection>		<Type>	INT8 		</Type> </turnDirection>
+			<currentStateId>	<Type>	UINT8 		</Type> </currentStateId>
+			<hasProjectiles>	<Type>  BOOL		</Type> </hasProjectiles>
+			<isSpawned>			<Type>	BOOL		</Type> </isSpawned>
+			<consumablesStates>	<Type>	UINT8 		</Type> </consumablesStates>
+			<isJatoActive>		<Type>	BOOL 		</Type> </isJatoActive>
+
+		</Properties>
+		<implementedBy>AirPlanes.AirplaneUtils.squadronStateConverter</implementedBy>
+	</SQUADRON_STATE>
+
+	<CLIENT_STAT_INFO>
+		FIXED_DICT
+		<Properties>
+			<average>				<Type>	FLOAT	</Type>	</average>
+			<minimal>				<Type>	FLOAT	</Type>	</minimal>
+			<maximal>				<Type>	FLOAT	</Type>	</maximal>
+			<tenpercent>			<Type>	FLOAT	</Type>	</tenpercent>
+			<median>				<Type>	FLOAT	</Type>	</median>
+			<ninetypercent>			<Type>	FLOAT	</Type>	</ninetypercent>
+			<peakram>				<Type>	UINT32	</Type>	</peakram>
+			<graphpreset>			<Type>	UINT8	</Type>	</graphpreset>
+			<graphpresetname>		<Type>	STRING	</Type>	</graphpresetname>
+
+			<msaamode>				<Type>	UINT8	</Type>	</msaamode>
+			<renderpipeline>		<Type>	UINT8	</Type>	</renderpipeline>
+			<shadowsquality>		<Type>	UINT8	</Type>	</shadowsquality>
+			<lightingquality>		<Type>	UINT8	</Type>	</lightingquality>
+			<particlequality>		<Type>	UINT8	</Type>	</particlequality>
+			<seareflectionquality>	<Type>	UINT8	</Type>	</seareflectionquality>
+			<texturequality>		<Type>	UINT8	</Type>	</texturequality>
+			<texturecompression>	<Type>	UINT8	</Type>	</texturecompression>
+			<texturefiltering>		<Type>	UINT8	</Type>	</texturefiltering>
+			<soundpreset>			<Type>	UINT8	</Type>	</soundpreset>
+			<particlepreset>		<Type>	UINT8	</Type>	</particlepreset>
+			<softparticles>			<Type>	UINT8	</Type>	</softparticles>
+			<gamelogicpreset>		<Type>	UINT8	</Type>	</gamelogicpreset>
+			<lowqualitygui>			<Type>	UINT8	</Type>	</lowqualitygui>
+			<miscsetting>			<Type>	UINT8	</Type>	</miscsetting>
+			<terrainlod>			<Type>	UINT8	</Type>	</terrainlod>
+			<terrainmeshresolution>	<Type>	UINT8	</Type>	</terrainmeshresolution>
+			<terrainlightingquality><Type>	UINT8	</Type>	</terrainlightingquality>
+			<decalsquality>			<Type>	UINT8	</Type>	</decalsquality>
+			<postprocessing>		<Type>	UINT8	</Type>	</postprocessing>
+			<fxaaquality>			<Type>	UINT8	</Type>	</fxaaquality>
+			<volumetricclouds>		<Type>	UINT8	</Type>	</volumetricclouds>
+			<farplane>				<Type>	UINT8	</Type>	</farplane>
+			<seasimulationquality>	<Type>	UINT8	</Type>	</seasimulationquality>
+			<flagsquality>			<Type>	UINT8	</Type>	</flagsquality>
+			<forestquality>			<Type>	UINT8	</Type>	</forestquality>
+			<objectlod>				<Type>	UINT8	</Type>	</objectlod>
+			<windowed>				<Type>	UINT8	</Type>	</windowed>
+			<resolution>			<Type>	STRING	</Type>	</resolution>
+		</Properties>
+	</CLIENT_STAT_INFO>
+
+	<AIR_THREAT>
+		FIXED_DICT
+		<Properties>
+				<squadronID>    <Type>	INT32	</Type> </squadronID>
+				<planeParamsID> <Type>	GAMEPARAMS_ID	</Type> </planeParamsID>
+		</Properties>
+	</AIR_THREAT>
+
+	<WATER_HIT_INFO>
+		FIXED_DICT
+		<Properties>
+			<pos>                <Type> VECTOR3 </Type> </pos>
+			<vel>                <Type> FLOAT </Type> </vel>
+			<dist>               <Type> FLOAT </Type> </dist>
+			<pathToDetonation>   <Type> FLOAT </Type> </pathToDetonation>
+			<penetration>        <Type> FLOAT </Type> </penetration>
+			<passTime>           <Type> FLOAT </Type> </passTime>
+		</Properties>
+	</WATER_HIT_INFO>
+
+	<COLLISION_INFO_BASE>
+		FIXED_DICT
+		<Properties>
+			<where>     <Type> UINT8        </Type> </where> <!-- во что попали: HIT_GROUND, HIT_WATER, HIT_ENTITY, NO_HIT -->
+			<hitPos>    <Type> VECTOR3      </Type> </hitPos> <!-- позиция попадания или None -->
+			<hitDir>    <Type> VECTOR3      </Type> </hitDir> <!-- направления попадания -->
+			<normal>    <Type> VECTOR3      </Type> </normal> <!-- нормаль плоскости попадания -->
+			<isAlive>   <Type> BOOL         </Type> </isAlive> <!-- жива ли цель в момент попадания -->
+			<entityId>  <Type> ENTITY_ID    </Type> </entityId> <!-- id entity -->
+			<matId>     <Type> INT32        </Type> </matId> <!-- id материала плоскости попадания-->
+			<isInside>  <Type> BOOL         </Type> </isInside> <!-- -->
+		</Properties>
+	</COLLISION_INFO_BASE>
+
+	<SHOT_DECAL_STATE>
+		USER_TYPE
+		<implementedBy>ShotDecalDef.converter</implementedBy>
+	</SHOT_DECAL_STATE>
+
+	<HEAT_INFO_STATE>
+		FIXED_DICT
+		<Properties>
+			<id><Type>UINT8</Type></id>
+			<endTime><Type>FLOAT</Type></endTime>
+			<decal><Type>SHOT_DECAL_STATE</Type></decal>
+		</Properties>
+	</HEAT_INFO_STATE>
+
+	<SURFACE_HYDROPHONE_ZONE_INFO>
+		FIXED_DICT
+		<Properties>
+			<zoneID> 		<Type> UINT8 		</Type> </zoneID>
+			<entityID> 		<Type> ENTITY_ID 	</Type> </entityID>
+			<position2D> 	<Type> VECTOR2 		</Type> </position2D>
+		</Properties>
+	</SURFACE_HYDROPHONE_ZONE_INFO>
+
+	<SURFACE_BROADCAST_ZONE_INFO>
+		FIXED_DICT
+		<Properties>
+			<entityID> 		<Type> ENTITY_ID 	</Type> </entityID>
+			<position2D> 	<Type> VECTOR2 		</Type> </position2D>
+		</Properties>
+	</SURFACE_BROADCAST_ZONE_INFO>
+
+    <SUBMARINE_HYDROPHONE_TARGET_INFO>
+        FIXED_DICT
+		<Properties>
+			<entityID> 		<Type> ENTITY_ID 	    </Type> </entityID>
+			<paramsID> 		<Type> GAMEPARAMS_ID    </Type> </paramsID>
+			<position> 	    <Type> VECTOR3 		    </Type> </position>
+			<yaw> 	        <Type> FLOAT 		    </Type> </yaw>
+			<pitch> 	    <Type> FLOAT 		    </Type> </pitch>
+		</Properties>
+	</SUBMARINE_HYDROPHONE_TARGET_INFO>
+
+
+	<READY_CLIENTS_LIST>
+		ARRAY<of>ENTITY_ID</of>
+	</READY_CLIENTS_LIST>
+
+	<ATTENTION_MARKER_STATE>
+		FIXED_DICT
+		<Properties>
+			<name><Type>STRING</Type></name>
+			<markerType><Type>UINT8</Type></markerType>
+			<subType><Type>UINT8</Type></subType>
+			<caption><Type>STRING</Type></caption>
+			<position><Type>VECTOR2</Type></position>
+			<ownerType><Type>UINT8</Type></ownerType>
+			<ownerId><Type>ENTITY_ID</Type></ownerId>
+			<ownerTeam><Type>TEAM_ID</Type></ownerTeam>
+			<linkedTaskName><Type>STRING</Type></linkedTaskName>
+			<duration><Type>FLOAT</Type></duration>
+		</Properties>
+		<implementedBy>AttentionMarkerDef.converter</implementedBy>
+	</ATTENTION_MARKER_STATE>
+
+	<!--<BUILDINGS_STATE>-->
+		<!--FIXED_DICT-->
+		<!--<Properties>-->
+		<!--</Properties>-->
+	<!--</BUILDINGS_STATE>-->
+
+	<CLIENT_ANIMATION_STATE>
+		FIXED_DICT
+		<Properties>
+			<targetType><Type>INT8</Type></targetType>
+			<ids><Type>ARRAY<of>ENTITY_ID</of></Type></ids>
+		</Properties>
+	</CLIENT_ANIMATION_STATE>
+
+	<EXPECTED_ACTION_STATE>
+		FIXED_DICT
+		<Properties>
+			<actionId><Type>STRING</Type></actionId>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</EXPECTED_ACTION_STATE>
+
+	<RESOURCE_RECORD>
+		FIXED_DICT
+		<Properties>
+			<id><Type>ENTITY_ID</Type></id>
+			<current><Type>INT32</Type></current>
+			<min><Type>INT32</Type></min>
+			<max><Type>INT32</Type></max>
+		</Properties>
+	</RESOURCE_RECORD>
+
+	<RESOURCE_STATE>
+		FIXED_DICT
+		<Properties>
+			<resourceType><Type>UINT8</Type></resourceType>
+			<amountByEntities><Type>ARRAY<of>RESOURCE_RECORD</of></Type></amountByEntities>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</RESOURCE_STATE>
+
+	<INTERACTIVE_ZONE_ENTITY_STATE>
+		FIXED_DICT
+		<Properties>
+			<forOwner><Type>UINT8</Type></forOwner>
+			<forAllies><Type>UINT8</Type></forAllies>
+			<forEnemies><Type>UINT8</Type></forEnemies>
+		</Properties>
+	</INTERACTIVE_ZONE_ENTITY_STATE>
+
+	<KEY_OBJECT_STATE>
+		FIXED_DICT
+		<Properties>
+			<name><Type>STRING</Type></name>
+			<type><Type>UINT8</Type></type>
+			<ownerId><Type>ENTITY_ID</Type></ownerId>
+			<maxValue><Type>FLOAT</Type></maxValue>
+			<thresholds><Type>ARRAY<of>UINT8</of></Type></thresholds>
+			<curValue><Type>FLOAT</Type></curValue>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</KEY_OBJECT_STATE>
+
+	<WORLD_CLIENT_ACTION_STATE>
+		FIXED_DICT
+		<Properties>
+			<id><Type>INT16</Type></id>
+			<name><Type>STRING</Type></name>
+			<position><Type>VECTOR3</Type></position>
+			<yaw><Type>FLOAT</Type></yaw>
+		</Properties>
+	</WORLD_CLIENT_ACTION_STATE>
+
+	<KILL_SPECIFIC_SHIP_MISSION_STATE>
+		FIXED_DICT
+		<Properties>
+			<reward><Type>INT16</Type></reward>
+			<penalty><Type>INT16</Type></penalty>
+			<shipType><Type>STRING</Type></shipType>
+		</Properties>
+	</KILL_SPECIFIC_SHIP_MISSION_STATE>
+
+	<CAPTURE_CONTROL_POINT_MISSION_STATE>
+		FIXED_DICT
+		<Properties>
+			<reward><Type>INT16</Type></reward>
+			<penalty><Type>INT16</Type></penalty>
+			<cpIndices><Type>ARRAY<of>UINT8</of></Type></cpIndices>
+		</Properties>
+	</CAPTURE_CONTROL_POINT_MISSION_STATE>
+
+	<HOLD_CONTROL_POINT_MISSION_STATE>
+		FIXED_DICT
+		<Properties>
+			<reward><Type>INT16</Type></reward>
+			<penalty><Type>INT16</Type></penalty>
+			<cpIndices><Type>ARRAY<of>UINT8</of></Type></cpIndices>
+			<period><Type>INT16</Type></period>
+		</Properties>
+	</HOLD_CONTROL_POINT_MISSION_STATE>
+
+	<REACH_DESTINATION_MISSION_STATE>
+		FIXED_DICT
+		<Properties>
+			<path><Type>ARRAY<of>FLAT_VECTOR</of></Type></path>
+			<targetIds><Type>ARRAY<of>ENTITY_ID</of></Type></targetIds>
+			<targetTeamId><Type>TEAM_ID</Type></targetTeamId>
+		</Properties>
+	</REACH_DESTINATION_MISSION_STATE>
+
+	<PROTECT_MISSION_STATE>
+		FIXED_DICT
+		<Properties>
+			<targetIds><Type>ARRAY<of>ENTITY_ID</of></Type></targetIds>
+			<defendersTeamId><Type>TEAM_ID</Type></defendersTeamId>
+		</Properties>
+	</PROTECT_MISSION_STATE>
+
+	<PULL_TARGET_STATE>
+		FIXED_DICT
+		<Properties>
+			<progress><Type>UINT32</Type></progress>
+			<state><Type>STATE</Type></state>
+			<enemiesInZone><Type>UINT8</Type></enemiesInZone>
+			<alliesInZone><Type>UINT8</Type></alliesInZone>
+			<targetId><Type>TARGET_ID</Type></targetId>
+			<speed><Type>FLOAT</Type></speed>
+			<uiIndex><Type>UINT8</Type></uiIndex>
+		</Properties>
+	</PULL_TARGET_STATE>
+
+	<PULL_TARGETS_MISSION_STATE>
+		FIXED_DICT
+		<Properties>
+			<path><Type>ARRAY<of>FLAT_VECTOR</of></Type></path>
+			<defendersTeamId><Type>TEAM_ID</Type></defendersTeamId>
+			<pathLength><Type>UINT32</Type></pathLength>  <!-- mission is completed when targets are within zoen radius, cannot simply calculate it on client -->
+			<type><Type>UINT8</Type></type>
+			<targetStates><Type>ARRAY<of>PULL_TARGET_STATE</of></Type></targetStates>
+			<maxUIIndex><Type>UINT8</Type></maxUIIndex>
+		</Properties>
+	</PULL_TARGETS_MISSION_STATE>
+
+	<PRIVATE_PATH_MISSION_STATE>
+		FIXED_DICT
+		<Properties>
+			<path><Type>ARRAY<of>FLAT_VECTOR</of></Type></path>
+		</Properties>
+	</PRIVATE_PATH_MISSION_STATE>
+
+	<TEAM_SCORE>
+		FIXED_DICT
+		<Properties>
+			<teamId><Type>TEAM_ID</Type></teamId>
+			<score><Type>UINT16</Type></score>
+		</Properties>
+	</TEAM_SCORE>
+
+	<MISSIONS_STATE>
+		FIXED_DICT
+		<Properties>
+			<hold><Type>ARRAY<of>HOLD_CONTROL_POINT_MISSION_STATE</of></Type></hold>
+			<capture><Type>ARRAY<of>CAPTURE_CONTROL_POINT_MISSION_STATE</of></Type></capture>
+			<kill><Type>ARRAY<of>KILL_SPECIFIC_SHIP_MISSION_STATE</of></Type></kill>
+			<reachDestination><Type>ARRAY<of>REACH_DESTINATION_MISSION_STATE</of></Type></reachDestination>
+			<pullTargets><Type>ARRAY<of>PULL_TARGETS_MISSION_STATE</of></Type></pullTargets>
+			<protect><Type>ARRAY<of>PROTECT_MISSION_STATE</of></Type></protect>
+			<teamsScore><Type>ARRAY<of>TEAM_SCORE</of></Type></teamsScore>
+			<teamWinScore><Type>INT16</Type></teamWinScore>
+			<teamLoseScore><Type>INT16</Type></teamLoseScore>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</MISSIONS_STATE>
+
+	<PRIVATE_MISSIONS_STATE>
+		FIXED_DICT
+		<Properties>
+			<reachDestination><Type>ARRAY<of>PRIVATE_PATH_MISSION_STATE</of></Type></reachDestination>
+			<pullTargets><Type>ARRAY<of>PRIVATE_PATH_MISSION_STATE</of></Type></pullTargets>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</PRIVATE_MISSIONS_STATE>
+
+	<SUCCESS_STORY_PROGRESS_STATE>
+		FIXED_DICT
+		<Properties>
+			<name><Type>STRING</Type></name>
+			<enabled><Type>BOOL</Type></enabled>
+			<type><Type>UINT8</Type></type>
+			<progress><Type>UINT8</Type></progress>
+			<targetProgress><Type>UINT8</Type></targetProgress>
+			<state><Type>UINT8</Type></state>
+			<invadersNumber><Type>UINT8</Type></invadersNumber>
+			<defendersNumber><Type>UINT8</Type></defendersNumber>
+			<watchedShipId><Type>ENTITY_ID</Type></watchedShipId>
+			<watchedTaskName><Type>STRING</Type></watchedTaskName>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</SUCCESS_STORY_PROGRESS_STATE>
+
+	<TASKS_STATE>
+		FIXED_DICT
+		<Properties>
+			<category><Type>UINT8</Type></category>
+			<id><Type>STRING</Type></id>
+			<status><Type>UINT8</Type></status>
+			<startTime><Type>UINT32</Type></startTime>
+			<currentValue><Type>UINT16</Type></currentValue>
+			<targetValue><Type>UINT16</Type></targetValue>
+			<type><Type>UINT8</Type></type>
+			<targetValueAchieved><Type>UINT8</Type></targetValueAchieved>
+			<closeTime><Type>UINT8</Type></closeTime>
+			<taskPool><Type>STRING</Type></taskPool>
+			<showOnHUD><Type>UINT8</Type></showOnHUD>
+			<teamId><Type>TEAM_ID</Type></teamId>
+			<name><Type>STRING</Type></name>
+			<messageData><Type>ZIPPED_BLOB</Type></messageData>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</TASKS_STATE>
+
+	<ENTITY_STATE_STATE>
+		FIXED_DICT
+		<Properties>
+			<ownerId><Type>ENTITY_ID</Type></ownerId>
+			<name><Type>UINT8</Type></name>
+			<status><Type>UINT8</Type></status>
+			<info><Type>STRING</Type></info>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</ENTITY_STATE_STATE>
+
+	<FIELD_LAYER_PACK>
+		FIXED_DICT
+		<Properties>
+			<layerId><Type>UINT8</Type></layerId>
+			<objects><Type>ARRAY<of>VECTOR2</of></Type></objects>
+		</Properties>
+	</FIELD_LAYER_PACK>
+
+	<FIELD_PACK>
+		FIXED_DICT
+		<Properties>
+			<fieldId><Type>FIELD_ID</Type></fieldId>
+			<layers><Type>ARRAY<of>FIELD_LAYER_PACK</of></Type></layers>
+		</Properties>
+	</FIELD_PACK>
+
+	<KILL_FIELD_PACK>
+		FIXED_DICT
+		<Properties>
+			<fieldId><Type>FIELD_ID</Type></fieldId>
+			<hitType><Type>HIT_TYPE</Type></hitType>
+			<layers><Type>ARRAY<of>FIELD_LAYER_PACK</of></Type></layers>
+		</Properties>
+	</KILL_FIELD_PACK>
+
+	<LOCAL_WEATHER_STATE>
+		FIXED_DICT
+		<Properties>
+			<name><Type>STRING</Type></name>
+			<position><Type>VECTOR2</Type></position>
+			<radius><Type>FLOAT</Type></radius>
+			<paramsId><Type>UINT32</Type></paramsId>
+		</Properties>
+	</LOCAL_WEATHER_STATE>
+
+	<GLOBAL_WEATHER_ITEM>
+		FIXED_DICT
+		<Properties>
+			<fromParam><Type>GAMEPARAMS_ID</Type></fromParam>
+			<toParam><Type>GAMEPARAMS_ID</Type></toParam>
+			<startTime><Type>INT16</Type></startTime>
+			<endTime><Type>INT16</Type></endTime>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</GLOBAL_WEATHER_ITEM>
+
+	<GLOBAL_WEATHER_NOTIFICATION>
+		FIXED_DICT
+		<Properties>
+			<param><Type>GAMEPARAMS_ID</Type></param>
+			<time><Type>INT16</Type></time>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</GLOBAL_WEATHER_NOTIFICATION>
+
+	<GLOBAL_WEATHER_STATE>
+		FIXED_DICT
+		<Properties>
+			<param><Type>GAMEPARAMS_ID</Type></param>
+			<item><Type>GLOBAL_WEATHER_ITEM</Type></item>
+			<notification><Type>GLOBAL_WEATHER_NOTIFICATION</Type></notification>
+		</Properties>
+	</GLOBAL_WEATHER_STATE>
+
+	<BATTLE_LOGIC_ENTITY_STATE>
+		FIXED_DICT
+		<Properties>
+			<id><Type>ENTITY_ID</Type></id>
+			<className><Type>STRING</Type></className>
+			<name><Type>STRING</Type></name>
+			<teamId><Type>TEAM_ID</Type></teamId>
+		</Properties>
+	</BATTLE_LOGIC_ENTITY_STATE>
+
+	<WEATHER_LOGIC_PARAMS>
+		FIXED_DICT
+		<Properties>
+			<visibilityFactor><Type> FLOAT </Type></visibilityFactor>
+			<visibilityFactorByPlane><Type> FLOAT </Type></visibilityFactorByPlane>
+			<planeVisibilityFactor><Type> FLOAT </Type></planeVisibilityFactor>
+			<planeVisibilityFactorByPlane><Type> FLOAT </Type></planeVisibilityFactorByPlane>
+			<maxVisibilityDistance><Type> FLOAT </Type></maxVisibilityDistance>
+			<maxVisibilityDistanceByPlane><Type> FLOAT </Type></maxVisibilityDistanceByPlane>
+			<planeMaxVisibilityDistance><Type> FLOAT </Type></planeMaxVisibilityDistance>
+			<planeMaxVisibilityDistanceByPlane><Type> FLOAT </Type></planeMaxVisibilityDistanceByPlane>
+			<mgVisibilityTime><Type> FLOAT </Type></mgVisibilityTime>
+			<airDefenseVisibilityTime><Type> FLOAT </Type></airDefenseVisibilityTime>
+			<GMIdealRadius><Type> FLOAT </Type></GMIdealRadius>
+			<GSIdealRadius><Type> FLOAT </Type></GSIdealRadius>
+			<AAMaxDist><Type> FLOAT </Type></AAMaxDist>
+			<shootShift><Type> FLOAT </Type></shootShift>
+			<speedCoef><Type> FLOAT </Type></speedCoef>
+			<planeSpeed><Type> FLOAT </Type></planeSpeed>
+			<burnDamage><Type> FLOAT </Type></burnDamage>
+			<burnTime><Type> FLOAT </Type></burnTime>
+			<maxShipVisionDistance><Type> FLOAT </Type></maxShipVisionDistance>
+			<maxPlaneVisionDistance><Type> FLOAT </Type></maxPlaneVisionDistance>
+			<bad><Type> FLOAT </Type></bad>
+			<transparency><Type> FLOAT </Type></transparency>
+		</Properties>
+		<implementedBy>WeatherParamsDef.converter</implementedBy>
+	</WEATHER_LOGIC_PARAMS>
+
+	<WEATHER_STATE>
+		FIXED_DICT
+		<Properties>
+			<mainWeather><Type>GAMEPARAMS_ID</Type></mainWeather>
+			<globalWeather><Type>GLOBAL_WEATHER_STATE</Type></globalWeather>
+			<localWeather> <Type>ARRAY<of>LOCAL_WEATHER_STATE</of></Type></localWeather>
+		</Properties>
+	</WEATHER_STATE>
+
+	<DROP_CAPTURE_LOGIC_STATE>
+		FIXED_DICT
+		<Properties>
+			<captureProgress><Type>FLOAT</Type></captureProgress>
+			<timeLeft><Type>FLOAT</Type></timeLeft>
+			<teamId><Type>TEAM_ID</Type></teamId>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</DROP_CAPTURE_LOGIC_STATE>
+
+	<CONTROL_POINT_STATE>
+		FIXED_DICT
+		<Properties>
+			<buoyVisualId><Type>GAMEPARAMS_ID</Type></buoyVisualId>
+			<nextControlPoint><Type>ENTITY_ID</Type></nextControlPoint>
+			<type><Type>UINT8</Type></type>
+			<timerName><Type>STRING</Type></timerName>
+			<index><Type>INT8</Type></index>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</CONTROL_POINT_STATE>
+
+	<CAPTURE_LOGIC_STATE>
+		FIXED_DICT
+		<Properties>
+			<progress><Type>FLOAT</Type></progress>
+			<invaderTeam><Type>TEAM_ID</Type></invaderTeam>
+			<bothInside><Type>BOOL</Type></bothInside>
+			<hasInvaders><Type>BOOL</Type></hasInvaders>
+			<isEnabled><Type>BOOL</Type></isEnabled>
+			<isVisible><Type>BOOL</Type></isVisible>
+			<captureTime><Type>FLOAT</Type></captureTime>
+			<captureSpeed><Type>FLOAT</Type></captureSpeed>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</CAPTURE_LOGIC_STATE>
+
+	<INTERACTIVE_ZONE_STATE>
+		FIXED_DICT
+		<Properties>
+			<controlPoint><Type>CONTROL_POINT_STATE</Type></controlPoint>
+			<captureLogic><Type>CAPTURE_LOGIC_STATE</Type></captureLogic>
+		</Properties>
+	</INTERACTIVE_ZONE_STATE>
+
+	<MODIFIER_STATE>
+		USER_TYPE
+		<implementedBy>Modifiers.ModifierDef.converter</implementedBy>
+	</MODIFIER_STATE>
+
+	<DROP_ITEM_STATE>
+		FIXED_DICT
+		<Properties>
+			<id><Type>INT8</Type></id>
+			<paramsId><Type>GAMEPARAMS_ID</Type></paramsId>
+			<zoneId><Type>ENTITY_ID</Type></zoneId>
+			<startTime><Type>INT16</Type></startTime>
+			<isContested><Type>BOOL</Type></isContested>
+			<captureLogicState><Type>DROP_CAPTURE_LOGIC_STATE</Type></captureLogicState>
+			<visualId><Type>GAMEPARAMS_ID</Type></visualId>
+		</Properties>
+	</DROP_ITEM_STATE>
+
+	<DROP_PLANE_STATE>
+		FIXED_DICT
+		<Properties>
+			<direction><Type>VECTOR2</Type></direction>
+			<params><Type>GAMEPARAMS_ID</Type></params>
+			<height><Type>FLOAT</Type></height>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</DROP_PLANE_STATE>
+
+	<PICKED_DROP_STATE>
+		FIXED_DICT
+		<Properties>
+			<paramsId><Type>GAMEPARAMS_ID</Type></paramsId>
+			<owners><Type>ARRAY<of>ENTITY_ID</of></Type></owners>
+		</Properties>
+	</PICKED_DROP_STATE>
+
+	<DROP_STATE>
+		FIXED_DICT
+		<Properties>
+			<data><Type>ARRAY<of>DROP_ITEM_STATE</of></Type></data>
+			<plane><Type>DROP_PLANE_STATE</Type></plane>
+			<picked><Type>ARRAY<of>PICKED_DROP_STATE</of></Type></picked>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</DROP_STATE>
+
+	<BATTLE_ITEM_STATE>
+		USER_TYPE
+		<implementedBy>BattleItemDef.converter</implementedBy>
+	</BATTLE_ITEM_STATE>
+
+	<STASHED_BATTLE_ITEM_STATE>
+		FIXED_DICT
+		<Properties>
+			<id><Type> UINT8 </Type></id>
+			<item><Type> BATTLE_ITEM_STATE </Type></item>
+		</Properties>
+	</STASHED_BATTLE_ITEM_STATE>
+
+	<DIPLOMACY_STATE>
+		FIXED_DICT
+		<Properties>
+			<enemyTeams><Type>ARRAY<of>TEAM_ID</of></Type></enemyTeams>
+			<teamSize><Type> UINT8 </Type></teamSize>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</DIPLOMACY_STATE>
+
+	<UI_INFO_STATE>
+		FIXED_DICT
+		<Properties>
+			<miniMapType><Type>UINT8</Type></miniMapType>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</UI_INFO_STATE>
+
+	<PHYSICS_STATE>
+		FIXED_DICT
+		<Properties>
+			<collisionResolutionType><Type>UINT8</Type></collisionResolutionType>
+		</Properties>
+	</PHYSICS_STATE>
+
+	<BATTLE_LOGIC_STATE>
+		FIXED_DICT
+		<Properties>
+			<attentionMarkers><Type>ARRAY<of>ATTENTION_MARKER_STATE</of></Type></attentionMarkers>
+			<clientAnimations><Type>CLIENT_ANIMATION_STATE</Type></clientAnimations>
+			<controlPoints><Type>ARRAY<of>ENTITY_ID</of></Type></controlPoints>
+			<entityStates><Type>ARRAY<of>ENTITY_STATE_STATE</of></Type></entityStates>
+			<expectedActions><Type>EXPECTED_ACTION_STATE</Type></expectedActions>
+			<weather><Type>WEATHER_STATE</Type></weather>
+			<keyObjects><Type>ARRAY<of>KEY_OBJECT_STATE</of></Type></keyObjects>
+			<missions><Type>MISSIONS_STATE</Type></missions>
+			<resources><Type>ARRAY<of>RESOURCE_STATE</of></Type></resources>
+			<successStoryProgress><Type>ARRAY<of>SUCCESS_STORY_PROGRESS_STATE</of></Type></successStoryProgress>
+			<tasks><Type>ARRAY<of>TASKS_STATE</of></Type></tasks>
+			<entities><Type>ARRAY<of>BATTLE_LOGIC_ENTITY_STATE</of></Type></entities>
+			<effects><Type>ARRAY<of>WORLD_CLIENT_ACTION_STATE</of></Type></effects>
+			<sounds><Type>ARRAY<of>WORLD_CLIENT_ACTION_STATE</of></Type></sounds>
+			<drop><Type>DROP_STATE</Type></drop>
+			<diplomacy><Type>DIPLOMACY_STATE</Type></diplomacy>
+			<uiInfo><Type>UI_INFO_STATE</Type></uiInfo>
+			<physics><Type>PHYSICS_STATE</Type></physics>
+		</Properties>
+	</BATTLE_LOGIC_STATE>
+
+	<TRIGGERS_STATE>
+		FIXED_DICT
+		<Properties>
+			<modifier><Type> MODIFIER_STATE </Type></modifier>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</TRIGGERS_STATE>
+
+	<DIPLOMACY_TICKET>
+		FIXED_DICT
+		<Properties>
+			<entityId><Type>ENTITY_ID</Type></entityId>
+			<startTime><Type>FLOAT</Type></startTime>
+			<endTime><Type>FLOAT</Type></endTime>
+		</Properties>
+		<implementedBy>DiplomacyTicketDef.converter</implementedBy>
+	</DIPLOMACY_TICKET>
+
+	<DIPLOMACY_TICKETS_STATE>
+		FIXED_DICT
+		<Properties>
+			<invites><Type>ARRAY<of>DIPLOMACY_TICKET</of></Type></invites>
+			<requests><Type>ARRAY<of>DIPLOMACY_TICKET</of></Type></requests>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</DIPLOMACY_TICKETS_STATE>
+
+	<BATTLE_LEVELING_STATE>
+		FIXED_DICT
+		<Properties>
+			<points><Type>UINT32</Type></points>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</BATTLE_LEVELING_STATE>
+
+	<!-- PRIVATE_BATTLE_LOGIC_STATE is deprecated, use PRIVATE_VEHICLE_STATE instead  (WWSD-171385)-->
+	<PRIVATE_BATTLE_LOGIC_STATE>
+		FIXED_DICT
+		<Properties>
+			<battleItems><Type> ARRAY <of> STASHED_BATTLE_ITEM_STATE </of> </Type></battleItems>
+			<triggers><Type> TRIGGERS_STATE </Type></triggers>
+			<diplomacyTickets> <Type> DIPLOMACY_TICKETS_STATE </Type> </diplomacyTickets>
+			<leveling><Type> BATTLE_LEVELING_STATE </Type></leveling>
+			<missions><Type> PRIVATE_MISSIONS_STATE </Type></missions>
+		</Properties>
+	</PRIVATE_BATTLE_LOGIC_STATE>
+
+	<EVALUATION_DEF>
+		FIXED_DICT
+		<Properties>
+			<userDBID><Type>DB_ID</Type></userDBID>
+			<createTS><Type>INT32</Type></createTS>
+			<subjectDBID><Type>DB_ID</Type></subjectDBID>
+			<evaluationType><Type>INT8</Type></evaluationType>
+			<topic><Type>INT8</Type></topic>
+			<subjectKind><Type>INT8</Type></subjectKind>
+			<arenaUniqueID><Type>DB_ID</Type></arenaUniqueID>
+			<clusterID><Type>MASTER_ID</Type></clusterID>
+		</Properties>
+		<implementedBy>EvaluationDef.converter</implementedBy>
+	</EVALUATION_DEF>
+	
+	<ENTITY_DEBUG_TEXT>
+		FIXED_DICT
+		<Properties>
+			<layer><Type>STRING</Type></layer>
+			<text><Type>STRING</Type></text>
+		</Properties>
+	</ENTITY_DEBUG_TEXT>
+
+	<BATTLE_LOGIC_DEBUG_CHANNEL>
+		FIXED_DICT
+		<Properties>
+			<name><Type>STRING</Type></name>
+			<text><Type>STRING</Type></text>
+			<position><Type>VECTOR2</Type></position>
+		</Properties>
+	</BATTLE_LOGIC_DEBUG_CHANNEL>
+
+	<BATTLE_LOGIC_DEBUG_TEXT>
+		FIXED_DICT
+		<Properties>
+			<layer><Type>STRING</Type></layer>
+			<channels><Type>ARRAY<of>BATTLE_LOGIC_DEBUG_CHANNEL</of></Type></channels>
+		</Properties>
+	</BATTLE_LOGIC_DEBUG_TEXT>
+
+	<COMBINED_CLASSES_RESTRICTION>
+		FIXED_DICT
+		<Properties>
+			<min><Type>INT32</Type></min>
+			<max><Type>INT32</Type></max>
+			<shipTypes><Type>ARRAY<of>SHIP_TYPE_ID</of></Type></shipTypes>
+		</Properties>
+	</COMBINED_CLASSES_RESTRICTION>
+
+	<SHIP_CLASS_RESTRICTION>
+		FIXED_DICT
+		<Properties>
+			<shipClass><Type>SHIP_TYPE_ID</Type></shipClass>
+			<minLimit><Type>INT32</Type></minLimit>
+			<maxLimit><Type>INT32</Type></maxLimit>
+		</Properties>
+	</SHIP_CLASS_RESTRICTION>
+
+	<SHIP_LEVEL_RESTRICTION>
+		FIXED_DICT
+		<Properties>
+			<level><Type>SHIP_LEVEL</Type></level>
+			<minLimit><Type>INT32</Type></minLimit>
+			<maxLimit><Type>INT32</Type></maxLimit>
+		</Properties>
+	</SHIP_LEVEL_RESTRICTION>
+
+	<SHIP_LIMIT_RESTRICTION>
+		FIXED_DICT
+		<Properties>
+			<ships><Type>ARRAY<of>INT32</of></Type></ships>
+			<limit><Type>INT32</Type></limit>
+		</Properties>
+	</SHIP_LIMIT_RESTRICTION>
+
+	<RESTRICTION_FILTER>
+		FIXED_DICT
+		<Properties>
+			<concreteShips><Type>ARRAY<of>INT32</of></Type></concreteShips>
+			<excludeShips><Type>ARRAY<of>INT32</of></Type></excludeShips>
+			<shipTypes><Type>ARRAY<of>SHIP_TYPE_ID</of></Type></shipTypes>
+			<shipLevels><Type>ARRAY<of>INT8</of></Type></shipLevels>
+			<nations><Type>ARRAY<of>SHIP_NATION_ID</of></Type></nations>
+		</Properties>
+	</RESTRICTION_FILTER>
+
+	<SHIP_RESTRICTIONS>
+		FIXED_DICT
+		<implementedBy>ShipRestrictions.ShipRestrictionsDefConverter.converter</implementedBy>
+		<Properties>
+			<totalShips><Type>INT32</Type></totalShips>
+			<minShips><Type>INT32</Type></minShips>
+			<maxRepeatingShips><Type>INT32</Type></maxRepeatingShips>
+			<classes><Type>ARRAY<of>SHIP_CLASS_RESTRICTION</of></Type></classes>
+			<levels><Type>ARRAY<of>SHIP_LEVEL_RESTRICTION</of></Type></levels>
+			<limitedShips><Type>ARRAY<of>SHIP_LIMIT_RESTRICTION</of></Type></limitedShips>
+			<combinedClasses><Type>COMBINED_CLASSES_RESTRICTION</Type></combinedClasses>
+			<filters><Type>ARRAY<of>RESTRICTION_FILTER</of></Type></filters>
+		</Properties>
+		<AllowNone> true </AllowNone>
+	</SHIP_RESTRICTIONS>
+
+	<TRAINING_ROOM_PROPERTIES>
+		FIXED_DICT
+		<implementedBy>TrainingRoomDataTypes.trainingRoomPropertiesConverter</implementedBy>
+		<Properties>
+			<mapId><Type>INT32</Type></mapId>
+			<scenario><Type>UNICODE_STRING</Type></scenario>
+			<teamSize><Type>INT32</Type></teamSize>
+			<weatherId><Type>INT32</Type></weatherId>
+			<duration><Type>INT32</Type></duration>
+			<commandersManagement><Type>BOOL</Type></commandersManagement>
+			<isClosed><Type>BOOL</Type></isClosed>
+			<description><Type>UNICODE_STRING</Type></description>
+			<shipRestrictions><Type>SHIP_RESTRICTIONS</Type></shipRestrictions>
+			<hideShips><Type>BOOL</Type></hideShips>
+			<passwordAction><Type>INT8</Type></passwordAction>
+			<password><Type>UNICODE_STRING</Type></password>
+			<observersAvailable><Type>BOOL</Type></observersAvailable>
+		</Properties>
+	</TRAINING_ROOM_PROPERTIES>
+
+	<TRAINING_ROOM_DEF>
+		FIXED_DICT
+		<implementedBy>TrainingRoomDef.converter</implementedBy>
+		<Properties>
+			<commandersManagement><Type>BOOL</Type></commandersManagement>
+			<shipRestrictions><Type>SHIP_RESTRICTIONS</Type></shipRestrictions>
+			<hideShips><Type>BOOL</Type></hideShips>
+			<scenario><Type>UNICODE_STRING</Type></scenario>
+			<teamSize><Type>INT32</Type></teamSize>
+			<preBattleDef><Type>PRE_BATTLE_DEF</Type></preBattleDef>
+			<distributedPlayersCount><Type>INT32</Type></distributedPlayersCount>
+			<notDistributedPlayersCount><Type>INT32</Type></notDistributedPlayersCount>
+			<passwordLen><Type>INT32</Type></passwordLen>
+			<hasFriends><Type>BOOL</Type></hasFriends>
+			<observersAvailable><Type>BOOL</Type></observersAvailable>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</TRAINING_ROOM_DEF>
+
+	<COUNTDOWN_INFO>
+		TUPLE<of>INT32</of><size>2</size>
+	</COUNTDOWN_INFO>
+
+	<VCL_SHOTS_ENTITY_STATS>
+		FIXED_DICT
+		<Properties>
+			<id><Type>ENTITY_ID</Type></id>
+			<posX><Type>FLOAT</Type></posX>
+			<posZ><Type>FLOAT</Type></posZ>
+			<buoyancyState><Type>BUOYANCY_STATE</Type></buoyancyState>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</VCL_SHOTS_ENTITY_STATS>
+
+	<REPLAY_METADATA_STATS>
+		FIXED_DICT
+		<Properties>
+			<credits><Type>UINT32</Type></credits>
+			<exp><Type>UINT32</Type></exp>
+			<damage><Type>UINT32</Type></damage>
+			<medals><Type>UINT8</Type></medals>
+			<kills><Type>UINT8</Type></kills>
+		</Properties>
+	</REPLAY_METADATA_STATS>
+
+	<REPLAY_METADATA>
+		FIXED_DICT
+		<Properties>
+			<replayId><Type>STRING</Type></replayId>
+			<mapName><Type>UINT16</Type></mapName>
+			<gameType><Type>INT8</Type></gameType>
+			<gameMode><Type>INT8</Type></gameMode>
+			<dateTime><Type>UINT32</Type></dateTime>
+			<version><Type>STRING</Type></version>
+			<networkInterface><Type>STRING</Type></networkInterface>
+		</Properties>
+		<implementedBy>ReplayMetadataDef.converter</implementedBy>
+	</REPLAY_METADATA>
+
+	<REPLAY_METADATA_LIST>
+		ARRAY<of>REPLAY_METADATA</of>
+	</REPLAY_METADATA_LIST>
+	<AIR_DEFENCE_AURA>
+		FIXED_DICT
+		<Properties>
+			<id><Type> INT8 </Type></id>
+			<enabled><Type> BOOL </Type></enabled>
+		</Properties>
+	</AIR_DEFENCE_AURA>
+
+	<PREREQUISITE_SHIP_DATA>
+		FIXED_DICT
+		<Properties>
+			<shipParamsId><Type>GAMEPARAMS_ID</Type> </shipParamsId>
+			<maxUpgrades><Type>BOOL</Type> </maxUpgrades>
+			<camoParamsId><Type>GAMEPARAMS_ID</Type> </camoParamsId>
+		</Properties>
+	</PREREQUISITE_SHIP_DATA>
+
+	<PREREQUISITE_DATA>
+		FIXED_DICT
+		<Properties>
+			<ships><Type>ARRAY<of>PREREQUISITE_SHIP_DATA</of></Type></ships>
+			<effects><Type>ARRAY<of>STRING</of></Type></effects>
+			<weather><Type>ARRAY<of>GAMEPARAMS_ID</of></Type></weather>
+			<squadrons><Type>ARRAY<of>GAMEPARAMS_ID</of></Type></squadrons>
+			<flags><Type>ARRAY<of>GAMEPARAMS_ID</of></Type></flags>
+			<ensigns><Type>ARRAY<of>GAMEPARAMS_ID</of></Type></ensigns>
+			<drops><Type>ARRAY<of>GAMEPARAMS_ID</of></Type></drops>
+		</Properties>
+	</PREREQUISITE_DATA>
+
+	<ENTITY_CLIENT_ACTION_STATE>
+		FIXED_DICT
+		<Properties>
+			<id><Type>INT16</Type></id>
+			<name><Type>STRING</Type></name>
+			<node><Type>STRING</Type></node>
+		</Properties>
+	</ENTITY_CLIENT_ACTION_STATE>
+
+	<LINKAGE_FRAGMENTS>
+		FIXED_DICT
+		<Properties>
+			<serviceName><Type>STRING</Type></serviceName>
+			<mailBoxes><Type>ARRAY<of>MAILBOX</of></Type></mailBoxes>
+		</Properties>
+		<AllowNone> true </AllowNone>
+	</LINKAGE_FRAGMENTS>
+	
+	<BUBBLE>
+		FIXED_DICT
+		<Properties>
+			<position><Type> VECTOR3 </Type></position>
+			<activationDelay><Type>FLOAT</Type></activationDelay>
+		</Properties>
+	</BUBBLE>
+
+	<BUBBLE_PACK>
+		FIXED_DICT
+		<Properties>
+			<auraId><Type>INT8</Type></auraId>
+			<bubbles><Type>ARRAY<of>BUBBLE</of></Type></bubbles>
+		</Properties>
+	</BUBBLE_PACK>
+	
+	<PLANE_PROJECTILE>
+		FIXED_DICT
+		<Properties>
+			<shotID><Type>SHOT_ID</Type></shotID>
+			<impactPoint><Type>VECTOR3</Type></impactPoint>
+			<planeIndex><Type>UINT8</Type></planeIndex>
+		</Properties>
+	</PLANE_PROJECTILE>
+
+	<PLANE_PROJECTILE_PACK>
+		FIXED_DICT
+		<Properties>
+			<bombParamsId><Type>GAMEPARAMS_ID</Type> </bombParamsId>
+			<squadronId><Type>PLANE_ID</Type> </squadronId>			
+			<squadronToTarget><Type>VECTOR3</Type></squadronToTarget>
+			<fallTime><Type>FLOAT</Type></fallTime>
+			<timeLeft><Type>FLOAT</Type></timeLeft>
+			<projectiles><Type>ARRAY<of>PLANE_PROJECTILE</of></Type></projectiles>
+		</Properties>
+	</PLANE_PROJECTILE_PACK>
+
+	<PLANE_SKIP_BOMB>
+		FIXED_DICT
+		<Properties>
+			<shotID><Type>SHOT_ID</Type></shotID>
+			<impactPoint><Type>VECTOR3</Type></impactPoint>
+			<skipPoints><Type>ARRAY<of>VECTOR3</of></Type></skipPoints>
+			<planeIndex><Type>UINT8</Type></planeIndex>
+		</Properties>
+	</PLANE_SKIP_BOMB>
+
+	<PLANE_SKIP_BOMB_PACK>
+		FIXED_DICT
+		<Properties>
+			<bombParamsId><Type>GAMEPARAMS_ID</Type> </bombParamsId>
+			<squadronId><Type>PLANE_ID</Type> </squadronId>
+			<squadronToTarget><Type>VECTOR3</Type></squadronToTarget>
+			<fallTime><Type>FLOAT</Type></fallTime>
+			<timeLeft><Type>FLOAT</Type></timeLeft>
+			<projectiles><Type>ARRAY<of>PLANE_SKIP_BOMB</of></Type></projectiles>
+		</Properties>
+	</PLANE_SKIP_BOMB_PACK>
+
+	<PLANE_ROCKET>
+		FIXED_DICT
+		<Properties>
+			<shotID><Type>SHOT_ID</Type></shotID>
+			<impactPoint><Type>VECTOR3</Type></impactPoint>
+			<planeIndex><Type>UINT8</Type></planeIndex>
+		</Properties>
+	</PLANE_ROCKET>
+
+	<PLANE_ROCKET_PACK>
+		FIXED_DICT
+		<Properties>
+			<bombParamsId><Type>GAMEPARAMS_ID</Type> </bombParamsId>
+			<squadronId><Type>PLANE_ID</Type> </squadronId>
+			<squadronToTarget><Type>VECTOR3</Type></squadronToTarget>
+			<attackPoint><Type>VECTOR3</Type></attackPoint>
+			<dropDelay><Type>FLOAT</Type></dropDelay>
+			<fallTime><Type>FLOAT</Type></fallTime>
+			<timeLeft><Type>FLOAT</Type></timeLeft>
+			<projectiles><Type>ARRAY<of>PLANE_ROCKET</of></Type></projectiles>
+		</Properties>
+	</PLANE_ROCKET_PACK>
+
+	<MSGPACK_BLOB>
+		USER_TYPE
+		<Type>BLOB</Type>
+		<implementedBy>MsgPackCustomConverter.converter</implementedBy>
+	</MSGPACK_BLOB>
+
+	<PICKLED_BLOB>
+		USER_TYPE
+		<Type>BLOB</Type>
+		<implementedBy>PickledBlobConverter.converter</implementedBy>
+	</PICKLED_BLOB>
+
+	<PLAYER_DIGEST>
+		FIXED_DICT
+		<Properties>
+			<nickname><Type>STRING</Type></nickname>
+			<accLevel><Type>UINT8</Type></accLevel>
+			<rankInfo><Type>UINT32</Type></rankInfo>
+			<dogTag><Type>STRING</Type></dogTag>
+			<isTeamKiller><Type>UINT8</Type></isTeamKiller>
+			<suspended><Type>UINT8</Type></suspended>
+			<dataRevision><Type>UINT64</Type></dataRevision>
+		</Properties>
+		<implementedBy>PlayerDigestDef.digestConverter</implementedBy>
+	</PLAYER_DIGEST>
+
+	<PLAYER_STATUS>
+		FIXED_DICT
+		<Properties>
+			<isOnline><Type>BOOL</Type></isOnline>
+			<updatedAt><Type>UINT64</Type></updatedAt>
+		</Properties>
+		<implementedBy>PlayerDigestDef.statusConverter</implementedBy>
+	</PLAYER_STATUS>
+
+	<PLAYER_INFO>
+		FIXED_DICT
+		<Properties>
+			<dbId><Type>DB_ID</Type></dbId>
+			<playerDigest><Type>PLAYER_DIGEST</Type></playerDigest>
+			<playerStatus><Type>PLAYER_STATUS</Type></playerStatus>
+		</Properties>
+		<implementedBy>PlayerDigestDef.converter</implementedBy>
+	</PLAYER_INFO>
+
+	<MAP_BORDER>
+		FIXED_DICT
+		<Properties>
+			<paramsId><Type>GAMEPARAMS_ID</Type></paramsId>
+			<position><Type>VECTOR3</Type></position>
+		</Properties>
+		<implementedBy>MapBorderDef.converter</implementedBy>
+		<AllowNone> true </AllowNone>
+	</MAP_BORDER>
+
+	<REPLAY_DATA>
+		FIXED_DICT
+		<Properties>
+			<battleID><Type>ARENA_UNIQUE_ID</Type></battleID>
+			<permitDBIDs><Type>ARRAY<of>DB_ID</of></Type></permitDBIDs>
+			<metadata><Type>MSGPACK_BLOB</Type></metadata>
+			<readyReplay><Type>BLOB</Type></readyReplay>
+		</Properties>
+		<implementedBy>ReplayInfoDef.converter</implementedBy>
+	</REPLAY_DATA>
+
+	<PLAYER_MODE>
+		FIXED_DICT
+		<Properties>
+			<playerModeType><Type>UINT8</Type></playerModeType>
+			<observedTeamId><Type>TEAM_ID</Type></observedTeamId>
+		</Properties>
+	</PLAYER_MODE>
+
+
+	<RESTART_INFO>
+		USER_TYPE
+		<implementedBy>AutoCompensationDataTypes.restartInfoConverterInstance</implementedBy>
+	</RESTART_INFO>
+
+	<NAVIGATION_UNPASSABLE_CELLS>
+		FIXED_DICT
+		<Properties>
+			<depth> <Type>FLOAT</Type> </depth>
+			<cells> <Type>ARRAY <of> VECTOR3 </of> </Type> </cells>
+		</Properties>
+	</NAVIGATION_UNPASSABLE_CELLS>
+
+	<NAVIGATION_DEBUG_DATA>
+		FIXED_DICT
+		<Properties>
+			<mapMin> <Type> VECTOR3 </Type> </mapMin>
+			<numCellsX> <Type> UINT16 </Type> </numCellsX>
+			<numCellsZ> <Type> UINT16 </Type> </numCellsZ>
+			<unpassableCells> <Type> ARRAY <of> NAVIGATION_UNPASSABLE_CELLS </of> </Type> </unpassableCells>
+			<cellSize> <Type> FLOAT </Type> </cellSize>
+		</Properties>
+	</NAVIGATION_DEBUG_DATA>
+
+	<NULLABLE_FLOAT>
+		USER_TYPE
+		<Type>FLOAT</Type>
+		<implementedBy>NullableDef.nullableFloatConverter</implementedBy>
+	</NULLABLE_FLOAT>
+
+	<VS_EVENT_TASK_KEY>
+		TUPLE<of>STRING</of><size>3</size>
+	</VS_EVENT_TASK_KEY>
+
+	<GUN_DIRECTIONS>
+		USER_TYPE
+		<Type>UINT16</Type>
+		<implementedBy>Converters.GunDirectionsConverter.converter</implementedBy>
+	</GUN_DIRECTIONS>
+
+	<ENQUEUE_REQUEST>
+		FIXED_DICT
+		<Properties>
+			<realm><Type>STRING</Type></realm>
+			<queueType><Type>QUEUE_TYPE</Type></queueType>
+			<proxy><Type>MAILBOX</Type></proxy>	<!-- mailbox: an account or a division -->
+			<unitID><Type>INTERCLUSTER_ID</Type></unitID>
+			<playersDefs><Type>PLAYERS_DEFS</Type></playersDefs>
+			<proxyInfo><Type>PRE_BATTLE_CREATOR_DEF</Type></proxyInfo>	<!-- None if it is not a division -->
+			<operationID><Type>GAMEPARAMS_ID</Type></operationID>
+		</Properties>
+		<implementedBy>EnqueueProcess.DataTypes.EnqueueRequestConverter</implementedBy>
+	</ENQUEUE_REQUEST>
+
+	<ENQUEUE_DATA>
+		FIXED_DICT
+		<Properties>
+			<realm><Type>STRING</Type></realm>
+			<queueType><Type>QUEUE_TYPE</Type></queueType>
+			<shipID><Type>SHIP_ID</Type></shipID>
+			<queueStatsIDs><Type>PYTHON</Type></queueStatsIDs>
+			<matchmakerDescription><Type>PYTHON</Type></matchmakerDescription>
+			<operationID><Type>GAMEPARAMS_ID</Type></operationID>
+			<battleStarterService><Type>MAILBOX</Type></battleStarterService>
+		</Properties>
+		<implementedBy>EnqueueProcess.DataTypes.EnqueueDataConverter</implementedBy>
+		<AllowNone> true </AllowNone>
+	</ENQUEUE_DATA>
+	
+	<NULLABLE_VECTOR3>
+		USER_TYPE
+		<Type>VECTOR3</Type>
+		<implementedBy>NullableDef.nullableVector3Converter</implementedBy>
+	</NULLABLE_VECTOR3>
+
+	<BATTERY_STATE>
+		FIXED_DICT
+		<Properties>
+			<energy><Type>FLOAT</Type></energy>
+			<surfacingTimerIndex><Type>UINT8</Type></surfacingTimerIndex>
+		</Properties>
+		<AllowNone> true </AllowNone>
+	</BATTERY_STATE>
+
+	<VEHICLE_VISUAL_STATE>
+		UINT8
+		<AllowNone>true</AllowNone>
+	</VEHICLE_VISUAL_STATE>
+
+	<BUFF_STATE>
+		FIXED_DICT
+		<Properties>
+			<paramsId><Type>GAMEPARAMS_ID</Type></paramsId>
+			<entitySubtypeId><Type>UINT8</Type></entitySubtypeId>
+			<level><Type>INT8</Type></level>
+			<endTime><Type>INT16</Type></endTime>
+			<startTime><Type>INT16</Type></startTime>
+		</Properties>
+		<implementedBy>BuffDef.converter</implementedBy>
+	</BUFF_STATE>
+
+	<BUFFS_STATE>
+		FIXED_DICT
+		<Properties>
+			<buffItems><Type> ARRAY <of> BUFF_STATE </of> </Type></buffItems>
+		</Properties>
+		<AllowNone> true </AllowNone>
+	</BUFFS_STATE>
+
+	<RIBBON_STATE>
+		FIXED_DICT
+		<Properties>
+			<ribbonId><Type>RIBBON_ID</Type></ribbonId>
+			<count><Type>UINT16</Type></count>
+		</Properties>
+	</RIBBON_STATE>
+
+	<RIBBONS_STATE>
+		ARRAY <of> RIBBON_STATE </of>
+		<AllowNone> true </AllowNone>
+	</RIBBONS_STATE>
+
+	<RAGE_MODE_STATE>
+		FIXED_DICT
+		<Properties>
+			<progress><Type>FLOAT</Type></progress>
+		</Properties>
+		<AllowNone> true </AllowNone>
+	</RAGE_MODE_STATE>
+
+	<VEHICLE_STATE>
+		FIXED_DICT
+		<Properties>
+			<battery><Type>BATTERY_STATE</Type></battery>
+			<buffs><Type>BUFFS_STATE</Type></buffs>
+			<vehicleVisualState><Type>VEHICLE_VISUAL_STATE</Type></vehicleVisualState>
+		</Properties>
+	</VEHICLE_STATE>
+
+	<BATTLE_CARDS_STATE>
+		FIXED_DICT
+		<Properties>
+			<ownedCards><Type>BATTLE_CARDS</Type></ownedCards>
+			<installedCards><Type>ARRAY<of>INSTALLED_BATTLE_CARD</of></Type></installedCards>
+			<isChangeable><Type>BOOL</Type></isChangeable>
+			<maxCardsAmount><Type>UINT8</Type></maxCardsAmount>
+		</Properties>
+		<AllowNone> true </AllowNone>
+	</BATTLE_CARDS_STATE>
+
+	<PRIVATE_VEHICLE_STATE>
+		FIXED_DICT
+		<Properties>
+			<buffs><Type>BUFFS_STATE</Type></buffs>
+			<rageMode><Type>RAGE_MODE_STATE</Type></rageMode>
+			<ribbons><Type>RIBBONS_STATE</Type></ribbons>
+			<battleCards><Type>BATTLE_CARDS_STATE</Type></battleCards>
+		</Properties>
+	</PRIVATE_VEHICLE_STATE>
+
+	<ATTACHED_PINGER_WAVE>
+		FIXED_DICT
+		<Properties>
+			<targetId><Type>ENTITY_ID</Type></targetId>
+			<localPos><Type>VECTOR3</Type></localPos>
+			<side><Type>INT8</Type></side>
+			<sectorWidth><Type>FLOAT</Type></sectorWidth>
+			<count><Type>UINT8</Type></count>
+			<lifeTime><Type>FLOAT</Type></lifeTime>
+			<invisibleHitPos><Type>VECTOR3</Type></invisibleHitPos>
+		</Properties>
+	</ATTACHED_PINGER_WAVE>
+
+	<WILD_FIRE_STATE>
+		FIXED_DICT
+		<Properties>
+			<damage><Type> FLOAT </Type></damage>
+			<visibilityFactor><Type> FLOAT </Type></visibilityFactor>
+			<visibilityFactorByPlane><Type> FLOAT </Type></visibilityFactorByPlane>
+			<visionDistance><Type> FLOAT </Type></visionDistance>
+			<maxVisibilityDistance><Type> FLOAT </Type></maxVisibilityDistance>
+		</Properties>
+		<AllowNone> true </AllowNone>
+		<implementedBy>WildFireDef.converter</implementedBy>
+	</WILD_FIRE_STATE>
+
+	<SQUADRON_HEAT_MAP_EVENT_DATA>
+		FIXED_DICT
+		<Properties>
+			<ownerId><Type>ENTITY_ID</Type></ownerId>
+			<squadronPosition><Type>VECTOR3</Type></squadronPosition>
+			<heatMapEvent><Type>UINT8</Type></heatMapEvent>
+			<weaponType><Type>WEAPON_TYPE</Type></weaponType>
+			<numPlanes><Type>UINT8</Type></numPlanes>
+			<currentHealth><Type>FLOAT</Type></currentHealth>
+			<customData><Type>FLOAT</Type></customData>
+			<squadronId><Type>PLANE_ID</Type></squadronId>
+			<mainSquadronId><Type>PLANE_ID</Type></mainSquadronId>
+		</Properties>
+		<AllowNone>false</AllowNone>
+		<implementedBy>HeatMapConstants.squadronEventDataConverter</implementedBy>
+	</SQUADRON_HEAT_MAP_EVENT_DATA>
+
+	<PLANE_PROJECTILE_HEAT_MAP_EVENT_DATA>
+		FIXED_DICT
+		<Properties>
+			<heatMapEvent><Type>UINT8</Type></heatMapEvent>
+			<squadronId><Type>PLANE_ID</Type></squadronId>
+			<victimId><Type>ENTITY_ID</Type></victimId>
+			<customData><Type>FLOAT</Type></customData>
+		</Properties>
+		<AllowNone>false</AllowNone>
+		<implementedBy>HeatMapConstants.planeProjectileEventDataConverter</implementedBy>
+	</PLANE_PROJECTILE_HEAT_MAP_EVENT_DATA>
+
+	<BARGE_BANNER>
+		FIXED_DICT
+		<Properties>
+			<name><Type>STRING</Type></name>
+			<startTime><Type>UINT32</Type></startTime>
+			<finishTime><Type>UINT32</Type></finishTime>
+			<url><Type>STRING</Type></url>
+			<mainText><Type>STRING</Type></mainText>
+			<tooltipText><Type>STRING</Type></tooltipText>
+			<backgroundImage><Type>STRING</Type></backgroundImage>
+		</Properties>
+		<AllowNone>false</AllowNone>
+	</BARGE_BANNER>
+
+	<BATTLE_RESULT>
+		FIXED_DICT
+		<Properties>
+			<winnerTeamId> <Type> TEAM_ID </Type> </winnerTeamId>
+			<finishReason> <Type> UINT8 </Type> </finishReason>
+		</Properties>
+	</BATTLE_RESULT>
+
+	<MINEFIELD_HEAT_MAP_EVENT_DATA>
+		FIXED_DICT
+		<Properties>
+			<fieldId><Type>FIELD_ID</Type></fieldId>
+			<ownerId><Type>ENTITY_ID</Type></ownerId>
+			<position><Type>VECTOR3</Type></position>
+			<spawnTime><Type>FLOAT</Type></spawnTime>
+			<isDefused><Type>BOOL</Type></isDefused>
+			<lifeTime><Type>FLOAT</Type></lifeTime>
+			<spawnedMines><Type>UINT16</Type></spawnedMines>
+			<despawnedMines><Type>UINT16</Type></despawnedMines>
+			<damageToMines><Type>FLOAT</Type></damageToMines>
+			<destroyedMines><Type>UINT16</Type></destroyedMines>
+			<damage><Type>FLOAT</Type></damage>
+			<minesHits><Type>UINT16</Type></minesHits>
+			<hitsBeforeActivationToEnemy><Type>UINT16</Type></hitsBeforeActivationToEnemy>
+			<hitsAfterActivationWithNoDamage><Type>UINT16</Type></hitsAfterActivationWithNoDamage>
+		</Properties>
+		<AllowNone>false</AllowNone>
+		<implementedBy>MinefieldStatistics.converter</implementedBy>
+	</MINEFIELD_HEAT_MAP_EVENT_DATA>
+
+	<QUICK_COMMAND>
+		USER_TYPE
+		<implementedBy>CommonQuickCommands.QuickCommandConverter.converter</implementedBy>
+	</QUICK_COMMAND>
+
+	<MINEFIELD_INFO>
+		USER_TYPE
+		<implementedBy>Fields.MinefieldInfo.converter</implementedBy>
+	</MINEFIELD_INFO>
+
+	<CREATE_BATTLE_SESSION_PARAMS>
+		FIXED_DICT
+		<Properties>
+			<battleDef> <Type>BATTLE_DEF</Type> </battleDef>
+			<uniqueCreationID> <Type>ENTITY_ID</Type> </uniqueCreationID>
+		</Properties>
+	</CREATE_BATTLE_SESSION_PARAMS>
+
+	<CREATE_PRE_BATTLE_PARAMS>
+		FIXED_DICT
+		<Properties>
+			<preBattleDef> <Type>PRE_BATTLE_DEF</Type> </preBattleDef>
+			<ownerDef> <Type>PLAYER_DEF</Type> </ownerDef>
+		</Properties>
+	</CREATE_PRE_BATTLE_PARAMS>
+
+	<CREATE_TRAINING_ROOM_PARAMS>
+		FIXED_DICT
+		<Properties>
+			<trainingRoomDef> <Type>TRAINING_ROOM_DEF</Type> </trainingRoomDef>
+			<ownerDef> <Type>PLAYER_DEF</Type> </ownerDef>
+			<password> <Type>UNICODE_STRING</Type> </password>
+		</Properties>
+	</CREATE_TRAINING_ROOM_PARAMS>
+
+	<RESTORE_POINT>
+		FIXED_DICT
+		<Properties>
+			<webID><Type> INT32 </Type></webID>
+			<deadline><Type> UINT32 </Type></deadline>
+			<pointID><Type> UINT64 </Type></pointID>
+			<srcData><Type> PYTHON </Type></srcData>
+			<availablePointsIDs><Type> ARRAY <of> UINT64 </of> </Type></availablePointsIDs>
+			<vhID> <Type>UINT64 </Type></vhID>
+			<accountType><Type> UINT32 </Type></accountType>
+			<walletContents><Type> PYTHON </Type></walletContents>
+			<pointCreationDt><Type>UINT32</Type></pointCreationDt>
+			<ignoredInvoiceIDs><Type> PYTHON </Type></ignoredInvoiceIDs>
+		</Properties>
+		<implementedBy>RestorePointConverter.converter</implementedBy>
+	</RESTORE_POINT>
+
+	<ENTITYAPI_TIMEOUT>
+		USER_TYPE
+		<implementedBy>EntityAPI.EntityAPITimeoutDef.converter</implementedBy>
+	</ENTITYAPI_TIMEOUT>
+
+	<ENTITY_LOAD_ARGS>
+		FIXED_DICT
+		<Properties>
+			<loadReason><Type>UINT8</Type></loadReason>
+			<ignoreMasterShutdown><Type>BOOL</Type></ignoreMasterShutdown>
+			<entityAPITimeout><Type>ENTITYAPI_TIMEOUT</Type></entityAPITimeout>
+			<additionalArgs><Type>PICKLED_BLOB</Type></additionalArgs>
+		</Properties>
+		<implementedBy>EntityAPIDefs.loadConverter</implementedBy>
+	</ENTITY_LOAD_ARGS>
+
+	<ENTITY_LOOKUP_ARGS>
+		FIXED_DICT
+		<Properties>
+			<additionalArgs><Type>PICKLED_BLOB</Type></additionalArgs>
+			<entityAPITimeout><Type>ENTITYAPI_TIMEOUT</Type></entityAPITimeout>
+		</Properties>
+		<implementedBy>EntityAPIDefs.lookupConverter</implementedBy>
+	</ENTITY_LOOKUP_ARGS>
+
+	<ENTITY_CREATE_ARGS>
+		FIXED_DICT
+		<Properties>
+			<additionalArgs><Type>PICKLED_BLOB</Type></additionalArgs>
+			<entityAPITimeout><Type>ENTITYAPI_TIMEOUT</Type></entityAPITimeout>
+		</Properties>
+		<implementedBy>EntityAPIDefs.createConverter</implementedBy>
+	</ENTITY_CREATE_ARGS>
+
+	<CONSUMABLE_USAGE_PARAMS>
+		USER_TYPE
+		<implementedBy>CommonConsumables.UsageConverter.converter</implementedBy>
+	</CONSUMABLE_USAGE_PARAMS>
+
+</root>
