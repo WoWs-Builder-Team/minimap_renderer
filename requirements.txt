@@ -9,7 +9,7 @@ filelock==3.8.0
 flake8==5.0.4
 imageio-ffmpeg==0.4.7
 iniconfig==1.1.1
-lxml==4.9.1
+lxml==4.9.4
 mccabe==0.7.0
 mypy-extensions==0.4.3
 numpy==1.23.2
@@ -32,3 +32,5 @@ tomli==2.0.1
 tox==3.25.1
 tqdm==4.64.0
 virtualenv==20.16.3
+hanzidentifier==1.2.0
+langdetect==1.0.9

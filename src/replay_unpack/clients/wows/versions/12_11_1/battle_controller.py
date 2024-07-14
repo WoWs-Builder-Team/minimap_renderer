@@ -738,7 +738,8 @@ class BattleController(IBattleController):
                     clan_id=player["clanID"],
                     clan_tag=player["clanTag"],
                     max_health=player["maxHealth"],
-                    name=player["name"],
+                    # fix issues for chinese names
+                    name=player["name"].encode('ISO8859-1').decode('UTF-8'),
                     realm=player["realm"],
                     ship_id=player["shipId"],
                     team_id=player["teamId"],
@@ -778,7 +779,7 @@ class BattleController(IBattleController):
                     is_alive=player["isAlive"],
                     is_hidden=player["isHidden"],
                     is_suppressed=player["isSuppressed"],
-                    name=player["name"],
+                    name=player["name"].encode('ISO8859-1').decode('UTF-8'),
                     params_id=player["paramsId"],
                     team_id=player["teamId"],
                     unique_id=player["uniqueId"],
