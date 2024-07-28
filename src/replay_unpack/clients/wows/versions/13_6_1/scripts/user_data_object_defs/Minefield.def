@@ -1,0 +1,91 @@
+<root>
+	<Domain> BASE </Domain>
+	<OptionsFlag>Enable</OptionsFlag>
+
+	<Properties>
+
+		<name>
+			<Type> STRING </Type>
+			<Editable> true </Editable>
+		</name>
+		
+		<mineName>
+			<Type> STRING </Type>
+			<Editable> true </Editable>
+			<resourceref/>			
+			<Default>PBPM001_SeaMine</Default>
+		</mineName>
+
+		<mines>
+			<Type> STRING </Type>
+			<Editable> false </Editable>	
+		</mines>
+
+		<numberOfMines>
+			<Type> UINT16 </Type>
+			<Editable> false </Editable>
+			<Default>0</Default>
+		</numberOfMines>
+
+		<fieldTransform>
+			<Type> STRING </Type>
+			<Editable> false </Editable>	
+		</fieldTransform>
+
+		<width>
+			<Type> FLOAT </Type>
+			<Editable> true </Editable>
+			<Default> 1000.0 </Default>
+		</width>
+
+		<length>
+			<Type> FLOAT </Type>
+			<Editable> true </Editable>
+			<Default> 1000.0 </Default>
+		</length>
+
+        <minBound>
+            <Type> VECTOR3 </Type>
+            <Editable> false </Editable>
+            <Default> 0.0 0.0 0.0 </Default>
+        </minBound>
+
+        <maxBound>
+            <Type> VECTOR3 </Type>
+            <Editable> false </Editable>
+            <Default> 0.0 0.0 0.0 </Default>
+        </maxBound>
+
+		<depth>
+			<Type> FLOAT </Type>
+			<Editable> true </Editable>
+			<Default> 0.0 </Default>
+		</depth>
+
+		<interval>
+			<Type> FLOAT </Type>
+			<Editable> true </Editable>
+			<Default>40.0</Default>
+			<Min> 20.0 </Min>
+		</interval>
+
+		<tag>
+			<Type> STRING </Type>
+			<Editable> true </Editable>
+		</tag>
+		
+		<drawCircles>
+			<Type> BOOL </Type>
+			<Editable> true </Editable>
+			<Default> 1 </Default>
+		</drawCircles>
+
+		<drawCirclesRadius>
+	        <Type> FLOAT </Type>
+			<Editable> true </Editable>
+			<Default> 0.5 </Default>
+			<Min> 0.0 </Min>
+		</drawCirclesRadius>
+
+	</Properties>
+</root>
