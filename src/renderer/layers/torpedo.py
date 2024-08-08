@@ -114,6 +114,14 @@ class LayerTorpedoBase(LayerBase):
             angle = active_torpedo.yaw
             angle = angle - radians(90)
             m_s_bw = active_torpedo.speed_bw
+
+            # adapt for fps & speed configuration
+            fps = self._renderer.fps
+            speed_scale = self._renderer.speed_scale
+            
+
+            m_s_bw = m_s_bw / fps * speed_scale 
+            
             (x2, y2) = (
                 x1 + m_s_bw * cos(angle),
                 y1 + m_s_bw * sin(angle),

@@ -70,10 +70,15 @@ class LayerShotBase(LayerBase):
         draw = ImageDraw.Draw(base)
 
         for shot in events[game_time].evt_shot:
+             # adapt for fps & speed configuration
+            server_time_left = shot.server_time_left
+            fps = self._renderer.fps
+            speed_scale = self._renderer.speed_scale
+            t_time = server_time_left / (speed_scale / fps) / 2.7
             result = getEquidistantPoints(
                 flip_y(shot.origin),
                 flip_y(shot.destination),
-                shot.t_time,
+                round(t_time),
             )
             p = self._projectiles.setdefault(shot.shot_id, [])
             prev_x, prev_y = self._renderer.get_scaled(shot.origin)

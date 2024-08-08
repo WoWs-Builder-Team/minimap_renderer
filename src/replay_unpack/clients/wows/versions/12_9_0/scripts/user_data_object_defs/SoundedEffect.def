@@ -1,0 +1,31 @@
+<root>
+    <Domain> CLIENT </Domain>
+    
+    <Properties>
+        <description>
+            <Type> STRING </Type>
+            <Editable> true </Editable>
+        </description>
+
+        <effect>
+            <Type> STRING </Type>
+            <Editable> true </Editable>
+        </effect>
+
+        <soundEventName>
+            <Type> STRING </Type>
+            <Editable> true </Editable>
+        </soundEventName>
+
+         <cyclical>
+            <Type> BOOL </Type>
+            <Editable> true </Editable>
+        </cyclical>
+
+        <restartPeriod>
+            <Type> FLOAT32 </Type>
+            <Editable> true </Editable>
+        </restartPeriod>
+    </Properties>
+</root>
+
