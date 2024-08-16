@@ -1,0 +1,24 @@
+<root>
+	<Properties>
+		<atbaTargets>
+			<Type> ATBA_TARGETS </Type>
+			<Flags> ALL_CLIENTS </Flags>
+		</atbaTargets>
+	</Properties>
+		
+	<TempProperties>	
+		<dev_idealATBASelectedGunId/>
+	</TempProperties>	
+	
+	<ClientMethods>
+		<shootATBAGuns>
+			<Arg>	UINT32	</Arg>
+		</shootATBAGuns>
+	</ClientMethods>
+	
+	<CellMethods>
+		<dev_switchIdealATBASelectedGunId>
+			<Arg> UINT8 </Arg>
+		</dev_switchIdealATBASelectedGunId>
+	</CellMethods>
+</root>
