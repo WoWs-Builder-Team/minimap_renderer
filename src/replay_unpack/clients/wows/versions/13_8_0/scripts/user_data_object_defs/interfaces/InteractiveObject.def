@@ -1,0 +1,21 @@
+<root>
+    <BaseMethods>
+    </BaseMethods>
+
+    <CellMethods>
+    </CellMethods>
+
+    <ClientMethods>
+    </ClientMethods>
+
+    <Properties>
+        <logic>
+            <Type> STRING </Type>
+            <Editable> True </Editable>
+            <Default> PCOO001 </Default>
+        </logic>
+    </Properties>
+
+    <TempProperties>
+    </TempProperties>
+</root>

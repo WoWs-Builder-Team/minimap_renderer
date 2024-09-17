@@ -1,0 +1,15 @@
+<root>
+    <Domain> CLIENT </Domain>
+    <OptionsFlag> Enable </OptionsFlag>
+    <Implements>
+        <Interface> InteractiveObject </Interface>
+    </Implements>
+    <Properties>
+        <modelPath>
+            <Type> STRING </Type>
+            <Editable> True </Editable>
+            <Default> content/ports/ship/vessel/OSV3002/OSV3002.model </Default>
+            <resourceref/>
+        </modelPath>
+    </Properties>
+</root>
