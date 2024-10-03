@@ -1,0 +1,22 @@
+<root>
+	<ClientMethods>
+		<recieveSseBonuses>
+			<Args>
+				<sseBonuses> ARRAY<of>SSE_BONUS</of> </sseBonuses>
+			</Args>
+		</recieveSseBonuses>
+		<recieveCreatedSseBonus>
+			<Args>
+				<sseBonus> SSE_BONUS </sseBonus>
+			</Args>
+		</recieveCreatedSseBonus>
+		<recieveDeletedSseBonus>
+			<Args>
+				<sseBonus> SSE_BONUS </sseBonus>
+			</Args>
+		</recieveDeletedSseBonus>
+	</ClientMethods>
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>
