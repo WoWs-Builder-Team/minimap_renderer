@@ -15,6 +15,8 @@ TIER_ROMAN = [
 ]
 
 
+# for reason in DeathReason.deathReason.getList():
+#     print(reason.__dict__)
 DEATH_TYPES = {
     0: {"sound": "Health", "icon": "frags", "id": 0, "name": "NONE"},
     1: {"sound": "Health", "icon": "frags", "id": 1, "name": "ARTILLERY"},
@@ -130,11 +132,43 @@ DEATH_TYPES = {
         "id": 28,
         "name": "ADBOMB",
     },
+    # apparently all these event death reasons should have icon FEL
+    # but they appear to be 'frags' in game so i have edited them manually
     29: {
-        "sound": "Torpedo",
-        "icon": "icon_frag_naval_mine",
+        "sound": "Fel",
+        "icon": "frags",
         "id": 29,
-        "name": "DBOMB_MINE",
+        "name": "EVENT_1",
+    },
+    30: {
+        "sound": "Fel",
+        "icon": "frags",
+        "id": 30,
+        "name": "EVENT_2",
+    },
+    31: {
+        "sound": "Fel",
+        "icon": "frags",
+        "id": 31,
+        "name": "EVENT_3",
+    },
+    32: {
+        "sound": "Fel",
+        "icon": "frags",
+        "id": 32,
+        "name": "EVENT_4",
+    },
+    33: {
+        "sound": "Fel",
+        "icon": "frags",
+        "id": 33,
+        "name": "EVENT_5",
+    },
+    34: {
+        "sound": "Torpedo",
+        "icon": "icon_frag_torpedo",
+        "id": 34,
+        "name": "EVENT_6",
     },
 }
 
