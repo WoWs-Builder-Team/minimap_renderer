@@ -71,7 +71,10 @@ class LayerShipBase(LayerBase):
         artillery_comp = self._owner.ship_components["artillery"]
         fire_control_comp = self._owner.ship_components["fireControl"]
         ship_comp = ship["components"]
-        max_dist = ship_comp[artillery_comp]["maxDist"]
+        try:
+            max_dist = ship_comp[artillery_comp]["maxDist"]
+        except KeyError:
+            max_dist = 999999
 
         try:
             max_dist_coef = ship_comp[fire_control_comp]["maxDistCoef"]

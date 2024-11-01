@@ -16,6 +16,7 @@ class Units(NamedTuple):
     primary_weapons: int = 0
     secondary_weapons: int = 0
     abilities: int = 0
+    shield_unit: int = 0
 
 
 class Skills(NamedTuple):
