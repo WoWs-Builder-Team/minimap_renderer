@@ -80,6 +80,14 @@ class LayerRibbon(LayerBase):
                         name = "dbomb"
                     case 45:
                         name = "dbomb_mine"
+                    case 48 | 49:
+                        name = "torpedo_photon"
+                    case 50:
+                        name = "aim_pulse_torpedo_photon"
+                    case 51:
+                        name = "phaser_laser"
+                    case 52 | 53:
+                        name = "shield"
                     case _ as solo:
                         name = SOLO_MAP.get(solo, f"unknown_{solo}")
                 if name:
