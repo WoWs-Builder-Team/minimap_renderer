@@ -63,8 +63,8 @@ class Vehicle(NamedTuple):
     vehicle_id: int
     health: int
     is_alive: bool
-    x: int
-    y: int
+    x: float
+    y: float
     yaw: float
     relation: int
     is_visible: bool
@@ -126,6 +126,7 @@ class Shot(NamedTuple):
     destination: tuple[int, int]
     shot_id: int
     t_time: int
+    server_time_left: int
 
 
 class Torpedo(NamedTuple):

@@ -200,7 +200,6 @@ class RenderDual(RendererBase):
     def start(
         self,
         path: str,
-        fps: int = 20,
         quality: int = 7,
         progress_cb: Optional[Callable[[float], Any]] = None,
     ):
@@ -246,7 +245,7 @@ class RenderDual(RendererBase):
             self, self.replay_r, "red"
         )
 
-        video_writer = self.get_writer(path, fps, quality)
+        video_writer = self.get_writer(path, self.fps, quality)
         video_writer.send(None)
 
         if self.use_tqdm:
@@ -313,6 +312,8 @@ class Renderer(RendererBase):
         enable_chat: bool = True,
         team_tracers: bool = False,
         use_tqdm: bool = False,
+        fps: int = 60,
+        speed_scale: float = 6.0,
     ):
         """Orchestrates the rendering process.
 
@@ -331,6 +332,8 @@ class Renderer(RendererBase):
         self.bg_color: tuple[int, int, int] = (0, 0, 0)
         self.use_tqdm = use_tqdm
         self._builder = ShipBuilder(self.resman)
+        self.fps = fps
+        self.speed_scale = speed_scale
 
         if self.anon:
             for i, (pid, pi) in enumerate(
@@ -367,7 +370,6 @@ class Renderer(RendererBase):
     def start(
         self,
         path: str,
-        fps: int = 20,
         quality: int = 7,
         progress_cb: Optional[Callable[[float], Any]] = None,
     ):
@@ -395,7 +397,7 @@ class Renderer(RendererBase):
         layer_chat = self._load_layer("LayerChat")(self)
         layer_markers = self._load_layer("LayerMarkers")(self)
 
-        video_writer = self.get_writer(path, fps, quality)
+        video_writer = self.get_writer(path, self.fps, quality)
         video_writer.send(None)
 
         self._draw_header(self.minimap_bg)
@@ -470,8 +472,8 @@ class Renderer(RendererBase):
                 offset_y = 6
                 px, py = mid_x - tw, mid_y - th - offset_y
 
-                for i in range(3 * fps):
-                    per = min(1, i / (1.5 * fps))
+                for i in range(3 * self.fps):
+                    per = min(1, i / (1.5 * self.fps))
                     drw_win.text(
                         (px, py),
                         text=text,
