@@ -1,0 +1,147 @@
+<space.settings>
+	<bounds
+			minX="-9"
+			maxX="8"
+			minY="-9"
+			maxY="8" />
+	<terrain>
+		<version>	200	</version>
+		<heightMapSize>	256	</heightMapSize>
+		<normalMapSize>	256	</normalMapSize>
+	</terrain>
+	<skyDomePartition>	0	</skyDomePartition>
+	<farPlane>	5000.000000	</farPlane>
+	<decals
+			fadeStart="500.000000"
+			fadeEnd="505.000000" />
+	<navmeshGenerator>	navgen	</navmeshGenerator>
+	<lightMapShadow>	spaces/r01_military_navigation/lightmap_shadow.tga	</lightMapShadow>
+	<lightMapIndirection>	spaces/r01_military_navigation/lightMapIndirection.tga	</lightMapIndirection>
+	<numLightMapBlocksInAtlas>	144.000000 143.000000	</numLightMapBlocksInAtlas>
+	<numLightMapBlocksInSpace>	576.000000 576.000000	</numLightMapBlocksInSpace>
+	<blockBorderAdjust>	288.000000 286.000000	</blockBorderAdjust>
+	<fogNear>	21.739000	</fogNear>
+	<fogFar>	500.000000	</fogFar>
+	<fogColour>	0.047059 0.058824 0.090196 0.392157	</fogColour>
+	<UnprocessedData>
+		<shadows>	false	</shadows>
+		<heightMap>	true	</heightMap>
+		<miniMap>	true	</miniMap>
+		<saved>	false	</saved>
+	</UnprocessedData>
+	<lightmapper>
+		<depthBias>	-0.005000	</depthBias>
+		<blurRadius>	2.000000	</blurRadius>
+	</lightmapper>
+	<startPosition>	453.7263 77.8281 -421.1200	</startPosition>
+	<startDirection>	0.0003 0.4708 2.3564	</startDirection>
+	<HDR>
+		<version>	2	</version>
+		<adaptationSpeed>	51.910000	</adaptationSpeed>
+		<avgLumUpdateInterval>	0.300000	</avgLumUpdateInterval>
+		<bloom>
+			<enable>	true	</enable>
+			<brightThreshold>	1.600000	</brightThreshold>
+			<overBloom>	15.120000	</overBloom>
+			<factor>	1.500000	</factor>
+			<mipWeight0>	1.000000	</mipWeight0>
+			<mipWeight1>	0.650000	</mipWeight1>
+			<mipWeight2>	0.310000	</mipWeight2>
+			<mipWeight3>	0.220000	</mipWeight3>
+			<mipWeight4>	0.130000	</mipWeight4>
+		</bloom>
+		<tonemapping>
+			<eyeDarkLimit>	0.150000	</eyeDarkLimit>
+			<eyeLightLimit>	0.700000	</eyeLightLimit>
+			<middleGray>	0.300000	</middleGray>
+			<whitePoint>	11.200000	</whitePoint>
+			<shoulderStrength>	0.220000	</shoulderStrength>
+			<linearStrength>	0.300000	</linearStrength>
+			<linearAngle>	0.100000	</linearAngle>
+			<toeStrength>	0.200000	</toeStrength>
+			<toeNumerator>	0.010000	</toeNumerator>
+			<toeDenominator>	0.300000	</toeDenominator>
+			<filmicOperator>	true	</filmicOperator>
+			<applyToLuminance>	true	</applyToLuminance>
+		</tonemapping>
+		<environment>
+			<skyLumMultiplier>	3.360000	</skyLumMultiplier>
+			<sunlightLumMultiplier>	1.150000	</sunlightLumMultiplier>
+			<ambientLumMultiplier>	1.270000	</ambientLumMultiplier>
+		</environment>
+	</HDR>
+	<smartSettings>
+		<Foam>
+			<foamDistortionCoef>	0.070000	</foamDistortionCoef>
+			<foamFadeFactor>	1.000000	</foamFadeFactor>
+			<foamLighting>	3.000000 2.000000 0.900000 10.000000	</foamLighting>
+			<foamOnObjectsClamp>	0.300000	</foamOnObjectsClamp>
+			<shoreDepth>	0.400000	</shoreDepth>
+			<shoreFadeFactor>	0.429000	</shoreFadeFactor>
+			<shoreFoamTextureScale>	0.457000	</shoreFoamTextureScale>
+			<windFoamAddHeight>	0.219000	</windFoamAddHeight>
+		</Foam>
+		<Fog>
+			<fogBlurSizeAtFarPlane>	6.408000	</fogBlurSizeAtFarPlane>
+			<fogColor>	0.435294 0.709804 0.921569 0.000000	</fogColor>
+			<fogCubeLodMax>	3.685000	</fogCubeLodMax>
+			<fogCubeLodMin>	3.201000	</fogCubeLodMin>
+			<fogCubeVerticalScale>	1.701000	</fogCubeVerticalScale>
+			<fogDensityHigh>	0.972000	</fogDensityHigh>
+			<fogDensityHighHeight>	45.147999	</fogDensityHighHeight>
+			<fogDensityLow>	0.523000	</fogDensityLow>
+			<fogDensityMultiplier>	0.489000	</fogDensityMultiplier>
+			<fogSkyDistanceMultiplier>	22.905001	</fogSkyDistanceMultiplier>
+			<fogStart>	0.000000	</fogStart>
+		</Fog>
+		<Optics>
+			<diffuseColor>	0.000000 0.129412 0.176471 1.000000	</diffuseColor>
+			<dummyWaterTransparency>	0.739000	</dummyWaterTransparency>
+			<refrDistortion>	0.108000	</refrDistortion>
+			<rgbAbsorption>	2.300000 6.900000 5.600000 7.050000	</rgbAbsorption>
+			<seaShadowsDeepBlurScale>	0.100000	</seaShadowsDeepBlurScale>
+			<seaShadowsSurfBlurScale>	10.000000	</seaShadowsSurfBlurScale>
+			<seaShadowsSurfIntensity>	0.972000	</seaShadowsSurfIntensity>
+			<seaShadowsVolAttenuation>	0.000000	</seaShadowsVolAttenuation>
+			<seaShadowsVolIntensity>	0.491000	</seaShadowsVolIntensity>
+			<seabedColor>	0.901961 0.172549 0.129412 1.000000	</seabedColor>
+			<specularIntensity>	0.250000	</specularIntensity>
+			<specularPower>	4166.683105	</specularPower>
+			<subSurfColor>	0.305882 0.800000 0.745098 1.000000	</subSurfColor>
+			<waterTransparency>	2.500000	</waterTransparency>
+		</Optics>
+		<Simulation>
+			<seaLevel>	0.000000	</seaLevel>
+			<simpleWavesAmplitude>	0.324000	</simpleWavesAmplitude>
+			<simpleWavesScale>	0.300000	</simpleWavesScale>
+			<simpleWavesSpeed>	0.060000	</simpleWavesSpeed>
+			<simpleWavesWindAngle>	61.622002	</simpleWavesWindAngle>
+			<wavesScale0>	0.117000 1.910000 1.000000 0.230000	</wavesScale0>
+			<wavesScale1>	0.473000 0.900000 1.000000 0.150000	</wavesScale1>
+			<wavesScale2>	5.530000 0.033000 1.000000 0.170000	</wavesScale2>
+			<wavesScale3>	4.170000 0.057000 1.000000 4.430000	</wavesScale3>
+		</Simulation>
+		<Sun>
+			<angularSize>	0.500000	</angularSize>
+			<color>	0.988235 0.596078 0.333333 1.000000	</color>
+			<lightMapBias>	0.005000	</lightMapBias>
+			<lightMapQuality>	60	</lightMapQuality>
+			<pitch>	17.000000	</pitch>
+			<skyDomeYaw>	28.695999	</skyDomeYaw>
+			<yaw>	122.609001	</yaw>
+		</Sun>
+		<SunDisk>
+			<sunDiskBrightness>	0.000000	</sunDiskBrightness>
+			<sunDiskColor>	0.945098 0.529412 0.172549 1.000000	</sunDiskColor>
+			<sunDiskSize>	0.100000	</sunDiskSize>
+			<sunTexture />
+		</SunDisk>
+	</smartSettings>
+	<skyDome>	content/location/skybox/LK045_okinawa/LK045_okinawa.visual	</skyDome>
+	<wind>
+		<angles>	3.141593 0.031416	</angles>
+		<anglesDispersion>	0.785398 0.196350	</anglesDispersion>
+		<intensityRange>	0.500000 0.500000	</intensityRange>
+		<dynamicsIntensity>	1.000000	</dynamicsIntensity>
+	</wind>
+</space.settings>

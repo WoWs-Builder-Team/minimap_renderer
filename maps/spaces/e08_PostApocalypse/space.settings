@@ -1,0 +1,24 @@
+<space.settings>
+	<bounds>
+		<minX>	-9	</minX>
+		<maxX>	8	</maxX>
+		<minY>	-9	</minY>
+		<maxY>	8	</maxY>
+	</bounds>
+	<startPosition>	213.9805 3.7709 145.0829	</startPosition>
+	<startDirection>	0.0000 -0.1293 -1.0968	</startDirection>
+	<navmeshGenerator>	navgen	</navmeshGenerator>
+	<UnprocessedData>
+		<shadows>	true	</shadows>
+		<cdlod>	true	</cdlod>
+		<heightMap>	true	</heightMap>
+		<miniMap>	true	</miniMap>
+		<saved>	false	</saved>
+	</UnprocessedData>
+	<chunkSize>	100.0000	</chunkSize>
+	<terrain>
+		<version>	200	</version>
+		<heightMapSize>	256	</heightMapSize>
+		<normalMapSize>	256	</normalMapSize>
+	</terrain>
+</space.settings>
