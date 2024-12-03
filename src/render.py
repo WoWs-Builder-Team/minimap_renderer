@@ -17,6 +17,7 @@ if __name__ == "__main__":
         replay_info = ReplayParser(
             f, strict=True, raw_data_output=False
         ).get_info()
+        LOGGER.info(f"Replay has version {replay_info['open']['clientVersionFromExe']}")
         LOGGER.info("Rendering the replay file...")
         renderer = Renderer(
             replay_info["hidden"]["replay_data"],
