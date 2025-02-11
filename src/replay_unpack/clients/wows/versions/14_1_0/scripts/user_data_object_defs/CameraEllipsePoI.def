@@ -1,0 +1,10 @@
+<root>
+    <Domain>	CLIENT	</Domain>
+    <OptionsFlag>Enable</OptionsFlag>
+    <Properties>
+        <trajectory>
+            <Type> STRING </Type>
+            <Editable> True </Editable>
+        </trajectory>
+    </Properties>
+</root>
