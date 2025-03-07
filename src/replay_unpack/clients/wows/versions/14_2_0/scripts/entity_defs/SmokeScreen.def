@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<root>
+    <Implements>
+        <Interface>BattleLogicEntityOwner</Interface>
+        <Interface>WeatherOwner</Interface>
+    </Implements>
+    <IsManualAoI>true</IsManualAoI>
+    <Properties>
+        <bcRadius>
+            <Type>FLOAT32</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </bcRadius>
+        <points>
+            <Type>ARRAY
+                <of>VECTOR3</of>
+            </Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </points>
+        <radius>
+            <Type>FLOAT32</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </radius>
+        <height>
+            <Type>FLOAT32</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </height>
+        <activePointIndex>
+            <Type>INT8</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </activePointIndex>
+        <spawnPointEffect>
+            <Type>STRING</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </spawnPointEffect>
+        <livePointEffect>
+            <Type>STRING</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </livePointEffect>
+    </Properties>
+    <CellMethods></CellMethods>
+</root>
+
