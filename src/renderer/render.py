@@ -348,6 +348,9 @@ class Renderer(RendererBase):
         builds = []
 
         for player in self.replay_data.player_info.values():
+            if player.relation not in [-1, 0]:
+                continue
+
             try:
                 index, build_str = self._builder.get_build(player)
                 build_url = f"{url}{index}&build={build_str}"

@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 from renderer.render import Renderer
 from replay_parser import ReplayParser
@@ -25,6 +26,8 @@ if __name__ == "__main__":
             enable_chat=True,
             use_tqdm=True,
         )
+        with open(path.parent.joinpath(f"{path.stem}-builds.json"), "w") as fp:
+            json.dump(renderer.get_player_build(), fp, indent=4)
         renderer.start(str(video_path))
         LOGGER.info(f"The video file is at: {str(video_path)}")
         LOGGER.info("Done.")
