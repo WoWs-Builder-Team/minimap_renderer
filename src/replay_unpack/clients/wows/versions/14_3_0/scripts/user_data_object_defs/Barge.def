@@ -1,0 +1,42 @@
+<root>
+    <Domain> CLIENT </Domain>
+    <OptionsFlag> Enable </OptionsFlag>
+    <Properties>
+        <description>
+            <Type> STRING </Type>
+            <Editable> True </Editable>
+        </description>
+
+        <bargeModelPath>
+            <Type> STRING </Type>
+            <Editable> True </Editable>
+            <Default> content/ports/ship/vessel/OSV3002/OSV3002.model </Default>
+            <resourceref/>
+        </bargeModelPath>
+
+        <sailorModelPath>
+            <Type> STRING </Type>
+            <Editable> True </Editable>
+            <Default> content/gameplay/europe/character/WH001_Sweden_sailor/WH001_Sweden_sailor.model </Default>
+            <resourceref/>
+        </sailorModelPath>
+
+        <cameraWaypoint>
+            <Type> VECTOR3 </Type>
+            <Editable> True </Editable>
+            <Default> 0.0 0.0 0.0 </Default>
+        </cameraWaypoint>
+
+        <waterPhysicsAffect>
+            <Type> FLOAT </Type>
+            <Editable> True </Editable>
+            <Default> 0.0 </Default>
+        </waterPhysicsAffect>
+
+        <cameraSwitchTime>
+            <Type> FLOAT </Type>
+            <Editable> True </Editable>
+            <Default> 2.0 </Default>
+        </cameraSwitchTime>
+    </Properties>
+</root>

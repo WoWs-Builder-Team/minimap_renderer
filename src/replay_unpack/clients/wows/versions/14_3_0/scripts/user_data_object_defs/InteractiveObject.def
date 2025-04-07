@@ -1,0 +1,29 @@
+<root>
+    <Domain> CLIENT </Domain>
+    <OptionsFlag> Enable </OptionsFlag>
+    <Properties>
+        <modelPath>
+            <Type> STRING </Type>
+            <Editable> True </Editable>
+            <Default> content/location/ship/dead/LSD001/LSD001.model </Default>
+            <resourceref/>
+        </modelPath>
+
+        <paramsName>
+            <Type> STRING </Type>
+            <Editable> True </Editable>
+            <Default> PCOO999_Default </Default>
+        </paramsName>
+    </Properties>
+
+    <TempProperties>
+        <params/>
+        <components/>
+        <length/>
+        <width/>
+        <front/>
+        <back/>
+        <height/>
+        <localBoundingBox/>
+    </TempProperties>
+</root>

@@ -1,0 +1,20 @@
+<root>
+	<BaseMethods>
+		<uninstallBattleCards>
+			<Args>
+				<shipID> GAMEPARAMS_ID </shipID>
+				<slots> ARRAY<of>UINT8</of> </slots>
+			</Args>
+			<Exposed/>
+		</uninstallBattleCards>
+		<rememberBattleCardChoice>
+			<Args>
+				<battleCards> ARRAY <of> BATTLE_CARD_ID </of> </battleCards>
+				<shipID> SHIP_ID </shipID>
+			</Args>
+		</rememberBattleCardChoice>
+	</BaseMethods>
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>
