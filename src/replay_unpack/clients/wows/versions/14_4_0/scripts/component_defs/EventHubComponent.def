@@ -1,0 +1,25 @@
+<root>
+
+	<BaseMethods>
+		<dev_updateProgress>
+			<Exposed/>
+			<Args>
+				<points> UINT8 </points>
+			</Args>
+		</dev_updateProgress>
+		<dev_resetProgress>
+			<Exposed/>
+		</dev_resetProgress>
+	</BaseMethods>
+
+	<ClientMethods>
+		<sync>
+			 <Arg> MSGPACK_BLOB </Arg>
+		</sync>
+	</ClientMethods>
+
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>
+

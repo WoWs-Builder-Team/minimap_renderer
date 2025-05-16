@@ -1,3 +1,4 @@
+import functools
 import json
 import os
 
@@ -6,9 +7,9 @@ from renderer_data.utils import LOGGER
 
 REQUIRED = {
     "workTime",
-    "regenerationHPSpeed",
-    "distShip",
-    "artilleryDistCoeff",
+    "logic.regenerationHPSpeed",
+    "logic.distShip",
+    "logic.artilleryDistCoeff",
 }
 # ConsumablesConstants.ConsumableIDsMap
 ability_type_to_id = {'tacticalTrigger2': 46, 'callFighters': 21, 'smokePlane': 52, 'goDeep': 33,
@@ -24,6 +25,13 @@ ability_type_to_id = {'tacticalTrigger2': 46, 'callFighters': 21, 'smokePlane': 
                       'subsOxygenRegen': 23, 'circleWave': 32, 'affectedBuffAura': 39, 'fighter': 9, 'crashCrew': 0,
                       'Any': 54, 'hangarBoosters': 5, 'Special': 56, 'speedBoosters': 3, 'sonar': 10,
                       'subsWaveGunBoost': 24, 'tacticalTrigger6': 50, 'depthCharges': 26}
+
+
+# https://gist.github.com/wonderbeyond/d293e7a2af1de4873f2d757edd580288
+def rgetattr(obj, attr, *args):
+    def _getattr(obj, attr):
+        return getattr(obj, attr, *args)
+    return functools.reduce(_getattr, [obj] + attr.split('.'))
 
 
 def create_abilities_data():
@@ -71,9 +79,12 @@ def create_abilities_data():
                     id_to_index[ability_type_to_id[sa.consumableType]] = name
                     params_id_to_subtype[ability["id"]] = sub_name
                     params_id_to_index[ability["id"]] = ability["index"]
-                    at[f"{name}.{sub_name}"] = {
-                        k: v for k, v in sa.__dict__.items() if k in REQUIRED
-                    }
+                    at[f"{name}.{sub_name}"] = {}
+                    for key in REQUIRED:
+                        try:
+                            at.setdefault(f"{name}.{sub_name}", {})[key[key.rfind(".") + 1:]] = rgetattr(sa, key)
+                        except AttributeError:
+                            pass
 
     _abils["clan"] = clan_battles
 
