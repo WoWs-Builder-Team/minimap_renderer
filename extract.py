@@ -24,6 +24,7 @@ UNPACK_LIST = (
     "gui/consumables/consumable_*_*.png",
     "gui/ship_bars/*",
     "gui/service_kit/building_icons/*",
+    "gui/battle_hud/icon_frag/*",
 )
 EXCLUDE_LIST = (
     "gui/consumables/consumable_*_*_empty.png",
