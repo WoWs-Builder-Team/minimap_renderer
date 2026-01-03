@@ -24,6 +24,7 @@ SOLO_MAP = {
     27: "splane",
     31: "dbomb",
     33: "drop",
+    54: "assist",
 }
 
 
