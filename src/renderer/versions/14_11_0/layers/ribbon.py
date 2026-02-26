@@ -24,6 +24,7 @@ SOLO_MAP = {
     33: "drop",
     46: "demining_mine",
     47: "demining_minefield",
+    54: "assist",
 }
 
 
