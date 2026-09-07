@@ -23,7 +23,7 @@
 - **Native high-resolution rendering**: draws directly at `1920x1200` instead of upscaling afterward, keeping text and icons sharp.
 - **Native temporal interpolation**: generates intermediate states for ship position and heading, aircraft, shells, and torpedoes for smooth `60 FPS` output by default.
 - **Detailed battle information**: renders ships, health, consumables, capture points, scores, damage, ribbons, frags, chat, and battle results.
-- **Efficient rendering pipeline**: caches unchanged layers and overlaps drawing, frame serialization, and FFmpeg encoding.
+- **Efficient rendering pipeline**: features frame buffer memory reuse pools, ship rotation and status LRU caches, compact bounding-box alpha compositing, and overlapped drawing, frame serialization, and FFmpeg hardware encoding.
 - **Multiple interpolation modes**: supports `native`, `blend`, `duplicate`, and `motion`.
 - **Build export**: writes a JSON file containing player build links alongside the video.
 
@@ -173,7 +173,7 @@ Actual performance depends on CPU speed, memory bandwidth, replay length, battle
 
 ## Compatibility
 
-The renderer contains version-specific adapters for multiple game releases. New game versions may change the replay format, so versions that have not been adapted yet are not guaranteed to parse or render completely.
+The renderer contains version-specific adapters for multiple game releases and is **currently maintained up to version `15.7.0`**, with backward compatibility for earlier replays and support for Operation mode consumables. New game versions may change the replay format, so versions that have not been adapted yet are not guaranteed to parse or render completely.
 
 When reporting an [issue](https://github.com/In-dor/minimap_renderer/issues), include:
 
