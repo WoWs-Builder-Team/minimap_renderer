@@ -135,6 +135,7 @@ class ResourceManager:
         nearest=False,
         size: Optional[tuple[int, int]] = None,
         rot: Optional[int] = None,
+        readonly: bool = True,
     ) -> Image.Image:
         """Loads the image from the package or from the memory.
 
@@ -143,6 +144,7 @@ class ResourceManager:
             filename (str): The filename of the image.
             size (Optional[tuple[int, int]], optional): If provided, loaded
             image will be resized. Defaults to None.
+            readonly (bool): If True, returns cached reference without copying.
 
         Returns:
             Image.Image: The loaded image.
@@ -162,7 +164,8 @@ class ResourceManager:
         key_name = "_".join(key)
 
         if key_name in self._cache:
-            return self._cache[key_name].copy()
+            img = self._cache[key_name]
+            return img if readonly else img.copy()
 
         try:
             res_package = f"{__package__}.versions.{self._versions}.resources"
@@ -177,6 +180,7 @@ class ResourceManager:
 
         with open_binary(res_package, filename) as br:
             image = Image.open(br)
+            image.load()
 
             if image.mode != "RGBA":
                 image = image.convert("RGBA")
@@ -202,8 +206,8 @@ class ResourceManager:
                     rot, resample=Image.Resampling.BICUBIC, expand=True
                 )
 
-            self._cache[key_name] = image.copy()
-            return image.copy()
+            self._cache[key_name] = image
+            return image if readonly else image.copy()
 
     @staticmethod
     def key_converter(o):

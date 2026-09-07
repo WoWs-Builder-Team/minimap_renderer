@@ -71,6 +71,7 @@ class LayerShipBase(LayerBase):
         self._consumable_cache: dict[int, Image.Image] = {}
         self._unknown_consumables: set[tuple[int, int]] = set()
         self._missing_consumable_icons: set[str] = set()
+        self._holder_cache: dict[tuple, Image.Image] = {}
         self._owner = self._replay_data.player_info[self._replay_data.owner_id]
         self._owner_view_range = self._get_max_dist()
         self._deads: list[int] = []
@@ -202,7 +203,7 @@ class LayerShipBase(LayerBase):
 
             player = player_info[vehicle.player_id]
 
-            icon = self._ship_icon(
+            icon_name = self._ship_icon_name(
                 vehicle.is_alive,
                 vehicle.is_visible,
                 ship["species"],
@@ -210,7 +211,8 @@ class LayerShipBase(LayerBase):
                 is_in_view_range,
                 vehicle.visibility_flag,
             )
-            icon = icon.rotate(-vehicle.yaw, Image.Resampling.BICUBIC, True)
+            angle = round(-vehicle.yaw * 2) / 2
+            icon = self._get_rotated_ship_icon(icon_name, angle)
             x, y = self._renderer.get_scaled((vehicle.x, vehicle.y))
 
             if vehicle.is_alive and not self._renderer.dual_mode:
@@ -228,39 +230,10 @@ class LayerShipBase(LayerBase):
 
             if vehicle.is_alive:
                 if vehicle.is_visible:
-                    holder = holder.copy()
-
-                    if vehicle.visibility_flag > 0 and vehicle.relation in [
-                        -1,
-                        0,
-                    ]:
-                        vx = self._renderer.px(15)
-                        vy = self._renderer.px(65)
-                        marker_size = max(1, self._renderer.px(5))
-                        draw = ImageDraw.Draw(holder)
-                        draw.rectangle(
-                            ((vx, vy), (vx + marker_size, vy + marker_size)),
-                            fill="orange",
-                        )
-
-                    if is_in_view_range:
-                        draw_health_bar(
-                            holder,
-                            color=color,
-                            hp_per=round(vehicle.health / player.max_health, 2),
-                        )
-
-                    side_points = [
-                        (self._renderer.minimap_size, y),
-                        (x, self._renderer.minimap_size),
-                        (0, y),
-                        (x, 0),
-                    ]
-
-                    d1, d2, d3, d4 = map(
-                        lambda ps: round(hypot(x - ps[0], y - ps[1])),
-                        side_points,
-                    )
+                    d1 = abs(self._renderer.minimap_size - x)
+                    d2 = abs(self._renderer.minimap_size - y)
+                    d3 = x
+                    d4 = y
 
                     angle = 0
                     c_y_pos = self._renderer.px(20)
@@ -285,24 +258,19 @@ class LayerShipBase(LayerBase):
                     if angle or d4 <= edge_distance:
                         c_y_pos = self._renderer.px(83)
 
-                    self._ship_consumable(
-                        holder,
-                        vehicle.vehicle_id,
-                        player.ship_params_id,
+                    cropped_holder, ox, oy = self._get_ship_holder(
+                        vehicle,
+                        player,
+                        color,
+                        is_in_view_range,
+                        angle,
                         c_y_pos,
                     )
-
-                    if holder and angle:
-                        holder = holder.rotate(
-                            angle, Image.Resampling.BICUBIC, expand=True
+                    if cropped_holder is not None:
+                        image.alpha_composite(
+                            cropped_holder,
+                            dest=(x + ox, y + oy),
                         )
-                    image.alpha_composite(
-                        holder,
-                        dest=(
-                            x - round(holder.width / 2),
-                            y - round(holder.height / 2),
-                        ),
-                    )
             if not vehicle.is_alive and vehicle.vehicle_id not in self._deads:
                 self._deads.append(vehicle.vehicle_id)
                 self._image_dead.alpha_composite(
@@ -317,6 +285,85 @@ class LayerShipBase(LayerBase):
                 icon,
                 dest=(x - round(icon.width / 2), y - round(icon.height / 2)),
             )
+
+    def _get_ship_holder(
+        self,
+        vehicle,
+        player,
+        color,
+        is_in_view_range: bool,
+        angle: int,
+        c_y_pos: int,
+    ) -> tuple[Optional[Image.Image], int, int]:
+        acs = self._renderer.conman.active_consumables.get(vehicle.vehicle_id)
+        ac_key = tuple(acs.keys()) if acs else ()
+        hp_key = (
+            round(vehicle.health / player.max_health, 2)
+            if is_in_view_range
+            else None
+        )
+        vis_key = (
+            vehicle.visibility_flag > 0
+            and vehicle.relation in [-1, 0]
+        )
+        cache_key = (
+            vehicle.player_id,
+            hp_key,
+            ac_key,
+            angle,
+            c_y_pos,
+            vis_key,
+            color,
+        )
+
+        cached = self._holder_cache.get(cache_key)
+        if cached is not None:
+            return cached
+
+        holder = self._holders[vehicle.player_id].copy()
+
+        if vis_key:
+            vx = self._renderer.px(15)
+            vy = self._renderer.px(65)
+            marker_size = max(1, self._renderer.px(5))
+            draw = ImageDraw.Draw(holder)
+            draw.rectangle(
+                ((vx, vy), (vx + marker_size, vy + marker_size)),
+                fill="orange",
+            )
+
+        if is_in_view_range:
+            draw_health_bar(
+                holder,
+                color=color,
+                hp_per=hp_key,
+            )
+
+        self._ship_consumable(
+            holder,
+            vehicle.vehicle_id,
+            player.ship_params_id,
+            c_y_pos,
+        )
+
+        if holder and angle:
+            holder = holder.rotate(
+                angle, Image.Resampling.BICUBIC, expand=True
+            )
+
+        bbox = holder.getbbox()
+        if bbox is None:
+            res = (None, 0, 0)
+        else:
+            cropped = holder.crop(bbox)
+            res = (
+                cropped,
+                bbox[0] - round(holder.width / 2),
+                bbox[1] - round(holder.height / 2),
+            )
+
+        self._holder_cache[cache_key] = res
+        return res
 
     def _ship_consumable(
         self, image: Image.Image, vehicle_id: int, params_id: int, y=None
@@ -386,8 +433,8 @@ class LayerShipBase(LayerBase):
                     (int(image.width / 2 - c_icons_holder.width / 2), y),
                 )
 
-    @lru_cache
-    def _ship_icon(
+    @lru_cache(maxsize=256)
+    def _ship_icon_name(
         self,
         is_alive: bool,
         is_visible: bool,
@@ -395,21 +442,7 @@ class LayerShipBase(LayerBase):
         relation: int,
         is_in_view_range: bool,
         visibility_flag: int,
-    ) -> Image.Image:
-        """Returns an image associated with ship's state.
-
-        Args:
-            is_alive (bool): Ship's status.
-            is_visible (bool): Ship's visibility.
-            species (str): Ship's type.
-            relation (int): Ship's relation to player.
-            not_in_range (bool): If the ship is in player's render range.
-            visibility_flag (int): Integer representing status of various detection reasons.
-
-        Returns:
-            Image.Image: An icon associated with the ship's state.
-        """
-
+    ) -> str:
         relation_str = RELATION_NORMAL_STR[relation]
         filename_parts: list[str] = []
         state = (is_alive, is_visible, is_in_view_range)
@@ -437,5 +470,43 @@ class LayerShipBase(LayerBase):
                 filename_parts.append(relation_str)
 
         filename = "_".join(filename_parts)
-        filename = f"{filename}.png"
+        return f"{filename}.png"
+
+    @lru_cache(maxsize=4096)
+    def _get_rotated_ship_icon(
+        self, icon_name: str, angle: float
+    ) -> Image.Image:
+        icon = self._renderer.resman.load_image(icon_name, "ship_icons")
+        return icon.rotate(angle, Image.Resampling.BICUBIC, expand=True)
+
+    def _ship_icon(
+        self,
+        is_alive: bool,
+        is_visible: bool,
+        species: str,
+        relation: int,
+        is_in_view_range: bool,
+        visibility_flag: int,
+    ) -> Image.Image:
+        """Returns an image associated with ship's state.
+
+        Args:
+            is_alive (bool): Ship's status.
+            is_visible (bool): Ship's visibility.
+            species (str): Ship's type.
+            relation (int): Ship's relation to player.
+            not_in_range (bool): If the ship is in player's render range.
+            visibility_flag (int): Integer representing status of various detection reasons.
+
+        Returns:
+            Image.Image: An icon associated with the ship's state.
+        """
+        filename = self._ship_icon_name(
+            is_alive,
+            is_visible,
+            species,
+            relation,
+            is_in_view_range,
+            visibility_flag,
+        )
         return self._renderer.resman.load_image(filename, "ship_icons")

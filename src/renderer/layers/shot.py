@@ -14,6 +14,8 @@ SHELL_COLORS = {
     "AP": (222, 222, 222),
     "CS": (255, 48, 48),
 }
+SECONDARY_SHELL_COLORS = {k: (*v, 85) for k, v in SHELL_COLORS.items()}
+OPAQUE_SHELL_COLORS = {k: (*v, 255) for k, v in SHELL_COLORS.items()}
 
 
 class LayerShotBase(LayerBase):
@@ -52,6 +54,17 @@ class LayerShotBase(LayerBase):
             v.ship_id: (v.ship_params_id, v.ship_components)
             for v in self._replay_data.player_info.values()
         }
+        self._main_ammo: dict[int, set[int]] = {}
+        for v in self._replay_data.player_info.values():
+            spid = v.ship_params_id
+            scomp = v.ship_components
+            try:
+                main_list = self._ships[spid]["components"][scomp["artillery"]][
+                    "ammo_list"
+                ]
+                self._main_ammo[v.ship_id] = set(main_list)
+            except KeyError:
+                self._main_ammo[v.ship_id] = set()
         self._empties = 0
         self._hits: set[int] = set()
         self._projectile_phase: dict[int, float] = {}
@@ -124,44 +137,14 @@ class LayerShotBase(LayerBase):
 
         line_width = max(1, self._renderer.px(2))
         padding = line_width + 1
-        left = max(
-            0, floor(min(min(p[2], p[4]) for p in projectiles)) - padding
-        )
-        top = max(
-            0, floor(min(min(p[3], p[5]) for p in projectiles)) - padding
-        )
-        right = min(
-            image.width,
-            ceil(max(max(p[2], p[4]) for p in projectiles)) + padding + 1,
-        )
-        bottom = min(
-            image.height,
-            ceil(max(max(p[3], p[5]) for p in projectiles)) + padding + 1,
-        )
-        if right <= left or bottom <= top:
-            return
-        base = Image.new("RGBA", (right - left, bottom - top))
-        draw = ImageDraw.Draw(base)
+
+        has_secondary = False
+        lines = []
 
         for projectile in projectiles:
             try:
-
                 cid, params_id, cx, cy, px, py = projectile
-                spid, scomp = self._vehicle_components[cid]
-                try:
-                    atba = self._ships[spid]["components"][scomp["atba"]][
-                        "ammo_list"
-                    ]
-                except KeyError:
-                    atba = []
-                try:
-                    main = self._ships[spid]["components"][scomp["artillery"]][
-                        "ammo_list"
-                    ]
-                except KeyError:
-                    main = []
-                is_secondary = params_id in atba
-                is_secondary = params_id not in main
+                is_secondary = params_id not in self._main_ammo.get(cid, ())
 
                 if self._renderer.team_tracers:
                     rel = self._relations[cid]
@@ -169,36 +152,68 @@ class LayerShotBase(LayerBase):
                         continue
 
                     if self._color:
-                        color = COLORS_NORMAL[
+                        base_c = COLORS_NORMAL[
                             0 if self._color == "green" else 1
                         ]
                     else:
-                        color = COLORS_NORMAL[self._relations[cid]]
+                        base_c = COLORS_NORMAL[self._relations[cid]]
+
+                    if is_secondary:
+                        has_secondary = True
+                        color = (*base_c[:3], 85)
+                    else:
+                        color = base_c
                 else:
                     shell_type = self._projectiles_data[params_id]
-                    color = SHELL_COLORS[shell_type]
-
-                if is_secondary:
-                    if isinstance(color, str):
-                        color = ImageColor.getrgb(color)
-
-                    color = list(color)
-
-                    if len(color) == 3:
-                        color.append(85)
-                    elif len(color) == 4:
-                        color[3] = 85
+                    if is_secondary:
+                        has_secondary = True
+                        color = SECONDARY_SHELL_COLORS[shell_type]
                     else:
-                        raise ValueError("Not a valid color")
+                        color = OPAQUE_SHELL_COLORS[shell_type]
 
-                    color = tuple(color)
-
-                draw.line(
-                    [(cx - left, cy - top), (px - left, py - top)],
-                    fill=color,
-                    width=line_width,
-                )
+                lines.append((cx, cy, px, py, color))
             except KeyError:
                 pass
 
+        if not lines:
+            return
+
+        if not has_secondary:
+            draw = ImageDraw.Draw(image)
+            for cx, cy, px, py, color in lines:
+                draw.line(
+                    [(cx, cy), (px, py)],
+                    fill=color,
+                    width=line_width,
+                )
+            return
+
+        min_x = min_y = float("inf")
+        max_x = max_y = float("-inf")
+        for cx, cy, px, py, _ in lines:
+            if cx < min_x: min_x = cx
+            if px < min_x: min_x = px
+            if cx > max_x: max_x = cx
+            if px > max_x: max_x = px
+            if cy < min_y: min_y = cy
+            if py < min_y: min_y = py
+            if cy > max_y: max_y = cy
+            if py > max_y: max_y = py
+
+        left = max(0, floor(min_x) - padding)
+        top = max(0, floor(min_y) - padding)
+        right = min(image.width, ceil(max_x) + padding + 1)
+        bottom = min(image.height, ceil(max_y) + padding + 1)
+
+        if right <= left or bottom <= top:
+            return
+
+        base = Image.new("RGBA", (right - left, bottom - top))
+        draw = ImageDraw.Draw(base)
+        for cx, cy, px, py, color in lines:
+            draw.line(
+                [(cx - left, cy - top), (px - left, py - top)],
+                fill=color,
+                width=line_width,
+            )
         image.alpha_composite(base, (left, top))

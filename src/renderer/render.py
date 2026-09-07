@@ -2,7 +2,7 @@ from json import JSONDecodeError
 from functools import lru_cache
 from math import ceil
 import os
-from queue import Full, Queue
+from queue import Empty, Full, Queue
 import subprocess
 from threading import Thread
 from typing import Any, Callable, Optional, Type, Union
@@ -207,9 +207,10 @@ def select_video_encoder(
 
 
 class AsyncFrameWriter:
-    def __init__(self, writer, queue_size: int = 2):
+    def __init__(self, writer, queue_size: int = 8):
         self._writer = writer
         self._queue = Queue(maxsize=queue_size)
+        self._pool = Queue()
         self._error = None
         self._started = False
         self._closed = False
@@ -221,11 +222,19 @@ class AsyncFrameWriter:
         try:
             self._writer.send(None)
             while True:
-                frame = self._queue.get()
-                if frame is _WRITER_STOP:
+                item = self._queue.get()
+                if item is _WRITER_STOP:
                     break
+                is_pooled = False
+                if isinstance(item, tuple) and len(item) == 2 and isinstance(item[1], bool):
+                    frame, is_pooled = item
+                else:
+                    frame = item
                 if isinstance(frame, Image.Image):
-                    frame = frame.tobytes("raw", "RGB")
+                    raw = frame.tobytes("raw", "RGB")
+                    if is_pooled:
+                        self._pool.put(frame)
+                    frame = raw
                 self._writer.send(frame)
         except BaseException as error:
             self._error = error
@@ -262,6 +271,23 @@ class AsyncFrameWriter:
                 "video writer must be initialized with send(None)"
             )
         self._put(frame)
+
+    def get_buffer(
+        self, size: tuple[int, int], mode: str = "RGBA"
+    ) -> Image.Image:
+        try:
+            return self._pool.get_nowait()
+        except Empty:
+            return Image.new(mode, size)
+
+    def send_pooled(self, image: Image.Image):
+        if self._closed:
+            raise RuntimeError("cannot write to a closed video writer")
+        if not self._started:
+            raise RuntimeError(
+                "video writer must be initialized with send(None)"
+            )
+        self._put((image, True))
 
     def send_image(self, image: Image.Image):
         self.send(image.copy())
@@ -803,8 +829,10 @@ class Renderer(RendererBase):
                     progress_cb(per)
 
         def draw_frame(game_time):
-            minimap_img = self.minimap_fg.copy()
-            minimap_bg = self.minimap_bg.copy()
+            minimap_img = Image.new("RGBA", self.minimap_fg.size)
+            minimap_img.paste(self.minimap_fg, (0, 0))
+            minimap_bg = Image.new("RGBA", self.output_size)
+            minimap_bg.paste(self.minimap_bg, (0, 0))
 
             if not self.is_operations:
                 layer_capture.draw(game_time, minimap_img)
@@ -814,7 +842,7 @@ class Renderer(RendererBase):
             layer_ward.draw(game_time, minimap_img)
             layer_markers.draw(game_time, minimap_img)
             layer_shot.draw(game_time, minimap_img)
-            layer_torpedo.draw(game_time, ImageDraw.Draw(minimap_img))
+            layer_torpedo.draw(game_time, minimap_img)
             layer_ship.draw(game_time, minimap_img)
             layer_smoke.draw(game_time, minimap_img)
             layer_plane.draw(game_time, minimap_img)
@@ -832,8 +860,10 @@ class Renderer(RendererBase):
             return minimap_img, minimap_bg
 
         def draw_interval_base(game_time):
-            minimap_img = self.minimap_fg.copy()
-            minimap_bg = self.minimap_bg.copy()
+            minimap_img = Image.new("RGBA", self.minimap_fg.size)
+            minimap_img.paste(self.minimap_fg, (0, 0))
+            minimap_bg = Image.new("RGBA", self.output_size)
+            minimap_bg.paste(self.minimap_bg, (0, 0))
 
             if not self.is_operations:
                 layer_capture.draw(game_time, minimap_img)
@@ -856,7 +886,7 @@ class Renderer(RendererBase):
         def draw_dynamic(game_time, minimap_img):
             layer_markers.draw(game_time, minimap_img)
             layer_shot.draw(game_time, minimap_img)
-            layer_torpedo.draw(game_time, ImageDraw.Draw(minimap_img))
+            layer_torpedo.draw(game_time, minimap_img)
             layer_ship.draw(game_time, minimap_img)
             layer_smoke.draw(game_time, minimap_img)
             layer_plane.draw(game_time, minimap_img)
@@ -876,6 +906,8 @@ class Renderer(RendererBase):
             has_active_interval = False
             interval_map = None
             interval_output = None
+            interval_version = 0
+            dynamic_map = Image.new("RGBA", self.minimap_fg.size)
 
             try:
                 for frame_index, current_key, next_key, alpha, first in prog:
@@ -898,10 +930,24 @@ class Renderer(RendererBase):
                             interval_map, interval_output = draw_interval_base(
                                 sample_key
                             )
-                        minimap_img = interval_map.copy()
-                        draw_dynamic(sample_key, minimap_img)
-                        interval_output.paste(minimap_img, self.map_origin)
-                        self._write_frame(video_writer, interval_output)
+                            interval_version += 1
+                        dynamic_map.paste(interval_map, (0, 0))
+                        draw_dynamic(sample_key, dynamic_map)
+                        if isinstance(video_writer, AsyncFrameWriter):
+                            frame_buf = video_writer.get_buffer(
+                                self.output_size
+                            )
+                            if (
+                                getattr(frame_buf, "_interval_ver", None)
+                                != interval_version
+                            ):
+                                frame_buf.paste(interval_output, (0, 0))
+                                frame_buf._interval_ver = interval_version
+                            frame_buf.paste(dynamic_map, self.map_origin)
+                            video_writer.send_pooled(frame_buf)
+                        else:
+                            interval_output.paste(dynamic_map, self.map_origin)
+                            self._write_frame(video_writer, interval_output)
                     finally:
                         self.replay_data.events.pop(sample_key)
 

@@ -26,6 +26,7 @@ class LayerSmokeBase(LayerBase):
             replay_data if replay_data else self._renderer.replay_data
         )
         self._cached_smokes = None
+        self._cached_sig = None
         self._cached_overlay = None
 
     def draw(self, game_time: int, image: Image.Image):
@@ -42,7 +43,10 @@ class LayerSmokeBase(LayerBase):
         if not smokes:
             return
 
-        if evt_smoke is self._cached_smokes:
+        smoke_sig = tuple(
+            (sid, s.radius, len(s.points)) for sid, s in evt_smoke.items()
+        )
+        if evt_smoke is self._cached_smokes or smoke_sig == self._cached_sig:
             overlay, position = self._cached_overlay
             image.alpha_composite(overlay, position)
             return
@@ -82,5 +86,6 @@ class LayerSmokeBase(LayerBase):
 
         position = (left, top)
         self._cached_smokes = evt_smoke
+        self._cached_sig = smoke_sig
         self._cached_overlay = (base, position)
         image.alpha_composite(base, position)

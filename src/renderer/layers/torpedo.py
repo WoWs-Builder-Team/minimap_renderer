@@ -2,9 +2,9 @@ from renderer.base import LayerBase
 from renderer.const import COLORS_NORMAL
 from renderer.render import Renderer
 from renderer.utils import flip_y
-from PIL import ImageDraw
+from PIL import Image, ImageDraw
 from math import cos, sin, radians, degrees
-from typing import Optional
+from typing import Optional, Union
 from renderer.data import AcousticTorpedo, ReplayData, Torpedo
 
 
@@ -42,12 +42,16 @@ class LayerTorpedoBase(LayerBase):
         self._hits: set[int] = set()
         self._acoustic_torpedo_buf: dict[int, AcousticTorpedo] = {}
 
-    def draw(self, game_time: int, draw: ImageDraw.ImageDraw):
+    def draw(
+        self,
+        game_time: int,
+        draw_or_image: Union[ImageDraw.ImageDraw, Image.Image],
+    ):
         """This draws the torpedoes to the minimap.
 
         Args:
             game_time (int): The game time.
-            draw (ImageDraw.ImageDraw): Draw.
+            draw_or_image: ImageDraw or Image to draw onto.
         """
         events = self._replay_data.events[game_time]
         self._hits.update(events.evt_hits)
@@ -55,14 +59,18 @@ class LayerTorpedoBase(LayerBase):
         if not events.evt_torpedo and not self._active_torpedoes:
             return
 
-        for hit in self._hits.copy():
-            try:
-                self._active_torpedoes.pop(hit)
-            except KeyError:
-                pass
-            else:
-                pass
-                self._hits.remove(hit)
+        draw = (
+            draw_or_image
+            if isinstance(draw_or_image, ImageDraw.ImageDraw)
+            else ImageDraw.Draw(draw_or_image)
+        )
+
+        if self._hits and self._active_torpedoes:
+            intersection = self._hits.intersection(self._active_torpedoes)
+            if intersection:
+                for hit in intersection:
+                    self._active_torpedoes.pop(hit, None)
+                self._hits.difference_update(intersection)
 
         for sid, torpedo in events.evt_torpedo.items():
             owner_id = torpedo.owner_id
@@ -87,26 +95,24 @@ class LayerTorpedoBase(LayerBase):
         self._active_torpedoes.update(events.evt_torpedo)
         self._acoustic_torpedo_buf.update(events.evt_acoustic_torpedo)
 
-        for sid, a_torpedo in self._acoustic_torpedo_buf.copy().items():
-            if torpedo := self._active_torpedoes.get(sid):
-                _yaw = round(degrees(a_torpedo.yaw))
+        if self._acoustic_torpedo_buf:
+            for sid in list(self._acoustic_torpedo_buf):
+                a_torpedo = self._acoustic_torpedo_buf[sid]
+                if torpedo := self._active_torpedoes.get(sid):
+                    _yaw = round(degrees(a_torpedo.yaw))
 
-                if _yaw != 360:
-                    kwargs = {
-                        "origin": (a_torpedo.x, a_torpedo.y),
-                        "yaw": a_torpedo.yaw,
-                    }
-                else:
-                    kwargs = {
-                        "origin": (a_torpedo.x, a_torpedo.y),
-                    }
+                    if _yaw != 360:
+                        kwargs = {
+                            "origin": (a_torpedo.x, a_torpedo.y),
+                            "yaw": a_torpedo.yaw,
+                        }
+                    else:
+                        kwargs = {
+                            "origin": (a_torpedo.x, a_torpedo.y),
+                        }
 
-                self._active_torpedoes[sid] = torpedo._replace(**kwargs)
-
-                if sid in self._acoustic_torpedo_buf:
-                    self._acoustic_torpedo_buf.pop(sid)
-            else:
-                self._acoustic_torpedo_buf[sid] = a_torpedo
+                    self._active_torpedoes[sid] = torpedo._replace(**kwargs)
+                    del self._acoustic_torpedo_buf[sid]
 
         for sid, active_torpedo in self._active_torpedoes.items():
             owner_id = active_torpedo.owner_id

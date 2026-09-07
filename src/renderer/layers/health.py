@@ -77,6 +77,51 @@ class LayerHealthBase(LayerBase):
         padded.alpha_composite(bar, (0, 0))
         return padded
 
+    def _prepare_bars(self):
+        if hasattr(self, "_prepared_bars"):
+            return
+        info = self._ships[self._player.ship_params_id]
+        bg_alive = self._renderer.resman.load_image(
+            f"{info['index']}_h_bg.png", nearest=False, path="ship_bars"
+        )
+        self._bg_alive = self._add_padding(bg_alive)
+        try:
+            bg_dead = self._renderer.resman.load_image(
+                f"{info['index']}_h_bgdead.png", nearest=False, path="ship_bars"
+            )
+            self._bg_dead = self._add_padding(bg_dead)
+        except Exception:
+            self._bg_dead = self._bg_alive
+
+        fg_bar = self._renderer.resman.load_image(
+            f"{info['index']}_h.png", nearest=False, path="ship_bars"
+        )
+        fg_bar = self._add_padding(fg_bar)
+        fg_bar = fg_bar.resize(self._bg_alive.size, Image.Resampling.LANCZOS)
+        self._fg_bar = fg_bar
+
+        alpha = 75
+        fg_arr = np.array(fg_bar)
+        mask = fg_arr[:, :, 3] > alpha
+
+        arr_green = fg_arr.copy()
+        arr_green[mask] = self._green
+        self._hp_bar_green = Image.fromarray(arr_green)
+
+        arr_yellow = fg_arr.copy()
+        arr_yellow[mask] = self._yellow
+        self._hp_bar_yellow = Image.fromarray(arr_yellow)
+
+        arr_red = fg_arr.copy()
+        arr_red[mask] = self._red
+        self._hp_bar_red = Image.fromarray(arr_red)
+
+        arr_gray = fg_arr.copy()
+        arr_gray[mask] = self._color_gray
+        self._regen_bar_gray = Image.fromarray(arr_gray)
+
+        self._prepared_bars = True
+
     def draw(self, game_time: int, image: Image.Image):
         """Draws the health bar into the image.
 
@@ -90,32 +135,21 @@ class LayerHealthBase(LayerBase):
         per = ship.health / self._player.max_health
         info = self._ships[self._player.ship_params_id]
 
-        suffix_fg = "_h"
-        suffix_bg = "_h_bg" if ship.is_alive else "_h_bgdead"
-
-        bg_bar = self._renderer.resman.load_image(
-            f"{info['index']}{suffix_bg}.png", nearest=False, path="ship_bars"
-        )
-        bg_bar = self._add_padding(bg_bar)
-
-        fg_bar = self._renderer.resman.load_image(
-            f"{info['index']}{suffix_fg}.png", nearest=False, path="ship_bars"
-        )
-        fg_bar = self._add_padding(fg_bar)
-        fg_bar = fg_bar.resize(bg_bar.size, Image.Resampling.LANCZOS)
+        self._prepare_bars()
+        bg_bar = (self._bg_alive if ship.is_alive else self._bg_dead).copy()
+        fg_bar = self._fg_bar
 
         if per > 0.8:
             bar_color = self._green
+            hp_bar_img = self._hp_bar_green
         elif 0.8 >= per > 0.3:
             bar_color = self._yellow
+            hp_bar_img = self._hp_bar_yellow
         else:
             bar_color = self._red
+            hp_bar_img = self._hp_bar_red
 
         if ship.is_alive:
-            alpha = 75
-            hp_bar_arr = np.array(fg_bar)
-            hp_bar_arr[hp_bar_arr[:, :, 3] > alpha] = bar_color
-            hp_bar_img = Image.fromarray(hp_bar_arr)
             mask_hp_img = Image.new(fg_bar.mode, fg_bar.size)
             mask_hp_img_w = mask_hp_img.width * per
             mask_hp_draw = ImageDraw.Draw(mask_hp_img)
@@ -156,11 +190,7 @@ class LayerHealthBase(LayerBase):
                                 canHeal + ship.health
                             ) / self._player.max_health
 
-                            regen_bar_arr = np.array(fg_bar)
-                            regen_bar_arr[regen_bar_arr[:, :, 3] > alpha] = (
-                                self._color_gray
-                            )
-                            regen_bar_img = Image.fromarray(regen_bar_arr)
+                            regen_bar_img = self._regen_bar_gray
                             mask_regen_img = Image.new(fg_bar.mode, fg_bar.size)
                             mask_regen_img_w = mask_regen_img.width * per_limit
                             mask_regen_draw = ImageDraw.Draw(mask_regen_img)
