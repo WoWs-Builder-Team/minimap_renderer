@@ -84,6 +84,11 @@ TIER_ROMAN = {
 
 ACHIEVEMENT_NAMES: dict[str, str] = {
     "AIRDEFENSEEXPERT": "防空专家",
+    "CLASSDESTROY_SQUAD": "协同歼灭",
+    "FRAG_SQUAD": "兄弟连",
+    "MAIN_CALIBER_SQUAD": "分队大口径",
+    "SUPPORT_SQUAD": "支援协作",
+    "WARRIOR_SQUAD": "联合作战",
     "INSTANT_KILL": "毁灭打击",
     "FIRST_BLOOD": "第一滴血",
     "MAIN_CALIBER": "大口径",
@@ -348,7 +353,17 @@ def parse_replay_report(replay_path: str) -> dict[str, Any]:
     owner_achs_raw = raw_achs.get(rd.owner_id) or raw_achs.get(rd.owner_avatar_id, {})
     if isinstance(owner_achs_raw, dict):
         for ach_id, count in owner_achs_raw.items():
-            ach_name = achievements_dict.get(str(ach_id), {}).get("name", f"ACH_{ach_id}")
+            ach_val = (
+                achievements_dict.get(ach_id)
+                or achievements_dict.get(int(ach_id))
+                or achievements_dict.get(str(ach_id))
+            )
+            if isinstance(ach_val, dict):
+                ach_name = ach_val.get("name", f"ACH_{ach_id}")
+            elif isinstance(ach_val, str):
+                ach_name = ach_val
+            else:
+                ach_name = f"ACH_{ach_id}"
             owner_achievements.append((ach_id, ach_name))
 
     # Match outcome
@@ -858,15 +873,16 @@ def render_battle_report_card(data: dict[str, Any], output_path: str) -> str:
         # Column Subheaders
         col_y = PANEL_Y + 60
         if has_pb:
-            draw.text((start_x + 25, col_y), "战舰型号", fill=(110, 128, 148), font=f(15))
-            draw.text((start_x + 225, col_y), "玩家昵称", fill=(110, 128, 148), font=f(15))
-            draw.text((start_x + 450, col_y), "击杀", fill=(110, 128, 148), font=f(15))
-            draw.text((start_x + 496, col_y), "飞机", fill=(110, 128, 148), font=f(15))
-            draw.text((start_x + 550, col_y), "造成伤害", fill=(110, 128, 148), font=f(15))
-            draw.text((start_x + 645, col_y), "承受伤害", fill=(110, 128, 148), font=f(15))
-            draw.text((start_x + 740, col_y), "基础经验", fill=(110, 128, 148), font=f(15))
-            draw.text((start_x + 835, col_y), "原始裸经验", fill=(110, 128, 148), font=f(15))
-            draw.text((start_x + 965, col_y), "战斗状态", fill=(110, 128, 148), font=f(15))
+            draw.text((start_x + 20, col_y), "战舰型号", fill=(110, 128, 148), font=f(15))
+            draw.text((start_x + 205, col_y), "玩家昵称", fill=(110, 128, 148), font=f(15))
+            draw.text((start_x + 418, col_y), "击杀", fill=(110, 128, 148), font=f(15))
+            draw.text((start_x + 454, col_y), "飞机", fill=(110, 128, 148), font=f(15))
+            draw.text((start_x + 494, col_y), "造成伤害", fill=(110, 128, 148), font=f(15))
+            draw.text((start_x + 575, col_y), "承受伤害", fill=(110, 128, 148), font=f(15))
+            draw.text((start_x + 658, col_y), "潜在伤害", fill=(110, 128, 148), font=f(15))
+            draw.text((start_x + 756, col_y), "基础经验", fill=(110, 128, 148), font=f(15))
+            draw.text((start_x + 842, col_y), "原始裸经验", fill=(110, 128, 148), font=f(15))
+            draw.text((start_x + 960, col_y), "战斗状态", fill=(110, 128, 148), font=f(15))
         else:
             draw.text((start_x + 25, col_y), "战舰型号", fill=(110, 128, 148), font=f(15))
             draw.text((start_x + 275, col_y), "玩家昵称", fill=(110, 128, 148), font=f(15))
@@ -924,15 +940,15 @@ def render_battle_report_card(data: dict[str, Any], output_path: str) -> str:
                 name_color = (255, 215, 60) if not p["is_sunk"] else (210, 180, 80)
 
             # Ship species badge
-            draw.text((start_x + 25, ry + 10), f"[{spec}]", fill=team_color, font=f(14))
-            draw.text((start_x + 65, ry + 8), ship_label[:14 if has_pb else 18], fill=ship_color, font=f(17))
+            draw.text((start_x + 20, ry + 10), f"[{spec}]", fill=team_color, font=f(14))
+            draw.text((start_x + 58, ry + 8), ship_label[:13 if has_pb else 18], fill=ship_color, font=f(17))
 
             # Player name with authentic clan_color and division badge
-            px_cur = start_x + (225 if has_pb else 275)
+            px_cur = start_x + (205 if has_pb else 275)
 
             # Render Division Badge if in division
             if div_num > 0:
-                badge_w = 40
+                badge_w = 38
                 badge_h = 22
                 badge_box = (px_cur, ry + 7, px_cur + badge_w, ry + 7 + badge_h)
                 if is_own_div:
@@ -955,69 +971,76 @@ def render_battle_report_card(data: dict[str, Any], output_path: str) -> str:
                 b_text = f"队{div_num}"
                 bw = f(13).getbbox(b_text)[2] - f(13).getbbox(b_text)[0]
                 draw.text((px_cur + (badge_w - bw) // 2, ry + 9), b_text, fill=t_col, font=f(13))
-                px_cur += badge_w + 8
+                px_cur += badge_w + 6
 
             if p["clan"]:
                 c_col = unpack_color(p.get("clan_color", 0))
                 c_tag = f"[{p['clan']}] "
-                draw.text((px_cur, ry + 8), c_tag, fill=c_col, font=f(17))
-                c_w = f(17).getbbox(c_tag)[2] - f(17).getbbox(c_tag)[0]
+                draw.text((px_cur, ry + 8), c_tag, fill=c_col, font=f(16))
+                c_w = f(16).getbbox(c_tag)[2] - f(16).getbbox(c_tag)[0]
                 px_cur += c_w
-            draw.text((px_cur, ry + 8), p["name"][:15 if has_pb else 20], fill=name_color, font=f(17))
+            draw.text((px_cur, ry + 8), p["name"][:14 if has_pb else 20], fill=name_color, font=f(16))
 
             # Frags
             k = p["frags"]
-            frag_x = start_x + (450 if has_pb else 580)
+            frag_x = start_x + (416 if has_pb else 580)
             if k > 0:
-                k_box = (frag_x, ry + 7, frag_x + 30, ry + 35)
+                k_box = (frag_x, ry + 7, frag_x + 28, ry + 35)
                 k_bg = (255, 71, 87) if k >= 2 else (230, 126, 34)
                 draw.rounded_rectangle(k_box, radius=5, fill=k_bg)
-                kw = f(16).getbbox(f"{k}")[2] - f(16).getbbox(f"{k}")[0]
-                draw.text((frag_x + 15 - kw // 2, ry + 9), f"{k}", fill=(255, 255, 255), font=f(16))
+                kw = f(15).getbbox(f"{k}")[2] - f(15).getbbox(f"{k}")[0]
+                draw.text((frag_x + 14 - kw // 2, ry + 9), f"{k}", fill=(255, 255, 255), font=f(15))
             else:
-                draw.text((frag_x + 11, ry + 8), "-", fill=(75, 90, 110), font=f(16))
+                draw.text((frag_x + 10, ry + 8), "-", fill=(75, 90, 110), font=f(16))
 
             if has_pb:
                 # Planes Killed (AA defense)
                 pk = p.get("planes_killed", 0)
-                plane_x = start_x + 494
+                plane_x = start_x + 452
                 if pk > 0:
-                    pk_box = (plane_x, ry + 7, plane_x + 32, ry + 35)
+                    pk_box = (plane_x, ry + 7, plane_x + 30, ry + 35)
                     pk_bg = (16, 52, 68, 240)
                     pk_out = (0, 206, 201, 240) if pk >= 15 else (0, 160, 180, 180)
                     pk_col = (0, 235, 255) if pk >= 15 else (180, 230, 245)
                     draw_rounded_rect(draw, pk_box, radius=5, fill=pk_bg, outline=pk_out, width=1)
-                    pkw = f(15).getbbox(f"{pk}")[2] - f(15).getbbox(f"{pk}")[0]
-                    draw.text((plane_x + 16 - pkw // 2, ry + 9), f"{pk}", fill=pk_col, font=f(15))
+                    pkw = f(14).getbbox(f"{pk}")[2] - f(14).getbbox(f"{pk}")[0]
+                    draw.text((plane_x + 15 - pkw // 2, ry + 9), f"{pk}", fill=pk_col, font=f(14))
                 else:
-                    draw.text((plane_x + 12, ry + 8), "-", fill=(75, 90, 110), font=f(16))
+                    draw.text((plane_x + 11, ry + 8), "-", fill=(75, 90, 110), font=f(16))
 
-                # Damage Dealt (right-aligned at start_x + 625)
+                # Damage Dealt (right-aligned at start_x + 560)
                 d_val = f"{p['damage_dealt']:,.0f}"
                 d_col = (0, 235, 255) if p["damage_dealt"] > 100000 else ((245, 245, 245) if p["damage_dealt"] > 50000 else (165, 180, 195))
-                dw = f(17).getbbox(d_val)[2] - f(17).getbbox(d_val)[0]
-                draw.text((start_x + 625 - dw, ry + 8), d_val, fill=d_col, font=f(17))
+                dw = f(16).getbbox(d_val)[2] - f(16).getbbox(d_val)[0]
+                draw.text((start_x + 560 - dw, ry + 8), d_val, fill=d_col, font=f(16))
 
-                # Damage Taken (right-aligned at start_x + 720)
+                # Damage Taken (right-aligned at start_x + 642)
                 t_val = f"{p['damage_taken']:,.0f}"
-                tw = f(17).getbbox(t_val)[2] - f(17).getbbox(t_val)[0]
-                draw.text((start_x + 720 - tw, ry + 8), t_val, fill=(150, 165, 180), font=f(17))
+                tw = f(16).getbbox(t_val)[2] - f(16).getbbox(t_val)[0]
+                draw.text((start_x + 642 - tw, ry + 8), t_val, fill=(150, 165, 180), font=f(16))
 
-                # Base XP (Win XP, with 1.5x for victory, right-aligned at start_x + 815)
+                # Potential Damage (Agro/Blocked damage, right-aligned at start_x + 740)
+                agro_dmg = p.get("potential_damage", 0)
+                agro_val = f"{agro_dmg:,d}" if agro_dmg > 0 else "-"
+                agro_col = (130, 185, 235) if agro_dmg >= 1000000 else (145, 165, 185)
+                agrow = f(16).getbbox(agro_val)[2] - f(16).getbbox(agro_val)[0]
+                draw.text((start_x + 740 - agrow, ry + 8), agro_val, fill=agro_col, font=f(16))
+
+                # Base XP (Win XP, with 1.5x for victory, right-aligned at start_x + 826)
                 bxp = p.get("base_xp", 0)
                 xp_val = f"{bxp:,d}" if bxp > 0 else "-"
                 xp_col = (255, 215, 60) if bxp >= 1500 else ((245, 245, 245) if bxp >= 1000 else (185, 200, 215))
-                xpw = f(17).getbbox(xp_val)[2] - f(17).getbbox(xp_val)[0]
-                draw.text((start_x + 815 - xpw, ry + 8), xp_val, fill=xp_col, font=f(17))
+                xpw = f(16).getbbox(xp_val)[2] - f(16).getbbox(xp_val)[0]
+                draw.text((start_x + 826 - xpw, ry + 8), xp_val, fill=xp_col, font=f(16))
 
-                # Raw Base XP (Pure unmultiplied base XP, right-aligned at start_x + 920)
+                # Raw Base XP (Pure unmultiplied base XP, right-aligned at start_x + 918)
                 rxp = p.get("raw_xp", 0)
                 rxp_val = f"{rxp:,d}" if rxp > 0 else "-"
                 rxp_col = (210, 220, 230) if rxp >= 1000 else (145, 165, 185)
-                rxpw = f(17).getbbox(rxp_val)[2] - f(17).getbbox(rxp_val)[0]
-                draw.text((start_x + 920 - rxpw, ry + 8), rxp_val, fill=rxp_col, font=f(17))
+                rxpw = f(16).getbbox(rxp_val)[2] - f(16).getbbox(rxp_val)[0]
+                draw.text((start_x + 918 - rxpw, ry + 8), rxp_val, fill=rxp_col, font=f(16))
 
-                status_x = start_x + 965
+                status_x = start_x + 960
             else:
                 d_val = f"{p['damage_dealt']:,.0f}"
                 d_col = (0, 235, 255) if p["damage_dealt"] > 100000 else ((245, 245, 245) if p["damage_dealt"] > 50000 else (165, 180, 195))
