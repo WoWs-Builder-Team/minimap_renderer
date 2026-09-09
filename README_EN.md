@@ -26,6 +26,7 @@
 - **Efficient rendering pipeline**: features frame buffer memory reuse pools, ship rotation and status LRU caches, compact bounding-box alpha compositing, and overlapped drawing, frame serialization, and FFmpeg hardware encoding.
 - **Multiple interpolation modes**: supports `native`, `blend`, `duplicate`, and `motion`.
 - **Build export**: writes a JSON file containing player build links alongside the video.
+- **2.4K Battle Report Infographic**: automatically generates a comprehensive 2.4K post-battle scoreboard long card by default, featuring base XP & raw unmultiplied XP, ship frags & planes downed, full in-game communication logs with team-color coding, division badges, and weapon damage breakdown.
 
 ## Quick Start
 
@@ -69,11 +70,12 @@ Windows example:
 python -m render --replay "F:\Replays\20260713_165525_PRSB510-Slava_54_Faroe.wowsreplay"
 ```
 
-The defaults are `1920x1200`, `60 FPS`, `15x` speed, quality `8`, and native interpolation. Two files are created next to the replay:
+The defaults are `1920x1200`, `60 FPS`, `15x` speed, quality `8`, and native interpolation. Output files are created next to the replay:
 
 ```text
 battle.mp4
 battle-builds.json
+battle-report.png
 ```
 
 Show the complete command help:
@@ -93,6 +95,9 @@ python -m render --replay REPLAY
                  [--interpolation {native,blend,motion,duplicate}]
                  [--codec {h264,h265,av1}]
                  [--encoder {auto,cpu,nvenc,qsv,vaapi,amf}]
+                 [--no-report]
+                 [--report-only]
+                 [--report-path REPORT_PATH]
 ```
 
 | Option            |     Default | Description                                                                                                                |
@@ -105,6 +110,9 @@ python -m render --replay REPLAY
 | `--interpolation` |    `native` | Frame generation mode, described below                                                                                     |
 | `--codec`         |      `h264` | Video format: broadly compatible `h264`, more efficient `h265`, or `av1`                                                   |
 | `--encoder`       |      `auto` | Probes available hardware encoders and falls back to CPU; `cpu`, `nvenc`, `qsv`, `vaapi`, and `amf` can also be selected explicitly |
+| `--no-report`     |     `False` | Disable automatic 2.4K battle report generation                                                                            |
+| `--report-only`   |     `False` | Generate 2.4K battle report infographic only (skips timelapse video rendering, fast ~1s output)                           |
+| `--report-path`   |      `None` | Custom output path for the battle report image (defaults to `<replay_stem>-report.png`)                                    |
 
 ### Video Encoders
 
@@ -158,6 +166,29 @@ python -m render --replay "battle.wowsreplay" \
   --codec h265 \
   --encoder auto
 ```
+
+## Battle Report Infographic Generation
+
+The renderer automatically creates a 2.4K Ultra-HD battle report long card (`*-report.png`) by default when producing a video.
+
+If you only need to inspect results or export the scoreboard infographic without spending time rendering the full timelapse video, use `--report-only`:
+
+```bash
+python -m render --replay "battle.wowsreplay" --report-only
+```
+
+Or invoke the standalone utility script directly:
+
+```bash
+python tools/generate_battle_report.py "battle.wowsreplay"
+```
+
+Report highlights:
+- **Official WG Settlement Values**: Directly extracts true post-battle damage dealt, spotting damage, and potential damage for all 24 players from Packet 0x22 (`playersPublicInfo`).
+- **Dual XP Presentation**: Side-by-side display of in-game Base XP (with 1.5x victory bonus, matching client scoreboard ordering) and pure unmultiplied Raw Base XP.
+- **AA & Frags Tracking**: Independent columns for ship kills and aircraft shot down.
+- **Full In-Game Chat Log**: Renders all match messages with authentic team/division color coding.
+- **Division Squad Links**: Displays squad badges and dedicated color-coding for division mates.
 
 ## Performance Reference
 

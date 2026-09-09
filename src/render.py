@@ -1,12 +1,14 @@
 import argparse
 import json
 from pathlib import Path
+import sys
 from renderer.render import (
     ENCODER_MODES,
     INTERPOLATION_MODES,
     VIDEO_CODECS,
     Renderer,
 )
+from renderer.report import generate_battle_report
 from replay_parser import ReplayParser
 from renderer.utils import LOGGER
 
@@ -72,12 +74,37 @@ if __name__ == "__main__":
         help="video encoder; auto probes hardware and falls back to CPU "
         "(default: auto)",
     )
+    parser.add_argument(
+        "--no-report",
+        action="store_true",
+        help="disable automatic battle report infographic generation",
+    )
+    parser.add_argument(
+        "--report-only",
+        action="store_true",
+        help="generate 2.4K battle report infographic only (skips timelapse video rendering)",
+    )
+    parser.add_argument(
+        "--report-path",
+        type=str,
+        default=None,
+        help="custom output path for battle report infographic image",
+    )
     namespace = parser.parse_args()
     if namespace.fps <= 0:
         parser.error("--fps must be greater than 0")
     if namespace.speed <= 0:
         parser.error("--speed must be greater than 0")
     path = Path(namespace.replay)
+    report_output_path = namespace.report_path or str(path.parent.joinpath(f"{path.stem}-report.png"))
+
+    if namespace.report_only:
+        LOGGER.info("Generating 2.4K Ultra-HD battle report (--report-only)...")
+        generate_battle_report(namespace.replay, report_output_path)
+        LOGGER.info(f"Battle report saved to: {report_output_path}")
+        LOGGER.info("Done.")
+        sys.exit(0)
+
     video_path = path.parent.joinpath(f"{path.stem}.mp4")
     with open(namespace.replay, "rb") as f:
         LOGGER.info("Parsing the replay file...")
@@ -108,4 +135,13 @@ if __name__ == "__main__":
             video_codec=namespace.codec,
         )
         LOGGER.info(f"The video file is at: {str(video_path)}")
-        LOGGER.info("Done.")
+
+    if not namespace.no_report:
+        LOGGER.info("Generating 2.4K Ultra-HD battle report...")
+        try:
+            generate_battle_report(namespace.replay, report_output_path)
+            LOGGER.info(f"Battle report saved to: {report_output_path}")
+        except Exception as e:
+            LOGGER.warning(f"Failed to generate battle report: {e}")
+
+    LOGGER.info("Done.")

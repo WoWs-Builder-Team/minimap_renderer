@@ -26,6 +26,7 @@
 - **高效渲染流水线**：引入帧缓冲内存池复用、舰船旋转与状态 LRU 缓存、紧凑包围盒快速 Alpha 合成，并并行执行绘制、帧序列化与 FFmpeg 硬件编码。
 - **兼容多种补帧方式**：除推荐的 `native` 外，仍可使用 `blend`、`duplicate` 和 `motion`。
 - **自动导出配置信息**：渲染视频时同时生成玩家配装链接 JSON 文件。
+- **2.4K 战报全景长图**：默认在渲染视频时同步生成对齐 WG 战后结算的 2.4K 超高清战绩战报长图（包含基础经验与原始裸经验双列对照、战舰击沉与防空战机击落、完整局内通讯记录、车队组队联动标识及主炮弹药明细）。
 
 ## 快速开始
 
@@ -74,6 +75,7 @@ python -m render --replay "F:\Replays\20260713_165525_PRSB510-Slava_54_Faroe.wow
 ```text
 回放文件.mp4
 回放文件-builds.json
+回放文件-report.png
 ```
 
 查看完整命令帮助：
@@ -93,6 +95,9 @@ python -m render --replay REPLAY
                  [--interpolation {native,blend,motion,duplicate}]
                  [--codec {h264,h265,av1}]
                  [--encoder {auto,cpu,nvenc,qsv,vaapi,amf}]
+                 [--no-report]
+                 [--report-only]
+                 [--report-path REPORT_PATH]
 ```
 
 | 参数              |      默认值 | 说明                                                                                        |
@@ -105,6 +110,9 @@ python -m render --replay REPLAY
 | `--interpolation` |    `native` | 帧生成方式，见下表                                                                          |
 | `--codec`         |      `h264` | 视频编码格式：兼容性较好的 `h264`、压缩率更高的 `h265` 或 `av1`                             |
 | `--encoder`       |      `auto` | 自动实测并使用可用的硬件编码器，均不可用时回退 CPU；也可指定 `cpu`、`nvenc`、`qsv`、`vaapi` 或 `amf` |
+| `--no-report`     |     `False` | 禁用自动生成 2.4K 战报长图                                                                  |
+| `--report-only`   |     `False` | 仅生成 2.4K 战报长图（跳过小地图视频逐帧渲染，秒级出图）                                   |
+| `--report-path`   |      `None` | 自定义战报长图输出路径（默认保存在回放同级目录下 `*-report.png`）                           |
 
 ### 视频编码器
 
@@ -158,6 +166,29 @@ python -m render --replay "battle.wowsreplay" \
   --codec h265 \
   --encoder auto
 ```
+
+## 战报长图生成
+
+渲染器默认在输出视频时自动生成一份 2.4K 超高清战报长图（`*-report.png`）。
+
+如果只需要快速复盘战绩或导出图片分享，无需花费时间渲染完整的小地图延时视频，可以使用 `--report-only` 参数：
+
+```bash
+python -m render --replay "battle.wowsreplay" --report-only
+```
+
+也可以直接调用独立的快捷工具脚本：
+
+```bash
+python tools/generate_battle_report.py "battle.wowsreplay"
+```
+
+战报内容亮点：
+- **官方真值结算**：自动从回放协议末尾的 WG 战后结算包（Packet 0x22）直接提取全场 24 人的官方真值造成伤害、点亮伤害与潜在伤害。
+- **双经验列呈现**：同时展示含 1.5x 胜利加成后的【基础经验】（与游戏内记分榜 1:1 对齐并作为排序依据）以及未乘算系数的【原始裸经验】。
+- **防空与击沉双标**：独立呈现全场战舰击沉与击落战机数量。
+- **全量局内通讯**：完整呈现整场文字聊天，根据频道与发言人阵营智能着色（分队金黄、友方薄荷绿、敌方浅珊瑚红）。
+- **组队联动标识**：精准还原车队分队编号徽章与队友专属视觉高亮。
 
 ## 性能参考
 
