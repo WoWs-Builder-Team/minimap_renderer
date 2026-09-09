@@ -14,6 +14,8 @@ import struct
 import sys
 from typing import Any, Dict, List, Optional, Tuple
 from PIL import Image, ImageDraw, ImageFont
+from replay_unpack.clients.wows.player import ReplayPlayer
+from replay_unpack.core import Entity
 
 from replay_parser import ReplayParser, CustomReader
 from renderer.resman import ResourceManager
@@ -160,10 +162,92 @@ def extract_post_battle_results(replay_path: str) -> Optional[dict[str, Any]]:
     return None
 
 
+def decode_quick_command(raw_bytes: bytes, players_by_id: dict, ships_by_id: dict, map_manifest=None) -> str:
+    """Decodes BigWorld QUICK_COMMAND binary payload into localized readable tactical messages."""
+    if not raw_bytes:
+        return "发送了战术无线电指令"
+    cid = raw_bytes[0]
+
+    def get_grid(x, z):
+        if not map_manifest:
+            return f"{x:.0f}, {z:.0f}"
+        size, space_size, scaling = map_manifest
+        px = x * scaling + size / 2
+        py = -z * scaling + size / 2
+        c = max(0, min(9, int(px // (size / 10))))
+        r = max(1, min(10, int(py // (size / 10)) + 1))
+        cols = "ABCDEFGHIJ"
+        return f"{cols[c]}{r}"
+
+    if cid == 18 and len(raw_bytes) >= 11:
+        x, z = struct.unpack("<ff", raw_bytes[3:11])
+        return f"注意扇区 [{get_grid(x, z)}]"
+    elif cid == 2 and len(raw_bytes) >= 9:
+        tid = struct.unpack("<I", raw_bytes[5:9])[0]
+        tp = ships_by_id.get(tid)
+        t_name = tp.name if tp else str(tid)
+        return f"优先攻击目标：{t_name}"
+    elif cid == 3 and len(raw_bytes) >= 9:
+        tid = struct.unpack("<I", raw_bytes[5:9])[0]
+        tp = ships_by_id.get(tid)
+        t_name = tp.name if tp else str(tid)
+        return f"保护友军目标：{t_name}"
+    elif cid == 7:
+        return "占领/防守该区域！"
+    elif cid == 1:
+        return "请求空中支援！"
+    elif cid == 4:
+        return "战术撤退！"
+    elif cid == 5:
+        return "收到！"
+    elif cid == 6:
+        return "拒绝！"
+    elif cid == 8:
+        return "需要烟幕！"
+    elif cid == 11:
+        return "感谢！"
+    elif cid == 12:
+        return "祝大家好运！"
+    elif cid == 13:
+        return "干得漂亮！"
+    elif cid == 14:
+        return "糟糕！"
+    elif cid == 15:
+        return "十分抱歉！"
+    elif cid == 16:
+        return "注意小地图！"
+    elif cid == 19:
+        return "指示目标区域！"
+    else:
+        return f"无线电指令 #{cid}"
+
+
 def parse_replay_report(replay_path: str) -> dict[str, Any]:
     """Parses replay and aggregates battle data with comprehensive damage reconstruction, AA & chat logs."""
-    with open(replay_path, "rb") as fp:
-        info = ReplayParser(fp).get_info()
+    cur_packet_time = [0.0]
+    orig_process = ReplayPlayer._process_packet
+
+    def _track_packet(self, packet, t: float):
+        cur_packet_time[0] = t
+        return orig_process(self, packet, t)
+
+    ReplayPlayer._process_packet = _track_packet
+
+    raw_cmd_events: list[tuple[float, int, bytes]] = []
+
+    def _cmd_listener(entity, *args, **kwargs):
+        cmd_blob = kwargs.get("command") or (args[1] if len(args) > 1 else b"")
+        p_id = kwargs.get("playerId") or (args[0] if len(args) > 0 else 0)
+        raw_cmd_events.append((cur_packet_time[0], p_id, cmd_blob))
+
+    Entity.subscribe_method_call("Avatar", "receive_CommonCMD", _cmd_listener)
+
+    try:
+        with open(replay_path, "rb") as fp:
+            info = ReplayParser(fp).get_info()
+    finally:
+        ReplayPlayer._process_packet = orig_process
+        Entity._methods_subscriptions.pop("Avatar_receive_CommonCMD", None)
 
     open_meta = info["open"]
     hidden = info["hidden"]
@@ -185,6 +269,15 @@ def parse_replay_report(replay_path: str) -> dict[str, Any]:
     game_type_title = GAME_TYPE_NAMES.get(game_type_code, game_type_code)
     date_time = format_datetime_zh(open_meta.get("dateTime", ""))
     client_version = open_meta.get("clientVersionFromExe", rd.game_version)
+
+    # Pre-map players and their ship names
+    player_ship_name: dict[int, str] = {}
+    for p in players.values():
+        s_info = ships.get(p.ship_params_id) or ships.get(str(p.ship_params_id), {})
+        s_name = s_info.get("name", "") if isinstance(s_info, dict) else ""
+        player_ship_name[p.id] = s_name
+
+    dbid_to_player = {p.account_db_id: p for p in players.values()}
 
     # 0. Check official post-battle settlement packet (Packet 0x22)
     post_battle = extract_post_battle_results(replay_path)
@@ -268,12 +361,41 @@ def parse_replay_report(replay_path: str) -> dict[str, Any]:
                     "time_sec": t,
                     "player_id": m.player_id,
                     "player_name": speaker.name if speaker else str(m.player_id),
+                    "ship_name": player_ship_name.get(m.player_id, ""),
                     "clan": speaker.clan_tag if speaker else "",
                     "clan_color": getattr(speaker, "clan_color", 0) if speaker else 0,
                     "team_id": speaker.team_id if speaker else -1,
                     "namespace": m.namespace,
                     "message": m.message,
+                    "is_quick_cmd": False,
                 })
+
+    # Decode and append tactical quick radio commands
+    map_manifest = None
+    try:
+        manifest_data = resman.load_json("manifest.json", "spaces")
+        map_manifest = manifest_data.get(map_code)
+    except Exception:
+        pass
+
+    ships_by_id = {p.ship_id: p for p in players.values()}
+    for t_sec, p_id, cmd_blob in raw_cmd_events:
+        speaker = players.get(p_id)
+        msg_text = decode_quick_command(cmd_blob, players, ships_by_id, map_manifest)
+        chat_items.append({
+            "time_sec": int(t_sec),
+            "player_id": p_id,
+            "player_name": speaker.name if speaker else str(p_id),
+            "ship_name": player_ship_name.get(p_id, ""),
+            "clan": speaker.clan_tag if speaker else "",
+            "clan_color": getattr(speaker, "clan_color", 0) if speaker else 0,
+            "team_id": speaker.team_id if speaker else -1,
+            "namespace": "battle_quick",
+            "message": msg_text,
+            "is_quick_cmd": True,
+        })
+
+    chat_items.sort(key=lambda c: c["time_sec"])
 
     # 3. Frags and death reasons
     death_info = hidden.get("death_info", {})
@@ -432,10 +554,12 @@ def parse_replay_report(replay_path: str) -> dict[str, Any]:
         k = frags.get(vid, 0)
         is_sunk = vid in killed_by
         killer_name = ""
+        killer_ship_name = ""
         if is_sunk:
-            killer_vid = killed_by[vid][0]
+            killer_vid = killed_by.get(vid, (0, ""))[0]
             if killer_vid in v_to_p:
                 killer_name = v_to_p[killer_vid].name
+                killer_ship_name = player_ship_name.get(v_to_p[killer_vid].id, "")
 
         # Use official post-battle stats if available
         stat = post_stats_by_dbid.get(p.account_db_id) or post_stats_by_name.get(p.name)
@@ -443,7 +567,12 @@ def parse_replay_report(replay_path: str) -> dict[str, Any]:
             d_out = float(stat["damage"])
             k = stat["frags"]
             is_sunk = (stat["killer_dbid"] != 0)
-            killer_name = dbid_to_name.get(stat["killer_dbid"], "")
+            if is_sunk:
+                k_dbid = stat["killer_dbid"]
+                killer_name = dbid_to_name.get(k_dbid, killer_name)
+                k_p = dbid_to_player.get(k_dbid)
+                if k_p:
+                    killer_ship_name = player_ship_name.get(k_p.id, killer_ship_name)
             base_xp = stat["base_xp"]
             raw_xp = stat["raw_xp"]
             spot_dmg = stat["spotting_damage"]
@@ -465,6 +594,20 @@ def parse_replay_report(replay_path: str) -> dict[str, Any]:
             "is_leader": False,
             "division_members": [],
         })
+
+        # Collect player achievements
+        p_achs: list[tuple[int, str]] = []
+        p_achs_raw = raw_achs.get(p.id) or raw_achs.get(getattr(p, "avatar_id", 0), {})
+        if isinstance(p_achs_raw, dict):
+            for a_id, cnt in p_achs_raw.items():
+                a_val = (
+                    achievements_dict.get(a_id)
+                    or achievements_dict.get(int(a_id))
+                    or achievements_dict.get(str(a_id))
+                )
+                if a_val:
+                    for _ in range(cnt):
+                        p_achs.append((int(a_id), str(a_val)))
 
         player_rows.append({
             "player_id": p.id,
@@ -488,11 +631,13 @@ def parse_replay_report(replay_path: str) -> dict[str, Any]:
             "survival_sec": survival_sec,
             "is_sunk": is_sunk,
             "killer_name": killer_name,
+            "killer_ship_name": killer_ship_name,
             "division_num": div_info["division_num"],
             "division_raw_id": div_info["division_raw_id"],
             "is_owner_division": div_info["is_owner_division"],
             "is_division_leader": div_info["is_leader"],
             "division_members": div_info["division_members"],
+            "achievements": p_achs,
         })
 
     owner_div_info = player_division_info.get(owner.ship_id, {})
@@ -725,13 +870,17 @@ def render_battle_report_card(data: dict[str, Any], output_path: str) -> str:
         if w_id == 1:
             bd_parts.append(f"主炮 {dmg:,.0f}")
         elif w_id == 7:
-            bd_parts.append(f"撞击 {dmg:,.0f}")
-        elif w_id == 20 or w_id == 6:
+            bd_parts.append(f"鱼雷 {dmg:,.0f}")
+        elif w_id in (20, 6):
             bd_parts.append(f"起火 {dmg:,.0f}")
-        elif w_id == 58 or w_id == 2:
+        elif w_id in (2, 8):
+            bd_parts.append(f"进水 {dmg:,.0f}")
+        elif w_id in (58,):
             bd_parts.append(f"副炮 {dmg:,.0f}")
         elif w_id == 4:
             bd_parts.append(f"空袭 {dmg:,.0f}")
+        elif w_id == 10:
+            bd_parts.append(f"撞击 {dmg:,.0f}")
     bd_str = "   ·   ".join(bd_parts) if bd_parts else "直接火力全额输出"
     draw.text((645, HERO_Y + 120), bd_str, fill=(160, 178, 198), font=f(15))
 
@@ -764,21 +913,27 @@ def render_battle_report_card(data: dict[str, Any], output_path: str) -> str:
     draw.line([(1580, HERO_Y + 20), (1580, HERO_Y + HERO_H - 20)], fill=(32, 48, 68, 255), width=1)
 
     # Right Column: Achievements & Ribbons (x: 1605 .. W-55)
-    draw.text((1605, HERO_Y + 20), "当局勋章 & 战功勋带", fill=(140, 158, 178), font=f(16))
-
-    # Medals
-    ach_x = 1605
-    for ach_id, ach_code in ow["achievements"]:
-        ach_file = os.path.join(res_dir, "achievement_icons", f"icon_achievement_{ach_code}.png")
-        if os.path.exists(ach_file):
-            try:
-                ach_img = Image.open(ach_file).convert("RGBA").resize((60, 60), Image.Resampling.LANCZOS)
-                img.paste(ach_img, (ach_x, HERO_Y + 50), ach_img)
-                ach_title = ACHIEVEMENT_NAMES.get(ach_code, ach_code[:8])
-                draw.text((ach_x + 2, HERO_Y + 116), ach_title, fill=(255, 204, 0), font=f(14))
-                ach_x += 92
-            except Exception:
-                pass
+    has_ach = bool(ow["achievements"])
+    if has_ach:
+        draw.text((1605, HERO_Y + 20), "当局勋章 & 战功勋带", fill=(140, 158, 178), font=f(16))
+        ach_x = 1605
+        for ach_id, ach_code in ow["achievements"]:
+            ach_file = os.path.join(res_dir, "achievement_icons", f"icon_achievement_{ach_code}.png")
+            if os.path.exists(ach_file):
+                try:
+                    ach_img = Image.open(ach_file).convert("RGBA").resize((60, 60), Image.Resampling.LANCZOS)
+                    img.paste(ach_img, (ach_x, HERO_Y + 50), ach_img)
+                    ach_title = ACHIEVEMENT_NAMES.get(ach_code, ach_code[:8])
+                    draw.text((ach_x + 2, HERO_Y + 116), ach_title, fill=(255, 204, 0), font=f(14))
+                    ach_x += 92
+                except Exception:
+                    pass
+        r_y = HERO_Y + 155
+    else:
+        draw.text((1605, HERO_Y + 20), "战功勋带 & 战术表现", fill=(140, 158, 178), font=f(16))
+        draw_rounded_rect(draw, (1780, HERO_Y + 17, 1945, HERO_Y + 41), radius=4, fill=(24, 34, 46, 220), outline=(45, 65, 88, 220), width=1)
+        draw.text((1790, HERO_Y + 21), "本场未触发成就勋章", fill=(130, 150, 170), font=f(13))
+        r_y = HERO_Y + 56
 
     # Ribbons (5 per row)
     ribbon_order = [
@@ -794,7 +949,6 @@ def render_battle_report_card(data: dict[str, Any], output_path: str) -> str:
         "detected",
     ]
     r_x = 1605
-    r_y = HERO_Y + 155
     chip_w = 138
     chip_h = 44
     gap_x = 12
@@ -824,11 +978,17 @@ def render_battle_report_card(data: dict[str, Any], output_path: str) -> str:
                 col_idx = 0
                 row_idx += 1
 
-    # Main caliber detail
+    # Main caliber detail & tactical summary
+    detail_y = r_y + (row_idx + 1) * (chip_h + gap_y) + (10 if not has_ach else 8)
+    if not has_ach and ow.get("planes_killed", 0) > 0:
+        pk_info = f"防空拦截战果: 累计击落敌机 {ow['planes_killed']} 架"
+        draw.text((r_x, detail_y), pk_info, fill=(0, 206, 201), font=f(14))
+        detail_y += 24
+
     if ow.get("main_caliber_details"):
         mc_parts = [f"{k} {v}" for k, v in ow["main_caliber_details"].items()]
-        mc_text = "主炮明细: " + " · ".join(mc_parts)
-        draw.text((r_x, HERO_Y + 270), mc_text, fill=(130, 148, 168), font=f(14))
+        mc_text = "主炮命中明细: " + " · ".join(mc_parts)
+        draw.text((r_x, detail_y), mc_text, fill=(130, 148, 168), font=f(14))
 
     # -------------------------------------------------------------
     # 3. FULL TEAM SCOREBOARDS (y: PANEL_Y .. PANEL_Y + PANEL_H)
@@ -882,14 +1042,14 @@ def render_battle_report_card(data: dict[str, Any], output_path: str) -> str:
             draw.text((start_x + 658, col_y), "潜在伤害", fill=(110, 128, 148), font=f(15))
             draw.text((start_x + 756, col_y), "基础经验", fill=(110, 128, 148), font=f(15))
             draw.text((start_x + 842, col_y), "原始裸经验", fill=(110, 128, 148), font=f(15))
-            draw.text((start_x + 960, col_y), "战斗状态", fill=(110, 128, 148), font=f(15))
+            draw.text((start_x + 960, col_y), "状态与荣誉", fill=(110, 128, 148), font=f(15))
         else:
             draw.text((start_x + 25, col_y), "战舰型号", fill=(110, 128, 148), font=f(15))
             draw.text((start_x + 275, col_y), "玩家昵称", fill=(110, 128, 148), font=f(15))
             draw.text((start_x + 580, col_y), "击杀", fill=(110, 128, 148), font=f(15))
             draw.text((start_x + 695, col_y), "造成伤害", fill=(110, 128, 148), font=f(15))
             draw.text((start_x + 865, col_y), "承受伤害", fill=(110, 128, 148), font=f(15))
-            draw.text((start_x + 1020, col_y), "战斗状态", fill=(110, 128, 148), font=f(15))
+            draw.text((start_x + 1020, col_y), "状态与荣誉", fill=(110, 128, 148), font=f(15))
 
         draw.line([(start_x + 20, col_y + 26), (start_x + HALF_W - 20, col_y + 26)], fill=(28, 42, 60, 255), width=1)
 
@@ -1053,14 +1213,45 @@ def render_battle_report_card(data: dict[str, Any], output_path: str) -> str:
 
                 status_x = start_x + 1020
 
-            # Status
+            # Upper Tier: Status Badge (left) & Achievements (right-aligned)
             if p["is_sunk"]:
-                k_txt = p["killer_name"][:11] if p["killer_name"] else ""
-                draw.text((status_x, ry + 3), "沉没", fill=(255, 107, 129), font=f(14))
-                if k_txt:
-                    draw.text((status_x, ry + 25), f"by {k_txt}", fill=(130, 140, 150), font=f(12))
+                draw.text((status_x, ry + 4), "沉没", fill=(255, 107, 129), font=f(14))
+                # Lower Tier: Killer info (dedicated lower tier across available width)
+                k_ship = p.get("killer_ship_name", "")
+                k_user = p.get("killer_name", "")
+                if k_ship and k_user:
+                    k_str = f"by {k_ship} ({k_user})"
+                elif k_ship:
+                    k_str = f"by {k_ship}"
+                elif k_user:
+                    k_str = f"by {k_user}"
+                else:
+                    k_str = ""
+
+                if k_str:
+                    max_k_w = start_x + HALF_W - 14 - status_x
+                    safe_k = fit_text_ellipsis(k_str, f(12), max_k_w)
+                    draw.text((status_x, ry + 27), safe_k, fill=(145, 158, 172), font=f(12))
             else:
-                draw.text((status_x, ry + 12), "● 存活", fill=(46, 213, 115), font=f(15))
+                draw.text((status_x, ry + 7), "● 存活", fill=(46, 213, 115), font=f(15))
+
+            # Upper Tier Right: Achievements aligned from right to left (supports up to 4 medals seamlessly)
+            p_medals = p.get("achievements", [])
+            if p_medals:
+                medals_to_show = p_medals[:4]
+                icon_size = 22
+                icon_gap = 3
+                tot_medals_w = len(medals_to_show) * icon_size + (len(medals_to_show) - 1) * icon_gap
+                m_start_x = (start_x + HALF_W - 16) - tot_medals_w
+                for _, a_code in medals_to_show:
+                    a_file = os.path.join(res_dir, "achievement_icons", f"icon_achievement_{a_code}.png")
+                    if os.path.exists(a_file):
+                        try:
+                            a_icon = Image.open(a_file).convert("RGBA").resize((icon_size, icon_size), Image.Resampling.LANCZOS)
+                            img.paste(a_icon, (m_start_x, ry + 4), a_icon)
+                        except Exception:
+                            pass
+                    m_start_x += icon_size + icon_gap
 
     # Left: Allies
     ally_div_count = data.get("team_division_counts", {}).get(ally_team_id, 0)
@@ -1083,29 +1274,34 @@ def render_battle_report_card(data: dict[str, Any], output_path: str) -> str:
     draw.rounded_rectangle((35, CHAT_Y, W - 35, CHAT_Y + 50), radius=12, fill=(24, 36, 52, 255))
     draw.rounded_rectangle((35, CHAT_Y, 43, CHAT_Y + 50), radius=3, fill=(0, 206, 201))
 
-    chat_title = f"战局通讯与全场互动记录 (Battle Communications Log · 共 {num_chats} 条发言)"
+    chat_title = f"战局通讯与战术无线电记录 (Battle Communications & Radio Log · 共 {num_chats} 条记录)"
     draw.text((55, CHAT_Y + 12), chat_title, fill=(255, 255, 255), font=f(19))
 
     # Legend with authentic channel colors
-    leg_x = W - 780
+    leg_x = W - 920
     draw.rounded_rectangle((leg_x, CHAT_Y + 13, leg_x + 50, CHAT_Y + 35), radius=4, fill=(40, 50, 65))
     draw.text((leg_x + 10, CHAT_Y + 14), "全体", fill=(240, 240, 240), font=f(13))
-    draw.text((leg_x + 58, CHAT_Y + 14), "白字公共全频", fill=(200, 205, 210), font=f(13))
+    draw.text((leg_x + 58, CHAT_Y + 14), "白字全频", fill=(200, 205, 210), font=f(13))
 
-    leg_x += 185
+    leg_x += 160
     draw.rounded_rectangle((leg_x, CHAT_Y + 13, leg_x + 50, CHAT_Y + 35), radius=4, fill=(18, 55, 34))
     draw.text((leg_x + 10, CHAT_Y + 14), "团队", fill=(46, 213, 115), font=f(13))
-    draw.text((leg_x + 58, CHAT_Y + 14), "绿字己方队友", fill=(46, 213, 115), font=f(13))
+    draw.text((leg_x + 58, CHAT_Y + 14), "绿字队友", fill=(46, 213, 115), font=f(13))
 
-    leg_x += 185
+    leg_x += 160
     draw.rounded_rectangle((leg_x, CHAT_Y + 13, leg_x + 50, CHAT_Y + 35), radius=4, fill=(55, 42, 15))
     draw.text((leg_x + 10, CHAT_Y + 14), "分队", fill=(255, 204, 0), font=f(13))
-    draw.text((leg_x + 58, CHAT_Y + 14), "黄字组队队友", fill=(255, 204, 0), font=f(13))
+    draw.text((leg_x + 58, CHAT_Y + 14), "黄字组队", fill=(255, 204, 0), font=f(13))
+
+    leg_x += 160
+    draw.rounded_rectangle((leg_x, CHAT_Y + 13, leg_x + 50, CHAT_Y + 35), radius=4, fill=(18, 45, 58))
+    draw.text((leg_x + 6, CHAT_Y + 14), "指令", fill=(0, 215, 235), font=f(12))
+    draw.text((leg_x + 58, CHAT_Y + 14), "无线电快捷指令", fill=(0, 215, 235), font=f(13))
 
     # Chat Bubbles
     player_by_name = {p["name"]: p for p in data["players"]}
     if not chat_list:
-        draw.text((W // 2 - 140, CHAT_Y + 70), "本场对局未记录到局内文字通讯消息", fill=(100, 120, 140), font=f(16))
+        draw.text((W // 2 - 140, CHAT_Y + 70), "本场对局未记录到局内通讯或无线电指令", fill=(100, 120, 140), font=f(16))
     else:
         inner_pad = 20
         col_gap = 24
@@ -1125,9 +1321,12 @@ def render_battle_report_card(data: dict[str, Any], output_path: str) -> str:
             ns = item["namespace"]
             is_div = ns in ("battle_division", "battle_prebattle")
             is_all = (ns == "battle_common")
+            is_quick = item.get("is_quick_cmd", False)
 
-            # Left accent stripe: division gold, ally green, enemy red
-            if is_div:
+            # Left accent stripe: division gold, ally green, enemy red, quick command cyan
+            if is_quick:
+                accent_col = (0, 206, 201)
+            elif is_div:
                 accent_col = (255, 204, 0)
             elif is_ally:
                 accent_col = (46, 213, 115)
@@ -1146,7 +1345,13 @@ def render_battle_report_card(data: dict[str, Any], output_path: str) -> str:
             draw.text((start_cx + 14, item_y + 11), time_str, fill=(0, 206, 201), font=f(14))
 
             # Channel tag badge & message text color
-            if is_div:
+            if is_quick:
+                tag_label = "无线电"
+                tag_bg = (18, 45, 58)
+                tag_col = (0, 215, 235)
+                name_col = (46, 213, 115) if is_ally else (255, 120, 130)
+                msg_col = (135, 235, 245)   # 亮青天蓝战术指令文字
+            elif is_div:
                 tag_label = "分队"
                 tag_bg = (55, 42, 15)
                 tag_col = (255, 204, 0)
@@ -1154,16 +1359,10 @@ def render_battle_report_card(data: dict[str, Any], output_path: str) -> str:
                 msg_col = (255, 215, 60)    # 金黄分队文字
             elif is_all:
                 tag_label = "全体"
-                if is_ally:
-                    tag_bg = (18, 48, 35)
-                    tag_col = (80, 220, 145)
-                    name_col = (46, 213, 115)
-                    msg_col = (115, 235, 160)   # 友方绿字
-                else:
-                    tag_bg = (50, 22, 28)
-                    tag_col = (255, 110, 120)
-                    name_col = (255, 120, 130)
-                    msg_col = (255, 140, 150)   # 敌方红字
+                tag_bg = (40, 50, 65)
+                tag_col = (235, 240, 245)
+                name_col = (46, 213, 115) if is_ally else (255, 120, 130)
+                msg_col = (245, 248, 252)   # 白字全频正文
             else:  # battle_team
                 tag_label = "团队"
                 tag_bg = (18, 55, 34)
@@ -1171,11 +1370,12 @@ def render_battle_report_card(data: dict[str, Any], output_path: str) -> str:
                 name_col = (46, 213, 115)
                 msg_col = (115, 235, 160)   # 友方绿字
 
-            draw.rounded_rectangle((start_cx + 80, item_y + 9, start_cx + 124, item_y + 31), radius=4, fill=tag_bg)
-            draw.text((start_cx + 87, item_y + 10), tag_label, fill=tag_col, font=f(12))
+            badge_w = 48 if len(tag_label) == 3 else 44
+            draw.rounded_rectangle((start_cx + 78, item_y + 9, start_cx + 78 + badge_w, item_y + 31), radius=4, fill=tag_bg)
+            draw.text((start_cx + 83, item_y + 10), tag_label, fill=tag_col, font=f(12))
 
             # Sender Name with Division, Clan and Player Name
-            sx = start_cx + 136
+            sx = start_cx + 84 + badge_w + 8
             speaker_p = player_by_name.get(item["player_name"])
             if speaker_p and speaker_p.get("division_num", 0) > 0:
                 s_div = speaker_p["division_num"]
@@ -1190,9 +1390,19 @@ def render_battle_report_card(data: dict[str, Any], output_path: str) -> str:
                 draw.text((sx, item_y + 10), c_str, fill=c_col, font=f(15))
                 sx += f(15).getbbox(c_str)[2] - f(15).getbbox(c_str)[0]
 
-            p_name_str = f"{item['player_name']}: "
+            p_name_str = f"{item['player_name']}"
             draw.text((sx, item_y + 10), p_name_str, fill=name_col, font=f(15))
             sx += f(15).getbbox(p_name_str)[2] - f(15).getbbox(p_name_str)[0]
+
+            s_ship = item.get("ship_name") or (speaker_p.get("ship_name") if speaker_p else "")
+            if s_ship:
+                ship_tag = f" ({s_ship}): "
+                draw.text((sx, item_y + 11), ship_tag, fill=(150, 178, 205), font=f(14))
+                sx += f(14).getbbox(ship_tag)[2] - f(14).getbbox(ship_tag)[0]
+            else:
+                sep = ": "
+                draw.text((sx, item_y + 10), sep, fill=name_col, font=f(15))
+                sx += f(15).getbbox(sep)[2] - f(15).getbbox(sep)[0]
 
             # Message content with safe boundary clamping & ellipsis
             max_msg_w = max(50, bubble_end_x - sx - 16)
