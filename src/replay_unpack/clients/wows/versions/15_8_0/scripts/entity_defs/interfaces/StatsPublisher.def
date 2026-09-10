@@ -1,0 +1,29 @@
+<!-- Used to publish stats to Steam or WinStore -->
+<root>
+	<ClientMethods>
+		<receivePublicIntStat>
+			<Args>
+				<stat_id> STRING </stat_id>
+				<value> INT32 </value>
+				<add> BOOL </add>
+			</Args>
+		</receivePublicIntStat>
+
+		<receivePublicFloatStat>
+			<Args>
+				<stat_id> STRING </stat_id>
+				<value> FLOAT </value>
+				<add> BOOL </add>
+			</Args>
+		</receivePublicFloatStat>
+
+		<!--
+            Command to commit stats to Steam services.
+            This call can be rate limited. Call frequency should be on the order of minutes, rather than seconds.
+            You should only be calling this during major state changes such as the end of a round, the map changing,
+            or the user leaving a server. This call is required to display the achievement unlock notification
+            dialog though, so if you have called SetAchievement then it's advisable to call this soon after that.
+		-->
+		<commitStats />
+	</ClientMethods>
+</root>

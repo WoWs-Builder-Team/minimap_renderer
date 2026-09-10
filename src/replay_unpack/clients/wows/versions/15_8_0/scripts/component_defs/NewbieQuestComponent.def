@@ -1,0 +1,12 @@
+<root>
+	<BaseMethods>
+	</BaseMethods>
+
+	<ClientMethods>
+	    <receiveEmptyDump/>
+	</ClientMethods>
+
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>

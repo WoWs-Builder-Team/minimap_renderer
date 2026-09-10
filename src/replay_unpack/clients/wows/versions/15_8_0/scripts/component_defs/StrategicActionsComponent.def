@@ -1,0 +1,59 @@
+<root>
+	<BaseMethods>
+		<selectTerritory>
+			<Exposed/>
+			<Args>
+				<territoryID> STRING </territoryID>
+			</Args>
+			<ReturnValues>
+				<result>BOOL</result>
+			</ReturnValues>
+		</selectTerritory>
+		<claimTerritoryRewards>
+			<Exposed/>
+			<Args>
+				<territoryID> STRING </territoryID>
+			</Args>
+			<ReturnValues>
+				<result>BOOL</result>
+			</ReturnValues>
+		</claimTerritoryRewards>
+		<claimAllRewards>
+			<Exposed/>
+			<ReturnValues>
+				<result>BOOL</result>
+			</ReturnValues>
+		</claimAllRewards>
+		<dev_addPoints>
+			<Exposed/>
+			<Args>
+				<points> UINT16 </points>
+			</Args>
+		</dev_addPoints>
+		<dev_changeTask>
+			<Exposed/>
+		</dev_changeTask>
+	</BaseMethods>
+
+	<ClientMethods>
+		<syncEmptyStrategicActions/>
+		<onProgressUpdated>
+			<Args>
+				<territoryID> STRING </territoryID>
+				<progress> UINT16 </progress>
+				<progressData> ARRAY<of>STRING</of> </progressData>
+			</Args>
+		</onProgressUpdated>
+		<onCurrentTaskChanged>
+			<Args>
+				<territoryID> STRING </territoryID>
+				<currentTaskIndex> UINT8 </currentTaskIndex>
+			</Args>
+		</onCurrentTaskChanged>
+	</ClientMethods>
+
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>
+

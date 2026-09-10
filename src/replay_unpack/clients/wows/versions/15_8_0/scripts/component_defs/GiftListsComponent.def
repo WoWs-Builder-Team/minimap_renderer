@@ -1,0 +1,17 @@
+<root>
+
+    <BaseMethods>
+        <claimGift>
+	        <Exposed/>
+	        <Args>
+                <rewardIdx> UINT8 </rewardIdx>
+            </Args>
+	    </claimGift>
+    </BaseMethods>
+
+
+    <ofEntity>
+        <Account/>
+    </ofEntity>
+</root>
+

@@ -1,0 +1,20 @@
+<root>
+	<BaseMethods>
+		<visualCustomizationsSaveState>
+			<Exposed/>
+			<Args>
+				<shipID> SHIP_ID </shipID>
+				<uninstallNodes> ARRAY <of> NODE_ID </of> </uninstallNodes>
+				<linkVisualCustomizations> ARRAY <of> CUSTOMIZATION_ID </of> </linkVisualCustomizations>
+				<installVisualCustomizations> ARRAY <of> VISUAL_CUSTOMIZATION_INSTALL_INFO </of> </installVisualCustomizations>
+			</Args>
+			<ReturnValues>
+				<result>BOOL</result>
+			</ReturnValues>
+		</visualCustomizationsSaveState>
+	</BaseMethods>
+
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>

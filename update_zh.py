@@ -94,25 +94,36 @@ def move_resources(wows_path):
 
     os.makedirs(target_res_dir, exist_ok=True)
 
-    # Copy ship bars
-    ship_bars_src = os.path.join(extract_root, 'gui', 'ship_bars')
-    ship_bars_dst = os.path.join('src', 'renderer', 'resources', 'ship_bars')
-    if os.path.exists(ship_bars_src):
-        if os.path.exists(ship_bars_dst):
-            for root, dirs, files in os.walk(ship_bars_src):
-                rel_path = os.path.relpath(root, ship_bars_src)
-                target_dir = os.path.join(ship_bars_dst, rel_path)
-                if not os.path.exists(target_dir):
-                    os.makedirs(target_dir)
+    def copy_gui_assets(src_rel, dst_rel, name):
+        src = os.path.join(extract_root, *src_rel.split("/"))
+        dst = os.path.join("src", "renderer", "resources", *dst_rel.split("/"))
+        if os.path.exists(src):
+            os.makedirs(dst, exist_ok=True)
+            count = 0
+            for root, dirs, files in os.walk(src):
+                dirs[:] = [d for d in dirs if d != "subribbons"]
+                rel_path = os.path.relpath(root, src)
+                target_dir = os.path.join(dst, rel_path) if rel_path != "." else dst
+                os.makedirs(target_dir, exist_ok=True)
                 for file in files:
                     src_file = os.path.join(root, file)
                     dst_file = os.path.join(target_dir, file)
                     shutil.copy2(src_file, dst_file)
+                    count += 1
+            logger.info(f"已复制 {count} 个 {name} 到 {dst}")
         else:
-            shutil.copytree(ship_bars_src, ship_bars_dst)
-        logger.info(f'Copied ship bars to {ship_bars_dst}')
-    else:
-        logger.warning(f'Ship bars source not found: {ship_bars_src}')
+            logger.warning(f"未找到 {name} 资源目录: {src}")
+
+    # Copy ship bars
+    copy_gui_assets("gui/ship_bars", "ship_bars", "ship_bars")
+    # Copy consumables
+    copy_gui_assets("gui/consumables", "consumables", "consumables")
+    # Copy achievements
+    copy_gui_assets("gui/achievements", "achievement_icons", "achievements")
+    # Copy ribbons
+    copy_gui_assets("gui/ribbons", "ribbon_icons", "ribbons")
+    # Copy frag icons
+    copy_gui_assets("gui/battle_hud/icon_frag", "frag_icons", "frag_icons")
 
     # 1. 移动 GameParams.data
     gp_src = os.path.join(extract_root, "content", "GameParams.data")

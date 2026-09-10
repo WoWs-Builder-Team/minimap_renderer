@@ -5,7 +5,7 @@ sys.path.insert(0, 'src')
 from replay_parser import ReplayParser
 from replay_unpack.core.entity import Entity
 import importlib
-const_mod = importlib.import_module('replay_unpack.clients.wows.versions.15_7_0.constants')
+const_mod = importlib.import_module('replay_unpack.clients.wows.versions.15_8_0.constants')
 DEATH_TYPES = const_mod.DEATH_TYPES
 
 # Collect all relevant events with timestamps

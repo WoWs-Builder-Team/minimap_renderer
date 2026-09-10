@@ -1,0 +1,16 @@
+<root>
+	<BaseMethods>
+
+		<rejectInvite>
+			<Args>
+				<divisionID>ENTITY_ID</divisionID>
+			</Args>
+			<Exposed/>
+		</rejectInvite>
+	
+	</BaseMethods>
+	
+	<ofEntity>
+		<Avatar/>
+	</ofEntity>
+</root>

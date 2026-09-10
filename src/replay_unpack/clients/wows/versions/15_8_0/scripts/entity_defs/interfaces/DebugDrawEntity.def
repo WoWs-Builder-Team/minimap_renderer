@@ -1,0 +1,92 @@
+<root>
+	<ClientMethods>
+
+		<debugExec>
+			<Args>
+				<methodName> STRING </methodName>
+				<pickledArgs> BLOB </pickledArgs>
+			</Args>
+		</debugExec>
+
+		<drawDebugLines>
+			<Args>
+				<dots> ARRAY <of> VECTOR3 </of> </dots>
+				<color> UINT32 </color>
+				<lifeFrames> UINT32 </lifeFrames>
+				<zClipping> BOOL </zClipping>
+				<lineStrip> BOOL </lineStrip>
+			</Args>
+		</drawDebugLines>
+
+		<drawDebugLine>
+			<Args>
+				<start> VECTOR3	</start>
+				<end> VECTOR3 </end>
+				<color> UINT32 </color>
+				<lifeFrames> UINT32 </lifeFrames>
+				<zClipping> BOOL </zClipping>
+			</Args>
+		</drawDebugLine>
+
+		<drawDebugCircle>
+			<Args>
+				<position> VECTOR3 </position>
+				<radius> FLOAT32 </radius>
+				<color> UINT32 </color>
+				<lifeFrames> UINT32	</lifeFrames>
+				<segments> UINT32 </segments>
+			</Args>
+		</drawDebugCircle>
+
+		<drawDebugCross>
+			<Args>
+				<position> VECTOR3 </position>
+				<size> FLOAT32 </size>
+				<color> UINT32 </color>
+				<lifeFrames> UINT32 </lifeFrames>
+			</Args>
+		</drawDebugCross>
+
+		<drawBoundingBox>
+			<Args>
+				<minBound> VECTOR3 </minBound>
+				<maxBound> VECTOR3 </maxBound>
+				<position> VECTOR3 </position>
+				<yaw> FLOAT32 </yaw>
+				<color> UINT32 </color>
+				<lifeFrames> UINT32 </lifeFrames>
+			</Args>
+		</drawBoundingBox>
+
+		<drawSphere>
+			<Args>
+				<center> VECTOR3 </center>
+				<radius> FLOAT32 </radius>
+				<color> UINT32 </color>
+				<lifeFrames> UINT32 </lifeFrames>
+				<zClipping> BOOL </zClipping>
+			</Args>
+		</drawSphere>
+
+		<drawCylinder>
+			<Args>
+				<start> VECTOR3 </start>
+				<end> VECTOR3 </end>
+				<radius> FLOAT32 </radius>
+				<color> UINT32 </color>
+				<lifeFrames> UINT32	</lifeFrames>
+			</Args>
+		</drawCylinder>
+
+		<drawCapsule>
+			<Args>
+				<start> VECTOR3 </start>
+				<end> VECTOR3 </end>
+				<radius> FLOAT32 </radius>
+				<color> UINT32 </color>
+				<lifeFrames> UINT32	</lifeFrames>
+			</Args>
+		</drawCapsule>
+
+	</ClientMethods>
+</root>

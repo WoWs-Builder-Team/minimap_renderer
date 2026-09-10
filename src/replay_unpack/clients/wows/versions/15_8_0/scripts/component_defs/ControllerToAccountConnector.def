@@ -1,0 +1,51 @@
+
+<root>
+	<TempProperties>
+		<loginEnabled/>
+		<_pingAccountCounter/>
+		<_ControllerToAccountConnector__accountCheckVaryID/>
+		<_ControllerToAccountConnector__accountWaiter/>
+		<masterChanger/>
+	</TempProperties>
+
+	<BaseMethods>
+
+		<getReadyAccountMBox>
+		    <Args>
+		        <timeout>ENTITYAPI_TIMEOUT</timeout>
+		    </Args>
+			<ReturnValues>
+				<Arg> MAILBOX </Arg>
+			</ReturnValues>
+		</getReadyAccountMBox>
+
+		<onAccountRestored>
+			<Args>
+				<accountMBox> MAILBOX </accountMBox>
+			</Args>
+		</onAccountRestored>
+
+		<performAccountLoad>
+			<Args>
+				<masterID>MASTER_ID</masterID>
+				<masterService>MAILBOX</masterService>
+				<loadArgs>ENTITY_LOAD_ARGS</loadArgs>
+			</Args>
+ 			<ReturnValues>
+				<mailbox> MAILBOX </mailbox>
+			</ReturnValues>
+		</performAccountLoad>
+
+		<onAccountDestroy>
+			<Args>
+				<rawAccountData> ZIPPED_BLOB </rawAccountData>
+				<destroyReason> UINT8 </destroyReason>
+				<masterChanger> MAILBOX </masterChanger>
+			</Args>
+		</onAccountDestroy>
+	</BaseMethods>
+
+	<ofEntity>
+		<AccountController/>
+	</ofEntity>
+</root>

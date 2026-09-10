@@ -1,0 +1,42 @@
+<root>
+
+	<BaseMethods>
+
+		<unlockShipStage>
+			<Exposed/>
+			<Arg> STRING </Arg>
+			<Arg> SHIP_ID </Arg>
+		</unlockShipStage>
+
+		<requestUnlockTask>
+			<Exposed/>
+			<Arg> STRING </Arg>
+		</requestUnlockTask>
+
+		<buyAccessRequest>
+			<Exposed/>
+			<Arg> STRING </Arg>
+		</buyAccessRequest>
+
+		<buyComponentRequest>
+			<Exposed/>
+			<Arg> STRING </Arg>
+			<Arg> SHIP_ID </Arg>
+			<Arg> STRING </Arg>
+		</buyComponentRequest>
+
+	</BaseMethods>
+
+	<ClientMethods>
+
+		<sync>
+			<Arg> ARRAY <of> MINI_DOCKYARD </of> </Arg>
+		</sync>
+
+	</ClientMethods>
+
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>
+

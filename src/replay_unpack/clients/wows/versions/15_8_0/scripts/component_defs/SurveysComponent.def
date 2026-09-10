@@ -1,0 +1,29 @@
+<root>
+	<ClientMethods>
+	</ClientMethods>
+
+	<BaseMethods>
+
+		<receivePostBattleSurveyResults>
+			<Args>
+				<surveyId>UINT32</surveyId>
+				<answers>ARRAY<of>UINT8</of></answers>
+			</Args>
+			<Exposed/>
+		</receivePostBattleSurveyResults>
+
+		<receivePRMPSurveyResults>
+			<Args>
+				<surveyId>UINT32</surveyId>
+				<prmpId>UINT32</prmpId>
+				<answers>ARRAY<of>UINT8</of></answers>
+			</Args>
+			<Exposed/>
+		</receivePRMPSurveyResults>
+
+	</BaseMethods>
+
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>

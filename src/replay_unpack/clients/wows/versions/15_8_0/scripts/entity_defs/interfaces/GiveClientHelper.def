@@ -1,0 +1,23 @@
+<root>
+	<Implements>
+		<Interface> TransactionAPI </Interface>
+	</Implements>
+
+	<TempProperties>
+		<target/> <!-- mailbox -->
+		<attemptNumber/>
+		<nextTransactionStageCallback/>
+		<_GiveClientHelper__logName/>
+		<givePromise/>
+		<giveClientLock/>
+	</TempProperties>
+
+	<BaseMethods>
+		<onGiveClientNextTransactionStage>
+			<Arg> MAILBOX </Arg> <!-- receiver mailbox -->
+		</onGiveClientNextTransactionStage>
+
+		<onGiveClientTransactionFinished>
+		</onGiveClientTransactionFinished>
+	</BaseMethods>
+</root>

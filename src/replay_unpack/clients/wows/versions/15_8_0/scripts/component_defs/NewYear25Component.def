@@ -1,0 +1,65 @@
+<root>
+
+	<BaseMethods>
+
+		<installDecoration>
+			<Exposed/>
+			<Args>
+				<decorationID> UINT8 </decorationID>
+				<slot> UINT8 </slot>
+			</Args>
+		</installDecoration>
+
+		<uninstallDecoration>
+			<Exposed/>
+			<Args>
+				<slot> UINT8 </slot>
+			</Args>
+		</uninstallDecoration>
+
+		<dev_addBattle>
+			<Exposed/>
+		</dev_addBattle>
+
+		<dev_refreshBattles>
+			<Exposed/>
+		</dev_refreshBattles>
+
+		<dev_addAllDecorations>
+			<Exposed/>
+		</dev_addAllDecorations>
+
+	</BaseMethods>
+
+	<ClientMethods>
+
+		<syncDecorations>
+			 <Arg> MSGPACK_BLOB </Arg>
+		</syncDecorations>
+
+		<syncProgress>
+			 <Arg> UINT8 </Arg>
+		</syncProgress>
+
+		<syncShipToken>
+			 <Arg> BOOL </Arg>
+			 <Arg> UINT32 </Arg>
+			 <Arg> UINT32 </Arg>
+		</syncShipToken>
+
+		<syncClientChristmasTime>
+			 <Arg> UINT32 </Arg>
+			 <Arg> UINT32 </Arg>
+		</syncClientChristmasTime>
+
+		<onDecorationMessage>
+			 <Arg> UINT32 </Arg>
+			 <Arg> UINT8 </Arg>
+		</onDecorationMessage>
+	</ClientMethods>
+
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>
+

@@ -1,0 +1,104 @@
+<root>
+	<Properties>
+	</Properties>
+
+	<TempProperties>
+		<_BattleComponent__battleEvents/>
+		<_BattleComponent__battleEndApplyLock/>
+		<battleResultsProcessor/>
+		<battleSessionsManager/>
+		<battleResultsCache/>
+		<leaveBattleContext/>
+	</TempProperties>
+	<BaseMethods>
+		<startBattleSession>
+			<Args>
+			    <battleSessionInfo> BATTLE_SESSION_INFO_DEF </battleSessionInfo>
+				<avatarMBox>MAILBOX</avatarMBox>
+			</Args>
+			<ReturnValues>
+				<status>INT8</status>
+			</ReturnValues>
+		</startBattleSession>
+
+		<onBattleIssue>
+		    <Args>
+		        <reason>UINT8</reason>
+		        <BATTLE_SESSION_ID>BATTLE_SESSION_ID</BATTLE_SESSION_ID>
+		    </Args>
+			<ReturnValues>
+				<status>INT8</status>
+			</ReturnValues>
+		</onBattleIssue>
+
+		<onBattleEnd>
+		    <Args>
+		        <battleResults>BATTLE_RESULTS_DEF</battleResults>
+		    </Args>
+			<ReturnValues>
+				<status>INT8</status>
+			</ReturnValues>
+		</onBattleEnd>
+
+		<leaveBattleSession>
+		    <Args>
+		        <battleSessionUniqueID>BATTLE_SESSION_ID</battleSessionUniqueID>
+		    </Args>
+			<ReturnValues>
+				<status>UINT8</status>
+			</ReturnValues>
+		</leaveBattleSession>
+
+		<startTestBattle>
+			<Args>
+				<startParameters>TEST_START_BATTLE_DEF</startParameters>
+			</Args>
+			<ReturnValues>
+				<status>INT16</status>
+			</ReturnValues>
+		</startTestBattle>
+
+		<getCurrentBattle>
+			<ReturnValues>
+				<battleSession>BATTLE_SESSION_INFO_DEF</battleSession>
+			</ReturnValues>
+		</getCurrentBattle>
+
+		<getBattleBySessionID>
+			<Args>
+				<battleSessionID>BATTLE_SESSION_ID</battleSessionID>
+			</Args>
+			<ReturnValues>
+				<battleSession>BATTLE_SESSION_INFO_DEF</battleSession>
+			</ReturnValues>
+		</getBattleBySessionID>
+		<tryReconnectToArena>
+		    <Args>
+		        <battleSessionID>BATTLE_SESSION_ID</battleSessionID>
+		    </Args>
+			<ReturnValues>
+				<result>INT8</result>
+			</ReturnValues>
+		</tryReconnectToArena>
+
+		<callAvatar>
+		    <Args>
+		        <methodName>STRING</methodName>
+		        <args>PYTHON</args>
+		        <kwargs>PYTHON</kwargs>
+		    </Args>
+		    <ReturnValues>
+				<result>BOOL</result>
+			</ReturnValues>
+		</callAvatar>
+
+
+	</BaseMethods>
+	
+	<ClientMethods>
+	</ClientMethods>
+	
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>

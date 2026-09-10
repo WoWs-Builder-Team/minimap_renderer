@@ -1,0 +1,19 @@
+<root>
+    <TempProperties>
+        <_AccountInventoryAPIComponent__inventoryCollector/>
+    </TempProperties>
+    <BaseMethods>
+        <getInventory>
+           <Args>
+              <request> STRING </request>
+           </Args>
+           <ReturnValues>
+             <Arg> STRING </Arg>
+           </ReturnValues>
+        </getInventory>
+    </BaseMethods>
+
+    <ofEntity>
+        <Account/>
+    </ofEntity>
+</root>

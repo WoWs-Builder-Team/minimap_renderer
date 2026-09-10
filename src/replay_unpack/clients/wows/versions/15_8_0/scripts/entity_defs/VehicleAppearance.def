@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<root>
+    <Volatile></Volatile>
+    <Properties>
+        <shipState>
+            <Type>SHIP_STATE</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </shipState>
+        <useOnlyMainLOD>
+            <Type>BOOL</Type>
+            <Flags>ALL_CLIENTS</Flags>
+            <Default>True</Default>
+        </useOnlyMainLOD>
+        <isPlayersVehicle>
+            <Type>BOOL</Type>
+            <Flags>ALL_CLIENTS</Flags>
+            <Default>False</Default>
+        </isPlayersVehicle>
+    </Properties>
+    <ClientMethods></ClientMethods>
+    <CellMethods></CellMethods>
+    <BaseMethods></BaseMethods>
+</root>
+

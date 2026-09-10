@@ -1,0 +1,48 @@
+<root>
+	<BaseMethods>
+		<onKicked>
+			<Args>
+				<requestID> STRING </requestID>
+				<reason> UINT8 </reason>
+			</Args>
+		</onKicked>
+		<onRedirected>
+			<Args>
+				<requestID> STRING </requestID>
+				<realm> STRING </realm>
+				<battleStarterService> MAILBOX </battleStarterService>
+			</Args>
+		</onRedirected>
+		<startBattlePreparation>
+			<Args>
+				<requestID> STRING </requestID>
+				<mmResult> PYTHON </mmResult>
+				<battleSession> BATTLE_SESSION_DEF </battleSession>
+			</Args>
+			<ReturnValues>
+				<resultCode> UINT8 </resultCode>
+			</ReturnValues>
+		</startBattlePreparation>
+
+		<onPlayersJoinFailed>
+			<Args>
+				<requestID> STRING </requestID>
+				<battleSessionID> BATTLE_SESSION_ID </battleSessionID>
+			</Args>
+			<ReturnValues>
+				<resultCode> UINT8 </resultCode>
+			</ReturnValues>
+		</onPlayersJoinFailed>
+
+		<returnToMatchmaker>
+			<Args>
+				<requestID> STRING </requestID>
+				<battleSessionID> BATTLE_SESSION_ID </battleSessionID>
+				<originalEnqueueTime> FLOAT64 </originalEnqueueTime>
+			</Args>
+			<ReturnValues>
+				<resultCode> UINT8 </resultCode>
+			</ReturnValues>
+		</returnToMatchmaker>
+	</BaseMethods>
+</root>

@@ -1,0 +1,42 @@
+<root>
+
+    <BaseMethods>
+        <chooseSide>
+            <Exposed/>
+            <Arg> STRING </Arg>
+            <Arg> STRING </Arg>
+        </chooseSide>
+        <claimStage>
+            <Exposed/>
+            <Arg> STRING </Arg>
+            <Arg> STRING </Arg>
+            <Arg> STRING </Arg>
+        </claimStage>
+        <claimHighLevelProgressionRewards>
+            <Exposed/>
+            <Arg> STRING </Arg>
+            <Arg> STRING </Arg>
+            <Arg> UINT8 </Arg>
+        </claimHighLevelProgressionRewards>
+        <addTokensForOwnedShipsToAutoClaim>
+            <Exposed/>
+            <Arg> STRING </Arg>
+        </addTokensForOwnedShipsToAutoClaim>
+	</BaseMethods>
+
+	<ClientMethods>
+	    <syncProvidedSideChoiceEventList>
+	        <Arg> MSGPACK_BLOB </Arg>
+	    </syncProvidedSideChoiceEventList>
+	    <syncProvidedHighLevelProgressionList>
+	        <Arg> MSGPACK_BLOB </Arg>
+	    </syncProvidedHighLevelProgressionList>
+	    <cleanInactiveSideChoiceEvents>
+	        <Arg> ARRAY <of> STRING </of> </Arg>
+	    </cleanInactiveSideChoiceEvents>
+	</ClientMethods>
+
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>

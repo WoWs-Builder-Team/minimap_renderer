@@ -1,0 +1,60 @@
+<root>
+	<Properties>
+		<targetLocalPos>
+			<Type>			UINT16			</Type>
+			<Flags>			ALL_CLIENTS     </Flags>
+		</targetLocalPos>
+
+		<torpedoLocalPos>
+			<Type>			UINT16			</Type>
+			<Flags>			ALL_CLIENTS     </Flags>
+		</torpedoLocalPos>
+
+		<laserTargetLocalPos>
+		    <Type>			UINT16			</Type>
+			<Flags>			ALL_CLIENTS     </Flags>
+		</laserTargetLocalPos>
+
+		<waveLocalPos>
+			<Type>			UINT16			</Type>
+			<Flags>			ALL_CLIENTS     </Flags>
+		</waveLocalPos>
+
+		<weaponLockFlags>
+			<Type>		    UINT16			</Type>
+			<Flags>			ALL_CLIENTS     </Flags>
+			<Default>	    0			    </Default>
+		</weaponLockFlags>
+	</Properties>
+
+	<TempProperties>
+		<tmpTargetPos/>
+		<tmpTargetPosNext/>
+		<gunTargetPos/>
+		<gunTargetPosNext/>
+		<weaponLocks/>
+	</TempProperties>
+
+	<CellMethods>
+		<updateWeaponTargetPos>
+			<Args>
+				<targetPosPacked> VECTOR3 </targetPosPacked>
+				<weaponType> INT8 </weaponType>
+			</Args>
+		</updateWeaponTargetPos>
+		<setWeaponLock>
+			<Args>
+				<weaponType> INT8 </weaponType>
+				<lockType> INT8 </lockType>
+				<targetId> TARGET_ID </targetId>
+				<hitPos> VECTOR3 </hitPos>
+			</Args>
+		</setWeaponLock>
+		<setPriorityTarget>
+			<Args>
+				<weaponType> INT8 </weaponType>
+				<targetId> TARGET_ID </targetId>
+			</Args>
+		</setPriorityTarget>
+	</CellMethods>
+</root>

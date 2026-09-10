@@ -1,0 +1,49 @@
+<root>
+	<Properties>
+		<hasAirTargetsInRange>
+			<Type> BOOL </Type>
+			<Flags> ALL_CLIENTS </Flags>
+			<Default> 0 </Default>
+		</hasAirTargetsInRange>
+		<airDefenseTargetIds>
+			<Type>ARRAY<of>ARRAY<of>PLANE_ID</of></of></Type>
+			<Flags>			ALL_CLIENTS     </Flags>
+		</airDefenseTargetIds>
+		<airDefenseDispRadius>
+			<Type>			FLOAT32			</Type>
+			<Flags>			ALL_CLIENTS		</Flags>
+			<Default>		0.0		</Default>
+		</airDefenseDispRadius>
+		<isAntiAirMode>
+			<Type> BOOL </Type>
+			<Flags> ALL_CLIENTS </Flags>
+			<Default> 0 </Default>
+		</isAntiAirMode>
+		<antiAirAuras>
+			<Type> ARRAY<of>AIR_DEFENCE_AURA</of> </Type>
+			<Flags> ALL_CLIENTS </Flags>
+		</antiAirAuras>
+	</Properties>
+		
+	<TempProperties>	
+	</TempProperties>	
+	
+	<ClientMethods>
+		<receiveBubbles>
+			<Arg>BUBBLE_PACK</Arg>
+			<Arg>UINT8</Arg>
+		</receiveBubbles>
+	</ClientMethods>
+	
+	<CellMethods>
+		<setAntiAirMode>
+			<Exposed/>
+			<Arg> BOOL </Arg>
+		</setAntiAirMode>
+
+		<setEnabledUniversalAura>
+			<Exposed/>
+			<Arg> BOOL </Arg>
+		</setEnabledUniversalAura>
+	</CellMethods>
+</root>

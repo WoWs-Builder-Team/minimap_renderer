@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<root>
+    <Properties>
+        <weather>
+            <Type>STRING</Type>
+            <Exposed></Exposed>
+        </weather>
+        <itemsVisibilityMask>
+            <Type>UINT32</Type>
+            <Exposed></Exposed>
+        </itemsVisibilityMask>
+    </Properties>
+</root>
+

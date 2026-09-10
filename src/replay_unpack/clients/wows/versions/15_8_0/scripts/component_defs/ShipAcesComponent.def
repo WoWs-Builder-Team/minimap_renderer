@@ -1,0 +1,38 @@
+<root>
+    <BaseMethods>
+        <onFinalStatsShown>
+			<Exposed/>
+		</onFinalStatsShown>
+
+		<requestCellHistory>
+		    <Exposed/>
+		    <Args>
+		        <sprintId> UINT8 </sprintId>
+		        <shipType> STRING </shipType>
+		        <nation> STRING </nation>
+		    </Args>
+		</requestCellHistory>
+
+		<devChangeProgress>
+		    <Exposed/>
+		    <Args>
+		        <shipId> SHIP_ID </shipId>
+		        <taskProgress> ACES_TASK_PROGRESS </taskProgress>
+		    </Args>
+		</devChangeProgress>
+    </BaseMethods>
+
+    <ClientMethods>
+        <receiveEmptyDump/>
+
+		<updateSeasonProgress>
+            <Args>
+				<data> ZIPPED_BLOB </data>
+			</Args>
+        </updateSeasonProgress>
+    </ClientMethods>
+
+    <ofEntity>
+        <Account/>
+    </ofEntity>
+</root>

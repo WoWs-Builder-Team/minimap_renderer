@@ -1,0 +1,13 @@
+<root>
+	<OptionsFlag>Enable</OptionsFlag>
+
+	<Domain>CLIENT</Domain>
+
+	<Properties>
+		<color>
+			<Type> VECTOR3 </Type>
+			<Editable> True </Editable>
+			<Default> 1.0 1.0 1.0 </Default>
+		</color>
+	</Properties>
+</root>

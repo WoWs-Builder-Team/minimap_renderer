@@ -1,0 +1,32 @@
+<root>
+	<Properties>
+		<battleLogicId>
+			<Type> ENTITY_ID </Type>
+			<Flags> CELL_PRIVATE </Flags>
+		</battleLogicId>
+		<baseBattleLogicId>
+			<Type> ENTITY_ID </Type>
+			<Flags> BASE </Flags>
+		</baseBattleLogicId>
+		<stage>
+		    <Type> UINT8 </Type>
+			<Flags> CELL_PRIVATE </Flags>
+		</stage>
+	</Properties>
+
+	<TempProperties>
+		<battleLogic/>
+		<isRemovedFromWorld/>
+	</TempProperties>
+
+	<CellMethods>
+		<stopBattle>
+			<Args>
+				<isRegularStop> BOOL </isRegularStop>
+			</Args>
+			<ReturnValues>
+				<isSuccess> BOOL </isSuccess>
+			</ReturnValues>
+		</stopBattle>
+	</CellMethods>
+</root>

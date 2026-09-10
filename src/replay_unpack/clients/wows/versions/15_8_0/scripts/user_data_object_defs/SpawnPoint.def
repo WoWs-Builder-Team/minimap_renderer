@@ -1,0 +1,84 @@
+<root>
+
+    <Domain> BASE </Domain>
+
+	<OptionsFlag>Enable</OptionsFlag>
+	<AdditionalProperties>
+		<drawInfo>
+			<property>tag</property>
+		</drawInfo>
+	</AdditionalProperties>
+
+    <Properties>
+        <description>
+            <Type> STRING </Type>
+            <Editable> true </Editable>
+        </description>
+
+        <team>
+            <Type> UINT8 </Type>
+            <Editable> true </Editable>
+            <Default>0</Default>
+        </team>
+
+        <tag>
+            <Type> STRING </Type>
+            <Editable> true </Editable>
+        </tag>
+
+        <shipLevels>
+            <Type>ARRAY <of>UINT8</of></Type>
+            <Editable>True</Editable>
+            <Default>
+                <item> 1  </item>
+                <item> 2  </item>
+                <item> 3  </item>
+                <item> 4  </item>
+                <item> 5  </item>
+                <item> 6  </item>
+                <item> 7  </item>
+                <item> 8  </item>
+                <item> 9  </item>
+                <item> 10 </item>
+                <item> 11 </item>
+            </Default>
+        </shipLevels>
+
+        <priority_Battleship>
+            <Type> UINT8 </Type>
+            <Editable> true </Editable>
+            <Default>1</Default>
+        </priority_Battleship>
+
+        <priority_AirCarrier>
+            <Type> UINT8 </Type>
+            <Editable> true </Editable>
+            <Default>1</Default>
+        </priority_AirCarrier>
+
+        <priority_Cruiser>
+            <Type> UINT8 </Type>
+            <Editable> true </Editable>
+            <Default>1</Default>
+        </priority_Cruiser>
+
+        <priority_Destroyer>
+            <Type> UINT8 </Type>
+            <Editable> true </Editable>
+            <Default>1</Default>
+        </priority_Destroyer>
+
+        <priority_Submarine>
+            <Type> UINT8 </Type>
+            <Editable> true </Editable>
+            <Default>1</Default>
+        </priority_Submarine>
+
+        <priority_Auxiliary>
+            <Type> UINT8 </Type>
+            <Editable> true </Editable>
+            <Default>0</Default>
+        </priority_Auxiliary>
+    </Properties>
+
+</root>

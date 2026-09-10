@@ -1,0 +1,23 @@
+<root>
+	<Properties>
+	</Properties>
+
+	<TempProperties>
+		<_UsersInfoActualizer__awaitingRequests/>
+		<_UsersInfoActualizer__currentBatchID/>
+		<_UsersInfoActualizer__processingBatches/>
+	</TempProperties>
+
+	<Methods>
+		<onGetUserDataResponse>
+			<Args>
+				<batchID> UINT32 </batchID>
+				<resultSet> ARRAY<of>PLAYER_INFO</of> </resultSet>
+			</Args>
+		</onGetUserDataResponse>
+	</Methods>
+
+	<ofService>
+	    <UsersInfoActualizer/>
+	</ofService>
+</root>

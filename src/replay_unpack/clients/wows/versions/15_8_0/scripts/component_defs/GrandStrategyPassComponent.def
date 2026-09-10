@@ -1,0 +1,91 @@
+<root>
+
+	<BaseMethods>
+
+		<passUpgrade>
+			<Exposed/>
+			<Arg> STRING </Arg>
+		</passUpgrade>
+
+		<regionUpgrade>
+			<Exposed/>
+			<Arg> STRING </Arg>
+			<Arg> STRING </Arg>
+		</regionUpgrade>
+
+		<claimProvince>
+			<Exposed/>
+			<Arg> STRING </Arg>
+			<Arg> STRING </Arg>
+			<Arg> STRING </Arg>
+		</claimProvince>
+
+		<forceClaimProvinces>
+			<Arg> STRING </Arg>
+			<Arg> ARRAY <of> STRING </of> </Arg>
+			<Arg> STRING </Arg>
+		</forceClaimProvinces>
+
+		<unrewardedClaimProvinces>
+			<Arg> STRING </Arg>
+			<Arg> ARRAY <of> STRING </of> </Arg>
+			<Arg> STRING </Arg>
+		</unrewardedClaimProvinces>
+
+        <getGrandStrategyPasses>
+			<Exposed/>
+            <ReturnValues>
+                <Arg> ARRAY <of> MSGPACK_BLOB </of> </Arg>
+            </ReturnValues>
+		</getGrandStrategyPasses>
+
+	</BaseMethods>
+
+	<ClientMethods>
+
+		<sync>
+			<Arg> ARRAY <of> MSGPACK_BLOB </of> </Arg>
+		</sync>
+
+		<syncOnlyProvinces>
+			<Arg> STRING </Arg>
+			<Arg> ARRAY <of> MSGPACK_BLOB </of> </Arg>
+		</syncOnlyProvinces>
+
+		<syncRegions>
+			<Arg> STRING </Arg>
+			<Arg> ARRAY <of> MSGPACK_BLOB </of> </Arg>
+		</syncRegions>
+
+        <handlePassUpgrade>
+			<Arg> STRING </Arg>
+		</handlePassUpgrade>
+
+        <handleRegionUpgrade>
+			<Arg> STRING </Arg>
+			<Arg> STRING </Arg>
+		</handleRegionUpgrade>
+
+        <handleClaimProvince>
+			<Arg> STRING </Arg>
+			<Arg> STRING </Arg>
+			<Arg> STRING </Arg>
+		</handleClaimProvince>
+
+		<handleGetGrandStrategyPasses/>
+
+		<handleMarkRegionUnseen>
+		    <Arg> STRING </Arg>
+		</handleMarkRegionUnseen>
+
+		<cleanInactiveGSPasses>
+	        <Arg> ARRAY <of> STRING </of> </Arg>
+	    </cleanInactiveGSPasses>
+
+	</ClientMethods>
+
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>
+

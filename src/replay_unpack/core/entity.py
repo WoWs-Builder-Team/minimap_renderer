@@ -89,6 +89,12 @@ class Entity:
         )
 
     @classmethod
+    def clear_subscriptions(cls):
+        cls._methods_subscriptions.clear()
+        cls._properties_subscriptions.clear()
+        cls._nested_properties_subscription.clear()
+
+    @classmethod
     def subscribe_property_change(
         cls, entity_name: str, prop_name: str, func: Callable
     ):

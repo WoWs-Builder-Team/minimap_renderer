@@ -1,0 +1,41 @@
+<root>
+
+    <BaseMethods>
+
+		<itemPurchase>
+			<Exposed/>
+			<Arg> STRING </Arg>
+		</itemPurchase>
+
+        <itemUnpurchase>
+			<Exposed/>
+			<Arg> STRING </Arg>
+		</itemUnpurchase>
+
+	</BaseMethods>
+
+	<ClientMethods>
+
+		<syncEventShop>
+			<Arg> MSGPACK_BLOB </Arg>
+		</syncEventShop>
+
+        <updateEventShopItems>
+			<Arg> MSGPACK_BLOB </Arg>
+		</updateEventShopItems>
+
+        <devItemPurchase>
+			<Arg> STRING </Arg>
+		</devItemPurchase>
+
+        <devItemUnpurchase>
+			<Arg> STRING </Arg>
+		</devItemUnpurchase>
+
+	</ClientMethods>
+
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>
+

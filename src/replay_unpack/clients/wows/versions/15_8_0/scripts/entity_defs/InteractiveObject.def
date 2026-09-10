@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<root>
+    <Volatile></Volatile>
+    <Properties>
+        <guid>
+            <Type>STRING</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </guid>
+        <paramsName>
+            <Type>STRING</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </paramsName>
+        <modelPath>
+            <Type>STRING</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </modelPath>
+        <initialGrade>
+            <Type>STRING</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </initialGrade>
+    </Properties>
+    <ClientMethods></ClientMethods>
+    <CellMethods></CellMethods>
+    <BaseMethods></BaseMethods>
+</root>
+

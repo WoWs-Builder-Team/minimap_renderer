@@ -55,6 +55,8 @@ class PlayerBase:
 
 class ControlledPlayerBase(PlayerBase, ABC):
     def __init__(self, version: str):
+        from replay_unpack.core.entity import Entity
+        Entity.clear_subscriptions()
         self._battle_controller = self._get_controller(version)
 
         super(ControlledPlayerBase, self).__init__(version)

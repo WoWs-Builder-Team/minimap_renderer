@@ -1,0 +1,33 @@
+<root>
+    <BaseMethods>
+        <appendPingResults>
+            <Exposed/>
+            <Args>
+                <pingResults> MSGPACK_BLOB </pingResults>
+            </Args>
+        </appendPingResults>
+
+        <onClientReady>
+        </onClientReady>
+
+        <onDisconnect>
+        </onDisconnect>
+    </BaseMethods>
+
+    <ClientMethods>
+        <gatherConnectionQualityData>
+            <Args>
+                <count> UINT8 </count>
+                <interval> FLOAT </interval>
+                <timeout> UINT16 </timeout>
+            </Args>
+        </gatherConnectionQualityData>
+
+        <onBecomePlayer>
+        </onBecomePlayer>
+    </ClientMethods>
+
+    <ofEntity>
+        <Account/>
+    </ofEntity>
+</root>

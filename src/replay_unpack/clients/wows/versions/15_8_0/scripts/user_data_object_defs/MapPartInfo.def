@@ -1,0 +1,71 @@
+<root>
+    <OptionsFlag>Enable</OptionsFlag>
+    <AdditionalProperties>
+	</AdditionalProperties>
+    <Domain> CLIENT </Domain>
+    <Properties>
+
+        <name>
+            <Type> STRING </Type>
+            <Editable> true </Editable>
+        </name>
+
+        <description>
+            <Type> STRING </Type>
+            <Editable> true </Editable>
+        </description>
+
+        <linked>
+            <Type>	ARRAY <of> UDO_REF </of>
+            </Type>
+            <Editable> True </Editable>
+        </linked>
+
+        <cameraDirection>
+            <Type> VECTOR3 </Type>
+            <Editable> false </Editable>
+        </cameraDirection>
+
+        <cameraPosition>
+            <Type> VECTOR3 </Type>
+            <Editable> false </Editable>
+        </cameraPosition>
+
+        <fov>
+            <Type> FLOAT </Type>
+            <Editable> false </Editable>
+            <Default> 1.0472 </Default>
+        </fov>
+
+        <linecolor>
+            <Type> STRING </Type>
+            <Editable> True </Editable>
+            <Default> 0x811177ff </Default>
+        </linecolor>
+
+        <sectorcolor>
+            <Type> STRING </Type>
+            <Editable> True </Editable>
+            <Default> 0x90b1c231 </Default>
+        </sectorcolor>
+
+        <linewidth>
+             <Type> FLOAT32 </Type>
+             <Editable> True </Editable>
+             <Default> 7.0 </Default>
+        </linewidth>
+
+        <edgepoints>
+            <Type>	ARRAY <of> VECTOR3 </of>
+            </Type>
+             <Editable> True </Editable>
+        </edgepoints>
+
+        <zonepoints>
+            <Type>	ARRAY <of> VECTOR3 </of>
+            </Type>
+             <Editable> True </Editable>
+        </zonepoints>
+
+    </Properties>
+</root>

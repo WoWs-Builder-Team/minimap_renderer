@@ -1,0 +1,55 @@
+<root>
+	<OptionsFlag>Enable</OptionsFlag>
+
+	<Domain>CLIENT</Domain>
+
+	<Properties>
+		<TorpedoLauncherAim>
+			<Type>BOOL</Type>
+			<Editable>true</Editable>
+			<Default>1</Default>
+		</TorpedoLauncherAim>
+		<Tracers_AA>
+			<Type>BOOL</Type>
+			<Editable>true</Editable>
+			<Default>1</Default>
+		</Tracers_AA>
+		<Tracers_MG_Enemy>
+			<Type>BOOL</Type>
+			<Editable>true</Editable>
+			<Default>1</Default>
+		</Tracers_MG_Enemy>
+		<Tracers_MG_Player>
+			<Type>BOOL</Type>
+			<Editable>true</Editable>
+			<Default>1</Default>
+		</Tracers_MG_Player>
+		<Particles>
+			<Type>BOOL</Type>
+			<Editable>true</Editable>
+			<Default>1</Default>
+		</Particles>
+		<SmokeScreen>
+			<Type>BOOL</Type>
+			<Editable>true</Editable>
+			<Default>1</Default>
+		</SmokeScreen>
+		<ShotTracer_1>
+		    <Type>BOOL</Type>
+			<Editable>true</Editable>
+			<Default>1</Default>
+		</ShotTracer_1>
+		<ShotTracer_2>
+		    <Type>BOOL</Type>
+			<Editable>true</Editable>
+			<Default>1</Default>
+		</ShotTracer_2>
+		<High_explosive_shot_tracers>
+		    <Type>BOOL</Type>
+		    <Editable>true</Editable>
+		    <Default>0</Default>
+		</High_explosive_shot_tracers>
+	</Properties>
+
+</root>
+

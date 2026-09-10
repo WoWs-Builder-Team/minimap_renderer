@@ -1,0 +1,168 @@
+<root>
+	<BaseMethods>
+		<start>
+			<Exposed/>
+			<ReturnValues>
+				<result>UINT8</result>
+			</ReturnValues>
+		</start>
+		
+		<stop>
+			<Exposed/>
+			<ReturnValues>
+				<result>INT16</result>
+			</ReturnValues>
+		</stop>
+		
+		<kickPlayer>
+			<Arg>UINT64</Arg>
+			<Exposed/>
+			<ReturnValues>
+				<result>INT16</result>
+			</ReturnValues>
+		</kickPlayer>
+		
+		<clearRoom>
+			<Exposed/>
+			<ReturnValues>
+				<result>INT16</result>
+			</ReturnValues>
+		</clearRoom>
+		
+		<setReady>
+			<Arg>INT64</Arg>
+			<Exposed/>
+			<ReturnValues>
+				<result>INT16</result>
+			</ReturnValues>
+		</setReady>
+		
+		<sendInvite>
+			<Arg>INT64</Arg>
+			<Arg>INT64</Arg>
+			<Arg>INT64</Arg>
+			<Exposed/>
+			<ReturnValues>
+				<result>INT16</result>
+			</ReturnValues>
+		</sendInvite>
+		
+		<sendInvite>
+			<Arg>INT64</Arg>
+			<Arg>INT64</Arg>
+			<Arg>INT64</Arg>
+			<Exposed/>
+			<ReturnValues>
+				<result>INT16</result>
+			</ReturnValues>
+		</sendInvite>
+		
+		<revokeInvite>
+			<Arg>INT64</Arg>
+			<Exposed/>
+			<ReturnValues>
+				<result>INT16</result>
+			</ReturnValues>
+		</revokeInvite>
+		
+		<revokeInvite>
+			<Arg>INT64</Arg>
+			<Exposed/>
+			<ReturnValues>
+				<result>INT16</result>
+			</ReturnValues>
+		</revokeInvite>
+		
+		<quit>
+			<Exposed/>
+			<ReturnValues>
+				<result>INT16</result>
+			</ReturnValues>
+		</quit>
+		
+		<changeOwner>
+			<Arg>INT64</Arg>
+			<Exposed/>
+			<ReturnValues>
+				<result>INT16</result>
+			</ReturnValues>
+		</changeOwner>
+		
+		<dismiss>
+			<Exposed/>
+			<ReturnValues>
+				<result>INT16</result>
+			</ReturnValues>
+		</dismiss>
+		
+		<setIgnore>
+			<Exposed/>
+			<ReturnValues>
+				<result>INT16</result>
+			</ReturnValues>
+		</setIgnore>
+		
+		<setPlayerTeam>
+			<Arg>INT64</Arg>
+			<Arg>INT64</Arg>
+			<Exposed/>
+			<ReturnValues>
+				<result>INT16</result>
+			</ReturnValues>
+		</setPlayerTeam>
+		
+		<addBot>
+			<Arg>INT64</Arg> <!-- cmdData -->
+			<Arg>INT64</Arg> <!-- cmdData -->
+			<Arg>INT32</Arg> <!-- cmdData -->
+			<Arg>INT32</Arg> <!-- cmdData -->
+			<Arg>UNICODE_STRING</Arg> <!-- cmdData -->
+			<Exposed/>
+			<ReturnValues>
+				<result>INT16</result>
+			</ReturnValues>
+		</addBot>
+		
+		<fillWithBots>
+			<Arg>INT64</Arg> <!-- cmdData -->
+			<Arg>INT64</Arg> <!-- cmdData -->
+			<Arg>INT32</Arg> <!-- cmdData -->
+			<Arg>INT32</Arg> <!-- cmdData -->
+			<Arg>INT32</Arg> <!-- cmdData -->
+			<Exposed/>
+			<ReturnValues>
+				<result>INT16</result>
+			</ReturnValues>
+		</fillWithBots>
+		
+		<setCommander>
+			<Arg>INT64</Arg>
+			<Arg>INT64</Arg>
+			<Exposed/>
+			<ReturnValues>
+				<result>INT16</result>
+			</ReturnValues>
+		</setCommander>
+
+		<applyChanges>
+			<Arg>TRAINING_ROOM_PROPERTIES</Arg>
+			<Exposed/>
+			<ReturnValues>
+				<result>INT16</result>
+			</ReturnValues>
+		</applyChanges>
+		
+		<unmakeCommander>
+			<Arg>INT64</Arg>
+			<Exposed/>
+			<ReturnValues>
+				<result>INT16</result>
+			</ReturnValues>
+		</unmakeCommander>
+	
+	</BaseMethods>
+	
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>

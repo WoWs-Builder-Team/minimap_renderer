@@ -8,7 +8,7 @@ from replay_unpack.core.entity import Entity
 from replay_unpack.clients.wows.player import ReplayPlayer
 from renderer.resman import ResourceManager
 
-const_mod = importlib.import_module('replay_unpack.clients.wows.versions.15_7_0.constants')
+const_mod = importlib.import_module('replay_unpack.clients.wows.versions.15_8_0.constants')
 DEATH_TYPES = const_mod.DEATH_TYPES
 
 # Track full timeline of events

@@ -204,7 +204,7 @@ Actual performance depends on CPU speed, memory bandwidth, replay length, battle
 
 ## Compatibility
 
-The renderer contains version-specific adapters for multiple game releases and is **currently maintained up to version `15.7.0`**, with backward compatibility for earlier replays and support for Operation mode consumables. New game versions may change the replay format, so versions that have not been adapted yet are not guaranteed to parse or render completely.
+The renderer contains version-specific adapters for multiple game releases and is **currently maintained up to version `15.8.0`**, with backward compatibility for earlier replays and support for Operation mode consumables. New game versions may change the replay format, so versions that have not been adapted yet are not guaranteed to parse or render completely.
 
 When reporting an [issue](https://github.com/In-dor/minimap_renderer/issues), include:
 

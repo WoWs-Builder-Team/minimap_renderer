@@ -1,0 +1,38 @@
+<root>
+    <BaseMethods>
+        <getUserListByDBID>
+            <Args>
+                <userList>ARRAY<of>DB_ID</of></userList>
+                <logReasonData>MSGPACK_BLOB</logReasonData>
+            </Args>
+            <Exposed/>
+        </getUserListByDBID>
+        <getUserListClanData>
+            <Args>
+                <userList>ARRAY<of>DB_ID</of></userList>
+            </Args>
+            <Exposed/>
+        </getUserListClanData>
+        <onGetUsersData>
+            <Args>
+                <userData>ARRAY<of>PLAYER_INFO</of></userData>
+                <notFoundInDB>ARRAY<of>DB_ID</of></notFoundInDB>
+            </Args>
+        </onGetUsersData>
+    </BaseMethods>
+    <Methods>
+        <onGetUsersData>
+            <Args>
+                <userData>ARRAY<of>PLAYER_INFO</of></userData>
+                <notFoundInDB>ARRAY<of>DB_ID</of></notFoundInDB>
+            </Args>
+        </onGetUsersData>
+	</Methods>
+    <ofEntity>
+        <Account/>
+    </ofEntity>
+    <ofService>
+        <UsersRequesterTester/>
+    </ofService>
+</root>
+

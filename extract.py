@@ -52,8 +52,10 @@ def main(bin_num):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Extracts game resources.")
+    bin_candidates = [int(d) for d in os.listdir("bin/") if d.isdigit()] if os.path.exists("bin/") else []
+    default_bin = str(max(bin_candidates)) if bin_candidates else None
     parser.add_argument("--bin",
-                        default=max(os.listdir("bin/")),
+                        default=default_bin,
                         help="The game version to use.")
     args = parser.parse_args()
 

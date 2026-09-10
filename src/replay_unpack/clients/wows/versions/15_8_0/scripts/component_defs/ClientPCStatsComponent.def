@@ -1,0 +1,15 @@
+<root>
+    <BaseMethods>
+        <onClientReady></onClientReady>
+        <onDisconnect></onDisconnect>
+    </BaseMethods>
+
+    <ClientMethods>
+        <gatherClientPCStatsData>
+        </gatherClientPCStatsData>
+    </ClientMethods>
+
+    <ofEntity>
+        <Account/>
+    </ofEntity>
+</root>

@@ -1,0 +1,22 @@
+<root>
+	<BaseMethods>
+		<loginVoiceChat>
+			<Exposed/>
+		</loginVoiceChat>
+	
+		<joinVoiceChat>
+			<Exposed/>
+		</joinVoiceChat>
+	
+		<signedCommandToClient>
+		    <Arg>BLOB</Arg>
+		</signedCommandToClient>
+	
+	</BaseMethods>
+	<ClientMethods>
+		<receiveSignedCommand>
+			<Arg>BLOB</Arg>
+		</receiveSignedCommand>
+	</ClientMethods>
+	
+</root>

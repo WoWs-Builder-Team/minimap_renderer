@@ -1,0 +1,42 @@
+<root>
+	<BaseMethods>
+		<createTrainingRoom>
+			<Arg>TRAINING_ROOM_PROPERTIES</Arg>
+			<Exposed/>
+			<ReturnValues>
+			    <result> UINT8 </result>
+			    <trainingRoomId>ENTITY_ID</trainingRoomId>
+			</ReturnValues>
+		</createTrainingRoom>
+		
+		<getTrainingRoomsList>
+			<Arg>ARRAY
+				<of>DB_ID</of>
+			</Arg>
+			<Arg>UNICODE_STRING</Arg>
+			<Exposed/>
+			<ReturnValues>
+			    <result> INT16 </result>
+			</ReturnValues>
+		</getTrainingRoomsList>
+		
+		<joinTrainingRoom>
+			<Arg>UINT64</Arg>
+			<Arg>UNICODE_STRING</Arg>
+			<Exposed/>
+            <ReturnValues>
+			    <responseCode> INT16 </responseCode>
+			</ReturnValues>
+		</joinTrainingRoom>
+		
+		<rejectInvite>
+			<Arg>UINT64</Arg>
+			<Exposed/>
+		</rejectInvite>
+	
+	</BaseMethods>
+	
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>

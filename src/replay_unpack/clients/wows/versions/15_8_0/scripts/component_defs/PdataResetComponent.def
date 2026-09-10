@@ -1,0 +1,71 @@
+<root>
+	<TempProperties>
+		<pdataResetLock/>
+		<pdataDescr/>
+	</TempProperties>
+
+	<BaseMethods>
+		<!-- Export account pdata for migration -->
+		<migrationExport>
+			<ReturnValues>
+				<errorCode> INT8 </errorCode>
+				<pdata> ZIPPED_BLOB </pdata>
+			</ReturnValues>
+		</migrationExport>
+		
+		<!-- Import source account pdata from migration data -->
+		<migrationImport>
+			<Args> 
+				<migrationData> ZIPPED_BLOB </migrationData> 
+			</Args>
+			
+			<ReturnValues>
+				<errorCode> INT8 </errorCode>
+			</ReturnValues>
+		</migrationImport>
+		
+		<!-- Restore account from specified restore point. -->
+		<restoreAccountFromPoint>
+			<Args>
+				<restorePoint> RESTORE_POINT </restorePoint>
+			</Args>
+			<ReturnValues>
+				<errorCode>UINT8</errorCode>
+			</ReturnValues>
+		</restoreAccountFromPoint>
+		
+		<!-- Wipe data on AccountController and export Account to web -->
+		<wipe>
+			<Args> 
+				<webID> INT32 </webID>
+				<deadline> UINT32 </deadline>
+				<leaveGold> BOOL </leaveGold>
+			</Args>
+			<ReturnValues>
+				<errorCode> INT8 </errorCode>
+			</ReturnValues>
+		</wipe>
+
+		<!-- Perform a technical wipe of Account and export it to web -->
+		<techWipe>
+			<ReturnValues>
+				<errorCode> INT8 </errorCode>
+			</ReturnValues>
+		</techWipe>
+		
+		<!-- Perform complete Account removal according to GDPR requirements -->
+		<removeGdprData>
+			<Args>
+				<anonymizedSpaID> DB_ID </anonymizedSpaID>
+				<anonymizedName> STRING </anonymizedName>
+			</Args>
+			 <ReturnValues>
+				<errorCode> UINT8 </errorCode>
+			</ReturnValues>
+		</removeGdprData>
+	</BaseMethods>
+
+	<ofEntity>
+		<AccountController/>
+	</ofEntity>
+</root>

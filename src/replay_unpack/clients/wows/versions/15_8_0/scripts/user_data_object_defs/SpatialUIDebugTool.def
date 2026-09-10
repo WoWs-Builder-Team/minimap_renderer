@@ -1,0 +1,13 @@
+<root>
+	<OptionsFlag>Enable</OptionsFlag>
+
+	<Domain>CLIENT</Domain>
+
+	<Properties>
+		<brightnessInfluence>
+			<Type>FLOAT</Type>
+			<Editable>true</Editable>
+			<Default>1</Default>
+		</brightnessInfluence>
+	</Properties>
+</root>

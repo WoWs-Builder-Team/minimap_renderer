@@ -1,0 +1,160 @@
+<root>
+	<CellMethods>
+		<dev_hit>
+			<Exposed/>
+			<Arg>	STRING	</Arg> <!-- hitLocation name -->
+			<Arg>	FLOAT32	</Arg> <!-- damage -->
+			<Arg>	BOOL	</Arg> <!-- force crit -->
+			<Arg>	INT32	</Arg> <!-- atacker id -->
+			<Arg>	STRING	</Arg> <!-- wpn -->
+		</dev_hit>
+		<causeDamage>
+			<Arg>	STRING	</Arg> <!-- hitLocation name -->
+			<Arg>	FLOAT32	</Arg> <!-- damage -->
+			<Arg>	BOOL	</Arg> <!-- force crit -->
+			<Arg>	INT32	</Arg> <!-- atacker id -->
+			<Arg>	STRING	</Arg> <!-- wpn -->
+		</causeDamage>
+
+		<dev_hlSet>
+			<Exposed/>
+			<Arg>	STRING	</Arg> <!-- hitLocation name -->
+			<Arg>	INT8	</Arg> <!-- healthState -->
+		</dev_hlSet>
+
+		<dev_bot_spawnSplashAtShootPos>
+		</dev_bot_spawnSplashAtShootPos>
+		
+		<dev_BurnFlood>
+			<Exposed/>
+			<Arg>	UINT8	</Arg> <!-- node id (7 for flood) -->
+			<Arg>	BOOL    </Arg> <!-- isStart -->
+			<Flags>	OWN_CLIENT	</Flags>
+		</dev_BurnFlood>
+		<setBurnFlood>
+			<Arg>	UINT8	</Arg> <!-- node id (7 for flood) -->
+			<Arg>	BOOL    </Arg> <!-- isStart -->
+		</setBurnFlood>
+
+
+		<dev_receiveHit>
+		    <Exposed/>
+		    <Flags> OWN_CLIENT </Flags>
+		    <Args>
+				<ammoParamsId>  GAMEPARAMS_ID   </ammoParamsId>
+				<localHitPos>   VECTOR3         </localHitPos>
+				<localDir>      VECTOR3         </localDir>
+				<projSpeed>     FLOAT32         </projSpeed>
+			</Args>
+		</dev_receiveHit>
+
+		<dev_switchInvulnerability>
+			<Exposed/>
+			<Flags> OWN_CLIENT </Flags>
+		</dev_switchInvulnerability>
+
+	</CellMethods>
+	
+	<ClientMethods>
+		<drawSplash>
+			<Arg>	VECTOR3	</Arg>
+			<Arg>	FLOAT32	</Arg>
+			<Arg>	UINT32	</Arg> <!-- targetVehicleID -->
+			<Arg>	BOOL	</Arg>
+		</drawSplash>
+		<receiveSomeSplashInfo>
+			<Arg>	BLOB	</Arg>
+			<Arg>	BOOL	</Arg>
+			<Arg>	BOOL	</Arg>
+		</receiveSomeSplashInfo>
+		<receiveHitLocationsInitialState>
+			<Arg> ARRAY <of> UINT8 </of> </Arg>
+			<Arg> ARRAY <of> UINT32 </of> </Arg>
+			<VariableLengthHeaderSize> 2 </VariableLengthHeaderSize>
+		</receiveHitLocationsInitialState>
+		<receiveHitLocationStateChange>
+			<Arg>	UINT16	</Arg> <!-- hitLocation ID -->
+			<Arg>	UINT32	</Arg> <!-- statePacked-->
+		</receiveHitLocationStateChange>
+		<dev_receiveHitLocationDamage>
+			<Arg>	UINT32	</Arg> <!-- vehId -->
+			<Arg>	STRING	</Arg> <!-- hitLocation name -->
+			<Arg>	UINT32	</Arg> <!-- new HP -->
+		</dev_receiveHitLocationDamage>
+		<setTimesToBurn>
+			<Arg> ARRAY <of> FLOAT </of> </Arg>
+		</setTimesToBurn>
+	</ClientMethods>
+
+	<Properties>
+		<health>
+			<Type>			FLOAT32			</Type>
+			<Flags>			ALL_CLIENTS		</Flags>
+		</health>
+		<regenerationHealth>
+			<Type>			FLOAT32			</Type>
+			<Flags>			ALL_CLIENTS		</Flags>
+			<Default>			0.0		</Default>
+		</regenerationHealth>
+		<regeneratedHealth>
+			<Type>			FLOAT32			</Type>
+			<Flags>			ALL_CLIENTS		</Flags>
+			<Default>			0.0		</Default>
+		</regeneratedHealth>
+		<burningFlags>
+			<Type>			UINT16			</Type>
+			<Flags>			ALL_CLIENTS		</Flags>
+			<Default>       0               </Default>
+		</burningFlags>
+		<friendlyFireEnabled>
+			<Type>			BOOL			</Type>
+			<Flags>			CELL_PUBLIC		</Flags>
+			<Default>       1            </Default>			
+		</friendlyFireEnabled>
+		<botsFriendlyFireEnabled>
+			<Type>			BOOL			</Type>
+			<Flags>			CELL_PUBLIC		</Flags>
+			<Default>       1            </Default>
+		</botsFriendlyFireEnabled>
+		<isInvulnerable>
+			<Type>			BOOL			</Type>
+			<Flags>			CELL_PRIVATE 	</Flags>
+			<Default>		False 			</Default>
+		</isInvulnerable>
+		<apDamageLimitCoeff>
+			<Type>			FLOAT32			</Type>
+			<Flags>			CELL_PUBLIC 	</Flags>
+			<Default>			0.0			</Default>
+		</apDamageLimitCoeff>
+
+		<maxHealth>
+			<Type> FLOAT32 </Type>
+			<Flags> ALL_CLIENTS </Flags>
+			<Default> 0.0 </Default>
+		</maxHealth>
+
+	</Properties>
+
+	<TempProperties>
+		<ammoEffects/>
+		<terminalBallistics/>
+		<workingCrashCrewCount/>
+		<splashHitLocations/>
+		<damageByShips/>
+		<dev_hitID/>
+		<burnManager/>
+		<armorDict/>
+		<splashMeshes/>
+		<splashBoxes/>
+		<devMode/>
+		<serviceUpdatesID/>
+		<battleLogic/>
+		<incomingDamageManager/>
+		<mainHitLocation/>
+		<additionalArmourHLTypes/>
+		<_HitLocationManagerOwner__regenVary/>
+		<_HitLocationManagerOwner__healthRegenPercent/>
+		<_HitLocationManagerOwner__healthRegenSpeed/>
+		<healthToRegenerate/>
+	</TempProperties>
+</root>

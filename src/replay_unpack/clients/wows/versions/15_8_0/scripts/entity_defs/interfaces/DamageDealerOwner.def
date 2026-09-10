@@ -1,0 +1,28 @@
+<root>
+	<Properties>
+		<isAbuser>
+			<Type> BOOL </Type>
+		   	<Flags> CELL_PUBLIC </Flags>
+		</isAbuser>
+
+		<onboardingCoefficients>
+			<Type>ARRAY<of>FLOAT32</of><size>4</size></Type>
+			<Flags>CELL_PUBLIC</Flags>
+			<Default>
+				<item> 1.0 </item>
+				<item> 1.0 </item>
+				<item> 1.0 </item>
+				<item> 0.0 </item>
+			</Default>
+		</onboardingCoefficients>
+	</Properties>
+
+	<TempProperties>
+		<salvoMade/>
+	</TempProperties>
+
+	<CellMethods>
+		<setAbuser>
+		</setAbuser>
+	</CellMethods>
+</root>

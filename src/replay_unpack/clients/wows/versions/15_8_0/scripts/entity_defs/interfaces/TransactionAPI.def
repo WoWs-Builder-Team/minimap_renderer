@@ -1,0 +1,39 @@
+<root>
+
+	<Properties>
+
+		<lastGeneratedTransactionNumber>
+			<Type> UINT16 </Type>
+			<Flags> BASE </Flags>
+			<Default> 0 </Default>
+		</lastGeneratedTransactionNumber>
+
+	</Properties>
+
+	<BaseMethods>
+
+		<!-- Method is called before every stage method call. -->
+		<onTransactionReceive>
+			<Args>
+				<transactionId> UINT64 </transactionId>
+				<transactionType> UINT8 </transactionType>
+				<finishedStage> UINT8 </finishedStage>
+				<currentStage> UINT8 </currentStage>
+				<syncNodes> ARRAY <of> MAILBOX </of> </syncNodes>
+				<excludeLastNode> BOOL </excludeLastNode>
+			</Args>
+		</onTransactionReceive>
+
+		<!-- Method is called when transaction heartbeat or update is sent. -->
+		<onTransactionSync>
+			<Args>
+				<transactionId> UINT64 </transactionId>
+				<syncAction> UINT8 </syncAction>
+				<stage> UINT8 </stage>
+				<sender> MAILBOX </sender>
+			</Args>
+		</onTransactionSync>
+
+	</BaseMethods>
+
+</root>

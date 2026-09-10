@@ -1,0 +1,23 @@
+<root>
+	<Domain>CLIENT</Domain>
+	<OptionsFlag>Enable</OptionsFlag>
+	<Properties>
+		<trajectory>
+			<Type>STRING</Type>
+			<Editable>True</Editable>
+			<resourceref/>
+		</trajectory>
+
+		<fov>
+			<Type>FLOAT</Type>
+			<Editable>True</Editable>
+			<Default>-1.0</Default>
+		</fov>
+
+		<enableCollisionHandling>
+			<Type>UINT8</Type>
+			<Editable>True</Editable>
+			<Default>0</Default>
+		</enableCollisionHandling>
+	</Properties>
+</root>

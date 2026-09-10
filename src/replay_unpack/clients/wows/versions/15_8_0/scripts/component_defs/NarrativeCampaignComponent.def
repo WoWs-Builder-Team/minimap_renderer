@@ -1,0 +1,57 @@
+<root>
+
+    <BaseMethods>
+        <getNarrativeCampaignConfig>
+            <Exposed/>
+            <Args>
+                <narrativeCampaignID> STRING </narrativeCampaignID>
+            </Args>
+            <ReturnValues>
+				<narrativeCampaignConfigDTO> MSGPACK_BLOB </narrativeCampaignConfigDTO>
+			</ReturnValues>
+        </getNarrativeCampaignConfig>
+
+        <getProgressionLevelDiff>
+            <Exposed/>
+            <Args>
+                <narrativeCampaignID> STRING </narrativeCampaignID>
+                <progressionStatusDiff> MSGPACK_BLOB </progressionStatusDiff>
+            </Args>
+            <ReturnValues>
+				<currentProgressionLevelDTO> MSGPACK_BLOB </currentProgressionLevelDTO>
+			</ReturnValues>
+        </getProgressionLevelDiff>
+
+        <GGAPIAddPointsAndClaimRewards>
+		    <Args>
+		        <narrativeCampaignID> UNICODE_STRING </narrativeCampaignID>
+		        <points> UINT64 </points>
+		        <chargeCurrency> BOOL </chargeCurrency>
+		    </Args>
+			<ReturnValues>
+				<methodErrorCode> UINT8 </methodErrorCode>
+				<resultData> MSGPACK_BLOB </resultData>
+			</ReturnValues>
+		</GGAPIAddPointsAndClaimRewards>
+	</BaseMethods>
+
+	<ClientMethods>
+	    <syncNarrativeCampaign>
+	        <Arg> STRING </Arg>
+	        <Arg> MSGPACK_BLOB </Arg>
+	    </syncNarrativeCampaign>
+
+	    <syncNarrativeCampaignProgress>
+	        <Arg> STRING </Arg>
+	        <Arg> MSGPACK_BLOB </Arg>
+	    </syncNarrativeCampaignProgress>
+
+	    <cleanInactiveNarrativeCampaigns>
+	        <Arg> ARRAY <of> STRING </of> </Arg>
+	    </cleanInactiveNarrativeCampaigns>
+	</ClientMethods>
+
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>

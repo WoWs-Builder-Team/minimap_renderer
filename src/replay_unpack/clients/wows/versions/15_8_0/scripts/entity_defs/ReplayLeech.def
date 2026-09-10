@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<root>
+    <Implements>
+        <Interface>GiveClientHelper</Interface>
+    </Implements>
+    <Properties></Properties>
+    <ClientMethods>
+        <onCheckGamePing>
+            <Arg>UINT64</Arg>
+        </onCheckGamePing>
+        <replayFromBeginning>
+            <Arg>BLOB</Arg>
+        </replayFromBeginning>
+        <syncChunk>
+            <Arg>BLOB</Arg>
+        </syncChunk>
+    </ClientMethods>
+    <BaseMethods>
+        <checkGamePing>
+            <Exposed></Exposed>
+            <Args>
+                <clientTime>UINT64</clientTime>
+            </Args>
+        </checkGamePing>
+        <onBecomePlayer>
+            <Exposed></Exposed>
+        </onBecomePlayer>
+    </BaseMethods>
+</root>
+

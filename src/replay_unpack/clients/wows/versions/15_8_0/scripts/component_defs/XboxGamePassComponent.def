@@ -1,0 +1,24 @@
+<root>
+	<BaseMethods>
+		<requestSubscriptions>
+			<Args>
+				<customerCollectionsId> STRING </customerCollectionsId>
+			</Args>
+			<Exposed/>
+		</requestSubscriptions>
+	</BaseMethods>
+
+	<ClientMethods>
+		<onSubscriptionsResponse>
+			<Args>
+				<httpCode> INT32 </httpCode>
+				<data> STRING </data>
+			</Args>
+		</onSubscriptionsResponse>
+	</ClientMethods>
+
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>
+

@@ -96,6 +96,37 @@ def move_resources(wows_path):
 
     os.makedirs(target_res_dir, exist_ok=True)
 
+    def copy_gui_assets(src_rel, dst_rel, name):
+        src = os.path.join(extract_root, *src_rel.split("/"))
+        dst = os.path.join("src", "renderer", "resources", *dst_rel.split("/"))
+        if os.path.exists(src):
+            os.makedirs(dst, exist_ok=True)
+            count = 0
+            for root, dirs, files in os.walk(src):
+                dirs[:] = [d for d in dirs if d != "subribbons"]
+                rel_path = os.path.relpath(root, src)
+                target_dir = os.path.join(dst, rel_path) if rel_path != "." else dst
+                os.makedirs(target_dir, exist_ok=True)
+                for file in files:
+                    src_file = os.path.join(root, file)
+                    dst_file = os.path.join(target_dir, file)
+                    shutil.copy2(src_file, dst_file)
+                    count += 1
+            logger.info(f"Copied {count} {name} to {dst}")
+        else:
+            logger.warning(f"{name} resource dir not found: {src}")
+
+    # Copy ship bars
+    copy_gui_assets("gui/ship_bars", "ship_bars", "ship_bars")
+    # Copy consumables
+    copy_gui_assets("gui/consumables", "consumables", "consumables")
+    # Copy achievements
+    copy_gui_assets("gui/achievements", "achievement_icons", "achievements")
+    # Copy ribbons
+    copy_gui_assets("gui/ribbons", "ribbon_icons", "ribbons")
+    # Copy frag icons
+    copy_gui_assets("gui/battle_hud/icon_frag", "frag_icons", "frag_icons")
+
     # 1. Move GameParams.data
     gp_src = os.path.join(extract_root, "content", "GameParams.data")
     if os.path.exists(gp_src):
